@@ -14,7 +14,6 @@ alias du="du -h"  # display sizes in human-readable form (K, M, G)
 alias edit="${EDITOR}"  # make editing files a little easier
 alias egrep="egrep --color=auto"  # highlight matches
 alias exists="findcommand"  # does the command exist?
-alias externalip="curl https://diagnostic.opendns.com/myip;echo"  # displays public-facing IP address
 alias fgrep="fgrep --color=auto"  # highlight matches
 alias fs="stat -c '%s bytes'"  # file size, formatted nicely
 alias g="git"
@@ -41,7 +40,6 @@ alias iscommand="findcommand"  # is the command actually a command?
 alias la="ls -a"  # ls output includes hidden files
 alias lal="ls -al" # ls output in long format and including hidden files
 alias ll="ls -l"  # ls output in long format
-alias localip="ip a | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//' | cut -d/ -f1"  # displays the local IP address
 alias mkdd="mkdir $(date +%Y%m%d)"  # create a dir with today's date in yyyy-mm-dd format
 alias mkdir="mkdir -p"  # create a directory, including parent directories as necessary
 alias more="less"  # 'more' sucks, use 'less' instead
