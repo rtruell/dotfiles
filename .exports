@@ -1,0 +1,175 @@
+#!/usr/bin/env bash
+
+export EDITOR="subl -w"  # use Sublime Text as the system editor
+export CONFIG_DEFAULT_USER="rtruell"
+export CONFIG_CHARSET_UTF8=true
+export CONFIG_LANG="en_CA"
+export CONFIG_TERM_LOCAL=""  # terms: screen byobu tmux
+export CONFIG_TERM_SSH=""
+export DOTFILESSRCDIR="${HOME}/dotfiles"  # shortcut to where my dotfiles live
+export DOTFILES="${HOME}/dotfiles"  # another shortcut to where my dotfiles live
+export PYTHONIOENCODING='UTF-8'  # make Python use UTF-8 encoding for output to stdin, stdout, and stderr
+
+# Pass some options to 'less': "F" causes immediate exit if output will fit on one screen, "I" sets case-insensitive searches and "X"
+# doesn't send termcap initialization and deinitialization strings to the terminal.  then set 'PAGER' and 'MANPAGER' to use 'less'
+export less="-FIX"
+export PAGER="less"
+export MANPAGER="less"
+
+# Canadian English (UTF-8)
+export LANG=en_CA.UTF-8
+
+# configure the way history works
+bind Space:magic-space  # enable history expansion with space e.g. typing !!<space> will replace the !! with your last command
+export HISTTIMEFORMAT='%F %T '  # use standard ISO 8601 timestamp. %F equivalent to %Y-%m-%d,  %T equivalent to %H:%M:%S (24-hours format)
+export HISTCONTROL=ignoredups  # avoid succesive duplicates in the bash command history
+export HISTSIZE=10000  # number of commands stored in memory for current session
+export HISTFILESIZE=10000  # number of commands kept in the history file
+shopt -s histappend  # append commands to the bash command history file (${HOME}/.bash_history) instead of overwriting it
+export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history*:clear:cls:h:yore*:redo*:exit"  # don't save some commands to the history
+shopt -s cmdhist  # save multi-line commands as one command
+export PROMPT_COMMAND='history -a; history -c; history -r'  # append commands to the history every time a prompt is shown, instead of after closing the session
+
+# LESS man page colors (makes Man pages more readable).
+export LESS_TERMCAP_mb=$'\E[00;31m'  # dull red, begin blinking
+export LESS_TERMCAP_md=$'\E[00;31m'  # dull red, begin bold
+export LESS_TERMCAP_me=$'\E[0m'  # normal, end mode
+export LESS_TERMCAP_se=$'\E[0m'  # normal, end standout-mode
+export LESS_TERMCAP_so=$'\E[01;44;33m'  # yellow on blue, begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m'  # normal, end underline
+export LESS_TERMCAP_us=$'\E[01;34m'  # bright blue, begin underline
+
+# detect the os
+if [[ -n ${OSTYPE} ]]; then
+  case "${OSTYPE}" in
+    darwin*)  SYSTEM_TYPE="macOS" ;;
+    solaris*) SYSTEM_TYPE="Solaris" ;;
+    linux*)   SYSTEM_TYPE="Linux" ;;
+    bsd*)     SYSTEM_TYPE="BSD" ;;
+    msys*)    SYSTEM_TYPE="MinGW" ;;
+    cygwin*)  SYSTEM_TYPE="Cygwin" ;;
+    *)        SYSTEM_TYPE="Unknown" ;;
+  esac
+else
+  PLATFORM="$(uname | tr '[:upper:]' '[:lower:]')"
+  case "${PLATFORM}" in
+    darwin*)  SYSTEM_TYPE="macOS" ;;
+    sunos*)   SYSTEM_TYPE="Solaris" ;;
+    linux*)   SYSTEM_TYPE="Linux" ;;
+    freebsd*) SYSTEM_TYPE="FreeBSD" ;;
+    netbsd*)  SYSTEM_TYPE="Net_BSD" ;;
+    openbsd*) SYSTEM_TYPE="Open_BSD" ;;
+    msys*)    SYSTEM_TYPE="MinGW" ;;
+    mingw*)   SYSTEM_TYPE="MinGW" ;;
+    cygwin*)  SYSTEM_TYPE="Cygwin" ;;
+    *)        SYSTEM_TYPE="Unknown" ;;
+  esac
+fi
+if [[ -s /proc/version ]]; then
+  if [[ -n "$(cat /proc/version | grep '(Microsoft@Microsoft.com)')" ]]; then SYSTEM_TYPE="Win10_Linux"; fi
+fi
+export SYSTEM_TYPE
+
+# find os version
+if [ "${SYSTEM_TYPE}" == "macOS" ]; then
+    SYSTEM_VERSION="$(sw_vers -productVersion)"
+elif [ -e "/etc/os-release" ]; then
+    SYSTEM_VERSION="$(. /etc/os-release; printf "%s" "${VERSION_ID}")"
+fi
+export SYSTEM_VERSION
+
+# find os release name
+if [ "${SYSTEM_TYPE}" == "macOS" ]; then
+  case "${SYSTEM_VERSION}" in
+    12*)    RELEASE_NAME="Monterey" ;;
+    11*)    RELEASE_NAME="Big Sur" ;;
+    10.15*) RELEASE_NAME="Catalina" ;;
+    10.14*) RELEASE_NAME="Mojave" ;;
+    10.13*) RELEASE_NAME="High Sierra" ;;
+    10.12*) RELEASE_NAME="Sierra" ;;
+    10.11*) RELEASE_NAME="El Capitan" ;;
+    10.10*) RELEASE_NAME="Yosemite" ;;
+    10.9*)  RELEASE_NAME="Mavericks" ;;
+    10.8*)  RELEASE_NAME="Mountain Lion" ;;
+    10.7*)  RELEASE_NAME="Lion" ;;
+    10.6*)  RELEASE_NAME="Snow Leopard" ;;
+    10.5*)  RELEASE_NAME="Leopard" ;;
+    10.4*)  RELEASE_NAME="Tiger" ;;
+    10.3*)  RELEASE_NAME="Panther" ;;
+    10.2*)  RELEASE_NAME="Jaguar" ;;
+    10.1*)  RELEASE_NAME="Puma" ;;
+    10.0*)  RELEASE_NAME="Cheetah" ;;
+    *)      RELEASE_NAME="Unknown" ;;
+  esac
+else
+  RELEASE_NAME=$(lsb_release -c | awk '{print $2}')
+fi
+export RELEASE_NAME
+
+# find out how software is installed
+if which brew >/dev/null 2>&1; then
+  INSTALL_TYPE="BREW"
+fi
+if which apt-get >/dev/null 2>&1; then
+  INSTALL_TYPE="APT"
+fi
+export INSTALL_TYPE
+
+# Enable some Bash 4 features
+declare -a features=(
+  "autocd"  # typing "/path/to/directory" will 'cd' to "directory".  Note: follows symlinks but does not display them in 'pwd'
+  "cdable_vars"  # "cd $var" assumes value of $var contains directory to 'cd' to
+  "cdspell"  # autocorrect typos in path names when using `cd`
+  "dirspell"  # autocorrect on directory names to match a glob.
+  "dotglob"  # includes filenames beginning with a ‘.’ in the results of filename expansion. Must specify "." and ".." explicitly to match them
+  "globstar"  # recursive globbing, e.g. `ls **/*.txt`
+  "no_empty_cmd_completion"  # do not autocomplete when accidentally pressing Tab on an empty line...it takes forever and yields "Display all 15 gazillion possibilites?"
+)
+file=""
+i=""
+for i in ${!features[*]}; do
+  file="${features[${i}]}"
+  shopt -s "${file}"
+done
+unset features file i
+
+# Do not overwrite files when redirecting using ">".  Note that you can still override this with ">|".
+set -o noclobber
+
+# Avoid issues with `gpg` as installed via Homebrew. https://stackoverflow.com/a/42265848/96656
+export GPG_TTY=$(tty)
+
+# If HOSTNAME isn't set, then set it
+if [[ -z "${HOSTNAME}" ]]; then
+  HOSTNAME=$(hostname)
+  export HOSTNAME
+fi
+
+# If EUID isn't set, then set it.  Note that 'id -u' is now mostly portable here due to the alignment of xpg4 above
+if [[ -z "${EUID}" ]]; then
+  EUID=$(id -u)
+  export EUID
+fi
+
+# If HOME isn't set, then set it
+if [[ -z "${HOME}" ]]; then
+  if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
+    HOME="/Users/$(id -un)"
+  else
+    HOME=$(getent passwd | awk -F':' -v EUID="${EUID}" '$3 == EUID{print $6}')
+  fi
+  export HOME
+fi
+
+# export some OS-specific things
+case "${SYSTEM_TYPE}" in
+  macOS)
+    export CLICOLOR=1  # turn on colourization for 'ls' on macOS
+    export HOMEBREW_CASK_OPTS="--appdir=~/Applications"  # keep Casks separate from the programs installed by macOS
+    export HOMEBREW_EDITOR="${EDITOR}"  # use the system editor to edit Homebrew stuff
+    export HOMEBREW_CACHE="/Volumes/ExternalHome/rtruell/HomebrewCache"  # get the cache off the SSD
+    export BREW_PREFIX=$(brew --prefix)  # store Homebrew's installation directory so I don't have to keep issuing the command
+    ;;
+  *)
+    ;;
+esac

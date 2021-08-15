@@ -1,0 +1,12 @@
+# display useful host related informaton
+function info {
+  printf '\n%b' "${DULL_PURPLE}You are:${NORMAL} " ; whoami
+  printf '\n%b' "${DULL_PURPLE}You are logged on:${NORMAL} " ; hostname -s
+  printf '\n%b' "${DULL_PURPLE}System information:${NORMAL} " ; uname -a
+  printf '\n%b\n' "${DULL_PURPLE}Users logged on:${NORMAL} " ; w -h | grep -v "w -h" | grep -v "grep"
+  printf '\n%b' "${DULL_PURPLE}Current date:${NORMAL} " ; date
+  printf '\n%b' "${DULL_PURPLE}Uptime:${NORMAL}" ; uptime | tr -s " "
+  printf '\n%b' "${DULL_PURPLE}Public IP Address:${NORMAL} " ; myip
+  printf '\n%b' "${DULL_PURPLE}Local IP Address:${NORMAL} " ; localip
+  checkwebsites
+}

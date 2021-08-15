@@ -1,0 +1,2 @@
+# convert from plist to xml for editing
+function fromplist { plutil -convert xml1 ${1}; }

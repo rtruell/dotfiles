@@ -1,0 +1,2 @@
+# Backup a file with the extension '.old'
+function old { cp --reflink=auto "${1}"{,.old} 2>/dev/null || cp "${1}"{,.old}; }

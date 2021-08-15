@@ -1,0 +1,11 @@
+# view HTTP traffic
+#
+# usage: httpdump [eth1]
+function httpdump {
+  if [[ ${1} ]]; then
+    local device=${1}
+  else
+    local device='eth0'
+  fi
+  sudo tcpdump -i ${device} -n -s 0 -w - | grep -a -o -E \"Host\: .*|GET \/.*\"
+}

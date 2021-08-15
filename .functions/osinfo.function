@@ -1,0 +1,21 @@
+# show some info about your system; Linux only
+function osinfo {
+  if [[ "${SYSTEM_TYPE}" != "macOS" ]]; then
+    lsb_release -a
+    uname -a
+    if [ -z /etc/lsb-release ]; then
+      cat /etc/lsb-release
+    fi
+    if [ -z /etc/os-release ]; then
+      cat /etc/os-release
+    fi
+    if [ -z /etc/issue ]; then
+      cat /etc/issue
+    fi
+    if [ -z /proc/version ]; then
+      cat /proc/version
+    fi
+  else
+    printf '%s\n' "Ooops...this doesn't do anything on macOS just yet."
+  fi
+}

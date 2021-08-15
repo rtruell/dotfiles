@@ -1,0 +1,31 @@
+# Function to quickly uppercase some input
+# perl option: perl -e "while (<STDIN>) { print uc; }"
+# shellcheck disable=SC2120
+function toupper {
+  if [[ -n "${1}" ]] && [[ ! -r "${1}" ]]; then
+    if (( BASH_VERSINFO >= 4 )); then
+      printf -- '%s ' "${*^^}" | paste -sd '\0' -
+    elif findcommand awk &>/dev/null; then
+      printf -- '%s ' "$*" | awk '{print toupper($0)}'
+    elif findcommand tr &>/dev/null; then
+      printf -- '%s ' "$*" | tr '[:lower:]' '[:upper:]'
+    else
+      printf -- '%s\n' "toupper - no available method found" >&2
+      return 1
+    fi
+  else
+    if (( BASH_VERSINFO >= 4 )); then
+      while read -r; do
+        printf -- '%s\n' "${REPLY^^}"
+      done
+      [[ -n "${REPLY}" ]] && printf -- '%s\n' "${REPLY^^}"
+    elif findcommand awk &>/dev/null; then
+      awk '{print toupper($0)}'
+    elif findcommand tr &>/dev/null; then
+      tr '[:lower:]' '[:upper:]'
+    else
+      printf -- '%s\n' "toupper - no available method found" >&2
+      return 1
+    fi < "${1:-/dev/stdin}"
+  fi
+}

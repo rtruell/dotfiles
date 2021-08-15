@@ -1,0 +1,11 @@
+# view HTTP traffic
+#
+# usage: sniff [eth0]
+function sniff {
+  if [[ ${1} ]]; then
+    local device=${1}
+  else
+    local device='eth0'
+  fi
+  sudo ngrep -d ${device} -t '^(GET|POST) ' 'tcp and port 80'
+}

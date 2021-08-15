@@ -1,0 +1,36 @@
+function trim {
+  declare -a usage=(
+    " "
+    "trim: trim whitespace from a string."
+    " "
+    "Usage: trim [-ltbh] string"
+    " "
+    "Options:"
+    "  -l: remove leading whitespace."
+    "  -t: remove trailing whitespace."
+    "  -b: remove both leading and trailing whitespace."
+    "  -h: print this help message."
+    ""
+    "Default is to remove trailing whitespace"
+    ""
+  )
+  if [[ "${1:0:1}" != "-" ]]; then
+    option="-t"
+    string="${1}"
+  else
+    option="${1}"
+    string="${2}"
+  fi
+  case "${option}" in
+    -[ltb]) if [[ -z "${string}" ]]; then printf '%s\n' "Error: no string to be trimmed supplied." "${usage[@]}"; return 1; fi
+            case "${option}" in
+              -l) string=${string##*([[:space:]])};;
+              -t) string=${string%%*([[:space:]])};;
+              -b) string=${string##*([[:space:]])}; string=${string%%*([[:space:]])};;
+            esac
+            ;;
+        -h) printf '%s\n' "${usage[@]}"; return;;
+         *) printf '%s\n' "Error: invalid option." "${usage[@]}"; return 1;;
+  esac
+  printf '%s\n' "${string}"
+}

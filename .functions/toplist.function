@@ -1,0 +1,2 @@
+# convert from xml to plist after editing
+function toplist { plutil -convert binary1 ${1}; }

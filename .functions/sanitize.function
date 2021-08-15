@@ -1,0 +1,2 @@
+# Escape special characters in a string, named for a similar function in R
+function sanitize { printf -- '%q\n' "${1}"; }

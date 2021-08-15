@@ -1,0 +1,6 @@
+# to edit apple plist files:
+function plistedit {
+  plutil -convert xml1 ${1}
+  ${EDITOR} ${1}
+  plutil -convert binary1 ${1}
+}

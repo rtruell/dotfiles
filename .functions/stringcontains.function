@@ -1,0 +1,8 @@
+# Test if a string contains a substring
+# Example: stringcontains needle haystack
+function stringcontains {
+  case "${2?No string given}" in
+    *${1?No substring given}*)  return 0 ;;
+    *)                          return 1 ;;
+  esac
+}

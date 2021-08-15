@@ -1,0 +1,2 @@
+# Convert multiple lines to comma separated format
+function n2c { paste -sd ',' "${1:--}"; }

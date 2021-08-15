@@ -1,0 +1,10 @@
+# Print the given text in the center of the screen.
+function centertext {
+  local width
+  width="${COLUMNS:-$(tput cols)}"
+  while IFS= read -r; do
+    (( ${#REPLY} >= width )) && printf -- '%s\n' "${REPLY}" && continue
+    printf -- '%*s\n' $(( (${#REPLY} + width) / 2 )) "${REPLY}"
+  done < "${1:-/dev/stdin}"
+  [[ -n "${REPLY}" ]] && printf -- '%s\n' "${REPLY}"
+}

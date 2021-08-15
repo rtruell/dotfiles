@@ -1,0 +1,12 @@
+# a function to create a box of characters around a given string.  the character
+# to use can be specified, and defaults to '#'
+#
+# usage: box 'testing'
+function box {
+  local t="$1xxxx"
+  local c=${2:-"#"}
+
+  echo ${t//?/${c}}
+  echo "${c} ${1} ${c}"
+  echo ${t//?/${c}}
+}

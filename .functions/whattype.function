@@ -1,0 +1,21 @@
+# Test the item passed to see what type of a thing it is
+function whattype {
+  [[ -z "${1}" ]] && { printf '%s\n' "Must supply an item to be tested."; return 1; }
+  type=$(type -t "${1}")
+  [[ ! -z "${type}" ]] && { printf '%s\n' "${type}"; return; }
+  type=$(declare -p "${1}" 2>/dev/null)
+  type="${type:8:3}"
+  case "${type}" in
+    "-- ") printf '%s\n' "local variable"; return ;;
+    "-A ") printf '%s\n' "associative array"; return ;;
+      -Ar) printf '%s\n' "readonly associative array"; return ;;
+    "-a ") printf '%s\n' "indexed array"; return ;;
+      -ar) printf '%s\n' "readonly indexed array"; return ;;
+    "-i ") printf '%s\n' "integer variable"; return ;;
+      -ir) printf '%s\n' "readonly integer variable"; return ;;
+    "-r ") printf '%s\n' "readonly local variable"; return ;;
+    "-x ") printf '%s\n' "global variable"; return ;;
+      -rx) printf '%s\n' "readonly global variable"; return ;;
+        *) printf '%s\n' "doesn't exist"; return 1 ;;
+  esac
+}

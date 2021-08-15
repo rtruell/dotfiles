@@ -1,0 +1,3 @@
+# create a new file in a directory.  uses mcd() to create the directory (and its parents) if necessary.
+# usage: mkf /tmp/lall/foo.txt
+function mkf { mcd $(dirname "$@") && touch $@; }

@@ -1,0 +1,2 @@
+# find in history
+function hf { history | grep -- "${*:?No search term provided}"; }

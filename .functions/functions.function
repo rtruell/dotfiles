@@ -1,0 +1,1 @@
+function functions { declare -F; }

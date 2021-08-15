@@ -1,0 +1,13 @@
+function spaceused {
+  declare -a filesizes
+  readarray -t filesizes < <(find "${1:-.}" -maxdepth 1 ! -type d -printf '%s\n')
+  numfiles=${#filesizes[@]}
+  [[ ${filesizes[@]} ]] && spaceused=$(printf '%s\n' "${filesizes[@]}" | paste -sd+ - | bc)
+  kib=$(echo "scale=2; ${spaceused}/1024" | bc -l)
+  mib=$(echo "scale=2; ${spaceused}/1048576" | bc -l)
+  gib=$(echo "scale=2; ${spaceused}/1073741824" | bc -l)
+  printf '%s' "There are ${numfiles} files using ${spaceused} bytes ("
+  if [[ ${#kib} -lt 7 ]] && [[ ${kib} > 1 ]]; then printf '%s\n' "${kib} KiB)"; fi
+  if [[ ${#mib} -lt 7 ]] && [[ ${mib} > 1 ]]; then printf '%s\n' "${mib} MiB)"; fi
+  if [[ ${#gib} -lt 7 ]] && [[ ${gib} > 1 ]]; then printf '%s\n' "${gib} GiB)"; fi
+}

@@ -1,0 +1,13 @@
+# files/directories listed here will not be symlinked to your home directory.
+# one file/directory per line.
+
+.bash_history*
+.dotfiles.ignore
+.git
+.DS_Store
+.macos*
+LICENSE*
+NewInstall*
+OS
+README*
+symlink.sh

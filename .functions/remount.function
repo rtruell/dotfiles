@@ -1,0 +1,12 @@
+function remount {
+  VolName=${1}
+  DiskPart=`diskutil list | grep ${VolName} | sed "s/^.+(disk.+$)/\1/"`
+
+  if df | grep ${VolName} >/dev/null; then
+    echo "Unmounting disk '${VolName}'"
+    diskutil unmount /dev/${DiskPart}
+  else
+    echo "Mounting disk '${VolName}'"
+    diskutil mount /dev/${DiskPart}
+  fi
+}
