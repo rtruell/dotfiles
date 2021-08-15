@@ -1001,3 +1001,25 @@ info
 externalip
 #1629010639
 localip
+#1629011173
+info
+#1629011227
+listfunction info
+#1629011257
+externalip
+#1629011262
+localip
+#1629011267
+info
+#1629011298
+dotfiles
+#1629011314
+findtext externalip
+#1629011350
+findtext localip
+#1629012571
+alias reloadconfig
+#1629012809
+reloadconfig
+#1629012893
+alias
