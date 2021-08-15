@@ -1023,3 +1023,31 @@ alias reloadconfig
 reloadconfig
 #1629012893
 alias
+#1629013079
+info
+#1629013132
+externalip
+#1629013136
+localip
+#1629013209
+findshow 'barbar'
+#1629013263
+listdf
+#1629013279
+spaceused
+#1629013338
+bashman [[
+#1629013373
+listfunction localip
+#1629013396
+ip a
+#1629013524
+man hostname
+#1629013540
+hostname -I
+#1629013752
+man hostname
+#1629013883
+ipconfig
+#1629013901
+ipconfig getifaddr en0
