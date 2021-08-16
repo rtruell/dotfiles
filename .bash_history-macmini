@@ -1051,3 +1051,79 @@ man hostname
 ipconfig
 #1629013901
 ipconfig getifaddr en0
+#1629059581
+findshow 'riddick'
+#1629059647
+findshow 'spectre'
+#1629059846
+findshow 'fifty shades'
+#1629082668
+cd /Volumes/Temp
+#1629082731
+grep -v '^    $' "2021-08-15.html" | grep -v '^$' | sed -E -e 's/TV Guide for ([[:alnum:]]+) /\1, /' -e 's/([a|p]).m.([-|\&])/\u\1M\2/g' -e 's/ ([A|P]M[-|\&])/\1/g' -e 's/ends //' -e 's/([[:digit:]]) [[:alnum:]]+\&/\1\&/' -e 's/\&nbsp;\&nbsp;\&nbsp;<br>/ ()\&nbsp;\&nbsp;\&nbsp;<br>/'
+#1629082909
+home
+#1629083136
+which bash
+#1629083528
+HazelGuide.sh 2021-08-15.html
+#1629083549
+cd /Volumes/Temp/
+#1629083583
+HazelGuide.sh 2021-08-15.html
+#1629083604
+HazelGuide.sh guide.html
+#1629083630
+HazelGuide.sh ./guide.html
+#1629083667
+ll
+#1629083695
+cat guide.html
+#1629083741
+HazelGuide.sh guide.html
+#1629083819
+chmod 755 guide.html
+#1629083820
+ll
+#1629083827
+HazelGuide.sh guide.html
+#1629083858
+chmod 644 guide.html
+#1629083860
+ll
+#1629083924
+HazelGuide.sh /Volumes/Temp/guide.html
+#1629090137
+man tr
+#1629090722
+echo "am" | tr [ampm-&] [AMPM-&]
+#1629090762
+echo "am" | tr "[ampm-&]" "[AMPM-&]"
+#1629090802
+echo "am" | tr "[ampm]" "[AMPM]"
+#1629090813
+echo "pm" | tr "[ampm]" "[AMPM]"
+#1629090872
+echo "pm  am" | tr "[ampm]" "[AMPM]"
+#1629091057
+echo "9pm  8am" | tr "[[:digit:]ampm]" "[["digit:]AMPM]"
+#1629091195
+echo "9pm  8am" | tr "[[:digit:]ampm]" "[[:digit:]AMPM]"
+#1629091238
+echo "9pm  8am" | tr "[ampm]" "[AMPM]"
+#1629091272
+echo "pm  am" | tr "[ampm-]" "[AMPM-]"
+#1629091289
+echo "pm  am" | tr "[ampm\-]" "[AMPM\-]"
+#1629091317
+echo "pm-  am-" | tr "[ampm\-]" "[AMPM\-]"
+#1629091339
+echo "pm-  am&" | tr "[ampm\-\&]" "[AMPM\-\&]"
+#1629091455
+copylastcommand
+#1629091699
+echo "ampm-  pmam&" | tr "[ampm\-\&]" "[AMPM\-\&]"
+#1629091722
+echo "davepm-  susanam&" | tr "[ampm\-\&]" "[AMPM\-\&]"
+#1629092584
+man sed
