@@ -1127,3 +1127,17 @@ echo "ampm-  pmam&" | tr "[ampm\-\&]" "[AMPM\-\&]"
 echo "davepm-  susanam&" | tr "[ampm\-\&]" "[AMPM\-\&]"
 #1629092584
 man sed
+#1629235045
+findshow '48'
+#1629235057
+findshow '48 '
+#1629235480
+findshow 'enemy of'
+#1629235527
+findshow 'candidate'
+#1629235538
+findshow 'the way'
+#1629235559
+findshow 'the natural'
+#1629259232
+findshow 'snow'
