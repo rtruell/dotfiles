@@ -1145,3 +1145,25 @@ findshow 'snow'
 findshow 'coroner'
 #1629496500
 ip a
+#1629579958
+findshow 'anchorman'
+#1629586757
+findshow 'expanse'
+#1629589684
+brew info firefox-esr
+#1629604140
+perl --version
+#1629604152
+brew info perl
+#1629605392
+man read
+#1629605458
+bashman read
+#1629609040
+man declare
+#1629609089
+which declare
+#1629609094
+whereis declare
+#1629609099
+declare
