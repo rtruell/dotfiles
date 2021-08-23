@@ -1167,3 +1167,37 @@ which declare
 whereis declare
 #1629609099
 declare
+#1629638605
+bashman tests
+#1629638638
+man bash
+#1629638682
+whereis man
+#1629638689
+less /usr/bin/man
+#1629638704
+spaceused
+#1629638712
+listdf
+#1629638743
+listdf -h
+#1629638793
+listdf -f
+#1629638819
+cat .bash_logout
+#1629638858
+alias cd
+#1629638863
+listfunction cd
+#1629638906
+csl
+#1629668284
+brew info buttercup
+#1629702390
+brew search 1password
+#1629702415
+brew info 1password
+#1629702429
+brew info 1password-beta
+#1629702442
+brew info 1password6
