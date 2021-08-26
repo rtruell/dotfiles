@@ -1201,3 +1201,17 @@ brew info 1password
 brew info 1password-beta
 #1629702442
 brew info 1password6
+#1629702442
+brew info 1password6
+#1629955066
+echo "this is a test"
+#1629955086
+echo "this is an awesome test"
+#1629955142
+cat .profile
+#1629955263
+echo "this is an awesome test"
+#1629955351
+path
+#1629955386
+ls /Users/rtruell/bin
