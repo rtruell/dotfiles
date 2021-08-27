@@ -1215,3 +1215,27 @@ echo "this is an awesome test"
 path
 #1629955386
 ls /Users/rtruell/bin
+#1630102118
+$ ruby app/orbit.rb -s /YOUR/HUGO/SITE/PATH
+#1630102146
+ll
+#1630102153
+ll app
+#1630102172
+ll app/orbit
+#1630102184
+ruby --version
+#1630102262
+ruby app/orbit.rb -s /Volumes/ExternalHome/rtruell/hugo/blog
+#1630102358
+ls /System/Library
+#1630102384
+ls /System/Library/Frameworks/Ruby.framework/Versions/
+#1630102434
+ls /System/Library/Frameworks/Ruby.framework/Versions/2.0/usr/lib/ruby/2.0.0/rubygems/core_ext/kernel_require.rb
+#1630102483
+ls app
+#1630102493
+less app/orbit.rb
+#1630102518
+subl app/orbit.rb
