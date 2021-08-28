@@ -1239,3 +1239,15 @@ ls app
 less app/orbit.rb
 #1630102518
 subl app/orbit.rb
+#1630103505
+brew info ruby
+#1630103536
+ruby --version
+#1630103583
+brew search ruby
+#1630103651
+brew search rvm
+#1630103697
+rvm --version
+#1630103934
+which ruby
