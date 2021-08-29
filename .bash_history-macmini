@@ -1277,3 +1277,17 @@ alias
 b dump
 #1630214940
 brew search imazing
+#1630215464
+b dump
+#1630216999
+listfunction b
+#1630217049
+b search keepassxc
+#1630217629
+b info keepassxc
+#1630217686
+ls /Users/rtruell/Applications
+#1630217744
+b search zoc
+#1630217774
+b info zoc
