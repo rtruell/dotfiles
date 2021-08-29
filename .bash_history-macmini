@@ -1251,3 +1251,29 @@ brew search rvm
 rvm --version
 #1630103934
 which ruby
+#1630185909
+findshow 'american'
+#1630185916
+findshow 'american pie'
+#1630186192
+findshow 'revenge of'
+#1630186207
+findshow 'revenge of the nerds'
+#1630186471
+findshow 'dante'
+#1630186549
+findshow 'volcano'
+#1630186669
+findshow 'reunion'
+#1630186682
+findshow 'american reunion'
+#1630186748
+findshow 'american pie'
+#1630187039
+findshow 'revenge of the nerds'
+#1630214550
+alias
+#1630214769
+b dump
+#1630214940
+brew search imazing
