@@ -1291,3 +1291,11 @@ ls /Users/rtruell/Applications
 b search zoc
 #1630217774
 b info zoc
+#1630478900
+b search vienna
+#1630478931
+alias
+#1630478983
+b info vienna
+#1630479007
+listfunction b
