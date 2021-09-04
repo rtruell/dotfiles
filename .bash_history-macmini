@@ -1303,3 +1303,17 @@ listfunction b
 findshow 'police acad'
 #1630642513
 findshow 'bless the'
+#1630705356
+findshow 'police acad'
+#1630707490
+ls /Applications
+#1630707551
+ls Applications
+#1630707686
+ls /Applications >programs.txt
+#1630707704
+echo " " >programs.txt
+#1630707711
+echo " " >>programs.txt
+#1630707755
+ls Applications >>programs.txt
