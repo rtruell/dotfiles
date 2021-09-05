@@ -1317,3 +1317,9 @@ echo " " >programs.txt
 echo " " >>programs.txt
 #1630707755
 ls Applications >>programs.txt
+#1630790926
+findshow 'die hard'
+#1630791101
+findshow 'shrek'
+#1630791126
+findshow 'how to train'
