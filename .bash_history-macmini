@@ -1323,3 +1323,25 @@ findshow 'die hard'
 findshow 'shrek'
 #1630791126
 findshow 'how to train'
+#1630895223
+b update
+#1630895312
+b info smartmontools
+#1630895328
+b install smartmontools
+#1630895388
+diskutil list
+#1630895482
+smartctl -a disk0s5
+#1630901110
+b search rasp
+#1630901146
+b info raspberry-pi-imager
+#1630901197
+b install raspberry-pi-imager
+#1630901399
+ls /private/tmp
+#1630901437
+df /private/tmp
+#1630901459
+b install raspberry-pi-imager
