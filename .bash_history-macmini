@@ -1345,3 +1345,5 @@ ls /private/tmp
 df /private/tmp
 #1630901459
 b install raspberry-pi-imager
+#1630963181
+findshow 'the mummy'
