@@ -1347,3 +1347,7 @@ df /private/tmp
 b install raspberry-pi-imager
 #1630963181
 findshow 'the mummy'
+#1631053232
+b info firefox-esr
+#1631053298
+b search firefox
