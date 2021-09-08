@@ -1351,3 +1351,17 @@ findshow 'the mummy'
 b info firefox-esr
 #1631053298
 b search firefox
+#1631140038
+cat /Users/rtruell/dotfiles/bin/iso2usb.pl
+#1631140455
+diskutil list
+#1631140527
+diskutil unmountDisk /dev/disk3
+#1631140624
+sudo dd if=/Volumes/data/Downloads/Live CD ISOs/debian-11.0.0-firmware-amd64-netinst.iso of=/dev/rdisk3 bs=4m
+#1631140684
+sudo dd if=debian-11.0.0-firmware-amd64-netinst.iso of=/dev/rdisk3 bs=4m
+#1631140791
+diskutil eject /dev/disk3
+#1631140813
+diskutil list
