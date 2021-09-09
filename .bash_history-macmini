@@ -1365,3 +1365,5 @@ sudo dd if=debian-11.0.0-firmware-amd64-netinst.iso of=/dev/rdisk3 bs=4m
 diskutil eject /dev/disk3
 #1631140813
 diskutil list
+#1631186640
+pwd
