@@ -1485,3 +1485,13 @@ localip
 listfunction localip
 #1631192842
 ip a
+#1631193737
+hf iso2
+#1631193752
+sysinfo
+#1631193769
+alias
+#1631193833
+functions
+#1631193839
+declare -F
