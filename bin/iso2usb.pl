@@ -31,7 +31,7 @@ print "\n";
 
 # diskutil list
 # diskutil unmountDisk /dev/disk3
-# sudo dd if=mythbuntu-16.04.1-desktop-amd64.iso of=/dev/rdisk3 bs=4m
+# sudo dd if=mythbuntu-16.04.1-desktop-amd64.iso of=/dev/rdisk3 bs=4m status=progress  # 'bs=4M' on macOS
 # diskutil eject /dev/disk3
 
 # if (prompt_yn("Do you want to import a list")){
