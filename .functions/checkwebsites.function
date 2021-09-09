@@ -2,9 +2,10 @@ function checkwebsites {
   printf '\n%b\n' "${DULL_PURPLE}Checking websites ...${NORMAL}"
   for website in rtruell.ca dynamic.rtruell.ca duckduckgo.com
   do
-    test=`curl -L --write-out %{http_code} --silent --output /dev/null ${website}`
+    curl -L --silent --output /dev/null ${website} 2>/dev/null
+    test=$?
     printf '%s' "${website} is: "
-    if [[ ${test} == 0 ]]; then
+    if [[ ${test} != 0 ]]; then
       printf '%b\n' "${BRIGHT_RED}Down${NORMAL}"
     else
       printf '%b\n' "${BRIGHT_GREEN}Available${NORMAL}"
