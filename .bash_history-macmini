@@ -1473,3 +1473,15 @@ curl -L --silent --output /dev/null dynamic.rtruell.ca 2>/dev/null
 echo $?
 #1631192499
 sysinfo
+#1631192611
+checkwebsites
+#1631192640
+sysinfo
+#1631192724
+externalip
+#1631192732
+localip
+#1631192817
+listfunction localip
+#1631192842
+ip a
