@@ -1495,3 +1495,39 @@ alias
 functions
 #1631193839
 declare -F
+#1631193914
+functions
+#1631193926
+hf iso2
+#1631193949
+cat /Users/rtruell/dotfiles/bin/iso2usb.pl 
+#1631193966
+diskutil list
+#1631194011
+diskutil unmountDisk /dev/disk3
+#1631194137
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/ubuntu-20.04.3-desktop-amd64.iso" of=/dev/rdisk3 bs=4m
+#1631194532
+sudo kill -INFO $(pgrep ^dd$)
+#1631194628
+man dd
+#1631194674
+sudo kill -INFO $(pgrep ^dd$)
+#1631194782
+ls /Volumes/data/Downloads/
+#1631194186
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/ubuntu-20.04.3-desktop-amd64.iso" of=/dev/rdisk3 bs=4M
+#1631194803
+ls /Volumes/data/Downloads/Live\ CD\ ISOs/
+#1631194850
+ll /Volumes/data/Downloads/Live\ CD\ ISOs/
+#1631194924
+diskutil eject /dev/disk3
+#1631194986
+diskutil list
+#1631195033
+diskutil unmountDisk /dev/disk3
+#1631195261
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.0.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
+#1631195352
+diskutil eject /dev/disk3
