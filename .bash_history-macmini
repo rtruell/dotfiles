@@ -1367,3 +1367,25 @@ diskutil eject /dev/disk3
 diskutil list
 #1631186640
 pwd
+#1631187009
+alias
+#1631187018
+functions
+#1631187037
+info
+#1631187117
+sysinfo
+#1631187171
+host
+#1631187181
+man host
+#1631187233
+host rtruell.ca
+#1631187255
+hostinfo
+#1631187288
+man hostinfo
+#1631187313
+sysinfo
+#1631187413
+checkwebsites
