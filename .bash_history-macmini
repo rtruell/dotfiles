@@ -1389,3 +1389,85 @@ man hostinfo
 sysinfo
 #1631187413
 checkwebsites
+#1631187466
+sysinfo
+#1631187575
+man ping
+#1631187606
+ping -c 1 rtruell.ca
+#1631187617
+ping -c 1 rtruell1.ca
+#1631187667
+listfunction checkwebsite
+#1631187679
+functions
+#1631187690
+listfunction checkwebsites
+#1631187724
+curl -L --write-out %{http_code} --silent --output /dev/null rtruell.ca`
+#1631187744
+curl -L --write-out %{http_code} --silent --output /dev/null rtruell.ca
+#1631187785
+curl -L --write-out %{http_code} --silent --output /dev/null dynamic.rtruell.ca
+#1631187857
+ping -c 1 rtruell1.ca
+#1631187866
+ping -c 1 rtruell.ca
+#1631187876
+ping -c 1 dynamic.rtruell.ca
+#1631188009
+echo $test
+#1631188102
+test=`curl -L --write-out %{http_code} --silent --output /dev/null dynamic.rtruell.ca`
+#1631188112
+echo $test
+#1631188132
+test=`curl -L --write-out %{http_code} --silent --output /dev/null rtruell.ca`
+#1631188136
+echo $test
+#1631188189
+test=`curl -L --write-out %{http_code} --silent --output /dev/null dynamic.rtruell.ca`
+#1631188191
+echo $test
+#1631188245
+if [[ $(test) == 0 ]]; then echo up; fi
+#1631188253
+if [[ $(test) == 000 ]]; then echo up; fi
+#1631188925
+man curl
+#1631190535
+if [[ $(test) == 200 ]]; then echo up; fi
+#1631190549
+test=`curl -L --write-out %{http_code} --silent --output /dev/null rtruell.ca`
+#1631190554
+if [[ $(test) == 200 ]]; then echo up; fi
+#1631190566
+echo $test
+#1631191043
+uname -a
+#1631191201
+nc
+#1631191212
+nc --version
+#1631191235
+nc -v
+#1631191248
+man nc
+#1631191621
+man curl
+#1631191890
+curl -L --silent --output /dev/null rtruell.ca
+#1631191907
+echo $?
+#1631191921
+curl -L --silent --output /dev/null dynamic.rtruell.ca
+#1631191925
+echo $?
+#1631191981
+curl -L --silent --output /dev/null dynamic.rtruell.ca >>/dev/null
+#1631192201
+curl -L --silent --output /dev/null dynamic.rtruell.ca 2>$-
+#1631192257
+curl -L --silent --output /dev/null dynamic.rtruell.ca 2>/dev/null
+#1631192266
+echo $?
