@@ -1471,3 +1471,5 @@ curl -L --silent --output /dev/null dynamic.rtruell.ca 2>$-
 curl -L --silent --output /dev/null dynamic.rtruell.ca 2>/dev/null
 #1631192266
 echo $?
+#1631192499
+sysinfo
