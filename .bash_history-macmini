@@ -1533,3 +1533,19 @@ sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.0.0-amd64-netinst.iso
 diskutil eject /dev/disk3
 #1631195519
 man dd
+#1631229950
+man tail
+#1631230222
+hf iso2
+#1631230260
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl
+#1631230305
+diskutil list
+#1631230404
+diskutil unmountDisk /dev/disk3
+#1631230473
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/kubuntu-20.04.3-desktop-amd64.iso" of=/dev/rdisk3 bs=4m status=progress
+#1631230489
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/kubuntu-20.04.3-desktop-amd64.iso" of=/dev/rdisk3 bs=4M status=progress
+#1631231670
+diskutil eject /dev/disk3
