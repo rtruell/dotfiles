@@ -1549,3 +1549,105 @@ sudo dd if="/Volumes/data/Downloads/Live CD ISOs/kubuntu-20.04.3-desktop-amd64.i
 sudo dd if="/Volumes/data/Downloads/Live CD ISOs/kubuntu-20.04.3-desktop-amd64.iso" of=/dev/rdisk3 bs=4M status=progress
 #1631231670
 diskutil eject /dev/disk3
+#1631309288
+findshow 'f&f'
+#1631309301
+findshow 'furious'
+#1631309482
+findshow 'fast 5'
+#1631309487
+findshow 'fast'
+#1631309828
+findshow 'underworld'
+#1631309966
+findshow 'cats'
+#1631310222
+findshow 'ventura'
+#1631310324
+findshow 'jerry'
+#1631335955
+fdisk --version
+#1631336050
+man fdisk
+#1631337579
+path
+#1631337726
+timer
+#1631337756
+man timer
+#1631337762
+which timer
+#1631337766
+whereis timer
+#1631337778
+timer.sh
+#1631338166
+findshow1
+#1631338173
+findshow1.sh
+#1631338250
+findshow1.sh 'furious'
+#1631338277
+man bash
+#1631338299
+listfunction listdf
+#1631338333
+listfunction spaceused
+#1631338402
+findshow1 'furious'
+#1631338420
+findshow1 'ventura'
+#1631338748
+listdf
+#1631338754
+listdf1
+#1631338762
+listdf1 -h
+#1631339236
+bashman exit
+#1631339296
+listdf
+#1631339301
+listdf1
+#1631339305
+listdf1 -h
+#1631339317
+listdf1 -b
+#1631339355
+ip
+#1631339374
+ip -a
+#1631339384
+localip
+#1631339403
+listfunction localip
+#1631339411
+ip a
+#1631339488
+list ~/bin/listdf
+#1631339499
+less ~/bin/listdf
+#1631339512
+less ~/bin/listdf1
+#1631339526
+alias less
+#1631339643
+echo $less
+#1631339661
+less -F ~/bin/listdf1
+#1631339683
+less ~/bin/listdf1
+#1631339724
+less -version
+#1631339736
+less --version
+#1631339750
+less --help
+#1631340011
+spaceused
+#1631340018
+spaceused1
+#1631340125
+ip
+#1631340129
+ip a
