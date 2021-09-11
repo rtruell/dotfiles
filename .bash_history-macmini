@@ -1651,3 +1651,41 @@ spaceused1
 ip
 #1631340129
 ip a
+#1631340502
+alias
+#1631340536
+ps aux
+#1631340556
+ps aux | grep iterm
+#1631340592
+listfunction findshow
+#1631340609
+findshow 'manifest'
+#1631340699
+findshow 'good witch'
+#1631340729
+findshow 'furious'
+#1631340735
+listdf
+#1631340743
+listdf -h
+#1631340785
+whereis listdf
+#1631340788
+which listdf
+#1631340809
+which localip
+#1631340816
+whereis localip
+#1631340828
+spaceused -h
+#1631340873
+less `which spaceused`
+#1631340893
+spaceused
+#1631340939
+spaceused /Volumes/ExternalHome/rtruell
+#1631340962
+localip
+#1631340973
+sysinfo
