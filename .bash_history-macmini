@@ -1715,3 +1715,43 @@ functions
 alias
 #1631343557
 functions
+#1631376125
+localip
+#1631376138
+fdisk
+#1631376171
+diskutil list
+#1631376216
+fdisk
+#1631376274
+fdisk -a dos /dev/rdisk3
+#1631376280
+sudo fdisk -a dos /dev/rdisk3
+#1631376315
+diskutil list
+#1631376379
+sudo fdisk /dev/disk3
+#1631376398
+fdisk
+#1631376433
+man fdisk
+#1631376514
+sudo fdisk -i -a dos /dev/rdisk3
+#1631376616
+diskutil list
+#1631376644
+sudo diskutil eraseDisk FAT32 MBRFormat /dev/disk3
+#1631376690
+sudo diskutil eraseDisk FAT32 NONFREEFIRM /dev/disk3
+#1631376728
+diskutil list
+#1631377300
+alias
+#1631377306
+functions
+#1631377321
+which whoowns
+#1631377327
+whereis whoowns
+#1631377339
+which findshow
