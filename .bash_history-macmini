@@ -1755,3 +1755,21 @@ which whoowns
 whereis whoowns
 #1631377339
 which findshow
+#1631394326
+hf awk
+#1631394338
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl
+#1631394375
+diskutil list
+#1631394413
+diskutil unmountDisk /dev/disk3
+#1631394510
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.0.0-i386-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
+#1631394635
+diskutil eject /dev/disk3
+#1631396870
+findshow 'sixteen'
+#1631397069
+findshow 'furious'
+#1631425649
+git --version
