@@ -1773,3 +1773,25 @@ findshow 'sixteen'
 findshow 'furious'
 #1631425649
 git --version
+#1631507481
+b search xquartz
+#1631507503
+b info xquartz
+#1631507529
+b home xquartz
+#1631507603
+b search virt-manager
+#1631507716
+ls /etc/ssh
+#1631507720
+ls /etc
+#1631507763
+grep xauth /etc/ssh/sshd_config
+#1631507834
+which xzuth
+#1631507839
+which xuth
+#1631507854
+which xauth
+#1631507892
+echo $DISPLAY
