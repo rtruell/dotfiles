@@ -1795,3 +1795,5 @@ which xuth
 which xauth
 #1631507892
 echo $DISPLAY
+#1631573995
+findshow '15-10-11'
