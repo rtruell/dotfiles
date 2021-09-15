@@ -1797,3 +1797,47 @@ which xauth
 echo $DISPLAY
 #1631573995
 findshow '15-10-11'
+#1631703731
+b update
+#1631703825
+b info age
+#1631703881
+b info uniclip
+#1631703977
+b info quackduck/tap/uniclip
+#1631704001
+b tap quackduck/tap
+#1631704014
+b update
+#1631704032
+b info uniclip
+#1631705593
+b search java
+#1631705643
+b info java
+#1631705692
+b info java6
+#1631706263
+man cat
+#1631706299
+man cut
+#1631745526
+dialog --backtitle "Package configuration"        --title "Configuration sun-java-jre"        --yesno "\nBla bla bla...\n\nDo you accept?" 10 30
+#1631745542
+man dialog
+#1631745549
+b search dialog
+#1631745594
+b info firefox thunderbird
+#1631745628
+b update
+#1631745681
+b outdated
+#1631745739
+b install dialog
+#1631745779
+man dialog
+#1631745824
+dialog --backtitle "Package configuration"        --title "Configuration sun-java-jre"        --yesno "\nBla bla bla...\n\nDo you accept?" 10 30
+#1631745867
+dialog --backtitle "Package configuration"        --title "Configuration sun-java-jre"        --yesno "\nBla bla bla...\n\nDo you accept?" 50 70
