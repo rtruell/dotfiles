@@ -1841,3 +1841,13 @@ man dialog
 dialog --backtitle "Package configuration"        --title "Configuration sun-java-jre"        --yesno "\nBla bla bla...\n\nDo you accept?" 10 30
 #1631745867
 dialog --backtitle "Package configuration"        --title "Configuration sun-java-jre"        --yesno "\nBla bla bla...\n\nDo you accept?" 50 70
+#1631858174
+ls /usr/local/bin
+#1631858530
+cat .bash_profile
+#1631858808
+w -h
+#1631859074
+sysinfo
+#1631859124
+w -h
