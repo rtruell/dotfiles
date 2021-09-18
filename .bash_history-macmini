@@ -1861,3 +1861,7 @@ awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl
 diskutil list
 #1631947490
 diskutil unmountDisk /dev/disk3
+#1631947615
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-live-11.0.0-amd64-kde.iso" of=/dev/rdisk3 bs=4M status=progress
+#1631948369
+diskutil eject /dev/disk3
