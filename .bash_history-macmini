@@ -1877,3 +1877,13 @@ whereiam=`pwd`
 echo $whereiam
 #1631951246
 pwd
+#1631951853
+cd /Volumes/data/Downloads
+#1631951898
+listfunctions
+#1631951914
+alias
+#1631951937
+functions
+#1631951953
+alias
