@@ -1867,3 +1867,11 @@ sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-live-11.0.0-amd64-kde.is
 diskutil eject /dev/disk3
 #1631950880
 pwd
+#1631951007
+echo $whereiam
+#1631951026
+whereiam=`pad`
+#1631951037
+whereiam=`pwd`
+#1631951043
+echo $whereiam
