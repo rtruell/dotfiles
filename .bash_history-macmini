@@ -1851,3 +1851,13 @@ w -h
 sysinfo
 #1631859124
 w -h
+#1631947349
+hf tail
+#1631947361
+hf iso2
+#1631947378
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl
+#1631947435
+diskutil list
+#1631947490
+diskutil unmountDisk /dev/disk3
