@@ -1875,3 +1875,5 @@ whereiam=`pad`
 whereiam=`pwd`
 #1631951043
 echo $whereiam
+#1631951246
+pwd
