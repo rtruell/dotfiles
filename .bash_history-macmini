@@ -1865,3 +1865,5 @@ diskutil unmountDisk /dev/disk3
 sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-live-11.0.0-amd64-kde.iso" of=/dev/rdisk3 bs=4M status=progress
 #1631948369
 diskutil eject /dev/disk3
+#1631950880
+pwd
