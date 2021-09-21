@@ -1911,3 +1911,95 @@ w
 last
 #1632085677
 findshow 'logan'
+#1632164803
+findshow 'the neigh'
+#1632164823
+findshow 'abishola'
+#1632174568
+listfunction b
+#1632174586
+b dump
+#1632175459
+b search setapp
+#1632175491
+b info setapp
+#1632175510
+b home setapp
+#1632175834
+b info betterzipql
+#1632176610
+b info aften
+#1632176677
+mas -h
+#1632176681
+mas help
+#1632176694
+mas list
+#1632179015
+b search fhash
+#1632179037
+b search hashtab
+#1632179270
+mas search hashtab
+#1632179278
+mas search fhash
+#1632179286
+mas search xcode
+#1632179324
+mas search kindle
+#1632179362
+mas help
+#1632179370
+mas account
+#1632179560
+mas list
+#1632179715
+b search bitdefender
+#1632179805
+b search speedtest
+#1632180448
+b search macjournal
+#1632180463
+b info macjournal
+#1632180478
+b home macjournal
+#1632180593
+b search parcel
+#1632180683
+b search popclip
+#1632180697
+b info popclip
+#1632180711
+b home popclip
+#1632180994
+b search better-rename
+#1632181013
+b search better rename
+#1632181049
+b search a-better-finder-rename
+#1632181066
+b home a-better-finder-rename
+#1632181172
+b info a-better-finder-rename
+#1632182254
+mas list
+#1632184385
+b search 1password
+#1632184412
+b info 1password
+#1632184439
+b info 1password6
+#1632184501
+b info a-better-finder-rename
+#1632184530
+b info adoptopenjdk
+#1632184579
+b home adoptopenjdk
+#1632207039
+b search temurin
+#1632207061
+b info temurin
+#1632207076
+b info temurin11
+#1632207133
+b search adoptopenjdk
