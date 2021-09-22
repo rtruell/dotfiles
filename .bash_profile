@@ -1,3 +1,16 @@
+# found that when just starting iTerm normally, everything worked just fine.
+# however, when right-clicking a directory in Path Finder and selecting
+# "services/Open In iTerm", a number of errors occurred and none of the
+# functions were loaded...but the aliases were.  turns out that's because when
+# iTerm starts, it first changes to the selected directory and then processes
+# the startup files...and because parts of the startup files look for files that
+# don't exist anywhere but in the home directory, those parts fail.  so, the
+# solution is to preserve the selected directory using 'pwd', change to the home
+# directory, process all the startup fifles, and then change back to the
+# selected directory.
+selecteddir=`pwd`
+cd "${HOME}"
+
 # this loads all my functions.  see "README.md" in the ".functions" directory for
 # why they're in individual files in a directory rather than all in one file as
 # is usual.  files that shouldn't be loaded should have their names listed in
@@ -62,7 +75,16 @@ unset dotfiles file i
 echo
 date
 echo
-if [ -x /usr/local/bin/fortune ]; then
-  /usr/local/bin/fortune -a  # Makes our day a bit more fun.... :-)
+if [ "${SYSTEM_TYPE}" == "macOS" ]; then
+  if [ -x /usr/local/bin/fortune ]; then
+    /usr/local/bin/fortune -a  # Makes our day a bit more fun.... :-)
+  fi
+else
+  if [ -x /usr/games/fortune ]; then
+    /usr/games/fortune -a  # Makes our day a bit more fun.... :-)
+  fi
 fi
 echo
+
+# and now switch back to the directory selected in Path Finder
+cd "${selecteddir}"
