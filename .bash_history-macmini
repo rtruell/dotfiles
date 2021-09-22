@@ -2021,3 +2021,11 @@ man brew
 b search fortune
 #1632254268
 man brew
+#1632283238
+b search calibre
+#1632283263
+b info calibre
+#1632283285
+b info calibre4
+#1632283402
+b search drm
