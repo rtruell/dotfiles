@@ -2003,3 +2003,21 @@ b info temurin
 b info temurin11
 #1632207133
 b search adoptopenjdk
+#1632253527
+man brew
+#1632253979
+b desc git
+#1632253998
+b desc thunderbird
+#1632254013
+b desc firefox-esr
+#1632254020
+man brew
+#1632254068
+brew leaves
+#1632254109
+man brew
+#1632254154
+b search fortune
+#1632254268
+man brew
