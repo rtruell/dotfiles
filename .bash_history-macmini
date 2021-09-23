@@ -2029,3 +2029,37 @@ b info calibre
 b info calibre4
 #1632283402
 b search drm
+#1632347629
+findshow 'the goldbergs'
+#1632347638
+findshow 'tg'
+#1632348778
+b search imazing
+#1632348799
+b info imazing
+#1632349769
+b update
+#1632351422
+b info git-cliff
+#1632351447
+b info almighty
+#1632351468
+b home almighty
+#1632351855
+b outdated
+#1632351957
+b info imazing
+#1632351983
+b home imazing
+#1632352195
+b upgrade imazing
+#1632353536
+b update
+#1632353564
+b upgrade
+#1632376757
+b update
+#1632376803
+b outdated
+#1632376897
+b info thunderbird
