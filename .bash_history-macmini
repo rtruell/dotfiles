@@ -2063,3 +2063,23 @@ b update
 b outdated
 #1632376897
 b info thunderbird
+#1632432094
+findshow 'rollerball'
+#1632432114
+findshow 'roller boogie'
+#1632432135
+findshow 'solarbabies'
+#1632432145
+findshow 'cast away'
+#1632435718
+man brew
+#1632435765
+b leaves
+#1632435775
+b leaves -r
+#1632435848
+b leaves -p
+#1632435941
+b leaves >leaves.txt
+#1632436747
+set >set-new.txt
