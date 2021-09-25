@@ -2083,3 +2083,19 @@ b leaves -p
 b leaves >leaves.txt
 #1632436747
 set >set-new.txt
+#1632514864
+findshow 'die hard'
+#1632514918
+findshow 'underworld'
+#1632518094
+b info imazing
+#1632518110
+b update
+#1632518152
+b info imazing
+#1632518173
+b upgrade imazing
+#1632519177
+b search itunes
+#1632520096
+cd "/Volumes/Temp"; clear
