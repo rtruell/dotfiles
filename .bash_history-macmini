@@ -2115,3 +2115,7 @@ command tree -anQ -I '.git|.Spotlight-V100|.TemporaryItems|.DocumentRevisions-V1
 command tree -anQ -I '.git|.Spotlight-V100|.TemporaryItems|.DocumentRevisions-V100|.fseventsd' --dirsfirst "." | list
 #1632634352
 command tree -anQ -I '.git|.Spotlight-V100|.TemporaryItems|.DocumentRevisions-V100|.fseventsd' --dirsfirst "." | less
+#1632646691
+cd /Volumes/data
+#1632647049
+command tree -anQ -I '.git|.Spotlight-V100|.TemporaryItems|.DocumentRevisions-V100|.fseventsd' --dirsfirst "." >/Volumes/ExternalHome/rtruell/nasfiles.txt 2>&1
