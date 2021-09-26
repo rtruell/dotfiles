@@ -2099,3 +2099,19 @@ b upgrade imazing
 b search itunes
 #1632520096
 cd "/Volumes/Temp"; clear
+#1632626960
+man tree
+#1632627794
+dotfiles
+#1632627808
+findtext 'options'
+#1632627899
+up
+#1632634196
+tree -h
+#1632634321
+command tree -anQ -I '.git|.Spotlight-V100|.TemporaryItems|.DocumentRevisions-V100|.fseventsd' --dirsfirst "."
+#1632634345
+command tree -anQ -I '.git|.Spotlight-V100|.TemporaryItems|.DocumentRevisions-V100|.fseventsd' --dirsfirst "." | list
+#1632634352
+command tree -anQ -I '.git|.Spotlight-V100|.TemporaryItems|.DocumentRevisions-V100|.fseventsd' --dirsfirst "." | less
