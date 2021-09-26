@@ -2119,3 +2119,71 @@ command tree -anQ -I '.git|.Spotlight-V100|.TemporaryItems|.DocumentRevisions-V1
 cd /Volumes/data
 #1632647049
 command tree -anQ -I '.git|.Spotlight-V100|.TemporaryItems|.DocumentRevisions-V100|.fseventsd' --dirsfirst "." >/Volumes/ExternalHome/rtruell/nasfiles.txt 2>&1
+#1632676686
+ls ..
+#1632676701
+ll ..
+#1632676755
+cd ../RecoveredFiles/
+#1632676847
+cd Bad2TBDrive/
+#1632677039
+command tree -anQ -I '.git|.Spotlight-V100|.TemporaryItems|.DocumentRevisions-V100|.fseventsd' --dirsfirst "." >/Volumes/ExternalHome/rtruell/recovered-bad2tbdrive.txt 2>&1
+#1632682052
+cd /Volumes/ExternalHome/rtruell/
+#1632682095
+findtext -i ecto nasfiles.txt
+#1632682235
+findtext -i ecto recovered-bad2tbdrive.txt
+#1632682364
+findtext -i flint recovered-bad2tbdrive.txt
+#1632682392
+findtext -i flash recovered-bad2tbdrive.txt
+#1632682474
+findtext -i flashpoint recovered-bad2tbdrive.txt
+#1632682514
+findtext -i flashpoint nasfiles.txt
+#1632683799
+ll
+#1632683960
+hf awk
+#1632684072
+awk 'NR>=55560 && NR<=55590' nasfiles.txt
+#1632684213
+awk 'NR>=82830 && NR<=82860' recovered-bad2tvdrive.txt
+#1632684222
+awk 'NR>=82830 && NR<=82860' recovered-bad2tbdrive.txt
+#1632684414
+awk 'NR>=83330 && NR<=83350' recovered-bad2tbdrive.txt
+#1632684437
+awk 'NR>=830330 && NR<=830350' recovered-bad2tbdrive.txt
+#1632684656
+awk 'NR>=264030 && NR<=264050' recovered-bad2tbdrive.txt
+#1632684810
+awk 'NR>=264280 && NR<=264290' recovered-bad2tbdrive.txt
+#1632684869
+awk 'NR>=167470 && NR<=164490' recovered-bad2tbdrive.txt
+#1632684881
+awk 'NR>=164470 && NR<=164490' recovered-bad2tbdrive.txt
+#1632684926
+awk 'NR>=167470 && NR<=167490' recovered-bad2tbdrive.txt
+#1632686099
+man grep
+#1632686558
+cd -
+#1632686618
+find . ecto
+#1632686670
+man find
+#1632686822
+find . *.wav | less
+#1632686843
+man find
+#1632686890
+find . -name *.wav | less
+#1632686942
+cd -
+#1632686961
+less nasfiles.txt
+#1632687768
+less recovered-bad2tbdrive.txt
