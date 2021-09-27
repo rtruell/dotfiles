@@ -2287,3 +2287,21 @@ less nasfiles.txt
 less recovered-bad2tbdrive.txt.txt
 #1632720016
 less recovered-bad2tbdrive.txt
+#1632776106
+alias
+#1632776120
+voloutput
+#1632776174
+cat .aliases
+#1632776197
+osascript -e 'set volume output volume 40'
+#1632776212
+osascript -e 'set volume output volume 45'
+#1632776218
+volnorm
+#1632777337
+cd /Volumes/ExternalHome/rtruell/
+#1632777354
+less nasfiles.txt
+#1632777609
+less recovered-bad2tbdrive.txt
