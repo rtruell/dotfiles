@@ -2187,3 +2187,103 @@ cd -
 less nasfiles.txt
 #1632687768
 less recovered-bad2tbdrive.txt
+#1632698162
+cd /Volumes/data/
+#1632698189
+findtext -i macgourmet
+#1632711807
+home
+#1632711830
+alias
+#1632711853
+cat aliases
+#1632711858
+cat .aliases
+#1632711894
+volmax
+#1632711905
+volmute
+#1632711913
+osascript -e 'set volume output volume 50'
+#1632711925
+osascript -e 'set volume output volume 55'
+#1632711946
+osascript -e 'set volume output volume 50'
+#1632713491
+b search macgourmet
+#1632714946
+osascript -e 'get volume output'
+#1632714962
+osascript -e 'get volume'
+#1632715661
+osascript -e 'get volume settings'
+#1632715684
+osascript -e 'get volume output settings'
+#1632715994
+osascript -e 'get volume settings'
+#1632716019
+osascript -e "output volume of (get volume settings) & output muted of (get volume settings)"
+#1632716266
+copylastcommand
+#1632716445
+osascript -e 'get volume settings'
+#1632716450
+copylastcommand
+#1632716560
+osascript -e "output input of (get volume settings) & output alert of (get volume settings)"
+#1632716603
+osascript -e "output alert of (get volume settings) & output alert of (get volume settings)"
+#1632716789
+osascript -e 'get volume settings'
+#1632716974
+osascript -e "input volume of (get volume settings) & output muted of (get volume settings)"
+#1632716986
+osascript -e "alert volume of (get volume settings) & output muted of (get volume settings)"
+#1632717716
+cd /Volumes/ExternalHome/rtruell/
+#1632717726
+less nas.txt
+#1632717741
+less nasfiles.txt
+#1632718828
+cd /Volumes/data
+#1632718836
+cd sounds
+#1632718850
+up
+#1632718853
+cd Sounds
+#1632718865
+cd -
+#1632718870
+up 1
+#1632718880
+up
+#1632718884
+cd -
+#1632718894
+cd Sounds
+#1632718901
+up 1
+#1632718904
+ls sounds
+#1632718908
+ls Sounds
+#1632718915
+cd Sounds
+#1632718927
+hf tree
+#1632718947
+command tree -anQ -I '.git|.Spotlight-V100|.TemporaryItems|.DocumentRevisions-V100|.fseventsd' --dirsfirst "."
+#1632719027
+alias
+#1632719079
+command tree -anQ -I '.git|.Spotlight-V100|.TemporaryItems|.DocumentRevisions-V100|.fseventsd' --dirsfirst "." | putclip
+#1632719928
+cd /Volumes/ExternalHome/rtruell/
+#1632719934
+less nasfiles.txt
+#1632720010
+less recovered-bad2tbdrive.txt.txt
+#1632720016
+less recovered-bad2tbdrive.txt
