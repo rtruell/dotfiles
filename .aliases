@@ -82,8 +82,13 @@ case "${SYSTEM_TYPE}" in
 
     # Stuff I never really use but cannot delete either because of http://xkcd.com/530/
     alias volmax="osascript -e 'set volume output volume 100'"  # full volume
-    alias volmute="osascript -e 'set volume output muted true'"  # muted
-    alias volnorm="osascript -e 'set volume output volume 87'"  # normal volume
+    alias volnorm="osascript -e 'set volume output volume 50'"  # normal volume
+    alias voloff="osascript -e 'set volume output muted true'"  # muted
+    alias voloutput="osascript -e 'output volume of (get volume settings)'"  # check current output volume level
+    alias volinput="osascript -e 'input volume of (get volume settings)'"  # check current input volume level
+    alias volalert="osascript -e 'alert volume of (get volume settings)'"  # check current alert volume level
+    alias volmute="osascript -e 'output muted of (get volume settings)'"  # check current mute status
+    alias volall="osascript -e 'get volume settings'"  # check current volume levels of output, input and alert, and mute status
     ;;
   *)
     alias apts="apt search"  # search for a package
