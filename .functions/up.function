@@ -2,8 +2,7 @@
 function up {
   case "${1}" in
     *[!0-9]*) : ;;
-    "")       cd || return ;;
-    1)        cd .. || return ;;
-    *)        cd "$(eval "printf -- '../'%.0s {1..$1}")" || return ;;
+          "") cd .. || return ;;
+           *) cd "$(eval "printf -- '../'%.0s {1..$1}")" || return ;;
   esac
 }
