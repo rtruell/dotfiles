@@ -2393,3 +2393,19 @@ voloutput
 volnorm
 #1632972364
 voloutput
+#1633024271
+volcheck
+#1633024273
+volall
+#1633037215
+cd /Volumes/ExternalHome/rtruell/
+#1633037232
+less nasfiles.txt
+#1633037361
+less recovered-bad2tbdrive.txt
+#1633039584
+home
+#1633041618
+pwd
+#1633041622
+ps aux
