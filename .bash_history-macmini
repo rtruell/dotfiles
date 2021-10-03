@@ -2415,3 +2415,13 @@ volall
 volnorm
 #1633140746
 volall
+#1633235120
+cd /Volumes/data/Downloads/Mac/OSX installers/Apps
+#1633235138
+cd "/Volumes/data/Downloads/Mac/OSX installers/Apps"
+#1633235434
+ls /Volumes
+#1633235540
+sudo "Install 10.14.5 (macOS Mojave).app/Contents/Resources/createinstallmedia" --volume /Volumes/Untitled --applicationpath "Install 10.14.5 (macOS Mojave).app"
+#1633236461
+home
