@@ -2425,3 +2425,29 @@ ls /Volumes
 sudo "Install 10.14.5 (macOS Mojave).app/Contents/Resources/createinstallmedia" --volume /Volumes/Untitled --applicationpath "Install 10.14.5 (macOS Mojave).app"
 #1633236461
 home
+#1633263368
+ls /etc/
+#1633263384
+ll /etc/
+#1633263400
+cat /etc/fstab.hd
+#1633263412
+cat /etc/fstab
+#1633263436
+subl /etc/fstab
+#1633263495
+mount
+#1633263521
+man mount
+#1633263540
+mount -a
+#1633263781
+diskutil list
+#1633288353
+findshow 'spectre'
+#1633300479
+ioreg -l -p IODeviceTree | grep firmware-abi
+#1633300817
+ls /Volumes/ExternalHome/rtruell
+#1633300837
+less /Volumes/ExternalHome/rtruell/nasfiles.txt
