@@ -2451,3 +2451,13 @@ ioreg -l -p IODeviceTree | grep firmware-abi
 ls /Volumes/ExternalHome/rtruell
 #1633300837
 less /Volumes/ExternalHome/rtruell/nasfiles.txt
+#1633365730
+findshow 'casino'
+#1633367014
+findshow 'quantum'
+#1633367037
+findshow 'solace'
+#1633367071
+findshow 'skyfall'
+#1633367143
+findshow 'spectre'
