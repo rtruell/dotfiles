@@ -2461,3 +2461,11 @@ findshow 'solace'
 findshow 'skyfall'
 #1633367143
 findshow 'spectre'
+#1633386981
+cd /Volumes/Downloads/RecentDownloads/
+#1633386994
+cd Mac
+#1633387023
+/usr/bin/open "x-apple.systempreferences:com.apple.preferences.softwareupdate?client=bau&installMajorOSVersion=10.14.6"
+#1633397065
+volall
