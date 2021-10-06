@@ -2469,3 +2469,19 @@ cd Mac
 /usr/bin/open "x-apple.systempreferences:com.apple.preferences.softwareupdate?client=bau&installMajorOSVersion=10.14.6"
 #1633397065
 volall
+#1633459584
+findshow 'solace'
+#1633459678
+findshow 'thrones'
+#1633460294
+findshow '2001'
+#1633460344
+findshow '2010'
+#1633461089
+findshow 'solace'
+#1633461204
+findshow 'forbidden'
+#1633485737
+voloutput
+#1633485742
+volall
