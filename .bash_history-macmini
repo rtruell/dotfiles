@@ -2485,3 +2485,35 @@ findshow 'forbidden'
 voloutput
 #1633485742
 volall
+#1633540407
+less /Volumes/ExternalHome/rtruell/nasfiles.txt
+#1633541369
+b search go64
+#1633541388
+b info go64
+#1633541451
+b search techtool
+#1633542376
+b search zoc
+#1633542401
+b info zoc
+#1633550632
+hf program
+#1633550680
+ls /Applications >programs.txt
+#1633550711
+echo " " >>programs.txt
+#1633550718
+ls Applications >>programs.txt
+#1633551074
+ls /Applications >programs.txt
+#1633551077
+echo " " >>programs.txt
+#1633551080
+ls Applications >>programs.txt
+#1633551155
+ls /Applications >programs.txt
+#1633551157
+echo " " >>programs.txt
+#1633551167
+ls Applications >>programs.txt
