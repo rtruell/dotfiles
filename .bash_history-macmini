@@ -2517,3 +2517,13 @@ ls /Applications >programs.txt
 echo " " >>programs.txt
 #1633551167
 ls Applications >>programs.txt
+#1633551324
+/Users/rtruell/dotfiles/.Brewfile; exit
+#1633560087
+findshow 'skyfall'
+#1633560110
+findshow 'solace'
+#1633560120
+findshow 'casino'
+#1633581026
+voloutput
