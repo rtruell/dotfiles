@@ -2533,3 +2533,109 @@ findshow 'spectre'
 findshow 'skyfall'
 #1633720474
 findshow 'get smart'
+#1633810314
+findshow 'green lantern'
+#1633810609
+findshow 'dante's'
+#1633810628
+findshow "dante's"
+#1633810698
+findshow 'catwoman'
+#1633812526
+listfunction b
+#1633812620
+alias
+#1633812673
+b info aften
+#1633812704
+b leaves
+#1633812784
+b info faac
+#1633812800
+b info faad2
+#1633812852
+b info fontconfig
+#1633812894
+man brew
+#1633813387
+b info gnupg
+#1633813400
+b info highlight
+#1633813423
+b info knock
+#1633813486
+brew cask info knock
+#1633813509
+cask info knock
+#1633813534
+b info knock
+#1633813551
+b home knock
+#1633813861
+b info lame
+#1633813884
+b info lua
+#1633813897
+b info luarocks
+#1633813943
+b info opencore-amr
+#1633813969
+b info openssl
+#1633814008
+b info openssl@1.1
+#1633814063
+b search openssl
+#1633814105
+b home openssl
+#1633814261
+b info x264
+#1633814416
+b info a-better-finder-rename
+#1633815260
+b search a-better-finder-rename
+#1633818306
+b info cakebrew
+#1633818327
+b home cakebrew
+#1633818771
+b info xampp
+#1633818809
+b search xampp
+#1633818879
+b info xampp-vm
+#1633818915
+b info xampp7
+#1633818929
+b home xampp-vm
+#1633819222
+b info gnupg
+#1633819249
+b info gpg-suite
+#1633819291
+b info hammerspoon
+#1633819306
+b home hammerspoon
+#1633819455
+b info imazing
+#1633819520
+b search imazing
+#1633819539
+b search iterm
+#1633819567
+b info iterm2
+#1633819617
+b info iterm2-legacy
+#1633819665
+b info soundflower
+#1633819684
+b home soundflower
+#1633819751
+b info soundflowerbed
+#1633819781
+b home soundflowerbed
+#1633820012
+b info suspicious-package
+#1633820030
+b home suspicious-package
+#1633838675
+volall
