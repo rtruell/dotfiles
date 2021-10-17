@@ -2749,3 +2749,17 @@ volout
 b s bitdefender
 #1634510681
 listfunction b
+#1634511088
+b i brotli
+#1634511150
+b i gettext
+#1634510567
+b update
+#1634511620
+which curl
+#1634511627
+path
+#1634511644
+curl --version
+#1634511671
+brew update
