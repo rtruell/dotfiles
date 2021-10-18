@@ -2763,3 +2763,99 @@ path
 curl --version
 #1634511671
 brew update
+#1634524000
+b search speedtest
+#1634524030
+b i speedtest
+#1634524039
+b i speedtest-cli
+#1634524069
+b s chm
+#1634524100
+b s popclip
+#1634524115
+b h popclip
+#1634524234
+b s finder-rename
+#1634524261
+b i finder-rename
+#1634524276
+b i a-better-finder-rename
+#1634524288
+b h a-better-finder-rename
+#1634524930
+b s marsedit
+#1634524943
+b i marsedit
+#1634524961
+b s blackink
+#1634524985
+b i black
+#1634525000
+b s black
+#1634525063
+b s path
+#1634525079
+b i path-finder
+#1634525323
+b s istat
+#1634525348
+b i istat-menus
+#1634525383
+b i istat-menus5
+#1634525489
+whereis istat-menus
+#1634525497
+which istat-menus
+#1634525542
+b s dropzone
+#1634525554
+b i dropzone
+#1634525592
+b s forklift
+#1634525608
+b i forklift
+#1634525613
+b i forklift2
+#1634525800
+b s commander
+#1634525822
+b i commander-one
+#1634526349
+b s keyboard
+#1634526373
+b s keyboard-maestro
+#1634526383
+b i keyboard-maestro
+#1634526392
+b i keyboard-maestro8
+#1634527612
+mount
+#1634527633
+cat /etc/fstab
+#1634527676
+b s remount
+#1634529231
+ll 
+#1634529240
+lal
+#1634530006
+man sudo
+#1634530292
+ls /bin/b*
+#1634530340
+ll /bin/b*
+#1634530357
+listfunction redo
+#1634530445
+man fc
+#1634530451
+bashman fc
+#1634530606
+man fc
+#1634530641
+ll /usr/bin/s*
+#1634530657
+whereis sudo
+#1634530684
+ll /usr/bin/sudo
