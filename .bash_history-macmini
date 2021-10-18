@@ -2859,3 +2859,5 @@ ll /usr/bin/s*
 whereis sudo
 #1634530684
 ll /usr/bin/sudo
+#1634531662
+man comm
