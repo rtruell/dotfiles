@@ -2861,3 +2861,5 @@ whereis sudo
 ll /usr/bin/sudo
 #1634531662
 man comm
+#1634608201
+volall
