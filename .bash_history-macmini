@@ -2863,3 +2863,7 @@ ll /usr/bin/sudo
 man comm
 #1634608201
 volall
+#1634612760
+/Volumes/ExternalHome/rtruell/MacInstallFiles/updateappconfigfiles.sh; exit
+#1634616906
+cat /etc/hosts
