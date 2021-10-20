@@ -84,8 +84,8 @@ case "${SYSTEM_TYPE}" in
     alias volmax="osascript -e 'set volume output volume 100'"  # full volume
     alias volnorm="osascript -e 'set volume output volume 50'"  # normal volume
     alias voloff="osascript -e 'set volume output muted true'"  # muted
-    alias voloutput="osascript -e 'output volume of (get volume settings)'"  # check current output volume level
-    alias volinput="osascript -e 'input volume of (get volume settings)'"  # check current input volume level
+    alias volout="osascript -e 'output volume of (get volume settings)'"  # check current output volume level
+    alias volin="osascript -e 'input volume of (get volume settings)'"  # check current input volume level
     alias volalert="osascript -e 'alert volume of (get volume settings)'"  # check current alert volume level
     alias volmute="osascript -e 'output muted of (get volume settings)'"  # check current mute status
     alias volall="osascript -e 'get volume settings'"  # check current volume levels of output, input and alert, and mute status
