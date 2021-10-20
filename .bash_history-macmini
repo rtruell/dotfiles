@@ -2951,3 +2951,93 @@ ls /usr/local/opt/curl/bin
 /usr/local/opt/curl/bin/culr -L --silent rtruell.ca
 #1634763516
 /usr/local/opt/curl/bin/curl -L --silent rtruell.ca
+#1634764944
+sysinfo
+#1634765025
+curl -V
+#1634765051
+which curl
+#1634765057
+whereis curl
+#1634765129
+/usr/bin/curl -V
+#1634765303
+externalip
+#1634765319
+listfunction externalip
+#1634765339
+hostname -I
+#1634765346
+man hostname
+#1634765404
+hostname 
+#1634765441
+ifconfig
+#1634765476
+man curl
+#1634765634
+listfunction localip
+#1634765766
+curl ifconfig.me
+#1634765842
+curl ifconfig.me/all
+#1634766169
+listfunction externalip
+#1634766244
+curl myip.opendns.com
+#1634766384
+curl ipecho.net/plain
+#1634766639
+curl icanhazip.com
+#1634766863
+listfunction externalip
+#1634768044
+arp -a
+#1634768712
+externalip
+#1634768723
+whereis curl
+#1634768752
+/usr/bin/curl https://diagnostic.opendsn.com/myip
+#1634768760
+/usr/bin/curl https://diagnostic.opendns.com/myip
+#1634768784
+curl https://diagnostic.opendns.com/myip
+#1634768856
+curl https://ipecho.net/plain
+#1634769005
+listfunction internalip
+#1634769019
+listfunction localip
+#1634769559
+b i iproute2mac
+#1634769593
+ip
+#1634769628
+b h iproute2mac
+#1634769684
+b upgrade iproute2mac
+#1634769833
+listfunction b
+#1634769867
+brew upgrade iproute2mac
+#1634769906
+b i iproute2mac
+#1634769912
+ip
+#1634769944
+ifconfig
+#1634769964
+ifconfig | grep "inet "
+#1634769991
+ifconfig | grep "inet " | grep -v 127.0.0.1
+#1634770021
+ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2
+#1634770033
+man cut
+#1634770066
+ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\ -f2
+#1634770078
+ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2
+#1634770082
+man cut
