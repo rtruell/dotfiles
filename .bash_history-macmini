@@ -3041,3 +3041,9 @@ ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\ -f2
 ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2
 #1634770082
 man cut
+#1634770192
+sysinfo
+#1634770233
+ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2
+#1634770265
+copylastcommand
