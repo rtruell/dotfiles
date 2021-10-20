@@ -2869,3 +2869,85 @@ volall
 cat /etc/hosts
 #1634663988
 findshow 'robin'
+#1634742325
+b s commander
+#1634746355
+b s speedtest
+#1634760716
+ll /usr/bin/subl
+#1634760782
+b s sublime
+#1634760812
+b i sublime-text
+#1634760869
+ls /Users/rtruell/Applications
+#1634761015
+b s quickhash
+#1634761033
+b i quickhash
+#1634761056
+b h quickhash
+#1634761487
+b s a-better
+#1634761514
+b i a-better-finder-rename
+#1634761562
+b install quickhash
+#1634761670
+sysinfo
+#1634761692
+ip
+#1634761711
+which ip
+#1634761715
+whereis ip
+#1634761728
+listfunction sysinfo
+#1634761794
+listfunction localip
+#1634761806
+listfunction externalip
+#1634761839
+listfunction checkwebsites
+#1634761924
+man curl
+#1634762008
+curl -L --silent --output /dev/null www.rtruell.ca 2> /dev/null
+#1634762026
+curl -L  --output /dev/null www.rtruell.ca 2> /dev/null
+#1634762052
+curl -L --silent  www.rtruell.ca 2> /dev/null
+#1634762060
+curl -L --silent  www.rtruell.ca
+#1634762087
+b i curl
+#1634762117
+which curl
+#1634762134
+whereis curl
+#1634762176
+curl -L --silent duckduckgo.com
+#1634762312
+b update
+#1634763160
+listfunction b
+#1634763188
+b update
+#1634763308
+b i alfred
+#1634763345
+b i curl
+#1634763369
+which curl
+#1634763381
+curl -L --silent duckduckgo.com
+#1634763389
+curl -L --silent rtruell.ca
+#1634763449
+ls /usr/local/opt/curl
+#1634763457
+ls /usr/local/opt/curl/bin
+#1634763502
+/usr/local/opt/curl/bin/culr -L --silent rtruell.ca
+#1634763516
+/usr/local/opt/curl/bin/curl -L --silent rtruell.ca
