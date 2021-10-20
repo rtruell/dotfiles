@@ -2867,3 +2867,5 @@ volall
 /Volumes/ExternalHome/rtruell/MacInstallFiles/updateappconfigfiles.sh; exit
 #1634616906
 cat /etc/hosts
+#1634663988
+findshow 'robin'
