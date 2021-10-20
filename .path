@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-# add directories of my programs, if they exist, to the beginning of PATH so they get used first.
+# add directories of my programs, if they exist, to the beginning of PATH so
+# they get used first.
 if [ -d /usr/local/sbin ] ; then
   addpath -f /usr/local/sbin
 fi
@@ -18,9 +19,9 @@ if [ -d ${HOME}/bin ] ; then
 fi
 
 # many of the utils Apple supplies in macOS are out-dated and less capable than
-# the same-named GNU versions, so I want to use the GNU core and find utils and
-# GNU sed instead, if they're available...so the paths to those utils get added
-# to the beginning of PATH
+# the same-named GNU versions, so I want to use the GNU versions instead, if
+# they're available...so the paths to those utils get added to the beginning of
+# PATH
 if [ -d /usr/local/opt/gnu-sed ] ; then
   addpath -f /usr/local/opt/gnu-sed/libexec/gnubin
 fi
@@ -31,4 +32,8 @@ fi
 
 if [ -d /usr/local/opt/coreutils ] ; then
   addpath -f /usr/local/opt/coreutils/libexec/gnubin
+fi
+
+if [ -d /usr/local/opt/curl/bin ] ; then
+  addpath -f /usr/local/opt/curl/bin
 fi
