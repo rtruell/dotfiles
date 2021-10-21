@@ -3135,3 +3135,137 @@ python -h
 python --version
 #1634793401
 man killall
+#1634832646
+man brew
+#1634834889
+b s git-open
+#1634834916
+b i git-open
+#1634834927
+b h git-open
+#1634835088
+b in git-open
+#1634835122
+which git-open
+#1634835129
+whereis git-open
+#1634835153
+git-open dotfiles
+#1634835216
+echo $GITHUB_USER
+#1634835256
+git config --get github.user
+#1634835290
+cat .gitconfig
+#1634835306
+cat .gitconfig.local
+#1634835481
+ls /etc/gitconfig
+#1634835520
+ls .config/git
+#1634835559
+git config --list --show-origin
+#1634835782
+git config github.user
+#1634835793
+git config user.user
+#1634836956
+ls /usr/local/bin
+#1634836979
+ll /usr/local/bin/git-open
+#1634837004
+ls /usr/local/Cellar
+#1634837022
+ls /usr/local/Cellar/git-open
+#1634837026
+ls /usr/local/Cellar/git-open/1.3
+#1634837044
+less /usr/local/Cellar/git-open/1.3/README.md
+#1634837076
+ls /usr/local/Cellar/git-open/1.3/bin
+#1634837087
+less /usr/local/Cellar/git-open/1.3/bin/git-open
+#1634837226
+git-open
+#1634837248
+git-open rtruell dotfiles
+#1634837322
+b i git-open
+#1634837441
+b s git-
+#1634837483
+b h git-recent
+#1634837772
+b s trash-cli
+#1634837786
+b h trash-cli
+#1634838459
+highlight
+#1634838469
+man highlight
+#1634838607
+highlight -O ansi --force test.sh
+#1634838634
+cat test.sh
+#1634838671
+easy_install -h
+#1634838690
+man easy_install
+#1634838708
+which easy_install
+#1634838718
+ls /usr/bin
+#1634838770
+pygmentize -g
+#1634838824
+b s python-
+#1634839221
+b i ccat
+#1634839265
+b i ccrypt
+#1634839274
+ccat
+#1634839283
+b i bat
+#1634839499
+b h bat
+#1634839916
+b s bat
+#1634839935
+b in bat
+#1634840013
+b h bat-extras
+#1634857256
+cat /etc/shells
+#1634857278
+man chpass
+#1634857453
+chpass rtruell
+#1634857467
+man chpass
+#1634857531
+echo $BREW_PREFIX
+#1634857552
+which bash
+#1634857555
+whereis bash
+#1634857590
+man fgrep
+#1634857680
+fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells
+#1634857689
+fgrep "${BREW_PREFIX}/bin/bash" /etc/shells
+#1634857703
+fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells
+#1634857737
+man tee
+#1634857788
+echo $BREW_VERSION
+#1634857798
+echo $BASH_VERSION
+#1634857937
+print_result
+#1634858323
+if [[ -x "${BREW_PREFIX}/bin/bash" ]]; then echo "yes"; else echo "no"; fi
+#1634858343
+bash -version
