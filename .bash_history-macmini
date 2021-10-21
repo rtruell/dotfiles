@@ -3105,3 +3105,33 @@ man which
 path
 #1634789305
 subl
+#1634789634
+findcommand iterm
+#1634789648
+findcommand sudo
+#1634789683
+findcommand bash
+#1634789739
+findcommand iterm.app
+#1634789852
+bashman tests
+#1634789939
+which iterm
+#1634789944
+whereis iterm
+#1634790045
+[[ -x /Users/rtruell/Applications/iTerm.app ]]
+#1634790055
+[[ -x /Users/rtruell/Applications/iTerm45.app ]]
+#1634790065
+[[ -x /Users/rtruell/Applications/iTerm.app ]]
+#1634791261
+python -version
+#1634791277
+python -v
+#1634791305
+python -h
+#1634791325
+python --version
+#1634793401
+man killall
