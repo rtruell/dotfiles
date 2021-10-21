@@ -3047,3 +3047,61 @@ sysinfo
 ifconfig | grep "inet " | grep -v 127.0.0.1 | cut -d\  -f2
 #1634770265
 copylastcommand
+#1634776403
+volout
+#1634776409
+volnorm
+#1634786537
+b s calibre
+#1634786560
+b i calibre
+#1634786579
+b i calibre4
+#1634787786
+hostname
+#1634788033
+defaults read com.apple.dock autohide-time-modifier
+#1634788084
+defaults read com.apple.dock autohide-delay
+#1634788145
+defaults read com.noodlesoft.Hazel ScanInvisibles
+#1634788486
+b s iterm
+#1634788512
+b i iterm2
+#1634788567
+b in iterm2
+#1634788655
+b i iterm2-legacy
+#1634788738
+b s sublime
+#1634788774
+b i sublime-text2
+#1634788782
+b i sublime-text
+#1634788836
+b in sublime-text
+#1634788917
+which subl
+#1634788922
+whereis subl
+#1634788954
+ls applications
+#1634788990
+ll applications
+#1634789035
+man which
+#1634789074
+bashman which
+#1634789093
+which -a subl
+#1634789140
+ll /usr/local/bin/subl
+#1634789161
+ll /usr/bin/subl
+#1634789181
+man which
+#1634789192
+path
+#1634789305
+subl
