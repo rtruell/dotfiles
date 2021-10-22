@@ -3269,3 +3269,119 @@ print_result
 if [[ -x "${BREW_PREFIX}/bin/bash" ]]; then echo "yes"; else echo "no"; fi
 #1634858343
 bash -version
+#1634859630
+man history
+#1634859795
+alias h
+#1634859805
+h 10
+#1634860063
+ls /usr/sbin/
+#1634860093
+man systemstats
+#1634860108
+systemstats
+#1634860116
+man systemstats
+#1634860126
+systemstats --help
+#1634860157
+systemstats -a
+#1634860165
+sudo systemstats -a
+#1634860195
+sudo systemstats
+#1634860278
+man systemsetup
+#1634860362
+systemsetup  -gettimezone
+#1634860373
+sudo systemsetup  -gettimezone
+#1634860400
+sudo systemsetup -getnetworktimeserver
+#1634860413
+sudo systemsetup -getusingnetworktime
+#1634860428
+man sysadminctl
+#1634860461
+sysadminctl --help
+#1634860886
+man systemsetup
+#1634861818
+sudo systemsetup -liststimezones
+#1634861840
+sudo systemsetup -listtimezones
+#1634861856
+sudo systemsetup -listtimezones | less
+#1634861994
+system_profiler
+#1634862058
+system_profiler sphardwaredatatype
+#1634862086
+system_profiler SPHardwareDataType
+#1634862271
+system_profiler SPHardwareDataType | grep "Book"
+#1634862316
+man pmset
+#1634862613
+pmset -g
+#1634863065
+defaults read /Library/Preferences/com.apple.loginwindow showfullname
+#1634863089
+defaults read /Library/Preferences/com.apple.loginwindow SHOWFULLNAME
+#1634863143
+defaults read /Library/Preferences/com.apple.loginwindow PowerOffDisabled
+#1634863167
+defaults read /Library/Preferences/com.apple.loginwindow RetriesUntilHint
+#1634863187
+defaults read /Library/Preferences/com.apple.loginwindow MultipleSessionEnabled
+#1634863202
+defaults read /Library/Preferences/com.apple.loginwindow Hide500Users
+#1634863215
+defaults read /Library/Preferences/com.apple.loginwindow showInputMenu
+#1634863236
+defaults read /Library/Preferences/com.apple.loginwindow loginWindowIdleTime
+#1634863275
+defaults read /Library/Preferences/com.apple.loginwindow autoLoginUser
+#1634864276
+defaults write NSGlobalDomain KeyRepeat
+#1634864286
+defaults read NSGlobalDomain KeyRepeat
+#1634864305
+defaults read NSGlobalDomain initialKeyRepeat
+#1634864310
+defaults read NSGlobalDomain InitialKeyRepeat
+#1634875663
+defaults read NSGlobalDomain AppleICUForce12HourTime
+#1634876786
+defaults read NSGlobalDomain "AppleEnableMenuBarTransparency"
+#1634884819
+ll .ssh
+#1634884844
+ll
+#1634884851
+lal
+#1634884869
+ll .ssh
+#1634884873
+lal
+#1634885127
+ll dotfiles/.ssh
+#1634885147
+lal dotfiles
+#1634885249
+chmod 700 ~/.ssh
+#1634885255
+lal
+#1634885280
+lal dotfiles
+#1634885350
+ll ~/.ssh
+#1634885365
+ll ~/dotfiles/.ssh
+#1634885406
+chmod 600 ~/.ssh/*
+#1634885413
+ll ~/.ssh
+#1634885421
+ll ~/dotfiles/.ssh
