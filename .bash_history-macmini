@@ -3385,3 +3385,137 @@ chmod 600 ~/.ssh/*
 ll ~/.ssh
 #1634885421
 ll ~/dotfiles/.ssh
+#1634930197
+volall
+#1634930919
+b s --debian tree
+#1634930941
+b s --debian
+#1634930969
+b s --debian 
+#1634930988
+b s --debian ' '
+#1634931583
+git-open dotfiles
+#1634931796
+b i git-open
+#1634931812
+b h git-open
+#1634931996
+man git
+#1634932172
+git config --get github.user
+#1634932182
+cat .config
+#1634932191
+cat .gitconfig
+#1634932200
+cat .gitconfig.local
+#1634932212
+git config --get user.user
+#1634932218
+git config --get user.mail
+#1634932228
+git config --get user.email
+#1634932244
+git config --get user.email [B
+#1634932269
+git config --set github.user rtruell
+#1634932372
+git config --global github.user rtruell
+#1634932382
+cat .gitconfig
+#1634932641
+cat .gitconfig.local
+#1634932650
+git-open dotfiles
+#1634934061
+ll
+#1634934069
+lal
+#1634936873
+mount
+#1634938428
+ls /Volumes/data/OSInstallFiles/
+#1634938438
+ls /Volumes/data/OSInstallFiles/OS
+#1634938443
+ls /Volumes/data/OSInstallFiles/OS/linux
+#1634938472
+ls /Volumes/data/Text
+#1634938489
+ls /Volumes/data/Text/OSInstall/
+#1634938540
+less /Volumes/data/Text/OSInstall/"LinuxInstall - Desktop.sh"
+#1634938749
+mount
+#1634938790
+mount //backupserver/backups /Volumes/backups -o user=rtruell
+#1634938928
+mount -t smbfs //backupserver/backups /Volumes/backups -o user=rtruell
+#1634938946
+man mount
+#1634939418
+mount -t smbfs //rtruell@backupserver/backups /Volumes/backups
+#1634939497
+open "smb://rtruell@backupserver/backups /Volumes/backups"
+#1634939696
+osascript -e "mount volume \"smb://rtruell:c0c0b7d@backupserver/backup\""
+#1634939709
+ls /Volumes/
+#1634940439
+osascript -e "mount volume \"smb://rtruell:c0c0b7d@backupserver/backup\""
+#1634940444
+copylastcommand
+#1634940569
+ls /Volumes/
+#1634940580
+diskutil unmount /Volumes/backup
+#1634940584
+ls /Volumes/
+#1634940871
+expect  -v
+#1634942418
+b s remount
+#1634942442
+b i xmount
+#1634942519
+ls /etc/auto_master
+#1634942530
+cat /etc/auto_master
+#1634942588
+cat /etc/fstab
+#1634942945
+man cp
+#1634943520
+cd /Volumes/data/OSInstallFiles/
+#1634943592
+la
+#1634943640
+cp -r ./.ssh ~
+#1634943703
+man cp
+#1634943812
+cp -ra ./.ssh ~
+#1634944058
+copylastcommand
+#1634944127
+pwd
+#1634944139
+currdir=pwd
+#1634944142
+echo currdir
+#1634944170
+currdir=$(pwd)
+#1634944180
+echo currdir
+#1634944194
+echo $currdir
+#1634944214
+cd -
+#1634944223
+cd $currdir
+#1634944495
+man chmod
+#1634944813
+home
