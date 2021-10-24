@@ -3519,3 +3519,19 @@ cd $currdir
 man chmod
 #1634944813
 home
+#1635022836
+man local
+#1635023822
+bashman declare
+#1635024771
+bash -version
+#1635025037
+bashman local
+#1635046345
+echo $PWD
+#1635046350
+echo $HOME
+#1635049104
+bashman declare
+#1635049703
+bashman tests
