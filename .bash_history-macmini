@@ -3535,3 +3535,11 @@ echo $HOME
 bashman declare
 #1635049703
 bashman tests
+#1635104546
+ll
+#1635104567
+cd Downloads/Mac/
+#1635104578
+curl -sLO https://raw.githubusercontent.com/myspaghetti/macos-guest-virtualbox/master/macos-guest-virtualbox.sh
+#1635104591
+home
