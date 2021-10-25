@@ -3697,3 +3697,13 @@ cd /Volumes/data/Downloads/mac/OSX\ installers/
 ./FixmacosVM.sh
 #1635143209
 home
+#1635193781
+dotfiles
+#1635193792
+findtext @:
+#1635193811
+cd functions
+#1635193821
+findtext @:
+#1635193857
+home
