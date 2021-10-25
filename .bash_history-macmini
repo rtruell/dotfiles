@@ -3543,3 +3543,157 @@ cd Downloads/Mac/
 curl -sLO https://raw.githubusercontent.com/myspaghetti/macos-guest-virtualbox/master/macos-guest-virtualbox.sh
 #1635104591
 home
+#1635106489
+listfunction symlink_single_file
+#1635106596
+echo $PWD
+#1635106602
+echo $HOME
+#1635106605
+dotfiles
+#1635106615
+echo $PWD
+#1635106617
+echo $HOME
+#1635106892
+declare -a filenames=("file1" "file2" "file3" "file4")
+#1635106941
+declare -a excludes=("file1" "file3")
+#1635106996
+[[ -z $PWD ]] && echo empty
+#1635107011
+[[ -n $PWD ]] && echo full
+#1635107050
+[[ -n $filenames ]] && echo full
+#1635107058
+[[ -z $filenames ]] && echo full
+#1635107072
+[[ -n $excludes ]] && echo full
+#1635107088
+[[ -n $superexcludes ]] && echo full
+#1635107095
+[[ -z $superexcludes ]] && echo full
+#1635107435
+syslink_array-files
+#1635107458
+functions
+#1635107510
+syslink_array_files
+#1635107529
+symlink_array_files
+#1635107564
+symlink_array_files $PWD
+#1635107583
+symlink_array_files $PWD $HOME
+#1635107628
+symlink_array_files $PWD $HOME filenames
+#1635107868
+s functions/symlink_array_files
+#1635107879
+s ./functions/symlink_array_files
+#1635107888
+la
+#1635107898
+s .functions/symlink_array_files
+#1635107906
+s ./.functions/symlink_array_files
+#1635107918
+s .functions/symlink_array_files.functions
+#1635107927
+s .functions/symlink_array_files.function
+#1635107948
+listfunction symlink_array_files
+#1635107967
+symlink_array_files
+#1635107972
+symlink_array_files $PWD
+#1635107980
+symlink_array_files $PWD $HOME
+#1635107987
+symlink_array_files $PWD $HOME filenames
+#1635108106
+s .functions/symlink_array_files.function
+#1635108112
+symlink_array_files $PWD $HOME filenames
+#1635108187
+symlink_array_files $PWD $HOME filenames excludes
+#1635108432
+s .functions/symlink_array_files.function
+#1635108439
+symlink_array_files $PWD $HOME filenames
+#1635108451
+symlink_array_files $PWD $HOME filenames excludes
+#1635108840
+s .functions/symlink_array_files.function
+#1635108859
+s .functions/print_warn.function
+#1635108868
+symlink_array_files $PWD $HOME filenames
+#1635108887
+symlink_array_files $PWD $HOME filenames excludes
+#1635109250
+s .functions/symlink_array_files.function
+#1635109260
+s .functions/symlink_single_file.function
+#1635109268
+symlink_array_files $PWD $HOME filenames
+#1635109508
+s .functions/symlink_array_files.function
+#1635109516
+symlink_array_files $PWD $HOME filenames
+#1635110079
+s .functions/symlink_array_files.function
+#1635110089
+s .functions/symlink_single_file.function
+#1635110110
+symlink_array_files $PWD $HOME filenames
+#1635110227
+symlink_array_files $PWD $HOME filenames excludes
+#1635112843
+echo $pwd
+#1635113065
+alias dotfiles
+#1635113096
+echo $HOME
+#1635128861
+home
+#1635129972
+b s tesseract
+#1635129997
+b i tesseract
+#1635130011
+b h tesseract
+#1635132548
+sw_vers
+#1635132610
+dmg2img -version
+#1635132681
+vboxmanage -v
+#1635136999
+ls /
+#1635137203
+ls /tmp
+#1635137313
+hdiutil create -size 10g -type UDTO -layout SPUD -fs JHFS+ /tmp/Mojave.cdr && open /tmp/Mojave.cdr
+#1635137374
+df /tmp
+#1635137391
+ls /volumes
+#1635138044
+sudo "/Volumes/data/Downloads/Mac/OSX installers/Apps/Install 10.14.6 (macOS Mojave).app/Contents/Resources/createinstallmedia" --volume /Volumes/untitled --nointeraction
+#1635138399
+ls /Volumes
+#1635138452
+hdiutil detach "/Volumes/Install macOS Mojave"
+#1635138465
+ls /Volumes
+#1635138521
+mv /tmp/Mojave.cdr /tmp/Mojave.iso
+#1635138527
+ll /tmp
+#1635143145
+cd /Volumes/data/Downloads/mac/OSX\ installers/
+#1635143196
+./FixmacosVM.sh
+#1635143209
+home
