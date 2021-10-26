@@ -3707,3 +3707,21 @@ cd functions
 findtext @:
 #1635193857
 home
+#1635194202
+man declare
+#1635194382
+echo ARG_MAX
+#1635194388
+echo $ARG_MAX
+#1635194401
+man bash
+#1635195106
+bashman declare
+#1635195589
+man read
+#1635195835
+bashman mapfile
+#1635196751
+bashman shift
+#1635198951
+defaults read com.apple.systemuiserver menuExtras
