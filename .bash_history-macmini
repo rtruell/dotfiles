@@ -3725,3 +3725,5 @@ bashman mapfile
 bashman shift
 #1635198951
 defaults read com.apple.systemuiserver menuExtras
+#1635260750
+/Volumes/ExternalHome/rtruell/MacInstallFiles/updateappconfigfiles.sh; exit
