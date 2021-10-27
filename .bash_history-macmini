@@ -3809,3 +3809,13 @@ printf $BASH_VERSION
 cd "/Volumes/Recordings"; clear
 #1635368987
 home
+#1635372518
+man source
+#1635372554
+bashman source
+#1635372564
+man source
+#1635372599
+bashman source
+#1635372612
+man bash
