@@ -3801,3 +3801,7 @@ printf "\e[0;31m  [✖] /usr/bin/sudo not found, and I couldn't find 'sudo' in '
 man tee
 #1635292467
 tee -v
+#1635347895
+cd /Users/rtruell/dotfiles
+#1635347974
+printf $BASH_VERSION
