@@ -3727,3 +3727,77 @@ bashman shift
 defaults read com.apple.systemuiserver menuExtras
 #1635260750
 /Volumes/ExternalHome/rtruell/MacInstallFiles/updateappconfigfiles.sh; exit
+#1635282065
+onsetapp1
+#1635282081
+onsetapp1.rb
+#1635282904
+onsetapp.rb
+#1635282968
+b i terminal-notifier
+#1635283101
+wifi-password
+#1635283342
+archey
+#1635283450
+ansiweather
+#1635283501
+aw
+#1635284238
+ls ./
+#1635284259
+cat ./set.txt
+#1635284494
+cd Desktop
+#1635284498
+cd .
+#1635284500
+cd ..
+#1635284672
+dir dotfiles
+#1635284703
+ls dotfiles
+#1635284752
+la dotfiles
+#1635284773
+ll dotfiles
+#1635284778
+lal dotfiles
+#1635284819
+chmod 755 dotfiles/.macos-macmini
+#1635284823
+lal dotfiles
+#1635287818
+exists sudo
+#1635287835
+which sudo
+#1635287838
+type sudo
+#1635287859
+man exists
+#1635287875
+bashman exists
+#1635287904
+which sudo
+#1635287908
+which rick
+#1635288005
+man which
+#1635291186
+echo '$PATH'
+#1635291262
+printf '%s' "this '$PATH'"
+#1635291312
+printf "this '$PATH'"
+#1635291323
+printf "this 'PATH'"
+#1635291444
+printf "\e[0;31m  [✖] /usr/bin/sudo not found.  Please run 'sudo ln -s $(which sudo) /usr/bin/sudo'\e[0m\n"
+#1635291486
+printf "\e[0;31m  [✖] /usr/bin/sudo not found, and I couldn't find 'sudo' in '$PATH'\e[0m\n"
+#1635291522
+printf "\e[0;31m  [✖] /usr/bin/sudo not found, and I couldn't find 'sudo' in '\$PATH'\e[0m\n"
+#1635292448
+man tee
+#1635292467
+tee -v
