@@ -3805,3 +3805,7 @@ tee -v
 cd /Users/rtruell/dotfiles
 #1635347974
 printf $BASH_VERSION
+#1635368954
+cd "/Volumes/Recordings"; clear
+#1635368987
+home
