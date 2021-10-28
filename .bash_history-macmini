@@ -3821,3 +3821,27 @@ bashman source
 man bash
 #1635373066
 hf source
+#1635391090
+echo $currdir
+#1635391094
+currdir=$(PWD)
+#1635391097
+echo $currdir
+#1635391941
+bashman tests
+#1635394440
+man mount
+#1635394525
+man oascript
+#1635395440
+cat .credentials
+#1635395448
+echo $username
+#1635395455
+echo $password
+#1635395463
+source ./.credentials
+#1635395471
+echo $username
+#1635395476
+echo $password
