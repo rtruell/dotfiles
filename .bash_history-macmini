@@ -3925,3 +3925,139 @@ man mount
 man mount_smbfs
 #1635452171
 findshow 'toy story'
+#1635503376
+man exit
+#1635503484
+man call
+#1635503500
+man bash
+#1635504006
+./test.sh
+#1635504029
+b s call
+#1635506345
+man exec
+#1635506352
+bashman exec
+#1635506501
+man tee
+#1635508191
+./test.sh
+#1635508270
+cat log.txt
+#1635508282
+ll
+#1635508350
+rm log.txt
+#1635508377
+man tee
+#1635508534
+./test.sh
+#1635508550
+ll
+#1635508557
+cat log.txt
+#1635508644
+rm log.txt
+#1635508847
+./test.sh
+#1635508893
+cat log.txt
+#1635508932
+./test.sh
+#1635508943
+ll
+#1635508965
+./test.sh
+#1635508987
+ll
+#1635508991
+./test.sh
+#1635508998
+ll
+#1635509245
+./test.sh
+#1635509258
+cat log.txt
+#1635509378
+ls /Volumes
+#1635509395
+rm log.txt
+#1635509402
+./test.sh
+#1635510744
+ls /volumes
+#1635510770
+diskutil unmount /volumes/public
+#1635510776
+ls /volumes
+#1635511022
+rm log.txt
+#1635511068
+./test.sh 2>&1 | tee -i ~/log.txt
+#1635511084
+cat log.txt
+#1635511949
+rm log.txt
+#1635511963
+./test.sh
+#1635511979
+cat log.txt
+#1635511994
+less log.txt
+#1635512295
+rm log.txt
+#1635512301
+./test.sh
+#1635512314
+cat log.txt
+#1635512462
+rm log.txt
+#1635512470
+./test.sh
+#1635512498
+less log.txt
+#1635512535
+cat log.txt
+#1635512640
+rm log.txt
+#1635512654
+./test.sh
+#1635512689
+cat log.txt
+#1635512804
+rm log.txt
+#1635512820
+diskutil umount /volumes/backup
+#1635512825
+diskutil umount /volumes/public
+#1635512833
+ls /volumes
+#1635512843
+./test.sh
+#1635512870
+ls /volumes
+#1635512896
+./test.sh
+#1635512944
+less log.txt
+#1635512949
+ll
+#1635512957
+rm log.txt
+#1635512963
+diskutil umount /volumes/public
+#1635513245
+ls /volumes
+#1635513265
+./test.sh
+#1635513281
+less log.txt
+#1635513318
+diskutil umount /volumes/public
+#1635513325
+rm log.txt
+#1635513409
+./test.sh
+#1635513507
+cat log.txt
