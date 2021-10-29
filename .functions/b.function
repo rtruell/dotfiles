@@ -3,16 +3,17 @@ function b {
   [[ -z "${1}" ]] && { printf '%s\n' "Must supply a subcommand."; return 1; }
   command="${1}"
   case "${command}" in
-          b) shift; brew bundle --global "$@";;
-          d) brew bundle dump --all --file="${HOME}"/newbrew;;
-         dr) brew doctor;;
-          h) shift; brew home "$@";;
-          i) shift; brew info "$@";;
-         in) shift; brew install "$@";;
-          s) shift; brew search "$@";;
-     upboth) brew update && brew upgrade --force-bottle;;
-     upfull) brew update && brew upgrade --force-bottle && brew cask upgrade && brew cleanup && brew doctor; brew cask doctor;;
-    upgrade) shift; brew upgrade --force-bottle "$@";;
-          *) brew "$@";;
+      b) shift; brew bundle --global "$@";;
+      d) brew bundle dump --all --file="${HOME}"/newbrew;;
+     dr) brew doctor;;
+      h) shift; brew home "$@";;
+      i) shift; brew info "$@";;
+     in) shift; brew install "$@";;
+      s) shift; brew search "$@";;
+    upb) brew update && brew upgrade --force-bottle;;
+    upd) brew update;;
+    upf) brew update && brew upgrade --force-bottle && brew cask upgrade && brew cleanup && brew doctor; brew cask doctor;;
+    upg) shift; brew upgrade --force-bottle "$@";;
+      *) brew "$@";;
   esac
 }
