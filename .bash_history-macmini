@@ -4061,3 +4061,33 @@ rm log.txt
 ./test.sh
 #1635513507
 cat log.txt
+#1635513642
+rm log.txt
+#1635513647
+diskutil umount /volumes/public
+#1635513659
+./test.sh
+#1635513719
+cat log.txt
+#1635513737
+diskutil umount /volumes/public
+#1635513746
+rm log.txt
+#1635514521
+ls /volumes
+#1635515085
+cat test.sh
+#1635515103
+./test.sh
+#1635515143
+less log.txt
+#1635515175
+rm log.txt
+#1635515190
+ls /volumes
+#1635515212
+./test.sh
+#1635515263
+cat .log.txt
+#1635515273
+cat log.txt
