@@ -3845,3 +3845,83 @@ source ./.credentials
 echo $username
 #1635395476
 echo $password
+#1635433598
+test.sh
+#1635433635
+cat test.sh
+#1635433661
+cat bin/test.sh
+#1635433687
+ls bin
+#1635433707
+./test.sh
+#1635433807
+cat test.sh
+#1635433844
+./test.sh
+#1635433891
+diskutil umount /Volumes/Public
+#1635433962
+./test.sh
+#1635434012
+diskutil umount /Volumes/Public
+#1635434045
+./test.sh
+#1635434102
+diskutil umount /Volumes/Public
+#1635434160
+./test.sh
+#1635434273
+diskutil umount /Volumes/Public
+#1635434278
+./test.sh
+#1635434417
+diskutil umount /Volumes/Public
+#1635434422
+./test.sh
+#1635434557
+diskutil umount /Volumes/Public
+#1635434564
+./test.sh
+#1635434588
+diskutil umount /Volumes/Public
+#1635434591
+./test.sh
+#1635434608
+diskutil umount /Volumes/Public
+#1635434625
+./test.sh
+#1635434638
+ls /Volumes/Public
+#1635434642
+diskutil umount /Volumes/Public
+#1635434660
+./test.sh
+#1635435063
+mkdir mountpoint
+#1635435094
+mount //backupserver/Public ~/mountpoint
+#1635435107
+mount -t smbfs //backupserver/Public ~/mountpoint
+#1635435130
+ls mountpoint
+#1635435186
+umount ~/mountpoint
+#1635435190
+ls mountpoint
+#1635435363
+man mount
+#1635435519
+man mount_smbfs
+#1635435602
+mount -t smbfs //backupserver/Public ~/mountpoint -o credentials=~/credentials
+#1635435644
+man mount_cifs
+#1635435696
+man mount_smbfs
+#1635435724
+man mount
+#1635435775
+man mount_smbfs
+#1635452171
+findshow 'toy story'
