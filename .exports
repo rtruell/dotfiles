@@ -165,10 +165,6 @@ fi
 case "${SYSTEM_TYPE}" in
   macOS)
     export CLICOLOR=1  # turn on colourization for 'ls' on macOS
-    export HOMEBREW_CASK_OPTS="--appdir=~/Applications"  # keep Casks separate from the programs installed by macOS
-    export HOMEBREW_EDITOR="${EDITOR}"  # use the system editor to edit Homebrew stuff
-    export HOMEBREW_CACHE="/Volumes/ExternalHome/rtruell/HomebrewCache"  # get the cache off the SSD
-    export BREW_PREFIX=$(brew --prefix)  # store Homebrew's installation directory so I don't have to keep issuing the command
     export LDFLAGS="-L/usr/local/opt/curl/lib"  # so compilers can find 'curl' installed from Homebrew
     export CPPFLAGS="-I/usr/local/opt/curl/include"  # so compilers can find 'curl' installed from Homebrew
     export PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig"  # so 'pkg-config' can find 'curl' installed from Homebrew
