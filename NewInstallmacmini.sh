@@ -2,6 +2,10 @@
 StartDir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd "${StartDir}"
 
+# have the output of the script both on the screen and in a file...just in case
+# there are errors that need to be checked later
+exec > >(tee -i ~/installlog.txt) 2>&1
+
 # some of my functions are needed to set things up, so load them
 source ./.functions/execute_command.function
 source ./.functions/findcommand.function
@@ -165,7 +169,7 @@ print_result 0 'Exported Homebrew environment variables'
 
 # install all the things
 echo "About to install the .Brewfile contents...this could take a while!!"
-brew bundle --global 2>&1 | tee ~/bundle-install.txt
+brew bundle --global
 print_result $? 'Installed desired formula, Casks and MAS apps'
 
 # remove outdated versions from the cellar
