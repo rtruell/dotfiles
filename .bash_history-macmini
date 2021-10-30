@@ -4091,3 +4091,71 @@ ls /volumes
 cat .log.txt
 #1635515273
 cat log.txt
+#1635539020
+which xcode
+#1635539024
+whereis xcode
+#1635539031
+whereis Xcode
+#1635539040
+which Xcode
+#1635539045
+ls /Applications
+#1635540267
+bashman local
+#1635540299
+bashman declare
+#1635542599
+bash --version
+#1635564406
+man readarray
+#1635564411
+bashman readarray
+#1635564699
+bashman read
+#1635565469
+bashman readarray
+#1635565562
+bashman read
+#1635566959
+dotfiles
+#1635566973
+findtext -i readarray
+#1635567102
+findtext -i bash_profile
+#1635567210
+echo $BASH_VERSION
+#1635567857
+echo $BASH_VERSINFO
+#1635568420
+bashman readarray
+#1635568465
+which readarray
+#1635568476
+whereis readarray
+#1635568483
+home
+#1635568494
+man readarray
+#1635568532
+man maparray
+#1635568542
+bashman maparray
+#1635568549
+bashman readarray
+#1635568621
+readarray -v
+#1635568644
+readarray
+#1635568839
+declare -p BASH_VERSION
+#1635569533
+echo $BASH_VERSION
+#1635569682
+echo ${BASH_VERSION:0:1}
+#1635570518
+bashman tests
+#1635571049
+./test.sh
+#1635571081
+cat dotfiles/.dotfiles.ignore
