@@ -4341,3 +4341,89 @@ mount "/Volumes/data/Downloads/Live CD ISOs/fossapup64-9.5.iso" mountpoint -o lo
 man mount
 #1635746606
 hdiutil mount "/Volumes/data/Downloads/Live CD ISOs/fossapup64-9.5.iso"
+#1635797093
+whereis subl
+#1635797097
+which subl
+#1635797107
+ll /usr/bin/subl
+#1635797122
+ll /usr/local/bin/subl
+#1635797185
+rm /usr/bin/subl
+#1635797195
+sudo rm /usr/bin/subl
+#1635797236
+ln -s /usr/bin/subl '/Users/rtruell/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl'
+#1635797272
+ln -s '/Users/rtruell/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' /usr/bin/subl
+#1635797278
+sudo ln -s '/Users/rtruell/Applications/Sublime Text.app/Contents/SharedSupport/bin/subl' /usr/bin/subl
+#1635797294
+ll /usr/bin/subl
+#1635797300
+ll /usr/local/bin/subl
+#1635797701
+hdiutil mount "/Volumes/data/Downloads/Live CD ISOs/bionicpup64-8.0-uefi.iso"
+#1635798680
+diskutil list 
+#1635798798
+diskutil unmountDisk /dev/disk3 
+#1635798853
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/CorePure64-12.0.iso" of=/dev/rdisk3 bs=4M status=progress 
+#1635798877
+diskutil eject /dev/disk3 
+#1635799814
+diskutil list 
+#1635799822
+diskutil unmountDisk /dev/disk3 
+#1635799857
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/antiX-21-net_x64-net.iso" of=/dev/rdisk3 bs=4M status=progress 
+#1635799899
+diskutil eject /dev/disk3 
+#1635801230
+diskutil list 
+#1635801244
+diskutil unmountDisk /dev/disk3 
+#1635801258
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/lubuntu-20.04.3-desktop-amd64.iso" of=/dev/rdisk3 bs=4M status=progress 
+#1635801641
+diskutil eject /dev/disk3 
+#1635828375
+uname
+#1635831505
+echo $BREW_PREFIX
+#1635831516
+brew -prefix
+#1635831526
+brew --prefix
+#1635831902
+dotfiles
+#1635831916
+findtext 'brew --prefix'
+#1635832274
+echo `brew --prefix`/opt/gnu-sed/libexec/gnubin
+#1635832393
+path
+#1635832793
+man eval
+#1635832800
+bashman eval
+#1635832938
+ls $BREW_PREFIX
+#1635832955
+echo $BREW_PREFIX
+#1635832976
+ls `brew --prefix`
+#1635832985
+ls `brew --prefix`/bin
+#1635833012
+ls `brew --prefix`/sbin
+#1635833032
+echo `brew --prefix`
+#1635833052
+path
+#1635833976
+up
+#1635834045
+brew search firefox
