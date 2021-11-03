@@ -9,10 +9,14 @@ cd "${HOME}/dotfiles"  # we're probably already in the 'dotfiles' directory, but
 declare -a excludefiles
 dotconfig=0
 
-# first we read into an array, from ".dotfiles.ignore", the list of files and
-# directories that shouldn't be symlinked, one filename per line, skipping the
-# first 3 lines (comments)
-readarray -t -s 3 excludefiles < .dotfiles.ignore
+# first we read into an array the list of files and directories that shouldn't
+# be symlinked, which are in the file ".dotfiles.ignore", one filename/directory
+# per line
+while read -r line; do  # read a line
+  [[ "${line}" = \#* ]] || [[ -z "${line}" ]] && continue  # if the line starts with '#' (thus a comment) or is empty, skip it
+  excludefiles+=("$line")  # otherwise, add it to the array to be excluded
+done < .dotfiles.ignore  # read from the file ".dotfiles.ignore"
+[[ $line ]] && excludefiles+=("$line")
 
 # with a recent install of Debian 10.10.0 in a VM, I found that the '.config'
 # directory is created during the installation, in both 'root' and the user
@@ -31,7 +35,8 @@ shopt -s dotglob  # enable filenames starting with a '.' to be included in pathn
 shopt -s nullglob  # enable patterns matching no filenames to expand to the null string
 filenames=(*)  # get a list of all the files in the current directory into an array.  filenames are of the format "<filename>"
 shopt -u nullglob  # disable expansion to null string
-symlink_array_files $PWD $HOME filenames excludefiles  # and call the function to figure out which files/directories need to be symlinked
+# and call the function to figure out which files/directories need to be symlinked
+symlink_array_files "${PWD}" "${HOME}" <( (( ${#filenames[@]} )) && printf '%s\0' "${filenames[@]}") <( (( ${#excludefiles[@]} )) && printf '%s\0' "${excludefiles[@]}")
 
 # if '.config' does already exist, then we process the files/directories that
 # need to be linked into it separately
@@ -43,7 +48,8 @@ if [[ "${dotconfig}" == 1 ]]; then
   shopt -s nullglob  # enable patterns matching no filenames to expand to the null string
   filenames=(.config/*)  # get a list of all the files in the '.config' directory into an array.  filenames are of the format ".config/<filename>"
   shopt -u nullglob  # disable expansion to null string
-  symlink_array_files $PWD $HOME filenames excludefiles  # and call the function to figure out which files/directories need to be symlinked
+  # and call the function to figure out which files/directories need to be symlinked
+  symlink_array_files "${PWD}" "${HOME}" <( (( ${#filenames[@]} )) && printf '%s\0' "${filenames[@]}") <( (( ${#excludefiles[@]} )) && printf '%s\0' "${excludefiles[@]}")
 fi
 
 # I've decided to keep separate '.bash_history' files for each computer, so
@@ -54,13 +60,13 @@ printf "\n\e[0;35m  Now processing '.bash_history'.\e[0m\n\n"
 compname=$(hostname -s)  # get the hostname of the computer, stripping off the domainname if it's there
 sourceFile="$(PWD)/.bash_history-${compname}"  # prepend the PWD and "/.bash_history-" to the compname so that we have a full pathname to the ".bash_history" file for this computer
 targetFile="${HOME}/.bash_history"  # set the full pathname for the new link
-symlink_single_file sourceFile targetFile  # and call the function to symlink it
+symlink_single_file "${sourceFile}" "${targetFile}"  # and call the function to symlink it
 
 printf "\n\e[0;35m  Finished linking files and directories.\e[0m\n\n"
 
 # remove the variables and functions used from the environment so they're not
 # passed to subsequent commands
-unset excludefiles dotconfig excludecount filenames compname sourceFile targetFile
+unset excludefiles dotconfig line excludecount filenames compname sourceFile targetFile
 
 # and now switch back to where we started
 cd "${StartDir}"
