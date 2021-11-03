@@ -9,13 +9,14 @@ function symlink_array_files {
   sourceFile=""
   targetFile=""
   linkfiles=()
+  declare -a file_names exclude_files
   [[ -z $1 ]] && { printf '%s\n' "Must supply source and target directories and an array of filenames to symlink."; return 1; }
   [[ -z $2 ]] && { printf '%s\n' "Must supply target directory and an array of filenames to symlink."; return 1; }
   [[ -z $3 ]] && { printf '%s\n' "Must supply an array of filenames to symlink."; return 1; }
-  sourceDir=$1
-  targetDir=$2
-  local -n file_names=$3
-  [[ -n $4 ]] && { local -n exclude_files=$4; }
+  sourceDir=$1; shift
+  targetDir=$1; shift
+  while IFS= read -r -d '' entry; do file_names+=( "$entry" ); done <"$1"
+  [[ -n $2 ]] && { while IFS= read -r -d '' entry; do exclude_files+=( "$entry" ); done <"$2"; }
   for i in "${file_names[@]}"; do  # loop through all the file/directory names in the directory
     found=0  # clear the 'found' flag
     if [[ -n "${exclude_files}" ]]; then  # if an array of filenames that shouldn't be symlinked is supplied ...
