@@ -7,7 +7,7 @@ use Mylib qw(prompt prompt_yn);
 my @usbdisk;
 my $numberusbdisks = 0;
 
-my @output = `diskutil list | grep _scheme | grep -v grep | tr -d '*' | tr -s '[:space:]' '[:space:]'`;
+my @output = `diskutil list | grep _scheme | grep -v grep | tr -d '*' | tr -s ' '`;
 chomp(@output); # removes newlines
 foreach (@output)
 {
@@ -31,7 +31,7 @@ print "\n";
 
 # diskutil list
 # diskutil unmountDisk /dev/disk3
-# sudo dd if=mythbuntu-16.04.1-desktop-amd64.iso of=/dev/rdisk3 bs=4m status=progress  # 'bs=4M' on macOS
+# sudo dd if="mythbuntu-16.04.1-desktop-amd64.iso" of=/dev/rdisk3 bs=4m status=progress  # 'bs=4M' on macOS
 # diskutil eject /dev/disk3
 
 # if (prompt_yn("Do you want to import a list")){
