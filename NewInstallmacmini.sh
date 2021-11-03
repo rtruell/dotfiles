@@ -2,6 +2,9 @@
 StartDir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd "${StartDir}"
 
+# macOS-only stuff.  abort if not macOS.
+if [[ "$(uname)" != "Darwin" ]]; then echo "This script is to be run only on macOS"; exit 1; fi
+
 # have the output of the script both on the screen and in a file...just in case
 # there are errors that need to be checked later
 exec > >(tee -i ~/installlog.txt) 2>&1
