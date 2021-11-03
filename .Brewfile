@@ -79,7 +79,6 @@ cask "whatroute"
 cask "xquartz"
 
 mas "Parcel", id: 639968404
-mas "Xcode", id: 497799835
 mas "My Medical", id: 489690915
 mas "BitdefenderVirusScanner", id: 500154009
 mas "CarMaintenance", id: 413628447
