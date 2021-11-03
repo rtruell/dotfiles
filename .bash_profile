@@ -13,8 +13,8 @@ cd "${HOME}"
 
 # this loads all my functions.  see "README.md" in the ".functions" directory for
 # why they're in individual files in a directory rather than all in one file as
-# is usual.  files that shouldn't be loaded should have their names listed in
-# ".dotfiles.ignore", one filename per line.
+# is usual.  files or directories that shouldn't be loaded should be listed in
+# ".dotfiles.ignore", one filename/directory per line.
 declare -a excludefiles
 i=""
 functionfiles=()
