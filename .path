@@ -18,22 +18,33 @@ if [ -d ${HOME}/bin ] ; then
   addpath -f ${HOME}/bin
 fi
 
+# add the Homebrew install directories to the PATH.  this needs to be done on
+# Linux.  on macOS it's redundant, but the 'addpath' function makes sure that
+# only one copy of each directory is in the PATH
+if [ -d `brew --prefix`/sbin ] ; then
+  addpath -f `brew --prefix`/sbin
+fi
+
+if [ -d `brew --prefix`/bin ] ; then
+  addpath -f `brew --prefix`/bin
+fi
+
 # many of the utils Apple supplies in macOS are out-dated and less capable than
 # the same-named GNU versions, so I want to use the GNU versions instead, if
 # they're available...so the paths to those utils get added to the beginning of
 # PATH
-if [ -d /usr/local/opt/gnu-sed ] ; then
-  addpath -f /usr/local/opt/gnu-sed/libexec/gnubin
+if [ -d `brew --prefix`/opt/gnu-sed ] ; then
+  addpath -f `brew --prefix`/opt/gnu-sed/libexec/gnubin
 fi
 
-if [ -d /usr/local/opt/findutils ] ; then
-  addpath -f /usr/local/opt/findutils/libexec/gnubin
+if [ -d `brew --prefix`/opt/findutils ] ; then
+  addpath -f `brew --prefix`/opt/findutils/libexec/gnubin
 fi
 
-if [ -d /usr/local/opt/coreutils ] ; then
-  addpath -f /usr/local/opt/coreutils/libexec/gnubin
+if [ -d `brew --prefix`/opt/coreutils ] ; then
+  addpath -f `brew --prefix`/opt/coreutils/libexec/gnubin
 fi
 
-if [ -d /usr/local/opt/curl/bin ] ; then
-  addpath -f /usr/local/opt/curl/bin
+if [ -d `brew --prefix`/opt/curl/bin ] ; then
+  addpath -f `brew --prefix`/opt/curl/bin
 fi
