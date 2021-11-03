@@ -4441,3 +4441,35 @@ ls /etc
 colnorm
 #1635900766
 volnorm
+#1635908532
+b s alacritty
+#1635913583
+b s inxi
+#1635913604
+b in inxi
+#1635914041
+b info uniclip
+#1635914151
+b s uniclip
+#1635914288
+inxi
+#1635914307
+less /usr/local/bin/inxi
+#1635914343
+subl /usr/local/bin/inxi
+#1635914440
+inxi -Fx
+#1635914498
+dmidecode
+#1635914504
+b s dmidecode
+#1635921978
+b s inxi
+#1635922000
+inxi -M
+#1635922012
+inxi -F
+#1635922038
+inxi --recommends
+#1635922230
+b s gpart
