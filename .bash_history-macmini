@@ -4427,3 +4427,17 @@ path
 up
 #1635834045
 brew search firefox
+#1635884340
+sw_vers -productVersion
+#1635884462
+sw_vers
+#1635884481
+man sw_vers
+#1635888890
+listfunction capitalisestring
+#1635891244
+ls /etc
+#1635900755
+colnorm
+#1635900766
+volnorm
