@@ -39,6 +39,10 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'  # yellow on blue, begin standout-mode - 
 export LESS_TERMCAP_ue=$'\E[0m'  # normal, end underline
 export LESS_TERMCAP_us=$'\E[01;34m'  # bright blue, begin underline
 
+# export some environment variables for Homebrew
+export HOMEBREW_EDITOR="${EDITOR}"  # use the system editor to edit Homebrew stuff
+export BREW_PREFIX=$(brew --prefix)  # store Homebrew's installation directory so I don't have to keep issuing the command
+
 # detect the os
 if [[ -n ${OSTYPE} ]]; then
   case "${OSTYPE}" in
@@ -174,6 +178,9 @@ case "${SYSTEM_TYPE}" in
     export LDFLAGS="-L/usr/local/opt/curl/lib"  # so compilers can find 'curl' installed from Homebrew
     export CPPFLAGS="-I/usr/local/opt/curl/include"  # so compilers can find 'curl' installed from Homebrew
     export PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig"  # so 'pkg-config' can find 'curl' installed from Homebrew
+    # export some macOS-specific environment variables for Homebrew
+    export HOMEBREW_CASK_OPTS="--appdir=~/Applications"  # keep Casks separate from the programs installed by macOS
+    export HOMEBREW_CACHE="/Volumes/ExternalHome/rtruell/HomebrewCache"  # get the cache off the SSD
     ;;
   *)
     ;;
