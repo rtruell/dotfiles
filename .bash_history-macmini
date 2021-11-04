@@ -4511,3 +4511,5 @@ diskutil unmountDisk /dev/disk3
 sudo dd if="/Volumes/data/Downloads/Live CD ISOs/lmde-4-cinnamon-64bit.iso" of=/dev/rdisk3 bs=4M status=progress
 #1636058241
 diskutil eject /dev/disk3
+#1636062862
+man brew
