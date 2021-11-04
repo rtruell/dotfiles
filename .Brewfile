@@ -42,6 +42,7 @@ brew "smartmontools"
 brew "speedtest-cli"
 brew "ssh-copy-id"
 brew "tree"
+brew "uniclip"
 brew "wget"
 
 cask "1password6"
