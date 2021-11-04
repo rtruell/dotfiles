@@ -4473,3 +4473,25 @@ inxi -F
 inxi --recommends
 #1635922230
 b s gpart
+#1635977109
+hf iso2usb
+#1635977123
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl
+#1635977188
+diskutil list
+#1635977218
+diskutil unmountDisk /dev/disk3
+#1635977274
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/q4os-4.6-x64-instcd.r1.iso" of=/dev/rdisk3 bs=4M status=progress
+#1635977466
+diskutil eject /dev/disk3
+#1635978815
+csl
+#1635981156
+diskutil list
+#1635981628
+diskutil unmountDisk /dev/disk3
+#1635982531
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/linuxmint-20.2-xfce-64bit.iso" of=/dev/rdisk3 bs=4M status=progress
+#1635982963
+diskutil eject /dev/disk3
