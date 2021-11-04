@@ -4495,3 +4495,19 @@ diskutil unmountDisk /dev/disk3
 sudo dd if="/Volumes/data/Downloads/Live CD ISOs/linuxmint-20.2-xfce-64bit.iso" of=/dev/rdisk3 bs=4M status=progress
 #1635982963
 diskutil eject /dev/disk3
+#1636035752
+telnet amd-laptop
+#1636052126
+findshow 'wargames'
+#1636052298
+findshow 'teen wolf'
+#1636057697
+his
+#1636057751
+diskutil list
+#1636057762
+diskutil unmountDisk /dev/disk3
+#1636057803
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/lmde-4-cinnamon-64bit.iso" of=/dev/rdisk3 bs=4M status=progress
+#1636058241
+diskutil eject /dev/disk3
