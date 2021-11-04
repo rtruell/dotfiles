@@ -2,29 +2,24 @@
 StartDir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd "${StartDir}"
 
-# Debian-only stuff. Abort if not Debian.
-if [[ "${SYSTEM_TYPE}" != "Linux" ]]; then return 1; fi
+# Linux-only stuff.  abort if not Linux.
+if [[ "$(uname)" != "Linux" ]]; then echo "This script is to be run only on Linux"; exit 1; fi
 
-# get the Debian distro release name, eg. "buster"
-release_name=$(lsb_release -c | awk '{print $2}')
+# have the output of the script both on the screen and in a file...just in case
+# there are errors that need to be checked later
+exec > >(tee -i ~/installlog.txt) 2>&1
 
-# check to see if the Debian desktop is installed
-function is_debian_desktop() {
-  dpkg -l desktop-base >/dev/null 2>&1 || return 1
-}
+# some of my functions are needed to set things up, so load them
+source ./.functions/execute_command.function
+source ./.functions/findcommand.function
+source ./.functions/print_error.function
+source ./.functions/print_result.function
+source ./.functions/print_success.function
+source ./.functions/print_warn.function
+source ./.functions/symlink_array_files.function
+source ./.functions/symlink_single_file.function
 
-# Test if this script was run via the "dotfiles" bin script (vs. via curl/wget)
-function is_dotfiles_bin() {
-  [[ "$(basename $0 2>/dev/null)" == dotfiles ]] || return 1
-}
-
-# Make sure only root can run our script
-if [ "$(id -u)" != "0" ]; then
-  echo "This script must be run as root"
-  echo "Plese use sudo or su"
-  exit 1
-fi
-
+# ANSI sequences for colours to be used in the banner
 declare -a colours=(
   "\033[0;30m"
   "\033[1;30m"
@@ -38,6 +33,7 @@ declare -a colours=(
   "\033[0;37m"
 )
 
+# a banner display in the style as shown in the movie "Matrix"
 for z in {1..40}; do
   for i in {1..16}; do
     r="$(($RANDOM % 2))"
@@ -55,6 +51,7 @@ for z in {1..40}; do
   v="";
 done
 
+# emphasize that this is a new install :-)
 printf "\033[0m\n"
 printf " #    # ###### #    #       # #    #  ####  #####   ##   #      #        ### ###\n"
 printf " ##   # #      #    #       # ##   # #        #    #  #  #      #        ### ###\n"
@@ -65,173 +62,280 @@ printf " #    # ###### #    #       # #    #  ####    #   #    # ###### ######  
 printf "\n"
 unset colours z i r v
 
-# Check if /usr/bin/sudo and /bin/bash exist. if not, try to find them and suggest a symlink
+# Check if /usr/bin/sudo and /bin/bash exist. if not, try to find them and
+# suggest a symlink, then exit the script
 if [[ ! -f /usr/bin/sudo ]]; then
   if findcommand sudo &>/dev/null; then
-    printf -- '%s\n' "/usr/bin/sudo not found.  Please run 'sudo ln -s $(findcommand sudo) /usr/bin/sudo'"
+    message="/usr/bin/sudo not found.  Please run 'sudo ln -s $(findcommand sudo) /usr/bin/sudo'"
   else
-    printf -- '%s\n' "/usr/bin/sudo not found, and I couldn't find 'sudo' in '$PATH'"
+    message="/usr/bin/sudo not found, and I couldn't find 'sudo' in '\$PATH'"
   fi
-  exit
+  print_result 1 "${message}" "true"
 fi
+print_result 0 'Found sudo'
 if [[ ! -f /bin/bash ]]; then
   if findcommand bash &>/dev/null; then
-    printf -- '%s\n' "/bin/bash not found.  Please run 'sudo ln -s $(findcommand bash) /bin/bash'"
+    message="/bin/bash not found.  Please run 'sudo ln -s $(findcommand bash) /bin/bash'"
   else
-    printf -- '%s\n' "/bin/bash not found, and I couldn't find 'bash' in '$PATH'"
+    message="/bin/bash not found, and I couldn't find 'bash' in '\$PATH'"
   fi
-  exit
+  print_result 1 "${message}" "true"
+fi
+print_result 0 'Found bash'
+
+# symlink the dotfiles into ${HOME}
+source ./symlink.sh
+print_result $? 'Symlinked dotfiles'
+
+# Copy over the files and directories that are needed but shouldn't be in a
+# public repository
+declare -a filesdirs=(
+  ".credentials"
+  ".gitconfig.local"
+  ".ssh"
+)
+file=""
+i=""
+retcode=""
+currdir=$(PWD)
+# mount the NAS's data directory
+mkdir ~/mountpoint  # create a mount point for the data directory
+print_result $? 'Creating mount point'
+mount -t smbfs //fileserver/data ~/mountpoint  # and mount it.
+retcode=$?
+if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
+  print_result ${retcode} 'Mounted NAS'
+  cd ~/mountpoint/OSInstallFiles  # change to the directory containing the files/directories to be copied
+  print_result $? 'Changed to the directory containing the sensitive files/directories to be copied'
+  for i in ${filesdirs[@]}; do  # loop through the array of files and directories
+    if [[ -d "${i}" ]]; then  # if it's a directory
+      cp -ra "${i}" ~  # copy it and all its files
+      print_result $? 'Copied directory ${i}'
+      chmod 700 ~/"${i}"  # set the permissions on the directory itself to read/write/execute for the owner and nothing for others
+      print_result $? 'Set permissions for the ${i} directory'
+      chmod 600 ~/"${i}"/*  # set the permissions on the files in the directory to read/write for the owner and nothing for others
+      print_result $? 'Set permissions for the files in the ${i} directory'
+    else  # otherwise it's a file
+      cp -a "${i}" ~  # copy it
+      print_result $? 'Copied ${i}'
+      chmod 600 ~/"${i}"  # set its permissions to read/write for the owner and nothing for others
+      print_result $? 'Set permissions for ${i}'
+    fi
+  done
+  unmount ~/mountpoint  # unmount the NAS
+  print_result $? 'Unmounted NAS'
+  cd "${currdir}"  # change back to where we were
+else
+  print_result ${retcode} 'Mounting NAS failed...sensitive files/directories must be copied manually'
+fi
+rmdir ~/mountpoint
+print_result $? 'Removed mount point'
+
+# set the RTC to local time
+timedatectl set-local-rtc 1
+
+# get the computer's hostname
+compname=$(hostname -s)
+
+# if installing on a laptop
+#if [[ "${compname}" == "amd-laptop" ]]; then
+#  ads
+#fi
+
+# if installing in a VM
+#if [[ "${compname}" == "" ]]; then
+#  ads
+#fi
+
+# install, update and check Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+print_result $? 'Installed Homebrew'
+brew update
+print_result $? 'Updated Homebrew'
+brew doctor
+print_result $? 'Homebrew checked by the doctor'
+
+# export some environment variables for Homebrew
+export HOMEBREW_EDITOR="${EDITOR}"  # use the system editor to edit Homebrew stuff
+export BREW_PREFIX=$(brew --prefix)  # store Homebrew's installation directory so I don't have to keep issuing the command
+print_result 0 'Exported Homebrew environment variables'
+
+# install all the things
+echo "About to install the .Brewfile contents...this could take a while!!"
+brew bundle --global
+print_result $? 'Installed desired formula'
+
+# remove outdated versions from the cellar
+brew cleanup
+print_result $? 'Cleaned up Homebrew'
+
+# switch to using brew-installed bash as default shell
+if [[ -x "${BREW_PREFIX}/bin/bash" ]]; then
+  if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then  # if the new bash isn't already in the list of shell programs
+    echo "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells  # add it
+    print_result $? 'Updated "/etc/shell" with the just-installed version of bash'
+  fi
+  chsh -s "${BREW_PREFIX}/bin/bash"  # change the shell to the new bash
+  print_result $? 'Changed the shell to the new version of bash: $BASH_VERSION (should be 4+)'  # should be 4+ not the old 3.2.X
+else
+  print_result 1 'bash not installed properly by Homebrew'
 fi
 
-# use aptitude in the next steps ...
-if [ \! -f $(whereis aptitude | cut -f 2 -d ' ') ] ; then
-  apt-get install aptitude
-fi
+# update && upgrade apt
+apt update
+apt upgrade
 
-# update && upgrade
-aptitude update
-aptitude upgrade
-
-aptitude install \
-  `# read-write NTFS driver for Linux` \
-  ntfs-3g \
-  `# do not delete main-system-dirs` \
-  safe-rm \
-  `# default for many other things` \
-  tmux \
-  build-essential \
-  autoconf \
-  make \
-  cmake \
-  mktemp \
-  dialog \
-  `# unzip, unrar etc.` \
-  cabextract \
-  zip \
-  unzip \
-  rar \
-  unrar \
-  tar \
-  pigz \
-  p7zip \
-  p7zip-full \
-  p7zip-rar \
-  unace \
-  bzip2 \
-  gzip \
-  xz-utils \
-  advancecomp \
-  `# optimize image-size` \
-  gifsicle \
-  optipng \
-  pngcrush \
-  pngnq \
-  pngquant \
-  jpegoptim \
-  libjpeg-progs \
-  jhead \
-  `# utilities` \
-  coreutils  \
-  findutils  \
-  `# fast alternative to dpkg -L and dpkg -S` \
-  dlocate \
-  `# quickly find files on the filesystem based on their name` \
-  mlocate \
-  locales \
-  `# removing unneeded localizations` \
-  localepurge \
-  sysstat \
-  tcpdump \
-  colordiff \
-  moreutils \
-  atop \
-  ack-grep \
-  ngrep \
-  `# interactive processes viewer` \
-  htop \
-  `# mysql processes viewer` \
-  mytop \
-  `# interactive I/O viewer` \
-  iotop \
-  tree \
-  `# disk usage viewer` \
-  ncdu \
-  rsync \
-  whois \
-  vim \
-  csstidy \
-  recode \
-  exuberant-ctags \
-  `# GNU bash` \
-  bash \
-  bash-completion \
-  `# command line clipboard` \
-  xclip \
-  `# more colors in the shell` \
-  grc \
-  `# fonts also "non-free"-fonts` \
-  `# -- you need "multiverse" || "non-free" sources in your "source.list" -- ` \
-  fontconfig \
-  ttf-freefont \
-  ttf-mscorefonts-installer \
-  ttf-bitstream-vera \
-  ttf-dejavu \
-  ttf-liberation \
-  ttf-linux-libertine \
-  ttf-larabie-deco \
-  ttf-larabie-straight \
-  ttf-larabie-uncommon \
-  ttf-liberation \
-  xfonts-jmk \
-  `# trace everything` \
-  strace \
-  `# get files from web` \
-  wget \
-  curl \
-  w3m \
-  `# repo-tools`\
-  git \
-  subversion \
-  mercurial \
-  `# usefull tools` \
-  boxes \
-  fortune \
-  sl \
-  groff \
-  id3tool \
-  jq \
-  telnet \
-  thefuck \
-  k4dirstat \
-  network-manager-openconnect \
-  shutter \
-  openjdk \
-  virtualbox \
-  vlc \
-  zenmap \
-  nodejs \
-  npm \
-  ruby-full \
-  imagemagick \
-  lynx \
-  nmap \
-  pv \
-  ucspi-tcp \
-  xpdf \
-  sqlite3 \
-  perl \
-  python \
-  python-pip \
-  python3-pip \
-  python-dev \
-  python3-dev \
-  python3-setuptools \
-  `# install python-pygments for json print` \
-  python-pygments
+#apt install \
+#  `# read-write NTFS driver for Linux` \
+#  ntfs-3g \
+#  `# do not delete main-system-dirs` \
+#  safe-rm \
+#  `# default for many other things` \
+#  tmux \
+#  build-essential \
+#  autoconf \
+#  make \
+#  cmake \
+#  mktemp \
+#  dialog \
+#  hardinfo \
+#  synaptic \
+#  cifs-utils \
+#  jre \
+#  firefox \
+#  gdebi-core \
+#  gcc \
+#  inxi \
+#  dmidecode \  # might be installed automatically
+#  `# unzip, unrar etc.` \
+#  cabextract \
+#  zip \
+#  unzip \
+#  rar \
+#  unrar \
+#  tar \
+#  pigz \
+#  p7zip \
+#  p7zip-full \
+#  p7zip-rar \
+#  unace \
+#  bzip2 \
+#  gzip \
+#  xz-utils \
+#  advancecomp \
+#  `# optimize image-size` \
+#  gifsicle \
+#  optipng \
+#  pngcrush \
+#  pngnq \
+#  pngquant \
+#  jpegoptim \
+#  libjpeg-progs \
+#  jhead \
+#  `# utilities` \
+#  coreutils  \
+#  findutils  \
+#  moreutils  \
+#  `# fast alternative to dpkg -L and dpkg -S` \
+#  dlocate \
+#  `# quickly find files on the filesystem based on their name` \
+#  mlocate \
+#  locales \
+#  `# removing unneeded localizations` \
+#  localepurge \
+#  sysstat \
+#  tcpdump \
+#  colordiff \
+#  moreutils \
+#  atop \
+#  ack-grep \
+#  ngrep \
+#  `# interactive processes viewer` \
+#  htop \
+#  `# mysql processes viewer` \
+#  mytop \
+#  `# interactive I/O viewer` \
+#  iotop \
+#  tree \
+#  `# disk usage viewer` \
+#  ncdu \
+#  rsync \
+#  whois \
+#  vim \
+#  csstidy \
+#  recode \
+#  exuberant-ctags \
+#  `# GNU bash` \
+#  bash \
+#  bash-completion \
+#  `# command line clipboard` \
+#  xclip \
+#  `# more colors in the shell` \
+#  grc \
+#  `# fonts also "non-free"-fonts` \
+#  `# -- you need "multiverse" || "non-free" sources in your "source.list" -- ` \
+#  fontconfig \
+#  ttf-freefont \
+#  ttf-mscorefonts-installer \
+#  ttf-bitstream-vera \
+#  ttf-dejavu \
+#  ttf-liberation \
+#  ttf-linux-libertine \
+#  ttf-larabie-deco \
+#  ttf-larabie-straight \
+#  ttf-larabie-uncommon \
+#  ttf-liberation \
+#  xfonts-jmk \
+#  `# trace everything` \
+#  strace \
+#  `# get files from web` \
+#  wget \
+#  curl \
+#  w3m \
+#  `# repo-tools`\
+#  git \
+#  subversion \
+#  mercurial \
+#  `# usefull tools` \
+#  boxes \
+#  fortune \
+#  sl \
+#  groff \
+#  id3tool \
+#  jq \
+#  telnet \
+#  sshd \
+#  thefuck \
+#  k4dirstat \
+#  network-manager-openconnect \
+#  shutter \
+#  openjdk \
+#  virtualbox \
+#  vlc \
+#  zenmap \
+#  nodejs \
+#  npm \
+#  ruby-full \
+#  imagemagick \
+#  lynx \
+#  nmap \
+#  pv \
+#  ucspi-tcp \
+#  xpdf \
+#  sqlite3 \
+#  perl \
+#  python \
+#  python-pip \
+#  python3-pip \
+#  python-dev \
+#  python3-dev \
+#  python3-setuptools \
+#  `# install python-pygments for json print` \
+#  python-pygments
 
 #echo "install php-5-extensions ..."
 #
-#aptitude install \
+#apt install \
 #  php5-cli \
 #  php5-mysql \
 #  php5-curl \
@@ -263,34 +367,7 @@ aptitude install \
 #php5enmod imagick
 #php5enmod apcu
 
-# clean downloaded and already installed packages
-aptitude -v clean
-
 # update-locate-db
 echo "update-locate-db ..."
 updatedb -v
 
-##############################################################################################################
-### symlinks to link dotfiles into ~/
-###
-
-#   move git credentials into ~/.gitconfig.local    	http://stackoverflow.com/a/13615531/89484
-#   now .gitconfig can be shared across all machines and only the .local changes
-
-# symlink it up!
-source ./symlink.sh
-
-# add manual symlink for .ssh/config and probably .config/fish
-
-###
-##############################################################################################################
-
-# Ensure .ssh dir sanity
-#mkdir -p ~/.ssh
-#chmod 700 ~/.ssh
-#touch ~/.ssh/authorized_keys
-#chmod 600 ~/.ssh/authorized_keys
-
-# Local github files
-#touch ~/.gitconfig.local
-#chmod 600 ~/.gitconfig.local
