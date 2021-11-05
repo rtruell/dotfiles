@@ -4515,3 +4515,15 @@ diskutil eject /dev/disk3
 man brew
 #1636073673
 volall
+#1636085015
+dotfiles
+#1636085038
+findtext "ln -"
+#1636085212
+cd /Volumes/ExternalHome/rtruell/dotfiles-extras
+#1636085224
+findtext "ln -"
+#1636085504
+hoem
+#1636085505
+home
