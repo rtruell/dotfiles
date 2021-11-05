@@ -10,6 +10,7 @@ if [[ "$(uname)" != "Linux" ]]; then echo "This script is to be run only on Linu
 exec > >(tee -i ~/installlog.txt) 2>&1
 
 # some of my functions are needed to set things up, so load them
+source ./.functions/answer_is_yes.function
 source ./.functions/execute_command.function
 source ./.functions/findcommand.function
 source ./.functions/print_error.function
