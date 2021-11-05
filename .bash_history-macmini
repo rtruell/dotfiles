@@ -4513,3 +4513,5 @@ sudo dd if="/Volumes/data/Downloads/Live CD ISOs/lmde-4-cinnamon-64bit.iso" of=/
 diskutil eject /dev/disk3
 #1636062862
 man brew
+#1636073673
+volall
