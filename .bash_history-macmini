@@ -4527,3 +4527,11 @@ findtext "ln -"
 hoem
 #1636085505
 home
+#1636086476
+man ln
+#1636087118
+cd -
+#1636087141
+cd /Volumes/ExternalHome/rtruell/dotfiles-extras
+#1636087159
+findtext "execute_command"
