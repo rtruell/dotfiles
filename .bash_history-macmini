@@ -4535,3 +4535,57 @@ cd -
 cd /Volumes/ExternalHome/rtruell/dotfiles-extras
 #1636087159
 findtext "execute_command"
+#1636122818
+dotfiles
+#1636122834
+findtext PWD
+#1636122857
+PWD
+#1636122862
+pwd
+#1636127108
+up
+#1636138220
+dotfiles
+#1636138228
+findtext 'credentials'
+#1636138351
+alias dotfiles
+#1636138372
+cd /Volumes/data/Text/
+#1636138384
+findtext 'credentials'
+#1636138427
+cd OSInstall/
+#1636138430
+findtext 'credentials'
+#1636138482
+home
+#1636139182
+b s cifs
+#1636140987
+cat /etc/sudoers
+#1636140992
+sudo cat /etc/sudoers
+#1636141056
+groups
+#1636179005
+cat /etc/sudoers
+#1636179010
+sudo cat /etc/sudoers
+#1636179029
+groups
+#1636179201
+man grups
+#1636179206
+man groups
+#1636179225
+groups | grep admin
+#1636179268
+groups | grep " admin "
+#1636179302
+man grep
+#1636179410
+grep admin /etc/sudoers
+#1636179415
+sudo grep admin /etc/sudoers
