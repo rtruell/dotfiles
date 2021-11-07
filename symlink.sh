@@ -58,7 +58,7 @@ fi
 # installing on and link the appropriate '.bash_history-<hostname>' file
 printf "\n\e[0;35m  Now processing '.bash_history'.\e[0m\n\n"
 compname=$(hostname -s)  # get the hostname of the computer, stripping off the domainname if it's there
-sourceFile="$(PWD)/.bash_history-${compname}"  # prepend the PWD and "/.bash_history-" to the compname so that we have a full pathname to the ".bash_history" file for this computer
+sourceFile="${PWD}/.bash_history-${compname}"  # prepend the PWD and "/.bash_history-" to the compname so that we have a full pathname to the ".bash_history" file for this computer
 targetFile="${HOME}/.bash_history"  # set the full pathname for the new link
 symlink_single_file "${sourceFile}" "${targetFile}"  # and call the function to symlink it
 
