@@ -4715,3 +4715,5 @@ inxi
 inxi -Fx
 #1636261558
 b s inxi
+#1636265099
+man bash
