@@ -98,7 +98,7 @@ declare -a filesdirs=(
 file=""
 i=""
 retcode=""
-currdir=$(PWD)
+currdir=${PWD}
 # mount the NAS's data directory.  this will prompt for the user/password, then
 # try to create '/Volumes/data' and mount the NAS's data directory there
 osascript -e "mount volume \"smb://fileserver/data\"" 1>/dev/null 2>&1
