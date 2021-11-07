@@ -4589,3 +4589,129 @@ man grep
 grep admin /etc/sudoers
 #1636179415
 sudo grep admin /etc/sudoers
+#1636209130
+ll /etc
+#1636209159
+cat /etc/sudoers
+#1636209163
+sudo cat /etc/sudoers
+#1636209240
+man 5 sudoers
+#1636209545
+ll /etc
+#1636209578
+ll /
+#1636209603
+ll /etc/apache2
+#1636209616
+which httpd
+#1636210148
+man 5 sudoers
+#1636210217
+ls /etc/sudoers.d
+#1636214838
+bashman tests
+#1636214879
+[[ -d /etc/sudoers.d ]] && echo "it exists"
+#1636224026
+findshow 20-03-16
+#1636224147
+findshow 'green lan"
+#1636224160
+findshow 'green lan'
+#1636224263
+findshow 'andromeda'
+#1636226811
+listfunction execute_command
+#1636228339
+dotfiles
+#1636228352
+findtext 'eval'
+#1636228433
+findtext 'command'
+#1636228616
+listfunction execute_command symlink_single_file
+#1636228630
+listfunction symlink_single_file
+#1636235503
+bashman tests
+#1636236228
+up
+#1636237316
+listfunction print_result
+#1636237348
+listfunction print_success
+#1636238379
+man 5 sudoers
+#1636238442
+cat /etc/sudoers
+#1636238447
+sudo cat /etc/sudoers
+#1636238549
+printf hello
+#1636239300
+listfunction print_results
+#1636239323
+uname
+#1636239340
+listfunction execute_command
+#1636239356
+listfunction print_success
+#1636239361
+listfunction print_error
+#1636239367
+listfunction print_results
+#1636239384
+listfunction print_result
+#1636239440
+subl test.sh
+#1636239718
+less test.sh
+#1636239737
+source ./test.sh
+#1636240465
+printf '\n%s
+#1636240499
+printf '\n%s' 'this is a test'
+#1636240563
+printf '\n%s' '@includedir /etc/sudoers.d'
+#1636240631
+printf '\n%s' '@includedir /etc/sudoers.d' >>rick.txt
+#1636240639
+cat rick.txt
+#1636240660
+sudo cat /etc/sudoers
+#1636240673
+cat rick.txt
+#1636240687
+printf '\n%s\n' '@includedir /etc/sudoers.d' >>rick.txt
+#1636240699
+rm rick.txt
+#1636240704
+printf '\n%s\n' '@includedir /etc/sudoers.d' >>rick.txt
+#1636240709
+cat rick.txt
+#1636240769
+cat test.sh
+#1636240787
+subl test.sh
+#1636240821
+source ./test.sh
+#1636240961
+rm rick.txt
+#1636254564
+man su
+#1636260955
+yes
+#1636260967
+man yes
+#1636260994
+which yes
+#1636261001
+whereis yes
+#1636261020
+inxi
+#1636261037
+inxi -Fx
+#1636261558
+b s inxi
