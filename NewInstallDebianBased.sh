@@ -84,6 +84,33 @@ if [[ ! -f /bin/bash ]]; then
 fi
 print_result 0 'Found bash'
 
+# make it so I can use 'sudo'...and without having to type my password
+suprefix='su -c "'  # the 'su' command prefix to get root privileges
+command='cp rtruell /etc/sudoers.d && chmod 440 /etc/sudoers.d/rtruell"'  # the part of the command that copies the file with my 'sudo' permissions, and sets its permissions
+message="opied 'rtruell' to '/etc/sudoers.d' and changed its permissions"  # the part of the status message that tells what the above commands did
+if [[ -d /etc/sudoers.d ]]; then  # if the directory '/etc/sudoers.d' exits
+  print_result $? '/etc/sudoers.d exists'
+  if [[ -e /etc/sudoers.d/rtruell ]]; then  # and the file with my 'sudo' permissions is already in it
+    print_result $? '/etc/sudoers.d/rtruell exists'
+    command=""  # null out the command since nothing needs to be done
+    message=""  # same with the status message
+  else
+    message="C"${message}  # since my file is to be copied, prefix the status message with "C" to make a word
+  fi
+else
+  # the directory doesn't exist, so prefix the existing commands with the
+  # commands to add an 'includedir' directive to the end of '/etc/sudoers', make
+  # the '/etc/sudoers.d' directory, and set its permissions
+  command="printf '\n%s\n' '@includedir /etc/sudoers.d' >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && "${command}
+  # prefix the status message telling what the above commands did.  the ending
+  # 'c' makes the beginning of the existing status message a word
+  message="Added the necessary '@includedir' line to '/etc/sudoers', created '/etc/sudoers.d', changed its permissions, c"${message}
+fi
+if [[ -n ${command} ]]; then  # if the command didn't get nulled out because the directory and file already exist
+  command=${suprefix}${command}  # prefix the command with the 'su' command prefix because '/etc/sudoers' and '/etc/sudoers.d' require root privileges to be modified/created
+  execute_command ${command} ${message}  # and call the function to execute the command and print the status message
+fi
+
 # symlink the dotfiles into ${HOME}
 source ./symlink.sh
 print_result $? 'Symlinked dotfiles'
@@ -98,11 +125,11 @@ declare -a filesdirs=(
 file=""
 i=""
 retcode=""
-currdir=$(PWD)
-# mount the NAS's data directory
-mkdir ~/mountpoint  # create a mount point for the data directory
-print_result $? 'Creating mount point'
-mount -t smbfs //fileserver/data ~/mountpoint  # and mount it.
+currdir=${PWD}  # preserve the current working directory
+[[ ! $(apt list --installed 2>/dev/null | grep cifs-utils) ]] && yes | sudo apt install cifs-utils  # check to see if the cifs utilities are installed and install them if not
+mkdir ~/mountpoint  # create a mount point for the NAS' data directory ...
+print_result $? 'Created mount point'
+sudo mount -t cifs -o user=rtruell //fileserver/data /home/rtruell/mountpoint  # ... and mount it
 retcode=$?
 if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
   print_result ${retcode} 'Mounted NAS'
@@ -123,7 +150,7 @@ if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
       print_result $? 'Set permissions for ${i}'
     fi
   done
-  unmount ~/mountpoint  # unmount the NAS
+  sudo umount /home/rtruell/mountpoint  # unmount the NAS
   print_result $? 'Unmounted NAS'
   cd "${currdir}"  # change back to where we were
 else
@@ -133,10 +160,11 @@ rmdir ~/mountpoint
 print_result $? 'Removed mount point'
 
 # set the RTC to local time
-timedatectl set-local-rtc 1
+sudo timedatectl set-local-rtc 1
+print_result $? 'RTC set to local time'
 
 # get the computer's hostname
-compname=$(hostname -s)
+#compname=$(hostname -s)
 
 # if installing on a laptop
 #if [[ "${compname}" == "amd-laptop" ]]; then
@@ -162,9 +190,9 @@ export BREW_PREFIX=$(brew --prefix)  # store Homebrew's installation directory s
 print_result 0 'Exported Homebrew environment variables'
 
 # install all the things
-echo "About to install the .Brewfile contents...this could take a while!!"
-brew bundle --global
-print_result $? 'Installed desired formula'
+#echo "About to install the .Brewfile contents...this could take a while!!"
+#brew bundle --global
+#print_result $? 'Installed desired formula'
 
 # remove outdated versions from the cellar
 brew cleanup
@@ -371,4 +399,3 @@ apt upgrade
 # update-locate-db
 echo "update-locate-db ..."
 updatedb -v
-
