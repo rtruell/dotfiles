@@ -1,0 +1,2 @@
+rtruell ALL=(ALL:ALL) ALL  # allow me to use 'sudo'
+Defaults:rtruell !authenticate  # without having to type my password
