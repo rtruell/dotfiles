@@ -4717,3 +4717,99 @@ inxi -Fx
 b s inxi
 #1636265099
 man bash
+#1636344189
+man su
+#1636348105
+man trasmutate
+#1636348960
+sucommand=(su -c )
+#1636348987
+sucommand+=(')
+#1636349124
+echo "${sucommand[@]}"
+#1636349202
+sucommand+=('"$command"')
+#1636349206
+echo "${sucommand[@]}"
+#1636349287
+sucommand+=('"printf '\n%s\n' '@includedir /etc/sudoers.d' >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && "')
+#1636349289
+echo "${sucommand[@]}"
+#1636349315
+sucommand=(su -c )
+#1636349381
+sucommand+=('printf '\n%s\n' '@includedir /etc/sudoers.d' >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && ')
+#1636349389
+echo "${sucommand[@]}"
+#1636349470
+sucommand=(su -c )
+#1636349474
+echo "${sucommand[@]}"
+#1636349534
+sucommand+=(\'printf \'\n%s\n\' "@includedir /etc/sudoers.d" >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && \')
+#1636349558
+echo "${sucommand[@]}"
+#1636349576
+sucommand+=(\'printf \'\n%s\n\' \"@includedir /etc/sudoers.d\" >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && \')
+#1636349617
+sucommand+=(\'printf \'\n%s\n\' \'@includedir /etc/sudoers.d\' >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && \')
+#1636349648
+sucommand+=('printf \'\n%s\n\' \'@includedir /etc/sudoers.d\' >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && \)
+#1636349677
+echo $command
+#1636349698
+command="printf '\n%s\n' '@includedir /etc/sudoers.d' >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && "
+#1636349708
+sucommand=(su -c )
+#1636349716
+echo "${sucommand[@]}"
+#1636349721
+echo $command
+#1636349830
+sucommand+=('"$command"')
+#1636349838
+echo "${sucommand[@]}"
+#1636349894
+sucommand=(su -c )
+#1636349916
+sucommand+=(')
+sucommand+=("$command")
+sucommand+=(')
+#1636350050
+echo "${sucommand[@]}"
+#1636350152
+echo $command
+#1636350162
+sucommand=(su -c )
+#1636350168
+echo "${sucommand[@]}"
+#1636350332
+hf 'su -c'
+#1636351053
+su -c 'ls'
+#1636351202
+man su
+#1636351272
+b search su
+#1636351337
+which su
+#1636351341
+whereis su
+#1636351397
+b s util-linux
+#1636351411
+b h util-linux
+#1636351682
+man su
+#1636351697
+su root -c ls
+#1636352227
+printf '\n%s\n' '@includedir /etc/sudoers.d'
+#1636352267
+printf '\n%s\n' '@includedir /etc/sudoers.d'
+#1636352293
+printf "\n%s\n" "@includedir /etc/sudoers.d"
+#1636352562
+printf '\n%s\n' '@includedir /etc/sudoers.d'
+#1636352567
+copylastcommand
