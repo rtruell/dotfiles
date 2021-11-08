@@ -85,30 +85,23 @@ fi
 print_result 0 'Found bash'
 
 # make it so I can use 'sudo'...and without having to type my password
-suprefix='su -c "'  # the 'su' command prefix to get root privileges
-command='cp rtruell /etc/sudoers.d && chmod 440 /etc/sudoers.d/rtruell"'  # the part of the command that copies the file with my 'sudo' permissions, and sets its permissions
-message="opied 'rtruell' to '/etc/sudoers.d' and changed its permissions"  # the part of the status message that tells what the above commands did
 if [[ -d /etc/sudoers.d ]]; then  # if the directory '/etc/sudoers.d' exits
   print_result $? '/etc/sudoers.d exists'
   if [[ -e /etc/sudoers.d/rtruell ]]; then  # and the file with my 'sudo' permissions is already in it
     print_result $? '/etc/sudoers.d/rtruell exists'
-    command=""  # null out the command since nothing needs to be done
-    message=""  # same with the status message
   else
-    message="C"${message}  # since my file is to be copied, prefix the status message with "C" to make a word
+    message="Copied 'rtruell' to '/etc/sudoers.d' and changed its permissions"  # status message saying what the following commands did
+    su -c 'cp rtruell /etc/sudoers.d && chmod 440 /etc/sudoers.d/rtruell'  # copy the file and set its permissions
+    print_result $? "${message}"
   fi
 else
-  # the directory doesn't exist, so prefix the existing commands with the
-  # commands to add an 'includedir' directive to the end of '/etc/sudoers', make
-  # the '/etc/sudoers.d' directory, and set its permissions
-  command="printf '\n%s\n' '@includedir /etc/sudoers.d' >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && "${command}
-  # prefix the status message telling what the above commands did.  the ending
-  # 'c' makes the beginning of the existing status message a word
-  message="Added the necessary '@includedir' line to '/etc/sudoers', created '/etc/sudoers.d', changed its permissions, c"${message}
-fi
-if [[ -n ${command} ]]; then  # if the command didn't get nulled out because the directory and file already exist
-  command=${suprefix}${command}  # prefix the command with the 'su' command prefix because '/etc/sudoers' and '/etc/sudoers.d' require root privileges to be modified/created
-  execute_command ${command} ${message}  # and call the function to execute the command and print the status message
+  # status message saying what the following commands did.
+  message="Added the necessary '@includedir' line to '/etc/sudoers', created '/etc/sudoers.d', changed its permissions, copied 'rtruell' to '/etc/sudoers.d' and changed its permissions"
+  # the directory doesn't exist, so add an 'includedir' directive to the end of
+  # '/etc/sudoers', make the '/etc/sudoers.d' directory, set its permissions,
+  # copy the file with my 'sudo' permissions, and set the files permissions
+  su -c 'printf "\n%s\n" "@includedir /etc/sudoers.d" >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && cp rtruell /etc/sudoers.d && chmod 440 /etc/sudoers.d/rtruell'
+  print_result $? "${message}"
 fi
 
 # symlink the dotfiles into ${HOME}
