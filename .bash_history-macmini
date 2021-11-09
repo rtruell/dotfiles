@@ -4813,3 +4813,13 @@ printf "\n%s\n" "@includedir /etc/sudoers.d"
 printf '\n%s\n' '@includedir /etc/sudoers.d'
 #1636352567
 copylastcommand
+#1636414769
+whoami
+#1636414778
+echo $username
+#1636414784
+echo $USERNAME
+#1636414804
+username=$(whoami)
+#1636414808
+echo $username
