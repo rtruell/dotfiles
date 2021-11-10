@@ -4823,3 +4823,47 @@ echo $USERNAME
 username=$(whoami)
 #1636414808
 echo $username
+#1636500157
+b s beyond
+#1636500181
+b i beyond-compare
+#1636500225
+b s path-finder
+#1636500242
+b i path-finder
+#1636500292
+b s logitech
+#1636500333
+b i logitech-options
+#1636500363
+b i logitech-control-center
+#1636500379
+b h logitech-options
+#1636500603
+b h logitech-control-center
+#1636500770
+b s right
+#1636500812
+b i rightzoom
+#1636500826
+b h rightzoom
+#1636500955
+b s superduper
+#1636500969
+b i superduper
+#1636501024
+ls /etc/
+#1636501038
+cat /etc/hosts
+#1636501067
+cat /etc/hosts.equiv
+#1636501080
+ll /etc/
+#1636501101
+cat /etc/hosts
+#1636519287
+b s macjournal
+#1636519306
+b i macjournal
+#1636519342
+b h macjournal
