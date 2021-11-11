@@ -4867,3 +4867,17 @@ b s macjournal
 b i macjournal
 #1636519342
 b h macjournal
+#1636609037
+hf iso2usb
+#1636609050
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl
+#1636609058
+diskutil list
+#1636609092
+diskutil unmountDisk /dev/disk3
+#1636609150
+udo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.1.0-amd64-i386-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
+#1636609166
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.1.0-amd64-i386-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
+#1636609342
+diskutil eject /dev/disk3
