@@ -4881,3 +4881,25 @@ udo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.1.0-amd64-i386-netinst
 sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.1.0-amd64-i386-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
 #1636609342
 diskutil eject /dev/disk3
+#1636673764
+diskutil list
+#1636673778
+diskutil unmountDisk /dev/disk3
+#1636673817
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/lmde-4-cinnamon-64bit.iso" of=/dev/rdisk3 bs=4M status=progress
+#1636674230
+diskutil eject /dev/disk3
+#1636675659
+diskutil list
+#1636675664
+diskutil unmountDisk /dev/disk3
+#1636675726
+ls /etc/
+#1636675735
+cat /etc/soduers
+#1636675747
+cat /etc/sudoers
+#1636675756
+sudo cat /etc/sudoers
+#1636675791
+ls /etc
