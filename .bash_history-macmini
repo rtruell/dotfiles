@@ -4903,3 +4903,23 @@ cat /etc/sudoers
 sudo cat /etc/sudoers
 #1636675791
 ls /etc
+#1636675821
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/ubuntu-mate-20.04.3-desktop-amd64.iso" of=/dev/rdisk3 bs=4M status=progress
+#1636676501
+diskutil eject /dev/disk3
+#1636677486
+diskutil list
+#1636677496
+diskutil unmountDisk /dev/disk3
+#1636677527
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/linuxmint-20.2-mate-64bit.iso" of=/dev/rdisk3 bs=4M status=progress
+#1636678040
+diskutil eject /dev/disk3
+#1636695057
+diskutil list
+#1636695065
+diskutil unmountDisk /dev/disk3
+#1636695103
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.1.0-i386-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
+#1636695203
+diskutil eject /dev/disk3
