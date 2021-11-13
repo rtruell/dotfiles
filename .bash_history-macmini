@@ -4947,3 +4947,15 @@ sudo nana /etc/sudoers
 sudo nano /etc/sudoers
 #1636768863
 sudo visudo
+#1636768893
+man visudo
+#1636769078
+sudo visudo --with-env-editor
+#1636769097
+sudo nano /etc/sudoers
+#1636769132
+man visudo
+#1636769172
+echo $VISUAL
+#1636769182
+echo $EDITOR
