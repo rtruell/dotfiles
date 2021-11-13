@@ -4923,3 +4923,27 @@ diskutil unmountDisk /dev/disk3
 sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.1.0-i386-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
 #1636695203
 diskutil eject /dev/disk3
+#1636742009
+diskutil list
+#1636742045
+diskutil unmountDisk /dev/disk3
+#1636742117
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-9.5.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
+#1636742197
+diskutil eject /dev/disk3
+#1636753896
+diskutil list
+#1636753900
+diskutil unmountDisk /dev/disk3
+#1636753925
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-9.0.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
+#1636753995
+diskutil eject /dev/disk3
+#1636768678
+ll /etc
+#1636768832
+sudo nana /etc/sudoers
+#1636768843
+sudo nano /etc/sudoers
+#1636768863
+sudo visudo
