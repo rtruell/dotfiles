@@ -4959,3 +4959,47 @@ man visudo
 echo $VISUAL
 #1636769182
 echo $EDITOR
+#1636769334
+ll /
+#1636769344
+ls /private
+#1636769193
+sudo nano /etc/sudoers
+#1636769394
+sudo cat /etc/sudoers
+#1636769413
+sudo nano /etc/sudoers
+#1636769443
+sudo mkdir /etc/sudoers.d
+#1636769465
+su -c 'mkdir /etc/sudoers.d'
+#1636769472
+su -C 'mkdir /etc/sudoers.d'
+#1636769481
+man su
+#1636769547
+su root -c 'mkdir /etc/sudoers.d'
+#1636769575
+ls /etc
+#1636769590
+sudo nano /etc/sudoers
+#1636769632
+cd /etc
+#1636769643
+cp sudoers sudoers.bak
+#1636769669
+sudo cp sudoers sudoers.bak
+#1636769803
+su -c "cp /etc/sudoers sudoers"
+#1636769818
+su root -c "cp /etc/sudoers sudoers"
+#1636769988
+man sudo
+#1636770180
+sudo -e /etc/sudoers
+#1636770209
+man sudoers
+#1636770373
+man su
+#1636770404
+su -
