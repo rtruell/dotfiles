@@ -5003,3 +5003,125 @@ man sudoers
 man su
 #1636770404
 su -
+#1636771185
+sudo cat /etc/sudoers
+#1636771221
+sudo visudo
+#1636771263
+ls /etc
+#1636771288
+ll /private/etc
+#1636771321
+sudo cat /etc/sudoers
+#1636771336
+sudo mkdir /etc/sudoers.d
+#1636771340
+ll /etc
+#1636771407
+sudo mkdir /etc/sudoers.d
+#1636771416
+echo $?
+#1636771423
+ll /etc
+#1636771432
+ll /etc/sudoers.d
+#1636771444
+sudo ll /etc/sudoers.d
+#1636771477
+dotfiles
+#1636771483
+cat rtruell
+#1636771509
+sudo cp rtruell /etc/sudoers.d
+#1636771519
+ls /etc/
+#1636771550
+ll /etc
+#1636771576
+ll /etc/sudoers.d
+#1636771584
+sudo ll /etc/sudoers.d
+#1636771657
+sudo chmod 440 /etc/sudoers.d/rtruell
+#1636771662
+sudo ll /etc/sudoers.d
+#1636771674
+cd
+#1636772625
+cat /etc/sudoers
+#1636772639
+sudo cat /etc/sudoers
+#1636772853
+ll /etc
+#1636772873
+sudo chmod 755 /etc/sudoers.d
+#1636772879
+ll /etc
+#1636772942
+sudo cat /etc/sudoers
+#1636773559
+cat /bin/iso2usb.pl
+#1636773571
+cat bin/iso2usb.pl
+#1636773611
+diskutil list | grep _scheme | grep -v grep | tr -d '*' | tr -s ' '
+#1636773626
+diskutil list
+#1636773641
+diskutil list | grep _scheme 
+#1636773669
+diskutil list | grep _scheme | grep -v grep 
+#1636773694
+diskutil list | grep _scheme | grep -v grep | tr -d '*'
+#1636773714
+diskutil list | grep _scheme | grep -v grep | tr -d '*' | tr -s ' '
+#1636773791
+cat bin/iso2usb.pl
+#1636774099
+bin/iso2usb.pl
+#1636774163
+less .exports
+#1636774222
+less .bash_profile
+#1636774294
+dotfiles
+#1636774308
+findtext -i '@inc'
+#1636774351
+less .bash_profile
+#1636774383
+eval `perl -I /Volumes/ExternalHome/rtruell/perl5/lib/perl5 -Mlocal::lib=/Volumes/ExternalHome/rtruell/perl5`
+#1636774390
+hoem
+#1636774394
+up
+#1636774402
+bin/iso2usb.pl
+#1636774459
+cat bin/iso2usb.pl
+#1636774970
+hf disk3
+#1636775238
+diskutil list
+#1636775267
+diskutil unmountDisk /dev/disk3 
+#1636775375
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-8.8.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress 
+#1636775445
+diskutil eject /dev/disk3 
+#1636778959
+diskutil list
+#1636778966
+diskutil unmountDisk /dev/disk3 
+#1636778999
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-8.0.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress 
+#1636779045
+diskutil eject /dev/disk3 
+#1636779745
+diskutil list
+#1636779752
+diskutil unmountDisk /dev/disk3 
+#1636779794
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-7.8.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress 
+#1636779833
+diskutil eject /dev/disk3 
