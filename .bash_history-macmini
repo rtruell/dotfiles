@@ -5125,3 +5125,69 @@ diskutil unmountDisk /dev/disk3
 sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-7.8.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress 
 #1636779833
 diskutil eject /dev/disk3 
+#1636838379
+b s beyond-compare
+#1636838439
+b s firefox-esr
+#1636838459
+b s thunderbird
+#1636838691
+b i beyond-compare
+#1636838759
+man brew
+#1636839151
+cat /etc/sudoers
+#1636839158
+sudo cat /etc/sudoers
+#1636839278
+b s webmin
+#1636839418
+b s synaptic
+#1636839471
+b s debi
+#1636839507
+b h debianutils
+#1636839592
+b s samba
+#1636839620
+b i samba
+#1636839728
+b s sublime-
+#1636841690
+b s --fedora tree
+#1636841749
+b s --fedora
+#1636841794
+b s --debian tree
+#1636841840
+b s --debian firefox-esr
+#1636841953
+b s tldr
+#1636841969
+b i tldr
+#1636841989
+b h tldr
+#1636842515
+b h firefox-esr
+#1636843911
+printf '\n%s\n' "This is\na test"
+#1636843931
+printf '\n%s\n' "This is\\na test"
+#1636843967
+printf '\n%s\n%s\n' "This is" "a test"
+#1636844720
+printf '\n%s\n%s\n' "This is" "a test" >rick.test
+#1636844726
+cat rick.test
+#1636844741
+rm rick.test
+#1636844923
+cat /etc/apt/sources.list
+#1636844950
+cat /etc/sudoers.d/rtruell
+#1636847688
+csl
+#1636858690
+volnorm
+#1636858693
+volall
