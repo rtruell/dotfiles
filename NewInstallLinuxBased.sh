@@ -195,7 +195,7 @@ if [[ -d /etc/ssh/sshd_config.d ]]; then  # if the directory '/etc/ssh/sshd_conf
   if [[ -e /etc/ssh/sshd_config.d/rtruell ]]; then  # and the file with my configuration is already in it
     print_result $? "'/etc/ssh/sshd_config.d/rtruell' exists"
   else
-    sudo printf "%s\n" "Port 22000  # change the port in an attempt to foil crackers" >>/etc/ssh/sshd_config.d/rtruell'  # create the file '/etc/ssh/sshd_config.d/rtruell
+    sudo printf "%s\n" "Port 22000  # change the port in an attempt to foil crackers" >>/etc/ssh/sshd_config.d/rtruell  # create the file '/etc/ssh/sshd_config.d/rtruell
     print_result $? "Created 'rtruell' in '/etc/ssh/sshd_config.d'"
     sudo chmod 440 /etc/ssh/sshd_config.d/rtruell  # set its permissions
     print_result $? "Changed permissions for '/etc/ssh/sshd_config.d/rtruell'"
