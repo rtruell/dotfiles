@@ -122,7 +122,9 @@ declare -a packages=(
   "curl"
   "file"
   "inxi"
+  "linux-headers-amd64"
   "locate"
+  "make"
   "openssh-server"
   "procps"
 )
@@ -254,12 +256,12 @@ case ${machinetype} in
               if [[ ! $(lsmod | grep vboxguest) ]]; then
                 printf '%s\n' "Go to the 'Devices' menu and select 'Insert Guest Additions CD image...'"  # prompt to insert the CD image
                 read -n1 -r -p "Press any key once that's done."
-                sudo apt install linux-headers-amd64 make  # install the packages needed by the installer
-                print_result $? "Installed Linux headers and 'make'"
                 sudo mount /dev/cdrom  # mount the CD image
                 print_result $? "CD image mounted"
                 sudo sh /media/cdrom/VBoxLinuxAdditions.run  # run the installer
                 print_result $? "Installed Guest Additions"
+                sudo umount /dev/cdrom  # unmount the CD image
+                print_result $? "CD image unmounted"
               else
                 print_result 0 "Guest Additions installed"
               fi
@@ -464,8 +466,6 @@ sudo apt upgrade
 #  virtualbox \
 #  vlc \
 #  zenmap \
-#  nodejs \
-#  npm \
 #  ruby-full \
 #  imagemagick \
 #  lynx \
