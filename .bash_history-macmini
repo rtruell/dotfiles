@@ -5193,3 +5193,67 @@ volnorm
 volall
 #1636919885
 findshow 'hardy boys'
+#1637080771
+set | grep rtruell
+#1637080836
+print_result $? 'user doing the install is: ${USER}'
+#1637080863
+print_result $? 'user doing the install is: "${USER}"'
+#1637080898
+print_result $? 'user doing the install is: rtruell'
+#1637080996
+echo $USER
+#1637081009
+print_result $? 'user doing the install is: rtruell'
+#1637081058
+printf '%s\n' "${USER}"
+#1637085423
+echo $message
+#1637085484
+message="User doing the install is: ${USER}"
+#1637085516
+print_result $? '$message'
+#1637085538
+print_result $? '${message}'
+#1637085546
+echo $message
+#1637085560
+print_result $? '${message}'
+#1637085572
+print_result $? "${message}"
+#1637085633
+print_result $? "user doing the install is: ${USER}"
+#1637089255
+printf '%s\n' "This is a test"
+#1637089262
+sudo printf '%s\n' "This is a test"
+#1637089291
+sudo 'printf '%s\n' "This is a test"'
+#1637089309
+sudo printf '%s\n' "This is a test"
+#1637089321
+sudo printf '%s\n' "This is a test" >>/dev/null
+#1637089336
+sudo 'printf '%s\n' "This is a test" >>/dev/null'
+#1637089751
+dotfiles
+#1637089760
+findtext 'case '
+#1637089867
+home
+#1637089929
+machinetype=$(inxi -M | grep -i type | tr -s ' ' | cut -d' ' -f3)
+#1637089983
+printf "%s\n" ">${machinetype}<"
+#1637090009
+echo $machinetype
+#1637090028
+inxi -M | grep -i type | tr -s ' ' | cut -d' ' -f3
+#1637090039
+inzi -M
+#1637090045
+inxi -M
+#1637090227
+man bsh
+#1637090230
+man bash
