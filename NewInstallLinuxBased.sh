@@ -3,7 +3,7 @@ StartDir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd "${StartDir}"
 
 # Linux-only stuff.  abort if not Linux.
-if [[ "$(uname)" != "Linux" ]]; then echo "This script is to be run only on Linux"; exit 1; fi
+if [[ "$(uname)" != "Linux" ]]; then printf '%s\n' "This script is to be run only on Linux"; exit 1; fi
 
 # have the output of the script both on the screen and in a file...just in case
 # there are errors that need to be checked later
@@ -71,11 +71,11 @@ if [[ ! -f /usr/bin/sudo ]]; then
   if findcommand sudo &>/dev/null; then
     message="/usr/bin/sudo not found.  Please run 'sudo ln -s $(findcommand sudo) /usr/bin/sudo'"
   else
-    message="/usr/bin/sudo not found, and I couldn't find 'sudo' in '\$PATH'"
+    message="/usr/bin/sudo not found, and I couldn't find 'sudo' anywhere in the PATH"
   fi
   print_result 1 "${message}" "true"
 fi
-print_result 0 'Found sudo'
+print_result 0 "Found sudo"
 
 # Check if '/bin/bash' exists. if not, try to find 'bash' in the PATH and, if
 # found, suggest a symlink. exit the script, whether it was found in the PATH or
@@ -84,20 +84,21 @@ if [[ ! -f /bin/bash ]]; then
   if findcommand bash &>/dev/null; then
     message="/bin/bash not found.  Please run 'sudo ln -s $(findcommand bash) /bin/bash'"
   else
-    message="/bin/bash not found, and I couldn't find 'bash' in '\$PATH'"
+    message="/bin/bash not found, and I couldn't find 'bash' anywhere in the PATH"
   fi
   print_result 1 "${message}" "true"
 fi
-print_result 0 'Found bash'
+print_result 0 "Found bash"
 
 # get the name of the user doing the install
 username=$(whoami)
+print_result $? "user doing the install is: ${username}"
 
 # make it so I can use 'sudo'...and without having to type my password
 if [[ -d /etc/sudoers.d ]]; then  # if the directory '/etc/sudoers.d' exists
-  print_result $? '/etc/sudoers.d exists'
+  print_result $? "'/etc/sudoers.d' exists"
   if [[ -e /etc/sudoers.d/rtruell ]]; then  # and the file with my 'sudo' permissions is already in it
-    print_result $? '/etc/sudoers.d/rtruell exists'
+    print_result $? "'/etc/sudoers.d/rtruell' exists"
   else
     su -c 'cp rtruell /etc/sudoers.d && chmod 440 /etc/sudoers.d/rtruell'  # copy the file and set its permissions
     retcode=$?  # preserve the return code
@@ -120,6 +121,7 @@ declare -a packages=(
   "build-essential"
   "cifs-utils"
   "curl"
+  "dmidecode"
   "file"
   "inxi"
   "linux-headers-amd64"
@@ -129,13 +131,17 @@ declare -a packages=(
   "procps"
 )
 for i in ${packages[@]}; do  # loop through the array of packages
-  [[ ! $(apt list --installed 2>/dev/null | grep "${i}") ]] && yes | sudo apt install "${i}"  # install the package if necessary
-  print_result $? 'Installed "${i}"'
+  if [[ ! $(apt list --installed 2>/dev/null | grep "${i}") ]]; then  # if the package isn't already installed
+   yes | sudo apt install "${i}"  # install it, automatically answering 'yes' to any prompts
+   print_result $? "Installed ${i}"
+ else  # the package is already installed
+   print_result $? "${i} already installed"
+ fi
 done
 
 # symlink the dotfiles into ${HOME}
 source ./symlink.sh
-print_result $? 'Symlinked dotfiles'
+print_result $? "Symlinked dotfiles"
 
 # Copy over the files and directories that are needed but shouldn't be in a
 # public repository
@@ -148,74 +154,76 @@ i=""
 retcode=""
 currdir=${PWD}  # preserve the current working directory
 mkdir ~/mountpoint  # create a mount point for the NAS' data directory ...
-print_result $? 'Created mount point'
+print_result $? "Created mount point"
 sudo mount -t cifs -o user=rtruell //fileserver/data /home/rtruell/mountpoint  # ... and mount it
 retcode=$?
 if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
-  print_result ${retcode} 'Mounted NAS'
+  print_result ${retcode} "Mounted NAS"
   cd ~/mountpoint/OSInstallFiles  # change to the directory containing the files/directories to be copied
-  print_result $? 'Changed to the directory containing the sensitive files/directories to be copied'
+  print_result $? "Changed to the directory containing the sensitive files/directories to be copied"
   for i in ${filesdirs[@]}; do  # loop through the array of files and directories
     if [[ -d "${i}" ]]; then  # if it's a directory
       cp -ra "${i}" ~  # copy it and all its files
-      print_result $? 'Copied directory "${i}"'
+      print_result $? "Copied directory ${i}"
       chmod 700 ~/"${i}"  # set the permissions on the directory itself to read/write/execute for the owner and nothing for others
-      print_result $? 'Set permissions for the "${i}" directory'
+      print_result $? "Set permissions for the ${i} directory"
       chmod 600 ~/"${i}"/*  # set the permissions on the files in the directory to read/write for the owner and nothing for others
-      print_result $? 'Set permissions for the files in the "${i}" directory'
+      print_result $? "Set permissions for the files in the ${i} directory"
     else  # otherwise it's a file
       cp -a "${i}" ~  # copy it
-      print_result $? 'Copied "${i}"'
+      print_result $? "Copied ${i}"
       chmod 600 ~/"${i}"  # set its permissions to read/write for the owner and nothing for others
-      print_result $? 'Set permissions for "${i}"'
+      print_result $? "Set permissions for ${i}"
     fi
   done
   sudo umount /home/rtruell/mountpoint  # unmount the NAS
-  print_result $? 'Unmounted NAS'
+  print_result $? "Unmounted NAS"
   cd "${currdir}"  # change back to where we were
 else
-  print_result ${retcode} 'Mounting NAS failed...sensitive files/directories must be copied manually'
+  print_result ${retcode} "Mounting NAS failed...sensitive files/directories must be copied manually"
 fi
 rmdir ~/mountpoint
-print_result $? 'Removed mount point'
+print_result $? "Removed mount point"
 
 # set the RTC to local time
 sudo timedatectl set-local-rtc 1
-print_result $? 'RTC set to local time'
+print_result $? "RTC set to local time"
 
 # change the port number for 'sshd'
 if [[ -d /etc/ssh/sshd_config.d ]]; then  # if the directory '/etc/ssh/sshd_config.d' exists
-  print_result $? '/etc/ssh/sshd_config.d exists'
+  print_result $? "'/etc/ssh/sshd_config.d' exists"
   if [[ -e /etc/ssh/sshd_config.d/rtruell ]]; then  # and the file with my configuration is already in it
-    print_result $? '/etc/ssh/sshd_config.d/rtruell exists'
+    print_result $? "'/etc/ssh/sshd_config.d/rtruell' exists"
   else
-    sudo 'printf "%s\n" "Port 22000  # change the port in an attempt to foil crackers" >>/etc/ssh/sshd_config.d/rtruell'  # create the file '/etc/ssh/sshd_config.d/rtruell'
+    sudo printf "%s\n" "Port 22000  # change the port in an attempt to foil crackers" >>/etc/ssh/sshd_config.d/rtruell'  # create the file '/etc/ssh/sshd_config.d/rtruell
     print_result $? "Created 'rtruell' in '/etc/ssh/sshd_config.d'"
-    sudo 'chmod 440 /etc/ssh/sshd_config.d/rtruell'  # set its permissions
-    print_result $? "Changed permissions for '/etc/ssh/sshd_config.d/rtruell"
+    sudo chmod 440 /etc/ssh/sshd_config.d/rtruell  # set its permissions
+    print_result $? "Changed permissions for '/etc/ssh/sshd_config.d/rtruell'"
   fi
 else
   # the directory doesn't exist, so create it, set its permissions, create the file '/etc/ssh/sshd_config.d/rtruell', and set its permissions
-  sudo 'mkdir /etc/ssh/sshd_config.d'
+  sudo mkdir /etc/ssh/sshd_config.d
   print_result $? "Created '/etc/ssh/sshd_config.d'"
-  sudo 'chmod 755 /etc/ssh/sshd_config.d'
+  sudo chmod 755 /etc/ssh/sshd_config.d
   print_result $? "Changed permissions for '/etc/ssh/sshd_config.d'"
-  sudo 'printf "%s\n" "Port 22000  # change the port in an attempt to foil crackers" >>/etc/ssh/sshd_config.d/rtruell'
+  sudo printf "%s\n" "Port 22000  # change the port in an attempt to foil crackers" >>/etc/ssh/sshd_config.d/rtruell
   print_result $? "Created 'rtruell' in '/etc/ssh/sshd_config.d'"
-  sudo 'chmod 440 /etc/ssh/sshd_config.d/rtruell'
-  print_result $? "Changed permissions for '/etc/ssh/sshd_config.d/rtruell"
+  sudo chmod 440 /etc/ssh/sshd_config.d/rtruell
+  print_result $? "Changed permissions for '/etc/ssh/sshd_config.d/rtruell'"
 fi
 
 # change the timeout value in 'grub'
 sudo sed -E 's/(GRUB_TIMEOUT=).*/\110/' -i /etc/default/grub  # change the timeout to 10 seconds, regardless of what it was
+print_result $? "Changed the timeout value for 'grub'"
 sudo update-grub  # update grub so the new value takes effect
+print_result $? "Updated 'grub'"
 
 # get the machine type
 machinetype=$(inxi -M | grep -i type | tr -s ' ' | cut -d' ' -f3)
 print_result $? "Machine type is: ${machinetype}"
 
 # commands dependent on the type of machine being installed
-case ${machinetype} in
+case "${machinetype}" in
       Laptop)
               # allow the laptop lid to be closed enough to blank the display
               # without putting the computer into 'sleep' mode
@@ -280,25 +288,25 @@ case ${machinetype} in
 
 # install, update and check Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
-print_result $? 'Installed Homebrew'
+print_result $? "Installed Homebrew"
 brew update
-print_result $? 'Updated Homebrew'
+print_result $? "Updated Homebrew"
 brew doctor
-print_result $? 'Checked Homebrew'
+print_result $? "Checked Homebrew"
 
 # export some environment variables for Homebrew
 export HOMEBREW_EDITOR="${EDITOR}"  # use the system editor to edit Homebrew stuff
 export BREW_PREFIX=$(brew --prefix)  # store Homebrew's installation directory so I don't have to keep issuing the command
-print_result 0 'Exported Homebrew environment variables'
+print_result 0 "Exported Homebrew environment variables"
 
 ## install all the things
 #echo "About to install the .Brewfile contents...this could take a while!!"
 #brew bundle --global
-#print_result $? 'Installed desired formula'
+#print_result $? "Installed desired formula"
 
 # remove outdated versions from the cellar
 brew cleanup
-print_result $? 'Cleaned up Homebrew'
+print_result $? "Cleaned up Homebrew"
 
 ## switch to using brew-installed bash as default shell
 #if [[ -x "${BREW_PREFIX}/bin/bash" ]]; then
@@ -307,26 +315,26 @@ print_result $? 'Cleaned up Homebrew'
 #    print_result $? "Updated '/etc/shell' with the just-installed version of bash"
 #  fi
 #  chsh -s "${BREW_PREFIX}/bin/bash"  # change the shell to the new bash
-#  print_result $? 'Changed the shell to the new version of bash: $BASH_VERSION (should be 4+)'  # should be 4+ not the old 3.2.X
+#  print_result $? "Changed the shell to the new version of bash: $BASH_VERSION (should be 4+)"  # should be 4+ not the old 3.2.X
 #else
-#  print_result 1 'bash not installed properly by Homebrew'
+#  print_result 1 "bash not installed properly by Homebrew"
 #fi
 
 # add the repository for Webmin to 'apt'
 wget -q https://www.webmin.com/jcameron-key.asc -O- | apt-key add -
-print_result $? 'Added GPG key for the Webmin repository'
+print_result $? "Added GPG key for the Webmin repository"
 sudo printf '\n%s\n%s\n%s\n' " " "# Repository for Webmin" "deb https://download.webmin.com/download/repository sarge contrib" >>/etc/apt/sources.list
-print_result $? 'Added the Webmin repository to "sources.list"'
+print_result $? "Added the Webmin repository to 'sources.list'"
 
 # add the repository for Sublime Text/Merge to 'apt'
 wget -q https://download.sublimetext.com/sublimehq-pub.gpg -O- | apt-key add -
-print_result $? 'Added GPG key for the Sublime Text/Merge repository'
+print_result $? "Added GPG key for the Sublime Text/Merge repository"
 sudo printf '\n%s\n%s\n%s\n' " " "# Repository for Sublime Text/Merge" "deb https://download.sublimetext.com/ apt/stable/" >>/etc/apt/sources.list
-print_result $? 'Added the Sublime Text/Merge repository to "sources.list"'
+print_result $? "Added the Sublime Text/Merge repository to 'sources.list'"
 
 # since secure repositories were added to 'apt', install 'apt-transport-https'
 sudo apt install apt-transport-https
-print_result $? 'Installed "apt-transport-https"'
+print_result $? "Installed 'apt-transport-https'"
 
 # update && upgrade apt
 sudo apt update
@@ -546,4 +554,4 @@ sudo apt upgrade
 
 # update-locate-db
 updatedb -v
-print_result $? 'Locate database updated'
+print_result $? "Locate database updated"
