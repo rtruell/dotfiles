@@ -131,11 +131,11 @@ declare -a packages=(
   "procps"
 )
 for i in ${packages[@]}; do  # loop through the array of packages
-  if [[ ! $(apt list --installed 2>/dev/null | grep "${i}") ]]; then  # if the package isn't already installed
+  if [[ ! $(apt list --installed 2>/dev/null | grep "^${i}") ]]; then  # if the package isn't already installed
    yes | sudo apt install "${i}"  # install it, automatically answering 'yes' to any prompts
    print_result $? "Installed ${i}"
  else  # the package is already installed
-   print_result $? "${i} already installed"
+   print_result 0 "${i} already installed"
  fi
 done
 
@@ -176,9 +176,10 @@ if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
       print_result $? "Set permissions for ${i}"
     fi
   done
+  cd "${currdir}"  # change back to where we were
+  print_result $? "Changed back to '${currdir}'"
   sudo umount /home/rtruell/mountpoint  # unmount the NAS
   print_result $? "Unmounted NAS"
-  cd "${currdir}"  # change back to where we were
 else
   print_result ${retcode} "Mounting NAS failed...sensitive files/directories must be copied manually"
 fi
@@ -285,6 +286,7 @@ case "${machinetype}" in
               fi
               ;;
            *) ;;
+esac
 
 # install, update and check Homebrew
 /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
