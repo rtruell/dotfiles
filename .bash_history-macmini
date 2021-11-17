@@ -5257,3 +5257,13 @@ inxi -M
 man bsh
 #1637090230
 man bash
+#1637117855
+dotfles
+#1637117857
+dotfiles
+#1637117883
+home
+#1637117916
+cd /Volumes/ExternalHome/rtruell/dotfiles-extras
+#1637117945
+findtext -i homebrew
