@@ -5269,3 +5269,9 @@ cd /Volumes/ExternalHome/rtruell/dotfiles-extras
 findtext -i homebrew
 #1637118472
 curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install
+#1637123455
+cd /Volumes/ExternalHome/rtruell/dotfiles-extras
+#1637123465
+findtext -i case
+#1637123818
+home
