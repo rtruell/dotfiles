@@ -5275,3 +5275,43 @@ cd /Volumes/ExternalHome/rtruell/dotfiles-extras
 findtext -i case
 #1637123818
 home
+#1637274353
+gpg --version
+#1637274393
+b s gpg
+#1637274441
+b i gpg
+#1637274470
+b i gpg1
+#1637274566
+b i gpg2
+#1637277353
+b i gnupg
+#1637277378
+b h gnupg
+#1637277453
+b h gpg
+#1637277659
+b in black-ink
+#1637277693
+b i black-ink
+#1637277718
+b s black-ink
+#1637277938
+b i gnupg
+#1637277948
+b i gpg
+#1637278285
+b i gnupg
+#1637278296
+b i gpg
+#1637278338
+man gpg
+#1637278350
+man gnupg
+#1637278382
+man gpg
+#1637279282
+gpg --version
+#1637276361
+b in gpg
