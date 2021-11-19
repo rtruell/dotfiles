@@ -5315,3 +5315,39 @@ man gpg
 gpg --version
 #1637276361
 b in gpg
+#1637293801
+gpg --version
+#1637295214
+man wget
+#1637296701
+ls /Volumes/ExternalHome/rtruell/
+#1637296746
+ls /Volumes/Downloads/RecentDownloads/
+#1637296756
+ls /Volumes/Downloads/RecentDownloads/jcam*
+#1637296763
+file /Volumes/Downloads/RecentDownloads/jcam*
+#1637296780
+file /Volumes/Downloads/RecentDownloads/sub*
+#1637296803
+man file
+#1637296914
+file -i /Volumes/Downloads/RecentDownloads/sub*
+#1637297187
+gpg --batch --yes --dearmor --keyring=gnupg-ring /Volumes/Downloads/RecentDownloads/sub*
+#1637297219
+ls /Volumes/Downloads/RecentDownloads/jcam*
+#1637297226
+ls /Volumes/Downloads/RecentDownloads/
+#1637297261
+file -i /Volumes/Downloads/RecentDownloads/sub*
+#1637297271
+file /Volumes/Downloads/RecentDownloads/sub*
+#1637300196
+ll /Volumes/Downloads/RecentDownloads/
+#1637303775
+spaceusesd
+#1637303788
+spaceused
+#1637306335
+echo $(USERLIBRARY)
