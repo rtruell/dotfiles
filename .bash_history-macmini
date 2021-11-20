@@ -5351,3 +5351,39 @@ spaceusesd
 spaceused
 #1637306335
 echo $(USERLIBRARY)
+#1637372279
+findshow 'harry potter'
+#1637380222
+cd dotfiles/bin
+#1637380241
+ll
+#1637380269
+home
+#1637380513
+ls mountpoint
+#1637380519
+rm mountpoint
+#1637381162
+ls /bin
+#1637381172
+ls bin
+#1637381181
+pwd
+#1637381192
+echo $HOME
+#1637381331
+pwd
+#1637381334
+echo $HOME
+#1637381349
+ls $HOME/bin
+#1637381592
+ls /usr/share
+#1637381612
+ls /usr/share/keyrings
+#1637381635
+ll /usr/share
+#1637384569
+echo "this is a test"
+#1637384583
+echo "this is a \"test\""
