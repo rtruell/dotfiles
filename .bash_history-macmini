@@ -5387,3 +5387,39 @@ ll /usr/share
 echo "this is a test"
 #1637384583
 echo "this is a \"test\""
+#1637521447
+cd /Volumes/data/OSInstallFiles/
+#1637521472
+la
+#1637521490
+ls ..
+#1637521546
+ls ../Downloads/Linux/InUse/Installed/
+#1637521576
+ls ../Downloads/Linux/InUse/Installed/*.deb
+#1637521645
+ls ../Downloads/Linux/InUse/Installed/bcom*.deb
+#1637523168
+cd ../Downloads/Linux/InUse/Installed
+#1637523171
+pwd
+#1637524384
+ll /
+#1637524434
+ll /private
+#1637524477
+ll /private/tmp
+#1637525202
+dotfiles
+#1637525216
+findtext nullglob
+#1637533931
+up
+#1637533936
+b s moneydance
+#1637533950
+b i moneydance
+#1637555817
+dotfiles
+#1637555826
+findtext arry
