@@ -5423,3 +5423,9 @@ b i moneydance
 dotfiles
 #1637555826
 findtext arry
+#1637634995
+python3 -c "import os; print(os.environ)"
+#1637635005
+python -c "import os; print(os.environ)"
+#1637635032
+python -c "import os; print(os.environ)" | less
