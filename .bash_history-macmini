@@ -5459,3 +5459,21 @@ b i firefox-esr
 b i thunderbird
 #1637779182
 findshow 'heartland christ'
+#1637967131
+cd /Volumes/ExternalHome/rtruell/
+#1637967145
+findtext superstore journal.txt
+#1637967174
+listfunction findtext
+#1637967252
+findtext -i superstore journal.txt
+#1637967281
+findtext -i *superstore* journal.txt
+#1637967302
+findtext -i \*superstore\* journal.txt
+#1637967332
+findtext -i "*pc optimum*" journal.txt
+#1637967345
+findtext -i "\*pc optimum\*" journal.txt
+#1637967372
+findtext -i "*pc optimum*" journal.txt
