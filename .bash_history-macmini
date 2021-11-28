@@ -5477,3 +5477,5 @@ findtext -i "*pc optimum*" journal.txt
 findtext -i "\*pc optimum\*" journal.txt
 #1637967372
 findtext -i "*pc optimum*" journal.txt
+#1638031941
+findshow 'promet'
