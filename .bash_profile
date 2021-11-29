@@ -21,7 +21,7 @@ functionfiles=()
 readarray -t -s 3 excludefiles < dotfiles/.dotfiles.ignore  # load in all the filenames to be excluded
 shopt -s dotglob
 shopt -s nullglob
-filenames=(.functions/*)  # get a list of all the files in the '.functions' directory into an arry.  filenames are of the format ".functions/<function-name>"
+filenames=(.functions/*)  # get a list of all the files in the '.functions' directory into an array.  filenames are of the format ".functions/<function-name>"
 shopt -u nullglob
 for i in "${filenames[@]}"; do  # loop through all the filenames in the directory
   found=0  # clear the 'found' flag
@@ -86,5 +86,6 @@ else
 fi
 echo
 
-# and now switch back to the directory selected in Path Finder
+# and now switch back to the directory selected in Path Finder, if that's how
+# iTerm was started
 cd "${selecteddir}"
