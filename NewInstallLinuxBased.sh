@@ -269,10 +269,22 @@ else
 fi
 
 # change the timeout value in 'grub'
+sudo cp /etc/default/grub /etc/default/grub.orig  # back up '/etc/default/grub', just in case
+print_result $? "Backed up '/etc/default/grub'"
 sudo sed -E 's/(GRUB_TIMEOUT=).*/\110/' -i /etc/default/grub  # change the timeout to 10 seconds, regardless of what it was
 print_result $? "Changed the timeout value for 'grub'"
 sudo update-grub  # update grub so the new value takes effect
 print_result $? "Updated 'grub'"
+
+# change the servers the clock is synced to
+sudo cp /etc/systemd/timesyncd.conf /etc/systemd/timesyncd.conf.orig  # back up '/etc/systemd/timesyncd.conf', just in case
+print_result $? "Backed up '/etc/systemd/timesyncd.conf'"
+sudo sed -E 's/#(NTP=).*/\1firewall/' -i /etc/systemd/timesyncd.conf  # uncomment the NTP line and add 'firewall' as the main server to sync to
+print_result $? "Uncommented the 'NTP' line and added 'firewall'"
+sudo sed -E 's/#(FallbackNTP=.*)/\1/' -i /etc/systemd/timesyncd.conf  # uncomment the FallbackNTP line in case 'firewall' is having problems
+print_result $? "Uncommented the 'FallbackNTP' line"
+sudo systemctl restart systemd-timesyncd  # restart 'systemd-timesyncd' so the new values take effect
+print_result $? "Restarted 'systemd-timesyncd'"
 
 # get the machine type
 machinetype=$(inxi -M | grep -i type | tr -s ' ' | cut -d' ' -f3)
