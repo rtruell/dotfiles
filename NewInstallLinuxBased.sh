@@ -97,25 +97,25 @@ print_result $? "user doing the install is: ${username}"
 # make it so the user can use 'sudo'...and without having to type their password
 if [[ -d /etc/sudoers.d ]]; then  # check to see if the directory '/etc/sudoers.d' exists
   print_result $? "'/etc/sudoers.d' exists"
-  if [[ -e /etc/sudoers.d/"${username}" ]]; then  # it does, so check to see if the file with the user's 'sudo' permissions is already in it
-    print_result $? "'/etc/sudoers.d/${username}' exists"
+  if [[ -e /etc/sudoers.d/sudoer ]]; then  # it does, so check to see if the file with the user's 'sudo' permissions is already in it
+    print_result $? "'/etc/sudoers.d/sudoer' exists"
   else
-    printf "${username} ALL=(ALL:ALL) ALL  # allow me to use 'sudo'\nDefaults:${username} !authenticate  # without having to type my password\n" >"${username}"  # it isn't, so create the file
+    printf "${username} ALL=(ALL:ALL) ALL  # allow me to use 'sudo'\nDefaults:${username} !authenticate  # without having to type my password\n" >sudoer  # it isn't, so create the file
     print_result $? "Created '${username}'"
-    su -c 'mv "${username}" /etc/sudoers.d && chmod 440 /etc/sudoers.d/"${username}"'  # and then move it and set its' permissions
-    print_result $? "Moved '${username}' to '/etc/sudoers.d' and changed its permissions"  # status message saying what the above commands did
+    su -c 'mv sudoer /etc/sudoers.d && chmod 440 /etc/sudoers.d/sudoer'  # and then move it and set its' permissions
+    print_result $? "Moved 'sudoer' to '/etc/sudoers.d' and changed its permissions"  # status message saying what the above commands did
   fi
 else
   # the directory doesn't exist, so create the file with the user's 'sudo'
   # permissions
-  printf "${username} ALL=(ALL:ALL) ALL  # allow me to use 'sudo'\nDefaults:${username} !authenticate  # without having to type my password\n" >"${username}"
-  print_result $? "Created '${username}'"
+  printf "${username} ALL=(ALL:ALL) ALL  # allow me to use 'sudo'\nDefaults:${username} !authenticate  # without having to type my password\n" >sudoer
+  print_result $? "Created 'sudoer"
   # and then add an 'includedir' directive to the end of '/etc/sudoers', make
   # the '/etc/sudoers.d' directory, set its' permissions, move the file with the
   # user's 'sudo' permissions, and set that files permissions
-  su -c 'printf "\n%s\n" "#includedir /etc/sudoers.d" >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && mv "${username}" /etc/sudoers.d && chmod 440 /etc/sudoers.d/"${username}"'
+  su -c 'printf "\n%s\n" "#includedir /etc/sudoers.d" >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && mv sudoer /etc/sudoers.d && chmod 440 /etc/sudoers.d/sudoer'
   # status message saying what the above commands did.
-  print_result $? "Added the necessary '#includedir' line to '/etc/sudoers', created '/etc/sudoers.d', changed its permissions, moved '${username}' to '/etc/sudoers.d' and changed its permissions"
+  print_result $? "Added the necessary '#includedir' line to '/etc/sudoers', created '/etc/sudoers.d', changed its permissions, moved 'sudoer' to '/etc/sudoers.d' and changed its permissions"
 fi
 
 # install some packages, if necessary, so everything in the rest of this script
@@ -397,6 +397,8 @@ print_result $? "apt updated"
 sudo apt upgrade
 print_result $? "apt upgraded"
 
+apt install samba
+print_result $? "samba installed"
 #apt install \
 #  `# read-write NTFS driver for Linux` \
 #  ntfs-3g \
