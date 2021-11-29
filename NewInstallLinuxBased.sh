@@ -94,29 +94,32 @@ print_result 0 "Found bash"
 username=$(whoami)
 print_result $? "user doing the install is: ${username}"
 
-# make it so I can use 'sudo'...and without having to type my password
-if [[ -d /etc/sudoers.d ]]; then  # if the directory '/etc/sudoers.d' exists
+# make it so the user can use 'sudo'...and without having to type their password
+if [[ -d /etc/sudoers.d ]]; then  # check to see if the directory '/etc/sudoers.d' exists
   print_result $? "'/etc/sudoers.d' exists"
-  if [[ -e /etc/sudoers.d/rtruell ]]; then  # and the file with my 'sudo' permissions is already in it
-    print_result $? "'/etc/sudoers.d/rtruell' exists"
+  if [[ -e /etc/sudoers.d/"${username}" ]]; then  # it does, so check to see if the file with the user's 'sudo' permissions is already in it
+    print_result $? "'/etc/sudoers.d/${username}' exists"
   else
-    su -c 'cp rtruell /etc/sudoers.d && chmod 440 /etc/sudoers.d/rtruell'  # copy the file and set its permissions
-    retcode=$?  # preserve the return code
-    message="Copied 'rtruell' to '/etc/sudoers.d' and changed its permissions"  # status message saying what the above commands did
-    print_result "${retcode}" "${message}"
+    printf "${username} ALL=(ALL:ALL) ALL  # allow me to use 'sudo'\nDefaults:${username} !authenticate  # without having to type my password\n" >"${username}"  # it isn't, so create the file
+    print_result $? "Created '${username}'"
+    su -c 'mv "${username}" /etc/sudoers.d && chmod 440 /etc/sudoers.d/"${username}"'  # and then move it and set its' permissions
+    print_result $? "Moved '${username}' to '/etc/sudoers.d' and changed its permissions"  # status message saying what the above commands did
   fi
 else
-  # the directory doesn't exist, so add an 'includedir' directive to the end of
-  # '/etc/sudoers', make the '/etc/sudoers.d' directory, set its permissions,
-  # copy the file with my 'sudo' permissions, and set that files permissions
-  su -c 'printf "\n%s\n" "#includedir /etc/sudoers.d" >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && cp rtruell /etc/sudoers.d && chmod 440 /etc/sudoers.d/rtruell'
-  retcode=$?
+  # the directory doesn't exist, so create the file with the user's 'sudo'
+  # permissions
+  printf "${username} ALL=(ALL:ALL) ALL  # allow me to use 'sudo'\nDefaults:${username} !authenticate  # without having to type my password\n" >"${username}"
+  print_result $? "Created '${username}'"
+  # and then add an 'includedir' directive to the end of '/etc/sudoers', make
+  # the '/etc/sudoers.d' directory, set its' permissions, move the file with the
+  # user's 'sudo' permissions, and set that files permissions
+  su -c 'printf "\n%s\n" "#includedir /etc/sudoers.d" >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && mv "${username}" /etc/sudoers.d && chmod 440 /etc/sudoers.d/"${username}"'
   # status message saying what the above commands did.
-  message="Added the necessary '#includedir' line to '/etc/sudoers', created '/etc/sudoers.d', changed its permissions, copied 'rtruell' to '/etc/sudoers.d' and changed its permissions"
-  print_result "${retcode}" "${message}"
+  print_result $? "Added the necessary '#includedir' line to '/etc/sudoers', created '/etc/sudoers.d', changed its permissions, moved '${username}' to '/etc/sudoers.d' and changed its permissions"
 fi
 
-# install some packages, if necessary, so everything in this script can be done
+# install some packages, if necessary, so everything in the rest of this script
+# can be done
 declare -a packages=(
   "build-essential"
   "cifs-utils"
@@ -132,11 +135,11 @@ declare -a packages=(
 )
 for i in ${packages[@]}; do  # loop through the array of packages
   if [[ ! $(apt list --installed 2>/dev/null | grep "^${i}") ]]; then  # if the package isn't already installed
-   yes | sudo apt install "${i}"  # install it, automatically answering 'yes' to any prompts
-   print_result $? "Installed ${i}"
- else  # the package is already installed
-   print_result 0 "${i} already installed"
- fi
+    yes | sudo apt install "${i}"  # install it, automatically answering 'yes' to any prompts
+    print_result $? "Installed ${i}"
+  else  # the package is already installed
+    print_result 0 "${i} already installed"
+  fi
 done
 
 # symlink the dotfiles into ${HOME}
@@ -155,7 +158,7 @@ retcode=""
 currdir=${PWD}  # preserve the current working directory
 mkdir ~/mountpoint  # create a mount point for the NAS' data directory ...
 print_result $? "Created mount point"
-sudo mount -t cifs -o user=rtruell //fileserver/data /home/rtruell/mountpoint  # ... and mount it
+sudo mount -t cifs -o user=rtruell //fileserver/data ~/mountpoint  # ... and mount it
 retcode=$?
 if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
   print_result ${retcode} "Mounted NAS"
@@ -176,14 +179,67 @@ if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
       print_result $? "Set permissions for ${i}"
     fi
   done
+
+  # install config files for Beyond Compare
+  if [[ ! -d ~/.config/bcompare ]]; then  # if '.config/bcompare' doesn't exist
+    mkdir ~/.config/bcompare  # create it
+    print_result $? "Created '.config/bcompare'"
+    chmod 755 ~/.config/bcompare  # and set its permissions
+    print_result $? "Set permissions for '.config/bcompare'"
+  else
+    print_result 0 "'.config/bcompare' exists"
+  fi
+  cp -a BC4Key.txt ~/.config/bcompare
+  print_result $? "Copied the Beyond Compare key file to '~/.config/bcompare'"
+  chmod 600 ~/.config/bcompare/BC4Key.txt
+  print_result $? "Set permissions for the Beyond Compare key file"
+  cp -a BCSettings-lin*.bcpkg ~
+  print_result $? "Copied the Beyond Compare settings file"
+  chmod 600 ~/BCSettings-lin*.bcpkg
+  print_result $? "Set permissions for the Beyond Compare settings file"
+
+  # copy programs that aren't available in 'apt' or 'Homebrew'.  the programs
+  # must be previously downloaded and located in '//fileserver/data/Downloads/Linux/InUse/Installed'
+  declare -a programs=(
+    "bcompare*"
+  )
+  i=""
+  programdir="~/mountpoint/Downloads/Linux/InUse/Installed"  # the directory containing the programs to be copied
+  programtmp="/tmp/programs"
+  if [[ ! -d "${programtmp}" ]]; then
+    mkdir "${programtmp}"
+    print_result $? "Created '"${programtmp}"'"
+  else
+    print_result 0 "'"${programtmp}"' exists"
+  fi
+  for i in ${programs[@]}; do  # loop through the array of programs
+    cp -a "${programdir}/${i}" "${programtmp}"  # copy the program to '/tmp'
+    print_result $? "Copied ${i}"
+  done
   cd "${currdir}"  # change back to where we were
   print_result $? "Changed back to '${currdir}'"
-  sudo umount /home/rtruell/mountpoint  # unmount the NAS
+
+  # install any '.deb' programs, since they're easy to do in a script
+  shopt -s dotglob
+  shopt -s nullglob
+  filenames=("${programtmp}/*.deb")  # get a list of all the '.deb' files in the '/tmp/programs' directory into an array.  filenames are of the format "/tmp/programs/<program>.deb"
+  shopt -u nullglob
+  for i in "${filenames[@]}"; do  # loop through all the '.deb' files that were found
+    if [[ ! $(apt list --installed 2>/dev/null | grep "^`echo "${i}" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f4`" >/dev/null) ]]; then  # if the program isn't already installed
+      yes | sudo apt install "${i}"  # install it, automatically answering 'yes' to any prompts
+      print_result $? "Installed ${i}"
+    else  # the package is already installed
+      print_result 0 "${i} already installed"
+    fi
+  done
+
+  # done with the NAS, so try to unmount it
+  sudo umount ~/mountpoint  # unmount the NAS
   print_result $? "Unmounted NAS"
 else
   print_result ${retcode} "Mounting NAS failed...sensitive files/directories must be copied manually"
 fi
-rmdir ~/mountpoint
+rmdir ~/mountpoint  # remove the mountpoint
 print_result $? "Removed mount point"
 
 # set the RTC to local time
@@ -191,26 +247,25 @@ sudo timedatectl set-local-rtc 1
 print_result $? "RTC set to local time"
 
 # change the port number for 'sshd'
-if [[ -d /etc/ssh/sshd_config.d ]]; then  # if the directory '/etc/ssh/sshd_config.d' exists
+if [[ -d /etc/ssh/sshd_config.d ]]; then  # check to see if the directory '/etc/ssh/sshd_config.d' exists
   print_result $? "'/etc/ssh/sshd_config.d' exists"
-  if [[ -e /etc/ssh/sshd_config.d/rtruell ]]; then  # and the file with my configuration is already in it
-    print_result $? "'/etc/ssh/sshd_config.d/rtruell' exists"
+  if [[ -e /etc/ssh/sshd_config.d/port.conf ]]; then  # it does, so check to see if the file with the port number change is already in it
+    print_result $? "'/etc/ssh/sshd_config.d/port.conf' exists"
   else
-    sudo printf "%s\n" "Port 22000  # change the port in an attempt to foil crackers" >>/etc/ssh/sshd_config.d/rtruell  # create the file '/etc/ssh/sshd_config.d/rtruell
-    print_result $? "Created 'rtruell' in '/etc/ssh/sshd_config.d'"
-    sudo chmod 440 /etc/ssh/sshd_config.d/rtruell  # set its permissions
-    print_result $? "Changed permissions for '/etc/ssh/sshd_config.d/rtruell'"
+    printf "Port 22000  # change the port in an attempt to foil crackers\n" | sudo tee /etc/ssh/sshd_config.d/port.conf >/dev/null  # it isn't, so create the file
+    print_result $? "Created '/etc/ssh/sshd_config.d/port.conf'"
+    sudo chmod 440 /etc/ssh/sshd_config.d/port.conf  # and set its permissions
+    print_result $? "Changed permissions for '/etc/ssh/sshd_config.d/port.conf'"
   fi
 else
-  # the directory doesn't exist, so create it, set its permissions, create the file '/etc/ssh/sshd_config.d/rtruell', and set its permissions
-  sudo mkdir /etc/ssh/sshd_config.d
+  sudo mkdir /etc/ssh/sshd_config.d  # the directory doesn't exist, so create it
   print_result $? "Created '/etc/ssh/sshd_config.d'"
-  sudo chmod 755 /etc/ssh/sshd_config.d
+  sudo chmod 755 /etc/ssh/sshd_config.d  # change its' permissions
   print_result $? "Changed permissions for '/etc/ssh/sshd_config.d'"
-  sudo printf "%s\n" "Port 22000  # change the port in an attempt to foil crackers" >>/etc/ssh/sshd_config.d/rtruell
-  print_result $? "Created 'rtruell' in '/etc/ssh/sshd_config.d'"
-  sudo chmod 440 /etc/ssh/sshd_config.d/rtruell
-  print_result $? "Changed permissions for '/etc/ssh/sshd_config.d/rtruell'"
+  printf "Port 22000  # change the port in an attempt to foil crackers\n" | sudo tee /etc/ssh/sshd_config.d/port.conf >/dev/null  # create the file with the port number change
+  print_result $? "Created '/etc/ssh/sshd_config.d/port.conf'"
+  sudo chmod 440 /etc/ssh/sshd_config.d/port.conf  # and set its permissions
+  print_result $? "Changed permissions for '/etc/ssh/sshd_config.d/port.conf'"
 fi
 
 # change the timeout value in 'grub'
@@ -234,12 +289,12 @@ case "${machinetype}" in
               print_result $? "Service restarted"
 
               # if installing on the Acer laptop
-              if [[ $(inxi -M | grep -i type | tr -s ' ' | cut -d' ' -f3) == "Acer" ]]; then
+              if [[ $(inxi -M | grep -i type | tr -s ' ' | cut -d' ' -f5) == "Acer" ]]; then
                 # configure 'apt' so it can find the drivers for the wi-fi card,
                 # and then install them
                 sudo cp /etc/apt/sources.list /etc/apt/sources.list.orig  # back up 'sources.list', just in case
                 print_result $? "Backed up 'sources.list'"
-                sudo sed -E 's/(^deb.*&)/\1 contrib non-free/' -i /etc/apt/sources.list  # append ' contrib non-free' to each repository line
+                sudo sed -E 's/(^deb.*$)/\1 contrib non-free/' -i /etc/apt/sources.list  # append ' contrib non-free' to each repository line
                 print_result $? "Appended ' contrib non-free' to the repository lines"
                 sudo apt update  # update 'apt' so it sees the contents of the new repositories
                 print_result $? "Updated 'apt' to get info from the new repositories"
@@ -251,10 +306,10 @@ case "${machinetype}" in
                 # 'acer_wmi' module.  so, check to see if running 64-bit Debian
                 # and if so, blacklist the module
                 if [[ $(getconf LONG_BIT) == 64 ]] && [[ $(lsb_release -i -s) == "Debian" ]]; then
-                  sudo printf '%s\n' "blacklist acer_wmi" >>/etc/modprobe.d/blacklist-acer_wmi.conf
-                  print_result $? "Created 'blacklist-acer_wmi.conf' in '/etc/modprobe.d'"
-                  sudo chmod 544 /etc/modprobe.d/blacklist-acer_wmi.conf
-                  print_result $? "Changed permissions for '/etc/modprobe.d/blacklist-acer_wmi.conf'"
+                  printf "blacklist acer_wmi\n" | sudo tee /etc/modprobe.d/blacklist-acer_wmi.conf >/dev/null  # create the blacklist file
+                  print_result $? "Created '/etc/modprobe.d/blacklist-acer_wmi.conf'"
+                  sudo chmod 544 /etc/modprobe.d/blacklist-acer_wmi.conf  # and change its permissions
+                  print_result $? "Changed permissions for '/etc/modprobe.d/modprobe.conf'"
                 fi
               fi
               ;;
@@ -276,30 +331,32 @@ case "${machinetype}" in
               fi
               printf '\n%s\n' "Don't forget to maximize the screen after rebooting!"
 
-              # if 'rtruell' isn't in the group 'vboxsf', add him to be able
-              # to access shared folders
+              # if the user isn't in the group 'vboxsf', add them so they're
+              # able to access shared folders
               if [[ ! $(groups | grep vboxsf) ]]; then
-                sudo adduser rtruell vboxsf
-                print_result $? "Added 'rtruell' to group 'vboxsf'"
+                sudo adduser "${username}" vboxsf
+                print_result $? "Added '${username}' to group 'vboxsf'"
               else
-                print_result 0 "'rtruell' in group 'vboxsf'"
+                print_result 0 "'${username}' is already in group 'vboxsf'"
               fi
               ;;
            *) ;;
 esac
 
-# install, update and check Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+# Homebrew
+/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"  # install Homebrew
 print_result $? "Installed Homebrew"
-brew update
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"  # add its directories to the PATH temporarily (this is done permanently in the '.path' dotfile)
+print_result $? "Added Homebrew directories to the PATH"
+brew update  # update it
 print_result $? "Updated Homebrew"
-brew doctor
+brew doctor  # check it
 print_result $? "Checked Homebrew"
 
 # export some environment variables for Homebrew
 export HOMEBREW_EDITOR="${EDITOR}"  # use the system editor to edit Homebrew stuff
 export BREW_PREFIX=$(brew --prefix)  # store Homebrew's installation directory so I don't have to keep issuing the command
-print_result 0 "Exported Homebrew environment variables"
+print_result $? "Exported Homebrew environment variables"
 
 ## install all the things
 #echo "About to install the .Brewfile contents...this could take a while!!"
@@ -317,30 +374,28 @@ print_result $? "Cleaned up Homebrew"
 #    print_result $? "Updated '/etc/shell' with the just-installed version of bash"
 #  fi
 #  chsh -s "${BREW_PREFIX}/bin/bash"  # change the shell to the new bash
-#  print_result $? "Changed the shell to the new version of bash: $BASH_VERSION (should be 4+)"  # should be 4+ not the old 3.2.X
+#  print_result $? "Changed the shell to the new version of bash: $BASH_VERSION (should be 4+)"  # should be 4+ not the old 3.2.x
 #else
 #  print_result 1 "bash not installed properly by Homebrew"
 #fi
 
 # add the repository for Webmin to 'apt'
-wget -q https://www.webmin.com/jcameron-key.asc -O- | apt-key add -
-print_result $? "Added GPG key for the Webmin repository"
-sudo printf '\n%s\n%s\n%s\n' " " "# Repository for Webmin" "deb https://download.webmin.com/download/repository sarge contrib" >>/etc/apt/sources.list
-print_result $? "Added the Webmin repository to 'sources.list'"
+sudo ~/bin/add-apt-key https://download.webmin.com/jcameron-key.asc webmin "deb https://download.webmin.com/download/repository sarge contrib"
+print_result $? "Added the Webmin repository to 'apt'"
 
 # add the repository for Sublime Text/Merge to 'apt'
-wget -q https://download.sublimetext.com/sublimehq-pub.gpg -O- | apt-key add -
-print_result $? "Added GPG key for the Sublime Text/Merge repository"
-sudo printf '\n%s\n%s\n%s\n' " " "# Repository for Sublime Text/Merge" "deb https://download.sublimetext.com/ apt/stable/" >>/etc/apt/sources.list
-print_result $? "Added the Sublime Text/Merge repository to 'sources.list'"
+sudo ~/bin/add-apt-key https://download.sublimetext.com/sublimehq-pub.gpg sublimehq "deb https://download.sublimetext.com/ apt/stable/"
+print_result $? "Added the Sublime Text/Merge repository to 'apt'"
 
 # since secure repositories were added to 'apt', install 'apt-transport-https'
 sudo apt install apt-transport-https
 print_result $? "Installed 'apt-transport-https'"
 
-# update && upgrade apt
+# update apt to pick up the new repositories, and then do an upgrade
 sudo apt update
+print_result $? "apt updated"
 sudo apt upgrade
+print_result $? "apt upgraded"
 
 #apt install \
 #  `# read-write NTFS driver for Linux` \
@@ -528,32 +583,28 @@ sudo apt upgrade
 #php5enmod imagick
 #php5enmod apcu
 
-#echo -e "\033[1;32mCopying Beyond Compare files to 'root'\033[m\n"
-#cp bc* /root
-#cp BC* /root
-#cd /root
-#echo -e "\033[1;32mCopying Beyond Compare files to 'rtruell'\033[m\n"
-#for filename in BC*
-#do
-#  chmod 644 ${filename}
-#  cp ${filename} /home/rtruell
-#  chown rtruell:rtruell /home/rtruell/${filename}
-#done
-#echo -e "\033[1;32mInstalling Beyond Compare\033[m\n"
-#gdebi *.deb
-#echo -e "\033[1;32mAdding 'rtruell' and 'root' to samba so I can access files from other computers\033[m\n"
-#sudo smbpasswd -a rtruell
-#sudo smbpasswd -a root
-#echo -e "\033[1;32mCreating the mount points for 'fileserver' and 'backupserver'\033[m\n"
-#sudo mkdir -p /network/fileserver
-#sudo mkdir -p /network/backupserver
-#echo -e "\033[1;32mAdding mount commands for network shares to '/etc/fstab'\033[m\n"
-#cp /etc/fstab /etc/fstab.orig
-#echo " " >>/etc/fstab
-#echo "# Mount network shares" >>/etc/fstab
-#echo "//fileserver/data /network/fileserver cifs auto,credentials=/root/.credentials,iocharset=utf8 0 0" >>/etc/fstab
-#echo "//backupserver/backups /network/backupserver cifs auto,credentials=/root/.credentials,iocharset=utf8 0 0" >>/etc/fstab
+# Adding the user to samba to be able to access files from other computers
+sudo smbpasswd -a "${username}"
+print_result $? "Added '"${username}"' to samba"
 
-# update-locate-db
-updatedb -v
-print_result $? "Locate database updated"
+# Create mount points for the 'data' and 'backups' directories on the NAS
+sudo mkdir -p /nas/data
+print_result $? "Created '/nas/data'"
+sudo mkdir -p /nas/backups
+print_result $? "Created '/nas/backups'"
+
+# Adding mount commands for the NAS shares to '/etc/fstab'
+sudo cp /etc/fstab /etc/fstab.orig
+print_result $? "Backed up '/etc/fstab'"
+printf '%s\n' " " | sudo tee -a /etc/fstab >/dev/null
+print_result $? "Added separator line to '/etc/fstab'"
+printf '%s\n' "# Mount NAS shares" | sudo tee -a /etc/fstab >/dev/null
+print_result $? "Added comment explaining the new section to '/etc/fstab'"
+printf '%s\n' "//fileserver/data /nas/data cifs auto,credentials=${HOME}/.credentials,iocharset=utf8 0 0" | sudo tee -a /etc/fstab >/dev/null
+print_result $? "Added mount command for 'data' directory on NAS to '/etc/fstab'"
+printf '%s\n' "//fileserver/backups /nas/backups cifs auto,credentials=${HOME}/.credentials,iocharset=utf8 0 0" | sudo tee -a /etc/fstab >/dev/null
+print_result $? "Added mount command for 'backups' directory on NAS to '/etc/fstab'"
+
+# update the locate database
+updatedb
+print_result $? "updated the 'locate' database"
