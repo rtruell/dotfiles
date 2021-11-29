@@ -1,0 +1,310 @@
+#!/bin/sh
+
+# Add APT key script
+# Version : 1.1.0-4
+# Release : 2021-11-01
+# Author  : Artur Meinild
+
+# Changelog
+# 2021-11-19  Rick Truell
+#
+# - put the location of the config file into a variable so it only has to be
+#   changed in one place, instead of several
+#
+# - changed the location of the '.conf' file to reflect the setup on my systems.
+#   I also put the script in a 'bin' directory in my HOME directory, but that
+#   doesn't affect the running of the script
+#
+# - since I also use macOS, added a check to make sure this script is only run
+#   on Linux
+#
+# - changed the help message to indicate the script uses 3 arguments and added
+#   an example showing the use of all 3 arguments
+#
+# - Note: this script no longer puts an entry in /etc/apt/sources.list as that's
+#   a dangerous practice with 3rd party repos.  for why, see the first two
+#   paragraphs of the answer at
+#   https://askubuntu.com/questions/1286545/what-commands-exactly-should-replace-the-deprecated-apt-key/1307181#1307181
+#   instead, if the 3rd parameter is present, the script automatically creates
+#   entries in /etc/apt/sources.list.d and /etc/apt/preferences.d.  if not, the
+#   user must create those entries manually, or opt to create the less safe
+#   entry manually
+#
+# 2021-11-20  Rick Truell
+#
+# - the original script used either PWD or the directory where the keyfile is as
+#   a temporary directory.  that's what /tmp is for, so changed the script to
+#   use that location instead
+#
+# - added code to see if the new 3rd parameter was supplied and if so, parse it
+#   and use the info from it to create the entries for /etc/apt/sources.list.d
+#   and /etc/apt/preferences.d
+
+# location of the config file
+#configfile="/usr/local/etc/add-apt-key.conf"  # most people should probably use this.  I'm not most people :-)  - R.T.
+configfile="~/binsupportfiles/add-apt-key.conf"
+
+# location for temporary files
+tmppath="/tmp"
+
+# Initial configuration variables.  these can be overwritten from the config file
+keypath="/usr/share/keyrings/"
+verbosity="No"
+removetmp="No"
+
+# Include configuration file
+if [ -f "${configfile}" ]; then
+  . "${configfile}"
+fi
+
+# Convert strings to lowercase
+verbosity=$(echo "$verbosity" | tr '[:upper:]' '[:lower:]')
+removetmp=$(echo "$removetmp" | tr '[:upper:]' '[:lower:]')
+
+# Local function definition
+exit_error() {
+  echo "Error: $1"
+  exit 1
+}
+
+# Check if script is run as root
+if [ "$(id -u)" != "0" ]; then
+  exit_error "Must run as root"
+fi
+
+# Check if script is being run on Linux
+if [ "$(uname)" != "Linux" ]; then exit_error "Can only be run on Linux"; fi
+
+# Check if there is at least one argument
+if [ "$1" = "" ]; then
+  exit_error "need a keyfile (or --help) as argument"
+fi
+
+# Check if argument is --help
+if [ "$1" = "--help" ]; then
+  echo "This script will help with installing PGP keys for APT repositories."
+  echo ""
+  echo "This script supports up to 3 arguments:"
+  echo "  - 1st argument is input file. This can be either:"
+  echo "    - An URL - key will be downloaded into current path (using wget or curl)"
+  echo "    - A filename - reads an existing key in current path"
+  echo "    - A path and a filename - reads an existing key in given path"
+  echo "  - 2nd argument is key output path and output name. This can be either:"
+  echo "    - Only filename - output path is set in config, saved as given filename"
+  echo "    - A path and a filename - output path is given here, saved as given filename"
+  echo "    - Only a path (end with /) - output path is given here, filename is taken from existing key"
+  echo "    - Empty - output path is set in config, filename is taken from existing key"
+  echo "  - 3rd argument is the repository URL, including type, release name and component"
+  echo "      ie. deb https://download.webmin.com/download/repository sarge contrib"
+  echo "      the presence of a 3rd argument automatically creates entries in /etc/apt/sources.list.d"
+  echo "      and /etc/apt/preferences.d"
+  echo ""
+  echo "This script has a config file ${configfile}, where the following variables can be set:"
+  echo "  - keypath   : path to store converted key - default is /usr/share/keyrings"
+  echo "  - verbosity : if set to Yes - displays extra output"
+  echo "  - removetmp : if set to Yes - remove input (non-converted) file"
+  echo ""
+  echo "Example 1: (PWD=/root)"
+  echo "  sudo add-apt-key https://mariadb.org/mariadb_release_signing_key.asc /usr/local/share/keyrings/"
+  echo "Will download key in /root, convert it and store as /usr/local/share/keyrings/mariadb_release_signing_key.gpg"
+  echo ""
+  echo "Example 2: (PWD=/home/user)"
+  echo "  sudo add-apt-key /root/mariadb_release_signing_key.asc /usr/local/share/keyrings/mariadbkey"
+  echo "Will use existing key in /root, convert it and store as /usr/local/share/keyrings/mariadbkey.gpg"
+  echo ""
+  echo "Example 3: (PWD=/home/user)"
+  echo "  sudo add-apt-key mariadb_release_signing_key.asc mariadbkey"
+  echo "Will use existing key in /home/user, convert it and store as /usr/share/keyrings/mariadbkey.gpg"
+  echo ""
+  echo "Example 4: (PWD=/home/user)"
+  echo "  sudo add-apt-key mariadb_release_signing_key.asc mariadbkey \"deb http://nyc2.mirrors.digitalocean.com/mariadb/repo/10.4/ubuntu/ bionic main\""
+  echo "Will use existing key in /home/user, convert it, store it as /usr/share/keyrings/mariadbkey.gpg and create the /etc/apt/sources.list.d"
+  echo "and /etc/apt/preferences.d entries"
+  echo ""
+  exit 0
+fi
+
+# Check argument 2 for keypath
+case "$2" in
+  # $2 is only a path (ending with /)
+  /*/)
+    keypath="${2%/*}"
+    ;;
+  # $2 is a path
+  /*)
+    keypath="${2%/*}"
+    ;;
+esac
+
+# Trim keypath (if ending with /)
+case "$keypath" in
+  */)
+    keypath="${keypath%/*}"
+    ;;
+esac
+
+# Check if keypath exist
+[ "$verbosity" = "yes" ] && echo "Keypath: $keypath"
+if [ ! -d  "$keypath" ]; then
+  exit_error "keypath does not exist"
+fi
+
+# Check if argument 1 is an URL or a path
+case "$1" in
+  # If $1 is an URL
+  http*)
+    echo "Downloading keyfile .."
+    tmpfile="${1##*/}"
+    if [ "$(command -v wget)" ]; then
+      # Use wget
+      if wget -q --method=HEAD "$1"; then
+        wget -qO "$tmppath/$tmpfile" "$1"
+      else
+        exit_error "keyfile can't be downloaded"
+      fi
+    elif [ "$(command -v curl)" ]; then
+      # Use curl
+      if curl -s --output /dev/null --head --fail "$1"; then
+        curl -so "$tmppath/$tmpfile" "$1"
+      else
+        exit_error "keyfile can't be downloaded"
+      fi
+    else
+      # Exit with error if neither is installed
+      exit_error "wget or curl must be installed to download"
+    fi
+    ;;
+  # If $1 is a filepath
+  *)
+    case "$1" in
+      # $1 is only a path (ending with /)
+      /*/)
+        exit_error "need a keyfile (or --help) as argument"
+        ;;
+      # $1 is a path and a filename
+      /*)
+        tmpfile="${1##*/}"
+        cp "${1}" "${tmppath}"
+        ;;
+      # $1 is only filename
+      *)
+        tmpfile="$1"
+        cp "${1}" "${tmppath}"
+        ;;
+    esac
+    ;;
+esac
+
+# Check if keyfile exists
+[ "$verbosity" = "yes" ] && echo "Tmppath: $tmppath"
+[ "$verbosity" = "yes" ] && echo "Tmpfile: $tmpfile"
+echo "Verifying keyfile .."
+if [ ! -f "$tmppath/$tmpfile" ]; then
+  exit_error "keyfile does not exist"
+fi
+
+# Check argument 2 for filename
+case "$2" in
+  # $2 is only a path (ending with /)
+  /*/)
+    filename="${tmpfile%%.*}"
+    ;;
+  # $2 is a path and a filename
+  /*)
+    filename="${2##*/}"
+    ;;
+  # $2 is only filename (or empty)
+  *)
+    if [ "${#2}" != 0 ]; then
+      filename="$2"
+    else
+      filename="${tmpfile%%.*}"
+    fi
+    ;;
+esac
+
+[ "$verbosity" = "yes" ] && echo "Keyfile: $filename.gpg"
+
+# Check tmpfile type and convert
+echo "Converting keyfile .."
+case $(file "$tmppath/$tmpfile") in
+  # ASCII armored (old)
+  *'PGP public key block Public-Key (old)')
+    gpg --batch --yes --dearmor --keyring=gnupg-ring "$tmppath/$tmpfile"
+    ;;
+  # Secret key
+  *'PGP public key block Secret-Key')
+    gpg --batch --yes --no-default-keyring --keyring=gnupg-ring:"$tmppath/temp-keyring.gpg" --quiet --import "$tmppath/$tmpfile"
+    gpg --batch --yes --no-default-keyring --keyring=gnupg-ring:"$tmppath/temp-keyring.gpg" --export --output "$tmppath/$tmpfile.gpg"
+    rm "$tmppath/temp-keyring.gpg"
+    [ -f "$tmppath/temp-keyring.gpg~" ] && rm "$tmppath/temp-keyring.gpg~"
+    ;;
+  # Public ring (v4)
+  *'PGP/GPG key public ring (v4)'*)
+    cp "$tmppath/$tmpfile" "$tmppath/$tmpfile.gpg"
+    ;;
+  *)
+    exit_error "invalid input keyfile format"
+    ;;
+esac
+
+# Check if keyfile exist
+if [ ! -f "$tmppath/$tmpfile.gpg" ]; then
+  exit_error "keyfile does not exist"
+fi
+
+# Check if keyfile is the right type
+keyfiletype=$(file "$tmppath/$tmpfile.gpg" | grep -oh 'PGP/GPG key public ring (v4)')
+if [ "$keyfiletype" != "PGP/GPG key public ring (v4)" ]; then
+  exit_error "keyfile is not a PGP/GPG key public ring"
+fi
+
+# Move keyfile to "$keypath"
+echo "Moving keyfile to $keypath .."
+mv "$tmppath/$tmpfile.gpg" "$keypath/$filename.gpg"
+
+# Remove tmpfile if removetmp="Yes"
+if [ "$removetmp" = "yes" ]; then
+  echo "Removing tmpfile .."
+  rm -f "$tmppath/$tmpfile"
+  rm -f "${1}"
+fi
+
+echo ""
+echo "The key for the repository has been added to APT."
+
+# Check to see if the repo URL (3rd parameter) is present
+if [ "${3}" = "" ]; then  # it isn't, so print message for manual repo installation
+  echo "However, you must manually create entries for /etc/apt/sources.list.d and /etc/apt/preferences.d"
+  echo "in order for the repository to be used.  For an example of the format for those entries, see"
+  echo "https://wiki.debian.org/DebianRepository/UseThirdParty#Complete_example"
+else  # it is, so parse it and create the /etc/apt/sources.list.d and /etc/apt/preferences.d entries
+  repotype=`echo "${3}" | cut -d' ' -f1`  # get the repo type (usuall 'deb' or 'deb-src')
+  repourl=`echo "${3}" | cut -d' ' -f2`  # get the repo URL
+  reporelease=`echo "${3}" | cut -d' ' -f3`  # get the distro release name ('buster')
+  repocomponent=`echo "${3}" | cut -d' ' -f4-`  # get the components the repo provides packages for ('main')
+  repodomain=`echo "${repourl}" | cut -d'/' -f3`  # get the repo domain name
+
+  # Create the entry for /etc/apt/sources.list.d
+  srcfilename="${tmppath}/${filename}.sources"
+  printf '%s\n' "Types: ${repotype}" >>"${srcfilename}"
+  printf '%s\n' "URIs: ${repourl}" >>"${srcfilename}"
+  printf '%s\n' "Suites: ${reporelease}" >>"${srcfilename}"
+  printf '%s\n' "Components: ${repocomponent}" >>"${srcfilename}"
+  printf '%s\n' "Signed-By: ${keypath}/${filename}.gpg" >>"${srcfilename}"
+  mv "${srcfilename}" /etc/apt/sources.list.d  # move the entry to where it belongs
+  chmod 644 "/etc/apt/sources.list.d/${filename}.sources"  # and change its permissions
+
+  # Create the entry for /etc/apt/preferences.d
+  preffilename="${tmppath}/${filename}.pref"
+  printf '%s\n' "Package: *" >>"${preffilename}"
+  printf '%s\n' "Pin: origin ${repodomain}" >>"${preffilename}"
+  printf '%s\n' "Pin-Priority: 100" >>"${preffilename}"
+  mv "${preffilename}" /etc/apt/preferences.d  # move the entry to where it belongs
+  chmod 644 "/etc/apt/preferences.d/${filename}.pref"  # and change its permissions
+
+  # Print message for script repo installation
+  echo "The entries for /etc/apt/sources.list.d and /etc/apt/preferences.d have also been added."
+  echo "The repository is ready to be used.  Be sure to do 'sudo apt update' so that packages"
+  echo "in the repository can be installed."
+fi
