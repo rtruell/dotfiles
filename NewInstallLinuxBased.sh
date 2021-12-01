@@ -7,7 +7,7 @@ if [[ "$(uname)" != "Linux" ]]; then printf '%s\n' "This script is to be run onl
 
 # have the output of the script both on the screen and in a file...just in case
 # there are errors that need to be checked later
-exec > >(tee -i ~/installlog.txt) 2>&1
+exec > >(tee -i "${HOME}"/installlog.txt) 2>&1
 
 # some functions are needed to set things up, so load them
 source ./.functions/answer_is_yes.function
@@ -103,7 +103,6 @@ print_result $? "User doing the install is '${username}'"
 # once, but each command can be on its own line, making it easier to follow
 # what's being done and to debug problems
 su -c 'source ./sudo.sh'
-print_result $? "Configured 'sudo' access"
 
 # install some packages, if necessary, so everything in the rest of this script
 # can be done
@@ -143,46 +142,46 @@ declare -a filesdirs=(
 i=""
 retcode=""
 currdir=${PWD}  # preserve the current working directory
-mkdir ~/mountpoint  # create a mount point for the NAS' data directory ...
+mkdir "${HOME}"/mountpoint  # create a mount point for the NAS' data directory ...
 print_result $? "Created mount point"
-sudo mount -t cifs -o user=rtruell //fileserver/data ~/mountpoint  # ... and mount it.  don't forget to change the user name as necessary
+sudo mount -t cifs -o user=rtruell //fileserver/data "${HOME}"/mountpoint  # ... and mount it.  don't forget to change the user name as necessary
 retcode=$?
 if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
   print_result ${retcode} "Mounted NAS"
-  cd ~/mountpoint/OSInstallFiles  # change to the directory containing the files/directories to be copied
+  cd "${HOME}"/mountpoint/OSInstallFiles  # change to the directory containing the files/directories to be copied
   print_result $? "Changed to the directory containing the sensitive files/directories to be copied"
   for i in ${filesdirs[@]}; do  # loop through the array of files and directories
     if [[ -d "${i}" ]]; then  # if it's a directory
-      cp -ra "${i}" ~  # copy it and all its files
+      cp -ra "${i}" "${HOME}"  # copy it and all its files
       print_result $? "Copied directory ${i}"
-      chmod 700 ~/"${i}"  # set the permissions on the directory itself to read/write/execute for the owner and nothing for others
+      chmod 700 "${HOME}/${i}"  # set the permissions on the directory itself to read/write/execute for the owner and nothing for others
       print_result $? "Set permissions for the ${i} directory"
-      chmod 600 ~/"${i}"/*  # set the permissions on the files in the directory to read/write for the owner and nothing for others
+      chmod 600 "${HOME}/${i}"/*  # set the permissions on the files in the directory to read/write for the owner and nothing for others
       print_result $? "Set permissions for the files in the ${i} directory"
     else  # otherwise it's a file
-      cp -a "${i}" ~  # copy it
+      cp -a "${i}" "${HOME}"  # copy it
       print_result $? "Copied ${i}"
-      chmod 600 ~/"${i}"  # set its permissions to read/write for the owner and nothing for others
+      chmod 600 "${HOME}/${i}"  # set its permissions to read/write for the owner and nothing for others
       print_result $? "Set permissions for ${i}"
     fi
   done
 
   # install config files for Beyond Compare
-  if [[ ! -d ~/.config/bcompare ]]; then  # if '.config/bcompare' doesn't exist
-    mkdir ~/.config/bcompare  # create it
+  if [[ ! -d "${HOME}"/.config/bcompare ]]; then  # if '.config/bcompare' doesn't exist
+    mkdir "${HOME}"/.config/bcompare  # create it
     print_result $? "Created '.config/bcompare'"
-    chmod 755 ~/.config/bcompare  # and set its permissions
+    chmod 755 "${HOME}"/.config/bcompare  # and set its permissions
     print_result $? "Set permissions for '.config/bcompare'"
   else
     print_result 0 "'.config/bcompare' exists"
   fi
-  cp -a BC4Key.txt ~/.config/bcompare
-  print_result $? "Copied the Beyond Compare key file to '~/.config/bcompare'"
-  chmod 600 ~/.config/bcompare/BC4Key.txt
+  cp -a BC4Key.txt "${HOME}"/.config/bcompare
+  print_result $? "Copied the Beyond Compare key file to '"${HOME}"/.config/bcompare'"
+  chmod 600 "${HOME}"/.config/bcompare/BC4Key.txt
   print_result $? "Set permissions for the Beyond Compare key file"
-  cp -a BCSettings-lin*.bcpkg ~
+  cp -a BCSettings-lin*.bcpkg "${HOME}"
   print_result $? "Copied the Beyond Compare settings file"
-  chmod 600 ~/BCSettings-lin*.bcpkg
+  chmod 600 "${HOME}"/BCSettings-lin*.bcpkg
   print_result $? "Set permissions for the Beyond Compare settings file"
 
   # copy programs that aren't available in 'apt' or 'Homebrew'.  the programs
@@ -191,13 +190,13 @@ if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
     "bcompare*"
   )
   i=""
-  programdir="~/mountpoint/Downloads/Linux/InUse/Installed"  # the directory containing the programs to be copied
+  programdir="${HOME}/mountpoint/Downloads/Linux/InUse/Installed"  # the directory containing the programs to be copied
   programtmp="/tmp/programs"
   if [[ ! -d "${programtmp}" ]]; then
     mkdir "${programtmp}"
-    print_result $? "Created '"${programtmp}"'"
+    print_result $? "Created '${programtmp}'"
   else
-    print_result 0 "'"${programtmp}"' exists"
+    print_result 0 "'${programtmp}' exists"
   fi
   for i in ${programs[@]}; do  # loop through the array of programs
     cp -a "${programdir}/${i}" "${programtmp}"  # copy the program to '/tmp'
@@ -221,12 +220,12 @@ if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
   done
 
   # done with the NAS, so try to unmount it
-  sudo umount ~/mountpoint  # unmount the NAS
+  sudo umount "${HOME}"/mountpoint  # unmount the NAS
   print_result $? "Unmounted NAS"
 else
   print_result ${retcode} "Mounting NAS failed...sensitive files/directories must be copied manually"
 fi
-rmdir ~/mountpoint  # remove the mountpoint
+rmdir "${HOME}"/mountpoint  # remove the mountpoint
 print_result $? "Removed mount point"
 
 # set the RTC to local time
@@ -297,7 +296,7 @@ case "${machinetype}" in
                 print_result $? "Appended ' contrib non-free' to the repository lines"
                 sudo apt update  # update 'apt' so it sees the contents of the new repositories
                 print_result $? "Updated 'apt' to get info from the new repositories"
-                sudo apt install firmware-b43-installer  # install the wi-fi drivers
+                yes | sudo apt install firmware-b43-installer  # install the wi-fi drivers
                 print_result $? "Installed drivers for the wi-fi card"
 
                 # 64-bit Debian - and *only* 64-bit Debian - for some odd reason
@@ -343,7 +342,7 @@ case "${machinetype}" in
 esac
 
 # Homebrew
-/bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"  # install Homebrew
+printf "\n" | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"  # install Homebrew
 print_result $? "Installed Homebrew"
 eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"  # add its directories to the PATH temporarily (this is done permanently in the '.path' dotfile)
 print_result $? "Added Homebrew directories to the PATH"
@@ -352,9 +351,10 @@ print_result $? "Updated Homebrew"
 brew doctor  # check it
 print_result $? "Checked Homebrew"
 
-# export some environment variables for Homebrew
+# export some environment variables for Homebrew.  these are done permanently in the 'exports' dotfile
 export HOMEBREW_EDITOR="${EDITOR}"  # use the system editor to edit Homebrew stuff
 export BREW_PREFIX=$(brew --prefix)  # store Homebrew's installation directory so I don't have to keep issuing the command
+export HOMEBREW_NO_ANALYTICS=1  # turn off Google analytics for Homebrew
 print_result $? "Exported Homebrew environment variables"
 
 ## install all the things
@@ -379,11 +379,11 @@ print_result $? "Cleaned up Homebrew"
 #fi
 
 # add the repository for Webmin to 'apt'
-sudo ~/bin/add-apt-key https://download.webmin.com/jcameron-key.asc webmin "deb https://download.webmin.com/download/repository sarge contrib"
+sudo "${HOME}"/bin/add-apt-key https://download.webmin.com/jcameron-key.asc webmin "deb https://download.webmin.com/download/repository sarge contrib"
 print_result $? "Added the Webmin repository to 'apt'"
 
 # add the repository for Sublime Text/Merge to 'apt'
-sudo ~/bin/add-apt-key https://download.sublimetext.com/sublimehq-pub.gpg sublimehq "deb https://download.sublimetext.com/ apt/stable/"
+sudo "${HOME}"/bin/add-apt-key https://download.sublimetext.com/sublimehq-pub.gpg sublimehq "deb https://download.sublimetext.com/ apt/stable/"
 print_result $? "Added the Sublime Text/Merge repository to 'apt'"
 
 # since secure repositories were added to 'apt', install 'apt-transport-https'
@@ -396,7 +396,7 @@ print_result $? "apt updated"
 sudo apt upgrade
 print_result $? "apt upgraded"
 
-apt install samba
+yes | sudo apt install samba
 print_result $? "samba installed"
 #apt install \
 #  `# read-write NTFS driver for Linux` \
@@ -607,5 +607,5 @@ printf '%s\n' "//fileserver/backups /nas/backups cifs auto,credentials=${HOME}/.
 print_result $? "Added mount command for 'backups' directory on NAS to '/etc/fstab'"
 
 # update the locate database
-updatedb
+sudo updatedb
 print_result $? "updated the 'locate' database"
