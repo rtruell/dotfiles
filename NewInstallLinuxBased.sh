@@ -9,7 +9,7 @@ if [[ "$(uname)" != "Linux" ]]; then printf '%s\n' "This script is to be run onl
 # there are errors that need to be checked later
 exec > >(tee -i ~/installlog.txt) 2>&1
 
-# some of my functions are needed to set things up, so load them
+# some functions are needed to set things up, so load them
 source ./.functions/answer_is_yes.function
 source ./.functions/execute_command.function
 source ./.functions/findcommand.function
@@ -90,28 +90,20 @@ if [[ ! -f /bin/bash ]]; then
 fi
 print_result 0 "Found bash"
 
-# make it so I can use 'sudo'...and without having to type my password
-if [[ -d /etc/sudoers.d ]]; then  # check to see if the directory '/etc/sudoers.d' exists
-  print_result $? "'/etc/sudoers.d' exists"
-  if [[ -e /etc/sudoers.d/rtruell ]]; then  # it does, so check to see if the file with my 'sudo' permissions is already in it
-    print_result $? "'/etc/sudoers.d/rtruell' exists"
-  else
-    printf "rtruell ALL=(ALL:ALL) ALL  # allow me to use 'sudo'\nDefaults:rtruell !authenticate  # without having to type my password\n" >rtruell  # it isn't, so create the file
-    print_result $? "Created 'rtruell'"
-    su -c 'mv rtruell /etc/sudoers.d && chmod 440 /etc/sudoers.d/rtruell'  # and then move it and set its' permissions
-    print_result $? "Moved 'rtruell' to '/etc/sudoers.d' and changed its permissions"  # status message saying what the above commands did
-  fi
-else
-  # the directory doesn't exist, so create the file with my 'sudo' permissions
-  printf "rtruell ALL=(ALL:ALL) ALL  # allow me to use 'sudo'\nDefaults:rtruell !authenticate  # without having to type my password\n" >rtruell
-  print_result $? "Created 'rtruell'"
-  # and then add an 'includedir' directive to the end of '/etc/sudoers', make
-  # the '/etc/sudoers.d' directory, set its' permissions, move the file with the
-  # user's 'sudo' permissions, and set that files permissions
-  su -c 'printf "\n%s\n" "#includedir /etc/sudoers.d" >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && mv rtruell /etc/sudoers.d && chmod 440 /etc/sudoers.d/rtruell'
-  # status message saying what the above commands did.
-  print_result $? "Added the necessary '#includedir' line to '/etc/sudoers', created '/etc/sudoers.d', changed its permissions, moved 'rtruell' to '/etc/sudoers.d' and changed its permissions"
-fi
+# get the users login name
+username=`echo ${USER}`
+print_result $? "User doing the install is '${username}'"
+
+# make it so the user can use 'sudo'.  the code that was in here suddenly
+# stopped working, so it was removed and put into its own script file.  it's
+# actually better that way...'su -c' can only run "one" command at a time, so
+# if doing multiple things is required, either there has to be multiple 'su -c'
+# lines and type the password each time, or there has to be one humongous
+# command line.  using an external script, the passord only has to be typed
+# once, but each command can be on its own line, making it easier to follow
+# what's being done and to debug problems
+su -c 'source ./sudo.sh'
+print_result $? "Configured 'sudo' access"
 
 # install some packages, if necessary, so everything in the rest of this script
 # can be done
@@ -153,7 +145,7 @@ retcode=""
 currdir=${PWD}  # preserve the current working directory
 mkdir ~/mountpoint  # create a mount point for the NAS' data directory ...
 print_result $? "Created mount point"
-sudo mount -t cifs -o user=rtruell //fileserver/data ~/mountpoint  # ... and mount it
+sudo mount -t cifs -o user=rtruell //fileserver/data ~/mountpoint  # ... and mount it.  don't forget to change the user name as necessary
 retcode=$?
 if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
   print_result ${retcode} "Mounted NAS"
@@ -338,13 +330,13 @@ case "${machinetype}" in
               fi
               printf '\n%s\n' "Don't forget to maximize the screen after rebooting!"
 
-              # if I'm not in the group 'vboxsf', add me so I'm able to access
-              # shared folders
+              # if the user is not in the group 'vboxsf', add them so they're
+              # able to access shared folders
               if [[ ! $(groups | grep vboxsf) ]]; then
-                sudo adduser rtruell vboxsf
-                print_result $? "Added 'rtruell' to group 'vboxsf'"
+                sudo adduser "${username}" vboxsf
+                print_result $? "Added '${username}' to group 'vboxsf'"
               else
-                print_result 0 "'rtruell' is already in group 'vboxsf'"
+                print_result 0 "'${username}' is already in group 'vboxsf'"
               fi
               ;;
            *) ;;
@@ -592,9 +584,9 @@ print_result $? "samba installed"
 #php5enmod imagick
 #php5enmod apcu
 
-# Add me to samba so I can access files from other computers
-sudo smbpasswd -a rtruell
-print_result $? "Added 'rtruell' to samba"
+# Add the user to samba so they can access files from other computers
+sudo smbpasswd -a "${username}"
+print_result $? "Added '${username}' to samba"
 
 # Create mount points for the 'data' and 'backups' directories on the NAS
 sudo mkdir -p /nas/data
