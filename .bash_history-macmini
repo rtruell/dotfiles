@@ -5491,3 +5491,7 @@ volnorm
 findshow '392'
 #1638331981
 volnorm
+#1638398328
+dotfiles
+#1638398356
+findtext -i 'homebrew'
