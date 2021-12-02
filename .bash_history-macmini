@@ -5563,3 +5563,9 @@ locate brew | less
 locate -ir ".*brew/bin$"
 #1638485208
 locate -ir ".*brew/sbin$"
+#1638485320
+ls /
+#1638485812
+brew --prefix
+#1638485824
+path
