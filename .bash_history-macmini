@@ -5539,3 +5539,27 @@ sudo updatedb
 dirname `findcommand brew`
 #1638484747
 locate brew
+#1638484777
+locate -ir ".*brew/sbin$"
+#1638484870
+brew --prefix
+#1638484885
+which brew
+#1638484892
+ll /usr/local/bin/brew
+#1638484812
+locate brew | less
+#1638484957
+locate -ir ".*brew/sbin$"
+#1638485063
+ll /usr/local/bin
+#1638485073
+ll /usr/local
+#1638485080
+ll /usr/local/sbin
+#1638484983
+locate brew | less
+#1638485163
+locate -ir ".*brew/bin$"
+#1638485208
+locate -ir ".*brew/sbin$"
