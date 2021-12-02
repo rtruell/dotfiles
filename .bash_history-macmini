@@ -5501,3 +5501,41 @@ ls bcompare
 ls bcompare*
 #1638429259
 ls firefox*
+#1638484260
+dirname `locate -ir ".*brew/sbin$"`
+#1638484293
+locate -ir ".*brew/sbin$"
+#1638484307
+man locate
+#1638484370
+locate homebrew | less
+#1638484378
+locate
+#1638484387
+locate --help
+#1638484423
+locate brew
+#1638484436
+findcommand brew
+#1638484443
+brew --prefix
+#1638484482
+sudo locate brew
+#1638484561
+path
+#1638484609
+locate sudo
+#1638484626
+man locate
+#1638484654
+listfunction findcommand
+#1638484686
+findcommand sudo
+#1638484695
+findcommand brew
+#1638484490
+sudo updatedb
+#1638484723
+dirname `findcommand brew`
+#1638484747
+locate brew
