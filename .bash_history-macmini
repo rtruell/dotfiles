@@ -5495,3 +5495,9 @@ volnorm
 dotfiles
 #1638398356
 findtext -i 'homebrew'
+#1638428944
+ls bcompare
+#1638428950
+ls bcompare*
+#1638429259
+ls firefox*
