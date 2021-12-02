@@ -5569,3 +5569,23 @@ ls /
 brew --prefix
 #1638485824
 path
+#1638487505
+cat .exports
+#1638487529
+cat .path
+#1638487562
+locate -ir ".*brew/sbin$"
+#1638487598
+echo $hbpathname
+#1638487645
+dirname `locate -ir ".*brew/sbin$"`
+#1638487708
+dotfiles
+#1638487714
+git config --list
+#1638487741
+git config --list --global
+#1638487752
+git config --list --local
+#1638487775
+git config --list --system
