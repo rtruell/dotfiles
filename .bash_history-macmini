@@ -5589,3 +5589,37 @@ git config --list --global
 git config --list --local
 #1638487775
 git config --list --system
+#1638571736
+dotfiles
+#1638571757
+findtext -i dirname
+#1638572068
+hf dirname
+#1638572112
+dirname `locate -ir ".*brew/sbin$"` 
+#1638572177
+path
+#1638572187
+man locate
+#1638572244
+locate bash
+#1638572259
+which bash
+#1638572262
+whereis bash
+#1638572299
+/usr/local/bin/bash --version
+#1638572314
+/bin/bash --version
+#1638572330
+locate --version
+#1638572340
+/bin/bash
+#1638572445
+which locate
+#1638572449
+whereis locate
+#1638572459
+/usr/bin/locate --version
+#1638572521
+dirname `/usr/bin/locate -ir ".*brew/sbin$"` 
