@@ -5623,3 +5623,45 @@ whereis locate
 /usr/bin/locate --version
 #1638572521
 dirname `/usr/bin/locate -ir ".*brew/sbin$"` 
+#1638572598
+which dirname
+#1638572603
+whereis dirname
+#1638572612
+/usr/bin/dirname `/usr/bin/locate -ir ".*brew/sbin$"` 
+#1638572781
+uname
+#1638573030
+echo $brewpre
+#1638573055
+brewpre=`brew --prefix`
+#1638573057
+echo $brewpre
+#1638573067
+brew --prefix
+#1638573567
+echo $brewprefix
+#1638573586
+brewprefix=`brew --prefix`
+#1638573589
+echo $brewprefix
+#1638573599
+brew --prefix
+#1638574848
+"${brewprefix}"/bin/brew --version
+#1638574869
+"${brewprefix}/bin/brew" --version
+#1638574980
+echo $brewprefix
+#1638575004
+if [ -d "${brewprefix}"/opt/gnu-sed ] ; then echo exists; else echo no; fi
+#1638575018
+if [ -d "${brewprefix}"/opt/gnu-see ] ; then echo exists; else echo no; fi
+#1638575031
+if [ -d "${brewprefix}"/opt/gnu-sed ] ; then echo exists; else echo no; fi
+#1638576287
+uname
+#1638576429
+echo $OSTYPE
+#1638576460
+echo "uname is >`uname`<"
