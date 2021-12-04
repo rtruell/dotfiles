@@ -5665,3 +5665,9 @@ uname
 echo $OSTYPE
 #1638576460
 echo "uname is >`uname`<"
+#1638576592
+sed --version
+#1638576608
+b s gnu-sed
+#1638576624
+b i gnu-sed
