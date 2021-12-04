@@ -5749,3 +5749,21 @@ for word in `sed -e 's/#.*//' -e '/^$/d' "${HOME}"/dotfiles/.APTfile`; do echo "
 copylastcommand
 #1638651373
 findtext -i brew | less
+#1638656593
+b i nmap
+#1638656616
+b in nmap
+#1638656869
+hf brew
+#1638656893
+b l thunderbird
+#1638656904
+b list thunderbird
+#1638656917
+b list firefox
+#1638656933
+echo $?
+#1638656938
+b list thunderbird
+#1638656941
+echo $?
