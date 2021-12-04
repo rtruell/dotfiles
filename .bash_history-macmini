@@ -5747,3 +5747,5 @@ sed -e 's/#.*//' -e '/^$/d' "${HOME}"/dotfiles/.APTfile >ricktest.txt
 for word in `sed -e 's/#.*//' -e '/^$/d' "${HOME}"/dotfiles/.APTfile`; do echo "package is $word"; done
 #1638654287
 copylastcommand
+#1638651373
+findtext -i brew | less
