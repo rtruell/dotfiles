@@ -5687,3 +5687,63 @@ nmap -A localhost
 sudo nmap -A localhost
 #1638648650
 arp -a
+#1638648894
+dotfiles
+#1638648900
+ls ..
+#1638648904
+la ..
+#1638648946
+la
+#1638648965
+sed 's/#.*//' "${HOME}"/dotfiles/.APTfile
+#1638648991
+less .aptfile
+#1638649798
+sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | less
+#1638649830
+man sed
+#1638649891
+sed -e 's/#.*//' -e 's/^$//' "${HOME}"/dotfiles/.APTfile | less
+#1638650043
+sed 's/#.*$//' "${HOME}"/dotfiles/.APTfile | less
+#1638650075
+sed 's/#.*\n//' "${HOME}"/dotfiles/.APTfile | less
+#1638650096
+sed 's/#.*$\n//' "${HOME}"/dotfiles/.APTfile | less
+#1638650125
+sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | less
+#1638650151
+sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | xargs echo
+#1638650185
+sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | xargs printf '%s\n'
+#1638650224
+man xargs
+#1638651325
+sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | xargs printf '%s\n'
+#1638651354
+cd /Volumes/ExternalHome/rtruell/dotfiles-extras/
+#1638651835
+brew list thunderbird
+#1638651856
+brew list firefox
+#1638653037
+sed 's/#.*//' "${HOME}"/dotfiles/.APTfile
+#1638653107
+sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | sed 's/^$//'
+#1638653167
+sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | sed 's/^ $//'
+#1638653177
+sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | sed 's/^$\n//'
+#1638653186
+sed 's/#.*//' "${HOME}"/dotfiles/.APTfile
+#1638653265
+sed 's/#.*//' "${HOME}"/dotfiles/.APTfile >ricktest.txt
+#1638653606
+sed -e 's/#.*//' -e '/^$/d' "${HOME}"/dotfiles/.APTfile
+#1638653654
+sed -e 's/#.*//' -e '/^$/d' "${HOME}"/dotfiles/.APTfile >ricktest.txt
+#1638654266
+for word in `sed -e 's/#.*//' -e '/^$/d' "${HOME}"/dotfiles/.APTfile`; do echo "package is $word"; done
+#1638654287
+copylastcommand
