@@ -187,7 +187,7 @@ if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
   # copy programs that aren't available in 'apt' or 'Homebrew'.  the programs
   # must be previously downloaded and located in '//fileserver/data/Downloads/Linux/InUse/Installed'
   declare -a programs=(
-    "bcompare*"
+    "bcompare"
   )
   i=""
   programdir="${HOME}/mountpoint/Downloads/Linux/InUse/Installed"  # the directory containing the programs to be copied
@@ -199,7 +199,7 @@ if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
     print_result 0 "'${programtmp}' exists"
   fi
   for i in ${programs[@]}; do  # loop through the array of programs
-    cp -a "${programdir}/${i}" "${programtmp}"  # copy the program to '/tmp'
+    cp -a "${programdir}"/"${i}"* "${programtmp}"  # copy the program to '/tmp'
     print_result $? "Copied ${i}"
   done
   cd "${currdir}"  # change back to where we were
@@ -208,15 +208,16 @@ if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
   # install any '.deb' programs, since they're easy to do in a script
   shopt -s dotglob
   shopt -s nullglob
-  filenames=("${programtmp}/*.deb")  # get a list of all the '.deb' files in the '/tmp/programs' directory into an array.  filenames are of the format "/tmp/programs/<program>.deb"
+  filenames=("${programtmp}"/*.deb)  # get a list of all the '.deb' files in the '/tmp/programs' directory into an array.  filenames are of the format "/tmp/programs/<program>.deb"
   shopt -u nullglob
   for i in "${filenames[@]}"; do  # loop through all the '.deb' files that were found
     if [[ ! $(apt list --installed 2>/dev/null | grep "^`echo "${i}" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f4`" >/dev/null) ]]; then  # if the program isn't already installed
       yes | sudo apt install "${i}"  # install it, automatically answering 'yes' to any prompts
       print_result $? "Installed ${i}"
-    else  # the package is already installed
+    else
       print_result 0 "${i} already installed"
     fi
+    rm "${i}"  # don't need the program installation file anymore, so delete it
   done
 
   # done with the NAS, so try to unmount it
@@ -344,7 +345,7 @@ esac
 # Homebrew
 printf "\n" | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"  # install Homebrew
 print_result $? "Installed Homebrew"
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"  # add its directories to the PATH temporarily (this is done permanently in the '.path' dotfile)
+eval $(grep -i 'eval.*)"$' ../installlog.txt | tr -s ' ')  # find out where it was installed to and add its directories to the PATH temporarily (this is done permanently in the '.path' dotfile)
 print_result $? "Added Homebrew directories to the PATH"
 brew update  # update it
 print_result $? "Updated Homebrew"
@@ -396,193 +397,14 @@ print_result $? "apt updated"
 sudo apt upgrade
 print_result $? "apt upgraded"
 
+# install software from the repositories
+#    for word in `sed -e 's/#.*//' -e '/^$/d' "${HOME}"/.APTfile`; do
+#      echo "do something with"
+#      echo "${word} in here"
+#    done
+
 yes | sudo apt install samba
 print_result $? "samba installed"
-#apt install \
-#  `# read-write NTFS driver for Linux` \
-#  ntfs-3g \
-#  `# do not delete main-system-dirs` \
-#  safe-rm \
-#  `# default for many other things` \
-#  tmux \
-#  build-essential \
-#  autoconf \
-#  make \
-#  cmake \
-#  mktemp \
-#  dialog \
-#  hardinfo \
-#  synaptic \
-#  samba \
-#  netselect-apt \
-#  cifs-utils \
-#  jre \
-#  firefox \
-#  gdebi-core \
-#  sublime-text \
-#  sublime-merge \
-#  webmin \
-#  firmware-misc-nonfree \
-#  amd64-microcode \
-#  gcc \
-#  inxi \
-#  dmidecode \  # might be installed automatically
-#  `# unzip, unrar etc.` \
-#  cabextract \
-#  zip \
-#  unzip \
-#  rar \
-#  unrar \
-#  tar \
-#  pigz \
-#  p7zip \
-#  p7zip-full \
-#  p7zip-rar \
-#  unace \
-#  bzip2 \
-#  gzip \
-#  xz-utils \
-#  advancecomp \
-#  `# optimize image-size` \
-#  gifsicle \
-#  optipng \
-#  pngcrush \
-#  pngnq \
-#  pngquant \
-#  jpegoptim \
-#  libjpeg-progs \
-#  jhead \
-#  `# utilities` \
-#  coreutils  \
-#  findutils  \
-#  moreutils  \
-#  `# fast alternative to dpkg -L and dpkg -S` \
-#  dlocate \
-#  `# quickly find files on the filesystem based on their name` \
-#  mlocate \
-#  locales \
-#  `# removing unneeded localizations` \
-#  localepurge \
-#  sysstat \
-#  tcpdump \
-#  colordiff \
-#  moreutils \
-#  atop \
-#  ack-grep \
-#  ngrep \
-#  `# interactive processes viewer` \
-#  htop \
-#  `# mysql processes viewer` \
-#  mytop \
-#  `# interactive I/O viewer` \
-#  iotop \
-#  tree \
-#  `# disk usage viewer` \
-#  ncdu \
-#  rsync \
-#  whois \
-#  vim \
-#  csstidy \
-#  recode \
-#  exuberant-ctags \
-#  `# GNU bash` \
-#  bash \
-#  bash-completion \
-#  `# command line clipboard` \
-#  xclip \
-#  `# more colors in the shell` \
-#  grc \
-#  `# fonts also "non-free"-fonts` \
-#  `# -- you need "multiverse" || "non-free" sources in your "source.list" -- ` \
-#  fontconfig \
-#  ttf-freefont \
-#  ttf-mscorefonts-installer \
-#  ttf-bitstream-vera \
-#  ttf-dejavu \
-#  ttf-liberation \
-#  ttf-linux-libertine \
-#  ttf-larabie-deco \
-#  ttf-larabie-straight \
-#  ttf-larabie-uncommon \
-#  ttf-liberation \
-#  xfonts-jmk \
-#  `# trace everything` \
-#  strace \
-#  `# get files from web` \
-#  wget \
-#  w3m \
-#  `# repo-tools`\
-#  git \
-#  subversion \
-#  mercurial \
-#  `# usefull tools` \
-#  boxes \
-#  fortune \
-#  sl \
-#  groff \
-#  id3tool \
-#  jq \
-#  telnet \
-#  sshd \
-#  thefuck \
-#  k4dirstat \
-#  network-manager-openconnect \
-#  shutter \
-#  openjdk \
-#  virtualbox \
-#  vlc \
-#  zenmap \
-#  ruby-full \
-#  imagemagick \
-#  lynx \
-#  nmap \
-#  pv \
-#  ucspi-tcp \
-#  xpdf \
-#  sqlite3 \
-#  perl \
-#  python \
-#  python-pip \
-#  python3-pip \
-#  python-dev \
-#  python3-dev \
-#  python3-setuptools \
-#  `# install python-pygments for json print` \
-#  python-pygments
-
-#echo "install php-5-extensions ..."
-#
-#apt install \
-#  php5-cli \
-#  php5-mysql \
-#  php5-curl \
-#  php5-gd \
-#  php5-intl \
-#  php-pear \
-#  php5-imagick \
-#  php5-imap \
-#  php5-mcrypt \
-#  php5-memcached \
-#  php5-ming \
-#  php5-ps \
-#  php5-pspell \
-#  php5-recode \
-#  php5-snmp \
-#  php5-sqlite \
-#  php5-tidy \
-#  php5-xmlrpc \
-#  php5-xsl \
-#  php5-xdebug \
-#  php5-apcu \
-#  php5-geoip
-#
-#php5enmod json
-#php5enmod mcrypt
-#php5enmod curl
-#php5enmod mysql
-#php5enmod gd
-#php5enmod imagick
-#php5enmod apcu
 
 # Add the user to samba so they can access files from other computers
 sudo smbpasswd -a "${username}"
