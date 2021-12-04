@@ -5671,3 +5671,19 @@ sed --version
 b s gnu-sed
 #1638576624
 b i gnu-sed
+#1638647997
+b upd
+#1638648107
+nmap
+#1638648112
+b in nmap
+#1638648276
+nmap
+#1638648304
+nmap localhost
+#1638648392
+nmap -A localhost
+#1638648540
+sudo nmap -A localhost
+#1638648650
+arp -a
