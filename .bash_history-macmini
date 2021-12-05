@@ -5863,3 +5863,95 @@ export HOMEBREW_CELLAR="/usr/local/Cellar";
 echo $HOMEBREW_CELLAR
 #1638693764
 man brew
+#1638694054
+echo $HOMEBREW_CELLAR
+#1638694081
+path
+#1638694105
+whereis brew
+#1638694109
+which brew
+#1638694230
+echo $HOMEBREW_CELLAR
+#1638694246
+echo $HOMEBREW_SHELLENV_PREFIX
+#1638694258
+echo $MANPATH
+#1638694398
+brew shellenv | xargs echo setting
+#1638694456
+man eval
+#1638694464
+bashman eval
+#1638694512
+brew shellenv | xargs eval
+#1638694542
+echo $HOMEBREW_SHELLENV_PREFIX
+#1638694571
+brew shellenv | xargs
+#1638694586
+brew shellenv | xargs printf "%s\n"
+#1638694624
+brew shellenv | xargs printf "%s%s\n"
+#1638694634
+brew shellenv | xargs printf "%s %s\n"
+#1638694648
+brew shellenv | xargs printf "%s %s\n" | eval
+#1638695906
+brew shellenv
+#1638695931
+echo $HOMEBREW_SHELLENV_PREFIX
+#1638695946
+path
+#1638696017
+eval "$(brew shellenv)"
+#1638696023
+echo $HOMEBREW_SHELLENV_PREFIX
+#1638696043
+path
+#1638696074
+cat .path
+#1638696131
+path
+#1638696257
+echo $oldpath
+#1638696262
+echo $PATH
+#1638696277
+oldpath=$PATH
+#1638696281
+echo $oldpath
+#1638696323
+uniqpath -p oldpath
+#1638696340
+echo $oldpath
+#1638696425
+cat .path
+#1638696448
+set | grep -i brew
+#1638696630
+path
+#1638696772
+echo$ HOMEBREW_PREFIX
+#1638696782
+echo $HOMEBREW_PREFIX
+#1638696896
+ls /etc
+#1638696913
+cat /etc/paths
+#1638697734
+path
+#1638697862
+which brew
+#1638697910
+brew shellenv
+#1638697939
+path
+#1638698438
+echo $HOMEBREW_PREFIX
+#1638698467
+ls $HOMEBREW_PREFIX/opt
+#1638698495
+ll $HOMEBREW_PREFIX/opt
+#1638698667
+hf eval
