@@ -5969,3 +5969,9 @@ copylastcommand
 echo $HOMEBREW_PREFIX
 #1638698778
 path
+#1638699035
+cat /etc/paths
+#1638699826
+cd /Volumes/ExternalHome/rtruell
+#1638699850
+findtext -i uniqpath
