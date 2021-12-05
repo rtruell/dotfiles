@@ -5955,3 +5955,17 @@ ls $HOMEBREW_PREFIX/opt
 ll $HOMEBREW_PREFIX/opt
 #1638698667
 hf eval
+#1638698709
+path
+#1638698721
+echo $HOMEBREW_PREFIX
+#1638698729
+hf eval
+#1638698750
+eval "$(brew shellenv)"
+#1638698760
+copylastcommand
+#1638698766
+echo $HOMEBREW_PREFIX
+#1638698778
+path
