@@ -5767,3 +5767,99 @@ echo $?
 b list thunderbird
 #1638656941
 echo $?
+#1638686412
+bashman tests
+#1638689077
+dotfiles
+#1638689105
+findtext -i export
+#1638689293
+up
+#1638690305
+b --prefix
+#1638690324
+set | grep -i /usr/local
+#1638690352
+alias path
+#1638690361
+path
+#1638690400
+path -p INFOPATH
+#1638690407
+path -p MANPATH
+#1638690457
+brew shellenv
+#1638690504
+path -p MANPATH
+#1638690535
+path -p INFOPATH
+#1638690546
+path -p PATH
+#1638690620
+set | grep -i /usr/local
+#1638690666
+echo $MANPATH
+#1638690673
+echo $INFOPATH
+#1638690682
+echo $?
+#1638690709
+set | grep -i brew
+#1638690778
+set | grep -i brew_
+#1638690790
+set | grep -i "brew_"
+#1638690806
+set | grep -i "homebrew_"
+#1638690908
+echo $HOMEBREW_REPOSITORY
+#1638690924
+echo $HOMEBREW_SHELLENV_PREFIX
+#1638690950
+env | grep -i brew
+#1638691005
+brew shellenv
+#1638691027
+env | grep -i brew
+#1638693165
+echo $HOMEBREW_PREFIX
+#1638693190
+brew shellenv
+#1638693195
+echo $HOMEBREW_PREFIX
+#1638693227
+export HOMEBREW_PREFIX="/usr/local"
+#1638693230
+echo $HOMEBREW_PREFIX
+#1638693331
+path
+#1638693362
+echo $oldpath
+#1638693371
+oldpath=$PATH
+#1638693374
+echo $oldpath
+#1638693394
+delpath -h
+#1638693436
+delpath /usr/local/opt/curl/bin
+#1638693450
+echo $PATH
+#1638693569
+echo $oldpath
+#1638693596
+PATH=$oldpath
+#1638693602
+echo $oldpath
+#1638693657
+brew shellenv
+#1638693674
+echo $HOMEBREW_PREFIX
+#1638693688
+echo $HOMEBREW_CELLAR
+#1638693708
+export HOMEBREW_CELLAR="/usr/local/Cellar";
+#1638693711
+echo $HOMEBREW_CELLAR
+#1638693764
+man brew
