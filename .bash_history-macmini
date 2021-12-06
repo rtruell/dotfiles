@@ -5975,3 +5975,5 @@ cat /etc/paths
 cd /Volumes/ExternalHome/rtruell
 #1638699850
 findtext -i uniqpath
+#1638826218
+findtext -i maincontroller
