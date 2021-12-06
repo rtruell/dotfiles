@@ -5977,3 +5977,13 @@ cd /Volumes/ExternalHome/rtruell
 findtext -i uniqpath
 #1638826218
 findtext -i maincontroller
+#1638827227
+findtext -i freeguide-tv
+#1638827426
+findtext -i ".plist"
+#1638827532
+findtext -i "maincontroller\.plist"
+#1638827563
+findtext -i "maincontroller.plist"
+#1638827595
+findtext -i "\.plist"
