@@ -5987,3 +5987,21 @@ findtext -i "maincontroller\.plist"
 findtext -i "maincontroller.plist"
 #1638827595
 findtext -i "\.plist"
+#1638864775
+hf brew
+#1638864835
+brew list firefox
+#1638864847
+brew list
+#1638864879
+brew list thunderbird
+#1638864894
+echo $?
+#1638865041
+b i thunderbird
+#1638865066
+b i firefox
+#1638865082
+b s firefox
+#1638865114
+b i firefox-esr
