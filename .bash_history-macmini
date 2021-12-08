@@ -6005,3 +6005,7 @@ b i firefox
 b s firefox
 #1638865114
 b i firefox-esr
+#1638909556
+findshow 'perl'
+#1638909575
+findshow 'pearl'
