@@ -6011,3 +6011,19 @@ findshow 'perl'
 findshow 'pearl'
 #1638999194
 findshow 'toy story'
+#1639114302
+b upd
+#1639114400
+b i hugo
+#1639114419
+hugo --version
+#1639114448
+hugo version
+#1639114462
+b i hugo
+#1639114510
+b i hugo | grep hugo:
+#1639114538
+b i hugo | grep hugo: | cut -d' ' -f 3
+#1639114829
+b i hugo | grep hugo: | cut -d' ' -f 3 | cut -d',' -f1
