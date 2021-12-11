@@ -6029,3 +6029,7 @@ b i hugo | grep hugo: | cut -d' ' -f 3
 b i hugo | grep hugo: | cut -d' ' -f 3 | cut -d',' -f1
 #1639186387
 volnorm
+#1639241328
+/Volumes/Recordings/xmltv/.xmltv/sortconf.sh; exit
+#1639244469
+findshow 'space jam'
