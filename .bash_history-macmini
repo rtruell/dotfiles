@@ -6033,3 +6033,117 @@ volnorm
 /Volumes/Recordings/xmltv/.xmltv/sortconf.sh; exit
 #1639244469
 findshow 'space jam'
+#1639576143
+man ln
+#1639576274
+ll /
+#1639576326
+ls -s /Volumes/ExternalHome /
+#1639576337
+ll /
+#1639576365
+ls 
+#1639576414
+ls /
+#1639576443
+ls -s /Volumes/ExternalHome /Volumes/testmount
+#1639576460
+ls /Volumes/
+#1639576605
+ls movies
+#1639576630
+ls ./Movies
+#1639576649
+ln -s ./Movies /Volumes/testmount
+#1639576681
+echo $?
+#1639576689
+ls /Volumes/
+#1639576763
+ls /Volumes/testmount
+#1639576769
+ls /Volumes/testmount/
+#1639576789
+ll /Volumes/
+#1639576831
+ls /Volumes/testmount/
+#1639576857
+ls ./Movies/
+#1639576885
+ls /Volumes/testmount/X-M
+#1639576918
+ls /Vol
+#1639576921
+ls /Volumes/
+#1639576939
+rm /Volumes/testmount 
+#1639576954
+ls ./Movies/
+#1639577165
+cat /etc/fstab
+#1639577216
+listfunction link_single_file
+#1639577230
+listfunction symlink_single_file
+#1639577567
+ls /Volumes/
+#1639577585
+pwd
+#1639577608
+ln -s /Users/rtruell/Movies /Volumes/testpoint
+#1639577616
+echo $?
+#1639577624
+ls /Volumes/
+#1639577630
+ls /Volumes/testpoint/
+#1639577709
+ll /Volumes/
+#1639577763
+ls /Volumes/testpoint/
+#1639577777
+ls ./Movies
+#1639578200
+rm /Volumes/testpoint
+#1639578214
+ll /Volumes/
+#1639578229
+mkdir /Volumes/testpoint
+#1639578238
+ll /Volumes/
+#1639578302
+chmod 775 /Volumes/testpoint
+#1639578304
+ll /Volumes/
+#1639578403
+chown rtruell:staff /Volumes/testpoint
+#1639578414
+ll /Volumes/
+#1639578458
+rm /Volumes/testpoint
+#1639578466
+rmdir /Volumes/testpoint
+#1639578470
+ll /Volumes/
+#1639578493
+ln -s /Users/rtruell/Movies /Volumes/testpoint
+#1639578498
+ll /Volumes/
+#1639578564
+chown rtruell:staff /Volumes/testpoint
+#1639578567
+ll /Volumes/
+#1639578597
+chown rtruell:staff /Volumes/testpoint
+#1639578601
+echo $?
+#1639578605
+ll /Volumes/
+#1639578662
+ls /Volumes/testpoint/
+#1639578677
+rm /Volumes/testpoint
+#1639578704
+mkdir /Volumes/testpoint
+#1639578710
+ll /Volumes/
