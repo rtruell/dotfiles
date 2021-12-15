@@ -6147,3 +6147,15 @@ rm /Volumes/testpoint
 mkdir /Volumes/testpoint
 #1639578710
 ll /Volumes/
+#1639578750
+chown rtruell:staff /Volumes/testpoint
+#1639578752
+ll /Volumes/
+#1639578806
+chmod 775 /Volumes/testpoint
+#1639578808
+ll /Volumes/
+#1639578892
+rmdir /Volumes/testpoint
+#1639578897
+ll /Volumes/
