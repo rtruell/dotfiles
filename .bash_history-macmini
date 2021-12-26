@@ -6195,3 +6195,11 @@ findshow 'industry'
 b s moneydance
 #1640476301
 b i moneydance
+#1640558147
+b s chrome
+#1640558176
+b i google-chrome
+#1640558188
+b h google-chrome
+#1640558253
+b in google-chrome
