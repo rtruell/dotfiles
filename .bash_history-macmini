@@ -6287,3 +6287,19 @@ mount
 sudo umount /Volumes/data-1
 #1640985878
 sudo diskutil umount /Volumes/data-1
+#1640987137
+b s xmltv
+#1640987632
+cd /Volumes/ExternalHome/rtruell/XMLTV/
+#1640987643
+ls ./bin
+#1640987674
+./bin/tv_grab_na_dd
+#1640987711
+less ./bin/tv_grab_na_dd
+#1640987738
+./bin/tv_grab_na_dd --version
+#1640987767
+subl ./bin/tv_grab_na_dd
+#1640993554
+ls /Volumes
