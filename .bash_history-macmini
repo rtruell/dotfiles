@@ -6229,3 +6229,61 @@ sysinfo
 ifconfig
 #1640908737
 findtext -i babylon
+#1640982519
+sysinfo
+#1640982546
+ping www.google.com
+#1640982573
+ping ipecho.net
+#1640982578
+sysinfo
+#1640983223
+ping www.google.com
+#1640983250
+ping duckduckgo.com
+#1640983313
+ping schedulesdirect.com
+#1640983513
+ping duckduckgo.com
+#1640985404
+pwd
+#1640985412
+cd /Volumes/data
+#1640985444
+ls ..
+#1640985449
+ls ../Downloads
+#1640985460
+ls ../data
+#1640985464
+ls ../data-1
+#1640985473
+hoem
+#1640985474
+home
+#1640985484
+ls /Volumes/
+#1640985574
+sudo umount data
+#1640985582
+sudo umount data-1
+#1640985616
+fdisk
+#1640985643
+ls /Volumes/
+#1640985657
+rm /Volumes/data
+#1640985663
+rmdir /Volumes/data
+#1640985668
+ls /Volumes/
+#1640985768
+rmdir /Volumes/data-1
+#1640985781
+diskutil list
+#1640985829
+mount
+#1640985854
+sudo umount /Volumes/data-1
+#1640985878
+sudo diskutil umount /Volumes/data-1
