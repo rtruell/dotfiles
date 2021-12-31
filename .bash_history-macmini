@@ -6227,3 +6227,5 @@ findshow 'league'
 sysinfo
 #1640907438
 ifconfig
+#1640908737
+findtext -i babylon
