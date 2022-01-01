@@ -6303,3 +6303,49 @@ less ./bin/tv_grab_na_dd
 subl ./bin/tv_grab_na_dd
 #1640993554
 ls /Volumes
+#1640996651
+findshow 'batman'
+#1641010296
+diskutil list
+#1641010385
+diskutil list | grep data | sed "s/^.+(disk.+$)/\1/"
+#1641010410
+diskutil list | grep data
+#1641010503
+listfunction remount
+#1641010536
+df 
+#1641010555
+df | grep data
+#1641010614
+diskutil list | grep ${VolName} | sed "s/^.*(disk.*$)/\1/"
+#1641010628
+diskutil list | grep data | sed "s/^.*(disk.*$)/\1/"
+#1641010661
+diskutil list | grep data
+#1641010714
+diskutil list | grep data | sed 's/^.*(disk.*$)/\1/'
+#1641010736
+listfunction remount
+#1641010768
+diskutil list | grep data
+#1641010788
+df | grep data
+#1641010816
+diskutil mount /dev/disk3s1
+#1641012254
+diskutil list
+#1641013441
+diskutil list | grep data | sed 's/^.*(disk.*)$/\1/'
+#1641013456
+diskutil list | grep data
+#1641013475
+diskutil list | grep data | tr -s
+#1641013486
+man tr
+#1641013506
+diskutil list | grep data | tr -s ' '
+#1641013544
+diskutil list | grep data | tr -s ' ' | cut -d ' ' -f 6
+#1641013560
+diskutil list | grep data | tr -s ' ' | cut -d ' ' -f 7
