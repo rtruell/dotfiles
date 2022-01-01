@@ -6349,3 +6349,5 @@ diskutil list | grep data | tr -s ' '
 diskutil list | grep data | tr -s ' ' | cut -d ' ' -f 6
 #1641013560
 diskutil list | grep data | tr -s ' ' | cut -d ' ' -f 7
+#1641068461
+findtext -i 'data'
