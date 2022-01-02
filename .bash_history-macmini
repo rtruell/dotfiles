@@ -6351,3 +6351,67 @@ diskutil list | grep data | tr -s ' ' | cut -d ' ' -f 6
 diskutil list | grep data | tr -s ' ' | cut -d ' ' -f 7
 #1641068461
 findtext -i 'data'
+#1641070765
+bashman ls
+#1641070779
+man ls
+#1641070806
+ls -R *.vd*
+#1641070837
+\ls -R *.vd*
+#1641070898
+ls -R *.vdi
+#1641070909
+listfunction ls
+#1641071005
+which ls
+#1641071011
+whereis ls
+#1641071029
+/bin/ls -R *.vi*
+#1641071075
+/usr/local/opt/coreutils/libexec/gnubin/ls -R *.vi*
+#1641071094
+/usr/local/opt/coreutils/libexec/gnubin/ls -R *.vd*
+#1641071147
+/usr/local/opt/coreutils/libexec/gnubin/ls -R 'Debian 10.10.0 DKE'.vd*
+#1641071161
+/usr/local/opt/coreutils/libexec/gnubin/ls -R 'Debian 10.10.0 KDE'.vd*
+#1641071179
+/usr/local/opt/coreutils/libexec/gnubin/ls -R 'Debian 10.10.0 KDE'*.vd*
+#1641071205
+/usr/local/opt/coreutils/libexec/gnubin/ls -R 'Debian 10.10.0 KDE'/*.vd*
+#1641071284
+/usr/local/opt/coreutils/libexec/gnubin/ls -R 'Debian 10.10.0 KDE'
+#1641071352
+ls -R ./
+#1641071389
+ls -R ./*/*.vd*
+#1641071437
+ls -R ./ *.vd*
+#1641071500
+home
+#1641071546
+cd -
+#1641071560
+listfunction findfile
+#1641071570
+functions
+#1641071603
+alias
+#1641071685
+cd
+#1641074493
+ping schedulesdirect.com
+#1641074560
+ping schedulesdirect.org
+#1641079552
+ls Applications
+#1641079592
+./Applications/mc2xml-v1.3 --version
+#1641079602
+./Applications/mc2xml-v1.3 --help
+#1641079607
+./Applications/mc2xml-v1.3 -help
+#1641079615
+./Applications/mc2xml-v1.3
