@@ -6415,3 +6415,19 @@ ls Applications
 ./Applications/mc2xml-v1.3 -help
 #1641079615
 ./Applications/mc2xml-v1.3
+#1641155716
+hf iso2usb
+#1641155745
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl 
+#1641155777
+cd /Volumes/data/Downloads/IPFire/
+#1641155798
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl 
+#1641155883
+diskutil list
+#1641155970
+diskutil unmountDisk /dev/disk4
+#1641156118
+sudo dd if="ipfire-2.27.x86_64-full-core162.iso" of=/dev/rdisk4 bs=4M status=progress
+#1641156276
+diskutil eject /dev/disk4
