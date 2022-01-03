@@ -6435,3 +6435,5 @@ diskutil eject /dev/disk4
 date --help
 #1641184223
 man date
+#1641238333
+ls /Volumes/
