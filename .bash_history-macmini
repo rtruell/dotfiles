@@ -6431,3 +6431,7 @@ diskutil unmountDisk /dev/disk4
 sudo dd if="ipfire-2.27.x86_64-full-core162.iso" of=/dev/rdisk4 bs=4M status=progress
 #1641156276
 diskutil eject /dev/disk4
+#1641184213
+date --help
+#1641184223
+man date
