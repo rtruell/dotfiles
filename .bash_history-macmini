@@ -6437,3 +6437,21 @@ date --help
 man date
 #1641238333
 ls /Volumes/
+#1641270527
+diskutil list
+#1641270600
+diskutil unmountdisk /dev/disk4
+#1641270640
+cd /Volumes/data/Downloads/IPFire/
+#1641270652
+hf dd
+#1641271028
+xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=4M of=/dev/rdisk4 status=progress
+#1641271194
+xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=1M of=/dev/rdisk4 status=progress
+#1641271215
+diskutil list
+#1641271258
+sync
+#1641271276
+diskutil eject /dev/disk4
