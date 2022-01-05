@@ -6509,3 +6509,23 @@ ls linux
 ls mac
 #1641366328
 diff linux/imager_1.4.dmg mac/imager_1.4.dmg
+#1641366611
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl 
+#1641366617
+diskutil list
+#1641366652
+diskutil unmountDisk /dev/disk3
+#1641366784
+sudo dd if="ipfire-2.27.aarch64-full-core162.iso" of=/dev/rdisk3 bs=4M status=progress
+#1641366939
+diskutil eject /dev/disk3
+#1641367103
+diskutil list
+#1641367159
+diskutil unmountDisk /dev/disk3
+#1641367432
+xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=1M of=/dev/disk3 status=progress
+#1641367628
+sync
+#1641367641
+diskutil eject /dev/disk3
