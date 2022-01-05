@@ -6455,3 +6455,57 @@ diskutil list
 sync
 #1641271276
 diskutil eject /dev/disk4
+#1641312908
+ls /etc
+#1641312920
+cat /etc/sudoers
+#1641312930
+sudo cat /etc/sudoers
+#1641312953
+ls /etc/sudoers.d
+#1641312966
+cat /etc/sudoers.d/rtruell
+#1641312971
+sudo cat /etc/sudoers.d/rtruell
+#1641313475
+ls .config
+#1641334730
+ls /Volumes/data
+#1641335361
+ll /Volumes/
+#1641335828
+ll /Volumes/Temp/
+#1641355580
+cd /Volumes/data/Downloads/Live\ CD\ ISOs/
+#1641355630
+hf usb2iso
+#1641355678
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl 
+#1641355688
+diskutil list
+#1641355723
+diskutil unmountDisk /dev/disk3
+#1641355783
+sudo dd if="ubuntu-20.04.3-desktop-amd64.iso" of=/dev/rdisk3 bs=4M status=progress
+#1641356422
+diskutil eject /dev/disk3
+#1641365765
+ls ..
+#1641365787
+cd ../IPFire/
+#1641365853
+ls OldVersions
+#1641366239
+cd /Volumes/Downloads/
+#1641366254
+cd ../data
+#1641366260
+ls linux
+#1641366282
+cd Downloads/
+#1641366286
+ls linux
+#1641366288
+ls mac
+#1641366328
+diff linux/imager_1.4.dmg mac/imager_1.4.dmg
