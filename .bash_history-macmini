@@ -6529,3 +6529,23 @@ xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=1M of=/dev/d
 sync
 #1641367641
 diskutil eject /dev/disk3
+#1641599785
+ll /volumes
+#1641599944
+ll /volumes/Downloads
+#1641600001
+chown rtruell:staff /Volumes/Downloads/
+#1641600009
+sudo chown rtruell:staff /Volumes/Downloads/
+#1641600020
+ll /volumes
+#1641600121
+ll /volumes/ExternalHome/
+#1641600140
+sudo chown rtruell:staff /Volumes/ExternalHome/
+#1641600184
+sudo chown rtruell:staff /Volumes/Owncloud/
+#1641600188
+ll /volumes/ExternalHome/
+#1641600192
+ll /volumes
