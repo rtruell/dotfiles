@@ -6549,3 +6549,109 @@ sudo chown rtruell:staff /Volumes/Owncloud/
 ll /volumes/ExternalHome/
 #1641600192
 ll /volumes
+#1641754380
+diskutil list
+#1641754460
+diskutil unmountdisk /dev/disk3
+#1641754550
+cd /Volumes/data/Downloads/IPFire/
+#1641754717
+xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=1m of=/dev/disk3 status=progress
+#1641754733
+xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=4M of=/dev/disk3 status=progress
+#1641754947
+sync
+#1641754965
+diskutil eject /dev/disk3
+#1641755866
+diskutil list
+#1641755883
+diskutil unmountdisk /dev/disk3
+#1641756213
+xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=4M of=/dev/disk3 status=progress
+#1641756256
+diskutil list
+#1641756266
+diskutil unmountdisk /dev/disk3
+#1641756286
+xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=4M of=/dev/disk3 status=progress
+#1641756297
+xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=1M of=/dev/disk3 status=progress
+#1641756358
+diskutil eject /dev/disk3
+#1641756384
+diskutil list
+#1641756511
+diskutil unmountdisk /dev/disk3
+#1641756615
+xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=4M of=/dev/disk3 status=progress
+#1641757072
+diskutil list
+#1641757078
+diskutil unmountdisk /dev/disk3
+#1641757202
+xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=4M of=/dev/disk3 status=progress
+#1641757258
+diskutil list
+#1641757271
+diskutil unmountdisk /dev/disk3
+#1641757362
+c;s
+#1641757503
+diskutil list
+#1641757518
+diskutil unmountdisk /dev/disk3
+#1641757828
+diskutil list
+#1641757836
+diskutil unmountdisk /dev/disk3
+#1641757868
+xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=4M of=/dev/disk3 status=progress
+#1641758062
+sync
+#1641758072
+diskutil eject /dev/disk3
+#1641762588
+cd
+#1641762592
+man cifs
+#1641762598
+man mount.cifs
+#1641762604
+man mount
+#1641762622
+man mount_cifs
+#1641762624
+man mount
+#1641762652
+man mount_smbfs
+#1641763610
+hf awk
+#1641763620
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl 
+#1641763630
+disutil list
+#1641763643
+diskutil list
+#1641763671
+diskutil unmountDisk /dev/disk3
+#1641763738
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/kubuntu-20.04.3-desktop-amd64.iso" of=/dev/rdisk3 bs=4M status=progress
+#1641764396
+diskutil eject /dev/disk3
+#1641771953
+findshow 'euph'
+#1641772101
+findshow 'wynonna'
+#1641783834
+ping fileserver
+#1641783845
+ipconfig
+#1641783851
+ifconfig
+#1641783870
+ping firewall
+#1641783880
+ping backupserver
+#1641792186
+ping fileserver
