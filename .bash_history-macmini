@@ -6661,3 +6661,15 @@ man touch
 findshow 'wynonna'
 #1642033376
 findshow 'resident alien'
+#1642359341
+findshow ' 393 '
+#1642359350
+findshow '393'
+#1642359415
+findshow 'walking dead'
+#1642359471
+findshow '327'
+#1642395524
+which dot_clean
+#1642395536
+man dot_clean
