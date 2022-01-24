@@ -6673,3 +6673,5 @@ findshow '327'
 which dot_clean
 #1642395536
 man dot_clean
+#1642997508
+hdiutil mount "/Volumes/data/Downloads/Live CD ISOs/debian-11.1.0-i386-netinst.iso"
