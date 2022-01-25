@@ -6675,3 +6675,5 @@ which dot_clean
 man dot_clean
 #1642997508
 hdiutil mount "/Volumes/data/Downloads/Live CD ISOs/debian-11.1.0-i386-netinst.iso"
+#1643152908
+hf ipfire
