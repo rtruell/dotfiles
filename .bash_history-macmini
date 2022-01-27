@@ -6677,3 +6677,5 @@ man dot_clean
 hdiutil mount "/Volumes/data/Downloads/Live CD ISOs/debian-11.1.0-i386-netinst.iso"
 #1643152908
 hf ipfire
+#1643256274
+blkid
