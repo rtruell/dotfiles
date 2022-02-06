@@ -6687,3 +6687,5 @@ b s moneydance
 b i moneydance
 #1644006624
 b h moneydance
+#1644092701
+ln -s /Volumes/ExternalHome/rtruell/MoneydanceData /Users/rtruell/Library/Containers/com.infinitekind.MoneydanceOSX/Data/Documents
