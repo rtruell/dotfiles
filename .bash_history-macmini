@@ -6689,3 +6689,35 @@ b i moneydance
 b h moneydance
 #1644092701
 ln -s /Volumes/ExternalHome/rtruell/MoneydanceData /Users/rtruell/Library/Containers/com.infinitekind.MoneydanceOSX/Data/Documents
+#1644180620
+b s cisdem
+#1644180664
+b i cisdem-pdf-converter-ocr
+#1644181379
+b s pdfpen
+#1644181404
+b i pdfpen
+#1644181411
+b i pdfpenpro
+#1644181428
+b h pdfpen
+#1644181540
+b h pdfpenpro
+#1644181585
+b h cisdem-pdf-converter-ocr
+#1644182624
+b s tesseract
+#1644182640
+b -h
+#1644182658
+b
+#1644182668
+listfunction b
+#1644182712
+b upd
+#1644184222
+b in tesseract
+#1644190065
+hostname
+#1644190070
+hostname -s
