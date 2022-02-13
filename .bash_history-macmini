@@ -6721,3 +6721,19 @@ b in tesseract
 hostname
 #1644190070
 hostname -s
+#1644729427
+ls /etc/
+#1644729452
+less /etc/hosts.equiv
+#1644729468
+less /etc/hosts
+#1644729496
+mv /etc/hosts /etc/hosts.old
+#1644729506
+sudo mv /etc/hosts /etc/hosts.old
+#1644729520
+ping firewall
+#1644729533
+ping qnap1
+#1644729542
+ping qnap2
