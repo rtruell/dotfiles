@@ -6737,3 +6737,27 @@ ping firewall
 ping qnap1
 #1644729542
 ping qnap2
+#1644896681
+man sed
+#1644897124
+chmod 755 /Volumes/data/Text/E-bookReadingOrder/Master\ Book\ List.sh
+#1644897146
+ll /Volumes/data/Text/E-bookReadingOrder
+#1644897191
+ll /Volumes/data/Text/
+#1644897223
+ll /Volumes/data
+#1644897238
+ll /Volumes
+#1644897334
+chmod 775 /Volumes/data
+#1644897337
+ll /Volumes
+#1644897351
+sudo chmod 775 /Volumes/data
+#1644897354
+ll /Volumes
+#1644897374
+sudo chmod 755 /Volumes/data/Text/E-bookReadingOrder/Master\ Book\ List.sh
+#1644897383
+ll /Volumes/data/Text/E-bookReadingOrder
