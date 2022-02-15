@@ -6761,3 +6761,5 @@ ll /Volumes
 sudo chmod 755 /Volumes/data/Text/E-bookReadingOrder/Master\ Book\ List.sh
 #1644897383
 ll /Volumes/data/Text/E-bookReadingOrder
+#1644897403
+/Volumes/data/Text/E-bookReadingOrder/Master\ Book\ List.sh; exit
