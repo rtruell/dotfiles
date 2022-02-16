@@ -6773,3 +6773,11 @@ man sed
 man sed
 #1644899466
 /Volumes/data/Text/E-bookReadingOrder/Master\ Book\ List.sh; exit
+#1644965794
+print_result 255 "This is a test"
+#1644965815
+print_result 0 "This is a good test"
+#1644967320
+/Volumes/data/Text/E-bookReadingOrder/Master\ Book\ List.sh; exit
+#1644987672
+volnorm
