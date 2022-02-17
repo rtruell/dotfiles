@@ -6781,3 +6781,43 @@ print_result 0 "This is a good test"
 /Volumes/data/Text/E-bookReadingOrder/Master\ Book\ List.sh; exit
 #1644987672
 volnorm
+#1645138220
+brew --cache
+#1645138245
+set | grep brew
+#1645138261
+set | grep brew | grep -v _brew
+#1645138268
+brew --cache
+#1645138357
+ls /Volumes/ExternalHome/rtruell/homebrewcache
+#1645138394
+ll /Volumes/ExternalHome/rtruell/homebrewcache
+#1645138454
+ls /Volumes/ExternalHome/rtruell/homebrewcache/downloads
+#1645138516
+ls /Volumes/ExternalHome/rtruell/homebrewcache/cask
+#1645138528
+ll /Volumes/ExternalHome/rtruell/homebrewcache/cask
+#1645138554
+ls /Volumes/ExternalHome/rtruell/homebrewcache/formula
+#1645138588
+ls /Volumes/ExternalHome/rtruell/homebrewcache
+#1645138654
+set | grep brew | grep -v _brew
+#1645138825
+brew shellenv
+#1645139194
+path -?
+#1645139212
+path
+#1645139221
+path infopath
+#1645139253
+path -p infopath
+#1645139272
+path -p INFOPATH
+#1645139366
+cd dotfiles
+#1645139376
+findtext cache
