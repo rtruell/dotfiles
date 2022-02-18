@@ -6821,3 +6821,41 @@ path -p INFOPATH
 cd dotfiles
 #1645139376
 findtext cache
+#1645159524
+osascript -e "mount volume smb://qnap1/backup"
+#1645159577
+osascript -e 'mount volume "smb://qnap1/backup"'
+#1645159588
+ls /Volumes/
+#1645159611
+ls /Volumes/backup
+#1645159646
+ls /Volumes/backup/Nasbackup
+#1645159753
+diskutil unmount /Volumes/backup
+#1645159761
+ls /Volumes/
+#1645160354
+man mount
+#1645160434
+man 2 mount
+#1645160464
+man osascript
+#1645161925
+mount
+#1645163061
+echo $USER
+#1645163604
+b s autofs
+#1645163657
+b s automount
+#1645163674
+man autoconf
+#1645164936
+ls /etc/auto_master
+#1645164944
+cat /etc/auto_master
+#1645164961
+autofs --version
+#1645165068
+cat /etc/auto_smb
