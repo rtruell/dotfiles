@@ -6933,3 +6933,23 @@ hostname -s
 lal
 #1645390631
 lal dotfiles
+#1645394951
+hf awk
+#1645394964
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl 
+#1645394972
+diskutil list
+#1645395012
+diskutil unmountDisk /dev/disk3
+#1645395086
+sudo dd if="/Volumes/data/Downloads/IPFire/ipfire-2.27.x86_64-full-core163.iso" of=/dev/rdisk3 bs=4M status=progress
+#1645395216
+diskutil eject /dev/disk3
+#1645395965
+diskutil list
+#1645396017
+diskutil unmountDisk /dev/disk3
+#1645396059
+sudo dd if="/Volumes/VMs/VirtualBox/ifl-cui-3.50-2022-02-14.iso" of=/dev/rdisk3 bs=4M status=progress
+#1645396098
+diskutil eject /dev/disk3
