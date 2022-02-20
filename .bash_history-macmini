@@ -6863,3 +6863,73 @@ cat /etc/auto_smb
 b s httrack
 #1645327094
 b h httrack
+#1645385850
+subl /etc/hosts
+#1645385874
+ls /etc/
+#1645385893
+cat /etc/hosts.old
+#1645385917
+ping qnap2
+#1645385926
+ping fileserver
+#1645385950
+ping firewall
+#1645385986
+mv /etc/hosts.old /etc/hosts
+#1645385991
+sudo mv /etc/hosts.old /etc/hosts
+#1645385999
+ls /etc/
+#1645386009
+ping firewall
+#1645386032
+ping qnap2
+#1645386037
+ping fileserver
+#1645386387
+ls /etc/
+#1645386419
+mv /etc/hosts /etc/hosts.old
+#1645386424
+sudo mv /etc/hosts /etc/hosts.old
+#1645386429
+ls /etc/
+#1645388600
+findshow 'john oliver'
+#1645389726
+la
+#1645389761
+lal
+#1645389808
+ll dotfiles
+#1645389816
+lal dotfiles
+#1645389854
+cat .bash_logout
+#1645389869
+hostname
+#1645390207
+scutil --get ComputerName
+#1645390233
+scutil --get HostName
+#1645390238
+scutil --get LocalHostName
+#1645390276
+defaults read /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName
+#1645390535
+scutil --get ComputerName
+#1645390543
+scutil --get HostName
+#1645390547
+scutil --get LocalHostName
+#1645390552
+defaults read /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName
+#1645390567
+hostname
+#1645390571
+hostname -s
+#1645390616
+lal
+#1645390631
+lal dotfiles
