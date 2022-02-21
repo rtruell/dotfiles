@@ -6953,3 +6953,5 @@ diskutil unmountDisk /dev/disk3
 sudo dd if="/Volumes/VMs/VirtualBox/ifl-cui-3.50-2022-02-14.iso" of=/dev/rdisk3 bs=4M status=progress
 #1645396098
 diskutil eject /dev/disk3
+#1645413734
+cat /etc/hosts.old
