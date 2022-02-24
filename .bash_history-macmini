@@ -6957,3 +6957,5 @@ diskutil eject /dev/disk3
 cat /etc/hosts.old
 #1645470972
 /Volumes/Temp/firewall-2.27-c163-beelink/etc/adjtime; exit
+#1645738145
+ls /etc/
