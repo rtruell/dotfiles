@@ -6959,3 +6959,49 @@ cat /etc/hosts.old
 /Volumes/Temp/firewall-2.27-c163-beelink/etc/adjtime; exit
 #1645738145
 ls /etc/
+#1645909070
+xcode-select --print-path
+#1645909278
+echo "${HOME}"
+#1645909285
+echo '${HOME}'
+#1645909321
+printf "%s\n" "${HOME}"
+#1645909333
+printf "%s\n" '${HOME}'
+#1645909391
+echo HOMEBREW_CASK_OPTS
+#1645909420
+echo "${HOMEBREW_CASK_OPTS}"
+#1645909449
+export HOMEBREW_CASK_TEST="--appdir="${HOME}"/Applications"
+#1645909474
+echo "${HOMEBREW_CASK_TEST}"
+#1645909534
+ls "${HOMEBREW_CASK_OPTS}"
+#1645909551
+ls "${HOMEBREW_CASK_TEST}"
+#1645910042
+id -u
+#1645910044
+id -un
+#1645910278
+hostname -s
+#1645915177
+b s popclip
+#1645915211
+b i popclip
+#1645915282
+b h popclip
+#1645915549
+b s chm
+#1645915577
+b s speedtest
+#1645915618
+b s maintenance
+#1645915639
+b s bitdefender
+#1645915678
+b s medical
+#1645915690
+b s parcel
