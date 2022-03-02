@@ -7041,3 +7041,35 @@ mas info 424182884
 mas info 445189367
 #1646003724
 mas info 517065482
+#1646159344
+ping c2d2930
+#1646159365
+ping c2d-2930
+#1646159376
+ping backupserver
+#1646159380
+ping qnap1
+#1646159401
+ping c2d2930
+#1646170280
+hostname
+#1646170344
+if [[ $(hostname -s) == "dave" ]] then; echo it worked; fi
+#1646170384
+if [[ `hostname -s` == "dave" ]] then; echo it worked; fi
+#1646170413
+if [[ $(hostname -s) == "dave" ]]; then echo it worked; fi
+#1646170430
+if [[ $(hostname -s) == "macmini" ]]; then echo it worked; fi
+#1646173828
+hf awk
+#1646173842
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl 
+#1646173853
+diskutil list
+#1646173920
+diskutil unmountDisk /dev/disk3
+#1646174013
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.2.0-amd64-DVD-1.iso" of=/dev/rdisk3 bs=4M status=progress
+#1646174838
+diskutil eject /dev/disk3
