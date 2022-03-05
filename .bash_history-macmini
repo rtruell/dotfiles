@@ -7073,3 +7073,25 @@ diskutil unmountDisk /dev/disk3
 sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.2.0-amd64-DVD-1.iso" of=/dev/rdisk3 bs=4M status=progress
 #1646174838
 diskutil eject /dev/disk3
+#1646513196
+source ./test.sh rick
+#1646513201
+source ./test.sh dave
+#1646515063
+./test1.sh
+#1646515745
+dotfiles
+#1646515759
+findtext 'grep'
+#1646515801
+findtext "'grep"
+#1646515824
+findtext "`grep"
+findtext "\`grep"
+findtext 'grep'
+#1646515898
+findtext "\`grep"
+#1646515927
+findtext "`grep"
+#1646516223
+ls /etc/apt
