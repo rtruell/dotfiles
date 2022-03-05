@@ -7095,3 +7095,13 @@ findtext "\`grep"
 findtext "`grep"
 #1646516223
 ls /etc/apt
+#1646516670
+ls /etc
+#1646516681
+ls ..
+#1646517020
+ls /etc
+#1646517053
+dotfiles
+#1646517058
+ls /etc
