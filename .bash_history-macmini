@@ -7105,3 +7105,7 @@ ls /etc
 dotfiles
 #1646517058
 ls /etc
+#1646520753
+bashman tests
+#1646521070
+findtext print_result
