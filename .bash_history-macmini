@@ -7217,3 +7217,13 @@ man slepp
 man sleep
 #1646633528
 source ./test.sh
+#1646715258
+findshow 'playboy'
+#1646715433
+listdf
+#1646715449
+la
+#1646715671
+listdf -f
+#1646715889
+spaceused
