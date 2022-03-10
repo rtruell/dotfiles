@@ -7427,3 +7427,41 @@ ls /Library/Python/2.7
 ls /Library/Python/2.7/site-packages
 #1646888887
 hf install
+#1646888984
+hf "b i"
+#1646890236
+brew file casklist
+#1646890266
+man brew
+#1646891338
+hf "b i"
+#1646891456
+b i uniclip
+#1646891482
+b s uniclip
+#1646891768
+b s inxi
+#1646891804
+b i inxi
+#1646891933
+b s gpg
+#1646891947
+b i gpg
+#1646891984
+b i gnupg
+#1646892064
+b s taskade
+#1646892127
+b s nmap
+#1646892213
+b -H
+#1646892223
+b -h
+#1646892241
+b dave
+#1646892252
+listfunction b
+#1646892278
+b
+#1646892329
+hf 'b in '
