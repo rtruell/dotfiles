@@ -7227,3 +7227,203 @@ la
 listdf -f
 #1646715889
 spaceused
+#1646866093
+volall
+#1646866131
+volnorm
+#1646866135
+volall
+#1646866238
+aw
+#1646866362
+sysinfo
+#1646866424
+set | grep yosemite
+#1646866669
+echo "${SYSTEM_TYPE}"
+#1646866697
+echo "${SYSTEM_VERSION}"
+#1646866748
+echo "${RELEASE_NAME}"
+#1646866786
+echo "${INSTALL_TYPE}"
+#1646867601
+sysinfo
+#1646867614
+la
+#1646867643
+s .functions/sysinfo.function
+#1646867649
+sysinfo
+#1646867696
+s .functions/sysinfo.function
+#1646867698
+sysinfo
+#1646867719
+s .functions/sysinfo.function
+#1646867721
+sysinfo
+#1646868117
+s .functions/sysinfo.function
+#1646868119
+sysinfo
+#1646868150
+s .functions/sysinfo.function
+#1646868152
+sysinfo
+#1646868223
+s .functions/sysinfo.function
+#1646868225
+sysinfo
+#1646868251
+s .functions/sysinfo.function
+#1646868252
+sysinfo
+#1646868287
+s .functions/sysinfo.function
+#1646868288
+sysinfo
+#1646868344
+s .functions/sysinfo.function
+#1646868345
+sysinfo
+#1646868378
+s .functions/sysinfo.function
+#1646868379
+sysinfo
+#1646868439
+printf '\n%b' "${DULL_PURPLE}You are logged on:${NORMAL} `hostname -s`" ; hostname -s
+#1646868451
+printf '\n%b' "${DULL_PURPLE}You are logged on:${NORMAL} `hostname -s`"
+#1646868556
+s .functions/sysinfo.function
+#1646868709
+sysinfo
+#1646868916
+s .functions/sysinfo.function
+#1646868918
+sysinfo
+#1646869016
+printf '\n%b' "${DULL_PURPLE}You are:${NORMAL} `whoami`"
+#1646869093
+s .functions/sysinfo.function
+#1646869098
+sysinfo
+#1646869189
+s .functions/sysinfo.function
+#1646869191
+sysinfo
+#1646869219
+s .functions/sysinfo.function
+#1646869221
+sysinfo
+#1646869289
+externalip
+#1646869297
+localip
+#1646869309
+alias externalip
+#1646869317
+listfunction externalip
+#1646869326
+listfunction localip
+#1646869353
+ip
+#1646869362
+ifconfig
+#1646869373
+listfunction localip
+#1646869555
+b i iproute2mac
+#1646869597
+b h iproute2mac
+#1646869705
+ifconfig | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//' | cut -d/ -f1
+#1646869729
+ifconfig | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//'
+#1646869748
+ifconfig | grep 'inet '
+#1646869763
+ifconfig | grep 'inet ' | grep -v 127
+#1646869783
+ifconfig | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//'
+#1646869817
+ifconfig | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//' | cut -f1
+#1646869827
+ifconfig | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//' | cut -d' ' -f1
+#1646869924
+iproute2mac
+#1646869928
+ip
+#1646869954
+ls /usr/local/Cellar/iproute2mac
+#1646869964
+ls /usr/local/Cellar/iproute2mac/1.2.3
+#1646869970
+ls /usr/local/Cellar/iproute2mac/1.2.3/bin
+#1646869981
+ll /usr/local/Cellar/iproute2mac/1.2.3/bin
+#1646870020
+which ip
+#1646870023
+whereis ip
+#1646870036
+/usr/local/Cellar/iproute2mac/1.2.3/bin/ip
+#1646870079
+/usr/local/Cellar/iproute2mac/1.2.3/bin/ip a | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//' | cut -d/ -f1
+#1646870153
+b upd
+#1646870302
+b i iproute2mac
+#1646870326
+listfunction b
+#1646870392
+b upg iproute2mac
+#1646870533
+ip
+#1646870545
+b i iproute2mac
+#1646870611
+/usr/local/Cellar/iproute2mac/1.2.3/bin/ip a | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//' | cut -d/ -f1
+#1646870626
+ifconfig | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//' | cut -d' ' -f1
+#1646870675
+sysinfo
+#1646870757
+listfunction sysinfo
+#1646888037
+hf install
+#1646888171
+b i raspberry
+#1646888182
+b s raspberry
+#1646888236
+b i raspberry
+#1646888249
+b i raspberry-pi-imager
+#1646888317
+b i quickhash
+#1646888326
+b h quickhash
+#1646888478
+b s quickhash
+#1646888552
+which easy_install 
+#1646888564
+man easy_install 
+#1646888578
+easy_install -h
+#1646888685
+easy_install -i
+#1646888720
+easy_install -r easyinstall.txt
+#1646888736
+easy_install --record easyinstall.txt
+#1646888779
+ls /Library/Python
+#1646888785
+ls /Library/Python/2.7
+#1646888792
+ls /Library/Python/2.7/site-packages
+#1646888887
+hf install
