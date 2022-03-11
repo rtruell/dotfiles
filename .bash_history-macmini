@@ -7585,3 +7585,367 @@ dmidecode -h
 dmidecode | less
 #1646918575
 b h inxi
+#1646911913
+man inxi
+#1646952732
+b s 1pass
+#1646952774
+b i 1password
+#1646952780
+b i 1password6
+#1646953211
+cd temp
+#1646953221
+cd /Volumes/Temp/
+#1646953388
+hdiutil attach ABFRX11.dmg
+#1646953469
+ls /Volumes/
+#1646953510
+ls "/Volumes/A Better Finder Rename 11"/
+#1646953521
+ll "/Volumes/A Better Finder Rename 11"/
+#1646953611
+cp "/Volumes/A Better Finder Rename 11/A Better Finder rename 11.app" .
+#1646953646
+cp -r "/Volumes/A Better Finder Rename 11/A Better Finder rename 11.app" .
+#1646953765
+hdiutil detach /dev/disk3s2
+#1646953797
+hdiutil attach Alfred*.dmg
+#1646953816
+ls /Volumes/Alfred/
+#1646953848
+hdiutil detach /dev/disk3s1
+#1646953876
+hdiutil attach avidemux*.dmg
+#1646953898
+ls /Volumes/avidemux_2.4.4_Gtk_Quartz_universal/
+#1646953962
+disutil list | grep avi | cut -d' ' -f1
+#1646953973
+diskutil list | grep avi | cut -d' ' -f1
+#1646953981
+diskutil list
+#1646953994
+diskutil list | grep avi
+#1646954020
+man hdiutil
+#1646954184
+hdiutil detach /dev/disk3s2
+#1646954239
+hdiutil attach avidemux*.dmg | grep avi | cut -d' ' -f1
+#1646954295
+ls /Volumes/avidemux*
+#1646954323
+cp -r /Volumes/avidemux*.app .
+#1646954388
+cp -r /Volumes/avidemux*/avidemux*.app .
+#1646954459
+hdiutil detach /dev/disk3s2
+#1646954493
+disk=`hdiutil attach avidemux*.dmg | grep avi | cut -d' ' -f1`
+#1646954500
+echo $disk
+#1646954526
+ls /Volumes/avidemux*
+#1646954555
+hdiutil detach "${disk}"
+#1646954690
+progname="avidemux"
+#1646954774
+hdiutil attach "${progname}*.app"
+#1646954826
+hdiutil attach "${progname}*.dmg"
+#1646954857
+echo $progname
+#1646954912
+hdiutil attach `echo $progname`*.dmg
+#1646954936
+echo $disk
+#1646954989
+ls "/Volumes/${progname}*"
+#1646955012
+ls "/Volumes/`echo ${progname}`*"
+#1646955049
+ls /Volumes
+#1646955064
+ls /Volumes/avidemux*
+#1646955241
+cp -r "/Volumes/${progname}*/${progname}*.app" .
+#1646955304
+command="cp -r "/Volumes/${progname}*/${progname}*.app" ."
+#1646955309
+echo $command
+#1646955342
+${command}
+#1646955426
+dotfiles
+#1646955459
+findtext execute_command
+#1646955563
+execute_command "cp -r "/Volumes/${progname}*/${progname}*.app" ."
+#1646955641
+echo $disk
+#1646955665
+hdiutil detach "${disk}"
+#1646955790
+echo $disk1
+#1646956285
+diskutil list
+#1646956339
+progname="ABFRX11"
+#1646956380
+echo $progname
+#1646956405
+disk=`hdiutil attach `echo $progname`*.dmg | grep "${progname}" | cut -d' ' -f1`
+#1646956954
+echo $progname
+#1646956983
+command="`hdiutil attach `echo $progname`*.dmg | grep "${progname}" | cut -d' ' -f1`"
+#1646957017
+command="hdiutil attach `echo $progname`*.dmg | grep "${progname}" | cut -d' ' -f1"
+#1646957028
+echo $command
+#1646957110
+program="avidemux"
+#1646957121
+echo command
+#1646957125
+echo $command
+#1646957131
+command="hdiutil attach `echo $progname`*.dmg | grep "${progname}" | cut -d' ' -f1"
+#1646957133
+echo $command
+#1646957178
+progname="avidemux"
+#1646957189
+echo $progname
+#1646957195
+echo $command
+#1646957201
+command="hdiutil attach `echo $progname`*.dmg | grep "${progname}" | cut -d' ' -f1"
+#1646957204
+echo $command
+#1646957338
+command="hdiutil attach $progname*.dmg | grep "${progname}" | cut -d' ' -f1"
+#1646957341
+echo $command
+#1646957376
+command=""
+#1646957379
+echo $command
+#1646957400
+echo $progname
+#1646957474
+command="hdiutil attach "${progname}"*.dmg | grep "${progname}" | cut -d' ' -f1"
+#1646957478
+echo $command
+#1646957523
+command=""
+#1646957558
+echo $command
+#1646957586
+man cut
+#1646957648
+echo '${command}'
+#1646957673
+printf '%s\n' '${command}'
+#1646957702
+man cut
+#1646957725
+echo $progname
+#1646957729
+echo $command
+#1646957770
+command='hdiutil attach "${progname}"*.dmg | grep "${progname}" | cut -d" " -f1'
+#1646957777
+echo $command
+#1646957824
+echo $disk
+#1646957829
+disk=""
+#1646957831
+echo $disk
+#1646957841
+disk=`${command}`
+#1646957950
+echo $disk
+#1646957998
+command="hdiutil attach "${progname}"*.dmg | grep "${progname}" | cut -d' ' -f1"
+#1646958006
+echo $command
+#1646958154
+progname="ABFRX11"
+#1646958160
+echo $progname
+#1646958181
+command="hdiutil attach "${progname}"*.dmg | grep "${progname}" | cut -d' ' -f1"
+#1646958185
+echo $command
+#1646958201
+disk=`${command}`
+#1646958273
+disk=${command}
+#1646958278
+echo disk
+#1646958283
+echo $disk
+#1646958393
+command="`hdiutil attach "${progname}"*.dmg` | grep "${progname}" | cut -d' ' -f1"
+#1646958451
+hdiutil attach "${progname}"*.dmg
+#1646958528
+man hdiutil
+#1646958690
+hdiutil detach /dev/disk3s2
+#1646958707
+hdiutil attach "${progname}"*.dmg -nobrowse
+#1646958998
+command=" "
+#1646959006
+disk="'
+command=""
+echo $command
+#1646959031
+disk=""
+#1646959037
+command=""
+#1646959040
+echo $disk
+#1646959044
+echo $command
+#1646959050
+echo $progname
+#1646959074
+command="`hdiutil attach "${progname}"*.dmg -nobrowse` | grep "${progname}" | cut -d' ' -f1"
+#1646959100
+echo $command
+#1646959287
+hdiutil attach "${progname}"*.dmg -nobrowse
+#1646959397
+up
+#1646959408
+b s finder
+#1646959449
+b i a-better-finder-rename
+#1646959658
+b h a-better-finder-rename
+#1646959949
+hdiutil detach /dev/disk3s2
+#1646959958
+command=""
+#1646959967
+command="`hdiutil attach "${progname}"*.dmg -nobrowse` | grep "${progname}" | cut -d' ' -f1"
+#1646959987
+echo $command
+#1646960004
+hdiutil detach /dev/disk3s2
+#1646960020
+hdiutil attach "${progname}"*.dmg -nobrowse
+#1646960052
+hdiutil detach /dev/disk3s2
+#1646960069
+hdiutil attach "${progname}"*.dmg -nobrowse >/dev/null
+#1646960299
+hdiutil detach /dev/disk3s2
+#1646960549
+diskutil list
+#1646976566
+progname="avidemux"
+#1646976594
+command="`hdiutil attach "${progname}"*.dmg -nobrowse` | grep "${progname}" | cut -d' ' -f1"
+#1646976603
+echo $command
+#1646976669
+command=`hdiutil attach "${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
+#1646976676
+echo $command
+#1646976707
+hdiutil detach /dev/disk3s2
+#1646976720
+command=''
+#1646976726
+echo $command
+#1646976733
+command=`hdiutil attach "${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
+#1646976743
+echo $command
+#1646976776
+echo $disk
+#1646976818
+hdiutil detach /dev/disk3s2
+#1646976822
+echo $disk
+#1646976847
+dmgdisk=`hdiutil attach "${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
+#1646976859
+echo $dmgdisk
+#1646976928
+ls /Volumes/
+#1646976935
+mount
+#1646976991
+ls /Volumes/avidemux_2.4.4_Gtk_Quartz_universal/
+#1646977134
+echo $progname
+#1646977171
+ls "/Volumes/${progname}*"
+#1646977220
+command="ls /Volumes/${progname}*"
+#1646977227
+echo $command
+#1646977242
+${command}
+#1646977333
+command="cp -r "/Volumes/${progname}*/*.app" ."
+#1646977341
+echo $command
+#1646977355
+${command}
+#1646977462
+echo $dmgdisk
+#1646977474
+hdiutil detach "${dmgdisk}"
+#1646977645
+progname="alfred"
+#1646977685
+dmgdisk=`hdiutil attach "${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
+#1646977709
+echo $dmgdisk
+#1646977737
+progname="Alfred"
+#1646977743
+dmgdisk=`hdiutil attach "${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
+#1646977757
+echo $dmgdisk
+#1646977793
+diskutil list
+#1646977849
+ls /Volumes/
+#1646977865
+ls /Volumes/Alfred
+#1646977904
+command="cp -r "/Volumes/${progname}*/*.app" ."
+#1646977909
+echo $command
+#1646977962
+${command}
+#1646978044
+command="cp -r "\"/Volumes/${progname}*/*.app\"" ."
+#1646978049
+echo $command
+#1646978136
+${command}
+#1646978213
+cp -r "/Volumes/Alfred/*.app" .
+#1646978334
+cat test.sh
+#1646978868
+man cp
+#1646979024
+echo "${HOME}"
+#1646979096
+subl test1.sh
+#1646979216
+mkdir Applications
