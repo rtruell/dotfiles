@@ -7949,3 +7949,131 @@ echo "${HOME}"
 subl test1.sh
 #1646979216
 mkdir Applications
+#1647042810
+cd /Volumes/Temp/
+#1647042821
+./test.sh
+#1647043487
+progname="avidemux"
+#1647043513
+dmgdisk=`hdiutil attach "${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
+#1647043530
+echo $dmgdisk
+#1647043718
+appdir="/Volumes/Temp/Applications"
+#1647043774
+echo "${appdir}/${progname}"*.dmg
+#1647043862
+dmgdisk=`hdiutil attach "${appdir}/${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
+#1647043871
+echo $dmgdisk
+#1647043876
+diskutil list
+#1647043903
+ls /Volumes/
+#1647043909
+ls /Volumes/avi*
+#1647044057
+cp -r "/Volumes/${progname}*/*.app" .
+#1647044174
+cp -r "/Volumes/${progname}"*/*.app .
+#1647044370
+hdiutil detach "${dmgdisk}"
+#1647044377
+diskutil list
+#1647044539
+ls avi*
+#1647044564
+ls avidemux2_gtk.app/
+#1647044572
+ls avi*
+#1647044578
+rmdir avi*
+#1647044582
+man rmdir
+#1647044619
+rmdir --ignore-fail-on-non-empty avi*
+#1647044667
+ls avi*
+#1647044687
+man rmdir
+#1647044707
+man rm
+#1647044780
+rmdir --ignore-fail-on-non-empty avi*[B
+#1647044796
+rm -r avi*
+#1647044820
+man rm
+#1647044966
+rm -dfr avi*
+#1647045042
+ls /Volumes/
+#1647045083
+mkdir temp
+#1647045088
+cd temp
+#1647045094
+touch dave.app
+#1647045097
+touch sam.app
+#1647045102
+touch rick.app
+#1647045155
+echo $appdir
+#1647045208
+cp -r *.app "${appdir}"
+#1647045217
+echo $appdir
+#1647045390
+up
+#1647045401
+ls Applications/
+#1647045420
+./test/sh
+#1647045434
+./test.sh
+#1647045447
+ls Applications/
+#1647045464
+echo $appdir
+#1647045489
+progname="avidemux"
+#1647045526
+dmgdisk=`hdiutil attach "${appdir}/${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
+#1647045545
+echo $progname
+#1647045548
+echo $disk
+#1647045556
+echo $dmgdisk
+#1647045584
+cp -r "/Volumes/${progname}"*/*.app "${appdir}"
+#1647045595
+ls $appdir
+#1647045618
+hdiutil detach "${dmgdisk}"
+#1647045623
+diskutil list
+#1647045680
+progname="Alfred"
+#1647045685
+echo $progname
+#1647045706
+dmgdisk=`hdiutil attach "${appdir}/${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
+#1647045719
+echo $dmgdisk
+#1647045724
+diskutil list
+#1647045770
+ls /Volumes/
+#1647045777
+ls /Volumes/Alfred/
+#1647045791
+cp -r "/Volumes/${progname}"*/*.app "${appdir}"
+#1647045813
+ls $appdir
+#1647045895
+hdiutil detach "${dmgdisk}"
+#1647045903
+diskutil list
