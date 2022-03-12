@@ -8181,3 +8181,95 @@ echo $?
 echo "/Volumes/Temp/Applications/sam-4.1.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5
 #1647063787
 echo $appdir
+#1647059986
+man brew
+#1647063818
+echo $appdir
+#1647063970
+ls Applications/
+#1647063976
+s test.sh
+#1647064020
+s ./test.sh
+#1647064029
+alias s
+#1647064077
+cat test.sh
+#1647064095
+cd -
+#1647064110
+cd /Volumes/Temp/
+#1647064129
+s ./test.sh
+#1647064143
+echo $appdir
+#1647064712
+mountinfo
+#1647064769
+diskutil list
+#1647064789
+ll
+#1647064806
+alias ll
+#1647064819
+listfunction ls
+#1647064986
+man trim
+#1647065002
+bashman trim
+#1647065017
+trim -h
+#1647065042
+bashman ls
+#1647065046
+man ls
+#1647065097
+man brew
+#1647065314
+b i
+#1647065493
+ls $appdir
+#1647065565
+echo $appdir
+#1647065822
+echo "/Volumes/Temp/Applications/sam-4.1.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5
+#1647066068
+progname=`echo "/Volumes/Temp/Applications/sam-4.1.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`
+#1647066076
+echo $progname
+#1647066160
+ls Applications/
+#1647066198
+echo $progname
+#1647066239
+progname=`echo "/Volumes/Temp/Applications/avidemux_2.4.4_Gtk_Quartz_universal.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`
+#1647066242
+echo $progname
+#1647066569
+i="/Volumes/Temp/Applications/avidemux_2.4.4_Gtk_Quartz_universal.dmg"
+#1647066685
+echo ${i##/*}
+#1647066714
+echo $i
+#1647066730
+echo ${i}
+#1647066747
+echo ${i##/}
+#1647066758
+echo ${i##\/}
+#1647066770
+echo ${i##\/*}
+#1647066805
+echo ${i%%\/*}
+#1647066878
+echo ${i##/*/}
+#1647066933
+echo "${i##/*/}"
+#1647066989
+echo "${i##/*/}" | tr '[:punct:][:digit:]' ' '
+#1647067039
+echo "${i##/*/}" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f1
+#1647067051
+echo $progname
+#1647068115
+s ./test.sh
