@@ -8077,3 +8077,107 @@ ls $appdir
 hdiutil detach "${dmgdisk}"
 #1647045903
 diskutil list
+#1647057131
+cd /Volumes/Temp/
+#1647057139
+ls Applications/
+#1647057159
+./test.sh
+#1647057365
+diskutil list
+#1647057392
+diskutil list | grep "super"
+#1647057404
+diskutil list | grep -i "super"
+#1647057811
+echo "/Volumes/Temp/Applications/Alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f4
+#1647057846
+echo "/Volumes/Temp/Applications/Alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ' '
+#1647057866
+echo "/Volumes/Temp/Applications/Alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ''
+#1647057881
+echo "/Volumes/Temp/Applications/Alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ' '
+#1647058130
+echo "/Volumes/Temp/Applications/Alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5
+#1647058525
+mountinfo
+#1647058570
+osinfo
+#1647058964
+echo $OLDPWD
+#1647059002
+ls /Users/rtruell/Applications/Alfred*
+#1647059017
+ls /Users/rtruell/Applications
+#1647059166
+if [[ -d alfred* ]]; then echo yes; fi
+#1647059174
+if [[ -d Alfred* ]]; then echo yes; fi
+#1647059225
+if [[ -d /Users/rtruell/Applications/alfred* ]]; then echo yes; fi
+#1647059236
+if [[ -d /Users/rtruell/Applications/Alfred* ]]; then echo yes; fi
+#1647059643
+whereis alfred
+#1647059648
+whereis Alfred
+#1647059659
+which alfted
+#1647059669
+which alfred
+#1647059674
+which Alfred
+#1647060040
+b list
+#1647060186
+b i alfred
+#1647060243
+b i sublime-text
+#1647060303
+b i imazing
+#1647060322
+b i sublime-merge
+#1647060389
+echo "/Volumes/Temp/Applications/Alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5
+#1647060487
+b list | grep alfred
+#1647060502
+b list | grep sublime-text
+#1647060688
+brew list | grep "`echo "/Volumes/Temp/Applications/Alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`"
+#1647060700
+brew list | grep "`echo "/Volumes/Temp/Applications/alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`"
+#1647060775
+brew list | grep -i "`echo "/Volumes/Temp/Applications/Alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`"
+#1647060824
+brew list | grep "`echo "/Volumes/Temp/Applications/fortune" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`"
+#1647060853
+brew list | grep -i "`echo "/Volumes/Temp/Applications/fortune" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`"
+#1647060904
+echo $?
+#1647060928
+brew list | grep -i "`echo "/Volumes/Temp/Applications/sam_4.1.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`"
+#1647060933
+echo $?
+#1647060970
+echo "/Volumes/Temp/Applications/sam_4.1.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5
+#1647060979
+brew list
+#1647061011
+b i python@3.8
+#1647061089
+brew list | grep -i "`echo "/Volumes/Temp/Applications/python_3.8.12.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`"
+#1647061119
+b i python
+#1647061226
+brew list | grep -i "`echo "/Volumes/Temp/Applications/python_3.8.12.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`" >/dev/null
+#1647061233
+echo $?
+#1647061257
+brew list | grep -i "`echo "/Volumes/Temp/Applications/sam-3.8.12.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`" >/dev/null
+#1647061262
+echo $?
+#1647061282
+echo "/Volumes/Temp/Applications/sam-4.1.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5
+#1647063787
+echo $appdir
