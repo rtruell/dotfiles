@@ -8273,3 +8273,197 @@ echo "${i##/*/}" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f1
 echo $progname
 #1647068115
 s ./test.sh
+#1647086049
+man cp
+#1647086067
+cd /Volumes/Temp/
+#1647086075
+ls Applications/
+#1647086619
+s ./test.sh
+#1647087777
+echo $i
+#1647087786
+echo $progname
+#1647087978
+hdiutil mount -nobrowse "${i}" -mountpoint "/Volumes/${progname}"
+#1647088021
+ls /Volumes/avidemux/
+#1647088113
+hdiutil unmount "/Volumes/${progname}"
+#1647088136
+ls /Volumes/avidemux/
+#1647088142
+diskutil list
+#1647088180
+man hdiutil
+#1647088419
+hdiutil detach "/Volumes/${progname}"
+#1647088515
+hdiutil detach /dev/disk3s2
+#1647088522
+diskutil list
+#1647088557
+hdiutil mount -nobrowse "${i}" -mountpoint "/Volumes/${progname}"
+#1647088595
+ls /Volumes/${progname}
+#1647088682
+hdiutil detach "/Volumes/${progname}"
+#1647088692
+diskutil list
+#1647089044
+hdiutil mount -nobrowse "${i}" -mountpoint "/Volumes/${progname}" >/dev/null
+#1647089069
+ls "/Volumes/${progname}"
+#1647089099
+diskutil list
+#1647089159
+mountinfo
+#1647089214
+hdiutil detach "/Volumes/${progname}" >/dev/null
+#1647089223
+ls "/Volumes/${progname}"
+#1647089230
+diskutil list
+#1647089236
+mountinfo
+#1647089479
+s ./test/sh
+#1647089517
+s ./test.sh
+#1647089615
+echo $i
+#1647089620
+echo $progname
+#1647089699
+hdiutil mount -nobrowse "${i}" -mountpoint "/Volumes/${progname}" >/dev/null
+#1647089706
+mountinfo
+#1647089738
+ls "/Volumes/avidemux"
+#1647089766
+hdiutil detach "/Volumes/${progname}" >/dev/null
+#1647089771
+mountinfo
+#1647089776
+ls "/Volumes/avidemux"
+#1647090384
+s ./test.sh
+#1647091515
+mountinfo
+#1647116341
+externalip
+#1647126756
+s ./test.sh
+#1647127060
+alias rm
+#1647127083
+touch temp.txt
+#1647127092
+rm temp.txt
+#1647127101
+man rm
+#1647127158
+which rm
+#1647127165
+whereis rm
+#1647127193
+ll /bin
+#1647127221
+touch test.txt
+#1647127231
+rm test.txt >/dev/null
+#1647127248
+touch test.txt
+#1647127255
+rm test.txt 2>/dev/null
+#1647127266
+touch test.txt
+#1647127302
+yes | rm test.txt
+#1647127316
+touch test.txt
+#1647127327
+yes | rm test.txt 2>/dev/null
+#1647127344
+touch test.txt
+#1647127363
+/bin/rm temp.txt
+#1647127408
+/bin/rm test.txt
+#1647127507
+s ./test.sh
+#1647127716
+man unzip
+#1647128428
+echo $i
+#1647128499
+echo $programdir
+#1647128513
+echo $extractdir
+#1647128666
+i="/Volumes/Temp/iTerm2-3_1_7.zip"
+#1647128670
+echo $i
+#1647128832
+i="iTerm"
+#1647128838
+echo $i
+#1647128867
+cp -a "${programdir}/${i}"* "${extractdir}"
+#1647129021
+i="/Volumes/Temp/Installers/iTerm2-3_1_7.zip"
+#1647129029
+echo $i
+#1647129052
+progname=`echo "${i##/*/}" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f1`
+#1647129061
+echo $progname
+#1647129109
+echo $extractdir
+#1647129113
+echo $progname
+#1647129118
+echo $i
+#1647129161
+unzip "${i}" -d "${extractdir}/${progname}"
+#1647129338
+cp -r "${extractdir}/${progname}"/*.app "${appdir}"
+#1647129485
+man cp
+#1647129588
+cp -a "${extractdir}/${progname}"/*.app "${appdir}"
+#1647129736
+man rm
+#1647129971
+echo $extractdir
+#1647129976
+echo $progname
+#1647130005
+rm -dfr "${extractdir}/${progname}"
+#1647130038
+echo $i
+#1647130051
+/bin/rm -d "${i}"
+#1647130212
+s ./test.sh
+#1647130422
+man installer
+#1647132250
+man hdid
+#1647132397
+echo FILENAME
+#1647132404
+echo $FILENAME
+#1647132418
+FILENAME="test.txt"
+#1647132423
+$FILENAME:e
+#1647132454
+EXT="$FILENAME:e"
+#1647132463
+echo $EXT
+#1647132499
+man hdid
+#1647132521
+man hdiutil
