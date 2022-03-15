@@ -8797,3 +8797,223 @@ which ls
 `which ls` *.txt
 #1647239034
 command ls *.txt
+#1647290701
+man hdid
+#1647290777
+man hdiutil
+#1647291047
+cd /Volumes/Temp/
+#1647291070
+ls /installers
+#1647291080
+ls installers
+#1647291517
+hdiutil mount -nobrowse -plist "./installers/Alfred*"
+#1647291556
+hdiutil mount -nobrowse -plist "./installers/Alfred_4.0.3_1092.dmg"
+#1647291641
+man fgrep
+#1647291777
+hdiutil detach /Volumes/Alfred
+#1647291791
+hdiutil mount -nobrowse -plist "./installers/Alfred_4.0.3_1092.dmg" | fgrep -A 1 '<key>mount-point</key>'
+#1647291812
+hdiutil detach /Volumes/Alfred
+#1647291843
+hdiutil mount -nobrowse -plist "./installers/Alfred_4.0.3_1092.dmg" | fgrep -A 1 '<key>mount-point</key>' | tail -1
+#1647291848
+hdiutil detach /Volumes/Alfred
+#1647291940
+hdiutil mount -nobrowse -plist "./installers/Alfred_4.0.3_1092.dmg" | fgrep -A 1 '<key>mount-point</key>' | tail -1 | sed 's#</string>.*##g ; s#.*<string>##g'
+#1647292111
+ls /Volumes/Alfred/
+#1647292134
+ls1 /Volumes/Alfred/
+#1647292145
+ls *.txt
+#1647292149
+ls1 *.txt
+#1647292226
+listfunction ls1
+#1647292337
+ls /etc
+#1647292403
+ls -Fh --group-directories-first --color=auto /etc
+#1647292428
+ls -h --group-directories-first --color=auto /etc
+#1647292456
+ls -Fh --group-directories-first --color=auto /etc
+#1647292482
+stat /etc
+#1647292558
+stat /etc | | grep "\->"
+#1647292570
+stat /etc | grep "\->"
+#1647292637
+stat /etc | grep "\->" && file -b /etc
+#1647292715
+stat . | grep "\->" && file -b .
+#1647292768
+stat *.txt | grep "\->" && file -b *.txt
+#1647292909
+file -b /etc
+#1647292919
+man file
+#1647292934
+file *.txt
+#1647292948
+file /etc
+#1647292958
+file -b /etc
+#1647292966
+file -b *.txt
+#1647292985
+ll
+#1647292993
+ll /
+#1647293015
+ls1 /etc
+#1647293036
+ls -F /etc
+#1647293048
+ls -F /dev
+#1647293070
+ls -F *.txt
+#1647293095
+listfunction ls1
+#1647293131
+ls -Fh --group-directories-first --color=auto *.txt
+#1647293182
+ls1 *.txt
+#1647293207
+command ls -Fh --group-directories-first --color=auto *.txt
+#1647293311
+command ls  -Fh --group-directories-first --color=auto *.txt
+#1647293400
+if [[ -d /etc ]] then echo directory
+#1647293404
+if [[ -d /etc ]]; then echo directory
+#1647293419
+if [[ -d /etc ]] then echo directory; fi
+#1647293426
+if [[ -d /etc ]]; then echo directory; fi
+#1647293452
+if [[ -d /dev ]]; then echo directory; fi
+#1647293472
+if [[ -d *.txt ]]; then echo directory; fi
+#1647293502
+if [[ -d problemapps.txt ]]; then echo directory; fi
+#1647293511
+if [[ -f problemapps.txt ]]; then echo directory; fi
+#1647293577
+mountinfo
+#1647293589
+hdiutil detach /Volumes/Alfred/
+#1647293637
+hdiutil mount -plist "./installers/Alfred_4.0.3_1092.dmg" | fgrep -A 1 '<key>mount-point</key>' | tail -1 | sed 's#</string>.*##g ; s#.*<string>##g'
+#1647293651
+hdiutil detach /Volumes/Alfred/
+#1647293708
+hdiutil mount -plist "./installers/avidemux_2.4.4_Gtk_Quartz_universal.dmg" | fgrep -A 1 '<key>mount-point</key>' | tail -1 | sed 's#</string>.*##g ; s#.*<string>##g'
+#1647293878
+hdiutil detach /Volumes/avidemux_2.4.4_Gtk_Quartz_universal
+#1647293910
+hdiutil mount -plist "./installers/Firefox 78.3.1esr.dmg" | fgrep -A 1 '<key>mount-point</key>' | tail -1 | sed 's#</string>.*##g ; s#.*<string>##g'
+#1647293937
+hdiutil detach /Volumes/Firefox/
+#1647293957
+diskutil list
+#1647293974
+mountinfo
+#1647293998
+hdiutil detach /dev/disk3s3
+#1647294067
+hf hazel
+#1647294101
+hf Hazel
+#1647294125
+hf -i hazel
+#1647294136
+listfunction hf
+#1647294173
+hf iMaz
+#1647294188
+hf Haz
+#1647294337
+mountinfo
+#1647294745
+./test1
+#1647294754
+./test1.sh
+#1647294758
+./test2.sh
+#1647294774
+./test1.sh >test1.txt
+#1647294786
+./test2.sh >test2.txt
+#1647295609
+./test1.sh
+#1647296785
+fullpathname="/Path/TO/Test.sh"
+#1647315503
+man umask
+#1647315509
+bashman umask
+#1647315574
+umask
+#1647315813
+echo $LOGNAME
+#1647315909
+SHORT=pkginstll
+#1647316075
+NAME=pkginstall
+#1647316081
+SHORT=pkginstall
+#1647316157
+LOG="/tmp/$LOGNAME.`printf '%s' "${name%.*}"`.$SHORT.log"
+#1647316186
+echo $LOG
+#1647316225
+LOG="/tmp/$LOGNAME.`printf '%s' "${NAME%.*}"`.$SHORT.log"
+#1647316227
+echo $LOG
+#1647316641
+zsh
+#1647320068
+test1.sh /Volumes/Temp/superduper.pkg
+#1647320327
+listfunction bashman
+#1647320339
+bashman special
+#1647320384
+bashman [[
+#1647321764
+test1.sh /Volumes/Temp/superduper.pkg
+#1647321833
+which zsh
+#1647321840
+whereis zsh
+#1647322293
+test1.sh /Volumes/Temp/superduper.pkg
+#1647322305
+CLS
+#1647322319
+test.sh /Volumes/Temp/superduper.pkg
+#1647322324
+test1.sh /Volumes/Temp/superduper.pkg
+#1647324665
+echo "${name}: Installing ${file}\n\tLogging to ${log}\n(Note: sudo may ask for your administrator password)"
+#1647324712
+printf "${name}: Installing ${file}\n\tLogging to ${log}\n(Note: sudo may ask for your administrator password)"
+#1647324824
+printf "test1.sh: Installing /Volumes/Temp/superduper.pkg\n\tLogging to /tmp/rtruell.test1.superduper.log\n(Note: sudo may ask for your administrator password)"
+#1647324904
+printf "test1.sh: Installing /Volumes/Temp/superduper.pkg\n\t\tLogging to /tmp/rtruell.test1.superduper.log\n\t\t(Note: sudo may ask for your administrator password)"
+#1647324968
+printf "test1.sh: Installing /Volumes/Temp/superduper.pkg\n\tLogging to /tmp/rtruell.test1.superduper.log\n\t(Note: sudo may ask for your administrator password)"
+#1647325018
+printf "test1.sh: Installing /Volumes/Temp/superduper.pkg\ntest1.sh: Logging to /tmp/rtruell.test1.superduper.log\ntest1.sh: (Note: sudo may ask for your administrator password)"
+#1647325087
+printf '%s\n "test1.sh: Installing /Volumes/Temp/superduper.pkg" "test1.sh: Logging to /tmp/rtruell.test1.superduper.log" "test1.sh: (Note: sudo may ask for your administrator password)"
+#1647325099
+printf '%s\n' "test1.sh: Installing /Volumes/Temp/superduper.pkg" "test1.sh: Logging to /tmp/rtruell.test1.superduper.log" "test1.sh: (Note: sudo may ask for your administrator password)"
