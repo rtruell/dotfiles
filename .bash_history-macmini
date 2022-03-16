@@ -9017,3 +9017,125 @@ printf "test1.sh: Installing /Volumes/Temp/superduper.pkg\ntest1.sh: Logging to 
 printf '%s\n "test1.sh: Installing /Volumes/Temp/superduper.pkg" "test1.sh: Logging to /tmp/rtruell.test1.superduper.log" "test1.sh: (Note: sudo may ask for your administrator password)"
 #1647325099
 printf '%s\n' "test1.sh: Installing /Volumes/Temp/superduper.pkg" "test1.sh: Logging to /tmp/rtruell.test1.superduper.log" "test1.sh: (Note: sudo may ask for your administrator password)"
+#1647372860
+findshow mayans
+#1647373126
+findshow 'young rock'
+#1647373152
+findshow 'mayor'
+#1647380479
+man umask
+#1647380493
+bashman umask
+#1647380873
+umask
+#1647380907
+umask -S
+#1647381205
+ls /etc
+#1647381862
+man installer
+#1647382173
+installer -dominfo -package /Volumes/data/Downloads/Mac/InUse/Installed/Automated/1Password-6.8.9.pkg
+#1647382198
+installer -volinfo -package /Volumes/data/Downloads/Mac/InUse/Installed/Automated/1Password-6.8.9.pkg
+#1647382207
+installer -pkginfo -package /Volumes/data/Downloads/Mac/InUse/Installed/Automated/1Password-6.8.9.pkg
+#1647382242
+/Volumes/data/Downloads/Mac/InUse/Installed/Automated/*.pkg
+#1647382263
+ls /Volumes/data/Downloads/Mac/InUse/Installed/Automated/*.pkg
+#1647382314
+installer -dominfo -package /Volumes/data/Downloads/Mac/InUse/Installed/Automated/FoxitReader.2.3.0.2197.enu.Setup.pkg
+#1647382359
+cd /Volumes/Temp/Installers/
+#1647382377
+cp -a /Volumes/data/Downloads/Mac/InUse/Installed/Automated/*.pkg .
+#1647382405
+installer -dominfo -package 1Password-6.8.9.pkg
+#1647382423
+installer -dominfo -package FoxitReader.2.3.0.2197.enu.Setup.pkg
+#1647382456
+installer -dominfo -package QLVideo_187.pkg
+#1647382485
+installer -dominfo -package ownCloud-2.2.4.3709.pkg
+#1647383101
+man installer
+#1647384658
+home
+#1647402245
+type ls
+#1647402252
+type ls1
+#1647402265
+type cp
+#1647402310
+zsh
+#1647402554
+man type
+#1647402559
+bashman type
+#1647402637
+type type
+#1647402670
+type -P ls
+#1647402677
+type -P ls1
+#1647402695
+type ls1
+#1647402701
+type -t ls1
+#1647402774
+type -P ls1
+#1647402778
+type -P ls
+#1647402925
+dotfiles
+#1647402936
+findtext -i exists
+#1647403071
+home
+#1647403118
+type -P ls1
+#1647403122
+type -P ls
+#1647403143
+type ls
+#1647403181
+if [[ type ls ]]; then echo found; else echo "not found"; fi
+#1647403196
+if [[ `type ls` ]]; then echo found; else echo "not found"; fi
+#1647403204
+if [[ `type ls1` ]]; then echo found; else echo "not found"; fi
+#1647403240
+if [[ `type dave` ]]; then echo found; else echo "not found"; fi
+#1647403258
+type ls1
+#1647403284
+if [[ `type -P ls` ]]; then echo found; else echo "not found"; fi
+#1647403289
+if [[ `type -P ls1` ]]; then echo found; else echo "not found"; fi
+#1647403296
+if [[ `type -P dave` ]]; then echo found; else echo "not found"; fi
+#1647403316
+echo $prog
+#1647403329
+echo $progname
+#1647403341
+progname="ls"
+#1647403371
+if [[ `type -P "${progname}"` ]]; then echo found; else echo "not found"; fi
+#1647403386
+progname="ls1"
+#1647403389
+if [[ `type -P "${progname}"` ]]; then echo found; else echo "not found"; fi
+#1647403398
+progname="dave"
+#1647403401
+if [[ `type -P "${progname}"` ]]; then echo found; else echo "not found"; fi
+#1647403906
+bash --v
+#1647403922
+bash --version
+#1647403893
+bash -v
