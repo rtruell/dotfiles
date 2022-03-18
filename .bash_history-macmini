@@ -9141,3 +9141,107 @@ bash --version
 bash -v
 #1647489647
 b upd
+#1647547432
+b i quicken
+#1647547450
+b h quicken
+#1647547619
+listfunction b
+#1647547647
+b d
+#1647548146
+dmidecode
+#1647548179
+xini
+#1647548188
+whereis dmidecode
+#1647548192
+which dmidecode
+#1647548331
+b i aften
+#1647548371
+b i isl
+#1647548394
+b i mpfr
+#1647548458
+b i opencore-amr
+#1647548727
+b i soundflower
+#1647548746
+b i soundflowerbed
+#1647548783
+b h soundflower
+#1647549050
+b h soundflowerbed
+#1647549199
+soundflower
+#1647549212
+whereis soundflower
+#1647549218
+which soundflower
+#1647549224
+soundflowerbed
+#1647549614
+b h taskade
+#1647550496
+b s todoist
+#1647550525
+b i todoist
+#1647550547
+b i todo-txt
+#1647550653
+b h todo-txt
+#1647555131
+b i todo
+#1647555139
+b s todo
+#1647555151
+b i todoist
+#1647557154
+b i temurin11
+#1647557215
+b s zulu
+#1647557247
+b i zulu
+#1647558039
+java --version
+#1647558062
+whereis java
+#1647558066
+which java
+#1647558078
+ls /usr/bin/j*
+#1647558147
+b s java
+#1647558174
+b i java6
+#1647558670
+b i temurin11
+#1647558712
+b i suspicious-package
+#1647558833
+b h suspicious-package
+#1647574005
+echo JAVA_HOME
+#1647574013
+echo $JAVA_HOME
+#1647574074
+/usr/libexec/java_home -v
+#1647574095
+/usr/libexec/java_home -version
+#1647574104
+/usr/libexec/java_home -help
+#1647574188
+/usr/libexec/java_home -V
+#1647574241
+java -version
+#1647574257
+/usr/libexec/java_home -v 6
+#1647574590
+/usr/libexec/java_home -v 1.6
+#1647574599
+java -version
+#1647574645
+/usr/libexec/java_home -v 1.8
+#1647574652
+java -version
