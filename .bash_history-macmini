@@ -9245,3 +9245,313 @@ java -version
 /usr/libexec/java_home -v 1.8
 #1647574652
 java -version
+#1647630298
+b upd
+#1647630336
+b i apt
+#1647630523
+b s alarm
+#1647633668
+b i alfred
+#1647633758
+b s alfred
+#1647633820
+b s audacity
+#1647633837
+b i audacity
+#1647633911
+b s avidemux
+#1647633988
+b s compare
+#1647634006
+b i beyond-compare
+#1647634112
+b s black
+#1647634138
+b i black-ink
+#1647634180
+b s calibre
+#1647634206
+b i calibre
+#1647634244
+b i calibre4
+#1647634263
+b h calibre
+#1647634396
+b h calibre4
+#1647635117
+b s cano
+#1647635260
+b i cano-eos-utility
+#1647635276
+b i canon-eos-utility
+#1647635306
+b i canon-captureontouch-utility
+#1647635358
+b s command
+#1647635381
+b i commandq
+#1647635395
+b h commandq
+#1647636811
+b s dash
+#1647636841
+b i dash
+#1647636862
+b h dash
+#1647637369
+b i homebrew/cask/dash
+#1647637405
+b i dash4
+#1647637435
+b i dash5
+#1647637538
+b s dropzone
+#1647637550
+b i dropzone
+#1647637563
+b h dropzone
+#1647638081
+b s epub
+#1647638105
+b i epubquicklook
+#1647638208
+b s event
+#1647638228
+b s reminder
+#1647638247
+b i remind
+#1647638273
+b i rem
+#1647638298
+b h remind
+#1647643628
+b h rem
+#1647643660
+b in remind
+#1647644414
+set | grep homebrew
+#1647644428
+set | grep -i homebrew
+#1647644466
+brew --cache
+#1647644485
+brew --repo
+#1647644500
+b s remind
+#1647644958
+ls /usr/local/Homebrew
+#1647644970
+ls1 /usr/local/Homebrew
+#1647644982
+ls1 /usr/local/Homebrew/Library
+#1647644988
+ls1 /usr/local/Homebrew/Library/Homebrew
+#1647645050
+ls1 /usr/local/Homebrew/Library/Taps
+#1647645069
+ls1 /usr/local/Homebrew/Library/Homebrew/cask
+#1647645091
+ls1 /usr/local/Homebrew/Library/Homebrew/utils
+#1647645955
+man brew
+#1647646567
+brew -b remind
+#1647646582
+brew install -b remind
+#1647646654
+brew --cache remind
+#1647646911
+b i remind
+#1647646922
+b in remind
+#1647647389
+la
+#1647647405
+touch .reminders
+#1647647439
+whereis remind
+#1647647442
+which remind
+#1647647473
+brew --prefix
+#1647647476
+ls /usr/local
+#1647647484
+ls /usr/local/Cellar
+#1647647491
+ls /usr/local/Cellar/remind
+#1647647504
+ls1 /usr/local/Cellar/remind
+#1647647509
+ls1 /usr/local/Cellar/remind/03.04.00/
+#1647647526
+less /usr/local/Cellar/remind/03.04.00/README
+#1647647547
+man remind
+#1647647802
+man tkremind
+#1647647815
+whereis tkremind
+#1647647819
+which tkremind
+#1647647825
+tkremind
+#1647648120
+remind
+#1647648136
+la
+#1647648152
+remind .reminders
+#1647648410
+b s wyrd
+#1647648535
+ls1 /usr/local/bin
+#1647648552
+ls1 /usr/local/bin/tkr*
+#1647648557
+ls1 -l /usr/local/bin/tkr*
+#1647648591
+ls1 /usr/local/Cellar/remind/
+#1647648598
+ls1 /usr/local/Cellar/remind/03.04.00/
+#1647648610
+ls1 /usr/local/Cellar/remind/03.04.00/bin
+#1647648625
+less /usr/local/Cellar/remind/03.04.00/bin/tkremind
+#1647648709
+tkremind
+#1647648772
+man sha256
+#1647648790
+man 1 sha256
+#1647648849
+man shasum
+#1647661603
+which remind
+#1647662945
+b i firefix-esr
+#1647662957
+b s firefox
+#1647662973
+b i firefox-esr
+#1647663187
+b s folx
+#1647663202
+b i folx
+#1647663860
+b s foxit
+#1647663881
+b h foxit-pdf-editor
+#1647663939
+b i foxitreader
+#1647663951
+b h foxitreader
+#1647664221
+b s go64
+#1647664230
+b i go64
+#1647664285
+b s earth
+#1647664317
+b s hazel
+#1647664325
+b i hazel
+#1647664945
+b i imazing
+#1647664972
+b s setapp
+#1647664981
+b i setapp
+#1647665026
+b s istat
+#1647665050
+b i istat-menus
+#1647665064
+b i istat-menus5
+#1647665396
+b s iterm
+#1647665434
+b i iterm2-legacy
+#1647665454
+b i iterm2
+#1647665501
+b s itune
+#1647666291
+b s java
+#1647666333
+b i java6
+#1647666391
+b s keyboard
+#1647666416
+b i keyboard-maestro
+#1647666489
+b i keyboard-maestro8
+#1647667941
+b s kindle
+#1647667968
+b i kindle-previewer
+#1647667989
+b h kindle-previewer
+#1647668062
+b i kindle
+#1647668107
+b s libre
+#1647668160
+b i libreoffice
+#1647668238
+b s linein
+#1647668711
+b s macgourmet
+#1647668739
+b s macjournal
+#1647668750
+b s mac
+#1647668854
+b s guide
+#1647669128
+b s marsedit
+#1647669138
+b i marsedit
+#1647669386
+b i black-ink
+#1647670174
+mas -?
+#1647670178
+mas -h
+#1647670182
+mas -v
+#1647670185
+mas
+#1647670197
+which mas
+#1647670200
+whereis mas
+#1647670233
+b s mas
+#1647670310
+b i mas
+#1647670336
+b i mas-cli/tap/mas
+#1647670364
+mas version
+#1647670384
+which dmidecode
+#1647670405
+/Users/rtruell/bin/mas version
+#1647670551
+mas version
+#1647670555
+mas1 version
+#1647670590
+mas version
+#1647670593
+mas1 version
+#1647670622
+b h mas
+#1647671026
+b s quicklook
+#1647671068
+b h ttscoff-mmd-quicklook
+#1647671123
+b i ttscoff-mmd-quicklook
