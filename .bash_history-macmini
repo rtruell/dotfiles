@@ -9555,3 +9555,319 @@ b s quicklook
 b h ttscoff-mmd-quicklook
 #1647671123
 b i ttscoff-mmd-quicklook
+#1647717374
+remind
+#1647717386
+remind .reminders
+#1647717392
+tkremind
+#1647717482
+mv .reminders .remind
+#1647717489
+tkremind
+#1647717654
+less /usr/local/bin/tkremind
+#1647717785
+tcl -version
+#1647718819
+b s wyrd
+#1647719857
+make
+#1647719865
+make -v
+#1647720136
+cd /Volumes/ExternalHome/rtruell/SourceCode/
+#1647720151
+cd remind/remind-03.04.02/
+#1647720153
+ls1
+#1647720173
+cd remind-03.04.02/
+#1647720189
+./configure
+#1647720224
+make
+#1647720271
+make test
+#1647720290
+sudo make install
+#1647720321
+which remind
+#1647720328
+remind -version
+#1647720359
+home
+#1647720399
+remind -v
+#1647720409
+la
+#1647720421
+ll
+#1647720426
+lal
+#1647720443
+cat .remind
+#1647720454
+cat .reminders
+#1647720499
+rm .reminders
+#1647720506
+mv .remind .reminders
+#1647720510
+remind
+#1647720516
+remind .reminders
+#1647720523
+tkremind
+#1647720833
+b s python
+#1647720884
+b s wxremind
+#1647720931
+python
+#1647720981
+which python
+#1647720992
+/usr/bin/python -v
+#1647721024
+/usr/bin/python help
+#1647721037
+/usr/bin/python
+#1647721078
+b i python@3.9
+#1647721128
+b i python@3.8
+#1647721153
+python3
+#1647721222
+/usr/local/bin/python3
+#1647721246
+ls1 /usr/local/bin
+#1647721433
+python
+#1647721449
+wxpython
+#1647721518
+b s etm
+#1647722475
+b upd
+#1647722561
+b s moneydance
+#1647722569
+b i moneydance
+#1647722592
+b h moneydance
+#1647722801
+b s owncloud
+#1647722813
+b i owncloud
+#1647722835
+b h owncloud
+#1647724546
+b s dmidecode
+#1647724559
+dmidecode -v
+#1647724565
+dmidecode -version
+#1647724571
+dmidecode --v
+#1647724581
+b i dmidecode
+#1647726074
+b s paragon
+#1647726116
+b i paragon-extfs
+#1647726139
+b i paragon-ntfs
+#1647726167
+b i paragon-vmdk-mounter
+#1647726195
+b h paragon-vmdk-mounter
+#1647726491
+b s pathfinder
+#1647726504
+b i path-finder
+#1647726521
+b h path-finder
+#1647727295
+b s ql
+#1647727629
+b i ql-ansilove
+#1647727669
+b i qlab
+#1647727686
+b i qladdict
+#1647727698
+b h qladdict
+#1647727855
+b i qlc-plus
+#1647727889
+b i qlcommonmark
+#1647727898
+b h qlcommonmark
+#1647728089
+b h qldds
+#1647728106
+b i fits
+#1647728141
+b i gradle
+#1647728160
+b i imagesize
+#1647728194
+b i qlimagesize
+#1647728282
+b i qlmobi
+#1647728289
+b h qlmobi
+#1647728358
+b i qlnetcdf
+#1647728365
+b h qlnetcdf
+#1647728430
+b s ql
+#1647728467
+b i qlrest
+#1647728475
+b h qlrest
+#1647728579
+b s quick
+#1647728624
+b i gltfquicklook
+#1647728635
+b h gltfquicklook
+#1647728700
+b i ipynb-quicklook
+#1647728710
+b h ipynb-quicklook
+#1647728759
+b h osirix-quicklook
+#1647728856
+b h quickhue
+#1647728873
+b h quickjson
+#1647728999
+b h quickhash
+#1647729049
+b h quicklook-pat
+#1647729073
+b h quicklook-pfm
+#1647729125
+b h quicklookapk
+#1647729148
+b h quicklookase
+#1647729188
+b i quicksilver
+#1647729199
+b i quicksync
+#1647729401
+b i webpquicklook
+#1647729408
+b h webpquicklook
+#1647729483
+b s rain
+#1647729517
+b i raindropio
+#1647729526
+b h raindropio
+#1647730300
+b i quickhash
+#1647730535
+b s raspberry
+#1647730560
+b s remount
+#1647744129
+b s zoom
+#1647744154
+b i rightzoom
+#1647744167
+b h rightzoom
+#1647744402
+b s snagit
+#1647744415
+b i snagit
+#1647744428
+b i snagit4
+#1647747916
+b s super
+#1647747942
+b i superduper
+#1647747969
+b h superduper
+#1647748583
+b s better
+#1647748601
+b h betterzip
+#1647748644
+b i betterzip
+#1647749180
+b s archive
+#1647749202
+b i the-archive
+#1647749218
+b i the-archive-browser
+#1647749245
+b h the-archive-browser
+#1647749849
+b i archiver
+#1647749885
+b i homebrew/cask/archiver
+#1647749906
+b h homebrew/cask/archiver
+#1647750075
+b s tick
+#1647750094
+b i ticktick
+#1647750102
+b h ticktick
+#1647750154
+b s ttp
+#1647750223
+b s tech
+#1647750253
+b s tool
+#1647752845
+b s tunein
+#1647752855
+b i tunein
+#1647752891
+b s linein
+#1647752910
+b h tunein
+#1647753093
+b s virtualbox
+#1647753153
+b i virtualbox
+#1647753203
+b i virtualbox-extension-pack
+#1647753239
+b h virtualbox
+#1647753343
+b s vlc
+#1647753356
+b i vlc
+#1647753400
+b s whatroute
+#1647753435
+b s x-mirage
+#1647753445
+b i x-mirage
+#1647753451
+b h x-mirage
+#1647754150
+b s xquartz
+#1647754159
+b i xquartz
+#1647754188
+b s zoc
+#1647754207
+b i zoc
+#1647754962
+b s rainlendar
+#1647755258
+b s commandq
+#1647755267
+b i commandq
+#1647755463
+b s macgou
+#1647757459
+b s setapp
