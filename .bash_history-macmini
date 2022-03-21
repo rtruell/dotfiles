@@ -9871,3 +9871,413 @@ b i commandq
 b s macgou
 #1647757459
 b s setapp
+#1647803453
+ls1
+#1647803460
+ls1 *.txt
+#1647803467
+ls *.txt
+#1647803471
+which ls
+#1647803478
+listfunction ls1
+#1647803530
+ls ${moreoptions} -Fh --group-directories-first --color=auto *.txt
+#1647803604
+ls ${moreoptions} -Fh --group-directories-first --color=auto /etc
+#1647803613
+ls ${moreoptions} -Fh --group-directories-first --color=auto /etc/
+#1647803681
+stat *.txt
+#1647803731
+stat *.txt 2> /dev/null | grep "\->" > /dev/null 2>&1
+#1647803846
+stat "${item}" 2> /dev/null | grep "\->" > /dev/null 2>&1 && file -b "${item}"
+#1647803874
+stat "${item}" 2> /dev/null | grep "\->" > /dev/null 2>&1 && file -b "${item}" ! grep "directory"
+#1647803900
+stat *.txt 2> /dev/null | grep "\->" > /dev/null 2>&1
+#1647803919
+stat "${item}" 2> /dev/null | grep "\->" > /dev/null 2>&1 && file -b *.txt
+#1647803948
+stat "${item}" 2> /dev/null | grep "\->" > /dev/null 2>&1 && file -b *.txt | grep "directory"
+#1647804003
+listfunction ls1
+#1647804012
+echo $item
+#1647804040
+ls1 *.txt
+#1647804143
+echo $dave
+#1647804169
+dave="*.txt:-."
+#1647804172
+echo $dave
+#1647804191
+ls1 *.txt
+#1647804291
+ls dotfiles/functions
+#1647804324
+ls1
+#1647804340
+ls dotfiles
+#1647804351
+la dotfiles
+#1647804361
+ls dotfiles/.functions
+#1647804377
+s dotfiles/.functions/ls1.function
+#1647804384
+ls1 *.txt
+#1647804395
+ls *.txt
+#1647804403
+ls1 *.txt
+#1647804497
+s dotfiles/.functions/ls1.function
+#1647804503
+ls1 *.txt
+#1647804549
+s dotfiles/.functions/ls1.function
+#1647804551
+ls1 *.txt
+#1647804647
+s dotfiles/.functions/ls1.function
+#1647804649
+ls1 *.txt
+#1647804679
+ls1 -l *.txt
+#1647804712
+man ls
+#1647804751
+man bash
+#1647804913
+s dotfiles/.functions/ls1.function
+#1647804918
+ls1 *.txt
+#1647804932
+ls *.txt
+#1647804992
+s dotfiles/.functions/ls1.function
+#1647804995
+ls1 *.txt
+#1647805088
+ls1
+#1647805104
+ls1 /etc
+#1647805151
+s dotfiles/.functions/ls1.function
+#1647805154
+ls1 *.txt
+#1647805171
+ls1 /etc
+#1647805265
+ls1 -l *.txt
+#1647805290
+echo $item
+#1647805418
+s dotfiles/.functions/ls1.function
+#1647805423
+ls1 *.txt
+#1647805483
+man bash
+#1647805539
+bashman set
+#1647805981
+ls set.txt/
+#1647806063
+s dotfiles/.functions/ls1.function
+#1647806070
+ls1 *.txt
+#1647806079
+ls *.txt
+#1647806141
+ls ${moreoptions} -Fh --group-directories-first --color=auto *.txt
+#1647806155
+ls1 *.txt
+#1647806230
+bashman tests
+#1647806728
+s dotfiles/.functions/ls1.function
+#1647806988
+ls1
+#1647807022
+ls1 /etc
+#1647807040
+ls1 *.txt
+#1647807054
+ls ${moreoptions} -Fh --group-directories-first --color=auto *.txt
+#1647807087
+ls1
+#1647807111
+ls1 /etc
+#1647807136
+ls1
+#1647807144
+ls ${moreoptions} -Fh --group-directories-first --color=auto
+#1647807159
+ls1 /etc
+#1647807182
+ls ${moreoptions} -Fh --group-directories-first --color=auto /etc
+#1647807227
+ls1 *.txt
+#1647807235
+ls ${moreoptions} -Fh --group-directories-first --color=auto *.txt
+#1647807291
+ls1 *.jpg
+#1647807299
+ls ${moreoptions} -Fh --group-directories-first --color=auto *.jpg
+#1647807319
+ls1 bin
+#1647807327
+ls ${moreoptions} -Fh --group-directories-first --color=auto bin
+#1647807338
+ls1 dotfiles
+#1647807346
+ls ${moreoptions} -Fh --group-directories-first --color=auto dotfiles
+#1647807483
+ls1 /
+#1647807492
+ls1 /tmp
+#1647807508
+ls1 -l /
+#1647807523
+ls1 /var
+#1647807532
+ls ${moreoptions} -Fh --group-directories-first --color=auto /var
+#1647807590
+ls1
+#1647807597
+ls1 downloads
+#1647807753
+stat /etc
+#1647807791
+stat /etc | grep "\->"
+#1647807863
+stat /etc | grep "\->" | cut -d' ' -f5
+#1647807877
+stat /etc | grep "\->" | cut -d' ' -f4
+#1647807918
+stat /etc | grep "\->" | cut -d' ' -f6
+#1647807981
+stat bin | grep "\->" | cut -d' ' -f6
+#1647808214
+stat bin | grep "\->" | cut -d" " -f6
+#1647808295
+s dotfiles/.functions/ls1.function
+#1647808300
+ls1
+#1647808308
+ls1 *.txt
+#1647808317
+ls1 bin
+#1647808370
+s dotfiles/.functions/ls1.function
+#1647808374
+ls1
+#1647808379
+ls1 bin
+#1647808508
+s dotfiles/.functions/ls1.function
+#1647808514
+ls1 bin
+#1647808528
+ls1 movies
+#1647808549
+ls1 bin/
+#1647808640
+s dotfiles/.functions/ls1.function
+#1647808644
+ls1 bin/
+#1647808650
+ls1 bin
+#1647808699
+ls1 movies
+#1647808706
+ls1 downloads
+#1647808740
+s dotfiles/.functions/ls1.function
+#1647808746
+ls1 bin
+#1647808755
+ls1 downloads
+#1647808776
+ls1 *.txt
+#1647808779
+ls1
+#1647808792
+ls1 -l
+#1647809061
+h | less
+#1647809376
+stat "/etc"
+#1647809424
+stat "/etc" | grep "\->"
+#1647809473
+stat "/etc" | grep "\->" | cut -d" " -f6
+#1647809498
+ls1 /etc
+#1647809527
+ls1 bin
+#1647809539
+cd /
+#1647809546
+ls1 etc
+#1647809550
+home
+#1647809734
+man bash
+#1647810266
+s dotfiles/.functions/ls1.function
+#1647810302
+ls1 bin
+#1647810317
+ls1 /etc
+#1647810335
+pwd
+#1647810351
+ls1 /Users/rtruell/bin
+#1647810376
+ls1 bin
+#1647810390
+ls1 downloads
+#1647810425
+ls1 /Volumes/Downloads/
+#1647810474
+ls1 *.txt
+#1647810482
+ls *.txt
+#1647810557
+s dotfiles/.functions/ls.function
+#1647810565
+ls *.txt
+#1647810569
+ls bin
+#1647810596
+ls /etc
+#1647810604
+ls movies
+#1647813671
+pwd
+#1647813686
+set >set-new.txt
+#1647814344
+sysinfo
+#1647814522
+b d
+#1647814622
+b i aften
+#1647815842
+xip
+#1647815847
+man xip
+#1647815942
+xip -x
+#1647816126
+/usr/bin/xcodebuild -version
+#1647816453
+brew config
+#1647833602
+listdf
+#1647833625
+listdf -f
+#1647833741
+spaceused
+#1647833751
+mount
+#1647833791
+mountinfo
+#1647833919
+path
+#1647833929
+type path
+#1647834156
+whoowns set.txt
+#1647834170
+whoowns /etc
+#1647834809
+programdir="/Volumes/data/Downloads/Mac/InUse/Installed/Automated"
+#1647834847
+[[ ${programs[@]} ]] && printf '%s\n' "${programs[@]}"
+#1647834882
+shopt -s dotglob
+#1647834895
+shopt -s nullglob
+#1647834959
+programss=("${programdir}"/*)
+#1647834968
+shopt -u nullglob
+#1647834975
+[[ ${programs[@]} ]] && printf '%s\n' "${programs[@]}"
+#1647834994
+[[ ${programss[@]} ]] && printf '%s\n' "${programss[@]}"
+#1647836811
+if [[ `printf '%s' ${/Volumes/data/Downloads/Mac/InUse/Installed/Automated/zoc7266.dmg##*.}` == "app" ]]; then echo 'app'; fi
+#1647837036
+i="/Volumes/data/Downloads/Mac/InUse/Installed/Automated/zoc7266.dmg"
+#1647837060
+ext=`printf '%s' ${i##*.}`
+#1647837126
+program=`basename "${i%%.*}"`
+#1647837131
+echo $ext
+#1647837138
+echo $program
+#1647837273
+h | less
+#1647837382
+if [[ `printf '%s' ${i##*.}` == "app" ]]; then echo app; fi
+#1647837395
+if [[ `printf '%s' ${i##*.}` == "app" ]]; then echo dmg; fi
+#1647837405
+if [[ `printf '%s' ${i##*.}` == "dmg" ]]; then echo dmg; fi
+#1647837587
+if [[ `printf '%s' ${i##*.}` == "dmg" ]]; then printf '%s\n' `basename "${i%%.*}"`; fi
+#1647837609
+if [[ `printf '%s' ${i##*.}` == "app" ]]; then printf '%s\n' `basename "${i%%.*}"`; fi
+#1647837615
+if [[ `printf '%s' ${i##*.}` == "dmg" ]]; then printf '%s\n' `basename "${i%%.*}"`; fi
+#1647837682
+i="/Volumes/data/Downloads/Mac/InUse/Installed/Automated/MacGourmetDeluxe_Mac_4_3_0.dmg"
+#1647837692
+if [[ `printf '%s' ${i##*.}` == "dmg" ]]; then printf '%s\n' `basename "${i%%.*}"`; fi
+#1647837740
+echo $ext
+#1647837745
+echo $program
+#1647837982
+if [[ `printf '%s' ${i##*.}` == "dmg" ]]; then printf '%s\n' `basename "${i%%.*}" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f1`; fi
+#1647838037
+i="/Volumes/data/Downloads/Mac/InUse/Installed/Automated/Paragon-extFSForMac-1092-PEU_MacInstallUnlock_11.3.30.dmg"
+#1647838042
+if [[ `printf '%s' ${i##*.}` == "dmg" ]]; then printf '%s\n' `basename "${i%%.*}" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f1`; fi
+#1647838087
+if [[ `printf '%s' ${i##*.}` == "dmg" ]]; then printf '%s\n' `basename "${i%%.*}"`; fi
+#1647838188
+echo `basename "${i}"`
+#1647838257
+echo `basename "${i%%.*}"`
+#1647838262
+echo `basename "${i%.*}"`
+#1647838302
+echo $i
+#1647838426
+if [[ `printf '%s' ${i##*.}` == "dmg" ]]; then printf '%s\n' `basename "${i%.*}" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f1`; fi
+#1647838462
+if [[ `printf '%s' ${i##*.}` == "dmg" ]]; then printf '%s\n' `basename "${i%%.*}"`; fi
+#1647838468
+if [[ `printf '%s' ${i##*.}` == "dmg" ]]; then printf '%s\n' `basename "${i%.*}"`; fi
+#1647840001
+echo "${i##/*/}" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f1
+#1647840079
+ls /Volumes/data/Downloads/Mac/InUse/Installed/Automated/extFSForMac*
+#1647840104
+ls /Volumes/data/Downloads/Mac/InUse/Installed/Automated/*extFSForMac*
+#1647840243
+i="/Volumes/data/Downloads/Mac/InUse/Installed/Automated/zoc7266.dmg"
+#1647840256
+echo "${i##/*/}" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f1
+#1647840273
+if [[ `printf '%s' ${i##*.}` == "dmg" ]]; then printf '%s\n' `basename "${i%.*}"`; fi
+#1647840294
+if [[ `printf '%s' ${i##*.}` == "dmg" ]]; then printf '%s\n' `basename "${i%.*}" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f1`; fi
