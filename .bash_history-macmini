@@ -10281,3 +10281,11 @@ echo "${i##/*/}" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f1
 if [[ `printf '%s' ${i##*.}` == "dmg" ]]; then printf '%s\n' `basename "${i%.*}"`; fi
 #1647840294
 if [[ `printf '%s' ${i##*.}` == "dmg" ]]; then printf '%s\n' `basename "${i%.*}" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f1`; fi
+#1647897425
+cd /Volumes/data/Downloads/Mac/InUse/Installed/
+#1647897435
+ls *.xip
+#1647897541
+time
+#1647897644
+time xip -x "Xcode-10.14 (Mojave)_11.3.1.xip"
