@@ -10289,3 +10289,181 @@ ls *.xip
 time
 #1647897644
 time xip -x "Xcode-10.14 (Mojave)_11.3.1.xip"
+#1647983690
+b s 1pass
+#1647983739
+b i 1password6
+#1647983745
+b i 1password
+#1647985702
+fp
+#1647985843
+pp
+#1647985853
+type pp
+#1647985867
+ll /usr/bin
+#1647985881
+ll /usr/bin/p*
+#1647985901
+type pp
+#1647985907
+pp
+#1647985922
+ll /usr/bin/pp*
+#1647985932
+less /usr/bin/pp
+#1647985987
+pp -h
+#1647986005
+man pp
+#1647987643
+fullpathname="/Path/TO/Test.test1.sh"
+#1647987663
+basename "${fullpathname%.*}"
+#1647987687
+echo $fullpathname
+#1647987690
+basename "${fullpathname%.*}"
+#1647987731
+printf '%s' "${fullpathname%.*}"
+#1647987783
+basename "${fullpathname}"
+#1647987825
+printf '%s' ${fullpathname##*.}
+#1647987883
+dirname "${fullpathname}"
+#1647988076
+man ls
+#1647988112
+man less
+#1647990393
+echo $fullpathname
+#1647990400
+fp
+#1647990462
+fp -h
+#1647990523
+fp -z
+#1647990572
+fp dave
+#1647990608
+fp
+#1647990650
+fp -z
+#1647990676
+fp -h
+#1647990690
+fp -n
+#1647990838
+fp
+#1647990868
+fp dave
+#1647990880
+fp -z
+#1647991782
+fp
+#1647991794
+fp dave
+#1647991824
+f -z
+#1647991829
+fp -z
+#1647991855
+fp -z dave
+#1647992003
+echo "${fullpathname}"
+#1647992006
+fp
+#1647992045
+fp dave
+#1647992103
+echo "${fullpathname}"
+#1647992106
+fp
+#1647992117
+fp dave
+#1647992147
+fp -z
+#1647992158
+fp -h
+#1647992268
+fp -dave
+#1647992643
+fp
+#1647992687
+fp dave
+#1647992714
+fp -h
+#1647992769
+fp -z
+#1647992783
+fp -z dave
+#1647992810
+echo "${fullpathname}"
+#1647992837
+fp -n "${fullpathname}"
+#1647992890
+fp -pn "${fullpathname}"
+#1647992911
+fp -ne "${fullpathname}"
+#1647992925
+fp -e "${fullpathname}"
+#1647992944
+fp -p "${fullpathname}"
+#1647993005
+fp -u "${fullpathname}"
+#1647993013
+fp -l "${fullpathname}"
+#1647993021
+fp -d "${fullpathname}"
+#1647993051
+echo $result
+#1647993084
+result=fp -n "${fullpathname}"
+#1647993095
+result="fp -n "${fullpathname}""
+#1647993100
+echo $result
+#1647993112
+result=`fp -n "${fullpathname}"`
+#1647993115
+echo $result
+#1647993157
+result=`fp -pn "${fullpathname}"`
+#1647993167
+echo $result
+#1647993268
+result=`fp -ne "${fullpathname}"`; echo $result
+#1647993292
+result=`fp -e "${fullpathname}"`; echo $result
+#1647993309
+result=`fp -p "${fullpathname}"`; echo $result
+#1647993323
+result=`fp -u "${fullpathname}"`; echo $result
+#1647993327
+result=`fp -l "${fullpathname}"`; echo $result
+#1647993392
+result=`fp -d "${fullpathname}"`; echo $result
+#1647993427
+printf '%s\n' "${result}"
+#1647993452
+echo "${result}"
+#1647993478
+result=`fp -d "${fullpathname}"`; echo "${result}"
+#1647993513
+result=`fp -n "${fullpathname}"`; echo "${result}"
+#1647993532
+result=`fp -pn "${fullpathname}"`; echo "${result}"
+#1647993550
+result=`fp -ne "${fullpathname}"`; echo "${result}"
+#1647993565
+result=`fp -e "${fullpathname}"`; echo "${result}"
+#1647993583
+result=`fp -p "${fullpathname}"`; echo "${result}"
+#1647993602
+result=`fp -u "${fullpathname}"`; echo "${result}"
+#1647993605
+result=`fp -l "${fullpathname}"`; echo "${result}"
+#1647993615
+result=`fp -d "${fullpathname}"`; echo "${result}"
