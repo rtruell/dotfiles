@@ -10467,3 +10467,9 @@ result=`fp -u "${fullpathname}"`; echo "${result}"
 result=`fp -l "${fullpathname}"`; echo "${result}"
 #1647993615
 result=`fp -d "${fullpathname}"`; echo "${result}"
+#1648161408
+man xcode-select
+#1648161531
+man xcodebuild
+#1648161593
+man xcode-select
