@@ -10473,3 +10473,23 @@ man xcode-select
 man xcodebuild
 #1648161593
 man xcode-select
+#1648251633
+man rm
+#1648251690
+echo "${HOME}"
+#1648264465
+b upd
+#1648267120
+xcode-select --print-path
+#1648267599
+yes
+#1648267613
+man yes
+#1648268225
+echo $HOME
+#1648268398
+ll /Applications/Utilities/
+#1648268428
+which Terminal
+#1648268438
+whereis Terminal
