@@ -10493,3 +10493,155 @@ ll /Applications/Utilities/
 which Terminal
 #1648268438
 whereis Terminal
+#1648352690
+dotfiles
+#1648352699
+findtext pkginstall
+#1648352773
+b upd
+#1648353381
+b s logitech
+#1648353581
+b i logitech-options
+#1648353609
+b i logitech-control-center
+#1648353748
+b h logitech-options
+#1648354186
+b h logitech-control-center
+#1648354909
+b s netnews
+#1648354929
+b i netnewswire
+#1648354946
+b h netnewswire
+#1648355688
+b s pathfinder
+#1648355704
+b i path-finder
+#1648355722
+b h path-finder
+#1648357065
+b s gourmet
+#1648357204
+b s sitesucker
+#1648357217
+b s httrack
+#1648357242
+b h sitesucker-pro
+#1648357375
+b i sitesucker-pro
+#1648357457
+b i httrack
+#1648357468
+b h httrack
+#1648357768
+b s zoc
+#1648357782
+b i zoc
+#1648357816
+b h zoc
+#1648358364
+b s putty
+#1648358376
+b i putty
+#1648358432
+which putty
+#1648358435
+whereis putty
+#1648358470
+ls /usr/local/Cellar/putty/0.73
+#1648358474
+ls /usr/local/Cellar/putty/0.73/bin
+#1648358494
+ls /usr/local/Cellar/putty/0.73/share
+#1648358513
+b h putty
+#1648359668
+b upg putty
+#1648359702
+b -h
+#1648359715
+listfunction b
+#1648359744
+b upgrade putty
+#1648359798
+putty
+#1648359815
+ls /usr/local/Cellar/putty
+#1648359820
+ls /usr/local/Cellar/putty/0.76
+#1648359827
+ls /usr/local/Cellar/putty/0.76/bin
+#1648359849
+less /usr/local/Cellar/putty/0.76/README
+#1648360284
+ls /opt/local
+#1648360287
+ls /opt
+#1648360777
+b h putty
+#1648361412
+ssh
+#1648361416
+man ssh
+#1648361438
+man ssh_config
+#1648361521
+ls /etc/ssh
+#1648361532
+man ssh_config
+#1648361539
+ls /etc
+#1648361559
+man ssh_config
+#1648361570
+less /etc/ssh_config
+#1648361712
+ls .ssh
+#1648361719
+home
+#1648361723
+ls .ssh
+#1648362068
+ssh root@firewall
+#1648362078
+ssh root@firewall -p 22000
+#1648362112
+ssh root@firewall -p 222
+#1648362288
+ssh root@qnap2 -p 22000
+#1648362326
+ssh rtruell@qnap2 -p 22000
+#1648362350
+ssh rtruell@qnap1 -p 22000
+#1648362470
+ssh rtruell@qnap2 -p 22000
+#1648362644
+ssh root@firewall -p 222
+#1648362888
+b s hashtab
+#1648362955
+b s hash
+#1648363028
+b s mark
+#1648363048
+b i marked
+#1648363081
+b i homebrew/cask/marked
+#1648363095
+b h homebrew/cask/marked
+#1648363300
+b s harmony
+#1648363315
+b i harmony
+#1648363332
+b i logitech-harmony
+#1648363339
+b i logitech-myharmony
+#1648363376
+b h logitech-myharmony
+#1648365149
+ssh admin@qnap2 -p 22000
+#1648365429
+b h zoc
