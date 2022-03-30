@@ -10645,3 +10645,21 @@ b h logitech-myharmony
 ssh admin@qnap2 -p 22000
 #1648365429
 b h zoc
+#1648591839
+dotfiles
+#1648591896
+sed -e 's/#.*//' -e '/^$/d' "${HOME}"/.APTfile.nas
+#1648591947
+sed -e 's/#.*//' -e '/^$/d' "${HOME}"/dotfiles/.APTfile.nas
+#1648592078
+for progname in `sed -e 's/#.*//' -e '/^$/d' "${HOME}"/.APTfile.nas`; do printf '%s\n' ">${progname}<"; done
+#1648592098
+for progname in `sed -e 's/#.*//' -e '/^$/d' "${HOME}"/dotfiles/.APTfile.nas`; do printf '%s\n' ">${progname}<"; done
+#1648592205
+for progname in `sed -e 's/#.*//' -e '/^$/d' "${HOME}"/dotfiles/.APTfile`; do printf '%s\n' ">${progname}<"; done
+#1648592261
+home
+#1648592632
+brew file casklist
+#1648593567
+csl
