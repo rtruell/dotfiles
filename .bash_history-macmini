@@ -10663,3 +10663,89 @@ home
 brew file casklist
 #1648593567
 csl
+#1648679449
+man cp
+#1648679600
+dotfiles
+#1648679612
+findtext -i "backup a"
+#1648679652
+backup
+#1648680793
+man bash
+#1648681279
+name="test"
+#1648681284
+echo $name
+#1648681320
+echo "${name}"{,.orig}
+#1648681396
+touch test
+#1648681405
+rm test
+#1648681408
+home
+#1648681415
+touch test
+#1648681461
+cp "${name}"{,.orig}
+#1648681502
+rm test.orig
+#1648681516
+mv "${name}"{,.orig}
+#1648681543
+mv test.orig test
+#1648681556
+echo $ext
+#1648681573
+ext=".orig"
+#1648681576
+echo $ext
+#1648681612
+cp "${name}"{,"${ext}}
+#1648681663
+cp "${name}"{,"${ext}"}
+#1648681681
+rm test.orig
+#1648681690
+ext=".old"
+#1648681695
+cp "${name}"{,"${ext}"}
+#1648681714
+rm test.old
+#1648681729
+ext="new"
+#1648681740
+cp "${name}"{,".${ext}"}
+#1648681766
+rm test.new
+#1648681772
+echo $name
+#1648681775
+echo $ext
+#1648681814
+cp "${name}"{,."${ext}"}
+#1648681824
+rm test.new
+#1648681841
+mv "${name}"{,."${ext}"}
+#1648681925
+rm test.new
+#1648697364
+backup
+#1648697434
+dotfiles
+#1648697444
+findtext -i "backup a" 
+#1648697516
+findtext -i "old" 
+#1648697663
+findtext -i "orig" 
+#1648700716
+brew cask doctor
+#1648700748
+brew doctor --cask
+#1648700854
+man brew
+#1648701091
+home
