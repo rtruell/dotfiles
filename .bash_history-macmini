@@ -10749,3 +10749,51 @@ brew doctor --cask
 man brew
 #1648701091
 home
+#1648761247
+b
+#1648761255
+whatis b
+#1648761274
+man whatis
+#1648761288
+which b
+#1648761294
+sysinfo
+#1648761322
+type b
+#1648761328
+type sysinfo
+#1648761341
+man type
+#1648761346
+bashman type
+#1648761429
+type type
+#1648761438
+type  -f sysinfo
+#1648761452
+type sysinfo
+#1648761457
+type -f sysinfo
+#1648761461
+type -F sysinfo
+#1648761471
+type -a sysinfo
+#1648761481
+man type
+#1648761487
+bashman type
+#1648761709
+type b
+#1648761715
+cat /users/rtruell/bin/b
+#1648763314
+b
+#1648763329
+b -h
+#1648763373
+b -f
+#1648787666
+b info
+#1648786586
+man brew
