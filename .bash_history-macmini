@@ -10797,3 +10797,201 @@ b -f
 b info
 #1648786586
 man brew
+#1648816897
+b
+#1648816910
+b -z
+#1648817142
+b -h
+#1648817192
+b d
+#1648817236
+less newbrew
+#1648817268
+b dr
+#1648817374
+b h
+#1648817395
+b h fortune
+#1648817429
+b i
+#1648817449
+b i fortune
+#1648817481
+b in
+#1648817554
+b s
+#1648817563
+b s fortune
+#1648819033
+backup
+#1648819043
+backup -r
+#1648819052
+backup -h
+#1648819090
+backup -z
+#1648820362
+echo $name
+#1648820365
+echo $ext
+#1648820371
+name="rick"
+#1648820381
+ext="truell"
+#1648820402
+echo "${name}"{,."${ext}"}
+#1648820415
+echo ""${name}"{,."${ext}"}"
+#1648820428
+echo "${name}"{,."${ext}"}
+#1648820461
+printf '%s\n' ""${name}"{,."${ext}"}"
+#1648820469
+printf '%s\n' "${name}"{,."${ext}"}
+#1648820682
+fullname=""${name}"{,."${ext}"}"
+#1648820687
+echo $fullname
+#1648820697
+fullname="${name}"{,."${ext}"}
+#1648820699
+echo $fullname
+#1648820727
+fullname="`"${name}"{,."${ext}"}`"
+#1648820750
+fullname=`"${name}"{,."${ext}"}`
+#1648825313
+backup
+#1648825325
+backup -h
+#1648825354
+backup -h file ext log
+#1648825406
+backup -r file ext log
+#1648825421
+backup file ext log
+#1648825502
+backup -z file ext log
+#1648825702
+backup
+#1648825759
+backup -z
+#1648825767
+backup -r
+#1648825788
+backup -h
+#1648870903
+echo $copy
+#1648870910
+copy=0
+#1648870912
+echo $copy
+#1648870949
+if "${copy}; then echo 1; fi
+copy=1
+
+#1648870998
+if "${copy}"; then echo 1; fi
+#1648871005
+echo $copy
+#1648871047
+copy=1
+#1648871049
+echo $copy
+#1648871053
+if "${copy}"; then echo 1; fi
+#1648871097
+[[ "${copy}" ]] && echo 1
+#1648871108
+copy=0
+#1648871110
+[[ "${copy}" ]] && echo 1
+#1648871159
+if [[ "${copy}" == 0 ]]; then echo 1; fi
+#1648871164
+echo $copy
+#1648871177
+if [[ "${copy}" == 1 ]]; then echo 1; fi
+#1648871187
+copy=1
+#1648871190
+echo $copy
+#1648871193
+if [[ "${copy}" == 1 ]]; then echo 1; fi
+#1648871203
+copy=0
+#1648871206
+if [[ "${copy}" == 1 ]]; then echo 1; fi
+#1648871851
+echo $filename
+#1648871856
+echo $extension
+#1648871885
+filename="test"
+#1648871894
+extension="orig"
+#1648871904
+echo "${filename}"{,."${extension}"}
+#1648872079
+printf '%s\n' "This is a test."
+#1648872094
+printf '%s\n' "This is a test." >>test.txt
+#1648872110
+cat test.txt
+#1648872121
+printf '%s\n' "This is a second test." >>test.txt
+#1648872123
+cat test.txt
+#1648872194
+printf '%s\n' "${filename}"{,."${extension}"}
+#1648872213
+printf "${filename}"{,."${extension}"}
+#1648872253
+printf '%s' "${filename}"{,."${extension}"}
+#1648872323
+printf '%s' "${filename}" -> {,."${extension}"}
+#1648872373
+printf '%s' "${filename}"{,."${extension}"}
+#1648872381
+printf '%s' "${filename}" {,."${extension}"}
+#1648872394
+printf '%s' "${filename}"{ ,."${extension}"}
+#1648872414
+printf '%s' "${filename}"{, ."${extension}"}
+#1648872423
+printf '%s' "${filename}"{,. "${extension}"}
+#1648872445
+printf '%s' "${filename}"{,."${extension}"}
+#1648872477
+cp "${filename}"{,."${extension}"}
+#1648872510
+filename="test.txt"
+#1648872520
+echo "${filename}"{,."${extension}"}
+#1648872534
+cp "${filename}"{,."${extension}"}
+#1648872553
+rm test.txt.orig
+#1648872565
+rm "${filename}"{,."${extension}"}
+#1648872589
+mv "${filename}"{,."${extension}"}
+#1648872670
+printf "${filename}"{,."${extension}"}
+#1648872682
+printf '%s' "${filename}"{,. "${extension}"}
+#1648872762
+printf '%s' "${filename}"{,."${extension}"}
+#1648872778
+printf '%s %s\n' "${filename}"{,."${extension}"}
+#1648872798
+printf '%s -> %s\n' "${filename}"{,."${extension}"}
+#1648872844
+printf '%s -> %s\n' "${filename}"{,."${extension}"} >>test
+#1648872852
+cat test
+#1648872865
+rm test test.txt.orig
+#1648873312
+bashman tests
