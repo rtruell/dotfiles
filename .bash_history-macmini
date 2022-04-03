@@ -11095,3 +11095,99 @@ date
 datef
 #1648958316
 datef -h
+#1648988690
+type datef
+#1648988701
+datef
+#1648988711
+datef -h
+#1648988758
+datef zoom
+#1648988774
+datef 12h
+#1648988785
+datef 12hms
+#1648988801
+datef 2y
+#1648988807
+datef 4y
+#1648988817
+datef dom
+#1648988832
+datef dow
+#1648988835
+datef doy
+#1648988851
+datef epoch
+#1648988867
+datef iso
+#1648988879
+datef ldow
+#1648988887
+datef lmon
+#1648988894
+datef sdow
+#1648988902
+datef smon
+#1648988926
+datef tz
+#1648988931
+datef tzo
+#1648988951
+datef woy
+#1648989427
+type path
+#1648989431
+path
+#1648989462
+alias path
+#1648989477
+alias ll
+#1648989492
+type ll
+#1648989749
+pwd
+#1648989794
+addpath /Users/rtruell/rick
+#1648989801
+path
+#1648989872
+addpath /Users/rtruell/rick1
+#1648989874
+path
+#1648989892
+delpath /Users/rtruell/rick
+#1648989919
+path
+#1648989929
+echo $path
+#1648989942
+echo $PATH
+#1648990821
+path
+#1648990835
+addpath /Users/rtruell/rick
+#1648990841
+path
+#1648990846
+addpath /Users/rtruell/rick
+#1648990851
+path
+#1648991059
+edpath
+#1648991119
+echo $PATH
+#1648991223
+ls /tmp
+#1648991231
+/bin/ls /tmp
+#1648991268
+reloadconfig
+#1648991288
+echo $PATH
+#1648991379
+ls /tmp
+#1648991364
+edpath
+#1648991529
+path
