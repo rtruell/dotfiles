@@ -11627,3 +11627,89 @@ echo $newpath
 ls /tmp
 #1649001086
 rm /tmp/tpath.6736
+#1649001142
+echo $newpath
+#1649001172
+newpath=$PATH
+#1649001175
+echo $newpath
+#1649001203
+uniqpath -p newpath
+#1649001215
+ls /tmp
+#1649001256
+echo $newpath
+#1649001266
+echo $npath
+#1649001276
+echo $pathvar
+#1649001615
+s .functions/uniqpath.function
+#1649001624
+uniqpath -p newpath
+#1649001659
+echo $newpath
+#1649001667
+echo $npath
+#1649001854
+s .functions/uniqpath.function
+#1649001860
+s .functions/makepath.function
+#1649001872
+echo $newpath
+#1649001879
+uniqpath -p newpath
+#1649001981
+s .functions/makepath.function
+#1649001986
+echo $newpath
+#1649001989
+uniqpath -p newpath
+#1649002013
+s .functions/makepath.function
+#1649002016
+echo $newpath
+#1649002019
+uniqpath -p newpath
+#1649002026
+ls /tmp
+#1649002053
+ll
+#1649002066
+rm echo
+#1649002098
+echo $newpath
+#1649002101
+uniqpath -p newpath
+#1649002117
+rm echo
+#1649002120
+ls /tmp
+#1649002174
+s .functions/makepath.function
+#1649002179
+echo $newpath
+#1649002182
+uniqpath -p newpath
+#1649002202
+rm echo
+#1649002204
+ls /tmp
+#1649002290
+s .functions/makepath.function
+#1649002298
+echo $newpath
+#1649002301
+uniqpath -p newpath
+#1649002330
+echo $newpath
+#1649002336
+ls /tmp
+#1649002406
+s .functions/makepath.function
+#1649002409
+echo $newpath
+#1649002418
+echo $PATH
+#1649002428
+uniqpath -p newpath
