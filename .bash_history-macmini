@@ -11191,3 +11191,439 @@ ls /tmp
 edpath
 #1648991529
 path
+#1648991540
+path
+#1648991789
+addpath /Users/rtruell/rick
+#1648991790
+path
+#1648991806
+echo $PATH
+#1648991835
+PATH=$PATH:/Users/rtruell/rick
+#1648991839
+path
+#1648991860
+uniqpath
+#1648991889
+addpath /Users/rtruell/rick
+#1648991891
+PATH=$PATH:/Users/rtruell/rick
+#1648991893
+path
+#1648991969
+pathvar=PATH
+#1648991975
+listpath -p $pathvar
+#1648991988
+listpath -p $pathvar | awk '{seen[$0]++; if (seen[$0]==1){print}}'
+#1648992091
+listpath
+#1648992151
+napth=$(listpath -p $pathvar | awk '{seen[$0]++; if (seen[$0]==1){print}}')
+#1648992160
+echo napth
+#1648992174
+echo napt
+#1648992183
+napth=$(listpath -p $pathvar | awk '{seen[$0]++; if (seen[$0]==1){print}}')
+#1648992188
+echo $npath
+#1648992208
+npath=$(listpath -p $pathvar | awk '{seen[$0]++; if (seen[$0]==1){print}}')
+#1648992211
+echo $npath
+#1648992278
+echo $PATH
+#1648992535
+echo $pathvar
+#1648993202
+path
+#1648993214
+uniqpath
+#1648993267
+echo $PATH
+#1648993305
+path
+#1648993531
+brew shellenv
+#1648993563
+path
+#1648993619
+echo $newpath
+#1648993637
+newpath=$PATH
+#1648993640
+echo $newpath
+#1648993813
+npath=$(listpath -p $newpath | awk '{seen[$0]++; if (seen[$0]==1){print}}')
+#1648993821
+echo $npath
+#1648993939
+echo $npath | space2line
+#1648994206
+s .functions/makepath.function
+#1648994222
+uniqpath -h
+#1648994244
+echo $newpath
+#1648994257
+echo $PATH
+#1648994277
+uniqpath -p newpath
+#1648994290
+echo $PATH
+#1648994298
+echo $newpath
+#1648994328
+newpath=$PATH
+#1648994332
+echo $newpath
+#1648994454
+s .functions/makepath.function
+#1648994457
+echo $newpath
+#1648994465
+uniqpath -p newpath
+#1648994497
+echo $newpath
+#1648994503
+newpath=$PATH
+#1648994512
+echo $newpath
+#1648994516
+uniqpath -p newpath
+#1648994522
+echo $newpath
+#1648994531
+echo $PATH
+#1648994595
+uniqpath -p newpath
+#1648994598
+echo $newpath
+#1648994639
+man eval
+#1648994644
+bashman eval
+#1648994737
+s .functions/makepath.function
+#1648994747
+echo $newpath
+#1648994752
+uniqpath -p newpath
+#1648994776
+echo $newpath
+#1648994839
+makepath $newpath
+#1648994899
+echo $newpath
+#1648994932
+s .functions/makepath.function
+#1648994936
+echo $newpath
+#1648994942
+makepath $newpath
+#1648995029
+s .functions/makepath.function
+#1648995033
+echo $newpath
+#1648995037
+makepath $newpath
+#1648995122
+s .functions/makepath.function
+#1648995126
+echo $newpath
+#1648995132
+makepath $newpath
+#1648995219
+s .functions/makepath.function
+#1648995223
+echo $newpath
+#1648995227
+makepath $newpath
+#1648995253
+ls /tmp
+#1648995276
+cat /tmp/tpath.6736
+#1648995310
+cat /tmp/makepath_in.2429
+#1648995330
+rm /tmp/tpath.6736
+#1648995344
+rm /tmp/makepath_in.2429
+#1648995359
+ls /tmp
+#1648995384
+echo $newpath
+#1648995392
+makepath $newpath
+#1648995403
+ls /tmp
+#1648995416
+cat /tmp/tpath.6736
+#1648995463
+rm /tmp/tpath.6736
+#1648995467
+ls /tmp
+#1648995489
+s .functions/makepath.function
+#1648995498
+echo $newpath
+#1648995507
+makepath $newpath
+#1648995521
+ls /tmp
+#1648995541
+cat /tmp/tpath.6736
+#1648995573
+rm /tmp/tpath.6736
+#1648995589
+uniqpath -p newpath
+#1648995595
+ls /tmp
+#1648995600
+cat /tmp/tpath.6736
+#1648995638
+echo $newpath
+#1648995654
+echo $PATH
+#1648995812
+newpath=$PATH
+#1648995815
+echo $newpath
+#1648995826
+ls /tmp
+#1648995838
+rm /tmp/tpath.6736
+#1648995924
+echo $TPATH
+#1648995940
+echo $newpath
+#1648995953
+uniqpath -p newpath
+#1648995963
+ls /tmp
+#1648995982
+TPATH=$(cat /tmp/tpath.$$)
+#1648995992
+echo $TPATH
+#1648996032
+echo $TPATH | sed -e "s/^::*//" -e "s/::*$//"
+#1648996088
+tmp=$(echo $TPATH | sed -e "s/^::*//" -e "s/::*$//")
+#1648996093
+echo $tmp
+#1648996157
+echo $newpath
+#1648996167
+eval echo $tmp
+#1648996177
+echo $newpath
+#1648996180
+ls /tmp
+#1648996193
+rm /tmp/tpath.6736
+#1648996198
+ls /tmp
+#1648996252
+echo $newpath
+#1648996270
+newpath=$PATH
+#1648996302
+echo $newpath
+#1648996313
+uniqpath -p newpath
+#1648996320
+ls /tmp
+#1648996333
+echo $newpath
+#1648996406
+ls /tmp
+#1648996446
+type rm
+#1648996452
+whereis rm
+#1648996456
+which rm
+#1648996482
+/bin/rm -version
+#1648996493
+/bin/rm -v
+#1648996509
+bashman rm
+#1648996522
+man rm
+#1648996544
+/bin/rm --version
+#1648996563
+rm --version
+#1648996799
+type rm
+#1648996937
+man command
+#1648996942
+bashman command
+#1648997215
+ls /tmp
+#1648997228
+rm /tmp/tpath.6736
+#1648997237
+command rm /tmp/tpath.6736
+#1648997240
+ls /tmp
+#1648997499
+echo $newpath
+#1648997511
+newpath=$PATH
+#1648997514
+echo $newpath
+#1648997607
+uniqpath -p newpath
+#1648997611
+echo $newpath
+#1648997675
+newpath=$PATH
+#1648997679
+echo $newpath
+#1648997707
+npath=$(listpath -p $newpath | awk '{seen[$0]++; if (seen[$0]==1){print}}')
+#1648997720
+echo $npath
+#1648997723
+echo $newpath
+#1648997883
+makepath "$napth"
+#1648997897
+echo $newpath
+#1648997920
+echo $npath
+#1648997936
+makepath "$npath"
+#1648998006
+ls /tmp
+#1648998038
+echo $TPATH
+#1648998053
+echo $tmp
+#1648998198
+cat /tmp/tpath.6736
+#1648998290
+echo $newpath
+#1648998320
+echo $npath
+#1648998366
+npath=
+#1648998382
+npath=$(listpath -p $newpath | awk '{seen[$0]++; if (seen[$0]==1){print}}')
+#1648998388
+echo $npath
+#1648998430
+listpath -p $newpath | awk '{seen[$0]++; if (seen[$0]==1){print}}'
+#1648998439
+echo $newpath
+#1648998502
+listpath -p $newpath
+#1648998530
+newpath=$PATH
+#1648998536
+echo $newpath
+#1648998539
+listpath -p $newpath
+#1648998583
+echo $npath
+#1648998626
+echo $npath | space2line
+#1648998650
+echo $TPATH
+#1648998773
+ls /tmp
+#1648998796
+cat /tmp/tpath.6736
+#1648998905
+rm /tmp/tpath.6736
+#1648998909
+ls /tmp
+#1648998955
+echo $npath | space2line
+#1648998988
+echo $TPATH
+#1648998996
+TPATH=
+#1648998998
+echo $TPATH
+#1648999015
+echo $SOURCE
+#1648999054
+makepath "$npath"
+#1648999066
+echo $SOURCE
+#1648999069
+echo $TPATH
+#1648999086
+echo $npath
+#1648999095
+ls /tmp
+#1648999109
+cat /tmp/tpath.6736
+#1648999150
+echo $tmp
+#1648999226
+echo $npath
+#1648999272
+echo pathvar
+#1648999278
+echo $pathvar
+#1648999320
+rm /tmp/tpath.6736
+#1648999361
+echo $npath
+#1648999400
+pathvar=$(makepath "$napth")
+#1648999416
+pathvar=$(makepath "$npath")
+#1648999423
+echo $pathvar
+#1648999436
+ls /tmp
+#1648999479
+echo $TPATH
+#1648999510
+rm /tmp/tpath.6736
+#1648999518
+echo $newpath
+#1648999526
+echo $PATH
+#1648999590
+uniqpath -p newpath
+#1648999599
+echo $newpath
+#1648999603
+ls  /tmp
+#1648999621
+echo $npath
+#1648999651
+echo $SOURCE
+#1648999658
+echo $TPATH
+#1648999695
+cat /tmp/tpath.6736
+#1648999759
+TPATH=$(cat /tmp/tpath.6736)
+#1648999766
+echo $TPATH
+#1648999801
+echo $TPATH | sed -e "s/^::*//" -e "s/::*$//"
+#1648999818
+echo $tmp
+#1648999847
+echo $pathvar
+#1648999925
+pathvar=$(echo $tmp)
+#1648999932
+echo $pathvar
+#1648999975
+echo $newpath
+#1649001076
+ls /tmp
+#1649001086
+rm /tmp/tpath.6736
