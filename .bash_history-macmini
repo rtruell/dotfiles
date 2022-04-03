@@ -11713,3 +11713,143 @@ echo $newpath
 echo $PATH
 #1649002428
 uniqpath -p newpath
+#1649002497
+echo $newpath
+#1649002504
+newpath=$PATH
+#1649002507
+echo $newpath
+#1649002511
+ls /tmp
+#1649002518
+uniqpath -p newpath
+#1649002624
+s .functions/makepath.function
+#1649002628
+uniqpath -p newpath
+#1649002644
+s .functions/makepath.function
+#1649002647
+uniqpath -p newpath
+#1649002701
+s .functions/makepath.function
+#1649002707
+uniqpath -p newpath
+#1649002752
+s .functions/makepath.function
+#1649002754
+uniqpath -p newpath
+#1649002782
+s .functions/makepath.function
+#1649002784
+uniqpath -p newpath
+#1649002875
+s .functions/makepath.function
+#1649002877
+uniqpath -p newpath
+#1649002899
+ls /tmp
+#1649002950
+s .functions/makepath.function
+#1649002953
+uniqpath -p newpath
+#1649002982
+ls /tmp
+#1649003001
+cat /tmp/tpath.12977
+#1649003023
+rm /tmp/tpath.12977
+#1649003047
+s .functions/makepath.function
+#1649003058
+echo $newpath
+#1649003064
+uniqpath -p newpath
+#1649003091
+echo $TPATH
+#1649003103
+ls /tmp
+#1649003115
+cat /tmp/tpath.12977
+#1649003129
+TPATH=$(cat /tmp/tpath.$$)
+#1649003133
+echo $TPATH
+#1649003169
+echo $TPATH | sed -e "s/^::*//" -e "s/::*$//"
+#1649003200
+tmp=$(echo $TPATH | sed -e "s/^::*//" -e "s/::*$//")
+#1649003210
+echo $tmp
+#1649003306
+s .functions/makepath.function
+#1649003346
+echo $npath
+#1649003395
+echo $newpath
+#1649003410
+newpath=$PATH
+#1649003411
+echo $newpath
+#1649003444
+npath=$(listpath -p $newpath | awk '{seen[$0]++; if (seen[$0]==1){print}}')
+#1649003449
+echo $npath
+#1649003466
+makepath npath
+#1649003512
+echo $newpath
+#1649003559
+ricktest=$(makepath "$npath")
+#1649003565
+echo $ricktest
+#1649003600
+eval $ricktest=$(makepath "$npath")
+#1649003621
+echo $npath
+#1649003626
+echo $newpath
+#1649003630
+ls /tmp
+#1649003736
+echo $pathvar
+#1649003744
+echo $npath
+#1649003789
+makepath "$npath"
+#1649003999
+listpath -p $newpath | awk '{seen[$0]++; if (seen[$0]==1){print}}'
+#1649004007
+echo $newpath
+#1649004068
+listpath -p "${newpath}" | awk '{seen[$0]++; if (seen[$0]==1){print}}'
+#1649004099
+listpath -p newpath
+#1649004108
+listpath -p $newpath
+#1649004155
+listpath -p "${newpath}"
+#1649004190
+echo $pathvar
+#1649004215
+pathvar=newpath
+#1649004230
+listpath -p pathvar
+#1649004238
+listpath -p $pathvar
+#1649004262
+listpath -p $pathvar | awk '{seen[$0]++; if (seen[$0]==1){print}}'
+#1649004289
+npath=$(listpath -p $pathvar | awk '{seen[$0]++; if (seen[$0]==1){print}}')
+#1649004294
+echo $npath
+#1649004323
+makepath "$npath"
+#1649004356
+pathvar=$(makepath "$npath")
+#1649004366
+echo $pathvar
+#1649004386
+eval pathvar=$(makepath "$npath")
+#1649004417
+ls /tmp
