@@ -10995,3 +10995,91 @@ cat test
 rm test test.txt.orig
 #1648873312
 bashman tests
+#1648955148
+backup
+#1648955196
+date dow
+#1648955219
+backup -z
+#1648955466
+backup
+#1648955493
+backup -h
+#1648955504
+backup -z
+#1648955520
+backup -r
+#1648955558
+backup -r dave
+#1648955568
+backup dave
+#1648955600
+touch test
+#1648955617
+backup test old
+#1648955643
+rm test.old
+#1648955697
+backup -r test old
+#1648955717
+mv test.old test
+#1648955757
+backup test old backup.log
+#1648955808
+cat backup.log
+#1648956050
+rm test.old backup.log
+#1648956067
+backup test old backup.log
+#1648956165
+cat backup.log
+#1648956197
+rm test.old
+#1648956269
+backup test old backup.log
+#1648956279
+cat backup.log
+#1648956294
+rm test.old
+#1648956306
+backup -r test old backup.log
+#1648956325
+cat backup.log
+#1648956359
+rm backup.log test.old
+#1648956492
+datef dow
+#1648956499
+datef iso
+#1648956513
+datef
+#1648956525
+datef mdy
+#1648956676
+datef apmu
+#1648956685
+datef apml
+#1648956720
+datef day
+#1648956738
+datef doy
+#1648957143
+datef
+#1648957654
+man date
+#1648957784
+la
+#1648957793
+ls .functions
+#1648957808
+which ls
+#1648957814
+whereis ls
+#1648957821
+/bin/ls .functions
+#1648957841
+/usr/local/opt/coreutils/libexec/gnubin/ls .functions
+#1648957885
+s .functions/datef.function
+#1648957892
+datef
