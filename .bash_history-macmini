@@ -11853,3 +11853,51 @@ echo $pathvar
 eval pathvar=$(makepath "$npath")
 #1649004417
 ls /tmp
+#1649004541
+echo $PATH
+#1649004546
+echo $newpath
+#1649004554
+newpath=$PATH
+#1649004556
+echo $newpath
+#1649004572
+uniqpath -p newpath
+#1649004587
+echo $TPATH
+#1649004590
+ls /tmp
+#1649004600
+cat /tmp/15219
+#1649004609
+cat /tmp/tpath.15219
+#1649004704
+rm /tmp/tpath.15219
+#1649004715
+echo $PATH
+#1649004721
+echo $newpath
+#1649004729
+newpath=$PATH
+#1649004731
+echo $newpath
+#1649004745
+uniqpath -p newpath
+#1649004750
+ls /tmp
+#1649004758
+cat /tmp/tpath.15219
+#1649004779
+rm /tmp/tpath.15219
+#1649004787
+echo $newpath
+#1649004793
+newpath=$PATH
+#1649004810
+s .functions/makepath.function
+#1649004821
+uniqpath -p newpath
+#1649004841
+ls /tmp
+#1649004849
+cat /tmp/tpath.15219
