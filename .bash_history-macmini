@@ -11085,3 +11085,13 @@ s .functions/datef.function
 datef
 #1648957898
 datef -h
+#1648958162
+datef
+#1648958297
+s .functions/datef.function
+#1648958302
+date
+#1648958304
+datef
+#1648958316
+datef -h
