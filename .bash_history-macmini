@@ -12201,3 +12201,107 @@ uniqpath -p newpath
 printf '%s\n' $PATH $newpath
 #1649024457
 listfunction makepath
+#1649024647
+listfunction uniqpath
+#1649024707
+newpath=$PATH
+#1649024716
+ls /tmp
+#1649024725
+printf '%s\n' $PATH $newpath
+#1649024737
+uniqpath -p newpath
+#1649024741
+printf '%s\n' $PATH $newpath
+#1649025380
+addpath -p newpath /rick/test
+#1649025385
+printf '%s\n' $PATH $newpath
+#1649025415
+addpath -p newpath /rick/test
+#1649025420
+printf '%s\n' $PATH $newpath
+#1649025475
+addpath -p newpath /rick1/test
+#1649025478
+printf '%s\n' $PATH $newpath
+#1649025551
+delpath -p newpath /rick/test
+#1649025568
+printf '%s\n' $PATH $newpath
+#1649025613
+delpath -n -p newpath
+#1649025632
+ls /tmp
+#1649025644
+printf '%s\n' $PATH $newpath
+#1649026043
+echo $newpath
+#1649026050
+newpath=$PATH
+#1649026060
+echo $newpath
+#1649026093
+uniqpath -p newpath
+#1649026096
+echo $newpath
+#1649026123
+addpath -p newpath /rick/test
+#1649026125
+echo $newpath
+#1649026167
+pathvar=newpath
+#1649026269
+listpath -p $pathvar | realpath_filter | grep -v -E -x ""
+#1649026290
+man grep
+#1649026392
+listpath -p $pathvar | realpath_filter
+#1649026487
+listpath -p $pathvar
+#1649026518
+listpath -p $pathvar | realpath_filter | grep  -E -x ""
+#1649027304
+s .functions/delpath.function
+#1649027314
+echo $newpath
+#1649027347
+newpath=$newpath:/rick1/test
+#1649027351
+echo $newpath
+#1649027401
+delpath -p newpath /rick/test
+#1649027416
+echo $newpath
+#1649027454
+listfunction delpath
+#1649027551
+s .functions/delpath.function
+#1649027556
+echo $newpath
+#1649027569
+delpath -p newpath /rick/test
+#1649027587
+echo $newpath
+#1649027630
+delpath -n -p newpath
+#1649027638
+echo $newpath
+#1649027681
+s .functions/delpath.function
+#1649027913
+s .functions/edpath.function
+#1649027926
+echo $newpath
+#1649027937
+edpath -p newpath
+#1649027979
+echo $newpath
+#1649027999
+edpath -p newpath
+#1649028038
+echo $newpath
+#1649028081
+delpath -n -p newpath
+#1649028089
+echo $newpath
