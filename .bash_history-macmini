@@ -11083,3 +11083,5 @@ whereis ls
 s .functions/datef.function
 #1648957892
 datef
+#1648957898
+datef -h
