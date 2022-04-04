@@ -12305,3 +12305,295 @@ echo $newpath
 delpath -n -p newpath
 #1649028089
 echo $newpath
+#1649102721
+box "This is a test."
+#1649102749
+box "This is a test." $
+#1649102785
+id
+#1649102812
+id user | tr "," "\n"
+#1649102828
+id user
+#1649102852
+id | tr "," "\n"
+#1649102973
+capitalise
+#1649102985
+capitalise "this is a test."
+#1649102993
+capitalise dave
+#1649103005
+capitalise this is a test.
+#1649103067
+cdf
+#1649103076
+home
+#1649103099
+lf
+#1649103103
+f
+#1649103112
+type listfunction
+#1649103121
+type function
+#1649103129
+type functions
+#1649103156
+functions
+#1649103189
+listfunction
+#1649103196
+bashman declare
+#1649103286
+f
+#1649103288
+lf
+#1649103389
+s .functions/f.function
+#1649103393
+s .functions/lf.function
+#1649103396
+f
+#1649103400
+lf
+#1649103403
+lf lf
+#1649103409
+lf cdf
+#1649103457
+osascript -e 'tell app "Path Finder" to POSIX path of (insertion location as alias)'
+#1649103500
+osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'
+#1649103527
+osascript -e 'tell app "Path Finder" to POSIX path of (insertion location as alias)'
+#1649103598
+centertext dave
+#1649103661
+centertext newbrew
+#1649103741
+centertext EventReminderData.txt
+#1649103852
+dec2char 5
+#1649103865
+dec2char 4
+#1649103873
+dec2char 0
+#1649103881
+dec2char 9
+#1649103893
+dec2char 35
+#1649104066
+hl
+#1649104121
+s .functions/hl.function
+#1649104127
+hl
+#1649104156
+echo $COLUMNS
+#1649104163
+echo $ROWS
+#1649104174
+hl 80 $
+#1649104191
+echo $ROW
+#1649104250
+isfloat 5
+#1649104255
+isfloat 5.5
+#1649104275
+isgitdir
+#1649104335
+lf isgitdir
+#1649104340
+type isgitdir
+#1649104396
+s .functions/isgitdir.function
+#1649104406
+isgitdir
+#1649104437
+dotfiles
+#1649104442
+isgitdir
+#1649104456
+back
+#1649104459
+isgitdir
+#1649104525
+isinteger 5
+#1649104610
+man grep
+#1649104663
+echo 5 | grep -q '^[-+]?[0-9]+$'
+#1649104671
+echo 5 | grep '^[-+]?[0-9]+$'
+#1649104690
+echo 5.5 | grep '^[-+]?[0-9]+$'
+#1649104714
+isinteger 5
+#1649104744
+isinteger 
+#1649104803
+s .functions/isinteger.function
+#1649104810
+isinteger 5
+#1649104848
+s .functions/isinteger.function
+#1649104850
+isinteger 5
+#1649104858
+isinteger 5.5
+#1649104865
+isinteger 10
+#1649104880
+s .functions/isfloat.function
+#1649104886
+isfloat 10
+#1649104889
+isfloat 10.5
+#1649104940
+isinteger 10
+#1649104948
+isinteger 5.5
+#1649104953
+isinteger 5
+#1649104991
+lman
+#1649105060
+man fc
+#1649105066
+bashman fc
+#1649105216
+type fc
+#1649105222
+lman
+#1649105251
+bashman type
+#1649105358
+type -t fc
+#1649105392
+isdigit 5
+#1649105413
+isfloat 10
+#1649105427
+lman
+#1649105522
+man isfloat
+#1649105597
+man type
+#1649105659
+command="man type"
+#1649105664
+command
+#1649105668
+$command
+#1649105681
+command="bashman type"
+#1649105685
+$command
+#1649105730
+cmd='type'
+#1649105749
+man $cmd
+#1649105754
+bashman $cmd
+#1649105962
+s .functions/lman.function
+#1649106033
+isinteger 5
+#1649106037
+lman
+#1649106057
+type lf
+#1649106067
+lman
+#1649106109
+type du
+#1649106127
+which du
+#1649106133
+whereis du
+#1649106138
+/usr/bin/du
+#1649106148
+lman
+#1649106160
+df
+#1649106168
+lman
+#1649106181
+type df
+#1649106185
+lman
+#1649106248
+type ls
+#1649106265
+type ll
+#1649106273
+type -t ll
+#1649106279
+type -t ls
+#1649106477
+macosusbinstaller
+#1649106512
+type macosusbinstaller
+#1649106520
+macosusbinstaller
+#1649106534
+s .functions/macosusbinstaller.function
+#1649106537
+type macosusbinstaller
+#1649106543
+macosusbinstaller
+#1649106561
+macosusbinstaller test
+#1649106628
+group
+#1649106638
+lf members
+#1649106673
+getent
+#1649106687
+lman
+#1649106714
+dscacheutil
+#1649106746
+dscacheutil -q
+#1649106756
+dscacheutil -h
+#1649106768
+dscacheutil -configuration
+#1649106785
+dscacheutil -statistics
+#1649106803
+lamn
+#1649106806
+lman
+#1649106815
+man dscacheutil
+#1649106893
+dscacheutil -q group
+#1649106926
+members wheel
+#1649106944
+lf members
+#1649106970
+echo $SYSTEM_TYPE
+#1649107023
+s .functions/member.function
+#1649107031
+s .functions/members.function
+#1649107056
+lf members
+#1649107068
+members wheel
+#1649107076
+members rtruell
+#1649107087
+groups
+#1649107113
+members staff
+#1649107140
+members everyone
+#1649107156
+members admin
