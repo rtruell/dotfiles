@@ -12597,3 +12597,211 @@ members staff
 members everyone
 #1649107156
 members admin
+#1649107235
+lf members
+#1649107248
+lf isinteger
+#1649107263
+isinteger 5
+#1649107281
+isfloat 5.5
+#1649107330
+s .functions/isinteger.function
+#1649107337
+s .functions/isfloat.function
+#1649107341
+isfloat 5.5
+#1649107350
+isinteger 5
+#1649107364
+lf members
+#1649107373
+s .functions/members.function
+#1649107376
+lf members
+#1649107456
+type grep
+#1649107527
+mountinfo
+#1649107565
+man sort
+#1649107826
+man column
+#1649107876
+man sort
+#1649107953
+s .functions/mountinfo.function
+#1649107961
+mountinfo
+#1649108079
+man mount
+#1649108194
+man sort
+#1649108262
+s .functions/mountinfo.function
+#1649108265
+mountinfo
+#1649108275
+man sort
+#1649108296
+s .functions/mountinfo.function
+#1649108299
+mountinfo
+#1649109097
+mount
+#1649109531
+mount | grep "^/"
+#1649111229
+man cut
+#1649111439
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,/, /' |
+#1649111454
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,/, /' )
+#1649111602
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,/,/' )
+#1649111613
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,//' )
+#1649111942
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,/, /' )
+#1649112014
+mountinfo
+#1649112041
+mount
+#1649112065
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,//' )
+#1649112213
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,//' | cut -f 1,3,4- )
+#1649112244
+man column
+#1649112309
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,//' | cut -f 1,3,4- | column -t -s " " )
+#1649112431
+mountinfo
+#1649112473
+man cut
+#1649112574
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,//' | cut -f 1, 3, 4- | column -t -s " " )
+#1649112610
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,//' | cut -f 1,3,4 | column -t -s " " )
+#1649112636
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,//'  )
+#1649112658
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,//' | cut -f 1 )
+#1649112664
+man cut
+#1649112685
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,//' | cut -f 1 )
+#1649112700
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,//' | cut -d " " -f 1,3,4 | column -t -s " " )
+#1649112709
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,//' | cut -d " " -f 1,3,4- | column -t -s " " )
+#1649112725
+mountinfo
+#1649112806
+man cut
+#1649112875
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,//' | cut -d " " --output-delimiter "&" -f 1,3,4- | column -t -s "&" )
+#1649112901
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,//' | cut -d " " --output-delimiter "&" -f 1,3,4-  )
+#1649113043
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,//' | cut -d " " --output-delimiter "&" -f 1,3 --output-delimiter " " -f 4-  )
+#1649113166
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,//' | cut -d " " --output-delimiter "&" -f 1,3  )
+#1649113194
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,//' | cut -d " " --output-delimiter "&" -f 1,3,4  )
+#1649113387
+mount
+#1649113448
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's/(//' -e 's/)//' -e 's/,//'  )
+#1649114967
+uname -a
+#1649115043
+echo $SYSTEM_TYPE
+#1649115053
+echo $SYSTEM_VERSION
+#1649115065
+echo $RELEASE_NAME
+#1649115072
+echo $DISTRO_NAME
+#1649115251
+set | grep -i darwin
+#1649115307
+set | less
+#1649115555
+set | grep -i bsd
+#1649115561
+set | grep -i type
+#1649115575
+set | grep -i type | less
+#1649115631
+lf whattype
+#1649128397
+mount | grep "^/"
+#1649128704
+mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on || -e 's|type ||'
+#1649128741
+mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||'
+#1649129733
+man cut
+#1649129834
+man tr
+#1649132201
+mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||'
+#1649132210
+mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' | awk '{printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}'
+#1649132403
+mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}'
+#1649132865
+mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}'
+#1649133270
+mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||'
+#1649133329
+mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g'
+#1649133438
+mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}'
+#1649133843
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) | column -t -s "&"
+#1649133870
+mount | grep "^/"
+#1649134083
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) | column -t -s "&" | sort -k 1.6
+#1649134169
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) | column -t -s "&" | sort -k 2
+#1649134586
+man sort
+#1649135164
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) | column -t -s "&" | sort -g -k 2
+#1649135230
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) | column -t -s "&" | sort -g -k 2.1
+#1649135246
+man sort
+#1649135279
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) | column -t -s "&" | sort -n -k 2
+#1649135375
+man sort
+#1649135496
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) | column -t -s "&" | sort -k 1
+#1649135519
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) | column -t -s "&" | sort -k 1.6
+#1649135772
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) | column -t -s "&" | sort -g -k 1.6
+#1649135789
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) | column -t -s "&" | sort -g -k 2
+#1649135846
+sortopt=""
+#1649135882
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) | column -t -s "&" | sort "${sortopt}" -k 2
+#1649135923
+sortopt="-f"
+#1649135927
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) | column -t -s "&" | sort "${sortopt}" -k 2
+#1649136007
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) | column -t -s "&" | sort "${sortopt}" -k 1.6
+#1649136071
+sortfield="1.6"
+#1649136100
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) | column -t -s "&" | sort -k "${sortfield}"
+#1649136122
+sortfield="2"
+#1649136124
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) | column -t -s "&" | sort -k "${sortfield}"
