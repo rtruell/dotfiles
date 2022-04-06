@@ -69,12 +69,12 @@ edpath()
 
     TEMP=/tmp/edpath.out.$$
 
-    VAR=\$$pathvar                      # VAR="$LIBPATH" for example
-    eval export OLD$pathvar=$VAR        # store old path in e.g OLDPATH
+    VAR=\$$pathvar                        # VAR="$LIBPATH" for example
+    eval export OLD$pathvar=$VAR          # store old path in e.g OLDPATH
 
-    listpath -p $pathvar  > $TEMP       # write path elements to file
-    ${EDITOR:-vi} $TEMP                 # edit the file
-    eval $pathvar=$(makepath < $TEMP)   # reconstruct path
+    listpath -p $pathvar  > $TEMP         # write path elements to file
+    ${EDITOR:-vi} $TEMP                   # edit the file
+    eval "$pathvar=\$(makepath < $TEMP)"  # reconstruct path
 
-    /bin/rm -f $TEMP                    # remove temporary file
+    /bin/rm -f $TEMP                      # remove temporary file
 }
