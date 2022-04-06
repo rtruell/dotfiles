@@ -74,5 +74,5 @@ uniqpath()
     ###########################################################################
 
     npath=$(listpath -p $pathvar | awk '{seen[$0]++; if (seen[$0]==1){print}}')
-    eval $pathvar=$(makepath "$npath")
+    eval "$pathvar=\$(makepath "$npath")"
 }
