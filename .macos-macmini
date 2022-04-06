@@ -4,8 +4,8 @@
 # General UI/UX                                                               #
 ###############################################################################
 
-# Set computer name (as done via System Preferences → Sharing)
-sudo scutil --set ComputerName "Rick’s Mac mini"
-sudo scutil --set HostName "Rick's-Mac-mini"
-sudo scutil --set LocalHostName "Rick's-Mac-mini"
+# Set computer name (as done via "System Preferences → Sharing" and "System Preferences → Network")
+sudo scutil --set ComputerName "Ricks Mac mini"
+sudo scutil --set HostName "macmini"
+sudo scutil --set LocalHostName "macmini"
 sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "macmini"
