@@ -1,4 +1,8 @@
-#! /bin/bash
+#!/usr/bin/env bash
+
+StartDir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd "${StartDir}"
+
 # origname=${1}
 # fullpath=`echo ${origname%/*.*}`
 # fullname=`echo ${origname##/*/}`
