@@ -39,11 +39,6 @@ export LESS_TERMCAP_so=$'\E[01;44;33m'  # yellow on blue, begin standout-mode - 
 export LESS_TERMCAP_ue=$'\E[0m'  # normal, end underline
 export LESS_TERMCAP_us=$'\E[01;34m'  # bright blue, begin underline
 
-# export some environment variables for Homebrew
-export HOMEBREW_EDITOR="${EDITOR}"  # use the system editor to edit Homebrew stuff
-export BREW_PREFIX=$(brew --prefix)  # store Homebrew's installation directory so I don't have to keep issuing the command
-export HOMEBREW_NO_ANALYTICS=1  # turn off Google analytics for Homebrew
-
 # detect the os
 if [[ -n ${OSTYPE} ]]; then
   case "${OSTYPE}" in
@@ -81,6 +76,7 @@ if [ "${SYSTEM_TYPE}" == "macOS" ]; then
 elif [ -e "/etc/os-release" ]; then
   SYSTEM_VERSION=$(cat /etc/os-release | grep -i "version=" | cut -d'"' -f2 | cut -d'(' -f1)
 fi
+SYSTEM_VERSION=$(trim "${SYSTEM_VERSION}")
 export SYSTEM_VERSION
 
 # find os release name
@@ -179,9 +175,13 @@ case "${SYSTEM_TYPE}" in
     export LDFLAGS="-L/usr/local/opt/curl/lib"  # so compilers can find 'curl' installed from Homebrew
     export CPPFLAGS="-I/usr/local/opt/curl/include"  # so compilers can find 'curl' installed from Homebrew
     export PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig"  # so 'pkg-config' can find 'curl' installed from Homebrew
-    # export some macOS-specific environment variables for Homebrew
-    export HOMEBREW_CASK_OPTS="--appdir=~/Applications"  # keep Casks separate from the programs installed by macOS
+
+    # export some environment variables for Homebrew
+    export HOMEBREW_CASK_OPTS="--appdir="${HOME}"/Applications"  # keep Casks separate from the programs installed by macOS
+    export HOMEBREW_EDITOR="${EDITOR}"  # use the system editor to edit Homebrew stuff
     export HOMEBREW_CACHE="/Volumes/ExternalHome/rtruell/HomebrewCache"  # get the cache off the SSD
+    export BREW_PREFIX=$(brew --prefix)  # store Homebrew's installation directory so I don't have to keep issuing the command
+    export HOMEBREW_NO_ANALYTICS=1  # turn off Google analytics for Homebrew
     ;;
   *)
     ;;
