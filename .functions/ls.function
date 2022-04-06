@@ -10,7 +10,7 @@ function ls {
   done
   if [[ -z "${1}" ]]; then set -- .; fi
   if [[ -n "${moreoptions}" ]]; then moreoptions=$(trim -t "${moreoptions}"); fi
-  if stat "${1}" 2>/dev/null | grep "\->" >/dev/null 2>&1  && file -b "${1}" | grep "directory" >/dev/null 2>&1; then
+  if stat "${1}" 2>/dev/null | grep "\->" >/dev/null 2>&1  && file -bL "${1}" | grep "directory" >/dev/null 2>&1; then
     link=`stat "${1}" | grep "\->" | cut -d" " -f6`
     if [[ "${link:0:1}" != "/" ]]; then link="/${link}"; fi
     printf '%s\n' "'${1}' is a symbolic link pointing to '${link}', which contains:"
