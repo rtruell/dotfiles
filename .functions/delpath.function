@@ -73,9 +73,10 @@ delpath()
 
     MATCH="-x"
     [ -n "$opt_e" ] && MATCH=         # make grep use regexps
+    grep="| grep -v -E $MATCH "$1""
 
     FILTER=                           # default
-    [ -n "$opt_n" ] && FILTER="| realpath_filter"
+    [ -n "$opt_n" ] && FILTER="| realpath_filter" && grep=""
 
     ###########################################################################
     # main
@@ -90,8 +91,7 @@ delpath()
     # use a temporary file to store the path to reconstruct - this
     # approach keeps command lines short
 
-    eval listpath -p $pathvar $FILTER | grep -v -E $MATCH "$1" > \
-    /tmp/makepath_in.$$
-    eval $pathvar=$(makepath < /tmp/makepath_in.$$)
-    rm /tmp/makepath_in.$$
+    eval listpath -p $pathvar $FILTER $grep > /tmp/makepath_in.$$
+    eval "$pathvar=\$(makepath < /tmp/makepath_in.$$)"
+    command rm /tmp/makepath_in.$$
 }
