@@ -1,0 +1,26 @@
+# Elapsed time.  Usage:
+#   t=$(elapsed)
+#   ... # do something
+#   printf "Elapsed time: %s\n" $(elapsed $t)
+#      ===> Elapsed time: 0:01:12
+#####################################################################
+# if called with no arguments, a new timer is returned.  if called with
+# arguments, the first is used as a timer value.  the elapsed time is returned
+# in the form HH:MM:SS.
+function elapsed()
+{
+  if [[ $# -eq 0 ]]; then
+    echo $(date '+%s')
+  else
+    stime=$1
+    etime=$(date '+%s')
+
+    if [[ -z "$stime" ]]; then stime=$etime; fi
+
+    dt=$((etime - stime))
+    ds=$((dt % 60))
+    dm=$(((dt / 60) % 60))
+    dh=$((dt / 3600))
+    printf '%d:%02d:%02d' $dh $dm $ds
+  fi
+}
