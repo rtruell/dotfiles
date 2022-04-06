@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/usr/bin/env bash
 # print prompt and get y/n answer
 # sample use:
 #
