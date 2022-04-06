@@ -18,36 +18,32 @@ if [ -d ${HOME}/bin ] ; then
   addpath -f ${HOME}/bin
 fi
 
-# add the Homebrew install directories to PATH.  this only needs to be done on
-# Linux because on macOS, Homebrew is installed in a directory already in PATH
-if [[ "$(uname)" == "Linux" ]]; then
-  hbpathname=$(dirname `locate -ir ".*brew/sbin$"`)
-  if [ -d "${hbpathname}/sbin" ] ; then
-    addpath -f "${hbpathname}/sbin"
-  fi
-  if [ -d "${hbpathname}/bin" ] ; then
-    addpath -f "${hbpathname}/bin"
-  fi
+# if running macOS, add the Homebrew install directories to PATH and export the
+# Homebrew environment variables
+if [[ "$(uname)" == "Darwin" ]]; then
+  eval "$(brew shellenv)"
 fi
 
 # many of the utils Apple supplies in macOS are out-dated and less capable than
 # the same-named GNU versions.  I want to use the GNU versions instead, so if
 # they've been installed, the paths to them get added to the beginning of PATH
 if [[ "$(uname)" == "Darwin" ]]; then
-  brewprefix=`brew --prefix`
-  if [ -d "${brewprefix}"/opt/gnu-sed ] ; then
-    addpath -f "${brewprefix}"/opt/gnu-sed/libexec/gnubin
+  if [ -d "${HOMEBREW_PREFIX}"/opt/gnu-sed ] ; then
+    addpath -f "${HOMEBREW_PREFIX}"/opt/gnu-sed/libexec/gnubin
   fi
 
-  if [ -d "${brewprefix}"/opt/findutils ] ; then
-    addpath -f "${brewprefix}"/opt/findutils/libexec/gnubin
+  if [ -d "${HOMEBREW_PREFIX}"/opt/findutils ] ; then
+    addpath -f "${HOMEBREW_PREFIX}"/opt/findutils/libexec/gnubin
   fi
 
-  if [ -d "${brewprefix}"/opt/coreutils ] ; then
-    addpath -f "${brewprefix}"/opt/coreutils/libexec/gnubin
+  if [ -d "${HOMEBREW_PREFIX}"/opt/coreutils ] ; then
+    addpath -f "${HOMEBREW_PREFIX}"/opt/coreutils/libexec/gnubin
   fi
 
-  if [ -d "${brewprefix}"/opt/curl/bin ] ; then
-    addpath -f "${brewprefix}"/opt/curl/bin
+  if [ -d "${HOMEBREW_PREFIX}"/opt/curl/bin ] ; then
+    addpath -f "${HOMEBREW_PREFIX}"/opt/curl/bin
   fi
 fi
+
+delpath -n  # remove non-existent directories from PATH
+uniqpath  # remove duplicate pathnames from PATH
