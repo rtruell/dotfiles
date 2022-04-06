@@ -6,9 +6,9 @@ source ./.functions/print_result.function
 source ./.functions/print_success.function
 source ./.functions/print_warn.function
 
-# get the users login name
-username=`echo ${USER}`
-print_result $? "User being added to the sudoers file is '${username}'"
+# $1 contains the name of the user to give 'sudo' permissions to
+username="${1}"
+print_result $? "User being given 'sudo' permissions is '${username}'"
 
 # make it so the user can use 'sudo'...without having to type their password
 if [[ -d /etc/sudoers.d ]]; then  # check to see if the directory '/etc/sudoers.d' exists
