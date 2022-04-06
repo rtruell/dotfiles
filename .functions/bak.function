@@ -1,2 +1,0 @@
-# Backup a file with the extension '.bak'
-function bak { cp --reflink=auto "${1}"{,.bak} 2>/dev/null || cp "${1}"{,.back}; }
