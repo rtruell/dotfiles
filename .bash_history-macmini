@@ -12995,3 +12995,61 @@ findcommand appropo
 findcommand apropos
 #1649276417
 type apropos
+#1649276860
+findcommand apropos
+#1649276866
+type apropos
+#1649277167
+ls .functions
+#1649277203
+i=".functions/01#findcommand.function"
+#1649277212
+echo $i
+#1649277373
+sed 's|(.*)[:digit:]#(.*)|$1$2| $i
+#1649277385
+sed 's|(.*)[:digit:]#(.*)|$1$2| $i'
+#1649277410
+sed -E 's|(.*)[:digit:]#(.*)|$1$2| $i'
+#1649277445
+dotfiles
+#1649277460
+findtext :digit:
+#1649277558
+back
+#1649277576
+sed -E 's|(.*)[[:digit:]]#(.*)|$1$2| $i'
+#1649277685
+sed -E 's|(.*)[:digit:]#(.*)|$1$2|' $i
+#1649277696
+echo $i
+#1649277715
+sed -E 's|(.*)[[:digit:]]#(.*)|$1$2|' $i
+#1649277734
+echo $i
+#1649277829
+echo $i | sed -E 's?(.*)[[:digit:]]#(.*)?$1$2?'
+#1649277879
+echo $i | sed -E 's?(.*)[[:digit:]]#(.*)?\1\2?'
+#1649277897
+echo $i
+#1649277924
+echo $i | sed -E 's?(.*)[[:digit:]]+#(.*)?\1\2?'
+#1649277940
+echo $i | sed -E 's?(.*)[[:digit:]]*#(.*)?\1\2?'
+#1649277996
+echo $i | sed -E 's?(.*)[[:digit:]]#(.*)?\1\2?'
+#1649278014
+echo $i | sed -E 's?(.*)[[:digit:]][[:digit:]]#(.*)?\1\2?'
+#1649278121
+basename "${i%.*}"
+#1649278157
+printf "${i}" | sed -E 's?(.*)[[:digit:]][[:digit:]]#(.*)?\1\2?'
+#1649278271
+file=`printf "${i}" | sed -E 's?(.*)[[:digit:]][[:digit:]]#(.*)?\1\2?'`
+#1649278277
+echo $i
+#1649278282
+echo $file
+#1649278306
+basename "${file%.*}"
