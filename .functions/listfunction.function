@@ -1,1 +1,0 @@
-function listfunction { declare -f "${1}"; }
