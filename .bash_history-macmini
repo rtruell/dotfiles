@@ -12805,3 +12805,121 @@ sortfield="1.6"
 sortfield="2"
 #1649136124
 ( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount | grep "^/" | sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' | awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) | column -t -s "&" | sort -k "${sortfield}"
+#1649192375
+dotfiles
+#1649192379
+findtext sort
+#1649192578
+histrank
+#1649192619
+la
+#1649192635
+less .functions/histrank.function
+#1649192717
+cat .functions/histrank.function
+#1649192751
+h | less
+#1649192784
+command history | less
+#1649193218
+back
+#1649193233
+s .functions/histrank.function
+#1649193237
+histrank
+#1649195101
+mountinfo
+#1649195130
+mountinfo -h
+#1649195152
+mountinfo -z
+#1649195206
+mountinfo -p
+#1649195212
+mountinfo
+#1649197276
+mountinfo -p
+#1649197285
+mountinfo dave
+#1649198234
+mountinfo
+#1649199323
+mountinfo -p
+#1649199935
+mountinfo
+#1649199961
+mountinfo -p
+#1649200004
+mountinfo -h
+#1649200028
+mountinfo -z
+#1649200041
+mountinfo /
+#1649200048
+mountinfo dave
+#1649212905
+osinfo
+#1649213800
+s .functions/osinfo.function
+#1649213805
+osinfo
+#1649213809
+sysinfo
+#1649214240
+osinfo
+#1649214345
+set | less
+#1649215467
+s .functions/osinfo.function
+#1649215470
+osinfo
+#1649215521
+s .functions/osinfo.function
+#1649215525
+osinfo
+#1649215552
+s .functions/osinfo.function
+#1649215555
+osinfo
+#1649215616
+set | less
+#1649215689
+s .functions/osinfo.function
+#1649215692
+osinfo
+#1649215714
+sysinfo
+#1649215750
+lf sysinfo
+#1649216076
+s .functions/osinfo.function
+#1649216079
+sysinfo
+#1649216091
+osinfo
+#1649216130
+s .functions/osinfo.function
+#1649216132
+osinfo
+#1649216158
+echo $BRIGHT_PURPLE
+#1649216167
+echo $DULL_PURPLE
+#1649216210
+s .functions/osinfo.function
+#1649216213
+osinfo
+#1649216272
+s .functions/osinfo.function
+#1649216274
+osinfo
+#1649216319
+s .functions/osinfo.function
+#1649216320
+osinfo
+#1649216402
+s .functions/osinfo.function
+#1649216405
+osinfo
+#1649216820
+ls .functions
