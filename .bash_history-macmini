@@ -12947,3 +12947,23 @@ ps aux
 processgrep 
 #1649219149
 processgrep login
+#1649244445
+stat "bin" 2>/dev/null | grep "\->" >/dev/null 2>&1  && file -b "bin"
+#1649244459
+file -b "bin"
+#1649244484
+man file
+#1649244856
+ls bin
+#1649244977
+man grep
+#1649245185
+stat "bin" 2>/dev/null | grep "\->" >/dev/null 2>&1  && file -b "bin" | grep "directory"
+#1649245210
+stat "bin" 2>/dev/null | grep "\->" >/dev/null 2>&1  && file -b "bin" | grep -e "directory" -e "symbolic"
+#1649245214
+echo $?
+#1649245243
+file -b newbrew
+#1649245312
+file -b victoria*
