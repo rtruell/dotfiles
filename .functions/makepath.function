@@ -27,11 +27,11 @@ makepath()
     eval $SOURCE space2line | while read line
     do
         TPATH=$TPATH:$line
-        echo $TPATH > /tmp/tpath.$$
+        echo $TPATH >> /tmp/tpath.$$
     done
  
-    TPATH=$(cat /tmp/tpath.$$)
+    TPATH=$(cat /tmp/tpath.$$ | tail -n 1)
     tmp=$(echo $TPATH | sed -e "s/^::*//" -e "s/::*$//")
-    rm /tmp/tpath.$$
+    command rm /tmp/tpath.$$
     echo $tmp
 }
