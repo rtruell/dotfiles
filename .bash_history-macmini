@@ -12973,3 +12973,25 @@ file -b bin
 file -bL bin
 #1649245829
 man file
+#1649276259
+answer_is_yes yes
+#1649276264
+echo $?
+#1649276272
+answer_is_yes no
+#1649276275
+echo $?
+#1649276278
+answer_is_yes n
+#1649276280
+echo $?
+#1649276286
+answer_is_yes y
+#1649276288
+echo $?
+#1649276391
+findcommand appropo
+#1649276406
+findcommand apropos
+#1649276417
+type apropos
