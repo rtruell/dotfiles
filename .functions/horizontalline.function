@@ -1,5 +1,0 @@
-# Write a horizontal line of characters
-function horizontalline {
-  # shellcheck disable=SC2183
-  printf -- '%*s\n' "${1:-$COLUMNS}" | tr ' ' "${2:-#}"
-}
