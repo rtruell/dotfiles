@@ -12923,3 +12923,27 @@ s .functions/osinfo.function
 osinfo
 #1649216820
 ls .functions
+#1649218344
+osinfo
+#1649218379
+sysinfo
+#1649218609
+ifconfig
+#1649218696
+localip
+#1649218717
+ifconfig
+#1649218775
+osinfo
+#1649218925
+printline
+#1649218959
+printline 5 set.txt
+#1649218969
+less set.txt
+#1649219131
+ps aux
+#1649219143
+processgrep 
+#1649219149
+processgrep login
