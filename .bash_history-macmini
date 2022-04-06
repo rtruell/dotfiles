@@ -13053,3 +13053,57 @@ echo $i
 echo $file
 #1649278306
 basename "${file%.*}"
+#1649278851
+type apropos
+#1649278873
+less /usr/bin/apropos
+#1649279180
+echo $i
+#1649279229
+i=".functions/01#findcommand.function"
+#1649279271
+file="${HOME}/${i}"
+#1649279275
+echo $i
+#1649279278
+echo $file
+#1649279350
+file=`printf "${file}" | sed -E 's?(.*)[[:digit:]][[:digit:]]#(.*)?\1\2?'`
+#1649279354
+echo $file
+#1649279436
+file=`basename "${file%.*}"`
+#1649279443
+echo $file
+#1649279494
+echo $i
+#1649279526
+file="${HOME}/${i}"
+#1649279549
+file=`printf "${file}" | sed -E 's?(.*)[[:digit:]][[:digit:]]#(.*)?\1\2?'`
+#1649279619
+file=`fp -n "${file}"`
+#1649279626
+echo $file
+#1649279762
+type "${file}"
+#1649279796
+file="apropos"
+#1649279799
+type "${file}"
+#1649279817
+man type
+#1649279828
+bashman type
+#1649279856
+type -t "${file}"
+#1649279893
+file="findcommand"
+#1649279896
+type -t "${file}"
+#1649280487
+reloadconfig
+#1649280624
+type findcommand
+#1649280631
+type apropos
