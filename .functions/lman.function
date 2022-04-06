@@ -6,5 +6,6 @@ function lman {
     shift
   done
   cmd="$(basename "${1}")"
-  man "${cmd}" || help "${cmd}"
+  if [[ `type -t "${cmd}"` == "builtin"  ]]; then command="bashman";  else command="man"; fi
+  "${command}" "${cmd}" || help "${cmd}"
 }
