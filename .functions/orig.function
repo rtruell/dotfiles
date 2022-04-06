@@ -1,2 +1,0 @@
-# Backup a file with the extension '.orig'
-function orig { cp --reflink=auto "${1}"{,.orig} 2>/dev/null || cp "${1}"{,.orig}; }
