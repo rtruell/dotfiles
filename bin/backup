@@ -1,0 +1,49 @@
+#!/usr/bin/env bash
+
+# backup a file
+declare -a usage=(
+  " "
+  "backup: make a copy of a file, appending an extension to the filename, and"
+  "        optionally logging the filenames for later comparison."
+  " "
+  "Usage: backup [option] filename extension [logfilename]"
+  " "
+  "Options:"
+  "   -h: print this help message."
+  "   -r: rename the file rather than make a copy of it"
+  " "
+)
+option=""
+filename=""
+extension=""
+logfilename=""
+copy=0
+operation="Copy:"
+if [[ -z "${1}" ]]; then printf '%s\n' "Error: Must supply an option, or a filename and an extension to be appended to the filename." "${usage[@]}" ; exit 1; fi
+if [[ "${1:0:1}" == "-" ]]; then
+  option="${1}"
+  filename="${2}"
+  extension="${3}"
+  logfilename="${4}"
+else
+  filename="${1}"
+  extension="${2}"
+  logfilename="${3}"
+fi
+if [[ -n "${option}" ]]; then  # an option was given
+  case "${option}" in
+    -h) printf '%s\n' "${usage[@]}"; exit;;  # print the usage message
+    -r) copy=1  # rename the file instead of making a copy of it
+        operation="Rename:"
+        ;;
+     *) printf '%s\n' "Error: Invalid option" "${usage[@]}"; exit 1;;  # invalid option given, so print an error message
+  esac
+fi
+if [[ -z "${filename}" ]]; then printf '%s\n' "Error: Must supply a filename and an extension to be appended to the filename." "${usage[@]}" ; exit 1; fi  # if the length of 'filename' is zero, print an error message
+if [[ -z "${extension}" ]]; then printf '%s\n' "Error: Must supply an extension to be appended to the filename." "${usage[@]}" ; exit 1; fi  # if the length of 'extension' is zero, print an error message
+if [[ "${copy}" == 0 ]]; then  # the '-r' option wasn't given, so ...
+  cp "${filename}"{,."${extension}"}  # ... copy 'filename' to 'filename.extension'
+else  # the '-r' option was given, so ...
+  mv "${filename}"{,."${extension}"}  # ... move (rename) 'filename' to 'filename.extension'
+fi
+if [[ -n "${logfilename}" ]]; then printf '%s %s -> %s\n' "${operation}" "${filename}"{,."${extension}"} >>"${logfilename}" ; fi  # if the length of 'logfilename' is not zero, log the filenames to 'logfilename'
