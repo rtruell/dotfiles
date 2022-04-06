@@ -1,6 +1,8 @@
-#!/bin/bash
-DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
-cd "$DIR"
+#!/usr/bin/env bash
+
+StartDir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd "${StartDir}"
+
 TODAY=$(date +"%Y-%m-%d")
 
 echo
