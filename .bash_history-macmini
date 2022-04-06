@@ -12967,3 +12967,9 @@ echo $?
 file -b newbrew
 #1649245312
 file -b victoria*
+#1649245819
+file -b bin
+#1649245825
+file -bL bin
+#1649245829
+man file
