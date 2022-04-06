@@ -9,8 +9,8 @@ cd "${HOME}/dotfiles"  # we're probably already in the 'dotfiles' directory, but
 declare -a excludefiles
 dotconfig=0
 
-# first we read into an array the list of files and directories that shouldn't
-# be symlinked, which are in the file ".dotfiles.ignore", one filename/directory
+# read into an array the list of files and directories that shouldn't be
+# symlinked, which are in the file ".dotfiles.ignore", one filename/directory
 # per line
 while read -r line; do  # read a line
   [[ "${line}" = \#* ]] || [[ -z "${line}" ]] && continue  # if the line starts with '#' (thus a comment) or is empty, skip it
