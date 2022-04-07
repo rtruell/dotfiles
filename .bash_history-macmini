@@ -13109,3 +13109,11 @@ type findcommand
 type apropos
 #1649280750
 type fp
+#1649280919
+type -t findcommand
+#1649280925
+type -t apropos
+#1649296019
+websites
+#1649296029
+checkwebsites
