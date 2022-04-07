@@ -13117,3 +13117,47 @@ type -t apropos
 websites
 #1649296029
 checkwebsites
+#1649299605
+bashman [[
+#1649299644
+bashman tests
+#1649299703
+bashman special
+#1649299782
+man type
+#1649299789
+bashman type
+#1649299899
+batterylife
+#1649300620
+which liquidprompt
+#1649300631
+type liquidprompt
+#1649300644
+whereis liquidprompt
+#1649300669
+cat .bash_prompt
+#1649300683
+ls liquidprompt
+#1649300712
+ll
+#1649300730
+ll liquidprompt
+#1649300773
+cat .bash_prompt
+#1649300809
+ls /usr/local/share/
+#1649300868
+ll /usr/local/share/
+#1649300914
+less .brewfile
+#1649300949
+batterylife
+#1649300956
+batteryindicator
+#1649300972
+b s acpi
+#1649301015
+b i acpica
+#1649301117
+b h acpica
