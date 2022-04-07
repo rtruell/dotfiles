@@ -1,0 +1,2 @@
+# checks to see if the answer to a prompt is 'Y' or 'y'
+function answer_is_y { [[ "${1}" =~ ^[Yy]$ ]] && return 0 || return 1; }
