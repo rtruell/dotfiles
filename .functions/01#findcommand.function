@@ -1,0 +1,14 @@
+# A portable alternative to exists/get_command/which/type
+function findcommand {
+  OLDIFS="${IFS}"
+  IFS=:
+  for prog in ${PATH}; do
+    if [[ -x "${prog}/$*" ]]; then
+      printf -- '%s\n' "${prog}/$*"
+      IFS="${OLDIFS}"
+      return 0
+    fi
+  done
+  IFS="${OLDIFS}"
+  return 1
+}
