@@ -1,3 +1,4 @@
+acpi  # displays information on ACPI devices
 amd64-microcode
 bash
 bash-completion
@@ -14,6 +15,7 @@ fortune  # fortune cookie
 gcc
 gzip
 hardinfo  # info about computer's hardware
+liquidprompt  # fancy command line prompt
 locales
 mlocate  # quickly find files on the filesystem based on their name
 moreutils
