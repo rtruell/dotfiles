@@ -1,3 +1,4 @@
+acpi  # displays information on ACPI devices
 amd64-microcode
 audacity
 avidemux
@@ -21,6 +22,7 @@ googleearth
 gzip
 hardinfo  # info about computer's hardware
 k4dirstat  # graphical 'du'
+liquidprompt  # fancy command line prompt
 locales
 lynx  # text web browser
 mlocate  # quickly find files on the filesystem based on their name
