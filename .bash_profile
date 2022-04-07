@@ -38,7 +38,13 @@ for i in ${functionfiles[@]}; do  # loop through all the functions that were fou
   file="${HOME}/${i}"  # pre-pend the HOME directory and a slash to the function pathname so that we have the full path to the function
   if [[ -r "${file}" ]] && [[ -f "${file}" ]]; then  # if the file is readable and a regular file
     source "${file}"  # we 'source' it to load the function contained within into memory
-    export -f $(basename "${file%.*}")  # and then export the function to the environment so that it's available for use in script files
+    file=`printf "${file}" | sed -E 's?(.*)[[:digit:]][[:digit:]]#(.*)?\1\2?'`  #  then strip off the filename prefix used to ensure certain functions are processed before others
+    file=`"${HOME}/bin/fp" -n "${file}"`  # then extract the name of the function
+    # some of the functions check to see if a command exists and, if it does,
+    # don't actually create a function.  so now we check to see if the function
+    # was actually created and, if so, export the function to the environment so
+    # that it's available for use in script files.
+    if [[ `type -t "${file}"` == "function" ]]; then export -f "${file}"; fi
   fi
 done
 unset excludefiles i functionfiles filenames found j file
