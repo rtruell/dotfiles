@@ -13161,3 +13161,151 @@ b s acpi
 b i acpica
 #1649301117
 b h acpica
+#1649371590
+checkwebsites
+#1649371820
+osinfo
+#1649371888
+echo $DISTRO_NAME
+#1649371900
+echo $SYSTEM_TYPE
+#1649371934
+sysinfo
+#1649372116
+cls'
+#1649386477
+echo $newpath
+#1649386485
+newpath=$HOME
+#1649386487
+echo $newpath
+#1649386497
+newpath=$PATH
+#1649386502
+echo $newpath
+#1649386559
+echo $newpath | colon2line
+#1649386661
+cat .exports
+#1649386724
+cat .aliases
+#1649386760
+alias putclip
+#1649386909
+ls .ssh
+#1649386981
+lf copysshkey
+#1649387005
+cd .ssh
+#1649387031
+cp github_rsa.pub id_rsa.pub
+#1649387036
+ll
+#1649387057
+copysshkey
+#1649387087
+rm id_rsa.pub
+#1649387139
+cp github_rsa.pub id_rsa.pub
+#1649387154
+cp github_rsa id_rsa
+#1649387156
+ll
+#1649387178
+copysshkey
+#1649387875
+man shipt
+#1649387891
+man shopt
+#1649387899
+man bash
+#1649388079
+shopt
+#1649388511
+echo ${BASH_ALIASES[putclip]}
+#1649388589
+alias foo="echo test"
+#1649388598
+echo ${BASH_ALIASES[foo]}
+#1649388624
+foo
+#1649388652
+echo `${BASH_ALIASES[foo]}` bar
+#1649388684
+alias putclip
+#1649388690
+pbcopy --version
+#1649388703
+man pbcopy
+#1649388810
+putclip -help
+#1649388815
+man pbcopy
+#1649388873
+echo `${BASH_ALIASES[putclip]}` -help
+#1649388922
+`${BASH_ALIASES[putclip]}` -help
+#1649388957
+echo `${BASH_ALIASES[putclip] -help}`
+#1649388980
+`${BASH_ALIASES[putclip] -help}`
+#1649389008
+echo $foo
+#1649389020
+foo
+#1649389032
+echo `${BASH_ALIASES[foo]}` bar
+#1649390128
+cat .aliases
+#1649390146
+cat ./.aliases
+#1649390157
+cat ../.aliases
+#1649390256
+copysshkey
+#1649390315
+man pbcopy
+#1649390427
+cd ..
+#1649390436
+dotfiles
+#1649390444
+findtext putclip
+#1649390454
+findtext getclip
+#1649390815
+cd .functions
+#1649390845
+touch getclip.function
+#1649390856
+touch putclip.function
+#1649390863
+ll
+#1649390893
+up 2
+#1649391709
+man pbpaste
+#1649391947
+s .functions/getclip.function
+#1649391954
+s .functions/putclip.function
+#1649391967
+copysshkey
+#1649392030
+cd .ssh
+#1649392031
+ll
+#1649392052
+ls id*
+#1649392063
+ll id*
+#1649392093
+rm id*
+#1649392101
+up
+#1649392128
+clc
+#1649392137
+dotfiles
+#1649392145
+subl .aliases
