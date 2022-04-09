@@ -13325,3 +13325,17 @@ b i raspberry-pi-imager
 b i usbimager
 #1649486059
 b h usbimager
+#1649533569
+calc 3*2
+#1649533811
+capitalise "This is a test."
+#1649533824
+capitalise This is a test.
+#1649533841
+capitalise
+#1649533853
+capitalise -z
+#1649533892
+capitalise "this is a test."
+#1649534235
+cdf
