@@ -13309,3 +13309,19 @@ clc
 dotfiles
 #1649392145
 subl .aliases
+#1649485574
+b -h
+#1649485587
+b ud
+#1649485762
+b i quackduck/tap/wd-go
+#1649485786
+b h quackduck/tap/wd-go
+#1649485986
+b s imager
+#1649486015
+b i raspberry-pi-imager
+#1649486040
+b i usbimager
+#1649486059
+b h usbimager
