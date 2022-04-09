@@ -13339,3 +13339,25 @@ capitalise -z
 capitalise "this is a test."
 #1649534235
 cdf
+#1649534283
+centertext "This is a test."
+#1649534305
+echo "This is a test." | centertest
+#1649534313
+echo "This is a test." | centertext
+#1649534338
+centertext set.txt
+#1649534501
+checkwebsites
+#1649534696
+echo "This:is:a:test" | colon2line
+#1649534705
+echo $PATH | colon2line
+#1649534737
+ls .ssh
+#1649534749
+ls getclip
+#1649534756
+lf getclip
+#1649534783
+type getclip
