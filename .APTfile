@@ -4,6 +4,7 @@ audacity
 avidemux
 bash
 bash-completion
+bc
 boxes  # draw boxes around text
 bzip2
 cmake  # cross-platform make
@@ -42,6 +43,7 @@ pigz
 python3
 python3-pip  # python Package Installer Program
 rar
+raspberry-pi-imager
 safe-rm  # do not delete main-system-dirs
 samba
 sl  # steam locomotive - what you get when you mistype 'ls'
@@ -56,6 +58,7 @@ ttf-mscorefonts-installer  # -- you need "multiverse" || "non-free" sources in y
 unace
 unrar
 unzip
+usbimager
 virtualbox-6.1
 vlc  # video player
 webmin

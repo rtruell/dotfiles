@@ -2,6 +2,7 @@ acpi  # displays information on ACPI devices
 amd64-microcode
 bash
 bash-completion
+bc
 bzip2
 cmake  # cross-platform make
 coreutils
