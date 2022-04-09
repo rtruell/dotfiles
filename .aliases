@@ -6,7 +6,7 @@ alias back="cd -"  # cd back to the previous directory
 alias badge="tput bel"  # ring the terminal bell (useful when executing time-consuming commands)
 alias blog="cd /Volumes/ExternalHome/rtruell/hugo"  # quickly get to my blog directory
 alias cls="clear"  # MS-DOS clear screen command
-alias copylastcommand="fc -ln -1 | tr -d '\t' | sed 's/ //' | putclip"  # based on http://apple.stackexchange.com/questions/110343/copy-last-command-in-terminal
+alias clc="fc -ln -1 | tr -d '\t' | sed 's/ //' | putclip"  # based on http://apple.stackexchange.com/questions/110343/copy-last-command-in-terminal
 alias cp="cp -i"  # copy in interactive mode, requiring confirmation for each file
 alias df="df -h"  # display sizes in human-readable form (K, M, G)
 alias dotfiles="cd ${DOTFILES}"  # quickly get to the dotfiles directory
@@ -57,18 +57,6 @@ alias starwars="telnet towel.blinkenlights.nl"  # fun in terminal
 alias sudo="sudo "  # allow aliases to be used with 'sudo'
 alias timer="echo 'Timer started. Stop with Ctrl-D.' && date && time cat && date"  # stopwatch
 alias where="which"  # sometimes i forget
-
-# Clipboard access aliases created to have the same command on macOS, Linux and Cygwin
-if command -v pbpaste >/dev/null; then  # macOS
-  alias getclip="pbpaste"
-  alias putclip="pbcopy"
-elif command -v xclip >/dev/null; then  # Linux
-  alias getclip="xclip -selection clipboard -o"
-  alias putclip="xclip -selection clipboard -i"
-elif [[ "$SYSTEM_TYPE" == "MINGW" || "$SYSTEM_TYPE" == "CYGWIN" ]]; then  # Cygwin
-  alias getclip="cat /dev/clipboard"
-  alias putclip="cat > /dev/clipboard"
-fi
 
 # OS-specific aliases
 case "${SYSTEM_TYPE}" in
