@@ -13361,3 +13361,59 @@ ls getclip
 lf getclip
 #1649534783
 type getclip
+#1649535603
+cdf
+#1649535605
+home
+#1649535949
+clc
+#1649535968
+lf getclip
+#1649535996
+command -v pbpaste
+#1649536008
+command -v xclip
+#1649536035
+copysshkey
+#1649536131
+dec2char
+#1649536135
+dec2char 5
+#1649536143
+dec2char 40
+#1649536266
+editdir
+#1649536323
+editdir bin
+#1649536393
+editdir dotfiles
+#1649536786
+elapsed
+#1649536806
+echo $t
+#1649536827
+t=`elapsed`
+#1649536844
+elapsed $t
+#1649536962
+execute_command ls
+#1649536978
+externalip
+#1649537143
+lc
+#1649537319
+toupper test
+#1649537331
+tolower TEST
+#1649537463
+s .functions/extract.function
+#1649537467
+extract
+#1649537496
+extract dave.txt
+#1649537552
+touch dave.txt
+#1649537555
+extract dave.txt
+#1649537565
+rm dave.txt
