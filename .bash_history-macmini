@@ -13417,3 +13417,175 @@ touch dave.txt
 extract dave.txt
 #1649537565
 rm dave.txt
+#1649537905
+extract
+#1649537912
+extract dave.txt
+#1649537923
+extract set.txt
+#1649538183
+tar
+#1649538188
+bunzip2
+#1649538195
+unrar
+#1649538198
+gunzip
+#1649538244
+b s unrar
+#1649538362
+rar
+#1649538658
+b
+#1649538665
+b -?
+#1649538676
+b ud
+#1649538731
+b s unrar
+#1649538746
+b i unar
+#1649538766
+b h unar
+#1649539299
+b s rar
+#1649539316
+b i rar
+#1649539343
+rar
+#1649539360
+b i par
+#1649539379
+b i par2
+#1649539413
+b h rar
+#1649539454
+b s unarchiver
+#1649539478
+b h the-unarchiver
+#1649539550
+b s unar
+#1649539566
+b s isar
+#1649539604
+b s the-archive-browser
+#1649539617
+b h the-archive-browser
+#1649539808
+gunzip
+#1649539819
+unzip
+#1649539822
+uncompress
+#1649539831
+uncompress -h
+#1649539848
+7z
+#1649539862
+b s 7z
+#1649539944
+b i 7-zip
+#1649539963
+b i 7zip
+#1649540013
+b i p7zip
+#1649540046
+b h 7-zip
+#1649540295
+b h p7zip
+#1649541043
+touch Test.txt
+#1649541058
+mv Test.txt test.txt
+#1649541394
+echo $answer
+#1649541400
+answer="y"
+#1649541453
+if [[ answer_is_y $answer ]]; then echo yes; else echo no; fi
+#1649541472
+if [[ `answer_is_y $answer` ]]; then echo yes; else echo no; fi
+#1649541512
+answer="n"
+#1649541516
+if [[ `answer_is_y $answer` ]]; then echo yes; else echo no; fi
+#1649541561
+answer_is_y $answer
+#1649541574
+answer="y"
+#1649541577
+answer_is_y $answer
+#1649541581
+echo $?
+#1649541627
+theanswer=`answer_is_y $answer`
+#1649541633
+echo $theanswer
+#1649541680
+answer="n"
+#1649541686
+answer_is_y $answer
+#1649541689
+echo $?
+#1649541726
+if `answer_is_y $answer`; then echo yes; else echo no; fi
+#1649541734
+answer="y"
+#1649541737
+if `answer_is_y $answer`; then echo yes; else echo no; fi
+#1649541788
+if ! `answer_is_y $answer`; then echo yes; else echo no; fi
+#1649541797
+echo $answer
+#1649541810
+answer="n"
+#1649541815
+if ! `answer_is_y $answer`; then echo yes; else echo no; fi
+#1649543047
+rm test.txt
+#1649543067
+mkdir testdir
+#1649543079
+rmdir testdir
+#1649543083
+mch testdir
+#1649543089
+mcd testdir
+#1649543101
+la
+#1649543111
+touch Test.txt
+#1649543119
+touch test1.txt
+#1649543124
+touch Test2.txt
+#1649543128
+ll
+#1649543152
+lf filestolower
+#1649543171
+s .functions/filestolower.function
+#1649543202
+ls .
+#1649543205
+ls ..
+#1649543213
+s ../.functions/filestolower.function
+#1649543225
+filestolower
+#1649543459
+s ../.functions/filestolower.function
+#1649543465
+filestolower
+#1649543492
+mkdir Test3.txt
+#1649543502
+filestolower
+#1649543612
+rmdir test3.txt
+#1649543623
+rm *.txt
+#1649543632
+up
+#1649543643
+rmdir testdir
