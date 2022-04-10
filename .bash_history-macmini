@@ -13765,3 +13765,33 @@ isgitdir
 git rev-parse --git-dir
 #1649566800
 home
+#1649567950
+dotfiles
+#1649567957
+findtext functions
+#1649568273
+type grep
+#1649568367
+lf isfloat
+#1649568419
+echo 10.5 | grep -q '^[-+]?[0-9]*[.][0-9]+$'
+#1649568438
+echo 10.5 | command grep -q '^[-+]?[0-9]*[.][0-9]+$'
+#1649568482
+man grep
+#1649568560
+echo 10.5 | command grep -q '^[-+]?[0-9]*[.][0-9]+$'
+#1649568566
+echo 10.5 | command egrep -q '^[-+]?[0-9]*[.][0-9]+$'
+#1649568572
+home
+#1649568582
+type egrep
+#1649568592
+type grep
+#1649568612
+ls isinteger
+#1649568617
+lf isinteger
+#1649568653
+man grep
