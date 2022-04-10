@@ -13795,3 +13795,69 @@ ls isinteger
 lf isinteger
 #1649568653
 man grep
+#1649568780
+isgitdir
+#1649568784
+dotfiles
+#1649568793
+isgitdir
+#1649568799
+back
+#1649568805
+isfloat 10.5
+#1649568812
+isfloat 10
+#1649568825
+isinteger 5
+#1649568829
+isinteger 5.5
+#1649568997
+float=10.5
+#1649569003
+integer=5
+#1649569059
+type -t $integer
+#1649569064
+type -t $float
+#1649569094
+declare -p $float
+#1649569137
+declare -p "${float}"
+#1649569148
+echo $float
+#1649569153
+echo $integer
+#1649569167
+declare -p "${integer}"
+#1649569178
+float="10.5"
+#1649569185
+declare -p "${float}"
+#1649569214
+man declare
+#1649569233
+declare -H
+#1649569261
+declare float=10.5
+#1649569276
+declare integer=5
+#1649569285
+declare -p $float
+#1649569345
+whattype lf
+#1649569352
+whattype $float
+#1649569370
+declare -p
+#1649569409
+whattype float
+#1649569448
+declare -p | grep "-r "
+#1649569466
+declare -p | less
+#1649569646
+echo $LINENO
+#1649569673
+declare -p LINENO
+#1649569718
+declare -p | less
