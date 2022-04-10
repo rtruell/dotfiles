@@ -11,24 +11,19 @@
 selecteddir=`pwd`
 cd "${HOME}"
 
-# this loads all my functions.  see "README.md" in the ".functions" directory for
-# why they're in individual files in a directory rather than all in one file as
-# is usual.  files or directories that shouldn't be loaded should be listed in
-# ".dotfiles.ignore", one filename/directory per line.
-declare -a excludefiles
+# this loads all my functions.  see "README.md" in the ".functions" directory
+# for why they're in individual files in a directory rather than all in one file
+# as is usual.
 i=""
 functionfiles=()
-readarray -t -s 3 excludefiles < dotfiles/.dotfiles.ignore  # load in all the filenames to be excluded
 shopt -s dotglob
 shopt -s nullglob
 filenames=(.functions/*)  # get a list of all the files in the '.functions' directory into an array.  filenames are of the format ".functions/<function-name>"
 shopt -u nullglob
 for i in "${filenames[@]}"; do  # loop through all the filenames in the directory
-  found=0  # clear the 'found' flag
-  for j in "${excludefiles[@]}"; do  # loop though all the filenames that should be excluded
-    if [[ ${i} =~ ${j} ]]; then found=1; fi  # if the current filename is one that should be excluded, we set the 'found' flag
-  done
-  if [[ "${found}" == 0 ]]; then  # if the 'found' flag wasn't set ...
+  skip=0  # clear the 'skip' flag
+  if [[ `"${HOME}/bin/fp" -e "${i}"` != "function" ]]; then skip=1; fi  # if the current filename doesn't have an extension of 'function', it isn't a function, so we set the 'skip' flag
+  if [[ "${skip}" == 0 ]]; then  # if the 'skip' flag wasn't set ...
     functionfiles+=(${i})  # ... we add the current filename to the array of functions
   fi
 done
@@ -47,7 +42,7 @@ for i in ${functionfiles[@]}; do  # loop through all the functions that were fou
     if [[ `type -t "${file}"` == "function" ]]; then export -f "${file}"; fi
   fi
 done
-unset excludefiles i functionfiles filenames found j file
+unset i functionfiles filenames skip file
 
 # Load the shell dotfiles, and then some:
 # * ~/.path can be used to extend `$PATH`.
