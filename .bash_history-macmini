@@ -13861,3 +13861,63 @@ echo $LINENO
 declare -p LINENO
 #1649569718
 declare -p | less
+#1649620357
+man fc
+#1649620390
+lman fc
+#1649620426
+type fc
+#1649620433
+bashman fc
+#1649620527
+man man
+#1649620536
+bashman man
+#1649620553
+lf bashman
+#1649620581
+type man
+#1649620585
+which man
+#1649620588
+whereis man
+#1649620600
+less /usr/bin/man
+#1649620621
+lman
+#1649620664
+cat .functions/bashman.function
+#1649620795
+type fc
+#1649620802
+basename fc
+#1649620850
+man fc
+#1649621613
+localip
+#1649621829
+play
+#1649621991
+lf macosusbinstaller
+#1649622107
+macosusbinstaller Yosemite
+#1649622373
+s .functions/macosusbinstaller.function
+#1649622376
+macosusbinstaller Yosemite
+#1649622580
+man fc
+#1649623034
+s .functions/man.function
+#1649623045
+man man
+#1649623053
+man bash
+#1649623058
+man fc
+#1649623082
+man special
+#1649623094
+man tests
+#1649623112
+man break
