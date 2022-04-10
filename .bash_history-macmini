@@ -13589,3 +13589,51 @@ rm *.txt
 up
 #1649543643
 rmdir testdir
+#1649558346
+dotfiles
+#1649558352
+findtext tolower
+#1649558777
+bashman tests
+#1649558792
+up
+#1649559024
+s .functions/fromplist.function
+#1649559030
+fromplist
+#1649559049
+fromplist dave.txt
+#1649559150
+s .functions/fromplist.function
+#1649559152
+fromplist
+#1649559207
+s .functions/fromplist.function
+#1649559209
+fromplist
+#1649559224
+fromplist dave.txt
+#1649559809
+s .functions/gcl.function
+#1649559813
+gcl
+#1649559869
+gcl -h
+#1649559880
+gcl -gh
+#1649559909
+gcl -m
+#1649560061
+gcl -gh dave/dotfiles
+#1649560072
+s .functions/gcl.function
+#1649560075
+gcl -gh dave/dotfiles
+#1649560137
+gcl -m dotfiles
+#1649560198
+gcl https://gitlab.com/dave/files
+#1649560243
+ls dotfiles
+#1649560246
+ls files
