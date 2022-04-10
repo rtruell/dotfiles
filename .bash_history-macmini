@@ -13721,3 +13721,27 @@ dotfiles
 isgitdir
 #1649563593
 up
+#1649564370
+dotfiles
+#1649564383
+findtext dotfiles.ignore
+#1649564565
+findtext function
+#1649564766
+up
+#1649565156
+man bash
+#1649565227
+ls .functions
+#1649565394
+man bash
+#1649565554
+dotfiles
+#1649565567
+findtext "fp "
+#1649565623
+home
+#1649566180
+back
+#1649566183
+findtext "fp "
