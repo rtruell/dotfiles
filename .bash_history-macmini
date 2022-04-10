@@ -13669,3 +13669,55 @@ hl %
 hl $
 #1649561545
 hl $ 50
+#1649561801
+tcpdump
+#1649561840
+httpdump
+#1649561885
+ifconfig
+#1649561910
+httpdump en0
+#1649561984
+tcpdump -i ${device} -n -s 0 -w -
+#1649561994
+sudo tcpdump -i ${device} -n -s 0 -w -
+#1649562010
+sudo tcpdump -i en0 -n -s 0 -w -
+#1649562123
+httpdump en0
+#1649562965
+isfloat 10.5
+#1649563014
+lf isfloat
+#1649563048
+isfloat 10
+#1649563051
+isfloat 10.5
+#1649563064
+s .functions/isfloat.function
+#1649563067
+isfloat 10.5
+#1649563071
+isfloat 10
+#1649563114
+isgitdir
+#1649563139
+lf isgitdir
+#1649563537
+dotfiles
+#1649563539
+isgitdir
+#1649563549
+up
+#1649563559
+isgitdir
+#1649563568
+s .functions/isgitdir.function
+#1649563571
+isgitdir
+#1649563576
+dotfiles
+#1649563578
+isgitdir
+#1649563593
+up
