@@ -13745,3 +13745,23 @@ home
 back
 #1649566183
 findtext "fp "
+#1649566636
+lf isgitdir
+#1649566646
+lf isfloat
+#1649566656
+isgitdir
+#1649566665
+isfloat 10.5
+#1649566695
+isinteger 5
+#1649566708
+isgitdir
+#1649566710
+dotfiles
+#1649566714
+isgitdir
+#1649566755
+git rev-parse --git-dir
+#1649566800
+home
