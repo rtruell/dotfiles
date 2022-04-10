@@ -13921,3 +13921,147 @@ man special
 man tests
 #1649623112
 man break
+#1649623618
+ls rick
+#1649623621
+mcd rick
+#1649623629
+up
+#1649623644
+rmdir rick
+#1649623723
+ls members
+#1649623728
+lf members
+#1649623817
+groups
+#1649623822
+members admin
+#1649623866
+type members
+#1649623888
+echo $SYSTEM_TYPE
+#1649623988
+dotfiles
+#1649623995
+findtext macOS
+#1649624184
+up
+#1649624187
+uname -a
+#1649624211
+uname
+#1649624215
+man uname
+#1649624244
+uname -o
+#1649626148
+b s getent
+#1649626188
+groups
+#1649626203
+dscacheutil -q group -a name staff | grep users | cut -d ":" -f 2 | sed 's/ //'
+#1649626215
+dscacheutil -q group -a name staff 
+#1649626238
+dscacheutil -q group -a name staff | grep users 
+#1649626258
+dscacheutil -q group -a name staff | grep users | cut -d ":" -f 2 
+#1649626286
+dscacheutil -q group -a name staff | grep users | cut -d ":" -f 2 | sed 's/ //'
+#1649626306
+dscacheutil -q group -a name everyone | grep users | cut -d ":" -f 2 | sed 's/ //'
+#1649626324
+dscacheutil -q group -a name everyone
+#1649626338
+dscacheutil -q group -a name localaccounts
+#1649626349
+dscacheutil -q group -a name admin
+#1649626374
+dscacheutil -q group -a name _appserverusr
+#1649626395
+dscacheutil -q group -a name _lpadmin
+#1649626415
+dscacheutil -q group -a name _appstore
+#1649626422
+dscacheutil -q group -a name _developer
+#1649626433
+dscacheutil -q group -a name admin
+#1649626445
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | sed 's/ //'
+#1649626531
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 
+#1649626568
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | sed 's/ //'
+#1649626853
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | sed -e 's/ //' -e 's/ /, /g'
+#1649626937
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | printf '>%s<\n'
+#1649626948
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | printf '>%s<\n' -
+#1649626970
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | sed -e 's/ //'
+#1649626977
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | sed -e 's/ //g'
+#1649627073
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | sed -e 's/ //'
+#1649627089
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | trim | sed -e 's/ //'
+#1649627112
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | trim - | sed -e 's/ //'
+#1649627305
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 
+#1649627338
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | sed -e 's/ /$/g'
+#1649627414
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | sed -e 's/ /, /g'
+#1649627494
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | sed -e 's/^ (.*) $ /\1 /'
+#1649627501
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | sed -e 's/^ (.*) $ /$1 /'
+#1649627542
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | sed -e 's/^ (.*) $ /$1 /' -e 's/ /, /g'
+#1649627608
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | sed -e 's/^[:space:](.*) $ /$1/'
+#1649627650
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | sed -e 's/^ (.*) $/$1/' -e 's/ /, /g'
+#1649627692
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | sed -e 's/^[[:space:]](.*) $/$1/' -e 's/ /, /g'
+#1649627835
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2
+#1649627842
+dscacheutil -q group -a name admin | grep users
+#1649627890
+dscacheutil -q group -a name admin | grep users | cut -d " " -f 2
+#1649627894
+dscacheutil -q group -a name admin | grep users | cut -d " " -f 2-
+#1649627966
+dscacheutil -q group -a name admin | grep users | cut -d " " -f 2- | sed 's/ /, /g'
+#1649628510
+dscacheutil -q group -a name admin | grep users | cut -d " " -f 2- | awk '{$1=$1};1'
+#1649628518
+dscacheutil -q group -a name admin | grep users | cut -d " " -f 2- 
+#1649628538
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2- 
+#1649628548
+dscacheutil -q group -a name admin | grep users | cut -d " " -f 2- | awk '{$1=$1};1'
+#1649628587
+dscacheutil -q group -a name admin | grep users | cut -d " " -f 2- | awk '{$1=$1};1' | sed 's/ /, /g'
+#1649628726
+dscacheutil -q group -a name admin | grep users | cut -d " " -f 2 | awk '{$1=$1};1' | sed 's/ /, /g'
+#1649628737
+dscacheutil -q group -a name admin | grep users | cut -d " " -f 2- | awk '{$1=$1};1' | sed 's/ /, /g'
+#1649628765
+dscacheutil -q group -a name admin | grep users 
+#1649628808
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2- | awk '{$1=$1};1' | sed 's/ /, /g'
+#1649628853
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | awk '{$1=$1};1' | sed 's/ /, /g'
+#1649628897
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 
+#1649628921
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | awk '{$1=$1};1' 
+#1649628945
+dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | awk '{$1=$1};1' | sed 's/ /, /g'
+#1649629311
+echo " This is a test. " | awk '{$1=$1};1'
