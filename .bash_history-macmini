@@ -13637,3 +13637,35 @@ gcl https://gitlab.com/dave/files
 ls dotfiles
 #1649560246
 ls files
+#1649561207
+echo hello | putclip
+#1649561212
+getclip
+#1649561237
+echo "hello there" | putclip
+#1649561242
+getclip
+#1649561257
+hf
+#1649561257
+hf
+#1649561274
+hf getclip
+#1649561342
+histrank
+#1649561453
+hl
+#1649561459
+hl %
+#1649561464
+hl 50 %
+#1649561525
+s .functions/hl.function
+#1649561527
+hl
+#1649561531
+hl %
+#1649561538
+hl $
+#1649561545
+hl $ 50
