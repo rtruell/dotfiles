@@ -14065,3 +14065,13 @@ dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | awk '{$1=$1}
 dscacheutil -q group -a name admin | grep users | cut -d ":" -f 2 | awk '{$1=$1};1' | sed 's/ /, /g'
 #1649629311
 echo " This is a test. " | awk '{$1=$1};1'
+#1649629558
+type members
+#1649629591
+groups
+#1649629597
+members
+#1649629602
+members staff
+#1649629609
+members admin
