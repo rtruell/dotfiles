@@ -14169,3 +14169,73 @@ processgrep bash
 processgrep rtruell
 #1649646784
 processgrep bash
+#1649648097
+processgrep rtruell
+#1649648214
+dotfiles
+#1649648233
+findtext realpath_filter
+#1649648403
+bashman fc
+#1649648641
+df
+#1649648653
+df | grep vms
+#1649648677
+df | grep Vms
+#1649648693
+df | grep VMs
+#1649648745
+diskutil list | grep Vms | tr -s ' ' | cut -d ' ' -f 7
+#1649648752
+diskutil list | grep VMs | tr -s ' ' | cut -d ' ' -f 7
+#1649648774
+diskutil list 
+#1649648790
+diskutil list | grep VMs 
+#1649648810
+diskutil list | grep VMs | tr -s ' '
+#1649648831
+diskutil list | grep VMs | tr -s ' ' | cut -d ' ' -f 7
+#1649649218
+man xttr
+#1649649223
+man xattr
+#1649650411
+repeat
+#1649650417
+repeat a
+#1649650432
+repeat 5 du
+#1649650439
+repeat 5 df
+#1649650461
+df
+#1649650485
+type df
+#1649650509
+mountinfo
+#1649650689
+repobrowser
+#1649650712
+man open
+#1649650747
+type o
+#1649650800
+up
+#1649650811
+s .functions/repobrowser.function
+#1649650819
+repobrowser
+#1649650824
+dotfiles
+#1649650827
+repobrowser
+#1649651004
+git rev-parse --abbrev-ref HEAD
+#1649651131
+git config --get remote.origin.url | sed -e 's/git@/\/\//g' -e 's/.git$//' -e 's/https://g' -e 's/:/\//g'
+#1649651275
+open https://github.com/rtruell/dotfiles
+#1649651294
+repobrowser
