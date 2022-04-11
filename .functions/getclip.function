@@ -1,4 +1,4 @@
-# Clipboard access created to have the same command on macOS, Linux and Cygwin
+# clipboard access created to have the same command on macOS, Linux and Cygwin
 function getclip() {
   if command -v pbpaste >/dev/null; then  # macOS
     pbpaste
