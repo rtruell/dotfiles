@@ -1,40 +1,27 @@
 # A function to print a specific line from a file
 # TO-DO: Update it to handle globs e.g. 'printline 4 *'
 function printline {
-  # If $1 is empty, print a usage message
-  if [[ -z "${1}" ]]; then
-    printf -- '%s\n' "Usage:  printline n [file]" ""
-    printf -- '\t%s\n' "Print the Nth line of FILE." "" \
-      "With no FILE or when FILE is -, read standard input instead."
+  if [[ -z "${1}" ]]; then  # if $1 is empty, print a usage message
+    printf '%s\n' "Usage:  printline n [file]" ""
+    printf '\t%s\n' "Print the Nth line of FILE." "" "With no FILE or when FILE is -, read standard input instead."
     return 0
   fi
-
-  # Check that $1 is a number, if it isn't print an error message
-  # If it is, blindly convert it to base10 to remove any leading zeroes
   case ${1} in
-    (''|*[!0-9]*) printf -- '%s\n' "[ERROR] printline: '${1}' does not appear to be a number." "" \
-                    "Run 'printline' with no arguments for usage.";
-                  return 1 ;;
-    (*)           local lineNo="$((10#${1}))" ;;
+    ''|*[!0-9]*) printf '%s\n' "[ERROR] printline: '${1}' does not appear to be a number." "" "Run 'printline' with no arguments for usage.";  # if $1 isn't a number, print an error message
+                 return 1
+                 ;;
+              *) lineNo="$((10#${1}))" ;;  # if it is a number, blindly convert it to base10 to remove any leading zeroes
   esac
-
-  # Next, if $2 is set, check that we can actually read it
-  if [[ -n "${2}" ]]; then
-    if [[ ! -r "${2}" ]]; then
-      printf -- '%s\n' "[ERROR] printline: '${2}' does not appear to exist or I can't read it." "" \
-        "Run 'printline' with no arguments for usage."
+  if [[ -n "${2}" ]]; then  # if $2 is set ...
+    if [[ ! -r "${2}" ]]; then  # ... but the file isn't readable, print an error message
+      printf '%s\n' "[ERROR] printline: '${2}' does not appear to exist or I can't read it." "" "Run 'printline' with no arguments for usage."
       return 1
-    else
-      local file="${2}"
     fi
   fi
-
-  # Finally after all that testing is done, we throw in a cursory test for 'sed'
-  if findcommand sed &>/dev/null; then
-    sed -ne "${lineNo}{p;q;}" -e "\$s/.*/[ERROR] printline: End of stream reached./" -e '$ w /dev/stderr' "${file:-/dev/stdin}"
-  # Otherwise we print a message that 'sed' isn't available
+  if findcommand sed &>/dev/null; then  # see if 'sed' can be found
+    sed -ne "${lineNo}{p;q;}" -e "\$s/.*/[ERROR] printline: End of stream reached./" -e '$ w /dev/stderr' "${2:-/dev/stdin}"  # if so, try to print the requested line number from the specified file (or stdin)
   else
-    printf -- '%s\n' "[ERROR] printline: This function depends on 'sed' which was not found."
+    printf '%s\n' "[ERROR] printline: This function depends on 'sed' which was not found."  # if not, print an error message
     return 1
   fi
 }
