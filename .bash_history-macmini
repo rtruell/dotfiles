@@ -14075,3 +14075,97 @@ members
 members staff
 #1649629609
 members admin
+#1649630395
+lf mcd
+#1649630419
+mcd ~/rick/test
+#1649630429
+up
+#1649630435
+rmdir test
+#1649630440
+up
+#1649630445
+rmdir rick
+#1649630500
+mkf ~/rick/test/foo.txt
+#1649630567
+rm foo.txt
+#1649630571
+up
+#1649630575
+rmdir test
+#1649630578
+up
+#1649630584
+rmdir rick
+#1649630752
+n2c
+#1649630850
+cat newbrew
+#1649630864
+n2c newbrew
+#1649630885
+n2s newbrew
+#1649631011
+osinfo
+#1649643564
+php -v
+#1649644141
+s .functions/plistedit.function
+#1649644145
+plistedit
+#1649644164
+plistedit dave.tst
+#1649644441
+printline
+#1649644483
+printline a
+#1649644585
+printline 5
+#1649644710
+printline 5 dave
+#1649644720
+printline 5 newbrew
+#1649645939
+printline
+#1649645967
+printline a
+#1649645992
+printline 5
+#1649646011
+printline 5 dave
+#1649646024
+printline 5 newbrew
+#1649646083
+printline 05 newbrew
+#1649646195
+probeport
+#1649646241
+probeport qnap2
+#1649646311
+probeport qnap2 8080
+#1649646322
+probeport qnap2 22000
+#1649646352
+probeport amdlaptop 8080
+#1649646363
+probeport amdlaptop 22000
+#1649646541
+probessh
+#1649646548
+probessh qnap2
+#1649646598
+probessh amdlaptop
+#1649646612
+probessh qnap2
+#1649646626
+probessh qnap2 22
+#1649646671
+ps aux
+#1649646681
+processgrep bash
+#1649646755
+processgrep rtruell
+#1649646784
+processgrep bash
