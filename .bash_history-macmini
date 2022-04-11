@@ -14239,3 +14239,257 @@ git config --get remote.origin.url | sed -e 's/git@/\/\//g' -e 's/.git$//' -e 's
 open https://github.com/rtruell/dotfiles
 #1649651294
 repobrowser
+#1649708574
+git config --get remote.origin.url | sed -e 's/git@/\/\//g' -e 's/.git$//' -e 's/https://g' -e 's/:/\//g'
+#1649708577
+dotfiles
+#1649708581
+git config --get remote.origin.url | sed -e 's/git@/\/\//g' -e 's/.git$//' -e 's/https://g' -e 's/:/\//g'
+#1649708595
+git config --get remote.origin.url
+#1649708685
+git config --get remote.origin.url | sed -e 's/git@/\/\//g'
+#1649708724
+git config --get remote.origin.url | sed -e 's/git@/\/\//g' -e 's/.git$//'
+#1649708747
+git config --get remote.origin.url | sed -e 's/git@/\/\//g' -e 's/.git$//' -e 's/https://g'
+#1649708781
+git config --get remote.origin.url | sed -e 's/git@/\/\//g' -e 's/.git$//' -e 's/https://g' -e 's/:/\//g'
+#1649708882
+git rev-parse --abbrev-ref HEAD
+#1649708972
+s ../.functions/repobrowser.function
+#1649708980
+up
+#1649708986
+repobrowser
+#1649709000
+back
+#1649709004
+repobrowser
+#1649709212
+open https://github.com/rtruell/dotfiles
+#1649709337
+s ../.functions/repobrowser.function
+#1649709346
+repobrowser
+#1649709424
+up
+#1649709862
+sanitize "This:is$a(string:
+#1649709877
+sanitize "This:is$a(string"
+#1649709910
+sanitize "This:is#a(string"
+#1649709935
+sanitize "This[is{a(string"
+#1649710162
+bashman tests
+#1649710189
+man cd
+#1649710419
+BASH_SOURCE[0]
+#1649710492
+${BASH_SOURCE[0]}
+#1649710504
+echo $a
+#1649710510
+a=${BASH_SOURCE[0]}
+#1649710513
+echo $a
+#1649710557
+scriptstartdir
+#1649710672
+shellshockcheck
+#1649710928
+ifconfig
+#1649710938
+sniff en0
+#1649710949
+man ngrep
+#1649710954
+man grep
+#1649710974
+b ud
+#1649711458
+b s ngrep
+#1649711480
+b i ngrep
+#1649711493
+b h ngrep
+#1649711716
+b in ngrep
+#1649711766
+sniff en0
+#1649711859
+ifconfig
+#1649711868
+sniff en0
+#1649712196
+space2line "this is a test."
+#1649712234
+space2line this is a test.
+#1649712262
+echo "this is a test." | space2line
+#1649712352
+sshconnects
+#1649712434
+lsof -i4 -s TCP:ESTABLISHED -n 
+#1649712480
+lsof -i4 -s TCP:ESTABLISHED -n | grep '^ssh'
+#1649712631
+echo "sshsessio 12551 rtruell    4u  IPv4 0xb9ea0fba1d83395b      0t0  TCP 127.0.0.1:49807->127.0.0.1:49806 (ESTABLISHED)" | grep -oE '\->[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[^ ]+'
+#1649712685
+echo $ip
+#1649712712
+ip=$(echo "sshsessio 12551 rtruell    4u  IPv4 0xb9ea0fba1d83395b      0t0  TCP 127.0.0.1:49807->127.0.0.1:49806 (ESTABLISHED)" | grep -oE '\->[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}:[^ ]+')
+#1649712719
+echo $ip
+#1649712738
+ip=${ip/->/}
+#1649712743
+echo $ip
+#1649712780
+echo $domain
+#1649712783
+domain=$(dig -x ${ip%:*} +short)
+#1649712789
+echo $domain
+#1649712849
+echo ${ip%:*}
+#1649712861
+echo $ip
+#1649712876
+man dig
+#1649713010
+dig -x ${ip%:*}
+#1649713056
+dig -x ${ip%:*} +short
+#1649713075
+echo $domain
+#1649713091
+domain=${domain%.}
+#1649713095
+echo $ip
+#1649713101
+echo $domain
+#1649713187
+printf "%s (%s)\n" ${domain}  ${ip/:ssh}
+#1649713232
+lsof -i4 -s TCP:ESTABLISHED -n | grep '^ssh'
+#1649713240
+sshconnects
+#1649713401
+stringcontains this "this is a test"
+#1649713410
+stringcontains dave "this is a test"
+#1649713702
+swapfilenames
+#1649713711
+swapfilenames one two
+#1649713728
+cd /tmp
+#1649713742
+echo "one" >one
+#1649713751
+swapfilenames one two
+#1649713762
+echo "two" >two
+#1649713777
+cat one
+#1649713780
+cat two
+#1649713785
+swapfilenames one two
+#1649713794
+cat one
+#1649713796
+cat two
+#1649713802
+cat one two
+#1649713819
+rm one two
+#1649713827
+back
+#1649713909
+ls /tmp
+#1649713939
+java --version
+#1649713961
+echo $JAVE_HOME
+#1649713970
+echo $JAVA_HOME
+#1649714025
+java_home
+#1649714029
+man java_home
+#1649714091
+/usr/libexec/java_home -v
+#1649714144
+man java_home
+#1649714187
+/usr/libexec/java_home -V
+#1649714246
+man java_home
+#1649714386
+/usr/libexec/java_home -V 1.8
+#1649714691
+/usr/libexec/java_home -v 1.8
+#1649714704
+/usr/libexec/java_home -V
+#1649714788
+/usr/libexec/java_home -v 1.6
+#1649714829
+java --version
+#1649714840
+switchjava 1.8
+#1649714891
+switchjava 1.6
+#1649714901
+java --version
+#1649714929
+java -version
+#1649714947
+switchjava 1.8
+#1649714951
+java -version
+#1649714968
+switchjava 11
+#1649714971
+java -version
+#1649714981
+java --version
+#1649715095
+sysinfo
+#1649715111
+osinfo
+#1649715882
+sysinfo
+#1649716073
+printf '%s\n' $RELEASE_NAME $SYSTEM_VERSION
+#1649716129
+set | grep -i macOS
+#1649716233
+echo $DISTRO_NAME
+#1649716282
+dotfiles
+#1649716296
+findtext -?
+#1649716315
+findtext -i distro_name
+#1649716390
+cat .functions/osinfo.function
+#1649716476
+lsb_release
+#1649716672
+home
+#1649716680
+s .functions/sysinfo.function
+#1649716703
+sysinfo
+#1649716770
+echo $type
+#1649716849
+s .functions/sysinfo.function
+#1649716852
+sysinfo
