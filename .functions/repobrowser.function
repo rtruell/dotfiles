@@ -1,19 +1,19 @@
 # Call from a local repo to open the repository on github/bitbucket in browser
 function repobrowser {
-  local giturl=$(git config --get remote.origin.url | sed -e 's/git@/\/\//g' -e 's/.git$//' -e 's/https://g' -e 's/:/\//g')
+  giturl=$(git config --get remote.origin.url | sed -e 's/git@/\/\//g' -e 's/.git$//' -e 's/https://g' -e 's/:/\//g')
   if [[ ${giturl} == "" ]]; then
     printf '%s\n' "Not a git repository or no remote.origin.url is set."
   else
-    local gitbranch=$(git rev-parse --abbrev-ref HEAD)
-    local giturl="https:${giturl}"
-    if [[ ${gitbranch} != "master" ]]; then
+    gitbranch=$(git rev-parse --abbrev-ref HEAD)
+    giturl="https:${giturl}"
+    if [[ ${gitbranch} != "master" && ${gitbranch} != "main" ]]; then
       if printf '%s\n' "${giturl}" | grep -i "bitbucket" > /dev/null; then
-        local giturl="${giturl}/branch/${gitbranch}"
+        giturl="${giturl}/branch/${gitbranch}"
       else
-        local giturl="${giturl}/tree/${gitbranch}"
+        giturl="${giturl}/tree/${gitbranch}"
       fi
     fi
-    printf '%s\n' ${giturl}
-    o ${giturl}
+    printf '%s\n' "Opening '${giturl}'"
+    open ${giturl}
   fi
 }
