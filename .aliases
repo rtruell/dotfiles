@@ -80,15 +80,7 @@ case "${SYSTEM_TYPE}" in
     alias volall="osascript -e 'get volume settings'"  # check current volume levels of output, input and alert, and mute status
     ;;
   *)
-    alias apts="apt search"  # search for a package
-    alias aptshow="apt show"  # display package records for a package
-    alias aptinst="sudo apt install -V"  # verbosely install a package
-    alias aptupd="sudo apt update"  # update the package list from the repositories
-    alias aptupg="sudo apt update && sudo apt upgrade && sudo apt clean"  #  update the package list, upgrade installed packages that have new versions available, and clean stuff up
-    alias aptrm="sudo apt remove"  # remove (uninstall) a package but keeps config files
-    alias aptpurge="sudo apt remove --purge"  # completely removes a package, including config files
     alias listuuids="ls -l /dev/disk/by-uuid"  # to get the UUID of a disk
     alias pkgfiles="dpkg --listfiles"  # list the files installed by a package
-    alias whatrelease="lsb_release -a"  # info on the version/distro of Linux being used
     ;;
 esac
