@@ -8,6 +8,9 @@
   excludesFile = ~/.gitignore
   editor = subl -n -w
 
+[pull]
+  rebase = false
+
 [include]
   # For username / creds / etc
   path = ~/.gitconfig.local
