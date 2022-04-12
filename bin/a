@@ -47,7 +47,7 @@ declare -a usage=(
 )
 function nopackage { printf '%s\n' "Must supply a package name."; exit 1 }
 
-[[ -z "${1}" ]] && { printf '%s\n' "Must supply an option or a subcommand."; exit 1 }
+[[ -z "${1}" ]] && { printf '%s\n' "Must supply an option or a subcommand."; exit 1; }
 command="${1}"
 if [[ "${command:0:1}" == "-" ]]; then
   if [[ "${command}" == "-h" ]]; then
