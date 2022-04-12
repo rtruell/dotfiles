@@ -14493,3 +14493,337 @@ echo $type
 s .functions/sysinfo.function
 #1649716852
 sysinfo
+#1649730105
+man tail
+#1649730143
+tailsearch newbrew
+#1649730156
+tailsearch newbrew hastab
+#1649730225
+man perl
+#1649730295
+perldoc perlrun
+#1649730403
+tailsearch newbrew HashTab
+#1649730413
+perldoc perlrun
+#1649730597
+man sed
+#1649730842
+man grep
+#1649731217
+tail -n 50 newbrew | grep -iC50 "hashtab"
+#1649731314
+tail -n 50 newbrew | grep -iC50 "sublime"
+#1649731345
+man grep
+#1649731386
+echo $GREP_COLOR
+#1649731391
+man grep
+#1649731461
+echo $GREP_OPTIONS
+#1649731469
+alias grep
+#1649731796
+GREP_COLOR=DULL_RED
+#1649731807
+echo $GREP_COLOR
+#1649731814
+GREP_COLOR=$DULL_RED
+#1649731818
+echo $GREP_COLOR
+#1649731832
+tail -n 50 newbrew | grep -iC50 "sublime"
+#1649731859
+echo $GREP_COLOR
+#1649731921
+GREP_COLOR="0;31"
+#1649731926
+tail -n 50 newbrew | grep -iC50 "sublime"
+#1649731940
+GREP_COLOR="1;31"
+#1649731943
+tail -n 50 newbrew | grep -iC50 "sublime"
+#1649731953
+echo $GREP_COLOR
+#1649731985
+GREP_COLOR="1;37;41"
+#1649731989
+tail -n 50 newbrew | grep -iC50 "sublime"
+#1649732009
+export GREP_COLOR="1;37;41"
+#1649732013
+tail -n 50 newbrew | grep -iC50 "sublime"
+#1649732047
+export GREP_COLOR=$DULL_RED
+#1649732051
+tail -n 50 newbrew | grep -iC50 "sublime"
+#1649732083
+echo $GREP_COLOR
+#1649732102
+GREP_COLOR="0;31"
+#1649732104
+tail -n 50 newbrew | grep -iC50 "sublime"
+#1649732113
+GREP_COLOR="1;31"
+#1649732116
+tail -n 50 newbrew | grep -iC50 "sublime"
+#1649732603
+tail -n 50 newbrew | perl -pe "s/hashtab/${DULL_RED}$&${NORMAL}/ig"
+#1649732619
+tail -n 50 newbrew | perl -pe "s/hashtab/${DULL_RED}$&${NORMAL}/g"
+#1649732628
+tail -n 50 newbrew | perl -pe "s/hashtab/${DULL_RED}$&${NORMAL}/ig"
+#1649732647
+tail -n 50 newbrew | perl -pe "s/sublime/${DULL_RED}$&${NORMAL}/ig"
+#1649733636
+s .functions/tailsearch.function
+#1649733671
+tailsearch newbrew hastab
+#1649733721
+s .functions/tailsearch.function
+#1649733727
+tailsearch newbrew hastab
+#1649733764
+lf tailsearch
+#1649733803
+tailsearch newbrew hastab
+#1649733815
+lf tailsearch
+#1649733845
+tail -n 50 newbrew | perl -pe "s/hashtab/${DULL_RED}$&${NORMAL}/ig"
+#1649733889
+tailsearch newbrew hastab
+#1649733983
+tail -n 50 newbrew | perl -pe "s/hashtab/${DULL_RED}$&${NORMAL}/ig"
+#1649734025
+s .functions/tailsearch.function
+#1649734029
+tailsearch newbrew hastab
+#1649734058
+s .functions/tailsearch.function
+#1649734061
+tailsearch newbrew hastab
+#1649734127
+tail -n 50 newbrew | grep -i hashtab
+#1649734152
+tail -n 50 newbrew | grep -iC50 "sublime"
+#1649734183
+tail -n 50 newbrew | grep -iC50 hashtab
+#1649734234
+s .functions/tailsearch.function
+#1649734240
+tailsearch newbrew hastab
+#1649734299
+s .functions/tailsearch.function
+#1649734303
+tailsearch newbrew hastab
+#1649734401
+dotfiles
+#1649734408
+findtext sed
+#1649734476
+up
+#1649734501
+s .functions/tailsearch.function
+#1649734504
+tailsearch newbrew hastab
+#1649734517
+s .functions/tailsearch.function
+#1649734519
+tailsearch newbrew hastab
+#1649734532
+s .functions/tailsearch.function
+#1649734534
+tailsearch newbrew hastab
+#1649734549
+tailsearch newbrew HashTab
+#1649734580
+s .functions/tailsearch.function
+#1649734589
+tailsearch newbrew HashTab
+#1649734629
+s .functions/tailsearch.function
+#1649734632
+tailsearch newbrew HashTab
+#1649734647
+s .functions/tailsearch.function
+#1649734649
+tailsearch newbrew HashTab
+#1649734657
+tailsearch newbrew hashtab
+#1649734676
+tailsearch newbrew sublime
+#1649734707
+sset | grep DULL_RED
+#1649734716
+set | grep DULL_RED
+#1649734746
+less .colors
+#1649734870
+s .functions/tailsearch.function
+#1649734875
+tailsearch newbrew hashtab
+#1649734895
+tailsearch newbrew sublime
+#1649734943
+s .functions/tailsearch.function
+#1649734950
+tailsearch newbrew hashtab
+#1649734966
+s .functions/tailsearch.function
+#1649734968
+tailsearch newbrew hashtab
+#1649735811
+s .functions/tailsearch.function
+#1649735856
+tailsearch
+#1649735917
+s .functions/tailsearch.function
+#1649735919
+tailsearch
+#1649735936
+tailsearch -z
+#1649735943
+tailsearch -i
+#1649736186
+bashman tests
+#1649736267
+s .functions/tailsearch.function
+#1649736271
+tailsearch
+#1649736307
+tailsearch -z
+#1649736347
+tailsearch -i
+#1649736379
+tailsearch -i dave
+#1649736399
+s .functions/tailsearch.function
+#1649736405
+tailsearch
+#1649736414
+tailsearch -z
+#1649736423
+tailsearch -i
+#1649736431
+tailsearch -i dave
+#1649736442
+tailsearch dave
+#1649736464
+tailsearch newbrew
+#1649736491
+tailsearch newbrew sublime
+#1649736502
+tailsearch newbrew hashtab
+#1649736516
+tailsearch -i newbrew hashtab
+#1649736525
+tailsearch -i newbrew sublime
+#1649736549
+tailsearch -i newbrew er
+#1649736867
+man tests
+#1649736926
+throttle
+#1649736945
+cat newbrew
+#1649736951
+cat newbrew | throttle
+#1649736967
+cat newbrew | throttle .5
+#1649737155
+tolower "This Is A Test."
+#1649737175
+tolower "TEST TEST TEST"
+#1649737451
+s .functions/toplist.function
+#1649737455
+toplist
+#1649737470
+toplist dave
+#1649737533
+toupper
+#1649737549
+toupper "this is a test."
+#1649737574
+toupper "This Is A Test."
+#1649738180
+s .functions/tree.function
+#1649738186
+tree
+#1649738200
+tree bin
+#1649738215
+tree -s bin
+#1649738227
+tree -s
+#1649738386
+trim
+#1649738471
+trim -h
+#1649738479
+trim -z
+#1649738547
+printf ">"; trim " this is a test "; printf "<"
+#1649738607
+printf ">"; trim -l " this is a test "; printf "<"
+#1649738616
+printf ">"; trim -b " this is a test "; printf "<"
+#1649738635
+echo $line
+#1649738657
+line=`printf ">"; trim " this is a test "; printf "<"`
+#1649738661
+echo $line
+#1649738689
+line=`printf ">"; trim -l " this is a test "; printf "<"`
+#1649738691
+echo $line
+#1649738699
+line=`printf ">"; trim -b " this is a test "; printf "<"`
+#1649738701
+echo $line
+#1649738861
+cd /Volumes/ExternalHome/rtruell/Kindle
+#1649738875
+up 3
+#1649738881
+back
+#1649738885
+up2
+#1649738889
+up 2
+#1649738897
+up
+#1649738900
+up 2
+#1649738903
+home
+#1649739192
+whattype
+#1649739200
+whattype df
+#1649739208
+whattype bashman
+#1649739262
+whattype path
+#1649739273
+whattype PATH
+#1649739294
+whattype dave
+#1649739551
+whenis
+#1649739558
+whenis 1234567890
+#1649739605
+whenis +1 year -3 months
+#1649739779
+whoowns dotfiles
+#1649739786
+whoowns set.txt
+#1649739790
+ll
+#1649739797
+whoowns /
