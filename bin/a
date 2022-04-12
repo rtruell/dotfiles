@@ -17,8 +17,8 @@ declare -a usage=(
   "Short subcommands:"
   "     c: cleanup - does a 'sudo apt autoclean'.  Other options can be"
   "        specified and are passed through to the 'apt' command."
-  "     h: home - opens the home page for a package in the default web browser."
-  "        A package must be specified."
+  "     h: home - opens the home page for a package, if supplied, in the default"
+  "        web browser.  A package must be specified."
   "     i: info - does an 'apt show'.  A package must be specified.  Additional"
   "        options can be specified and are passed through to the 'apt' command."
   "    in: install - does a 'sudo apt install -V'.  A package must be specified."
@@ -63,7 +63,9 @@ case "${command}" in
    c) shift; sudo apt autoclean "$@";;
    h) shift
       if [[ -z "${1}" ]]; then nopackage; fi
-      open `apt show "${1}" 2>/dev/null | grep -i "^homepage" | cut -d " " -f 2`
+      open `apt show "${1}" 2>/dev/null |
+      if [[ ! grep -i "^homepage" ]]; then printf '%s\n' "Sorry, no homepage supplied for ${1}"; exit 1; fi |
+      cut -d " " -f 2`
       ;;
    i) shift
       if [[ -z "${1}" ]]; then nopackage; fi
