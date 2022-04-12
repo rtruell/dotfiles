@@ -45,7 +45,7 @@ declare -a usage=(
   "Any other subcommand is passed through to the 'apt' command unchanged."
   " "
 )
-function nopackage { printf '%s\n' "Must supply a package name."; exit 1 }
+function nopackage { printf '%s\n' "Must supply a package name."; exit 1; }
 
 [[ -z "${1}" ]] && { printf '%s\n' "Must supply an option or a subcommand."; exit 1; }
 command="${1}"
