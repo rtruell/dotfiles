@@ -38,14 +38,16 @@ declare -a usage=(
   "        specified and are passed through to the 'apt' command."
   " "
   "Custom subcommands:"
-  "    ub: up both - does an 'sudo apt update' and then a 'sudo apt upgrade'."
+  "    ub: up both - does a 'sudo apt update' and then a 'sudo apt upgrade'."
   "    uf: up full - does a 'sudo apt update', a 'sudo apt upgrade' and finally"
   "        a 'sudo apt autoclean'"
   " "
   "Any other subcommand is passed through to the 'apt' command unchanged."
   " "
 )
-[[ -z "${1}" ]] && { printf '%s\n' "Must supply an option or a subcommand."; exit 1; }
+function nopackage { printf '%s\n' "Must supply a package name."; exit 1 }
+
+[[ -z "${1}" ]] && { printf '%s\n' "Must supply an option or a subcommand."; exit 1 }
 command="${1}"
 if [[ "${command:0:1}" == "-" ]]; then
   if [[ "${command}" == "-h" ]]; then
@@ -59,24 +61,24 @@ fi
 case "${command}" in
    c) shift; sudo apt autoclean "$@";;
    h) shift
-      if [[ -z "${1}" ]]; then printf '%s\n' "Must supply a package."; exit 1; fi
+      if [[ -z "${1}" ]]; then nopackage; fi
       open `apt show "${1}" 2>/dev/null | grep -i "^homepage" | cut -d " " -f 2`
       ;;
    i) shift
-      if [[ -z "${1}" ]]; then printf '%s\n' "Must supply a package."; exit 1; fi
+      if [[ -z "${1}" ]]; then nopackage; fi
       apt show "${1}"
       ;;
   in) shift
-      if [[ -z "${1}" ]]; then printf '%s\n' "Must supply a package."; exit 1; fi
+      if [[ -z "${1}" ]]; then nopackage; fi
       sudo apt install -V "$@"
       ;;
    l) apt list --installed >"${HOME}"/newapt;;
    p) shift
-      if [[ -z "${1}" ]]; then printf '%s\n' "Must supply a package."; exit 1; fi
+      if [[ -z "${1}" ]]; then nopackage; fi
       sudo apt remove --purge "${1}"
       ;;
    r) shift
-      if [[ -z "${1}" ]]; then printf '%s\n' "Must supply a package."; exit 1; fi
+      if [[ -z "${1}" ]]; then nopackage; fi
       sudo apt remove "${1}"
       ;;
    s) shift
