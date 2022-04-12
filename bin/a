@@ -63,9 +63,9 @@ case "${command}" in
    c) shift; sudo apt autoclean "$@";;
    h) shift
       if [[ -z "${1}" ]]; then nopackage; fi
-      open `apt show "${1}" 2>/dev/null |
-      if [[ ! grep -i "^homepage" ]]; then printf '%s\n' "Sorry, no homepage supplied for ${1}"; exit 1; fi |
-      cut -d " " -f 2`
+      webpage=`apt show "${1}" 2>/dev/null | grep -i "^homepage" | cut -d " " -f 2`
+      if [[ -z "${webpage}" ]]; then printf '%s\n' "Sorry, no homepage supplied for ${1}"; exit 1; fi
+      open "${webpage}"
       ;;
    i) shift
       if [[ -z "${1}" ]]; then nopackage; fi
