@@ -14827,3 +14827,131 @@ whoowns set.txt
 ll
 #1649739797
 whoowns /
+#1649819213
+a
+#1649819285
+ansi-colors
+#1649819437
+python
+#1649819703
+dotfiles
+#1649819710
+findtext for
+#1649820192
+ansi-colors1
+#1649820326
+ansi-colors
+#1649820482
+ansi-colors1
+#1649820496
+up
+#1649820728
+ansi-colors1
+#1649820840
+dotfiles
+#1649820844
+findtext for
+#1649821079
+up
+#1649821139
+for (( i=30; i<39; i++ )); do printf '%d\n' $i; done
+#1649821181
+for (( i=30; i<39; i++ )); do printf '%d\n' $i+60; done
+#1649821264
+for (( i=30; i<39; i++ )); do j=$i+60; printf '%d\n' $i $j; done
+#1649821298
+for (( i=30; i<39; i++ )); do j=i+60; printf '%d\n' $i $j; done
+#1649821494
+for (( i=30; i<39; i++ )); do j=$((i+60)); printf '%d\n' $i $j; done
+#1649821567
+for (( i=30; i<39; i++ )); do j=$((i+60)); printf '%d' $i $((i+60)); done
+#1649821589
+for (( i=30; i<39; i++ )); do j=$((i+60)); printf '%d ' $i $((i+60)); done
+#1649821693
+ansi-colors1
+#1649821715
+ansi-colors
+#1649821858
+ansi-colors1
+#1649823217
+ansi-colors
+#1649823325
+ansi-colors1
+#1649824347
+ansi-colors
+#1649824506
+ansi-colors1
+#1649824532
+ansi-colors
+#1649824593
+ansi-colors1
+#1649824645
+ansi-colors
+#1649824722
+ansi-colors1
+#1649824744
+ansi-colors
+#1649824996
+printf '%b\n' "\e[2J"
+#1649825003
+printf '%s\n' "\e[2J"
+#1649825042
+printf '%b\n' "\e[2J Clear the screen, move to (0,0)"
+#1649825098
+ansi-colors
+#1649825101
+ansi-colors1
+#1649825170
+for i in {0..255} ; do     printf "\x1b[48;5;%sm%3d\e[0m " "$i" "$i";     if (( i == 15 )) || (( i > 15 )) && (( (i-15) % 6 == 0 )); then         printf "\n";     fi; done
+#1649825421
+print256colors
+#1649825482
+ansi-colors1
+#1649826332
+answer-is-y yes
+#1649826341
+answer_is_y yes
+#1649826346
+answer_is_y y
+#1649826422
+askyn
+#1649826438
+askynsh
+#1649826445
+askyn.sh
+#1649826552
+dotfiles
+#1649826560
+findtext askyn
+#1649826622
+up
+#1649827055
+poll-url rtruell.ca think
+#1649827105
+terminal-notifier
+#1649827115
+b s terminal-notifier
+#1649827148
+b i terminal-notifier
+#1649827186
+b ud
+#1649827215
+b in terminal-notifier
+#1649827261
+terminal-notifier
+#1649827356
+poll-url rtruell.ca think
+#1649827542
+serve
+#1649827615
+serve -h
+#1649827641
+serve newbrew
+#1649827727
+wifi-password
+#1649827778
+wifi-password -h
+#1649827805
+wifi-password -V
+#1649827809
+wifi-password -q
