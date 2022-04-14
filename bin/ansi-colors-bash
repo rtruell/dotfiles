@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+printf '%s\n' "\e[XXm"
+
+for (( i=30; i<38; i++ )); do
+  printf '%b\n' "\e[$((i))m$i\e[39m\t\t\e[$((i+60))m$((i+60))\e[39m"
+done
+
+printf '%s\n' "\e[39m - Reset colour"
+printf '%s\n' "\e[2K - Clear Line"
+printf '%s\n' "\e[<L>;<C>H OR \\033[<L>;<C>f puts the cursor at line L and column C."
+printf '%s\n' "\e[<N>A Move the cursor up N lines"
+printf '%s\n' "\e[<N>B Move the cursor down N lines"
+printf '%s\n' "\e[<N>C Move the cursor forward N columns"
+printf '%s\n' "\e[<N>D Move the cursor backward N columns"
+printf '%s\n' "\e[2J Clear the screen, move to (0,0)"
+printf '%s\n' "\e[K Erase to end of line"
+printf '%s\n' "\e[s Save cursor position"
+printf '%s\n' "\e[u Restore cursor position"
+printf '%s\n' " "
+printf '%s\n' "\e[4m  Underline on"
+printf '%s\n' "\e[24m Underline off"
+printf '%s\n' "\e[1m  Bold on"
+printf '%s\n' "\e[21m Bold off"

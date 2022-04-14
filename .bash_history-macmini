@@ -14955,3 +14955,137 @@ wifi-password -h
 wifi-password -V
 #1649827809
 wifi-password -q
+#1649886037
+git
+#1649886445
+g
+#1649886456
+g -version
+#1649886463
+g --version
+#1649886551
+g -version
+#1649886554
+g --version
+#1649886559
+g
+#1649886725
+man git
+#1649886754
+g --help
+#1649886768
+man git
+#1649886790
+g -a
+#1649886798
+g --all
+#1649886814
+man git
+#1649886843
+g --help -a
+#1649886863
+g --help --all
+#1649886872
+man git
+#1649887113
+man git-add
+#1649890117
+man git
+#1649890141
+man git-branch
+#1649890548
+dotfiles
+#1649890552
+git branch
+#1649890557
+git branch --list
+#1649890609
+man git-branch
+#1649890654
+man git-add
+#1649890892
+man git-branch
+#1649902499
+man git-commit
+#1649902656
+up
+#1649902665
+git commit
+#1649903211
+man git-commit
+#1649903258
+cat .logout
+#1649903268
+cat .bash_logout
+#1649903363
+git-add
+#1649903370
+man git-add
+#1649903627
+man git-commit
+#1649904069
+man git-checkout
+#1649904166
+man git-difftool
+#1649904222
+man git-diff
+#1649904409
+man git-fetch
+#1649904635
+man git-pull
+#1649904684
+man git-fetch
+#1649904785
+man git-pull
+#1649904799
+man git-fetch
+#1649904918
+man git-pull
+#1649905300
+man git-push
+#1649905636
+man git-status
+#1649906071
+man shift
+#1649909379
+g
+#1649909455
+git
+#1649909457
+g
+#1649909531
+git --help
+#1649909544
+git
+#1649909557
+git --help
+#1649909574
+git
+#1649909668
+g
+#1649909693
+g -z
+#1649909698
+g -h
+#1649909849
+g status
+#1649909852
+g s
+#1649909858
+dotfiles
+#1649909863
+g status
+#1649909913
+g s
+#1649910020
+g a
+#1649910042
+g a bin/ansi-colors-bash
+#1649910058
+g s
+#1649910114
+g bl
+#1649910168
+up
+#1649913639
+b -H
