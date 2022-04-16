@@ -15105,3 +15105,281 @@ fdisk list
 diskutil
 #1649975602
 diskutil list
+#1650049558
+ll
+#1650054251
+ansi-colors-bash
+#1650054263
+ansi-colors-python
+#1650055128
+man brew
+#1650056698
+a
+#1650057924
+b
+#1650057930
+brew
+#1650057959
+brew help
+#1650057974
+b
+#1650057980
+git
+#1650057990
+g
+#1650058007
+b
+#1650058124
+brew helpg
+#1650058127
+g
+#1650058208
+b
+#1650058658
+brew
+#1650058677
+brew help
+#1650059065
+g
+#1650059067
+b
+#1650059077
+g -z
+#1650059087
+b -z
+#1650059104
+g -h
+#1650059116
+b -h
+#1650059410
+ansi-colors-bash
+#1650059418
+ansi-colors-python
+#1650059427
+print256colors
+#1650061075
+volout
+#1650061092
+volin
+#1650061104
+volall
+#1650061192
+v
+#1650061197
+vol
+#1650062481
+volall
+#1650062489
+osascript -e 'set volume output muted true'
+#1650062493
+volall
+#1650062506
+osascript -e 'set volume output muted false'
+#1650062515
+volall
+#1650078877
+echo $command
+#1650078893
+command="osascript -e "
+#1650078902
+command1="osascript -e "
+#1650078913
+echo $command1
+#1650078916
+echo $command
+#1650078967
+command+='get volume settings'
+#1650078971
+echo $command
+#1650078983
+$command
+#1650078999
+command1="osascript -e "
+#1650079022
+command+="'get volume settings'"
+#1650079025
+echo $command
+#1650079055
+command="osascript -e "
+#1650079060
+echo $command
+#1650079071
+command+="'get volume settings'"
+#1650079073
+echo $command
+#1650079083
+$command
+#1650079116
+osascript -e 'get volume settings'
+#1650079143
+`$command`
+#1650079156
+"${command}"
+#1650079171
+${command}
+#1650079194
+command "${command}"
+#1650079222
+'${command}'
+#1650079297
+osascript -e 'get volume settings'
+#1650079376
+osascript -e 'set volume input volume 50'
+#1650079388
+osascript -e 'get volume settings'
+#1650079408
+osascript -e 'set volume input volume 20'
+#1650079417
+osascript -e 'set volume input volume 17'
+#1650079430
+osascript -e 'set volume input volume 20'
+#1650079435
+osascript -e 'get volume settings'
+#1650079460
+osascript -e 'set volume input volume 19'
+#1650079463
+osascript -e 'get volume settings'
+#1650079472
+osascript -e 'set volume input volume 18'
+#1650079475
+osascript -e 'get volume settings'
+#1650079829
+echo $command
+#1650079855
+execute_command "${command}"
+#1650079892
+execute_command ${command}
+#1650079921
+eval "${command}"
+#1650080701
+command=$command1
+#1650080704
+echo $command
+#1650080782
+command+="'get volume settings'"
+#1650080787
+echo $command
+#1650080799
+eval "${command}"
+#1650081043
+osascript -e 'set volume input muted true'
+#1650081075
+osascript -e 'set volume output muted true'
+#1650081089
+osascript -e 'set volume output muted false'
+#1650081106
+osascript -e 'set volume input muted true'
+#1650083949
+volall
+#1650084123
+volout
+#1650084126
+volin
+#1650084132
+volalert
+#1650084689
+man tr
+#1650084995
+dotfiles
+#1650085002
+findtext 'tr -s'
+#1650086047
+volmute
+#1650086073
+voloff
+#1650086077
+volmute
+#1650086082
+volon
+#1650086103
+v on
+#1650086117
+volmute
+#1650086202
+v mute
+#1650086212
+v off
+#1650086216
+v mute
+#1650086221
+v on
+#1650086224
+v mute
+#1650086982
+up
+#1650086986
+v all
+#1650086993
+vol all
+#1650086998
+volall
+#1650087261
+v all
+#1650087281
+v mute
+#1650087285
+v off
+#1650087293
+v all
+#1650087305
+v on
+#1650087308
+v all
+#1650087623
+v imax
+#1650087630
+v imin
+#1650087637
+v inorm
+#1650087647
+v imin
+#1650087652
+v inorm
+#1650087664
+v omax
+#1650087671
+v omin
+#1650087680
+v onorm
+#1650087683
+v all
+#1650087717
+v off
+#1650087720
+v on
+#1650087737
+v out
+#1650087738
+v in
+#1650087741
+v alert
+#1650087745
+v mute
+#1650087749
+v all
+#1650087756
+v dave
+#1650087760
+v -z
+#1650087768
+v
+#1650087774
+v -h
+#1650088493
+v all
+#1650088505
+osascript -e 'set volume alert volume 100'
+#1650088510
+v all
+#1650088519
+osascript -e 'set volume alert volume 50'
+#1650088523
+v all
+#1650088983
+v amax
+#1650088994
+v all
+#1650089022
+osascript -e 'set volume alert muted true'
+#1650089915
+v -h
