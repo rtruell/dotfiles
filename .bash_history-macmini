@@ -15383,3 +15383,181 @@ v all
 osascript -e 'set volume alert muted true'
 #1650089915
 v -h
+#1650138839
+echo $type
+#1650138843
+echo $percent
+#1650138859
+type="output"
+#1650138865
+percent=100
+#1650138921
+osascript -e 'set volume "${type}" volume "${percent}"
+#1650138944
+osascript -e 'set volume "${type}" volume "${percent}"'
+#1650139037
+command="osascript -e 'set volume "
+#1650139043
+echo $command
+#1650139117
+command+="${type} volume ${percent}'"
+#1650139119
+echo $command
+#1650139138
+eval $command
+#1650139155
+command="osascript -e 'set volume "
+#1650139187
+percent=50
+#1650139192
+command+="${type} volume ${percent}'"
+#1650139196
+eval $command
+#1650139204
+echo $command
+#1650139211
+v omax
+#1650139215
+v onorm
+#1650139270
+osascript -e 'set volume ${type} volume ${percent}'
+#1650147978
+osascript -e 'set volume input muted true'
+#1650147986
+osascript -e 'set volume alert muted true'
+#1650148040
+v imin
+#1650148157
+v ioff
+#1650148165
+v all
+#1650148228
+v ion
+#1650148235
+v aoff
+#1650148246
+v aon
+#1650148266
+v all
+#1650148325
+v amax
+#1650148343
+v aoff
+#1650148357
+v amax
+#1650148371
+v aon
+#1650148382
+v all
+#1650148397
+v amax
+#1650148400
+v all
+#1650148500
+v imin
+#1650148517
+v inorm
+#1650148521
+v ioff
+#1650148525
+v ion
+#1650148529
+v ioff
+#1650148531
+v all
+#1650148537
+v ion
+#1650148539
+v all
+#1650148603
+osascript -e 'set volume input volume 0'
+#1650148607
+v all
+#1650148622
+v ion
+#1650148625
+v all
+#1650148644
+v aoff
+#1650148655
+v all
+#1650148663
+v aon
+#1650148665
+v all
+#1650149631
+v
+#1650149664
+v -z
+#1650149730
+v -h
+#1650149760
+v amin
+#1650149769
+v anorm
+#1650149775
+v amax
+#1650149787
+v aoff
+#1650149793
+v aon
+#1650149833
+v imax
+#1650149839
+v imin
+#1650149845
+v inorm
+#1650149850
+v ioff
+#1650149861
+v ion
+#1650149898
+v omax
+#1650149905
+v omin
+#1650149915
+v anorm
+#1650149929
+v onorm
+#1650149936
+v omax
+#1650149939
+v omin
+#1650149944
+v onorm
+#1650149948
+v off
+#1650149957
+v on
+#1650149968
+v ooff
+#1650149972
+v oon
+#1650149990
+v out
+#1650149992
+v in
+#1650150002
+v alert
+#1650150004
+v all
+#1650150020
+v mute
+#1650150189
+v off
+#1650150200
+v on
+#1650150208
+v ioff
+#1650150213
+v ion
+#1650165982
+man getopts
+#1650166003
+bashman getopts
+#1650166012
+man bash
+#1650166231
+lf bashman
+#1650166248
+bashman getopts
