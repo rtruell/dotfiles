@@ -15579,3 +15579,97 @@ man oascript
 hf man
 #1650259329
 man bash
+#1650340600
+v all
+#1650340607
+v amax
+#1650340610
+v all
+#1650340615
+v amin
+#1650340617
+v all
+#1650340626
+v anorm
+#1650340628
+v all
+#1650340635
+v aoff
+#1650340644
+v all
+#1650340651
+v aon
+#1650340653
+v all
+#1650340666
+v imax
+#1650340671
+v imin
+#1650340680
+v inorm
+#1650340690
+v ioff
+#1650340697
+v ion
+#1650340703
+v omax
+#1650340708
+v omin
+#1650340714
+v onorm
+#1650340720
+v ooff
+#1650340726
+v oon
+#1650340729
+v out
+#1650340732
+v in
+#1650340736
+v alert
+#1650340742
+v mute
+#1650340745
+v all
+#1650340754
+v ooff
+#1650340760
+v mute
+#1650340763
+v all
+#1650340767
+v on
+#1650340772
+v oon
+#1650340929
+fs newbrew
+#1650340932
+fs
+#1650341039
+brew cask
+#1650342497
+pmset
+#1650342795
+pmset -g batt
+#1650343273
+b s pmset
+#1650343321
+man pmset
+#1650343434
+pmset -g
+#1650343862
+man date
+#1650343886
+date +%Y%m%d -r "${HOME}/.dotfilecheck"
+#1650343917
+date +%Y%m%d
+#1650343978
+cd "${DOTFILESSRCDIR}"
+#1650343998
+git remote update
+#1650344414
+/Volumes/ExternalHome/rtruell/
+#1650344434
+hoe
+#1650344436
+home
