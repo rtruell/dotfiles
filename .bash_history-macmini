@@ -15683,3 +15683,111 @@ pip
 b s augeas
 #1650516458
 b i augeas
+#1650565260
+b up
+#1650565328
+b s augeas
+#1650565347
+b in augeas
+#1650565652
+man cp
+#1650565718
+export AUGEAS_ROOT=/tmp/augeas-sandbox
+#1650565732
+mkdir $AUGEAS_ROOT
+#1650565746
+sudo cp -pr /etc $AUGEAS_ROOT
+#1650565764
+ls $AUGEAS_ROOT
+#1650565777
+ll $AUGEAS_ROOT
+#1650565821
+rm $AUGEAS_ROOT/etc
+#1650565832
+ll $AUGEAS_ROOT
+#1650565846
+sudo cp -pr /private/etc $AUGEAS_ROOT
+#1650565851
+ll $AUGEAS_ROOT
+#1650565862
+ll $AUGEAS_ROOT/etc
+#1650565886
+ll \$AUGEAS_ROOT/etc/apache2
+#1650565917
+ll $AUGEAS_ROOT/etc/apache2
+#1650566747
+ll $AUGEAS_ROOT
+#1650566754
+ll $AUGEAS_ROOT/etc
+#1650566770
+ll \$AUGEAS_ROOT/etc/apache2/
+#1650566777
+ll $AUGEAS_ROOT/etc/apache2/
+#1650566814
+id -nu
+#1650566817
+id -ng
+#1650566826
+sudo chown -R $(id -nu):$(id -ng) $AUGEAS_ROOT
+#1650567045
+ls /etc/suoders.d
+#1650567050
+sudo ##
+#1650567057
+sudo ls /etc/suoders.d
+#1650567067
+ls /etc/sudoers.d
+#1650567072
+ls /etc/sudoers.d/rtruell
+#1650567086
+cat /etc/sudoers.d/rtruell
+#1650567096
+sudo cat /etc/sudoers.d/rtruell
+#1650567219
+sudo cat /etc/hosts
+#1650567233
+ls /etc
+#1650567253
+set /files/etc/hosts/01/ipaddr 192.168.0.1
+#1650567266
+set /files/etc/hosts/01/canonical pigiron.example.com
+#1650567280
+set /files/etc/hosts/01/alias[1] pigiron
+#1650567295
+set /files/etc/hosts/01/alias[2] piggy
+#1650567297
+save
+#1650567480
+ls /etc
+#1650567665
+echo $AUGEAS_ROOT
+#1650567714
+ls /tmp
+#1650567726
+ls /tmp/augeas-sandbox/
+#1650567730
+ls /tmp/augeas-sandbox/etc
+#1650567743
+cat /tmp/augeas-sandbox/etc/hosts
+#1650567818
+ls /etc
+#1650568065
+ls /boot
+#1650568069
+sudo ls /boot
+#1650568257
+ls /tmp/augeas-sandbox/etc
+#1650568293
+cat /tmp/augeas-sandbox/etc/grub.conf
+#1650568388
+cat /tmp/augeas-sandbox/etc/sshd_config
+#1650568437
+ls /usr/share
+#1650568456
+b i augeas
+#1650568506
+ls /usr/local/share/augeas/lenses
+#1650568509
+ls /usr/local/share/augeas/lenses/dist
+#1650566843
+augtool -b
