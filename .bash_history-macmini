@@ -15791,3 +15791,17 @@ ls /usr/local/share/augeas/lenses
 ls /usr/local/share/augeas/lenses/dist
 #1650566843
 augtool -b
+#1650574186
+ls /tmp
+#1650574193
+ls /tmp/augeas-sandbox/
+#1650574197
+ls /tmp/augeas-sandbox/etc
+#1650574218
+man rm
+#1650574251
+rm -rf /tmp/augeas-sandbox/
+#1650574259
+ls /tmp
+#1650599234
+python --version
