@@ -15819,3 +15819,17 @@ man sed
 bashman tests
 #1650747845
 man sed
+#1650856053
+ls /etc
+#1650856067
+ls /etc/samba
+#1650858976
+man smb.conf
+#1650859022
+man sshd_conf
+#1650859032
+man sshd
+#1650859062
+man sshd_config
+#1650859462
+man complete
