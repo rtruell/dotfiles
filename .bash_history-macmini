@@ -15833,3 +15833,71 @@ man sshd
 man sshd_config
 #1650859462
 man complete
+#1650881678
+test.sh
+#1650881881
+test.sh -h
+#1650881926
+test.sh -h -c -a -s
+#1650881960
+test.sh -h -c -a -s -k
+#1650881989
+test.sh -h -c -a -s -k -n
+#1650882384
+man getopts
+#1650887751
+man autoconf
+#1650887764
+autoconf -V
+#1650888287
+b ud
+#1650888341
+b s argbash
+#1650915821
+test.sh -h -c -a -s -k -n
+#1650915868
+test.sh -h -c -a -s -k -n -z
+#1650916258
+test.sh -h -c -a -s -k -n -y
+#1650916276
+test.sh -h -c -a -s -k -y
+#1650916300
+test.sh -h -c -a -s -y
+#1650916328
+test.sh -h -c -a -s test -k -y
+#1650916497
+test.sh -h -c -a -s test -n -k -y
+#1650916559
+test.sh -h -c -a -s -n -k -y
+#1650916612
+test.sh -h -c -a -y -s -n -k
+#1650917399
+python --v
+#1650917410
+python -v
+#1650917418
+python -h
+#1650917438
+python -V
+#1650938837
+man getopt
+#1650938934
+getopt -v
+#1650938939
+getopt -version
+#1650938943
+getopt --version
+#1650938953
+getopt -h
+#1650938963
+b s getopt
+#1650938986
+b i gnu-getopt
+#1650939024
+b h gnu-getopt
+#1650941559
+getopt --test
+#1650942248
+! getopt --test
+#1650942292
+echo ${PIPESTATUS[0]}
