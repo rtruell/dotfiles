@@ -15901,3 +15901,71 @@ getopt --test
 ! getopt --test
 #1650942292
 echo ${PIPESTATUS[0]}
+#1651009066
+echo $MACHTYPE
+#1651008960
+man bash
+#1651009196
+! getopt --test
+#1651009222
+echo $PIPESTATUS[0]
+#1651009267
+b i gnu-getopt
+#1651009284
+b ud
+#1651009328
+b in gnu-getopt
+#1651010134
+! getopt --test
+#1651010145
+echo $PIPESTATUS[0]
+#1651010169
+ls /usr/local/opt/gnu-getopt/bin
+#1651010199
+! /usr/local/opt/gnu-getopt/bin/getopt --test
+#1651010207
+echo $PIPESTATUS[0]
+#1651010226
+man getopt
+#1651010278
+getopt --version
+#1651010286
+getopt --h
+#1651010294
+getopt -h
+#1651010300
+getopt -V
+#1651010310
+getopt --help
+#1651010315
+getopt -help
+#1651010328
+hf getopt
+#1651010373
+getopt -v
+#1651010419
+/usr/local/opt/gnu-getopt/bin/getopt -V
+#1651010438
+! /usr/local/opt/gnu-getopt/bin/getopt --test
+#1651010445
+echo $PIPESTATUS[0]
+#1651011950
+python -v
+#1651011969
+python -V
+#1651026447
+test1.py --file=outfile -q
+#1651026554
+test1.py -h
+#1651027086
+test1.py -q
+#1651027103
+test1.py -f test.out -q
+#1651027115
+test1.py -f -q
+#1651027548
+test1.sh -vfd ./foo/bar/someFile -o /fizz/someOtherFile
+#1651027561
+getopt -V
+#1651027573
+getopt --test
