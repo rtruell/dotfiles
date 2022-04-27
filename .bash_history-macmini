@@ -15969,3 +15969,5 @@ test1.sh -vfd ./foo/bar/someFile -o /fizz/someOtherFile
 getopt -V
 #1651027573
 getopt --test
+#1651027783
+echo $HOMEBREW_PREFIX
