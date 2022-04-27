@@ -15971,3 +15971,103 @@ getopt -V
 getopt --test
 #1651027783
 echo $HOMEBREW_PREFIX
+#1651027957
+getopt --test
+#1651027964
+test1.sh -vfd ./foo/bar/someFile -o /fizz/someOtherFile
+#1651028135
+test1.sh -vd ./foo/bar/someFile -o -f
+#1651028180
+test1.sh -v --debug ./foo/bar/someFile -o -f
+#1651028696
+test1.sh -v --debug ./foo/bar/someFile -o -f -z
+#1651028770
+test1.sh -v --debug ./foo/bar/someFile -o -f -z dave
+#1651028829
+man getopt
+#1651029043
+man 3 getopt
+#1651029052
+man getopt 3
+#1651029090
+man bash
+#1651029118
+man 3 readline
+#1651029123
+man man
+#1651029209
+man getopt
+#1651029323
+man getopt.3
+#1651029591
+test1.sh -v --debug ./foo/bar/someFile -o -f -z dave
+#1651030202
+ls /usr/share/doc/util-linux
+#1651030217
+man getopt
+#1651030243
+ls /usr/share
+#1651030248
+ls /usr/share/doc
+#1651030278
+ls /usr/local/opt
+#1651030306
+path
+#1651030320
+ls /usr/local/opt/gun-getopt
+#1651030334
+ls /usr/local/opt/gnu-getopt
+#1651030351
+ls /usr/local/opt/gnu-getopt/share
+#1651030355
+ls /usr/local/opt/gnu-getopt/share/man
+#1651030359
+ls /usr/local/opt/gnu-getopt/share/man/man1
+#1651030427
+path -p manpath
+#1651030439
+path -p MANPATH
+#1651030504
+test1.sh -v --debug ./foo/bar/someFile -o -f -z dave
+#1651030549
+man getopt
+#1651030740
+test1.sh -v --debug ./foo/bar/someFile -o -f -z dave
+#1651030888
+man getopt
+#1651031920
+test1.sh -v --debug ./foo/bar/someFile -o -f -z dave
+#1651031986
+test1.sh -v --debug ./foo/bar/someFile -o -f -z
+#1651032041
+test1.sh -v --debug ./foo/bar/someFile -o -f -z -y
+#1651032405
+test1.sh -v --debug ./foo/bar/someFile -o -f -z -y | grep "invalid option"
+#1651032471
+test1.sh -v --debug ./foo/bar/someFile -o -f -z -y | grep "invalid option" | cut -d ' ' -f 4
+#1651032506
+test1.sh -v --debug ./foo/bar/someFile -o -f -z -y | grep dave
+#1651032514
+test1.sh -v --debug ./foo/bar/someFile -o -f -z -y
+#1651032621
+getopt --test
+#1651032624
+echo $?
+#1651033360
+test1.sh -v --debug ./foo/bar/someFile -o -f -z -y
+#1651033673
+man getopt
+#1651034612
+test1.sh -v --debug ./foo/bar/someFile -f -z -y -o
+#1651034758
+test1.sh -v --debug ./foo/bar/someFile -f -z -y -o | grep test1
+#1651034789
+test1.sh -v --debug ./foo/bar/someFile -f -z -y -o | grep ver
+#1651034814
+test1.sh -v --debug ./foo/bar/someFile -f -z -y -o 2> >(grep -i ver)
+#1651035109
+test1.sh -v --debug ./foo/bar/someFile -f -z -y -o
+#1651035672
+test1.sh -v --debug ./foo/bar/someFile -f -z -y -o 2>/dev/null
+#1651035712
+test1.sh -v --debug ./foo/bar/someFile -f -z -y -o
