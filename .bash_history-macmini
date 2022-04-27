@@ -16071,3 +16071,67 @@ test1.sh -v --debug ./foo/bar/someFile -f -z -y -o
 test1.sh -v --debug ./foo/bar/someFile -f -z -y -o 2>/dev/null
 #1651035712
 test1.sh -v --debug ./foo/bar/someFile -f -z -y -o
+#1651082523
+man getopt
+#1651082958
+test1.sh -v --debug ./foo/bar/someFile -f -z -y -o
+#1651082994
+test1.sh -v --debug ./foo/bar/someFile ./test.txt -f -z -y -o
+#1651084558
+test1.sh -v --debug ./foo/bar/someFile ./test.txt -f -z -y -o | grep invalid
+#1651084950
+test1.sh -v --debug ./foo/bar/someFile ./test.txt -f -z -y -o
+#1651085280
+man tr
+#1651085380
+test1.sh -v --debug ./foo/bar/someFile ./test.txt -f -z -y -o
+#1651085780
+trim
+#1651085874
+test1.sh -v --debug ./foo/bar/someFile ./test.txt -f -z -y -o
+#1651086228
+echo $invalid
+#1651086423
+test1.sh -v --debug ./foo/bar/someFile ./test.txt -f -z -y -o
+#1651087721
+test1.sh -v --debug ./foo/bar/someFile ./test.txt -x -f -z -y -o
+#1651088555
+test1.sh -v --debug ./foo/bar/someFile ./test.txt -extra -f -z -y -o
+#1651088573
+test1.sh -v --debug ./foo/bar/someFile ./test.txt --extra -f -z -y -o
+#1651091010
+man set
+#1651091281
+getopt --test
+#1651091283
+echo $?
+#1651091402
+test1.sh -v --debug ./foo/bar/someFile ./test.txt --extra -f -z -y -o
+#1651096993
+getopt --test
+#1651096998
+which getopt
+#1651097005
+whereis getopt
+#1651097016
+/usr/bin/getopt --test
+#1651097022
+echo $?
+#1651097040
+getopt --test
+#1651097042
+echo $?
+#1651097053
+/usr/bin/getopt --version
+#1651097072
+/usr/bin/getopt -V
+#1651097076
+/usr/bin/getopt -h
+#1651097080
+/usr/bin/getopt --help
+#1651097087
+/usr/bin/getopt
+#1651097089
+/usr/bin/getopt a
+#1651097113
+getopt -V
