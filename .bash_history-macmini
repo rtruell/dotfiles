@@ -16135,3 +16135,29 @@ echo $?
 /usr/bin/getopt a
 #1651097113
 getopt -V
+#1651113566
+man getopt
+#1651113630
+ls /usr/share/doc
+#1651113639
+man getopt
+#1651113657
+ls /usr/share/doc/bash
+#1651113675
+man getopt
+#1651114357
+ser | grep OPT
+#1651114367
+set | grep OPT
+#1651115228
+test1.sh -v --debug ./foo/bar/someFile ./test.txt --extra -f -z -y -o
+#1651115390
+bashman let
+#1651115403
+man let
+#1651115411
+man bash
+#1651115897
+test1.sh -v --debug ./foo/bar/someFile ./test.txt --extra -f -z -y -o
+#1651118000
+man bash
