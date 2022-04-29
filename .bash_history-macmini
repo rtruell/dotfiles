@@ -16207,3 +16207,133 @@ man bash
 bash -x test1.sh --verbose --debug ./foo/bar/someFile ./test.txt --extra --force -z -y --output
 #1651127264
 bash -x test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f -z -y -o
+#1651185725
+longopts="debug,force,output:,verbose,extra:"
+#1651185745
+shortopts="dfo:vx:"
+#1651185811
+longopts="debug,force,output:,verbose,extra:"
+#1651185826
+bash -x test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f -z -y -o
+#1651185842
+test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f -z -y -o
+#1651185890
+getopt --options=$shortopts --longoptions=$longopts --name "Test" -- "-v -d ./foo/bar/someFile ./test.txt -x -f -z -y -o"
+#1651185995
+getopt --options=$shortopts --longoptions=$longopts  -- "-v -d ./foo/bar/someFile ./test.txt -x -f -z -y -o"
+#1651186035
+getopt --options=$shortopts --longoptions=$longopts "-v -d ./foo/bar/someFile ./test.txt -x -f -z -y -o"
+#1651186176
+getopt --options=dfo:vx: --longoptions=debug,force,output:,verbose,extra: --name test1.sh -- -v -d ./foo/bar/someFile ./test.txt -x -f -z -y -o
+#1651186221
+getopt --options=dfo:vx: --longoptions=debug,force,output:,verbose,extra: --name test1.sh -- -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y --output
+#1651197247
+test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y --output
+#1651197357
+test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f -z -y --output
+#1651198937
+test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f -zoo -y --output
+#1651198971
+bash -x test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f -zoo -y --output
+#1651199163
+bash -x test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y --output
+#1651199616
+test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y --output
+#1651199905
+test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y -o
+#1651200075
+parsed='test1.sh: unrecognized option `--zoo'\''
+test1.sh: invalid option -- y
+test1.sh: option `--output'\'' requires an argument
+ -v -d -x '\''-f'\'' -- '\''./foo/bar/someFile'\'' '\''./test.txt'\'''
+#1651200085
+echo $parsed
+#1651200154
+grep requires <<< "${parsed}"
+#1651200201
+grep requires <<< "${parsed}" | cut -d ' ' -f 3
+#1651200242
+grep requires <<< "${parsed}" | cut -d ' ' -f 3 | tr -d [[:punct:]]
+#1651200392
+grep requires <<< "${parsed}" | if [[ `cut -d ' ' -f 3` == *"--"* ]]; then echo double; fi
+#1651200456
+grep requires <<< "${parsed}" | if [[ `cut -d ' ' -f 3` == *"--"* ]]; then cut -d ' ' -f 3 | tr -d [[:punct:]]; fi
+#1651200562
+grep requires <<< "${parsed}" | if [[ `cut -d ' ' -f 3` == *"--"* ]]; then cut -d ' ' -f 3; fi
+#1651201074
+cut -d ' ' -f 3 <<<"${parsed}"
+#1651201400
+grep requires <<< "${parsed}" | (if [[ `cut -d ' ' -f 3` == *"--"* ]]; then cut -d ' ' -f 3 | tr -d [[:punct:]]; fi)
+#1651201561
+test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y -o
+#1651201625
+echo $parsed
+#1651202143
+required="test1.sh: invalid option -- y
+test1.sh: option `--output'\'' requires an argument"
+
+#1651202182
+echo $required
+#1651202427
+required="test1.sh: option `--output' requires an argument
+test1.sh: option requires an argument -- o"
+eof
+
+#1651202526
+required=cat <<<EOF
+#1651202543
+required="cat <<<EOF
+test1.sh: option requires an argument -- o
+test1.sh: option `--output' requires an argument
+EOF
+
+#1651202582
+test1.sh: option `--output' requires an argument
+#1651202602
+test1.sh: option requires an argument -- o
+#1651202711
+echo $parsed
+#1651203001
+test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y -o
+#1651203035
+test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y -output
+#1651203217
+test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y -o
+#1651203822
+echo $noarg
+#1651203848
+noarg="grep "option requires" <<< "${parsed}""
+#1651203877
+noarg="grep "option requires" <<< ${parsed}"
+#1651203912
+echo $noarg
+#1651203967
+noarg=`grep "option requires" <<< "${parsed}"`
+#1651203971
+echo $noarg
+#1651203988
+echo $parsed
+#1651204078
+cut -d ' ' -f 3 <<<"${parsed}"
+#1651204267
+noarg=`grep "requires" <<< "${parsed}"`
+#1651204294
+echo $noarg
+#1651204383
+cut -d ' ' -f 3 <<< "${noarg}"
+#1651204764
+cut -d ' ' -f 3 <<< "${noarg}" | tr -d [[:punct:]]
+#1651204892
+noarg1=""--`cut -d ' ' -f 3 | tr -d [[:punct:]]`"
+#1651204935
+noarg1=""--`cut -d ' ' -f 3 <<< "${noarg}" | tr -d [[:punct:]]`"
+#1651204968
+noarg1="--`cut -d ' ' -f 3 <<< "${noarg}" | tr -d [[:punct:]]`"
+#1651204978
+echo $noarg1
+#1651206379
+test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y -output
+#1651206388
+test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y -o
+#1651206673
+test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y -output
