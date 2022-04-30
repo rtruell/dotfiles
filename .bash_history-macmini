@@ -16337,3 +16337,294 @@ test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y -output
 test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y -o
 #1651206673
 test1.sh -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y -output
+#1651253612
+optparser -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y -output
+#1651253620
+optparser -v -d ./foo/bar/someFile ./test.txt -x -f --z -y -output
+#1651253632
+optparser -v -d ./foo/bar/someFile ./test.txt -x -f -z -y -output
+#1651253646
+optparser -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y -o
+#1651254271
+optparser -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y --output
+#1651254416
+optparser -v -d ./foo/bar/someFile ./test.txt --extra --force --zoo -y --output
+#1651254480
+optparser -v -d ./foo/bar/someFile ./test.txt --extra --force --zoo -y -o
+#1651256162
+optparser -v -d ./foo/bar/someFile ./test.txt --extra --force -z -y -o
+#1651256196
+bash -x optparser -v -d ./foo/bar/someFile ./test.txt --extra --force -z -y -o
+#1651256765
+echo $parsed
+#1651256768
+parsed='optparser: invalid option -- z
+optparser: invalid option -- y
+optparser: option requires an argument -- o
+ -v -d --extra '\''--force'\'' -- '\''./foo/bar/someFile'\'' '\''./test.txt'\'''
+#1651256774
+optparser: option requires an argument -- o
+#1651256789
+echo $parsed
+#1651256857
+grep invalid <<< "${parsed}"
+#1651256876
+grep unrecognized <<< "${parsed}"
+#1651257284
+echo $unknown
+#1651257309
+unknown=`grep invalid <<< "${parsed}"`
+#1651257384
+if [[ -n "${unknown}" ]]; then echo full; else echo empty; fi
+#1651257407
+unknown=`grep unrecognized <<< "${parsed}"`
+#1651257411
+if [[ -n "${unknown}" ]]; then echo full; else echo empty; fi
+#1651257435
+echo ">$unknown<"
+#1651257549
+unknown=`grep invalid <<< "${parsed}"`
+#1651257555
+if [[ -n "${unknown}" ]]; then echo full; else echo empty; fi
+#1651257559
+echo ">$unknown<"
+#1651258489
+optparser -v -d ./foo/bar/someFile ./test.txt --extra --force -z -y -o
+#1651258508
+bash -x optparser -v -d ./foo/bar/someFile ./test.txt --extra --force -z -y -o
+#1651258854
+optparser -v -d ./foo/bar/someFile ./test.txt --extra --force -zoo -y -o
+#1651258869
+bash -x optparser -v -d ./foo/bar/someFile ./test.txt --extra --force -zoo -y -o
+#1651258920
+bash -x optparser -v -d ./foo/bar/someFile ./test.txt --extra --force --zoo -y -o
+#1651259425
+optparser -v -d ./foo/bar/someFile ./test.txt --extra --force -zoo -y -o
+#1651259436
+optparser -v -d ./foo/bar/someFile ./test.txt --extra --force -z -y -o
+#1651259449
+optparser -v -d ./foo/bar/someFile ./test.txt --extra --force --zoo -y -o
+#1651259892
+optparser -v -d ./foo/bar/someFile ./test.txt --extra --force --zoo -y --output
+#1651259991
+optparser -v -d ./foo/bar/someFile ./test.txt --extra --force -z -y --output
+#1651260035
+bash -x optparser -v -d ./foo/bar/someFile ./test.txt --extra --force -z -y --output
+#1651260268
+bash -x optparser -v -d ./foo/bar/someFile ./test.txt --extra --force --zoo --yes --output
+#1651260383
+man bash
+#1651260394
+bashman set
+#1651261117
+dotfiles
+#1651261123
+findtext nounset
+#1651261187
+findtext "set -o"
+#1651261226
+less .exports
+#1651261319
+bashman set
+#1651261917
+optparser -v -d ./foo/bar/someFile ./test.txt --extra --force -z -y --output
+#1651262012
+optparser -v -d ./foo/bar/someFile ./test.txt --extra --force -z -y -o
+#1651262151
+optparser -v -d ./foo/bar/someFile ./test.txt --extra --force --zoo -y -o
+#1651262201
+optparser -v -d ./foo/bar/someFile ./test.txt --extra --force --zoo --yes -o
+#1651262869
+optparser -v -d ./foo/bar/someFile ./test.txt --extra --force --zoo --yes --output
+#1651262892
+optparser -v -d ./foo/bar/someFile ./test.txt -x --force --zoo --yes -o
+#1651264290
+hl
+#1651264294
+hl -h
+#1651264303
+lf hl
+#1651264322
+hl # 20
+#1651264344
+hl $ 20
+#1651264353
+hl # 20
+#1651264369
+hl - 20
+#1651264435
+optparser -v -d ./foo/bar/someFile ./test.txt -x --force --zoo --yes -o
+#1651265041
+home
+#1651265067
+optparser -v -d ./foo/bar/someFile ./test.txt -x --force --zoo --yes -o
+#1651267084
+bashman tests
+#1651267469
+optparser -v -d ./foo/bar/someFile ./test.txt -x --force --zoo --yes -o
+#1651267583
+echo $option
+#1651267600
+option="--dave"
+#1651267604
+echo $option
+#1651267627
+echo ${#option}
+#1651267702
+if [[ ${#option} >= 3 ]]; then echo bigger; else echo smaller; fi
+#1651267734
+if [[ ${#option} >= "3" ]]; then echo bigger; else echo smaller; fi
+#1651267744
+if [[ "${#option}" >= "3" ]]; then echo bigger; else echo smaller; fi
+#1651268053
+if [[ ${#option} -ge 3 ]]; then echo bigger; else echo smaller; fi
+#1651268140
+optparser -v -d ./foo/bar/someFile ./test.txt -x --force --zoo --yes -o
+#1651268307
+optparser --verbose --debug ./foo/bar/someFile ./test.txt -x --force --zoo --yes --output
+#1651268321
+optparser --verbose --debug ./foo/bar/someFile ./test.txt --extra --force --zoo --yes --output
+#1651268558
+optparser -v -d ./foo/bar/someFile ./test.txt -x -f -z -y -o
+#1651268730
+optparser -v -d -o ./foo/bar/someFile ./test.txt -x -f -z -y
+#1651269703
+man eval
+#1651270877
+optparser -v -d -o ./foo/bar/someFile ./test.txt -x -f -z -y
+#1651272619
+optparser -v -d --output ./foo/bar/someFile ./test.txt -x -force -z -y
+#1651273486
+optparser -v -d ./foo/bar/someFile ./test.txt -x -force -z -y -o
+#1651273525
+optparser -v -d ./foo/bar/someFile ./test.txt -x --force --zoo --yes -o
+#1651273594
+optparser -v -d ./foo/bar/someFile ./test.txt -x -f -z -y -o
+#1651282792
+optparser -v -d ./foo/bar/someFile ./test.txt -x -f --zoo -y -o
+#1651284152
+man eval
+#1651284411
+optparser -v -d ./foo/bar/someFile ./test.txt -x --force --zoo -y -o
+#1651284429
+optparser -v --debug ./foo/bar/someFile ./test.txt -x --force --zoo -y -o
+#1651285141
+man bash
+#1651285441
+optparser -v --debug ./foo/bar/someFile ./test.txt -x --force --zoo -y -o
+#1651286579
+optparser -v --debug ./foo/bar/someFile ./test.txt -x -f --zoo -y -o
+#1651287497
+parsed='optparser: invalid option -- z
+optparser: invalid option -- y
+optparser: option requires an argument -- o
+ -v -d --extra '\''--force'\'' -- '\''./foo/bar/someFile'\'' '\''./test.txt'\'''
+#1651287511
+echo $parsed
+#1651287552
+shortunknown=`grep invalid <<< "${parsed}"`
+#1651287561
+echo $shortunknown
+#1651287592
+cut -d ' ' -f 5 <<< "${shortunknown}" | tr '\n' ' ' | sed -e 's, $,,' -e 's, , -,'`
+#1651287617
+cut -d ' ' -f 5 <<< "${shortunknown}" | tr '\n' ' ' | sed -e 's, $,,' -e 's, , -,'
+#1651287640
+cut -d ' ' -f 5 <<< "${shortunknown}" 
+#1651287681
+cut -d ' ' -f 5 <<< "${shortunknown}" | tr '\n' ' '
+#1651287729
+cut -d ' ' -f 5 <<< "${shortunknown}" | tr '\n' ' ' | sed -e 's, $,,'
+#1651287752
+cut -d ' ' -f 5 <<< "${shortunknown}" | tr '\n' ' ' | sed -e 's, $,,' -e 's, , -,'
+#1651287833
+noarg=`grep "requires" <<< "${parsed}"`
+#1651287840
+echo $noarg
+#1651287865
+cut -d ' ' -f 7 <<< "${noarg}" | tr '\n' ' ' | sed -e 's, $,,' -e 's, , -,'
+#1651287881
+cut -d ' ' -f 7 <<< "${noarg}" 
+#1651287943
+cut -d ' ' -f 7 <<< "${noarg}" | tr '\n' ' ' 
+#1651287961
+cut -d ' ' -f 7 <<< "${noarg}" | tr '\n' ' ' | sed -e 's, $,,'
+#1651288080
+parsed='test1.sh: unrecognized option `--zoo'\''
+test1.sh: invalid option -- y
+test1.sh: option `--output'\'' requires an argument
+ -v -d -x '\''-f'\'' -- '\''./foo/bar/someFile'\'' '\''./test.txt'\'''
+#1651288097
+echo $parsed
+#1651288165
+shortunknown=`grep invalid <<< "${parsed}"`
+#1651288211
+echo $shortunknown
+#1651288225
+shortunknown="`cut -d ' ' -f 5 <<< "${shortunknown}" | tr '\n' ' ' | sed -e 's, $,,'`"
+#1651288228
+echo $shortunknown
+#1651288253
+longunknown=`grep unrecognized <<< "${parsed}"`
+#1651288261
+echo $longunknown
+#1651288284
+printf $shortunknown
+#1651288295
+printf $longunknown
+#1651288364
+cut -d ' ' -f 4 <<< "${longunknown}" | tr -d [[:punct:]] | tr '\n' ' ' | sed -e 's, $,,' -e 's, , --,'
+#1651288381
+cut -d ' ' -f 4 <<< "${longunknown}" 
+#1651288396
+cut -d ' ' -f 4 <<< "${longunknown}" | tr -d [[:punct:]] 
+#1651288415
+cut -d ' ' -f 4 <<< "${longunknown}" | tr -d [[:punct:]] | tr '\n' ' ' 
+#1651288438
+cut -d ' ' -f 4 <<< "${longunknown}" | tr -d [[:punct:]] | tr '\n' ' ' | sed -e 's, $,,'
+#1651288514
+noarg=`grep "requires" <<< "${parsed}"`
+#1651288518
+echo $noarg
+#1651288599
+cut -d ' ' -f 3 <<< "${noarg}" | tr -d [[:punct:]] | tr '\n' ' ' | sed -e 's, $,,' -e 's, , -,'
+#1651288609
+cut -d ' ' -f 3 <<< "${noarg}" 
+#1651288628
+cut -d ' ' -f 3 <<< "${noarg}" | tr -d [[:punct:]] 
+#1651288648
+cut -d ' ' -f 3 <<< "${noarg}" | tr -d [[:punct:]] | tr '\n' ' '
+#1651288672
+cut -d ' ' -f 3 <<< "${noarg}" | tr -d [[:punct:]] | tr '\n' ' ' | sed -e 's, $,,'
+#1651288681
+cut -d ' ' -f 3 <<< "${noarg}" | tr -d [[:punct:]] | tr '\n' ' '
+#1651288691
+cut -d ' ' -f 3 <<< "${noarg}" | tr -d [[:punct:]] | tr '\n' ''
+#1651288822
+optparser -v --debug ./foo/bar/someFile ./test.txt -x -f --zoo -y -o
+#1651288900
+optparser -v --debug ./foo/bar/someFile ./test.txt -x -f --zoo -y --output
+#1651289057
+optparser -v --debug ./foo/bar/someFile ./test.txt --extra -f --zoo -y --output
+#1651289100
+optparser -v --debug ./foo/bar/someFile ./test.txt --extra -f -z -y --output
+#1651289921
+optparser -v --debug ./foo/bar/someFile ./test.txt -x -f -z -y -o
+#1651289969
+optparser -v --debug ./foo/bar/someFile ./test.txt -x -f --zoo -y -o
+#1651290022
+optparser -v --debug ./foo/bar/someFile ./test.txt -x -f --zoo --yes -o
+#1651290119
+optparser -v --debug ./foo/bar/someFile ./test.txt -o -f --zoo --yes -x
+#1651290380
+trim -:
+#1651290410
+optparser -v --debug ./foo/bar/someFile ./test.txt -o -f --zoo --yes -x
+#1651290987
+optparser -v --debug ./foo/bar/someFile ./test.txt -o -f --zoo --yes --extra
+#1651291004
+optparser -v --debug ./foo/bar/someFile ./test.txt --output -f --zoo --yes --extra
+#1651291016
+optparser -v --debug ./foo/bar/someFile ./test.txt --output -f --zoo -y --extra
+#1651291033
+optparser -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
