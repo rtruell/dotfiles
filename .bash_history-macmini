@@ -16640,3 +16640,145 @@ findtext -i perl
 set | grep -i perl
 #1651337610
 less .aliases
+#1651337788
+dotfiles
+#1651337797
+findtext -i perl
+#1651337908
+home
+#1651337959
+/Volumes/ExternalHome/rtruell/dotfiles-extras/
+#1651337984
+ls .
+#1651337995
+findtext -i perl
+#1651338112
+perl -V
+#1651338128
+perl -v
+#1651338142
+findtext -i perl5lib
+#1651338177
+echo $PERL5LIB
+#1651338209
+set | grep -i perl
+#1651338418
+findtext -i externalhome
+#1651338725
+home
+#1651338749
+optparser -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651340019
+man eval
+#1651340297
+optparser -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651343189
+echo $longopts
+#1651343207
+longopts="debug,force,output:,verbose,extra:"
+#1651343212
+shortopts="dfo:vx:"
+#1651343216
+echo $longopts
+#1651343227
+echo $shortopts
+#1651343308
+optparser "${longopts}" "${shortopts}" -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651345063
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651345575
+man typeset
+#1651346175
+lf findtext
+#1651346202
+findtext
+#1651346241
+dotfiles
+#1651346245
+cd bin
+#1651346258
+findtext -i optparser test.sh
+#1651346471
+home
+#1651346719
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651346751
+man typeset
+#1651346847
+listpath
+#1651346866
+listpath -p MANPATH
+#1651346870
+path
+#1651346919
+less dotfiles/.exports
+#1651346957
+man set
+#1651347061
+echo $-
+#1651347075
+set -o +u
+#1651347104
+echo $-
+#1651347121
+path
+#1651347147
+path -p MANPATH
+#1651347160
+alias path
+#1651347188
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651347567
+listpath -h
+#1651347679
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651348028
+echo $optparser_shift_args
+#1651348136
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651348230
+echo $optparser_shift_args
+#1651349223
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651349605
+type optparser1
+#1651349622
+s bin/optparser1
+#1651349628
+s bin/test1
+#1651349631
+type optparser1
+#1651349655
+test1 -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651350216
+s bin/optparser1.function
+#1651350225
+s bin/test1.function
+#1651350228
+test1 -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651350439
+s bin/test1.function
+#1651350441
+test1 -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651350814
+test -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651350826
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651350977
+lf optparser1
+#1651351010
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651351103
+type listpath
+#1651351111
+man type
+#1651351130
+type -t listpath
+#1651351138
+type -t optparser
+#1651351145
+type -t test
+#1651351153
+type -t test.sh
+#1651351158
+type -t optparser1
