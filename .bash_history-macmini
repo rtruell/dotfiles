@@ -16782,3 +16782,7 @@ type -t test
 type -t test.sh
 #1651351158
 type -t optparser1
+#1651351398
+type -t optparser
+#1651351411
+lf optparser
