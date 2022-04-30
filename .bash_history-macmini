@@ -16628,3 +16628,15 @@ optparser -v --debug ./foo/bar/someFile ./test.txt --output -f --zoo --yes --ext
 optparser -v --debug ./foo/bar/someFile ./test.txt --output -f --zoo -y --extra
 #1651291033
 optparser -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651337263
+dotfiles
+#1651337274
+findtext perl5lib
+#1651337295
+findtext -i perl5lib
+#1651337426
+findtext -i perl
+#1651337501
+set | grep -i perl
+#1651337610
+less .aliases
