@@ -16786,3 +16786,157 @@ type -t optparser1
 type -t optparser
 #1651351411
 lf optparser
+#1651351510
+type -t optparser
+#1651351521
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651353120
+echo $optparer_non_option_args
+#1651353147
+echo $optparser_non_option_args
+#1651353208
+optparser_non_option_args="./foo/bar/someFile ./test.txt"
+#1651353215
+echo $optparser_non_option_args
+#1651353259
+tr ' ' '\n' >>> $optparser_non_option_args
+#1651353268
+tr ' ' '\n' <<< $optparser_non_option_args
+#1651353284
+type -t tr
+#1651353317
+man bash
+#1651353422
+type -t tr
+#1651353424
+man bash
+#1651353505
+${optparser_non_option_args#" "}
+#1651353510
+ehco ${optparser_non_option_args#" "}
+#1651353517
+echo ${optparser_non_option_args#" "}
+#1651353535
+echo ${optparser_non_option_args# }
+#1651353552
+echo ${optparser_non_option_args#.* }
+#1651353566
+echo ${optparser_non_option_args%.* }
+#1651353586
+man bash
+#1651353626
+echo ${optparser_non_option_args#.* }
+#1651353643
+echo ${optparser_non_option_args% .*}
+#1651353656
+echo $optparser_non_option_args
+#1651353688
+man bash
+#1651353786
+echo ${optparser_non_option_args/ /\n}
+#1651353800
+man bash
+#1651354169
+echo ${optparser_non_option_args/[:space:]/\n}
+#1651354184
+echo ${optparser_non_option_args/[:space:]/&}
+#1651354278
+echo ${optparser_non_option_args}
+#1651354287
+echo ${optparser_non_option_args/[:space:]/&}
+#1651354298
+man bash
+#1651356648
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651356901
+s dotfiles/functions/optparser.function
+#1651356909
+s dotfiles/.functions/optparser.function
+#1651356915
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651360130
+s dotfiles/.functions/optparser.function
+#1651360140
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651371202
+s dotfiles/.functions/optparser.function
+#1651371206
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651371896
+s dotfiles/.functions/optparser.function
+#1651371901
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651372078
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f --zoo -y -x
+#1651375102
+ipcalc
+#1651375107
+b s ipcalc
+#1651375131
+b i ipcalc
+#1651375144
+b h ipcalc
+#1651378177
+s dotfiles/.functions/optparser.function
+#1651378191
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651379197
+s dotfiles/.functions/optparser.function
+#1651379202
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651379369
+s dotfiles/.functions/optparser.function
+#1651379373
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651379674
+s dotfiles/.functions/optparser.function
+#1651379676
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651379744
+s dotfiles/.functions/optparser.function
+#1651379745
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651380589
+s dotfiles/.functions/optparser.function
+#1651380605
+cls;test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651380776
+cls;test.sh --verbose --debug ./foo/bar/someFile ./test.txt --output --force --z00 --yes --extra
+#1651380817
+cls;test.sh -v --debug ./foo/bar/someFile ./test.txt --output --force --z00 --yes --extra
+#1651380831
+cls;test.sh --verbose --debug ./foo/bar/someFile ./test.txt --output --force --z00 --yes --extra
+#1651380904
+cls;test.sh -v -d ./foo/bar/someFile ./test.txt -o -f -z -y -x
+#1651380919
+cls;test.sh -v -d ./foo/bar/someFile ./test.txt -o -f -z -y --extra
+#1651380926
+cls;test.sh -v -d ./foo/bar/someFile ./test.txt -o -f -z -y -x
+#1651381002
+s dotfiles/.functions/optparser.function
+#1651381005
+cls;test.sh -v -d ./foo/bar/someFile ./test.txt -o -f -z -y -x
+#1651381429
+s dotfiles/.functions/optparser.function
+#1651381434
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f -z -y --extra
+#1651381477
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f --zoo -y --extra
+#1651381492
+test.sh -v --debug ./foo/bar/someFile ./test.txt --output -f
+#1651381514
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
+#1651381634
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f -z
+#1651381650
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f -z --yes
+#1651381662
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
+#1651381999
+bashman case
+#1651382007
+man bash
+#1651382599
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt
+#1651382851
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
