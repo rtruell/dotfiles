@@ -16940,3 +16940,7 @@ man bash
 test.sh -v --debug --output ./foo/bar/someFile ./test.txt
 #1651382851
 test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
+#1651430546
+ls /
+#1651430553
+ll /
