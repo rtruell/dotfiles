@@ -17004,3 +17004,37 @@ test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
 test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f --zoo
 #1651463457
 test.sh -v --debug ./foo/bar/someFile ./test.txt -f
+#1651488312
+bash-getopt-example.sh
+#1651488502
+type -t in-list
+#1651488655
+bash-getopt-example.sh -f
+#1651488930
+bash-getopt-example.sh -h
+#1651488941
+bash-getopt-example.sh --help
+#1651489169
+echo $BASH_REMATCH
+#1651489185
+man bash
+#1651490180
+inlist 'test' "this is a test"
+#1651490192
+in-list 'test' "this is a test"
+#1651490367
+DEBUG=1
+#1651490375
+bash-getopt-example.sh --help
+#1651490391
+bash -x bash-getopt-example.sh --help
+#1651490652
+ls .functions
+#1651490670
+./.functions/bash-getopt.function
+#1651490693
+bash ./.functions/bash-getopt.function
+#1651490805
+bash-getopt-example.sh --help
+#1651490896
+bash -x bash-getopt-example.sh --help
