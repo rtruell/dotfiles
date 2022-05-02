@@ -16944,3 +16944,63 @@ test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
 ls /
 #1651430553
 ll /
+#1651459425
+set | grep optparser
+#1651459579
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
+#1651459594
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f -zoo
+#1651459610
+set | grep optparser
+#1651459635
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f -zoo
+#1651459647
+set | grep optparser
+#1651459652
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
+#1651459656
+set | grep optparser
+#1651459700
+env
+#1651459712
+env | grep optparser
+#1651459745
+set | grep optparser
+#1651460088
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
+#1651460481
+man case
+#1651460496
+type -t case
+#1651460501
+bashman type
+#1651460517
+bashman case
+#1651460524
+man case
+#1651460531
+bashman case
+#1651460540
+man bash'
+#1651460546
+man bash
+#1651461199
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
+#1651462929
+s .functions/optparser.function
+#1651462932
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
+#1651462986
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f --zoo
+#1651463094
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
+#1651463306
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f --zoo
+#1651463365
+s .functions/optparser.function
+#1651463370
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
+#1651463411
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f --zoo
+#1651463457
+test.sh -v --debug ./foo/bar/someFile ./test.txt -f
