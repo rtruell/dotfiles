@@ -17038,3 +17038,133 @@ bash ./.functions/bash-getopt.function
 bash-getopt-example.sh --help
 #1651490896
 bash -x bash-getopt-example.sh --help
+#1651491101
+type -t in-line
+#1651491115
+bash-getopt-example.sh -help
+#1651491248
+man bash
+#1651491265
+bashman read
+#1651491421
+bash -x bash-getopt-example.sh -help
+#1651491550
+man bash
+#1651491862
+bash-getopt-example.sh -help
+#1651492113
+bash -x bash-getopt-example.sh -help
+#1651492150
+bash-getopt-example.sh -help
+#1651492167
+bash -x bash-getopt-example.sh -help
+#1651492251
+bash-getopt-example.sh -help
+#1651493547
+bash -x bash-getopt-example.sh -help
+#1651493651
+bashman local
+#1651493862
+bash-getopt-example.sh -help
+#1651493878
+bash-getopt-example.sh
+#1651493891
+bash-getopt-example.sh -f -bar
+#1651493901
+bash-getopt-example.sh -f --bar
+#1651494135
+bash-getopt-example.sh -f --bar -z
+#1651495379
+bash -x bash-getopt-example.sh -f --bar -z
+#1651495558
+bash-getopt-example.sh -f --bar -z
+#1651495600
+bash -x bash-getopt-example.sh -f --bar -z
+#1651495734
+bash-getopt-example.sh -f --bar -z
+#1651495790
+echo $optdefs
+#1651495801
+optdefs="FOO=f|foo:NAME "wibble" "this is a description for the option. it can span
+#1651495867
+echo $optdefs
+#1651495917
+optdefs="FOO=f|foo:NAME "$foo_dflt" "this is a description for the option. it can span
+#1651495955
+man bash
+#1651496291
+bash-getopt-example.sh -f --bar -z
+#1651497809
+man read
+#1651499279
+arrayClone
+#1651499701
+man read
+#1651500705
+bash-getopt-example.sh -f --bar -z
+#1651500898
+man read
+#1651501178
+bash-getopt-example.sh -f --bar -z
+#1651501539
+type -t in-line
+#1651516934
+bash-getopt-example.sh -f --bar -z
+#1651516952
+bash -x bash-getopt-example.sh -f --bar -z
+#1651517545
+man bash
+#1651518921
+bash-getopt-example.sh -f --bar -z
+#1651519825
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f --zoo
+#1651519835
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
+#1651519986
+echo $var
+#1651519993
+var="optparser_debug=1"
+#1651519995
+echo $var
+#1651520023
+var="optparser_debug=1" | tr '[:punct:] ' '
+#1651520038
+var="optparser_debug=1" | tr '[:punct:]' ' '
+#1651520051
+var="optparser_debug=1"
+#1651520057
+echo $var
+#1651520077
+echo $var | tr '[:punct:]' ' '
+#1651520118
+var="optparser_output=./foo/bar/someFile"
+#1651520122
+echo $var | tr '[:punct:]' ' '
+#1651520330
+echo $var | tr 'optparser_' ''
+#1651520415
+echo $var
+#1651520679
+echo ${var/optparser_/}
+#1651520858
+echo ${var/=*/}
+#1651521689
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
+#1651522659
+test.sh -v --debug ./foo/bar/someFile ./test.txt -f
+#1651523578
+test.sh -v --debug -o ./foo/bar/someFile ./test.txt -f
+#1651523612
+test.sh -v --debug -o -h ./foo/bar/someFile ./test.txt -f
+#1651523626
+test.sh -v --debug -o ./foo/bar/someFile ./test.txt -h -f
+#1651523720
+test.sh -h
+#1651523974
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
+#1651526449
+man bash
+#1651527059
+man declare
+#1651529030
+test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
