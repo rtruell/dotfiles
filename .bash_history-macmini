@@ -17210,3 +17210,11 @@ bin/bash-getopt-example.sh -d -c -g -f --alpha --beta --charlie
 bin/bash-getopt-example.sh -f --bar -z
 #1651616323
 bin/bash-getopt-example.sh -d -c -g --alpha --beta --charlie --foo
+#1651616885
+type -t bash_getopt
+#1651616894
+type -t bash-getopt
+#1651616902
+bin/bash-getopt-example.sh -d -c -g --alpha --beta --charlie --foo
+#1651616921
+bin/bash-getopt-example.sh -h
