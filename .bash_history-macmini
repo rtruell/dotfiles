@@ -17168,3 +17168,45 @@ man bash
 man declare
 #1651529030
 test.sh -v --debug --output ./foo/bar/someFile ./test.txt -f
+#1651612672
+bin/bash-getopt-example.sh
+#1651612781
+bin/bash-getopt-example.sh -z
+#1651612957
+bin/bash-getopt-example.sh -b
+#1651613002
+bin/bash-getopt-example.sh --foo
+#1651613077
+bin/bash-getopt-example.sh --foo dave
+#1651613139
+echo $FOO
+#1651613186
+bin/bash-getopt-example.sh --foo dave
+#1651613215
+bin/bash-getopt-example.sh -b
+#1651613227
+bin/bash-getopt-example.sh --foo
+#1651613240
+bash -x bin/bash-getopt-example.sh --foo
+#1651613362
+bin/bash-getopt-example.sh --foo
+#1651613986
+bin/bash-getopt-example.sh -d
+#1651614001
+bin/bash-getopt-example.sh -d --foo
+#1651614505
+man column
+#1651615463
+bin/bash-getopt-example.sh -h
+#1651615508
+bin/bash-getopt-example.sh -d -c -f --foo --alpha --beta
+#1651615556
+bin/bash-getopt-example.sh -d -c -f --alpha --beta --charlie --foo
+#1651615608
+bin/bash-getopt-example.sh -d -c -g --alpha --beta --charlie --foo
+#1651615766
+bin/bash-getopt-example.sh -d -c -g -f --alpha --beta --charlie
+#1651615817
+bin/bash-getopt-example.sh -f --bar -z
+#1651616323
+bin/bash-getopt-example.sh -d -c -g --alpha --beta --charlie --foo
