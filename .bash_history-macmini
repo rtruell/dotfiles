@@ -17218,3 +17218,81 @@ type -t bash-getopt
 bin/bash-getopt-example.sh -d -c -g --alpha --beta --charlie --foo
 #1651616921
 bin/bash-getopt-example.sh -h
+#1651617041
+type -t bash-getopt
+#1651617045
+bin/bash-getopt-example.sh -h
+#1651617052
+bin/bash-getopt-example.sh -d -c -g --alpha --beta --charlie --foo
+#1651617189
+bin/bash-getopt-example.sh -f dave --bar -z
+#1651617218
+bin/bash-getopt-example.sh -f dave --bar mary -z rick tom harry
+#1651617258
+bin/bash-getopt-example.sh -foo dave --bar mary -z rick tom harry
+#1651617293
+bin/bash-getopt-example.sh -foo=dave -b mary -z rick tom harry
+#1651617318
+bin/bash-getopt-example.sh --foo=dave -b mary -z rick tom harry
+#1651617328
+bin/bash-getopt-example.sh --foo dave -b mary -z rick tom harry
+#1651617359
+bin/bash-getopt-example.sh --foo dave -b=mary -z rick tom harry
+#1651617386
+bin/bash-getopt-example.sh -f dave -b=mary -z rick tom harry
+#1651617406
+bin/bash-getopt-example.sh -f dave -b mary -z rick tom harry
+#1651617431
+bin/bash-getopt-example.sh -f dave --bar mary -z rick tom harry
+#1651617654
+bin/bash-getopt-example.sh -f dave --bar mary rick tom harry
+#1651629893
+bin/bash-getopt-example.sh -h
+#1651629920
+man column
+#1651630141
+bin/bash-getopt-example.sh -h
+#1651630317
+column -t <<< "this is a description for the option. it can span multiple lines.n foo has a single : so it requires a value when used."
+#1651630333
+column -c 80 <<< "this is a description for the option. it can span multiple lines.n foo has a single : so it requires a value when used."
+#1651630339
+column -c 20 <<< "this is a description for the option. it can span multiple lines.n foo has a single : so it requires a value when used."
+#1651630369
+man column
+#1651630407
+column -c20 <<< "this is a description for the option. it can span multiple lines.n foo has a single : so it requires a value when used."
+#1651630447
+bin/bash-getopt-example.sh -h
+#1651630778
+echo help_text
+#1651630785
+echo $help_text
+#1651630824
+help_text="$( column -t <<< "this is a description for the option. it can span multiple lines.n foo has a single : so it requires a value when used." )"
+#1651630844
+echo $help_text
+#1651630856
+$help_text
+#1651630991
+cat <<END_USAGE  usage: \$0 [options] $help_text END_USAGE
+#1651631084
+cat $help_text
+#1651631276
+help_text="$( column -s '' -t <<< "this is a description for the option. it can span multiple lines.n foo has a single : so it requires a value when used." )"
+#1651631733
+bin/bash-getopt-example.sh -h
+#1651633404
+bin/bash-getopt-example.sh -f dave --bar mary -z rick tom harry
+#1651633429
+bin/bash-getopt-example.sh -d -c -g --alpha --beta --charlie --foo
+#1651633655
+bin/bash-getopt-example.sh -d -c -g --alpha --beta --charlie -f
+#1651634012
+echo $ZIP
+#1651635436
+test.sh
+#1651636038
+man read
+#1651636171
+test.sh
