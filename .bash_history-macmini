@@ -17296,3 +17296,245 @@ test.sh
 man read
 #1651636171
 test.sh
+#1651686700
+test.sh -f
+#1651687008
+s ./.functions/optparser.function
+#1651687011
+test.sh -f
+#1651688363
+man local
+#1651688388
+man declare
+#1651689227
+s ./.functions/optparser.function
+#1651689232
+test.sh -f
+#1651689274
+s ./.functions/optparser.function
+#1651689275
+test.sh -f
+#1651689583
+s ./.functions/optparser.function
+#1651689585
+test.sh -f
+#1651690032
+s ./.functions/optparser.function
+#1651690035
+test.sh -f
+#1651690085
+s ./.functions/optparser.function
+#1651690087
+test.sh -f
+#1651690286
+s ./.functions/optparser.function
+#1651690290
+test.sh -f
+#1651690828
+s ./.functions/optparser.function
+#1651690831
+test.sh -f
+#1651691397
+s ./.functions/optparser.function
+#1651691399
+test.sh -f
+#1651691480
+s ./.functions/optparser.function
+#1651691482
+test.sh -f
+#1651691506
+test.sh -v -h -f
+#1651691649
+test.sh -v -h -f -o
+#1651691687
+test.sh -v -h -f --output
+#1651691745
+test.sh -v -h -f --output -d
+#1651691846
+test.sh -v -h -f --output -d -z --yes
+#1651691883
+test.sh -v -h -f -o -d -z --yes
+#1651692514
+test.sh -v -help -f -o --debug -z --yes
+#1651692548
+test.sh -v --help -f -o --debug -z --yes
+#1651693519
+s ./.functions/optparser.function
+#1651693521
+test.sh -v --help -f -o --debug -z --yes
+#1651693589
+s ./.functions/optparser.function
+#1651693591
+test.sh -v --help -f -o --debug -z --yes
+#1651693693
+test.sh -v --help -f -o file --debug -z --yes
+#1651693956
+s ./.functions/optparser.function
+#1651693961
+test.sh -v --help -f -o file --debug -z --yes
+#1651694102
+s ./.functions/optparser.function
+#1651694103
+test.sh -v --help -f -o file --debug -z --yes
+#1651694372
+s ./.functions/optparser.function
+#1651694374
+test.sh -v --help -f -o file --debug -z --yes
+#1651694693
+s ./.functions/optparser.function
+#1651694695
+test.sh -v --help -f -o file --debug -z --yes
+#1651694943
+s ./.functions/optparser.function
+#1651694944
+test.sh -v --help -f -o file --debug -z --yes
+#1651695025
+s ./.functions/optparser.function
+#1651695029
+test.sh -v --help -f -o file --debug -z --yes
+#1651695221
+s ./.functions/optparser.function
+#1651695224
+test.sh -v --help -f -o file --debug -z --yes
+#1651695263
+test.sh -v --help -f -o --debug -z --yes
+#1651695337
+test.sh -v --help -f -o --debug -z --yes -x
+#1651695521
+test.sh -v --help --extra -f -o --debug -z --yes
+#1651695647
+s ./.functions/optparser.function
+#1651695649
+test.sh -v --help --extra -f -o --debug -z --yes
+#1651695866
+s ./.functions/optparser.function
+#1651695868
+test.sh -v --help --extra -f -o --debug -z --yes
+#1651696719
+s ./.functions/optparser.function
+#1651696724
+test.sh -v --help --extra -f -o --debug -z --yes
+#1651696768
+test.sh -v --help --extra -f --debug -z --yes -o
+#1651696788
+test.sh -v --help --extra -f --debug -z --yes -output
+#1651696795
+test.sh -v --help --extra -f --debug -z --yes --output
+#1651696892
+set | grep -i "^optparser_"
+#1651696904
+set | less
+#1651697111
+s ./.functions/optparser.function
+#1651697114
+test.sh -v --help --extra -f --debug -z --yes --output
+#1651697456
+s ./.functions/optparser.function
+#1651697458
+test.sh -v --help --extra -f --debug -z --yes --output
+#1651697534
+set | grep debug
+#1651697542
+set | grep force
+#1651697804
+s ./.functions/optparser.function
+#1651697805
+set | grep force
+#1651697813
+s ./.functions/optparser.function
+#1651697817
+test.sh -v --help --extra -f --debug -z --yes --output
+#1651698052
+s ./.functions/optparser.function
+#1651698054
+test.sh -v --help --extra -f --debug -z --yes --output
+#1651698074
+test.sh -v --help --extra -f --debug -z --yes --output file
+#1651698265
+s ./.functions/optparser.function
+#1651698268
+test.sh -v --help --extra -f --debug -z --yes --output file
+#1651698292
+test.sh -v --help --extra -f --debug -z --yes --output
+#1651698779
+s ./.functions/optparser.function
+#1651698781
+test.sh -v --help --extra -f --debug -z --yes --output
+#1651698850
+s ./.functions/optparser.function
+#1651698852
+test.sh -v --help --extra -f --debug -z --yes --output
+#1651698943
+s ./.functions/optparser.function
+#1651698945
+test.sh -v --help --extra -f --debug -z --yes --output
+#1651699487
+man printf
+#1651699578
+s ./.functions/optparser.function
+#1651699580
+test.sh -v --help --extra -f --debug -z --yes --output
+#1651699670
+s ./.functions/optparser.function
+#1651699672
+test.sh -v --help --extra -f --debug -z --yes --output
+#1651699900
+s ./.functions/optparser.function
+#1651699904
+test.sh -v --help --extra -f --debug -z --yes --output
+#1651699920
+set | grep debug
+#1651699929
+set | grep output
+#1651699959
+test.sh -v --help --extra -f --debug -z --yes --output
+#1651699976
+set | grep verbose
+#1651700006
+set | grep help
+#1651700317
+s ./.functions/optparser.function
+#1651700321
+test.sh -v --help --extra -f --debug -z --yes --output
+#1651700348
+test.sh -v --help -f --debug --output file
+#1651700466
+s ./.functions/optparser.function
+#1651700469
+test.sh -v --help -f --debug --output file
+#1651700491
+test.sh -v --help test -f --debug --output file rick
+#1651700690
+set | grep optparser_
+#1651700758
+set | grep "^optparser_"
+#1651701049
+s ./.functions/optparser.function
+#1651701053
+test.sh -v --help test -f --debug --output file rick
+#1651701073
+set | grep "^optparser_"
+#1651701110
+set | grep debug | less
+#1651701207
+test.sh -v --help test -f --debug --output file rick
+#1651701228
+test.sh -v --help test --debug --output file rick
+#1651701489
+s ./.functions/optparser.function
+#1651701491
+test.sh -v --help test --debug --output file rick
+#1651701517
+test.sh -v --help test -f --debug --output file rick
+#1651701552
+test.sh -v --help test -f --debug rick --output
+#1651701572
+test.sh -v --help test -f --debug rick --output file
+#1651702567
+s ./.functions/optparser.function
+#1651702569
+test.sh -v --help test -f --debug rick --output file
+#1651725618
+man getopt
+#1651725631
+getopt -V
