@@ -17538,3 +17538,61 @@ test.sh -v --help test -f --debug rick --output file
 man getopt
 #1651725631
 getopt -V
+#1651779980
+s ./.functions/optparser.function
+#1651779984
+test.sh -v --help test -f --debug rick --output file
+#1651780145
+s ./.functions/optparser.function
+#1651780148
+test.sh -v --help test -f --debug rick --output file
+#1651780405
+test.sh  --help test -f --debug rick --output file
+#1651780416
+test.sh -v --help test -f --debug rick --output file
+#1651780536
+s ./.functions/optparser.function
+#1651780538
+test.sh -v --help test -f --debug rick --output file
+#1651780553
+test.sh -v test -f --debug rick --output file
+#1651780579
+s ./.functions/optparser.function
+#1651780582
+test.sh -v test -f --debug rick --output file
+#1651780599
+test.sh -v -h test -f --debug rick --output file
+#1651780612
+test.sh -v --help test -f --debug rick --output file
+#1651781367
+s ./.functions/optparser.function
+#1651781372
+test.sh -v --help test -f --debug rick --output file
+#1651781760
+s ./.functions/optparser.function
+#1651781762
+test.sh -v --help test -f --debug rick --output file
+#1651781800
+s ./.functions/optparser.function
+#1651781802
+test.sh -v --help test -f --debug rick --output file
+#1651782011
+s ./.functions/optparser.function
+#1651782014
+test.sh -v --help test -f --debug rick --output file
+#1651782113
+test.sh -v --help test -f --debug rick --output file -z
+#1651782250
+s ./.functions/optparser.function
+#1651782253
+test.sh -v --help test -f --debug rick --output file -z
+#1651782260
+test.sh -v --help test -f --debug rick --output file
+#1651782405
+s ./.functions/optparser.function
+#1651782408
+test.sh -v --help test -f --debug rick --output file
+#1651782431
+test.sh -h
+#1651782474
+test.sh --help
