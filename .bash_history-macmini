@@ -17596,3 +17596,13 @@ test.sh -v --help test -f --debug rick --output file
 test.sh -h
 #1651782474
 test.sh --help
+#1651787726
+volnorm
+#1651787730
+v norm
+#1651787741
+v onorm
+#1651787746
+v omin
+#1651787749
+v onorm
