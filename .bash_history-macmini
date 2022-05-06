@@ -17606,3 +17606,13 @@ v onorm
 v omin
 #1651787749
 v onorm
+#1651810268
+test.sh --help
+#1651810280
+test.sh -v --help test -f --debug rick --output file
+#1651810305
+test.sh -v --debug --help test -f --debug rick --output file
+#1651810354
+test.sh -v --debug test -f --debug rick --output file
+#1651810745
+bash-getopt-example.sh
