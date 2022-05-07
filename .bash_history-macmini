@@ -17616,3 +17616,163 @@ test.sh -v --debug --help test -f --debug rick --output file
 test.sh -v --debug test -f --debug rick --output file
 #1651810745
 bash-getopt-example.sh
+#1651860266
+test.sh -h
+#1651860364
+test.sh -v --debug test -f --debug rick --output file
+#1651861757
+bash-getopt-example.sh
+#1651862163
+test.sh -v --debug test -f --debug rick --output file
+#1651862571
+test.sh -h
+#1651862740
+test.sh -v --debug test -f --debug rick --output file
+#1651864119
+test.sh -h
+#1651864123
+test.sh -v --debug test -f --debug rick --output file
+#1651865207
+test.sh -v --debug test -f --debug rick --output
+#1651865213
+test.sh -v --debug test -f --debug rick
+#1651865241
+test.sh -v --debug test -f rick
+#1651865261
+test.sh -v --debug -f
+#1651865286
+test.sh -h
+#1651865296
+test.sh -v --debug test -f rick --output file
+#1651866253
+bash-getopt-example.sh -h
+#1651866368
+test.sh -v --debug test -f rick --output=file
+#1651866379
+test.sh -v --debug test -f rick -o=file
+#1651866395
+test.sh -v --debug test -f rick -o file
+#1651867659
+man column
+#1651868934
+test.sh -v --debug test -f rick -o file
+#1651868959
+test.sh -h
+#1651869767
+lf _usage
+#1651869823
+bash-getopt-example.sh -h
+#1651869830
+lf _usage
+#1651869879
+test.sh -h
+#1651870582
+fp -h
+#1651870636
+lf fp
+#1651870648
+type -t fp
+#1651870671
+cat bin/fp
+#1651870718
+test.sh -h
+#1651870898
+printf '%s\n' "This is\na test."
+#1651870910
+printf "This is\na test."
+#1651870931
+test.sh -h
+#1651872464
+echo $tab
+#1651872488
+tab=`printf '\t'`
+#1651872494
+echo $tab
+#1651872506
+echo "this is$taba test"
+#1651872517
+echo "this is${tab}a test"
+#1651872541
+echo "this is${tab}${tab}${tab}a test"
+#1651872667
+test.sh -h
+#1651873643
+man column
+#1651873671
+test.sh -h
+#1651875345
+man tr
+#1651875396
+test.sh -h
+#1651875511
+man tr
+#1651875628
+test.sh -h
+#1651878668
+man column
+#1651878751
+column -c 20 -t "this is a very long sentence that I hope will be broken up properly by 'column'."
+#1651878784
+column -c 20 -t <<< "this is a very long sentence that I hope will be broken up properly by 'column'."
+#1651878835
+column -c 20 -t <<< "this is a very long sentence that I hope will be broken up properly by 'column'.this is a very long sentence that I hope will be broken up properly by 'column'."
+#1651878849
+man column
+#1651878877
+column -t -c 20 <<< "this is a very long sentence that I hope will be broken up properly by 'column'.this is a very long sentence that I hope will be broken up properly by 'column'."
+#1651878883
+column -c 20 <<< "this is a very long sentence that I hope will be broken up properly by 'column'.this is a very long sentence that I hope will be broken up properly by 'column'."
+#1651895226
+test.sh -h
+#1651896710
+man bash
+#1651896941
+test.sh -h
+#1651897796
+strr=$'my\nname\nis\nxxxx'
+#1651897805
+echo $strr
+#1651897873
+nw_strr="${strr//\\n/ }"
+#1651897883
+echo $nw_strr
+#1651897921
+strr="my\nname\nis\nxxxx"
+#1651897928
+echo $strr
+#1651897936
+nw_strr="${strr//\\n/ }"
+#1651897944
+echo $nw_strr
+#1651897971
+nw_strr="${strr//\\n/\n this }"
+#1651897976
+echo $nw_strr
+#1651898047
+nw_strr="${strr//\\n/\\n this }"
+#1651898049
+echo $nw_strr
+#1651898075
+nw_strr="${strr//\\n/\\n this}"
+#1651898077
+echo $nw_strr
+#1651898223
+test.sh -h
+#1651898559
+echo $strr
+#1651898634
+sed 's,\n,*this*,' <<< "${strr}"
+#1651898652
+sed -E 's,\n,*this*,' <<< "${strr}"
+#1651898664
+sed 's,\\n,*this*,' <<< "${strr}"
+#1651898689
+sed 's,\\n,\n*this*,' <<< "${strr}"
+#1651898705
+sed 's,\\n,\\n*this*,' <<< "${strr}"
+#1651898721
+sed 's,\\n,\\n *this*,' <<< "${strr}"
+#1651898739
+sed 's,\\n,\\n *this*,g' <<< "${strr}"
+#1651898862
+test.sh -h
