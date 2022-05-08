@@ -17776,3 +17776,355 @@ sed 's,\\n,\\n *this*,' <<< "${strr}"
 sed 's,\\n,\\n *this*,g' <<< "${strr}"
 #1651898862
 test.sh -h
+#1651947002
+man tr
+#1651947240
+test.sh -h
+#1651948851
+test.sh -y
+#1651948860
+test.sh --help
+#1651948871
+test.sh -h
+#1651949016
+echo $?
+#1651949067
+test.sh -h
+#1651949071
+echo $?
+#1651949122
+test.sh -h
+#1651949250
+type fc
+#1651949255
+man fc
+#1651949290
+getopt
+#1651949301
+getopt --help
+#1651949673
+man ps
+#1651949754
+man caller
+#1651949892
+s .functions/optparser.function
+#1651949900
+test.sh -h
+#1651949977
+s .functions/optparser.function
+#1651949980
+test.sh -h
+#1651950034
+s .functions/optparser.function
+#1651950037
+test.sh -h
+#1651950052
+s .functions/optparser.function
+#1651950054
+test.sh -h
+#1651950485
+s .functions/optparser.function
+#1651950487
+test.sh -h
+#1651950513
+s .functions/optparser.function
+#1651950515
+test.sh -h
+#1651950559
+s .functions/optparser.function
+#1651950561
+test.sh -h
+#1651950578
+s .functions/optparser.function
+#1651950579
+test.sh -h
+#1651950633
+s .functions/optparser.function
+#1651950635
+test.sh -h
+#1651950694
+s .functions/optparser.function
+#1651950696
+test.sh -h
+#1651950773
+s .functions/optparser.function
+#1651950774
+test.sh -h
+#1651950787
+s .functions/optparser.function
+#1651950789
+test.sh -h
+#1651951096
+test.sh --help
+#1651952266
+s .functions/optparser.function
+#1651952271
+test.sh --help
+#1651952371
+echo $?
+#1651952421
+s .functions/optparser.function
+#1651952425
+test.sh --help
+#1651952511
+s .functions/optparser.function
+#1651952515
+test.sh --help
+#1651952523
+test.sh -h
+#1651955862
+short="o:FILE:default"
+#1651955867
+echo $short
+#1651956301
+echo ${short#:}
+#1651956326
+echo ${short#:*}
+#1651956348
+echo ${short##:*}
+#1651956382
+echo ${short#*:}
+#1651956411
+echo ${short%%*:}
+#1651956423
+echo ${short%*:}
+#1651956433
+echo ${short%%:*}
+#1651956452
+echo ${short%%:*:}
+#1651956463
+echo ${short%%:*}
+#1651956467
+echo ${short%%:*}:
+#1651956672
+echo ${short#*:}
+#1651956682
+echo ${short##*:}
+#1651956739
+rest=`"${short#*:}"`
+#1651956761
+rest=`${short#*:}`
+#1651956822
+rest="`${short#*:}`"
+#1651956912
+rest=`echo "${short#*:}"`
+#1651956923
+echo ${rest}
+#1651956947
+short=`echo "${short%%:*}:"`
+#1651956955
+echo ${short}
+#1651957018
+echo "${rest%%:*}:"
+#1651957026
+echo "${rest%%:*}"
+#1651957122
+echo ${rest##*:}
+#1651959231
+s .functions/optparser.function
+#1651959248
+test.sh -h
+#1651959550
+s .functions/optparser.function
+#1651959553
+test.sh -h
+#1651960166
+s .functions/optparser.function
+#1651960168
+test.sh -h
+#1651960485
+s .functions/optparser.function
+#1651960487
+test.sh -h
+#1651960525
+s .functions/optparser.function
+#1651960527
+test.sh -h
+#1651960598
+man printf
+#1651960700
+s .functions/optparser.function
+#1651960701
+man printf
+#1651960708
+test.sh -h
+#1651960750
+man printf
+#1651961276
+s .functions/optparser.function
+#1651961279
+test.sh -h
+#1651961392
+s .functions/optparser.function
+#1651961394
+test.sh -h
+#1651961436
+s .functions/optparser.function
+#1651961438
+test.sh -h
+#1651961992
+s .functions/optparser.function
+#1651961994
+test.sh -h
+#1651962071
+short="-o:"
+#1651962082
+printf '%s\n' "${short%%:*}:"
+#1651962125
+printf '%s\n' "${short%:*}:"
+#1651962208
+printf '%s\n' "${short%:*}"
+#1651962235
+printf '%s\n' "${short%%:*}"
+#1651962281
+echo $short
+#1651962286
+printf '%s\n' "${short%%:*}"
+#1651962298
+short="-o"
+#1651962302
+printf '%s\n' "${short%%:*}"
+#1651962319
+s .functions/optparser.function
+#1651962323
+test.sh -h
+#1651962452
+s .functions/optparser.function
+#1651962454
+test.sh -h
+#1651962507
+test.sh -d
+#1651962551
+test.sh -d -o="rick.test"
+#1651962580
+test.sh -d --output="rick.test"
+#1651962607
+test.sh -d --output "rick.test"
+#1651962620
+test.sh -d -o "rick.test"
+#1651962635
+test.sh -d --output rick.test
+#1651962652
+test.sh -d -o rick.test
+#1651962668
+test.sh -d --output rick.test
+#1651962676
+test.sh -d -f --output rick.test
+#1651962704
+test.sh -d -f --output=rick.test
+#1651962736
+test.sh -h
+#1651962747
+test.sh --help
+#1651962768
+test.sh -d --force --help
+#1651963038
+test.sh -d -f -v dave --output=rick.test
+#1651963054
+test.sh -d -f -v --output=rick.test dave
+#1651963085
+test.sh -debug --output=rick.test dave
+#1651963097
+test.sh --output=rick.test dave
+#1651963115
+test.sh --output rick.test dave
+#1651963335
+test.sh --zoo
+#1651963351
+test.sh -z
+#1651963588
+long="output:FILE:${output_default}"
+#1651963607
+long="output:FILE:rick.txt"
+#1651963610
+echo $long
+#1651963681
+printf '%s\n' "${long%%:*}:"
+#1651963725
+short="o:FILE:rick.txt"
+#1651963736
+printf '%s\n' "${long%%:*}:"
+#1651963742
+printf '%s\n' "${short%%:*}:"
+#1651963790
+echo ${long}
+#1651963795
+echo ${short}
+#1651963811
+printf '%s\n' "${long%%:*}:"
+#1651963820
+printf '%s\n' "${short%%:*}:"
+#1651963846
+long="verbose"
+#1651963863
+short="v"
+#1651963872
+printf '%s\n' "${long%%:*}:"
+#1651964392
+s .functions/optparser.function
+#1651964398
+test.sh -d --output rick.test
+#1651965447
+s .functions/optparser.function
+#1651965452
+test.sh -d --output rick.test
+#1651965524
+test.sh -d --output rick.test dave
+#1651965549
+test.sh -d --output=rick.test dave
+#1651965582
+test.sh --output=rick.test dave
+#1651965606
+test.sh -o=rick.test dave
+#1651965628
+test.sh -o rick.test dave
+#1651965654
+test.sh -orick.test dave
+#1651965671
+test.sh --outputrick.test dave
+#1651965926
+s .functions/optparser.function
+#1651965940
+test.sh -o=rick.test dave
+#1651965974
+test.sh -o rick.test dave
+#1651966387
+s .functions/optparser.function
+#1651966412
+test.sh -o rick.test dave
+#1651966440
+test.sh -o=rick.test dave
+#1651966524
+test.sh -orick.test dave
+#1651966547
+test.sh --output rick.test dave
+#1651966616
+test.sh --output=rick.test dave
+#1651966630
+test.sh --outputrick.test dave
+#1651966678
+test.sh -d --output rick.test dave
+#1651966713
+s .functions/optparser.function
+#1651966718
+test.sh -d --output rick.test dave
+#1651966734
+test.sh -d -o rick.test dave
+#1651966821
+test.sh -d -f -v --output rick.test dave
+#1651966857
+test.sh -h
+#1651967266
+test.sh -d -f -v --output rick.test dave
+#1651967269
+test.sh -h
+#1651979430
+man bash
+#1651980267
+test.sh -h
+#1651980565
+test.sh -d
+#1651983235
+man declare
+#1651984085
+s .functions/optparser.function
