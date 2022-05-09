@@ -18128,3 +18128,219 @@ test.sh -d
 man declare
 #1651984085
 s .functions/optparser.function
+#1652028762
+test.sh -h
+#1652028898
+s .functions/optparser.function
+#1652028899
+test.sh -h
+#1652028934
+man let
+#1652029107
+s .functions/optparser.function
+#1652029109
+test.sh -h
+#1652029163
+s .functions/optparser.function
+#1652029165
+test.sh -h
+#1652029640
+s .functions/optparser.function
+#1652029642
+test.sh -h
+#1652029975
+s .functions/optparser.function
+#1652029977
+test.sh -h
+#1652030026
+s .functions/optparser.function
+#1652030030
+test.sh -h
+#1652030069
+s .functions/optparser.function
+#1652030070
+test.sh -h
+#1652030128
+s .functions/optparser.function
+#1652030131
+test.sh -h
+#1652030396
+s .functions/optparser.function
+#1652030398
+test.sh -h
+#1652032775
+s .functions/optparser.function
+#1652032777
+test.sh -h
+#1652032786
+test.sh -d
+#1652032815
+test.sh -o
+#1652032836
+test.sh -o -f
+#1652032885
+test.sh -o --force
+#1652033193
+bash -x test.sh -o --force
+#1652035667
+s .functions/optparser.function
+#1652035673
+test.sh -o --force
+#1652035703
+test.sh -o --force -d
+#1652035744
+test.sh -v --force -d
+#1652035790
+s .functions/optparser.function
+#1652035795
+test.sh -v --force -d
+#1652035835
+test.sh -o --force
+#1652035877
+test.sh -o --force -d
+#1652035984
+test.sh -v --force -d
+#1652035997
+test.sh -v --force -d rick
+#1652036009
+test.sh -v --force -d rick dave
+#1652036039
+test.sh -v --output --force -d rick dave
+#1652036060
+test.sh -v --output test.txt --force -d rick dave
+#1652036307
+s .functions/optparser.function
+#1652036315
+test.sh -v --output --force -d rick dave
+#1652036349
+s .functions/optparser.function
+#1652036352
+test.sh -v --output --force -d rick dave
+#1652036437
+s .functions/optparser.function
+#1652036444
+test.sh -v --output --force -d rick dave
+#1652036539
+s .functions/optparser.function
+#1652036542
+test.sh -v --output --force -d rick dave
+#1652036580
+test.sh -v --output test.txt --force -d rick dave
+#1652036683
+test.sh -v --output --force -d rick dave
+#1652036823
+test.sh -v --output test.txt --force -d rick dave
+#1652036914
+s .functions/optparser.function
+#1652036922
+test.sh -v --output --force -d rick dave
+#1652036967
+test.sh -v --output test.txt --force -d rick dave
+#1652037066
+s .functions/optparser.function
+#1652037068
+test.sh -v --output test.txt --force -d rick dave
+#1652037205
+s .functions/optparser.function
+#1652037206
+test.sh -v --output test.txt --force -d rick dave
+#1652037306
+s .functions/optparser.function
+#1652037307
+test.sh -v --output test.txt --force -d rick dave
+#1652037402
+s .functions/optparser.function
+#1652037404
+test.sh -v --output test.txt --force -d rick dave
+#1652037526
+s .functions/optparser.function
+#1652037527
+test.sh -v --output test.txt --force -d rick dave
+#1652037726
+s .functions/optparser.function
+#1652037729
+test.sh -v --output test.txt --force -d rick dave
+#1652037741
+test.sh -v --output test.txt --force -d rick dave -e
+#1652037829
+test.sh -v --output test.txt --force -d rick dave --extra
+#1652037860
+test.sh -v --output test.txt --force -d rick dave --extra tom
+#1652037942
+test.sh -v --output test.txt --force -d rick dave --extra
+#1652038158
+s .functions/optparser.function
+#1652038164
+test.sh -v --output test.txt --force -d rick dave --extra
+#1652038197
+test.sh -v --output test.txt --force -d rick dave --extra tom
+#1652038248
+test.sh -v --output test.txt --force -d rick dave --extra tom susan
+#1652038328
+test.sh -v --output test.txt --force -d rick dave
+#1652038423
+test.sh -v --output test.txt --force -d rick dave --extra tom susan
+#1652038444
+test.sh -v --output test.txt --force -d rick dave
+#1652038492
+test.sh -v --output --force -d rick dave
+#1652038805
+s .functions/optparser.function
+#1652038807
+test.sh -v --output --force -d rick dave
+#1652038889
+test.sh -v --output super.txt --force -d rick dave
+#1652044856
+options="o:|output:FILE:${output_default}"
+#1652044881
+options="o:|output:FILE:"test.txt""
+#1652044885
+echo $options
+#1652044932
+printf '%s\n' "${options#|*}"
+#1652044966
+printf '%s\n' "${options#*|}"
+#1652044996
+printf '%s\n' "${options%|*}"
+#1652045396
+options="o:FILE:"test.txt""
+#1652045429
+printf '%s\n' "${options%|*}"
+#1652045462
+printf '%s\n' "${options#*|}"
+#1652047637
+s .functions/optparser.function
+#1652047652
+test.sh -v --output test.txt --force -d rick dave
+#1652047803
+s .functions/optparser.function
+#1652047805
+test.sh -v --output test.txt --force -d rick dave
+#1652048206
+test.sh -v -o test.txt --force -d rick dave
+#1652048245
+test.sh -v -o --force -d rick dave
+#1652048284
+test.sh -v --output --force -d rick dave
+#1652048380
+test.sh -v -o --force -d rick dave
+#1652048410
+test.sh -v -o test.txt --force -d rick dave
+#1652048447
+test.sh -v --output test.txt --force -d rick dave
+#1652048531
+test.sh -h
+#1652048576
+test.sh -v --output test.txt --force -d rick dave
+#1652048580
+test.sh -h
+#1652048809
+test.sh -v --output test.txt --force -d rick dave
+#1652048851
+s .functions/optparser.function
+#1652048853
+test.sh -v --output test.txt --force -d rick dave
+#1652049021
+test.sh -v --output --force -d rick dave
+#1652049156
+test.sh -v --output test.txt --force -d rick dave
