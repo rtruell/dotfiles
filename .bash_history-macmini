@@ -18344,3 +18344,39 @@ test.sh -v --output test.txt --force -d rick dave
 test.sh -v --output --force -d rick dave
 #1652049156
 test.sh -v --output test.txt --force -d rick dave
+#1652099516
+type -t remaining_args
+#1652101071
+man bash
+#1652101401
+test.sh -v --output test.txt --force -d rick dave
+#1652101861
+alias type
+#1652101867
+type -t read
+#1652101999
+test.sh -v --output test.txt --force -d rick dave
+#1652102292
+type -t tr
+#1652102298
+type -t cut
+#1652102366
+type -t read
+#1652102370
+type -t printf
+#1652102549
+test.sh -v --output test.txt --force -d rick dave
+#1652102641
+man read
+#1652102730
+test.sh -v --output test.txt --force -d rick dave
+#1652153753
+test.sh -v --output --force -d rick dave
+#1652153930
+test.sh -v --output --force -d rick dave -e
+#1652153949
+test.sh -v --extra --force -d rick dave
+#1652153977
+test.sh -v --output --force -d rick dave --extra
+#1652153989
+test.sh -v --extra --force -d rick dave
