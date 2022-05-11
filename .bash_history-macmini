@@ -18396,3 +18396,9 @@ diskutil unmountDisk /dev/disk3
 sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.3.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
 #1652244216
 diskutil eject /dev/disk3
+#1652244889
+cd /Volumes/data/Downloads/Mac/OSX\ installers/Apps/
+#1652245115
+ls /Volumes/
+#1652245124
+ls /Volumes/Untitled/
