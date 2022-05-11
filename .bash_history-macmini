@@ -18402,3 +18402,17 @@ cd /Volumes/data/Downloads/Mac/OSX\ installers/Apps/
 ls /Volumes/
 #1652245124
 ls /Volumes/Untitled/
+#1652245138
+sudo "Install 10.15.7 (macOS Catalina).app/Contents/Resources/createinstallmedia" --volume /Volumes/Untitled --applicationpath "Install 10.15.7 (macOS Catalina).app"
+#1652245737
+b up
+#1652245987
+b i avifquicklook
+#1652246090
+sudo "Install 10.15.7 (macOS Catalina).app/Contents/Resources/createinstallmedia" --volume /Volumes/Untitled --applicationpath "Install 10.15.7 (macOS Catalina).app"
+#1652246593
+whereis mysql
+#1652246597
+which mysql
+#1652247098
+sudo "Install 10.14.6 (macOS Mojave).app/Contents/Resources/createinstallmedia" --volume /Volumes/Untitled --applicationpath "Install 10.14.6 (macOS Mojave).app"
