@@ -18380,3 +18380,19 @@ test.sh -v --extra --force -d rick dave
 test.sh -v --output --force -d rick dave --extra
 #1652153989
 test.sh -v --extra --force -d rick dave
+#1652243792
+sudo usbimager
+#1652243963
+hf awk
+#1652243990
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl
+#1652243996
+diskutil lisst
+#1652244001
+diskutil list
+#1652244039
+diskutil unmountDisk /dev/disk3
+#1652244115
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.3.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
+#1652244216
+diskutil eject /dev/disk3
