@@ -18416,3 +18416,35 @@ whereis mysql
 which mysql
 #1652247098
 sudo "Install 10.14.6 (macOS Mojave).app/Contents/Resources/createinstallmedia" --volume /Volumes/Untitled --applicationpath "Install 10.14.6 (macOS Mojave).app"
+#1652428161
+onsetup.rb
+#1652428181
+onsetapp.rb
+#1652428190
+onsetapp1.rb
+#1652434894
+test.sh -h
+#1652435440
+man caller
+#1652435561
+test.sh -h
+#1652435772
+test.sh -d
+#1652435796
+test.sh -d --force -o
+#1652435803
+test.sh -d --force
+#1652435831
+test.sh -d --force -v
+#1652436559
+less optparser.txt
+#1652436643
+less test.txt
+#1652437509
+test.sh -d --force -v
+#1652438780
+test.sh -d --force -v -o
+#1652438833
+test.sh -d --force -o
+#1652438839
+test.sh -d --force -o -v
