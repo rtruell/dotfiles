@@ -18450,3 +18450,121 @@ test.sh -d --force -o
 test.sh -d --force -o -v
 #1652438991
 test.sh -d --force -o
+#1652439168
+echo $debug $force $verbose
+#1652439201
+eval "debug=1 force=1 verbose=1"
+#1652439204
+echo $debug $force $verbose
+#1652439249
+eval 'debug=1 force=1 verbose=1 other="dave rick"'
+#1652439258
+echo $debug $force $verbose $other
+#1652439291
+printf '%s\n' $debug $force $verbose $other
+#1652439346
+test.sh -d --force -o -v
+#1652439776
+test.sh -d --force -o -v dave sam
+#1652440327
+test.sh -h
+#1652440368
+test.sh -z
+#1652440381
+test.sh -d --force -o -v dave sam
+#1652440668
+test.sh -d --force -o dave -v sam
+#1652440724
+test.sh -d --force -o -v dave sam
+#1652440772
+test.sh -o
+#1652440853
+test.sh -h
+#1652440937
+test.sh -o
+#1652440968
+test.sh -d --force -o -v dave sam
+#1652441016
+test.sh -z
+#1652441612
+test.sh -d --force -o -v dave sam
+#1652441629
+test.sh -o
+#1652441635
+test.sh -h
+#1652441688
+test.sh -d --force -o -v dave sam
+#1652441717
+test.sh -d --force -o dave -v sam
+#1652441739
+test.sh -d --force -o dave -v sam -z
+#1652442046
+test.sh -d --force -o dave -v sam
+#1652442063
+test.sh -d --force -o -v dave sam
+#1652442084
+test.sh -h
+#1652442100
+test.sh -o
+#1652466797
+test.sh --output
+#1652466893
+test.sh -o
+#1652467107
+test.sh --output
+#1652467147
+test.sh -v --output
+#1652467204
+test.sh -v -o
+#1652467402
+test.sh -v --output
+#1652467771
+test.sh -v -d --output
+#1652467898
+test.sh -v -d --output -o
+#1652467941
+test.sh -v -d --output
+#1652468196
+test.sh -v -d -o
+#1652468262
+test.sh -v -d --output
+#1652468326
+man tr
+#1652468387
+test.sh -v -d --output
+#1652468394
+test.sh -v -d -o
+#1652468449
+test.sh -v -d --output
+#1652468646
+test.sh -v -d -o
+#1652468683
+test.sh -v -d -o rick
+#1652468737
+test.sh -v -d --output rick
+#1652469392
+test.sh -v -d -o rick
+#1652469419
+test.sh -v -d -o
+#1652469463
+test.sh -v -d --output
+#1652469655
+test.sh -v -d -e
+#1652469697
+test.sh -v -d --extra
+#1652469739
+test.sh -h
+#1652469824
+test.sh -v -d --extra
+#1652469919
+test.sh -v -d --extra dave
+#1652469954
+test.sh -v -d --extra
+#1652469999
+test.sh -v -d --output
+#1652471538
+test.sh -v -d --extra
+#1652471551
+test.sh -h
+#1652510590
+man read
