@@ -18568,3 +18568,57 @@ test.sh -v -d --extra
 test.sh -h
 #1652510590
 man read
+#1652565936
+test.sh -h
+#1652568669
+man getopt
+#1652570972
+getopt --options="abc:" --longoptions="alpha,beta,charlie:" -- "z"
+#1652570986
+getopt --options="abc:" --longoptions="alpha,beta,charlie:" -- "-z"
+#1652571936
+getopt --options="abc:" --longoptions="alpha,beta,charlie:" -- "--zulu"
+#1652572789
+getopt --options="abc:" --longoptions="alpha,beta,charlie:" -- "-c"
+#1652572814
+getopt --options="abc:" --longoptions="alpha,beta,charlie:" -- "--charlie"
+#1652574470
+man tr
+#1652575025
+getopt --options="abc:" --longoptions="alpha,beta,charlie:" -- "-z -x"
+#1652575078
+getopt --options="abc:" --longoptions="alpha,beta,charlie:" -- "-z" "-x"
+#1652575940
+test.sh -z
+#1652575952
+test.sh --zulu
+#1652575962
+test.sh -o
+#1652575972
+test.sh --output
+#1652576035
+test.sh -o
+#1652577719
+test.sh -f -z -x -o
+#1652578053
+test.sh -f -z --xray --option
+#1652578101
+test.sh -f -z --xray -o
+#1652578151
+test.sh -f -z --xray --output
+#1652578479
+man read
+#1652578518
+test.sh -f -z --xray --output
+#1652579878
+test.sh -f -z --xray -o
+#1652579993
+test.sh -f -z --xray --output
+#1652581382
+test.sh -f -z --xray -o
+#1652583622
+test.sh -f -z --xray --output
+#1652585275
+test.sh -f -z --xray -o
+#1652606263
+test.sh -f -z --xray --output
