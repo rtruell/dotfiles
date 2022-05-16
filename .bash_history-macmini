@@ -18622,3 +18622,83 @@ test.sh -f -z --xray --output
 test.sh -f -z --xray -o
 #1652606263
 test.sh -f -z --xray --output
+#1652649092
+test.sh -f -z --xray -o
+#1652649369
+test.sh -f -z --xray --output
+#1652649735
+test.sh -f -z --xray -o
+#1652649762
+test.sh -f -o
+#1652650069
+test.sh -f --output
+#1652650092
+test.sh -f --output ./test.txt dave rick sam susan
+#1652650132
+test.sh -f -o ./test.txt dave rick sam susan
+#1652651103
+man set
+#1652652707
+test.sh -f -o --debug dave rick sam susan
+#1652652869
+test.sh -f -e --debug dave rick sam susan
+#1652653270
+test.sh -f --extra --debug dave rick sam susan
+#1652653299
+test.sh -f --extra -d dave rick sam susan
+#1652653317
+test.sh -f -e -d dave rick sam susan
+#1652655158
+test.sh -f -d dave rick sam susan
+#1652655175
+test.sh -f -o -d dave rick sam susan
+#1652663322
+test.sh -f -o ./test.txt -d dave rick sam susan
+#1652663371
+test.sh -h
+#1652663416
+test.sh
+#1652664286
+test.sh -h
+#1652664306
+test.sh -z
+#1652664341
+test.sh -f
+#1652664492
+test.sh -f --debug
+#1652677164
+test.sh -h
+#1652686386
+sublime --version
+#1652686425
+subl --version
+#1652686477
+b i sublime-test
+#1652686492
+b i sublime-text
+#1652686510
+b i sublime-merge
+#1652686557
+b up
+#1652687376
+var/folders/9_/2kwgn1710ql97hyntzkldlqh0000gn/T/
+#1652687391
+ls /var/folders/9_/2kwgn1710ql97hyntzkldlqh0000gn/T/
+#1652687415
+rm /var/folders/9_/2kwgn1710ql97hyntzkldlqh0000gn/T/40.html
+#1652687708
+ls /var/folders/9_/2kwgn1710ql97hyntzkldlqh0000gn/T/
+#1652687724
+less /var/folders/9_/2kwgn1710ql97hyntzkldlqh0000gn/T/40.html
+#1652687781
+csl
+#1652687905
+ping -c 1 rtruell.ca
+#1652687920
+b up sublime-text
+#1652687935
+b ug sublime-text
+#1652688022
+subl --version
+#1652688183
+b ug sublime-merge
