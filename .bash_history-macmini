@@ -18702,3 +18702,35 @@ b ug sublime-text
 subl --version
 #1652688183
 b ug sublime-merge
+#1652741759
+symlink_single_file "/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/optparser/optparser" "/Users/rtruell/bin"
+#1652742177
+symlink_single_file "/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/optparser/optparser" "/Users/rtruell/bin/optparser"
+#1652742226
+test.sh -h
+#1652742268
+test.sh -d --force -o --verbose
+#1652742904
+cd /Volumes/ExternalHome/rtruell/GitRepositories/GitHub/optparser/
+#1652742914
+ll
+#1652742946
+./optparser-use-example.sh
+#1652742994
+./optparser-use-example.sh -h
+#1652743189
+./optparser-use-example.sh
+#1652743252
+./optparser-use-example.sh -h
+#1652743272
+./optparser-use-example.sh -d --force -o --verbose
+#1652743317
+./optparser-use-example.sh -d --force --output --verbose
+#1652743327
+./optparser-use-example.sh -d --force --output -v
+#1652743482
+test.sh -h
+#1652743494
+test.sh -d --force -o --verbose
+#1652743681
+/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/optparser/optparser-use-example.sh -d --force -o --verbose
