@@ -18734,3 +18734,53 @@ test.sh -h
 test.sh -d --force -o --verbose
 #1652743681
 /Volumes/ExternalHome/rtruell/GitRepositories/GitHub/optparser/optparser-use-example.sh -d --force -o --verbose
+#1652744339
+home
+#1652744353
+back
+#1652744621
+/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/optparser/optparser-use-example.sh -d --force -o --verbose
+#1652745219
+b="debug=1"
+#1652745249
+echo "${b%=*}"
+#1652745274
+echo "${b#**}"
+#1652745287
+echo "${b#*=}"
+#1652745641
+"${b%=*}"
+#1652745658
+/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/optparser/optparser-use-example.sh -d --force -o --verbose save sam
+#1652745792
+/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/optparser/optparser-use-example.sh -d --force dave sam -o --verbose
+#1652746724
+./optparser-use-example.sh -d --force dave sam -o --verbose
+#1652759453
+./optparser-use-example.sh -h
+#1652759461
+./optparser-use-example.sh
+#1652759926
+long="output:FILE#default_value"
+#1652760024
+echo "${long%#*}"
+#1652760041
+echo "${long##*}"
+#1652760195
+long="output:FILE%default_value"
+#1652760214
+echo "${long%%*}"
+#1652760300
+long="output:FILE@default_value"
+#1652760316
+echo "${long%@*}"
+#1652760329
+echo "${long#@*}"
+#1652760351
+echo "${long#*@}"
+#1652760657
+./optparser-use-example.sh
+#1652760713
+./optparser-use-example.sh -d --force dave sam -o --verbose
+#1652760748
+./optparser-use-example.sh -d --force dave sam -o ./test.txt --verbose
