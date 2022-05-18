@@ -18784,3 +18784,107 @@ echo "${long#*@}"
 ./optparser-use-example.sh -d --force dave sam -o --verbose
 #1652760748
 ./optparser-use-example.sh -d --force dave sam -o ./test.txt --verbose
+#1652822192
+optparser
+#1652822211
+cd optparser
+#1652822244
+cd /Volumes/ExternalHome/rtruell/GitRepositories/GitHub/optparser/
+#1652822414
+./optparser-use-example.sh -h
+#1652823139
+./optparser-use-example.sh --help
+#1652830244
+./optparser-use-example.sh -z
+#1652830255
+./optparser-use-example.sh -o
+#1652830292
+./optparser-use-example.sh 
+#1652830694
+echo $dave
+#1652830697
+echo $sam
+#1652830711
+dave="sam"
+#1652830782
+"${dave}"=1
+#1652830814
+let "${dave}"=1
+#1652830825
+echo $dave
+#1652830833
+echo $sam
+#1652830846
+man let
+#1652830860
+bashman let
+#1652830868
+type -t let
+#1652830873
+alias type
+#1652830878
+type -t type
+#1652830893
+man bash
+#1652832469
+echo $susan
+#1652832472
+echo $rick
+#1652832483
+echo $dave
+#1652832489
+echo $jack
+#1652832508
+jack="susan"
+#1652832517
+rick="1"
+#1652832591
+declare "${jack}"="${rick}"
+#1652832596
+echo $susan
+#1652832603
+echo $jack
+#1652832607
+echo $rick
+#1652832687
+echo $b
+#1652832690
+echo $a
+#1652832707
+a="b=1"
+#1652832733
+declare "${a}"
+#1652832737
+echo $b
+#1652832813
+a="b="rick sam""
+#1652832835
+a="b='rick sam'"
+#1652832840
+echo a$
+#1652832846
+echo $a
+#1652832851
+echo $b
+#1652832867
+declare "${a}"
+#1652832870
+echo $b
+#1652832917
+a="b=rick sam"
+#1652832922
+declare "${a}"
+#1652832927
+echo $b
+#1652832961
+printf '%s\n' "b is >${b}<"
+#1652844723
+man awk
+#1652845938
+man select
+#1652845950
+man 1 select
+#1652845959
+man select 1
+#1652845971
+man man
