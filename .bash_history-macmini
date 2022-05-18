@@ -18890,3 +18890,7 @@ man select 1
 man man
 #1652866337
 man type
+#1652866778
+type -t type
+#1652866795
+bashman type
