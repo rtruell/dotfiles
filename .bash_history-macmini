@@ -18912,3 +18912,65 @@ home
 ghrepos
 #1652867244
 dotfiles
+#1652867435
+ghrepos
+#1652867440
+cd optparser/
+#1652867646
+./optparser-use-example.sh -o
+#1652867686
+./optparser-use-example.sh -d --force dave sam -o ./test.txt --verbose
+#1652872510
+variable1=debug=1 force=1 output=./test.txt verbose=1 remaining_args="dave sam"
+#1652872518
+echo $variable1
+#1652872533
+variable1='debug=1 force=1 output=./test.txt verbose=1 remaining_args="dave sam"'
+#1652872536
+echo $variable1
+#1652872574
+echo "${variable1# }"
+#1652872613
+echo "${variable1#* }"
+#1652872630
+echo "${variable1# *}"
+#1652872659
+echo "${variable1%* }"
+#1652872684
+echo "${variable1%%* }"
+#1652872727
+echo "${variable1% *}"
+#1652872733
+echo "${variable1%% *}"
+#1652873014
+variable1='debug=1 force=1 output=./test.txt verbose=1 remaining_args="dave sam"'
+#1652873062
+./optparser-use-example.sh -d --force dave sam -o ./test.txt --verbose
+#1652873842
+findtext eval
+#1652875475
+./optparser-use-example.sh -d --force dave sam -o ./test.txt --verbose
+#1652875552
+./optparser-use-example.sh -d --force dave sam -o ./test.txt -v
+#1652875559
+./optparser-use-example.sh -d --force dave sam -o ./test.txt
+#1652877032
+./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652879065
+./optparser-use-example.sh
+#1652879092
+./optparser-use-example.sh -h
+#1652879115
+./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652931327
+man awk
+#1652934908
+./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652935268
+bash -x ./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652935715
+./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652935801
+bash -x ./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652936096
+./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
