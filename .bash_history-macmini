@@ -18974,3 +18974,59 @@ bash -x ./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
 bash -x ./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
 #1652936096
 ./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652979604
+ghrepos
+#1652979614
+cd optparser/
+#1652979622
+./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652982511
+bash -x ./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652984342
+./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652984729
+bash -x ./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652984925
+./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652985383
+bash -x ./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652985448
+./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652986475
+bash -x ./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652987229
+./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652988933
+./optparser-use-example.sh -d --force dave sam -o ./test.txt susan --verbose
+#1652988949
+./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652992349
+echo $debug
+#1652992364
+a="debug=1"
+#1652992377
+eval "${a}"
+#1652992381
+echo $debug
+#1652992558
+./optparser-use-example.sh -d --force dave sam -o ./test.txt susan
+#1652994221
+./optparser-use-example.sh -v --force dave sam -o ./test.txt susan
+#1652995120
+./optparser-use-example.sh
+#1652995142
+./optparser-use-example.sh -h
+#1653013312
+man eval
+#1653014579
+./optparser-use-example.sh -h
+#1653014588
+./optparser-use-example.sh
+#1653014876
+./optparser-use-example.sh -h
+#1653015049
+./optparser-use-example.sh
+#1653015056
+./optparser-use-example.sh -v --force dave sam -o ./test.txt susan
+#1653015101
+./optparser-use-example.sh -v --force dave sam -o ./test.txt susan --debug
