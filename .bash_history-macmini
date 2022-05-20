@@ -19030,3 +19030,7 @@ man eval
 ./optparser-use-example.sh -v --force dave sam -o ./test.txt susan
 #1653015101
 ./optparser-use-example.sh -v --force dave sam -o ./test.txt susan --debug
+#1653030905
+test1.sh -d --force -o --verbose
+#1653030933
+test1.sh -v --force dave sam -o ./test.txt susan --debug
