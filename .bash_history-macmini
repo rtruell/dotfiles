@@ -19034,3 +19034,81 @@ man eval
 test1.sh -d --force -o --verbose
 #1653030933
 test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653093508
+test1.sh
+#1653093529
+test1.sh -h
+#1653093546
+test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653093916
+bash -xtest1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653093920
+bash -x test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653094336
+test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653094342
+bash -x test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653094547
+test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653094641
+bash -x test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653094771
+test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653095187
+bash -x test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653095532
+test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653095562
+bash -x test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653095887
+test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653096150
+name="debug=1"
+#1653096159
+echo ${name}
+#1653096199
+echo "${name/=*/}"
+#1653096227
+test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653096270
+test1.sh -v --force dave sam -o ./test.txt susan
+#1653096460
+test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653097664
+test1.sh -v --force dave sam -o ./test.txt susan
+#1653107554
+output="test"
+#1653107564
+dave="output"
+#1653107570
+echo $dave
+#1653107633
+eval "echo $dave"
+#1653107711
+eval "${output}"
+#1653107738
+eval "${dave}"
+#1653108062
+echo "${!dave}"
+#1653108093
+test1.sh -v --force dave sam -o ./test.txt susan
+#1653108676
+test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653109306
+test1.sh -v --force dave sam -o ./test.txt susan
+#1653110577
+man printf
+#1653110699
+test1.sh -v --force dave sam -o ./test.txt susan
+#1653110937
+man printf
+#1653110994
+test1.sh -v --force dave sam -o ./test.txt susan
+#1653111334
+test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653111500
+bash -x test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653112019
+test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653112599
+test1.sh -v --force dave sam -o ./test.txt susan
