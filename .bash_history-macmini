@@ -19256,3 +19256,7 @@ test1.sh --verbose -f dave sam susan -o
 ttype dynamic_case_generator
 #1653202514
 ping -c 1 rtruell.ca
+#1653202544
+ttype dynamic_case_generator
+#1653202548
+test1.sh --verbose -f dave sam susan -o
