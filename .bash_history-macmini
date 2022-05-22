@@ -19112,3 +19112,147 @@ bash -x test1.sh -v --force dave sam -o ./test.txt susan --debug
 test1.sh -v --force dave sam -o ./test.txt susan --debug
 #1653112599
 test1.sh -v --force dave sam -o ./test.txt susan
+#1653140842
+bash -x test1.sh -v --force dave sam -o ./test.txt susan
+#1653141254
+test1.sh -v --force dave sam -o ./test.txt susan
+#1653141666
+bash -x test1.sh -v --force dave sam -o ./test.txt susan
+#1653141875
+test1.sh -v --force dave sam -o ./test.txt susan
+#1653141925
+bash -x test1.sh -v --force dave sam -o ./test.txt susan
+#1653142168
+test1.sh -v --force dave sam -o ./test.txt susan
+#1653142210
+man read
+#1653142513
+man bash
+#1653142964
+test1.sh -v --force dave sam -o ./test.txt susan
+#1653143421
+valid_options=verbose=1 force=1 output=./test.txt remaining_args="dave sam susan"
+#1653143430
+echo $valid_options
+#1653143451
+valid_options="verbose=1 force=1 output=./test.txt remaining_args="dave sam susan""
+#1653143462
+valid_options="verbose=1 force=1 output=./test.txt remaining_args=\"dave sam susan\""
+#1653143466
+echo $valid_options
+#1653143488
+echo "${valid_options}"
+#1653143523
+echo "${valid_options%*="}"
+#1653143538
+echo "${valid_options%*=\"}"
+#1653143555
+echo "${valid_options%*=}"
+#1653143599
+echo "${valid_options%=\"*}"
+#1653143620
+echo "${valid_options%\"*}"
+#1653143653
+echo "${valid_options%"*}"
+#1653143668
+echo "${valid_options%\"*}"
+#1653143679
+echo "${valid_options%=\"*}"
+#1653143689
+echo "${valid_options%=*}"
+#1653143760
+echo "${valid_options%\"*}"
+#1653143775
+echo "${valid_options%=\"*}"
+#1653143790
+echo "${valid_options%%\"*}"
+#1653143994
+test1.sh -v --force dave sam -o ./test.txt susan
+#1653144370
+test1.sh -v --force dave sam -o ./test.txt susan --debug
+#1653144422
+test1.sh --verbose -f dave sam --output ./test.txt susan -d -z
+#1653144429
+test1.sh --verbose -f dave sam --output ./test.txt susan -d
+#1653144555
+test1.sh --verbose -f dave sam --output susan -d
+#1653144642
+test1.sh --verbose -f dave sam -d susan --output
+#1653144670
+test1.sh --verbose -f dave sam -d susan -o
+#1653144775
+test1.sh --verbose -f dave sam -o susan -d
+#1653144876
+test1.sh --verbose -f dave sam -o -d susan
+#1653144925
+test1.sh --verbose -f dave sam -o=susan -d susan
+#1653144957
+test1.sh --verbose -f dave sam --output=susan -d susan
+#1653145044
+test1.sh --verbose -f dave sam --output= -d susan
+#1653145076
+test1.sh --verbose -f dave sam --output -d susan
+#1653145099
+test1.sh --verbose -f dave sam -d susan --output
+#1653145114
+test1.sh --verbose -f dave sam -d susan -o
+#1653145121
+test1.sh --verbose -f dave sam -d susan -o ./test.txt
+#1653195584
+test1.sh --verbose -f dave sam susan -o ./test.txt
+#1653195597
+test1.sh --verbose -f dave sam susan -o
+#1653195716
+printf -v new_line '\n'
+#1653195727
+echo ${new_line}
+#1653195794
+match_code="printf \"${match_name} is set, so do something with it here\""
+#1653195807
+echo ${match_code}
+#1653195829
+match_name="./test.txt"
+#1653195831
+echo ${match_code}
+#1653195862
+echo $match_name
+#1653195896
+match_code="printf \"${match_name} is set, so do something with it here\""
+#1653195900
+echo ${match_code}
+#1653195940
+match_code="printf \"${match_name} is set, so do something with it here${new_line}\""
+#1653195944
+echo ${match_code}
+#1653196083
+test1.sh --verbose -f dave sam susan -o
+#1653196398
+bash -x test1.sh --verbose -f dave sam susan -o
+#1653196584
+test1.sh --verbose -f dave sam susan -o
+#1653199497
+man declare
+#1653199607
+test1.sh --verbose -f dave sam susan -o
+#1653199792
+man declare
+#1653199905
+dirs
+#1653199938
+test1.sh --verbose -f dave sam susan -o
+#1653202281
+s .functions/dynamic_case_generator.function
+#1653202289
+typet dynamic_case_generator
+#1653202304
+less aliases
+#1653202309
+less .aliases
+#1653202325
+ttype dynamic_case_generator
+#1653202358
+test1.sh --verbose -f dave sam susan -o
+#1653202480
+ttype dynamic_case_generator
+#1653202514
+ping -c 1 rtruell.ca
