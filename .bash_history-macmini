@@ -19260,3 +19260,121 @@ ping -c 1 rtruell.ca
 ttype dynamic_case_generator
 #1653202548
 test1.sh --verbose -f dave sam susan -o
+#1653252401
+command="echo "this is a test""
+#1653252415
+echo $command
+#1653252428
+command="echo \"this is a test\""
+#1653252431
+echo $command
+#1653252481
+command="printf '%s\n' \"this is a test\""
+#1653252485
+echo $command
+#1653252519
+$command
+#1653252578
+command="printf \"this is a test\""
+#1653252581
+echo $command
+#1653252586
+$command
+#1653252656
+command="printf this is a test"
+#1653252659
+echo $command
+#1653252662
+$command
+#1653252692
+${command}
+#1653252700
+"${command}"
+#1653252716
+command="printf \"this is a test\""
+#1653252718
+"${command}"
+#1653252916
+command="echo \"this is a test\""
+#1653252922
+echo $command
+#1653252928
+$command
+#1653252960
+command="echo this is a test"
+#1653252962
+$command
+#1653252987
+eval "${command}"
+#1653252993
+command="echo \"this is a test\""
+#1653252998
+eval "${command}"
+#1653253048
+command="printf '%s\n' "this is a test""
+#1653253061
+command="printf '%s\n' \"this is a test\""
+#1653253069
+echo $command
+#1653253079
+eval "${command}"
+#1653253170
+test1.sh --verbose -f dave sam susan -o
+#1653253980
+echo $command
+#1653254059
+test1.sh --verbose -f dave sam susan -o
+#1653257400
+man read
+#1653257994
+test1.sh --verbose -f dave sam susan -o
+#1653258758
+test1.sh --verbose -f dave sam susan -o ~test.txt
+#1653258808
+test1.sh --verbose -f dave sam susan -o
+#1653260467
+test1.sh --verbose -f dave sam susan -o "${HOME}/test.txt"
+#1653260494
+test1.sh
+#1653260546
+test1.sh -h
+#1653260570
+test1.sh -o
+#1653260619
+test1.sh -e
+#1653260749
+test1.sh -h
+#1653260886
+test1.sh -e
+#1653260953
+test1.sh 
+#1653260985
+test1.sh -e
+#1653261167
+test1.sh -n
+#1653261179
+test1.sh -n rick
+#1653261185
+test1.sh -h
+#1653261582
+test1.sh --verbose -f dave sam susan -o "${HOME}/test.txt"
+#1653261593
+test1.sh --verbose -f dave sam susan -o "${HOME}/test.txt" --debug
+#1653262199
+man case
+#1653262209
+bashman case
+#1653262819
+man case
+#1653262823
+bashman case
+#1653282106
+sysinfo
+#1653282606
+test1.sh --verbose -f dave sam susan -o "${HOME}/test.txt" --debug
+#1653283180
+aliases
+#1653283184
+alias
+#1653283353
+test1.sh --verbose -f dave sam susan -o "${HOME}/test.txt" --debug
