@@ -19378,3 +19378,121 @@ aliases
 alias
 #1653283353
 test1.sh --verbose -f dave sam susan -o "${HOME}/test.txt" --debug
+#1653599027
+Hazelrename1.sh
+#1653599827
+findtext -i let
+#1653599854
+findtext -i "let "
+#1653599934
+flist findtext
+#1653599942
+listf findtext
+#1653599953
+listfunction findtext
+#1653599963
+f
+#1653599981
+lf findtext
+#1653600029
+cd bin
+#1653600039
+findtext -i "let "
+#1653600074
+findtext -i "+="
+#1653600091
+findtext -i "++"
+#1653600114
+ll
+#1653600122
+less optparser
+#1653600235
+findtext -i "++"
+#1653600245
+gitrepos
+#1653600251
+alias
+#1653600262
+ghrepos
+#1653600276
+cd optparser/
+#1653600284
+findtext -i "++"
+#1653600290
+home
+#1653600350
+Hazelrename1.sh
+#1653600586
+man read
+#1653601363
+Hazelrename1.sh
+#1653603135
+man column
+#1653603246
+Hazelrename1.sh
+#1653608864
+line="                    <h1><font face='helvetica, helv, arial, sans serif' size=4>TV Guide for Wednesday September 1, 2021</font></h1>"
+#1653608871
+echo $line
+#1653608914
+printf'%s\n' "${line}"
+#1653608926
+printf '%s\n' ">${line}<"
+#1653608989
+EndDayHeader="</font></h1>"
+#1653608998
+echo $EndDayHeader
+#1653609014
+line=${line/"${EndDayHeader}"/}
+#1653609023
+printf '%s\n' ">${line}<"
+#1653609080
+echo ${line:93}
+#1653609108
+echo ${line:92}
+#1653609482
+Hazelrename1.sh
+#1653622997
+HazelGuide1.sh
+#1653623299
+man bash
+#1653623753
+HazelGuide1.sh
+#1653624945
+t="MULTI: primary virtual IP for xyz/x.x.x.x:44595: 10.0.0.12"
+#1653624958
+searchstring="IP for"
+#1653624975
+rest=${t#*$searchstring}
+#1653624981
+echo $t
+#1653624995
+echo $searchstring
+#1653625005
+echo $rest
+#1653625049
+echo $(( ${#t} - ${#rest} - ${#searchstring} ))
+#1653625101
+echo ${t:23}
+#1653625125
+printf ${t:23}
+#1653625174
+printf '%s\n ">$t<"
+#1653625188
+printf '%s\n' ">$t<"
+#1653625198
+printf '%s\n' ">$searchstring<"
+#1653625208
+printf '%s\n' ">$rest<"
+#1653625235
+echo $(( ${#t} - ${#rest} - ${#searchstring} ))
+#1653625269
+printf '%s\n' ">${t:23}<"
+#1653625469
+printf '%d\n' $(( ${#t} - ${#rest} - ${#searchstring} ))
+#1653626216
+HazelGuide1.sh
+#1653628413
+man bash
+#1653629449
+HazelGuide1.sh
