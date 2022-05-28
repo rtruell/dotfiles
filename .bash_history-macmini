@@ -19496,3 +19496,49 @@ HazelGuide1.sh
 man bash
 #1653629449
 HazelGuide1.sh
+#1653682742
+ls binsupportfiles/
+#1653682754
+ll binsupportfiles/
+#1653682813
+chmod 644 binsupportfiles/ShowRenameFile.txt
+#1653682816
+ll binsupportfiles/
+#1653682830
+cat binsupportfiles/ShowRenameFile.txt
+#1653682839
+HazelGuide1.sh
+#1653682872
+cat binsupportfiles/guide1.html
+#1653683263
+HazelGuide1.sh
+#1653690729
+less binsupportfiles/guide1.html
+#1653690746
+ttype less
+#1653690753
+alias
+#1653690779
+alias | grep -i fix
+#1653690809
+less -fix binsupportfiles/guide1.html
+#1653690824
+less --help
+#1653690840
+man less
+#1653690999
+less -FiX binsupportfiles/guide1.html
+#1653691726
+HazelGuide1.sh
+#1653691947
+man printf
+#1653692207
+HazelGuide1.sh
+#1653692710
+f
+#1653692734
+fl putclip
+#1653692742
+lf putclip
+#1653692779
+HazelGuide1.sh
