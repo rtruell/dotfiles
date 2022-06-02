@@ -19878,3 +19878,31 @@ echo $((31%30))
 HazelGuide1.sh 
 #1653971539
 exit'
+#1654147136
+string="abcdefghijklmnopqrstuvwxyz"
+#1654147238
+for ((i=0, i<"${#string}", i++)); do echo ${string:${i}}; done
+#1654147257
+for ((i=0, i<${#string}, i++)); do echo ${string:${i}}; done
+#1654147283
+for ((i=0; i<"${#string}"; i++)); do echo ${string:${i}}; done
+#1654147365
+for ((i=0; i<"${#string}"; i++)); do echo ${string:0:${#string}-i}; done
+#1654147522
+man tac
+#1654147538
+for ((i=0; i<"${#string}"; i++)); do echo ${string:0:${#string}-i}; done | tac
+#1654147553
+man tac
+#1654147680
+ttype tac
+#1654148417
+echo $string
+#1654148438
+echo $string | tac
+#1654148483
+for ((i=0; i<"${#string}"; i++)); do echo ${string:0:${#string}-i}; done
+#1654148492
+for ((i=0; i<"${#string}"; i++)); do echo ${string:0:${#string}-i}; done | tac
+#1654148529
+printf '%s\n' "${string}" | tac
