@@ -19906,3 +19906,7 @@ for ((i=0; i<"${#string}"; i++)); do echo ${string:0:${#string}-i}; done
 for ((i=0; i<"${#string}"; i++)); do echo ${string:0:${#string}-i}; done | tac
 #1654148529
 printf '%s\n' "${string}" | tac
+#1654234541
+man bash
+#1654236493
+HazelGuide1.sh 
