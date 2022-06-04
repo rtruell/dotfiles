@@ -19910,3 +19910,29 @@ printf '%s\n' "${string}" | tac
 man bash
 #1654236493
 HazelGuide1.sh 
+#1654286706
+findshow 'iron man'
+#1654287457
+HazelGuide1.sh 
+#1654319317
+many typeset
+#1654319324
+man bash
+#1654320480
+HazelGuide1.sh 
+#1654323556
+man sort
+#1654323630
+HazelGuide1.sh 
+#1654324824
+man sort
+#1654324932
+HazelGuide1.sh 
+#1654326490
+man sort
+#1654326556
+HazelGuide1.sh 
+#1654326738
+man sort
+#1654326814
+HazelGuide1.sh 
