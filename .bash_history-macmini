@@ -19936,3 +19936,33 @@ HazelGuide1.sh
 man sort
 #1654326814
 HazelGuide1.sh 
+#1654409354
+bashman comparisions
+#1654409364
+man bash
+#1654409469
+bashman comparisions
+#1654409477
+HazelGuide1.sh 
+#1654414306
+man bash
+#1654414328
+man set
+#1654414358
+bash -x HazelGuide1.sh 
+#1654414513
+HazelGuide1.sh 
+#1654414579
+bash -x HazelGuide1.sh 
+#1654414934
+HazelGuide1.sh 
+#1654416443
+HazelGuide1.sh ${HOME}/binsupportfiles/2022-04-01.html 
+#1654416515
+HazelGuide1.sh "${HOME}/binsupportfiles/2022-04-01.html" 
+#1654416539
+HazelGuide1.sh "${HOME}/binsupportfiles/2022-04-01.html"
+#1654416579
+HazelGuide1.sh "${HOME}/binsupportfiles/2021-11-11.html"
+#1654416652
+HazelGuide1.sh "${HOME}/binsupportfiles/2021-12-09.html"
