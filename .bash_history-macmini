@@ -1,37 +1,3 @@
-ls
-cd dotfiles
-ls
-./symlink.sh
-exit
-#1627944265
-/Users/rtruell/dotfiles/.aliases; exit
-#1627945095
-echo 'Timer started. Stop with Ctrl-D.'
-#1627947205
-file=".functions/test"
-#1627947214
-echo ${file}
-#1627947232
-echo "${file}"
-#1627947259
-echo '${file}'
-#1627947286
-basename '${file}'
-#1627947298
-basename "${file}"
-#1627947333
-printf '%s\n' "exporting: $(basename "${file}")"
-#1627947361
-printf '%s\n' 'exporting: $(basename "${file}")'
-#1627947482
-cd /Volumes/ExternalHome/rtruell/dotfiles/1-mine-new-copied/
-#1627947497
-\ls
-#1627947499
-/ls
-#1627947529
-dir
-#1627947567
 ls -- .
 #1627947577
 ./test.sh
@@ -19973,3 +19939,41 @@ HazelGuide1.sh "${HOME}/binsupportfiles/2022-04-01.html"
 HazelGuide1.sh "${HOME}/binsupportfiles/2021-12-09.html"
 #1654584625
 HazelGuide1.sh "${HOME}/binsupportfiles/2021-11-11.html"
+#1654773830
+man bash
+#1654774177
+HazelGuide1.sh "${HOME}/binsupportfiles/2021-11-11.html"
+#1654774439
+HazelGuide1.sh "${HOME}/binsupportfiles/2022-06-06.html"
+#1654774473
+man bash
+#1654776287
+HazelGuide1.sh "${HOME}/binsupportfiles/2022-06-06.html"
+#1654776949
+man bash
+#1654777003
+HazelGuide1.sh "${HOME}/binsupportfiles/2022-06-06.html"
+#1654780554
+man bash
+#1654780804
+HazelGuide1.sh "${HOME}/binsupportfiles/2022-06-06.html"
+#1654780832
+man bash
+#1654781000
+HazelGuide1.sh "${HOME}/binsupportfiles/2022-06-06.html"
+#1654781144
+shopt
+#1654781214
+HazelGuide1.sh "${HOME}/binsupportfiles/2022-06-06.html"
+#1654782011
+HazelGuide1.sh "${HOME}/binsupportfiles/2022-05-19.html"
+#1654782338
+HazelGuide1.sh "${HOME}/binsupportfiles/2022-06-06.html"
+#1654782382
+HazelGuide1.sh "${HOME}/binsupportfiles/2022-04-01.html"
+#1654782418
+HazelGuide1.sh "${HOME}/binsupportfiles/2021-12-09.html"
+#1654782547
+HazelGuide1.sh "${HOME}/binsupportfiles/2021-11-11.html"
+#1654781084
+man bash
