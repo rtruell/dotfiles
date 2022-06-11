@@ -5,9 +5,11 @@ cd "${StartDir}"
 # macOS-only stuff.  abort if not macOS.
 if [[ "$(uname)" != "Darwin" ]]; then printf '%s\n' "This script is to be run only on macOS"; exit 1; fi
 
-# have the output of the script both on the screen and in a file...just in case
-# there are errors that need to be checked later
-exec > >(tee -i "${HOME}"/installlog.txt) 2>&1
+# save stdout (1) and stderr (2) in "backup" file descriptors (3 & 4), and then
+# redirect them so that the output and any error messages from the script are on
+# both the screen and in a file...just in case there are errors that need to be
+# referenced later.
+exec 3>&1 4>&2  > >(tee -i "${HOME}"/installlog.txt) 2>&1
 
 # some functions are needed to set things up, so load them
 source ./.functions/answer_is_yes.function
@@ -322,8 +324,11 @@ rmdir /Users/rtruell/Library/Containers/com.infinitekind.MoneydanceOSX/Data/Docu
 print_result $? "removed the default install location of the 'Moneydance' data files"
 # ...and replace it with a symlink to the external data files to get them off the SSD
 symlink_single_file "/Volumes/ExternalHome/rtruell/MoneydanceData" "/Users/rtruell/Library/Containers/com.infinitekind.MoneydanceOSX/Data/Documents"
+symlink_single_file "/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/optparser/optparser" "/Users/rtruell/bin/optparser"
 if [[ -x "${HOME}"/Applications/iTerm.app ]]; then
   sudo mv /Applications/Utilities/Terminal.app /Applications/Utilities/Terminal-apple.app  # rename Apple's 'Terminal' program ...
   print_result $? "Renamed Apple's 'Terminal' program"
   sudo symlink_single_file "${HOME}/Applications/iTerm.app" "/Applications/Utilities/Terminal.app"  # ... and replace it with a symlink to 'iTerm'
 fi
+
+exec 1>&3 2>&4 3>&- 4>&-  # restore stdout (1) and stderr (2) and close the "backup" file descriptors (3 & 4)
