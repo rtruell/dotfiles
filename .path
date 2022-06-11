@@ -43,6 +43,10 @@ if [[ "$(uname)" == "Darwin" ]]; then
   if [ -d "${HOMEBREW_PREFIX}"/opt/curl/bin ] ; then
     addpath -f "${HOMEBREW_PREFIX}"/opt/curl/bin
   fi
+
+  if [ -d "${HOMEBREW_PREFIX}"/opt/gnu-getopt/bin ] ; then
+    addpath -f "${HOMEBREW_PREFIX}"/opt/gnu-getopt/bin
+  fi
 fi
 
 delpath -n  # remove non-existent directories from PATH
