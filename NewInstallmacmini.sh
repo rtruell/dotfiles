@@ -320,11 +320,12 @@ rmdir /Users/rtruell/Downloads  # remove the OS-installed 'Downloads' directory 
 print_result $? "Removed the OS-installed 'Downloads' directory"
 symlink_single_file "/Volumes/Downloads/RecentDownloads" "/Users/rtruell/Downloads"  # ... and replace it with a symlink to the external downloads directory, to get it off the SSD
 symlink_single_file "/Volumes/ExternalHome/rtruell/SourceCode" "/Users/rtruell/SourceCode"  # make the directory of source code projects easy to get to
-rmdir /Users/rtruell/Library/Containers/com.infinitekind.MoneydanceOSX/Data/Documents  # remove the default install location of the 'Moneydance' data files ...
+#symlink_single_file "/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/optparser/optparser" "/Users/rtruell/bin/optparser"
+# remove the default install location of the 'Moneydance' data files ...
+rmdir /Users/rtruell/Library/Containers/com.infinitekind.MoneydanceOSX/Data/Documents
 print_result $? "removed the default install location of the 'Moneydance' data files"
 # ...and replace it with a symlink to the external data files to get them off the SSD
 symlink_single_file "/Volumes/ExternalHome/rtruell/MoneydanceData" "/Users/rtruell/Library/Containers/com.infinitekind.MoneydanceOSX/Data/Documents"
-symlink_single_file "/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/optparser/optparser" "/Users/rtruell/bin/optparser"
 if [[ -x "${HOME}"/Applications/iTerm.app ]]; then
   sudo mv /Applications/Utilities/Terminal.app /Applications/Utilities/Terminal-apple.app  # rename Apple's 'Terminal' program ...
   print_result $? "Renamed Apple's 'Terminal' program"
