@@ -219,6 +219,9 @@ if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
   # previously downloaded and located in '${HOME}/mountpoint/Downloads/Linux/InUse/Installed'
   declare -a programs=(
     "bcompare"
+    "freequide"
+    "imager"
+    "zulu"
   )
   i=""
   programdir="${HOME}/mountpoint/Downloads/Linux/InUse/Installed"  # the directory containing the programs to be copied
