@@ -20,6 +20,7 @@ fortune  # fortune cookie
 gcc
 gdebi-core  # command line '.deb' installer
 googleearth
+gparted
 gzip
 hardinfo  # info about computer's hardware
 k4dirstat  # graphical 'du'
@@ -33,7 +34,6 @@ network-manager-openconnect
 nmap  # network mapper
 non-free-codecs
 ntfs-3g  # read-write NTFS driver for Linux
-openjdk-6-jre-headless  # jdk 1.6 for freeguide
 owncloud-client
 p7zip
 p7zip-full
@@ -43,7 +43,6 @@ pigz
 python3
 python3-pip  # python Package Installer Program
 rar
-raspberry-pi-imager
 safe-rm  # do not delete main-system-dirs
 samba
 sl  # steam locomotive - what you get when you mistype 'ls'
