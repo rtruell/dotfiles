@@ -1,9 +1,10 @@
 #!/usr/bin/env bash
 
-# b - short name for the 'brew' command
+# b - short name for the 'brew' command.
 
-# this started off as a bunch of aliases for Homebrew, but I decided to turn
-# them into a single script file, to save memory
+# this started off as a bunch of aliases for Homebrew, but since I don't use the
+# 'brew' command all that frequently, I decided to turn them into a single
+# script file to save memory.
 declare -a usage=(
   " "
   "b: short name for the 'brew' command.  Also uses short names for the more"
@@ -15,64 +16,57 @@ declare -a usage=(
   "    -h: print this help message."
   " "
   "Short subcommands:"
-  "     b: bundle - does a 'brew bundle --global', installing all programs from"
-  "        '~/.Brewfile'."
-  "     c: cleanup - does a 'brew cleanup'.  Other options or formulae/casks can"
-  "        be specified and are passed through to the 'brew' command."
-  "     d: dump - does a 'brew bundle dump --all --file="${HOME}"/newbrew',"
-  "        which writes all installed casks, formulae, images, taps and MAS"
-  "        apps, including all dependencies, into the file '"${HOME}"/newbrew'."
-  "    dr: doctor - does a 'brew doctor'."
-  "     h: home - does a 'brew home'.  A formula/cask can be specified."
-  "     i: info - does a 'brew info'.  A formula/cask can be specified."
-  "    in: install - does a 'brew install'.  A formula/cask must be specified."
-  "        Additional options can be specified and are passed through to the"
-  "        'brew' command."
-  "     s: search - does a 'brew search'.  Text or a regex must be specified."
-  "        Additional options can be specified and are passed through to the"
-  "        'brew' command."
-  "    ud: update - does a 'brew update'.  Additional options can be specified"
-  "        and are passed through to the 'brew' command."
-  "    ug: upgrade - does a 'brew upgrade'.  Other options or formulae/casks can"
-  "        be specified and are passed through to the 'brew' command."
+  "     b: bundle - installs all programs from '~/.Brewfile'."
+  "     c: cleanup - removes outdated downloads for all formulae and casks and"
+  "        removes old versions of installed formulae.  **"
+  "     d: dump - writes all installed casks, formulae, images, taps and MAS"
+  "        apps, including all dependencies, into the file '~/newbrew'."
+  "    dr: doctor - checks the system for potential problems."
+  "     h: home - opens in the default web browser the Homebrew home page or, if"
+  "        specified, the home page for the specified formula/cask.  *"
+  "     i: info - displays statistics of the Homebrew installation or, if"
+  "        specified, information about a formula/cask.  *"
+  "    in: install - installs the specified formula or cask.  *"
+  "     s: search - searches for the specified text or regex.  *"
+  "    ud: update - get the newest versions of Homebrew and the formulae, casks"
+  "        and taps.  *"
+  "    ug: upgrade - upgrades outdated casks and outdated, unpinned formulae"
+  "        using the same options they were originally installed with.  **"
+  " "
+  "     * - For these subcommands, additional options can be specified and are"
+  "         passed through to the 'brew' command."
+  " "
+  "    ** - For these subcommands, other options or formulae/casks can be"
+  "         specified and are passed through to the 'brew' command."
   " "
   "Custom subcommands:"
-  "    ub: up both - does a 'brew update' and then a 'brew upgrade'."
-  "    uf: up full - does a 'brew update', a 'brew upgrade', a 'brew cleanup'"
-  "        and finally a 'brew doctor'."
+  "    ub: up both - does an update and then an upgrade."
+  "    uf: up full - does an update, an upgrade, a cleanup and finally a doctor."
   " "
   "Any other subcommand is passed through to the 'brew' command unchanged."
   " "
 )
-[[ -z "${1}" ]] && { printf '%s\n' "Must supply an option or a subcommand."; exit 1; }
 command="${1}"
+if [[ -z "${command}" ]]; then command="help"; fi
+shift
 if [[ "${command:0:1}" == "-" ]]; then
   if [[ "${command}" == "-h" ]]; then
     printf '%s\n' "${usage[@]}"
     exit
-  else
-    printf '%s\n' "Invalid option." "${usage[@]}"
-    exit 1
   fi
 fi
 case "${command}" in
    b) brew bundle --global;;
-   c) shift; brew cleanup "$@";;
+   c) brew cleanup "$@";;
    d) brew bundle dump --all --file="${HOME}"/newbrew;;
   dr) brew doctor;;
-   h) shift; brew home "$@";;
-   i) shift; brew info "$@";;
-  in) shift
-      if [[ -z "${1}" ]]; then printf '%s\n' "Must supply a formula or cask."; exit 1; fi
-      brew install "$@"
-      ;;
-   s) shift
-      if [[ -z "${1}" ]]; then printf '%s\n' "Must supply text or a regex."; exit 1; fi
-      brew search "$@"
-      ;;
+   h) brew home "$@";;
+   i) brew info "$@";;
+  in) if [[ -z "${1}" ]]; then printf '%s\n' "Must supply a formula or cask."; exit 1; else brew install "$@"; fi;;
+   s) if [[ -z "${1}" ]]; then printf '%s\n' "Must supply text or a regex."; exit 1; else brew search "$@"; fi;;
   ub) brew update && brew upgrade;;
-  ud) shift; brew update "$@";;
+  ud) brew update "$@";;
   uf) brew update && brew upgrade && brew cleanup && brew doctor;;
-  ug) shift; brew upgrade "$@";;
-   *) brew "$@";;
+  ug) brew upgrade "$@";;
+   *) brew "${command}" "$@";;
 esac
