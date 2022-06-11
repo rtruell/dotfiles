@@ -10,9 +10,9 @@
 # a getopts argument description string and the command line arguments
 # to process.
 #
-# If a required option argument is missing, opt_missing_arg stores the name
+# If a required option argument is missing, options_missing_arg stores the name
 # of the option whose argument is missing.
-# If an unknown option is passed, opt_unknown_option stores the name
+# If an unknown option is passed, options_unknown_option stores the name
 # of the unknown option.
 #
 # The caller must do a "shift $options_shift_val" to shift away the
