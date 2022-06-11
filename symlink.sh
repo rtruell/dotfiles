@@ -18,7 +18,7 @@ while read -r line; do  # read a line
 done < .dotfiles.ignore  # read from the file ".dotfiles.ignore"
 [[ $line ]] && excludefiles+=("$line")
 
-# with a recent install of Debian 10.10.0 in a VM, I found that the '.config'
+# with an install of Debian 10.10.0 in a VM, I found that the '.config'
 # directory is created during the installation, in both 'root' and the user
 # account created during the install.  since there are files/directories that
 # need to be linked into '.config', I had to add some code to account for the
