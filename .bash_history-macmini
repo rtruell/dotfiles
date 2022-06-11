@@ -1,29 +1,3 @@
-la
-#1627948748
-ls /usr/local/share/liquidprompt
-#1627948757
-ls /usr/local/share
-#1627949053
-brew info liquidprompt
-#1627949177
-./liquidprompt/liquidprompt --version
-#1627949422
-brew home liquidprompt
-#1627949632
-brew install liquidprompt
-#1627949829
-ls /usr/local/share
-#1627950260
-cat .bash_prompt
-#1627950298
-source /liquidprompt/liquidprompt
-#1627950340
-source ~/liquidprompt/liquidprompt
-#1627950395
-source /usr/local/share/liquidprompt
-#1627950479
-bcomp ~/liquidprompt/liquidprompt /usr/local/share/liquidprompt
-#1627952695
 pwd
 #1627952699
 dotfiles
