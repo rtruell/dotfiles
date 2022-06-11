@@ -10,8 +10,10 @@ export DOTFILESSRCDIR="${HOME}/dotfiles"  # shortcut to where my dotfiles live
 export DOTFILES="${HOME}/dotfiles"  # another shortcut to where my dotfiles live
 export PYTHONIOENCODING='UTF-8'  # make Python use UTF-8 encoding for output to stdin, stdout, and stderr
 
-# Pass some options to 'less': "F" causes immediate exit if output will fit on one screen, "I" sets case-insensitive searches and "X"
-# doesn't send termcap initialization and deinitialization strings to the terminal.  then set 'PAGER' and 'MANPAGER' to use 'less'
+# Pass some options to 'less': "F" causes immediate exit if output will fit on
+# one screen, "I" sets case-insensitive searches and "X" doesn't send termcap
+# initialization and deinitialization strings to the terminal.  Then set 'PAGER'
+# and 'MANPAGER' to use 'less'
 export less="-FIX"
 export PAGER="less"
 export MANPAGER="less"
@@ -140,10 +142,12 @@ for i in ${!features[*]}; do
 done
 unset features file i
 
-# Do not overwrite files when redirecting using ">".  Note that you can still override this with ">|".
+# Do not overwrite files when redirecting using ">".  Note that you can still
+# override this with ">|".
 set -o noclobber
 
-# Avoid issues with `gpg` as installed via Homebrew. https://stackoverflow.com/a/42265848/96656
+# Avoid issues with `gpg` as installed via Homebrew.
+# https://stackoverflow.com/a/42265848/96656
 export GPG_TTY=$(tty)
 
 # If HOSTNAME isn't set, then set it
@@ -152,7 +156,7 @@ if [[ -z "${HOSTNAME}" ]]; then
   export HOSTNAME
 fi
 
-# If EUID isn't set, then set it.  Note that 'id -u' is now mostly portable here due to the alignment of xpg4 above
+# If EUID isn't set, then set it.  Note that 'id -u' is now mostly portable here
 if [[ -z "${EUID}" ]]; then
   EUID=$(id -u)
   export EUID
