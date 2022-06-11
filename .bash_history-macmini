@@ -1,5 +1,3 @@
-bash --version
-#1627973118
 less test.sh
 #1627973274
 echo ${LESSCHARSET}
@@ -19963,3 +19961,23 @@ b h the-unarchiver
 b i zoc
 #1654980233
 man hier | grep -E 'bin$|sbin$|^.{7}(/bin)|^.{7}(/sbin)' -A2
+#1654980714
+path
+#1654980729
+echo $HOME
+#1654980761
+ls /usr/local/bin
+#1654980787
+ls /usr/local/sbin
+#1654980800
+ll /usr/local/sbin
+#1654980827
+path
+#1654980966
+HazelGuide1.sh "${HOME}/binsupportfiles/2022-06-06.html"
+#1654980998
+whereis HazelGuide1.sh
+#1654981007
+which HazelGuide1.sh
+#1654981029
+HazelGuide1.sh "${HOME}/binsupportfiles/2022-06-06.html"
