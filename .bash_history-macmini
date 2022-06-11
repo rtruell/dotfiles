@@ -1,63 +1,3 @@
-pwd
-#1627952699
-dotfiles
-#1627970863
-up
-#1627970925
-subl /usr/local/share/liquidprompt
-#1627971464
-pmset --version
-#1627971475
-man pmset
-#1627971580
-listfunctions
-#1627971592
-functions
-#1627971659
-listfunction findshow
-#1627971886
-findshow 'general'
-#1627971907
-man pmset
-#1627971948
-spaceused
-#1627972039
-listfunction spaceused
-#1627972113
-listfunction listdf
-#1627972332
-spaceused
-#1627972342
-listdf
-#1627972428
-alias
-#1627972486
-stfu
-#1627972494
-volnorm
-#1627972501
-volmax
-#1627972521
-pumpitup
-#1627972539
-volnorm
-#1627972553
-timer
-#1627972588
-externalip
-#1627972598
-internalip
-#1627972614
-localip
-#1627972707
-path
-#1627972786
-sed --version
-#1627972813
-sed --help
-#1627972855
-man sed
-#1627972920
 bash --version
 #1627973118
 less test.sh
@@ -20021,3 +19961,5 @@ b i the-unarchiver
 b h the-unarchiver
 #1654923903
 b i zoc
+#1654980233
+man hier | grep -E 'bin$|sbin$|^.{7}(/bin)|^.{7}(/sbin)' -A2
