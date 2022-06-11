@@ -19961,3 +19961,63 @@ man bash
 man shopt
 #1654837585
 HazelGuide1.sh "${HOME}/binsupportfiles/2022-06-06.html"
+#1654919364
+b s pathfinder
+#1654919383
+b i pathfinder
+#1654919412
+b i path-finder
+#1654919561
+b s typinator
+#1654919577
+b i typinator
+#1654920339
+b i dropzone
+#1654920823
+b s dropzone
+#1654920843
+b i dropzone
+#1654921655
+b s folx
+#1654921671
+b i folx
+#1654921808
+b i beyond-compare
+#1654921871
+b i black-ink
+#1654921983
+b s marsedit
+#1654921998
+b i marsedit
+#1654922287
+b i imazing
+#1654922430
+b s istat-menu
+#1654922461
+b  istat-menus
+#1654922479
+b i istat-menus
+#1654922495
+b i istat-menus5
+#1654922913
+b s moneydance
+#1654922929
+b i moneydance
+#1654922975
+b i quickhash
+#1654922986
+b h quickhash
+#1654923326
+b i rightzoon
+#1654923330
+b i rightzoom
+#1654923368
+b h rightzoom
+#1654923640
+b i superduper
+#1654923821
+b i the-unarchiver
+#1654923832
+b h the-unarchiver
+#1654923903
+b i zoc
