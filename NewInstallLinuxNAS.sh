@@ -5,9 +5,11 @@ cd "${StartDir}"
 # Linux-only stuff.  abort if not Linux.
 if [[ "$(uname)" != "Linux" ]]; then printf '%s\n' "This script is to be run only on Linux"; exit 1; fi
 
-# have the output of the script both on the screen and in a file...just in case
-# there are errors that need to be checked later
-exec > >(tee -i "${HOME}"/installlog.txt) 2>&1
+# save stdout (1) and stderr (2) in "backup" file descriptors (3 & 4), and then
+# redirect them so that the output and any error messages from the script are on
+# both the screen and in a file...just in case there are errors that need to be
+# referenced later.
+exec 3>&1 4>&2  > >(tee -i "${HOME}"/installlog.txt) 2>&1
 
 # some functions are needed to set things up, so load them
 source ./.functions/answer_is_yes.function
@@ -109,7 +111,7 @@ while read -r repoline; do  # read in /etc/apt/sources.list.orig one line at a t
       repoline+=" non-free"
     fi
   fi
-  printf '%s\n' "${repoline}" | sudo tee /etc/apt/sources.list >/dev/null  # print the (possibly updated) line to a new '/etc/apt/sources.list'
+  printf '%s\n' "${repoline}" | sudo tee -a /etc/apt/sources.list >/dev/null  # print the (possibly updated) line to a new '/etc/apt/sources.list'
 done < /etc/apt/sources.list.orig
 print_result 0 "Updated '/etc/apt/sources.list' with the 'contrib' and 'non-free' repositories, and commented out the installation media lines"
 
@@ -251,7 +253,7 @@ if [[ -d /etc/ssh/sshd_config.d ]]; then  # check to see if the directory '/etc/
   else
     printf "Port 22000  # change the port in an attempt to foil crackers\n" | sudo tee /etc/ssh/sshd_config.d/port.conf >/dev/null  # it isn't, so create the file
     print_result $? "Created '/etc/ssh/sshd_config.d/port.conf'"
-    sudo chmod 440 /etc/ssh/sshd_config.d/port.conf  # and set its permissions
+    sudo chmod 600 /etc/ssh/sshd_config.d/port.conf  # and set its permissions
     print_result $? "Changed permissions for '/etc/ssh/sshd_config.d/port.conf'"
   fi
 else
@@ -261,7 +263,7 @@ else
   print_result $? "Changed permissions for '/etc/ssh/sshd_config.d'"
   printf "Port 22000  # change the port in an attempt to foil crackers\n" | sudo tee /etc/ssh/sshd_config.d/port.conf >/dev/null  # create the file with the port number change
   print_result $? "Created '/etc/ssh/sshd_config.d/port.conf'"
-  sudo chmod 440 /etc/ssh/sshd_config.d/port.conf  # and set its permissions
+  sudo chmod 600 /etc/ssh/sshd_config.d/port.conf  # and set its permissions
   print_result $? "Changed permissions for '/etc/ssh/sshd_config.d/port.conf'"
 fi
 
@@ -296,3 +298,5 @@ print_result $? "Added '${username}' to samba"
 # update the locate database
 sudo updatedb
 print_result $? "updated the 'locate' database"
+
+exec 1>&3 2>&4 3>&- 4>&-  # restore stdout (1) and stderr (2) and close the "backup" file descriptors (3 & 4)
