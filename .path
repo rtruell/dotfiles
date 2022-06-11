@@ -18,6 +18,10 @@ if [ -d ${HOME}/bin ] ; then
   addpath -f ${HOME}/bin
 fi
 
+if [ -d ${HOME}/testscripts ] ; then
+  addpath -f ${HOME}/testscripts
+fi
+
 # if running macOS, add the Homebrew install directories to PATH and export the
 # Homebrew environment variables
 if [[ "$(uname)" == "Darwin" ]]; then
