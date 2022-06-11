@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+# from user 'ripat' on The UNIX and Linux Forums
+# ( https://www.unix.com/tips-and-tutorials/31944-simple-date-time-calulation-bash.html )
+
+# convert from a Unix timestamp to a date
+date --utc --date "1970-01-01 $1 sec" "+%Y-%m-%d %T"

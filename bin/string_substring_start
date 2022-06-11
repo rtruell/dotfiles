@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+# find $2 (the substring) in $1 (the string) and save everything after it
+a="${1#*${2}}"
+
+# the starting position of $2 in $1 is calculated by:
+# (the length of $1) - (the length of $2) - (the length of 'a')
+printf '%d\n' $(( ${#1} - ${#2} - ${#a} ))
