@@ -3,6 +3,7 @@ amd64-microcode
 bash
 bash-completion
 bc
+boxes  # draw boxes around text
 bzip2
 cmake  # cross-platform make
 coreutils
@@ -14,6 +15,8 @@ firmware-misc-nonfree
 fontconfig
 fortune  # fortune cookie
 gcc
+gdebi-core  # command line '.deb' installer
+gparted
 gzip
 hardinfo  # info about computer's hardware
 liquidprompt  # fancy command line prompt
@@ -28,12 +31,15 @@ p7zip-rar
 perl
 pigz
 python3
+python3-distro
+python3-netifaces
 python3-pip  # python Package Installer Program
 rar
 safe-rm  # do not delete main-system-dirs
 samba
 sl  # steam locomotive - what you get when you mistype 'ls'
 sqlite3
+sublime-merge
 sublime-text
 synaptic
 tar
