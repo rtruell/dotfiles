@@ -166,6 +166,7 @@ declare -a filesdirs=(
   ".ssh"
 )
 i=""
+retcode=0
 currdir=${PWD}  # preserve the current directory
 if [[ -d /nas/data/OSInstallFiles ]]; then  # if the NAS files are available
   print_result 0 "NAS files are available"
@@ -208,6 +209,7 @@ if [[ -d /nas/data/OSInstallFiles ]]; then  # if the NAS files are available
   # copy programs that aren't available via 'apt'.  the programs must be
   # previously downloaded and located in '/nas/data/Downloads/Linux/InUse/Installed'
   declare -a programs=(
+    "archey"
     "bcompare"
   )
   i=""
