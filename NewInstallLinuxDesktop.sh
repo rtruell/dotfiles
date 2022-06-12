@@ -171,7 +171,7 @@ declare -a filesdirs=(
   ".ssh"
 )
 i=""
-retcode=""
+retcode=0
 currdir=${PWD}  # preserve the current directory
 mkdir "${HOME}"/mountpoint  # create a mount point for the NAS' data directory ...
 print_result $? "Created mount point"
@@ -218,6 +218,7 @@ if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
   # copy programs that aren't available via 'apt'.  the programs must be
   # previously downloaded and located in '${HOME}/mountpoint/Downloads/Linux/InUse/Installed'
   declare -a programs=(
+    "archey"
     "bcompare"
     "freequide"
     "imager"
