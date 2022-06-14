@@ -1,85 +1,3 @@
-set | less
-#1627974353
-LESSCHARSET="en_US.UTF-8"
-#1627974364
-less test.sh
-#1627974387
-LESSCHARSET="UTF-8"
-#1627974390
-less test.sh
-#1627974583
-findtxt export
-#1627974593
-findtext export
-#1627974604
-functions
-#1627974619
-set
-#1627974670
-set | less
-#1627974692
-echo ${LESSCHARSET}
-#1627974742
-findtext 'export'
-#1627974761
-functions | less
-#1627974783
-LESSCHARSET=""
-#1627974789
-functions | less
-#1627974805
-functions
-#1627976622
-sed --version
-#1627976641
-less test.sh
-#1627976657
-set | less
-#1627976939
-set >set-new.txt
-#1627977019
-which bash
-#1627977037
-/bin/bash --version
-#1627977053
-/usr/local/bin/bash --version
-#1627977694
-man sed
-#1627977719
-man gsed
-#1627977753
-sed --version
-#1627977770
-which sed
-#1627977786
-whereis sed
-#1627977801
-/usr/bin/sed --version
-#1627977879
-cd dotfiles-backup
-#1627977888
-findtext export
-#1627978009
-findtext lang
-#1627978869
-set | less
-#1628023679
-findshow 'good witch'
-#1628029495
-brew update
-#1628029566
-brew outdated
-#1628072450
-ls /usr/local/man
-#1628072457
-ls /usr/local
-#1628072476
-ls /etc/
-#1628072492
-ls /etc/manpaths.d
-#1628072510
-path
-#1628072572
 echo $MANPTH
 #1628072580
 echo $MANPATH
@@ -20043,3 +19961,11 @@ b in archey4
 archey4
 #1655072384
 archey
+#1655183558
+b s sublime
+#1655183577
+b s sublime-test
+#1655183591
+b i sublime-test
+#1655183603
+b i sublime-text
