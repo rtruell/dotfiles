@@ -104,7 +104,7 @@ retcode=""
 currdir=${PWD}  # preserve the current directory
 # mount the NAS's data directory.  this will prompt for the user/password, then
 # try to create '/Volumes/data' and mount the NAS's data directory there
-osascript -e 'mount volume "smb://nas/data"' 1>/dev/null 2>&1
+osascript -e 'mount volume "smb://qnap2/data"' 1>/dev/null 2>&1
 retcode=$?
 if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
   print_result ${retcode} "Mounted NAS"
@@ -287,26 +287,26 @@ print_result $? "Updated Homebrew"
 brew doctor  # check it
 print_result $? "Checked Homebrew"
 
-## install all the things
-#printf '%s\n' "About to install the .Brewfile contents...this could take a while!!"
-#brew bundle --global
-#print_result $? "Installed desired formulas, Casks and MAS apps"
+# install all the things
+printf '%s\n' "About to install the .Brewfile contents...this could take a while!!"
+brew bundle --global
+print_result $? "Installed desired formulas, Casks and MAS apps"
 
 # remove outdated versions from the cellar
 brew cleanup
 print_result $? "Cleaned up Homebrew"
 
-## switch to using brew-installed bash as default shell
-#if [[ -x "${BREW_PREFIX}/bin/bash" ]]; then
-#  if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then  # if the new bash isn't already in the list of shell programs
-#    sudo printf '%s\n' "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells  # add it
-#    print_result $? "Updated '/etc/shell' with the just-installed version of bash"
-#  fi
-#  chsh -s "${BREW_PREFIX}/bin/bash"  # change the shell to the new bash
-#  print_result $? "Changed the shell to the new version of bash: ${BASH_VERSION} (should be 4+)"  # should be 4+ not the old 3.2.x
-#else
-#  print_result 1 "bash not installed properly by Homebrew"
-#fi
+# switch to using brew-installed bash as default shell
+if [[ -x "${BREW_PREFIX}/bin/bash" ]]; then
+ if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then  # if the new bash isn't already in the list of shell programs
+   sudo printf '%s\n' "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells  # add it
+   print_result $? "Updated '/etc/shell' with the just-installed version of bash"
+ fi
+ chsh -s "${BREW_PREFIX}/bin/bash"  # change the shell to the new bash
+ print_result $? "Changed the shell to the new version of bash: ${BASH_VERSION} (should be 4+)"  # should be 4+ not the old 3.2.x
+else
+ print_result 1 "bash not installed properly by Homebrew"
+fi
 
 # set up macOS defaults
 compname=$(hostname -s)  # get the hostname of the computer, stripping off the domainname if it's there
