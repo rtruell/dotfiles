@@ -1,19 +1,3 @@
-less /etc/man.conf
-#1628072739
-ls /usr
-#1628072744
-ls /usr/share
-#1628072754
-ls /usr/share/man
-#1628072764
-ls /usr/local/share/man
-#1628072789
-ls /usr/share/man/man1
-#1628072859
-ls /usr/local/share/man/man1
-#1628072957
-man /usr/share/man/man1/sed.1
-#1628073584
 bcomp liquidprompt/liquidprompt /usr/local/share/liquidprompt
 #1628074535
 source /usr/local/share/liquidprompt
@@ -19977,3 +19961,9 @@ ls /Users/rtruell/Applications/super*
 ls /Users/rtruell/Applications/Super*
 #1655317606
 b in superduper
+#1655322252
+b s nextcloud
+#1655322267
+b i nextcloud
+#1655322302
+b h nextcloud
