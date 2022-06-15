@@ -8,7 +8,7 @@ tap "mas-cli/tap"
 tap "quackduck/tap"
 
 brew "ansiweather"
-brew "archey"
+brew "archey4"
 brew "bash"
 brew "bash-completion@2"
 brew "bat"
