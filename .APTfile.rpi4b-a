@@ -25,6 +25,7 @@ safe-rm  # do not delete main-system-dirs
 samba
 sl  # steam locomotive - what you get when you mistype 'ls'
 sqlite3
+sublime-text
 synaptic
 tree
 wget  # get files from web
