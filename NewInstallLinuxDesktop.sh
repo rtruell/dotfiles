@@ -175,7 +175,7 @@ retcode=0
 currdir=${PWD}  # preserve the current directory
 mkdir "${HOME}"/mountpoint  # create a mount point for the NAS' data directory ...
 print_result $? "Created mount point"
-sudo mount -t cifs -o user=rtruell //nas/data "${HOME}"/mountpoint  # ... and mount it.  don't forget to change the user name as necessary
+sudo mount -t cifs -o user=rtruell //qnap2/data "${HOME}"/mountpoint  # ... and mount it.  don't forget to change the user name as necessary
 retcode=$?
 if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
   print_result ${retcode} "Mounted NAS"
@@ -408,9 +408,9 @@ printf '%s\n' " " | sudo tee -a /etc/fstab >/dev/null  # add a separator line
 print_result $? "Added separator line to '/etc/fstab'"
 printf '%s\n' "# Mount NAS shares" | sudo tee -a /etc/fstab >/dev/null  # add a comment saying what the new section is for
 print_result $? "Added comment explaining the new section to '/etc/fstab'"
-printf '%s\n' "//nas/data /nas/data cifs auto,credentials=${HOME}/.credentials,iocharset=utf8 0 0" | sudo tee -a /etc/fstab >/dev/null  # mount command for 'data'
+printf '%s\n' "//qnap2/data /nas/data cifs auto,credentials=${HOME}/.credentials,iocharset=utf8 0 0" | sudo tee -a /etc/fstab >/dev/null  # mount command for 'data'
 print_result $? "Added mount command for 'data' directory on NAS to '/etc/fstab'"
-printf '%s\n' "//nas/backups /nas/backups cifs auto,credentials=${HOME}/.credentials,iocharset=utf8 0 0" | sudo tee -a /etc/fstab >/dev/null  # mount command for 'backups'
+printf '%s\n' "//qnap2/backups /nas/backups cifs auto,credentials=${HOME}/.credentials,iocharset=utf8 0 0" | sudo tee -a /etc/fstab >/dev/null  # mount command for 'backups'
 print_result $? "Added mount command for 'backups' directory on NAS to '/etc/fstab'"
 
 # update the locate database
