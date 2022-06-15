@@ -115,7 +115,15 @@ while read -r repoline; do  # read in /etc/apt/sources.list.orig one line at a t
 done < /etc/apt/sources.list.orig
 print_result 0 "Updated '/etc/apt/sources.list' with the 'contrib' and 'non-free' repositories, and commented out the installation media lines"
 
-# update and upgrade apt
+# add the repository for Sublime Text/Merge to 'apt'
+sudo "${HOME}"/bin/add-apt-key https://download.sublimetext.com/sublimehq-pub.gpg sublimehq "deb https://download.sublimetext.com/ apt/stable/"
+print_result $? "Added the Sublime Text/Merge repository to 'apt'"
+
+# since secure repositories were just added to 'apt', must make sure that
+# 'apt-transport-https' is installed in order to update 'apt'
+apt_package_installer "apt-transport-https"
+
+# update apt to pick up the new repositories, and then do an upgrade
 sudo apt update
 print_result $? "apt updated"
 sudo apt upgrade
@@ -136,7 +144,6 @@ declare -a packages=(
   "openssh-server"
   "procps"
   "systemd"
-  "apt-transport-https"
 )
 for i in ${packages[@]}; do  # loop through the array of packages ...
   apt_package_installer "${i}"  # ... installing them if necessary
