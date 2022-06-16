@@ -1,7 +1,3 @@
-source ~/liquidprompt/liquidprompt
-#1628074830
-source /usr/local/share/liquidprompt
-#1628074850
 man sed
 #1628074880
 bashman test
@@ -19965,3 +19961,7 @@ b h nextcloud
 b s micro
 #1655351326
 b i micro
+#1655408570
+b s nextcloud
+#1655408588
+b i nextcloud
