@@ -1,13 +1,3 @@
-bashman -h
-#1628074910
-bashman -help
-#1628074926
-listfunction bashman
-#1628074971
-bashman tests
-#1628075085
-ls /usr/local/share
-#1628075096
 ll /usr/local/share
 #1628075148
 ls /usr/local
@@ -19971,3 +19961,47 @@ aw
 b h archey4
 #1655519958
 procps
+#1655521103
+b i audacity
+#1655521139
+b s audacity
+#1655521280
+b h audacity
+#1655521548
+b i avidemux
+#1655521564
+b h avidemux
+#1655522237
+b i bcompare
+#1655522267
+b i beyond-compare
+#1655522306
+b h beyond-compare
+#1655523091
+b s canon
+#1655527652
+b s xchm
+#1655528405
+b s libchm
+#1655528544
+b s archmage
+#1655529431
+b i kindle
+#1655529443
+b h kindle
+#1655529603
+b i kindle
+#1655529609
+b s kindle
+#1655530818
+b s blackhole
+#1655532241
+b s tech
+#1655532954
+b i whatroute
+#1655532964
+b h whatroute
+#1655533327
+b h x-mirage
+#1655533431
+b i x-mirage
