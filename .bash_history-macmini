@@ -1,47 +1,3 @@
-ll /usr/local/share
-#1628075148
-ls /usr/local
-#1628075178
-ls /usr/local/Cellar/liquidprompt/2.0.3/share/
-#1628075214
-less /usr/local/Cellar/liquidprompt/2.0.3/share/liquidpromptrc-dist
-#1628075646
-set | less
-#1628075790
-echo ${DISPLAY-}
-#1628075831
-set | less
-#1628075862
-set DISPLAY=""
-#1628075872
-echo ${DISPLAY-}
-#1628075887
-echo ${DISPLAY}
-#1628075922
-unset DISPLAY
-#1628075925
-echo ${DISPLAY}
-#1628075931
-echo ${DISPLAY-}
-#1628076021
-echo ${_lp_hostname}
-#1628076074
-echo ${lp_connection}
-#1628076097
-echo ${lp_hostname_color}
-#1628076131
-echo ${lp_hostname}
-#1628076485
-source ~/liquidprompt/liquidprompt
-#1628076542
-hf liquid
-#1628076559
-source /usr/local/share/liquidprompt 
-#1628076683
-less /usr/local/Cellar/liquidprompt/2.0.3/share/liquidpromptrc-dist 
-#1628077053
-brew home liquidprompt
-#1628077476
 findtext -h
 #1628078425
 brew info thunderbird
@@ -20005,3 +19961,11 @@ b h whatroute
 b h x-mirage
 #1655533431
 b i x-mirage
+#1655578908
+ll /Volumes/
+#1655590747
+la
+#1655590769
+man netrc
+#1655590780
+man 5 netrc
