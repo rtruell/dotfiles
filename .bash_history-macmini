@@ -1,7 +1,3 @@
-man sed
-#1628074880
-bashman test
-#1628074904
 bashman -h
 #1628074910
 bashman -help
@@ -19965,3 +19961,13 @@ b i micro
 b s nextcloud
 #1655408588
 b i nextcloud
+#1655519218
+b i ansiweather
+#1655519290
+b h ansiweather
+#1655519567
+aw
+#1655519803
+b h archey4
+#1655519958
+procps
