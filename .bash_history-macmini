@@ -1,9 +1,3 @@
-brew install thunderbird
-#1628078912
-brew search firefox
-#1628078960
-alias
-#1628078977
 hf vol
 #1628078989
 osascript -e 'set volume output volume 87' 
