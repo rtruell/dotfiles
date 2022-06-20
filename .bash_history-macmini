@@ -1,11 +1,3 @@
-findtext -h
-#1628078425
-brew info thunderbird
-#1628078599
-brew update
-#1628078637
-brew info imazing
-#1628078676
 brew install thunderbird
 #1628078912
 brew search firefox
@@ -19969,3 +19961,9 @@ la
 man netrc
 #1655590780
 man 5 netrc
+#1655702257
+b s nextcloud
+#1655702335
+b i nextcloud
+#1655702346
+b h nextcloud
