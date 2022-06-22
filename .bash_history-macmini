@@ -1,5 +1,3 @@
-la
-#1628245358
 cat .bash_profile
 #1628245412
 cat dotfiles/.bash_prompt
@@ -19961,3 +19959,5 @@ sudo ./bootinst.sh
 ls .
 #1655880152
 ll .
+#1655880264
+/Volumes/SLAX/slax/boot/bootinst.sh; exit
