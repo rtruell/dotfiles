@@ -1,11 +1,3 @@
-cat .bash_profile
-#1628245412
-cat dotfiles/.bash_prompt
-#1628245439
-source /usr/local/share/liquidprompt
-#1628245470
-echo ${DISPLAY-}
-#1628245475
 echo ${DISPLAY}
 #1628245530
 set DISPLAY=":0"
@@ -19969,3 +19961,5 @@ ls bin
 unixtime2date 2644842
 #1655924534
 unixtime2date 2644842.640301
+#1656007911
+man sudo
