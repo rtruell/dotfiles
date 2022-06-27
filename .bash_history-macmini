@@ -1,9 +1,3 @@
-set DISPLAY=":0"
-#1628245537
-echo ${DISPLAY}
-#1628245542
-echo ${DISPLAY-}
-#1628245640
 source ~/liquidprompt/liquidprompt
 #1628245648
 dotfiles
@@ -19967,3 +19961,115 @@ man pv
 b s cdrdao
 #1656069429
 b h cdrdao
+#1656303651
+cat bin/fp
+#1656303691
+fp -n archey4_4.13.4-1_all.deb
+#1656303817
+basename "${archey4_4.13.4-1_all.deb%.*}"
+#1656303883
+filepath="archey4_4.13.4-1_all.deb"
+#1656303903
+basename "${filepath%.*}"
+#1656303939
+basename archey4_4.13.4-1_all.deb%.*
+#1656303951
+basename "archey4_4.13.4-1_all.deb%.*"
+#1656309407
+repurl="deb [ arch=amd64,armel lang=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656309491
+echo "${repurl#*[}"
+#1656309562
+echo "${repurl%%]*}"
+#1656310149
+repourl="deb [ arch=amd64,armel lang=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656310338
+printf '%s\n' "${repourl}"
+#1656310454
+repooption="${repourl#*[}"
+#1656310467
+printf '%s\n' "${repooption}"
+#1656310546
+repooption="${repooption%%]*}"
+#1656310550
+printf '%s\n' "${repooption}"
+#1656310843
+printf '%s\n' ">${repooption}<"
+#1656311798
+printf '%s\n' ">${repourl}<"
+#1656311850
+cut -d' ' -f1` <<< "${repourl}"
+#1656311885
+cut -d' ' -f1 <<< "${repourl}"
+#1656311969
+cut -d' ' -f2 <<< "${repourl}"
+#1656312449
+printf '%s\n' ">${repourl}<"
+#1656312455
+printf '%s\n' "${repooption}"
+#1656312544
+printf '%s\n' ">${repourl/${repooption}}<"
+#1656313580
+rest="$repourlt#*[}"
+#1656313589
+echo $rest
+#1656313642
+rest=$repourlt#*[}
+#1656313680
+rest="${repourl#*$searchstring}"
+#1656313690
+echo $rest
+#1656313731
+rest="${repourl#*[}"
+#1656313736
+echo $rest
+#1656313802
+start=$(( ${#repourl} - ${#rest} - 1 ))
+#1656313833
+rest="${repourl#*]}"
+#1656313836
+echo $rest
+#1656313864
+end=$(( ${#repourl} - ${#rest} - 1 ))
+#1656313870
+echo start
+#1656313875
+echo $start
+#1656313879
+echo $end
+#1656314158
+echo "${repourl:0:4}"
+#1656314184
+echo "${repourl:${end}}"
+#1656314239
+end=$(( ${#repourl} - ${#rest} ))
+#1656314244
+echo "${repourl:${end}}"
+#1656314299
+echo "${repourl:0:${start}}"
+#1656314339
+echo "${repourl:0:${start}}${repourl:${end}}"
+#1656314576
+repospec="${repourl:0:${start}}${repourl:${end}}"
+#1656314606
+printf '%s\n' ">${repospec}<"
+#1656314734
+cut -d' ' -f1 <<< "${repospec}"
+#1656314746
+cut -d' ' -f2 <<< "${repospec}"
+#1656314806
+repospec="${repospec/ /}"
+#1656314812
+printf '%s\n' ">${repospec}<"
+#1656314819
+cut -d' ' -f1 <<< "${repospec}"
+#1656314824
+cut -d' ' -f2 <<< "${repospec}"
+#1656314870
+cut -d' ' -f3 <<< "${repospec}"
+#1656314883
+cut -d' ' -f4 <<< "${repospec}"
+#1656314964
+cut -d' ' -f2 <<< "${repospec}" | cut -d'/' -f3
+#1656315170
+cut -d' ' -f4- <<< "${repospec}"
