@@ -1,115 +1,3 @@
-source ~/liquidprompt/liquidprompt
-#1628245648
-dotfiles
-#1628245685
-findtext -i display
-#1628245814
-cd /etc
-#1628245833
-findtext -i display
-#1628245885
-hoem
-#1628245886
-home
-#1628246592
-echo ${DISPLAY}
-#1628246611
-export DISPLAY=localhost:0
-#1628246613
-echo ${DISPLAY}
-#1628246632
-hf source
-#1628246645
-source /usr/local/share/liquidprompt 
-#1628246656
-echo ${DISPLAY}
-#1628246670
-export DISPLAY=:0
-#1628246674
-echo ${DISPLAY}
-#1628246681
-echo ${DISPLAY-}
-#1628247552
-dotfiles
-#1628247602
-findtext system_type
-#1628247611
-findtext -i system_type
-#1628247934
-which liquidprompt
-#1628247946
-whereis liquidprompt
-#1628248499
-ls /usr/local/share
-#1628248507
-ll /usr/local/share
-#1628248756
-findtext "perl -I"
-#1628254325
-up
-#1628283485
-findshow 'guardians'
-#1628283579
-findshow 'peanuts'
-#1628283692
-findshow 'reacher'
-#1628286155
-gt
-#1628286180
-dotfiles
-#1628286186
-gt
-#1628286190
-gs
-#1628286207
-dotfiles
-#1628286209
-gs
-#1628286319
-up
-#1628286382
-alias
-#1628286417
-man unset
-#1628286425
-bashman unset
-#1628286449
-bashman alias
-#1628286553
-man unalias
-#1628286564
-bashman unalias
-#1628286624
-cat .bash_profile
-#1628286646
-cat dotfiles/.bash_prompt
-#1628286661
-s /usr/local/share/liquidprompt
-#1628286723
-s ~/liquidprompt/liquidprompt
-#1628304424
-findshow 'hunger games'
-#1628304441
-findshow 'hunger'
-#1628304455
-findshow 'mocking'
-#1628306791
-man sed
-#1628376076
-findshow 'guardian'
-#1628376267
-findshow 'tenet'
-#1628381592
-findshow 'mission'
-#1628401992
-echo ${PERL5LIB}
-#1628402015
-ls ${PERL5LIB}
-#1628402033
-ls ${PERL5LIB}/mylib
-#1628402052
-cd ${PERL5LIB}
-#1628402056
 ls mylib
 #1628402061
 less mylib.pm
@@ -20073,3 +19961,119 @@ cut -d' ' -f4 <<< "${repospec}"
 cut -d' ' -f2 <<< "${repospec}" | cut -d'/' -f3
 #1656315170
 cut -d' ' -f4- <<< "${repospec}"
+#1656362465
+repourl="deb [ arch=amd64,armel lang=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656362488
+printf '%s\n' "${repourl}"
+#1656362510
+rest="${repourl#*[}"
+#1656362518
+printf '%s\n' "${rest}"
+#1656362543
+start=$(( ${#repourl} - ${#rest} - 1 ))
+#1656362551
+printf '%s\n' "${start}"
+#1656362564
+rest="${repourl#*]}"
+#1656362570
+printf '%s\n' "${rest}"
+#1656362591
+end=$(( ${#repourl} - ${#rest} ))
+#1656362598
+printf '%s\n' "${end}"
+#1656362611
+repospec="${repourl:0:${start}}${repourl:${end}}"
+#1656362636
+printf '%s\n' "${repospec}"
+#1656362649
+printf '%s\n' ">${repospec}<"
+#1656362664
+repospec="${repospec/ /}"
+#1656362670
+printf '%s\n' ">${repospec}<"
+#1656362762
+repourl=`cut -d' ' -f2 <<< "${repospec}"`
+#1656362769
+printf '%s\n' ">${repourl}<"
+#1656362789
+repodomain=`cut -d'/' -f3 <<< "${repourl}"`
+#1656362800
+repodomain=`cut -d'/' -f3 <<< "${repodomain}"`
+#1656362831
+repodomain=`cut -d'/' -f3 <<< "${repourl}"`
+#1656362839
+printf '%s\n' ">${repodomain}<"
+#1656362941
+repourl="deb http://example.com/ubuntu disco main"
+#1656362992
+rest="${repourl#*[}"
+#1656363001
+start=$(( ${#repourl} - ${#rest} - 1 ))
+#1656363007
+rest="${repourl#*]}"
+#1656363014
+end=$(( ${#repourl} - ${#rest} ))
+#1656363039
+repospec="${repourl:0:${start}}${repourl:${end}}"
+#1656363065
+printf '%s\n' ">${start}<"
+#1656363073
+printf '%s\n' ">${end}<"
+#1656363089
+printf '%s\n' ">${repospec}<"
+#1656368012
+path
+#1656368021
+addtest
+#1656368030
+addtest --help
+#1656368350
+addtest keyfile dave deb [ arch=amd64,armel lang=en_US,en_CA ] http://example.com/ubuntu disco main
+#1656368714
+addtest keyfile dave "deb [ arch=amd64,armel lang=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656371653
+addtest keyfile dave "deb [ arch=amd64,armel languages=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656371797
+addtest keyfile dave "deb [ arch=amd64,armel Languages=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656372305
+b="DAVE"
+#1656372324
+"${b}"
+#1656372330
+"${b,,}"
+#1656372357
+echo "${b}"
+#1656372362
+echo "${b,,}"
+#1656372393
+addtest keyfile dave "deb [ arch=amd64,armel Languages=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656372581
+echo "${b}"
+#1656372618
+tr [:upper:] [:lower:] >>>"${b}
+#1656372631
+tr [:upper:] [:lower:] >>>"${b}"
+#1656372640
+man tr
+#1656372698
+tr [:upper:] [:lower:] <<<"${b}"
+#1656372815
+a="arch=amd64,armel"
+#1656372864
+tr [:upper:] [:lower:] <<<"${a%%=*}"
+#1656372877
+a="ARCH=amd64,armel"
+#1656372881
+tr [:upper:] [:lower:] <<<"${a%%=*}"
+#1656372957
+addtest keyfile dave "deb [ arch=amd64,armel Languages=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656372978
+addtest keyfile dave "deb [ ARCH=amd64,armel Languages=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656374463
+addtest keyfile dave "deb [ ARCH=amd64,armel Languages=en_US,en_CA trusted=no ] http://example.com/ubuntu disco main"
+#1656374647
+addtest keyfile dave "deb [ARCH=amd64,armel LangUages=en_US,en_CA trusted=no] http://example.com/ubuntu disco main"
+#1656374798
+addtest keyfile dave "deb-src [ARCH=amd64,armel LangUages=en_US,en_CA trusted=no] http://example.com/ubuntu disco main contrib non-free"
+#1656375040
+addtest keyfile dave "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
