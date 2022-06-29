@@ -1,9 +1,3 @@
-gcl -h
-#1628544551
-gcl -gh
-#1628544569
-gcl -gh rick/dave
-#1628544591
 gcl rick/dave
 #1628545306
 s /Volumes/ExternalHome/rtruell/dotfiles-backup/.functions/gcl
@@ -19967,3 +19961,5 @@ addtest keyfile dave
 addtest
 #1656400847
 addtest --help
+#1656495638
+ll /nas
