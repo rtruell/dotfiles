@@ -1,7 +1,3 @@
-gcl -h
-#1628545498
-gcl -gh
-#1628545521
 gcl -gh rtruell/dave
 #1628545580
 gcl -gh rtruell/dave.git
@@ -19965,3 +19961,7 @@ b i php@8.0
 findtext gnupg
 #1656717209
 findtext gpg
+#1656721285
+hf addtest
+#1656721367
+addtest https://download.docker.com/linux/debian/gpg docker "deb [arch=amd64] https://download.docker.com/linux/debian bullseye stable"
