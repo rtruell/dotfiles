@@ -1,7 +1,3 @@
-gcl -gh rtruell/dave
-#1628545580
-gcl -gh rtruell/dave.git
-#1628545653
 gcl https://bitbucket.com/rtruell/dave.git
 #1628547265
 findtext -i 'functions'
@@ -19965,3 +19961,35 @@ findtext gpg
 hf addtest
 #1656721367
 addtest https://download.docker.com/linux/debian/gpg docker "deb [arch=amd64] https://download.docker.com/linux/debian bullseye stable"
+#1656803737
+b ud
+#1656803814
+b i archy
+#1656803845
+b h archy
+#1656804043
+b i betterandbetter
+#1656804072
+b h betterandbetter
+#1656804257
+b i betterdisplay
+#1656804279
+b h betterdisplay
+#1656804374
+b i ansiweather
+#1656804408
+b i bash
+#1656804456
+b i taskade
+#1656804475
+b s nextcloud
+#1656804491
+b i nextcloud
+#1656804514
+b in nextcloud
+#1656804645
+ls /
+#1656804684
+less /installer.failurrequests
+#1656804698
+less /installer.failurerequests
