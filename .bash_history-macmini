@@ -1,17 +1,3 @@
-basename "${file%.*}"
-#1628549872
-./test.sh
-#1628550065
-la
-#1628550177
-./test.sh
-#1628550577
-la ~
-#1628550626
-./test.sh
-#1628583215
-s /Volumes/ExternalHome/rtruell/dotfiles-backup/.functions/gcl
-#1628583222
 s /Volumes/ExternalHome/rtruell/dotfiles-backup/.functions/gcl.funct
 #1628583234
 s /Volumes/ExternalHome/rtruell/dotfiles-backup/.functions/gcl.function
@@ -19975,3 +19961,13 @@ ls dotfiles
 la dotfiles
 #1656910776
 la bin
+#1656912212
+alias dotfiles
+#1656912221
+dotfiles
+#1656912226
+pwd
+#1656912308
+ll ..
+#1656912338
+home
