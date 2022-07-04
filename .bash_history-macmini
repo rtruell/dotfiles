@@ -1,35 +1,3 @@
-gcl https://bitbucket.com/rtruell/dave.git
-#1628547265
-findtext -i 'functions'
-#1628547548
-pwd
-#1628547566
-pwd
-#1628547588
-basename "/User/rtruell/.functions/b.bash"
-#1628547679
-basename "/User/rtruell/.functions/b.bash%.*"
-#1628547777
-basename "{/User/rtruell/.functions/b.bash%.*}"
-#1628547787
-basename "${/User/rtruell/.functions/b.bash%.*}"
-#1628547864
-file="/User/rtruell/.functions/b.bash"
-#1628547874
-echo ${file}
-#1628547897
-echo ${file%.*}
-#1628547927
-basename ${file%.*}
-#1628547935
-basename "${file%.*}"
-#1628548063
-file="/User/rtruell/.functions/b.funct"
-#1628548069
-basename "${file%.*}"
-#1628549008
-$(basename "${file%.*}")
-#1628549053
 basename "${file%.*}"
 #1628549872
 ./test.sh
@@ -19993,3 +19961,17 @@ ls /
 less /installer.failurrequests
 #1656804698
 less /installer.failurerequests
+#1656910603
+ln -s /Volumes/Nextcloud/dotfiles/ .
+#1656910611
+ll
+#1656910672
+ln -s /Volumes/Nextcloud/dotfiles .
+#1656910680
+ll
+#1656910720
+ls dotfiles
+#1656910745
+la dotfiles
+#1656910776
+la bin
