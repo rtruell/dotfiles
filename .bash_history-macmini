@@ -1,21 +1,3 @@
-s /Volumes/ExternalHome/rtruell/dotfiles-backup/.functions/gcl.funct
-#1628583234
-s /Volumes/ExternalHome/rtruell/dotfiles-backup/.functions/gcl.function
-#1628583242
-gcl
-#1628583426
-s /Volumes/ExternalHome/rtruell/dotfiles-backup/.functions/gcl.function
-#1628583429
-gcl
-#1628583486
-s /Volumes/ExternalHome/rtruell/dotfiles-backup/.functions/gcl.function
-#1628583487
-gcl
-#1628583603
-s /Volumes/ExternalHome/rtruell/dotfiles-backup/.functions/gcl.function
-#1628583607
-gcl
-#1628583661
 gcl -h
 #1628583704
 gcl -gh
@@ -19971,3 +19953,25 @@ pwd
 ll ..
 #1656912338
 home
+#1656964819
+ll /Volumes/Nextcloud/
+#1656964843
+ll
+#1656965868
+pwd
+#1656965871
+ll
+#1657085076
+b s owncloud
+#1657085095
+b i owncloud
+#1657085142
+b ud
+#1657085623
+brew --version
+#1657086318
+brew --repo
+#1657086421
+brew outdated
+#1657086609
+b in owncloud
