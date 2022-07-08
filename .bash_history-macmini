@@ -1,17 +1,3 @@
-gcl -h
-#1628583704
-gcl -gh
-#1628583740
-gcl -gh rtruell/dotfiles.git
-#1628583756
-gcl -m
-#1628583772
-gcl -m dotfiles.git
-#1628583859
-gcl https://bitbucket.com/rtruell/dotfiles.git
-#1628625330
-uname -a
-#1628625692
 uname
 #1628625725
 echo ${OSTYPE}
@@ -19975,3 +19961,11 @@ brew --repo
 brew outdated
 #1657086609
 b in owncloud
+#1657250162
+hostname
+#1657250273
+hostname -s
+#1657250434
+cat .bash_logout
+#1657250635
+man docker
