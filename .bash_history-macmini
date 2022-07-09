@@ -1,11 +1,3 @@
-uname
-#1628625725
-echo ${OSTYPE}
-#1628632205
-echo ${HOSTNAME}
-#1628632264
-man hostname
-#1628632305
 hostname
 #1628632309
 hostname -s
@@ -19969,3 +19961,17 @@ hostname -s
 cat .bash_logout
 #1657250635
 man docker
+#1657338260
+b search owncloud
+#1657338280
+which owncloudcmd
+#1657338288
+whereis owncloudcmd
+#1657338295
+owncloudcmd
+#1657338314
+ls /usr/bin/o*
+#1657343414
+b s keeweb
+#1657343428
+b i keeweb
