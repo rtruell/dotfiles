@@ -1,15 +1,15 @@
-#!/bin/sh
+#!/usr/bin/env bash
 
 # Add APT key script
-# Version : 1.1.0-4
-# Release : 2021-11-01
+# Version : 1.1.0-5
+# Release : 2022-05-25
 # Author  : Artur Meinild
 
 # Changelog
-# 2021-11-19  Rick Truell
+# 2022-06-19  Rick Truell
 #
 # - put the location of the config file into a variable so it only has to be
-#   changed in one place, instead of several
+#   changed in one place
 #
 # - changed the location of the '.conf' file to reflect the setup on my systems.
 #   I also put the script in a 'bin' directory in my HOME directory, but that
@@ -18,31 +18,37 @@
 # - since I also use macOS, added a check to make sure this script is only run
 #   on Linux
 #
-# - changed the help message to indicate the script uses 3 arguments and added
-#   an example showing the use of all 3 arguments
+# - changed the help message to indicate the script now accepts up to 3
+#   arguments, and added an example showing the use of all 3 arguments
 #
 # - Note: this script no longer puts an entry in /etc/apt/sources.list as that's
-#   a dangerous practice with 3rd party repos.  for why, see the first two
-#   paragraphs of the answer at
+#   a dangerous practice with third party repositories.  for why, see the first
+#   two paragraphs of the answer at
 #   https://askubuntu.com/questions/1286545/what-commands-exactly-should-replace-the-deprecated-apt-key/1307181#1307181
-#   instead, if the 3rd parameter is present, the script automatically creates
-#   entries in /etc/apt/sources.list.d and /etc/apt/preferences.d.  if not, the
-#   user must create those entries manually, or opt to create the less safe
-#   entry manually
 #
-# 2021-11-20  Rick Truell
+#   instead, if a third argument is present, the script automatically parses it
+#   to create entries in /etc/apt/sources.list.d and /etc/apt/preferences.d.  if
+#   not, the user must create those entries manually, or opt to create the less
+#   safe entry manually
+#
+# 2022-06-20  Rick Truell
 #
 # - the original script used either PWD or the directory where the keyfile is as
 #   a temporary directory.  that's what /tmp is for, so changed the script to
 #   use that location instead
 #
-# - added code to see if the new 3rd parameter was supplied and if so, parse it
-#   and use the info from it to create the entries for /etc/apt/sources.list.d
-#   and /etc/apt/preferences.d
+# 2022-06-21  Rick Truell
+#
+# - turns out that a number of the changes I've made, particularly some of the
+#   ones for parsing the third parameter, don't work under 'sh' in Debian 11, so
+#   changed the shebang to 'bash'
+#
+# - seems that OpenPGP recently changed the type message as returned by the
+#   'file' command, so added code to account for that
 
 # location of the config file
 #configfile="/usr/local/etc/add-apt-key.conf"  # most people should probably use this.  I'm not most people :-)  - R.T.
-configfile="~/binsupportfiles/add-apt-key.conf"
+configfile="${HOME}/binsupportfiles/add-apt-key.conf"
 
 # location for temporary files
 tmppath="/tmp"
@@ -53,79 +59,83 @@ verbosity="No"
 removetmp="No"
 
 # Include configuration file
-if [ -f "${configfile}" ]; then
+if [[ -f "${configfile}" ]]; then
   . "${configfile}"
 fi
 
 # Convert strings to lowercase
-verbosity=$(echo "$verbosity" | tr '[:upper:]' '[:lower:]')
-removetmp=$(echo "$removetmp" | tr '[:upper:]' '[:lower:]')
+verbosity="${verbosity,,}"
+removetmp="${removetmp,,}"
 
 # Local function definition
 exit_error() {
-  echo "Error: $1"
+  printf '%s\n' "Error: ${1}"
   exit 1
 }
 
 # Check if script is run as root
-if [ "$(id -u)" != "0" ]; then
-  exit_error "Must run as root"
-fi
+if [[ "$(id -u)" != "0" ]]; then exit_error "Must run as root"; fi
 
 # Check if script is being run on Linux
-if [ "$(uname)" != "Linux" ]; then exit_error "Can only be run on Linux"; fi
+if [[ "$(uname)" != "Linux" ]]; then exit_error "Can only be run on Linux"; fi
 
-# Check if there is at least one argument
-if [ "$1" = "" ]; then
+# Check if there is argument
+if [[ "${1}" = "" ]]; then
   exit_error "need a keyfile (or --help) as argument"
 fi
 
 # Check if argument is --help
-if [ "$1" = "--help" ]; then
-  echo "This script will help with installing PGP keys for APT repositories."
-  echo ""
-  echo "This script supports up to 3 arguments:"
-  echo "  - 1st argument is input file. This can be either:"
-  echo "    - An URL - key will be downloaded into current path (using wget or curl)"
-  echo "    - A filename - reads an existing key in current path"
-  echo "    - A path and a filename - reads an existing key in given path"
-  echo "  - 2nd argument is key output path and output name. This can be either:"
-  echo "    - Only filename - output path is set in config, saved as given filename"
-  echo "    - A path and a filename - output path is given here, saved as given filename"
-  echo "    - Only a path (end with /) - output path is given here, filename is taken from existing key"
-  echo "    - Empty - output path is set in config, filename is taken from existing key"
-  echo "  - 3rd argument is the repository URL, including type, release name and component"
-  echo "      ie. deb https://download.webmin.com/download/repository sarge contrib"
-  echo "      the presence of a 3rd argument automatically creates entries in /etc/apt/sources.list.d"
-  echo "      and /etc/apt/preferences.d"
-  echo ""
-  echo "This script has a config file ${configfile}, where the following variables can be set:"
-  echo "  - keypath   : path to store converted key - default is /usr/share/keyrings"
-  echo "  - verbosity : if set to Yes - displays extra output"
-  echo "  - removetmp : if set to Yes - remove input (non-converted) file"
-  echo ""
-  echo "Example 1: (PWD=/root)"
-  echo "  sudo add-apt-key https://mariadb.org/mariadb_release_signing_key.asc /usr/local/share/keyrings/"
-  echo "Will download key in /root, convert it and store as /usr/local/share/keyrings/mariadb_release_signing_key.gpg"
-  echo ""
-  echo "Example 2: (PWD=/home/user)"
-  echo "  sudo add-apt-key /root/mariadb_release_signing_key.asc /usr/local/share/keyrings/mariadbkey"
-  echo "Will use existing key in /root, convert it and store as /usr/local/share/keyrings/mariadbkey.gpg"
-  echo ""
-  echo "Example 3: (PWD=/home/user)"
-  echo "  sudo add-apt-key mariadb_release_signing_key.asc mariadbkey"
-  echo "Will use existing key in /home/user, convert it and store as /usr/share/keyrings/mariadbkey.gpg"
-  echo ""
-  echo "Example 4: (PWD=/home/user)"
-  echo "  sudo add-apt-key mariadb_release_signing_key.asc mariadbkey \"deb http://nyc2.mirrors.digitalocean.com/mariadb/repo/10.4/ubuntu/ bionic main\""
-  echo "Will use existing key in /home/user, convert it, store it as /usr/share/keyrings/mariadbkey.gpg and create the /etc/apt/sources.list.d"
-  echo "and /etc/apt/preferences.d entries"
-  echo ""
+if [[ "${1}" = "--help" ]]; then
+  printf '%s\n' "This script will help with installing PGP keys for APT repositories."
+  printf '%s\n' ""
+  printf '%s\n' "This script supports up to 3 arguments:"
+  printf '%s\n' "  - First argument is input file. This can be either:"
+  printf '%s\n' "    - A URL - key will be downloaded into current path (using wget or curl)"
+  printf '%s\n' "    - A filename - reads an existing key in current path"
+  printf '%s\n' "    - A path and a filename - reads an existing key in given path"
+  printf '%s\n' "  - Second argument is key output path and output name. This can be either:"
+  printf '%s\n' "    - Only filename - output path is set in config, saved as given filename"
+  printf '%s\n' "    - A path and a filename - output path is given here, saved as given filename"
+  printf '%s\n' "    - Only a path (end with /) - output path is given here, filename is taken"
+  printf '%s\n' "      from existing key"
+  printf '%s\n' "    - Empty - output path is set in config, filename is taken from existing key"
+  printf '%s\n' "  - Third argument is the repository URL, including type, release name and"
+  printf '%s\n' "    component ie. \"deb https://download.webmin.com/download/repository sarge contrib\""
+  printf '%s\n' "    the presence of a third argument automatically creates entries in"
+  printf '%s\n' "    /etc/apt/sources.list.d and /etc/apt/preferences.d"
+  printf '%s\n' ""
+  printf '%s\n' "This script has a config file \"${configfile}\","
+  printf '%s\n' "where the following variables can be set:"
+  printf '%s\n' "  - keypath   : path to store converted key - default is /usr/share/keyrings"
+  printf '%s\n' "  - verbosity : if set to Yes - displays extra output"
+  printf '%s\n' "  - removetmp : if set to Yes - remove input (non-converted) file"
+  printf '%s\n' ""
+  printf '%s\n' "Example 1: (PWD=/root)"
+  printf '%s\n' "  sudo add-apt-key https://mariadb.org/mariadb_release_signing_key.asc /usr/local/share/keyrings/"
+  printf '%s\n' "Will download key in /root, convert it and store as"
+  printf '%s\n' "/usr/local/share/keyrings/mariadb_release_signing_key.gpg"
+  printf '%s\n' ""
+  printf '%s\n' "Example 2: (PWD=/home/user)"
+  printf '%s\n' "  sudo add-apt-key /root/mariadb_release_signing_key.asc /usr/local/share/keyrings/mariadbkey"
+  printf '%s\n' "Will use existing key in /root, convert it and store as"
+  printf '%s\n' "/usr/local/share/keyrings/mariadbkey.gpg"
+  printf '%s\n' ""
+  printf '%s\n' "Example 3: (PWD=/home/user)"
+  printf '%s\n' "  sudo add-apt-key mariadb_release_signing_key.asc mariadbkey"
+  printf '%s\n' "Will use existing key in /home/user, convert it and store as"
+  printf '%s\n' "/usr/share/keyrings/mariadbkey.gpg"
+  printf '%s\n' ""
+  printf '%s\n' "Example 4: (PWD=/home/user)"
+  printf '%s\n' "  sudo add-apt-key mariadb_release_signing_key.asc mariadbkey \"deb http://nyc2.mirrors.digitalocean.com/mariadb/repo/10.4/ubuntu/ bionic main\""
+  printf '%s\n' "Will use existing key in /home/user, convert it, store it as"
+  printf '%s\n' "/usr/share/keyrings/mariadbkey.gpg and create the /etc/apt/sources.list.d"
+  printf '%s\n' "and /etc/apt/preferences.d entries"
+  printf '%s\n' ""
   exit 0
 fi
 
 # Check argument 2 for keypath
-case "$2" in
+case "${2}" in
   # $2 is only a path (ending with /)
   /*/)
     keypath="${2%/*}"
@@ -137,35 +147,35 @@ case "$2" in
 esac
 
 # Trim keypath (if ending with /)
-case "$keypath" in
+case "${keypath}" in
   */)
     keypath="${keypath%/*}"
     ;;
 esac
 
 # Check if keypath exist
-[ "$verbosity" = "yes" ] && echo "Keypath: $keypath"
-if [ ! -d  "$keypath" ]; then
+[ "${verbosity}" = "yes" ] && printf '%s\n' "Keypath: ${keypath}"
+if [[ ! -d  "${keypath}" ]]; then
   exit_error "keypath does not exist"
 fi
 
 # Check if argument 1 is an URL or a path
-case "$1" in
+case "${1}" in
   # If $1 is an URL
   http*)
     echo "Downloading keyfile .."
     tmpfile="${1##*/}"
     if [ "$(command -v wget)" ]; then
       # Use wget
-      if wget -q --method=HEAD "$1"; then
-        wget -qO "$tmppath/$tmpfile" "$1"
+      if wget -q --method=HEAD "${1}"; then
+        wget -qO "${tmppath}/${tmpfile}" "${1}"
       else
         exit_error "keyfile can't be downloaded"
       fi
     elif [ "$(command -v curl)" ]; then
       # Use curl
-      if curl -s --output /dev/null --head --fail "$1"; then
-        curl -so "$tmppath/$tmpfile" "$1"
+      if curl -s --output /dev/null --head --fail "${1}"; then
+        curl -so "${tmppath}/${tmpfile}" "${1}"
       else
         exit_error "keyfile can't be downloaded"
       fi
@@ -176,7 +186,7 @@ case "$1" in
     ;;
   # If $1 is a filepath
   *)
-    case "$1" in
+    case "${1}" in
       # $1 is only a path (ending with /)
       /*/)
         exit_error "need a keyfile (or --help) as argument"
@@ -188,7 +198,7 @@ case "$1" in
         ;;
       # $1 is only filename
       *)
-        tmpfile="$1"
+        tmpfile="${1}"
         cp "${1}" "${tmppath}"
         ;;
     esac
@@ -196,15 +206,14 @@ case "$1" in
 esac
 
 # Check if keyfile exists
-[ "$verbosity" = "yes" ] && echo "Tmppath: $tmppath"
-[ "$verbosity" = "yes" ] && echo "Tmpfile: $tmpfile"
-echo "Verifying keyfile .."
-if [ ! -f "$tmppath/$tmpfile" ]; then
+[ "${verbosity}" = "yes" ] && printf '%s\n' "Tmppath: ${tmppath}" "Tmpfile: ${tmpfile}"
+printf '%s\n' "Verifying keyfile .."
+if [[ ! -f "${tmppath}/${tmpfile}" ]]; then
   exit_error "keyfile does not exist"
 fi
 
 # Check argument 2 for filename
-case "$2" in
+case "${2}" in
   # $2 is only a path (ending with /)
   /*/)
     filename="${tmpfile%%.*}"
@@ -215,33 +224,37 @@ case "$2" in
     ;;
   # $2 is only filename (or empty)
   *)
-    if [ "${#2}" != 0 ]; then
-      filename="$2"
+    if [[ "${#2}" != 0 ]]; then
+      filename="${2}"
     else
       filename="${tmpfile%%.*}"
     fi
     ;;
 esac
 
-[ "$verbosity" = "yes" ] && echo "Keyfile: $filename.gpg"
+[ "$verbosity" = "yes" ] && printf '%s\n' "Keyfile: ${filename}.gpg"
 
 # Check tmpfile type and convert
-echo "Converting keyfile .."
-case $(file "$tmppath/$tmpfile") in
+printf '%s\n' "Converting keyfile .."
+case $(file "${tmppath}/${tmpfile}") in
   # ASCII armored (old)
   *'PGP public key block Public-Key (old)')
-    gpg --batch --yes --dearmor --keyring=gnupg-ring "$tmppath/$tmpfile"
+    gpg --batch --yes --dearmor --keyring=gnupg-ring "${tmppath}/${tmpfile}"
     ;;
   # Secret key
   *'PGP public key block Secret-Key')
-    gpg --batch --yes --no-default-keyring --keyring=gnupg-ring:"$tmppath/temp-keyring.gpg" --quiet --import "$tmppath/$tmpfile"
-    gpg --batch --yes --no-default-keyring --keyring=gnupg-ring:"$tmppath/temp-keyring.gpg" --export --output "$tmppath/$tmpfile.gpg"
-    rm "$tmppath/temp-keyring.gpg"
-    [ -f "$tmppath/temp-keyring.gpg~" ] && rm "$tmppath/temp-keyring.gpg~"
+    gpg --batch --yes --no-default-keyring --keyring=gnupg-ring:"${tmppath}/temp-keyring.gpg" --quiet --import "${tmppath}/${tmpfile}"
+    gpg --batch --yes --no-default-keyring --keyring=gnupg-ring:"${tmppath}/temp-keyring.gpg" --export --output "${tmppath}/${tmpfile}.gpg"
+    rm "${tmppath}/temp-keyring.gpg"
+    [ -f "${tmppath}/temp-keyring.gpg~" ] && rm "${tmppath}/temp-keyring.gpg~"
     ;;
-  # Public ring (v4)
+  # Public ring (v4) (old file type ????)
   *'PGP/GPG key public ring (v4)'*)
-    cp "$tmppath/$tmpfile" "$tmppath/$tmpfile.gpg"
+    cp "${tmppath}/${tmpfile}" "${tmppath}/${tmpfile}.gpg"
+    ;;
+  # Public Key Version 4 (new file type ????)
+  *'OpenPGP Public Key Version 4'*)
+    cp "${tmppath}/${tmpfile}" "${tmppath}/{$tmpfile}.gpg"
     ;;
   *)
     exit_error "invalid input keyfile format"
@@ -249,49 +262,91 @@ case $(file "$tmppath/$tmpfile") in
 esac
 
 # Check if keyfile exist
-if [ ! -f "$tmppath/$tmpfile.gpg" ]; then
+if [[ ! -f "${tmppath}/${tmpfile}.gpg" ]]; then
   exit_error "keyfile does not exist"
 fi
 
 # Check if keyfile is the right type
-keyfiletype=$(file "$tmppath/$tmpfile.gpg" | grep -oh 'PGP/GPG key public ring (v4)')
-if [ "$keyfiletype" != "PGP/GPG key public ring (v4)" ]; then
-  exit_error "keyfile is not a PGP/GPG key public ring"
-fi
+case $(file "${tmppath}/${tmpfile}.gpg") in
+  *'PGP/GPG key public ring (v4)'*) ;;  # the 'old' right type, so just continue
+  *'OpenPGP Public Key Version 4'*) ;;  # the 'new' right type, so just continue
+  *) exit_error "keyfile is not a PGP/GPG key public ring";;  #  not the right type, so exit
+esac
 
 # Move keyfile to "$keypath"
-echo "Moving keyfile to $keypath .."
-mv "$tmppath/$tmpfile.gpg" "$keypath/$filename.gpg"
+printf '%s\n' "Moving keyfile to ${keypath} ..."
+mv "${tmppath}/${tmpfile}.gpg" "${keypath}/${filename}.gpg"
 
 # Remove tmpfile if removetmp="Yes"
-if [ "$removetmp" = "yes" ]; then
-  echo "Removing tmpfile .."
-  rm -f "$tmppath/$tmpfile"
+if [[ "${removetmp}" = "yes" ]]; then
+  printf '%s\n' "Removing tmpfile ..."
+  rm -f "${tmppath}/${tmpfile}"
   rm -f "${1}"
 fi
 
-echo ""
-echo "The key for the repository has been added to APT."
+printf '\n'
+printf '%s\n' "The key for the repository has been added to APT."
 
-# Check to see if the repo URL (3rd parameter) is present
-if [ "${3}" = "" ]; then  # it isn't, so print message for manual repo installation
-  echo "However, you must manually create entries for /etc/apt/sources.list.d and /etc/apt/preferences.d"
-  echo "in order for the repository to be used.  For an example of the format for those entries, see"
-  echo "https://wiki.debian.org/DebianRepository/UseThirdParty#Complete_example"
+# Check to see if the repository spec (third parameter) is present
+if [[ -z "${3}" ]]; then  # it isn't, so print message for manual repository installation
+  printf '%s\n' "However, you must manually create entries for /etc/apt/sources.list.d and /etc/apt/preferences.d"
+  printf '%s\n' "in order for the repository to be used.  For an example of the format for those entries, see"
+  printf '%s\n' "https://wiki.debian.org/DebianRepository/UseThirdParty#Complete_example"
 else  # it is, so parse it and create the /etc/apt/sources.list.d and /etc/apt/preferences.d entries
-  repotype=`echo "${3}" | cut -d' ' -f1`  # get the repo type (usuall 'deb' or 'deb-src')
-  repourl=`echo "${3}" | cut -d' ' -f2`  # get the repo URL
-  reporelease=`echo "${3}" | cut -d' ' -f3`  # get the distro release name ('buster')
-  repocomponent=`echo "${3}" | cut -d' ' -f4-`  # get the components the repo provides packages for ('main')
-  repodomain=`echo "${repourl}" | cut -d'/' -f3`  # get the repo domain name
+  repospec="${3}"  # get the repository spec
+
+  # if options have been specified, they are enclosed in square brackets ( [] ),
+  # so check for an opening square bracket
+  if [[ "${repospec}" == *"["* ]]; then
+    # options have been specified, so get them
+    repooption="${repospec#*[}"  # get rid of everything before the '[' ...
+    repooption="${repooption%%]*}"  # ... and everything after the ']'
+    repooption="${repooption# }"  # get rid of a leading space ...
+    repooption="${repooption% }"  # ... and a trailing space
+
+    # now remove the options from the repo spec
+    rest="${repospec#*[}"  # get everything after the "[" ...
+    start=$(( ${#repospec} - ${#rest} - 1 ))  # ... and find its location in the repo spec
+    rest="${repospec#*]}"  # then get everything after the "]" ...
+    end=$(( ${#repospec} - ${#rest} ))  # ... and find its location in the repo spec
+    repospec="${repospec:0:${start}}${repospec:${end}}"  # reconstruct the repo spec without the option(s) ...
+    repospec="${repospec/ /}"  # ... and get rid of an unnecessary space
+  fi
+
+  # split up the various parts of the repo spec
+  repotype=`cut -d' ' -f1 <<< "${repospec}"`  # get the repo type
+  repourl=`cut -d' ' -f2 <<< "${repospec}"`  # get the repo URL
+  reporelease=`cut -d' ' -f3 <<< "${repospec}"`  # get the distro release name ('buster')
+  repocomponent=`cut -d' ' -f4- <<< "${repospec}"`  # get the component(s) the repo provides packages for ('main', 'contrib', etc.)
+  repodomain=`cut -d'/' -f3 <<< "${repourl}"`  # get the repo domain name
 
   # Create the entry for /etc/apt/sources.list.d
   srcfilename="${tmppath}/${filename}.sources"
+  printf '%s\n' "Enabled: yes" >>"${srcfilename}"
   printf '%s\n' "Types: ${repotype}" >>"${srcfilename}"
   printf '%s\n' "URIs: ${repourl}" >>"${srcfilename}"
   printf '%s\n' "Suites: ${reporelease}" >>"${srcfilename}"
   printf '%s\n' "Components: ${repocomponent}" >>"${srcfilename}"
   printf '%s\n' "Signed-By: ${keypath}/${filename}.gpg" >>"${srcfilename}"
+  read -ra options -d '' <<<"${repooption}"
+  for a in "${options[@]}"; do
+    b="${a%%=*}"  # get the name of the option
+    case "${b,,}" in  # convert the name to lowercase for easier comparison
+      # '${a#*=}' gets the value(s) of the option, '${a//,/ }' changes any commas to spaces
+      architectures | arch ) a="${a#*=}"; printf '%s\n' "Architectures: ${a//,/ }" >>"${srcfilename}";;
+      languages | lang ) a="${a#*=}"; printf '%s\n' "Languages: ${a//,/ }" >>"${srcfilename}";;
+      targets | target ) a="${a#*=}"; printf '%s\n' "Targets: ${a//,/ }" >>"${srcfilename}";;
+      pdiffs ) a="${a#*=}"; printf '%s\n' "PDiffs: ${a//,/ }" >>"${srcfilename}";;
+      by-hash ) a="${a#*=}"; printf '%s\n' "By-Hash: ${a//,/ }" >>"${srcfilename}";;
+      allow-insecure ) a="${a#*=}"; printf '%s\n' "Allow-Insecure: ${a//,/ }" >>"${srcfilename}";;
+      allow-weak ) a="${a#*=}"; printf '%s\n' "Allow-Weak: ${a//,/ }" >>"${srcfilename}";;
+      allow-downgrade-to-insecure ) a="${a#*=}"; printf '%s\n' "Allow-Downgrade-To-Insecure: ${a//,/ }" >>"${srcfilename}";;
+      trusted ) a="${a#*=}"; printf '%s\n' "Trusted: ${a//,/ }" >>"${srcfilename}";;
+      check-valid-until ) a="${a#*=}"; printf '%s\n' "Check-Valid-Until: ${a//,/ }" >>"${srcfilename}";;
+      valid-until-min ) a="${a#*=}"; printf '%s\n' "Valid-Until-Min: ${a//,/ }" >>"${srcfilename}";;
+      valid-until-max ) a="${a#*=}"; printf '%s\n' "Valid-Until-Max: ${a//,/ }" >>"${srcfilename}";;
+    esac
+  done
   mv "${srcfilename}" /etc/apt/sources.list.d  # move the entry to where it belongs
   chmod 644 "/etc/apt/sources.list.d/${filename}.sources"  # and change its permissions
 
@@ -303,8 +358,8 @@ else  # it is, so parse it and create the /etc/apt/sources.list.d and /etc/apt/p
   mv "${preffilename}" /etc/apt/preferences.d  # move the entry to where it belongs
   chmod 644 "/etc/apt/preferences.d/${filename}.pref"  # and change its permissions
 
-  # Print message for script repo installation
-  echo "The entries for /etc/apt/sources.list.d and /etc/apt/preferences.d have also been added."
-  echo "The repository is ready to be used.  Be sure to do 'sudo apt update' so that packages"
-  echo "in the repository can be installed."
+  # Print message for script repository installation
+  printf '%s\n' "The entries for /etc/apt/sources.list.d and /etc/apt/preferences.d have also been added."
+  printf '%s\n' "The repository is ready to be used.  Be sure to do 'sudo apt update' so that packages"
+  printf '%s\n' "in the repository can be installed."
 fi
