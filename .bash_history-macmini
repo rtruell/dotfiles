@@ -19961,3 +19961,15 @@ ls /usr/bin/o*
 b s keeweb
 #1657343428
 b i keeweb
+#1657432257
+h | grep iso2
+#1657432310
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl
+#1657432369
+diskutil list
+#1657432424
+diskutil unmountDisk /dev/disk3
+#1657432524
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.4.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
+#1657432622
+diskutil eject /dev/disk3
