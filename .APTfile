@@ -1,5 +1,6 @@
 acpi  # displays information on ACPI devices
 amd64-microcode
+ansiweather
 audacity
 avidemux
 bash
@@ -34,7 +35,6 @@ network-manager-openconnect
 nmap  # network mapper
 non-free-codecs
 ntfs-3g  # read-write NTFS driver for Linux
-owncloud-client
 p7zip
 p7zip-full
 p7zip-rar
@@ -47,7 +47,8 @@ python3-pip  # python Package Installer Program
 rar
 safe-rm  # do not delete main-system-dirs
 samba
-scrot
+scrot  # command line tool for making screenshots (SCReenshOT)
+sdparm
 sl  # steam locomotive - what you get when you mistype 'ls'
 sqlite3
 sublime-merge

@@ -1,5 +1,6 @@
 acpi  # displays information on ACPI devices
 amd64-microcode
+ansiweather
 bash
 bash-completion
 bc
@@ -10,6 +11,11 @@ coreutils
 dialog  # text-mode dialog boxes
 dkms  # allow kernel modules to be updated with having to update the whole kernel
 dlocate  # fast alternative to dpkg -L and dpkg -S
+docker-ce
+docker-ce-cli
+containerd.io
+docker-compose-plugin
+docker-compose
 findutils
 firmware-misc-nonfree
 fontconfig
@@ -24,7 +30,6 @@ locales
 mlocate  # quickly find files on the filesystem based on their name
 moreutils
 ntfs-3g  # read-write NTFS driver for Linux
-owncloud-complete-files  # owncloud server
 p7zip
 p7zip-full
 p7zip-rar
@@ -37,6 +42,8 @@ python3-pip  # python Package Installer Program
 rar
 safe-rm  # do not delete main-system-dirs
 samba
+scrot  # command line tool for making screenshots (SCReenshOT)
+sdparm
 sl  # steam locomotive - what you get when you mistype 'ls'
 sqlite3
 sublime-merge
@@ -51,5 +58,7 @@ webmin
 wget  # get files from web
 whois
 xclip  # command line clipboard
+xmltv
+xmltv-gui
 xz-utils
 zip
