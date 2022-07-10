@@ -1,17 +1,3 @@
-hostname
-#1628632309
-hostname -s
-#1628633052
-echo ${SHLVL}
-#1628633987
-gs
-#1628634007
-ls dotfiles
-#1628634012
-dotfiles
-#1628634014
-gs
-#1628634034
 up
 #1628654838
 man bash
