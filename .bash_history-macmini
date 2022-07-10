@@ -19961,3 +19961,5 @@ diskutil unmountDisk /dev/disk3
 sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.4.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
 #1657432622
 diskutil eject /dev/disk3
+#1657480364
+ll /
