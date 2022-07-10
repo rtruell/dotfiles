@@ -301,23 +301,23 @@ print_result $? "Set permissions for '/etc/samba/smb.conf'"
 sudo smbpasswd -a "${username}"
 print_result $? "Added '${username}' to samba"
 
-# Create mount points for the 'data' and 'backups' directories on the NAS
+# Create mount points for the 'data' and 'backups' directories on nas
 mkdir -p nas/data
 print_result $? "Created 'nas/data'"
 mkdir -p nas/backups
 print_result $? "Created 'nas/backups'"
 
-# Adding mount commands for the NAS shares to '/etc/fstab'
+# Adding mount commands for the nas shares to '/etc/fstab'
 sudo cp /etc/fstab /etc/fstab.orig  # backup '/etc/fstab' just in case
 print_result $? "Backed up '/etc/fstab'"
 printf '%s\n' " " | sudo tee -a /etc/fstab >/dev/null  # add a separator line
 print_result $? "Added separator line to '/etc/fstab'"
-printf '%s\n' "# Mount NAS shares" | sudo tee -a /etc/fstab >/dev/null  # add a comment saying what the new section is for
+printf '%s\n' "# Mount nas shares" | sudo tee -a /etc/fstab >/dev/null  # add a comment saying what the new section is for
 print_result $? "Added comment explaining the new section to '/etc/fstab'"
 printf '%s\n' "//nas/data ${HOME}/nas/data cifs rw,user,noauto,exec,credentials=${HOME}/.credentials,iocharset=utf8 0 0" | sudo tee -a /etc/fstab >/dev/null  # mount command for 'data'
-print_result $? "Added mount command for 'data' directory on NAS to '/etc/fstab'"
+print_result $? "Added mount command for the 'data' directory on nas to '/etc/fstab'"
 printf '%s\n' "//nas/backups ${HOME}/nas/backups cifs rw,user,noauto,exec,credentials=${HOME}/.credentials,iocharset=utf8 0 0" | sudo tee -a /etc/fstab >/dev/null  # mount command for 'backups'
-print_result $? "Added mount command for 'backups' directory on NAS to '/etc/fstab'"
+print_result $? "Added mount command for the 'backups' directory on nas to '/etc/fstab'"
 
 # update the locate database
 sudo updatedb
