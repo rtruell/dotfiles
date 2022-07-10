@@ -18,7 +18,7 @@ if [[ -d /etc/sudoers.d ]]; then  # check to see if the directory '/etc/sudoers.
   else
     printf "${username} ALL=(ALL:ALL) ALL  # allow me to use 'sudo'\nDefaults:${username} !authenticate  # without having to type my password\n" >/etc/sudoers.d/${username}  # it isn't, so create the file
     print_result $? "Created '/etc/sudoers.d/${username}'"
-    chmod 600 /etc/sudoers.d/${username}  # and change its permissions
+    chmod 440 /etc/sudoers.d/${username}  # and change its permissions
     print_result $? "Changed permissions for '/etc/sudoers.d/${username}'"
   fi
 else
@@ -28,7 +28,7 @@ else
   print_result $? "Changed permissions for '/etc/sudoers.d'"
   printf "${username} ALL=(ALL:ALL) ALL  # allow me to use 'sudo'\nDefaults:${username} !authenticate  # without having to type my password\n" >/etc/sudoers.d/${username}  # create the file with the users 'sudo' permissions
   print_result $? "Created '/etc/sudoers.d/${username}'"
-  chmod 600 /etc/sudoers.d/${username}  # and change its permissions
+  chmod 440 /etc/sudoers.d/${username}  # and change its permissions
   print_result $? "Changed permissions for '/etc/sudoers.d/${username}'"
   if [[ `grep -i 'includedir /etc/sudoers.d' /etc/sudoers` ]]; then  # check to see if '/etc/sudoers.d' already gets included by '/etc/sudoers'
     print_result $? "'/etc/sudoers.d' already included by '/etc/sudoers'"
