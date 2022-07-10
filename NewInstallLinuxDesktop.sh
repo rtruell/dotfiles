@@ -104,10 +104,10 @@ while read -r repoline; do  # read in /etc/apt/sources.list.orig one line at a t
     repoline="#"${repoline}
   fi
   if [[ ${repoline} == "deb"* ]]; then  # if it's a line for one of the repositories
-    if [[ ${repoline} != *"contrib"* ]]; then  # check to see if 'contrib' isn't there and add it if it isn't
+    if [[ ${repoline} != *"contrib"* ]]; then  # if 'contrib' isn't there, add it
       repoline+=" contrib"
     fi
-    if [[ ${repoline} != *"non-free"* ]]; then  # check to see if 'non-free' isn't there and add it if it isn't
+    if [[ ${repoline} != *"non-free"* ]]; then  # if 'non-free' isn't there, add it
       repoline+=" non-free"
     fi
   fi
@@ -128,10 +128,6 @@ print_result $? "Added the Sublime Text/Merge repository to 'apt'"
 sudo "${HOME}"/bin/add-apt-key https://www.virtualbox.org/download/oracle_vbox_2016.asc virtualbox "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
 print_result $? "Added the VirtualBox repository to 'apt'"
 
-# add the repository for Owncloud client to 'apt'
-sudo "${HOME}"/bin/add-apt-key https://download.owncloud.com/desktop/ownCloud/stable/latest/linux/Debian_11/Release.key owncloudclient "deb https://download.owncloud.com/desktop/ownCloud/stable/latest/linux/Debian_11/ /"
-print_result $? "Added the Owncloud client repository to 'apt'"
-
 # since secure repositories were just added to 'apt', must make sure that
 # 'apt-transport-https' is installed in order to update 'apt'
 apt_package_installer "apt-transport-https"
@@ -150,6 +146,7 @@ declare -a packages=(
   "curl"
   "dmidecode"
   "file"
+  "gnupg"
   "inxi"
   "linux-headers-amd64"
   "locate"
@@ -175,7 +172,7 @@ retcode=0
 currdir=${PWD}  # preserve the current directory
 mkdir "${HOME}"/mountpoint  # create a mount point for the NAS' data directory ...
 print_result $? "Created mount point"
-sudo mount -t cifs -o user=rtruell //qnap2/data "${HOME}"/mountpoint  # ... and mount it.  don't forget to change the user name as necessary
+sudo mount -t cifs -o user=rtruell //nas/data "${HOME}"/mountpoint  # ... and mount it.  don't forget to change the user name as necessary
 retcode=$?
 if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
   print_result ${retcode} "Mounted NAS"
@@ -215,8 +212,13 @@ if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
   chmod 600 "${HOME}"/BCSettings-lin*.bcpkg
   print_result $? "Set permissions for the Beyond Compare settings file"
 
+  # copy the samba config file to $HOME...it'll be put where it belongs later,
+  # after 'samba' is installed
+  cp -a smb.conf "${HOME}"/smb.conf
+  print_result $? "Copied the samba config file"
+
   # copy programs that aren't available via 'apt'.  the programs must be
-  # previously downloaded and located in '${HOME}/mountpoint/Downloads/Linux/InUse/Installed'
+  # previously downloaded and located in '${HOME}/mountpoint/Downloads/Linux/InUse/Installed/Automated'
   declare -a programs=(
     "archey"
     "bcompare"
@@ -225,34 +227,27 @@ if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
     "zulu"
   )
   i=""
-  programdir="${HOME}/mountpoint/Downloads/Linux/InUse/Installed"  # the directory containing the programs to be copied
+  programdir="${HOME}/mountpoint/Downloads/Linux/InUse/Installed/Automated"  # the directory containing the programs to be copied
   programtmp="/tmp/programs"  # temporary location to hold programs until installed
-  if [[ ! -d "${programtmp}" ]]; then
-    mkdir "${programtmp}"
+  if [[ ! -d "${programtmp}" ]]; then  # if the temporary location doesn't exist ...
+    mkdir "${programtmp}"  # ... create it
     print_result $? "Created '${programtmp}'"
   else
     print_result 0 "'${programtmp}' exists"
   fi
-  for i in ${programs[@]}; do  # loop through the array of programs
-    cp -a "${programdir}"/"${i}"* "${programtmp}"  # copy the program to '/tmp/programs'
+  for i in ${programs[@]}; do  # loop through the array of programs to be installed ...
+    cp -a "${programdir}/${i}"* "${programtmp}"  # ... copying them to '/tmp/programs'
     print_result $? "Copied ${i}"
   done
+
+  # the Terabyte programs live in their own directory and thus can't be copied
+  # during the above, so copy Image For Linux (IFL) separately
+  cp -a "${HOME}"/mountpoint/Downloads/TeraByte/InUse/Installed/ifl_en_cui_x64* "${programtmp}"
+  print_result $? "Copied IFL"
+
+  # done with the NAS
   cd "${currdir}"  # change back to where we were
   print_result $? "Changed back to '${currdir}'"
-
-  # install any '.deb' programs that were just copied, since they're easy to do
-  # in a script
-  shopt -s dotglob
-  shopt -s nullglob
-  filenames=("${programtmp}"/*.deb)  # get a list of all the '.deb' files in the '/tmp/programs' directory into an array.  filenames are of the format "/tmp/programs/<program>.deb"
-  shopt -u nullglob
-  for i in "${filenames[@]}"; do  # loop through all the '.deb' files that were found ...
-    apt_package_installer "${i}"  # ... installing them if necessary
-    rm "${i}"  # don't need the program installation file anymore, so delete it
-    print_result $? "Deleted ${i}"
-  done
-
-  # done with the NAS, so try to unmount it
   sudo umount "${HOME}"/mountpoint  # unmount the NAS
   print_result $? "Unmounted NAS"
 else
@@ -260,6 +255,47 @@ else
 fi
 rmdir "${HOME}"/mountpoint  # remove the mountpoint
 print_result $? "Removed mount point"
+
+# install any '.deb' programs that were just copied, since they're easy to do
+# in a script
+shopt -s dotglob
+shopt -s nullglob
+filenames=("${programtmp}"/*.deb)  # get a list of all the '.deb' files in the '/tmp/programs' directory into an array.  filenames are of the format "/tmp/programs/<program>.deb"
+shopt -u nullglob
+for i in "${filenames[@]}"; do  # loop through all the '.deb' files that were found ...
+  yes | sudo apt install "${i}"  # ... installing them, automatically answering 'yes' to any prompts ...
+  print_result $? "Installed ${i}"  # ... and printing a message giving the status of the installation
+  rm "${i}"  # don't need this copy of the program installation file anymore, so delete it
+  print_result $? "Deleted ${i}"
+done
+
+# install IFL
+ifldir="${HOME}/ifl"
+if [[ ! -d "${ifldir}" ]]; then  # if the directory to install IFL in doesn't exist ...
+  mkdir "${ifldir}"  # ... create it
+  print_result $? "Created '${ifldir}'"
+else
+  print_result 0 "'${ifldir}' exists"
+fi
+unzip -d "${ifldir}" "${programtmp}"/ifl*.zip  # install IFL
+print_result $? "Installed IFL"
+rm "${programtmp}"/ifl*.zip  # don't need the IFL installation file anymore, so delete it
+print_result $? "Deleted the IFL installation file"
+
+# IFL has some dependencies which need to be installed
+declare -a dependencies=(
+  "lib32z1"
+  "libncursesw5:i386"
+  "libstdc++6:i386"
+)
+sudo dpkg --add-architecture i386  # IFL needs the 32-bit shared libraries, so add the i386 architecture to get to them
+sudo apt update  # update 'apt' so the libraries can be installed
+for i in "${dependencies[@]}"; do  # loop through the array of dependencies to be installed ...
+  yes | sudo apt install "${i}"  # ... installing them, automatically answering 'yes' to any prompts ...
+  print_result $? "Installed ${i}"  # ... and printing a message giving the status of the installation
+done
+sudo adduser "${username}" disk  # add the user to the 'disk' group so IFL can access the devices
+alias ifl='sudo ./ifl/imagel'  # create an alias to avoid the shame/anger/annoyance of forgetting to use 'sudo' to run IFL
 
 # set the RTC to local time
 sudo timedatectl set-local-rtc 1
@@ -390,16 +426,25 @@ for progname in `sed -e 's/#.*//' -e '/^$/d' "${HOME}"/.APTfile`; do
   apt_package_installer "${progname}"
 done
 
+# the samba config file was copied to $HOME earlier.  now that samba has been
+# installed, the config file is moved to where it belongs
+sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.orig  # backup '/etc/samba/smb.conf' just in case
+print_result $? "Backed up '/etc/samba/smb.conf'"
+sudo mv "${HOME}"/smb.conf /etc/samba/smb.conf  # move 'smb.conf' to where it belongs ...
+print_result $? "Moved the samba config file to where it belongs"
+sudo chmod 644 /etc/samba/smb.conf  # ... and set its permissions
+print_result $? "Set permissions for '/etc/samba/smb.conf'"
+
 # Add the user to samba so they can access files on this computer from other
 # computers
 sudo smbpasswd -a "${username}"
 print_result $? "Added '${username}' to samba"
 
 # Create mount points for the 'data' and 'backups' directories on the NAS
-sudo mkdir -p /nas/data
-print_result $? "Created '/nas/data'"
-sudo mkdir -p /nas/backups
-print_result $? "Created '/nas/backups'"
+mkdir -p nas/data
+print_result $? "Created 'nas/data'"
+mkdir -p nas/backups
+print_result $? "Created 'nas/backups'"
 
 # Adding mount commands for the NAS shares to '/etc/fstab'
 sudo cp /etc/fstab /etc/fstab.orig  # backup '/etc/fstab' just in case
@@ -408,9 +453,9 @@ printf '%s\n' " " | sudo tee -a /etc/fstab >/dev/null  # add a separator line
 print_result $? "Added separator line to '/etc/fstab'"
 printf '%s\n' "# Mount NAS shares" | sudo tee -a /etc/fstab >/dev/null  # add a comment saying what the new section is for
 print_result $? "Added comment explaining the new section to '/etc/fstab'"
-printf '%s\n' "//qnap2/data /nas/data cifs auto,credentials=${HOME}/.credentials,iocharset=utf8 0 0" | sudo tee -a /etc/fstab >/dev/null  # mount command for 'data'
+printf '%s\n' "//nas/data ${HOME}/nas/data cifs rw,user,noauto,exec,credentials=${HOME}/.credentials,iocharset=utf8 0 0" | sudo tee -a /etc/fstab >/dev/null  # mount command for 'data'
 print_result $? "Added mount command for 'data' directory on NAS to '/etc/fstab'"
-printf '%s\n' "//qnap2/backups /nas/backups cifs auto,credentials=${HOME}/.credentials,iocharset=utf8 0 0" | sudo tee -a /etc/fstab >/dev/null  # mount command for 'backups'
+printf '%s\n' "//nas/backups ${HOME}/nas/backups cifs rw,user,noauto,exec,credentials=${HOME}/.credentials,iocharset=utf8 0 0" | sudo tee -a /etc/fstab >/dev/null  # mount command for 'backups'
 print_result $? "Added mount command for 'backups' directory on NAS to '/etc/fstab'"
 
 # update the locate database
