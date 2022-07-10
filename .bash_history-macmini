@@ -1,15 +1,3 @@
-up
-#1628654838
-man bash
-#1628719741
-brew info sublime-merge
-#1628719798
-brew update
-#1628719916
-brew info thunderbird
-#1628719936
-brew home thunderbird
-#1628720097
 man brew
 #1628720189
 brew upgrade sublime-merge
