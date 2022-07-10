@@ -385,6 +385,24 @@ print_result $? "Set permissions for '/etc/samba/smb.conf'"
 sudo smbpasswd -a "${username}"
 print_result $? "Added '${username}' to samba"
 
+# Create mount points for the 'data' and 'backups' directories on nasbackup
+mkdir -p nasbackup/data
+print_result $? "Created 'nasbackup/data'"
+mkdir -p nasbackup/backups
+print_result $? "Created 'nasbackup/backups'"
+
+# Adding mount commands for the nasbackup shares to '/etc/fstab'
+sudo cp /etc/fstab /etc/fstab.orig  # backup '/etc/fstab' just in case
+print_result $? "Backed up '/etc/fstab'"
+printf '%s\n' " " | sudo tee -a /etc/fstab >/dev/null  # add a separator line
+print_result $? "Added separator line to '/etc/fstab'"
+printf '%s\n' "# Mount nasbackup shares" | sudo tee -a /etc/fstab >/dev/null  # add a comment saying what the new section is for
+print_result $? "Added comment explaining the new section to '/etc/fstab'"
+printf '%s\n' "//nasbackup/data ${HOME}/nasbackup/data cifs rw,user,noauto,exec,credentials=${HOME}/.credentials,iocharset=utf8 0 0" | sudo tee -a /etc/fstab >/dev/null  # mount command for 'data'
+print_result $? "Added mount command for the 'data' directory on nasbackup to '/etc/fstab'"
+printf '%s\n' "//nasbackup/backups ${HOME}/nasbackup/backups cifs rw,user,noauto,exec,credentials=${HOME}/.credentials,iocharset=utf8 0 0" | sudo tee -a /etc/fstab >/dev/null  # mount command for 'backups'
+print_result $? "Added mount command for the 'backups' directory on nasbackup to '/etc/fstab'"
+
 # update the locate database
 sudo updatedb
 print_result $? "updated the 'locate' database"
