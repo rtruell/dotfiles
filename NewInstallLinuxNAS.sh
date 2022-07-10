@@ -104,10 +104,10 @@ while read -r repoline; do  # read in /etc/apt/sources.list.orig one line at a t
     repoline="#"${repoline}
   fi
   if [[ ${repoline} == "deb"* ]]; then  # if it's a line for one of the repositories
-    if [[ ${repoline} != *"contrib"* ]]; then  # check to see if 'contrib' isn't there and add it if it isn't
+    if [[ ${repoline} != *"contrib"* ]]; then  # if 'contrib' isn't there, add it
       repoline+=" contrib"
     fi
-    if [[ ${repoline} != *"non-free"* ]]; then  # check to see if 'non-free' isn't there and add it if it isn't
+    if [[ ${repoline} != *"non-free"* ]]; then  # if 'non-free' isn't there, add it
       repoline+=" non-free"
     fi
   fi
@@ -123,9 +123,9 @@ print_result $? "Added the Webmin repository to 'apt'"
 sudo "${HOME}"/bin/add-apt-key https://download.sublimetext.com/sublimehq-pub.gpg sublimehq "deb https://download.sublimetext.com/ apt/stable/"
 print_result $? "Added the Sublime Text/Merge repository to 'apt'"
 
-# add the repository for Owncloud server to 'apt'
-sudo "${HOME}"/bin/add-apt-key https://download.opensuse.org/repositories/isv:ownCloud:server:10/Debian_11/Release.key owncloudserver "deb http://download.opensuse.org/repositories/isv:/ownCloud:/server:/10/Debian_11/ /"
-print_result $? "Added the Owncloud server repository to 'apt'"
+# add the repository for Docker to 'apt'
+sudo "${HOME}"/bin/add-apt-key https://download.docker.com/linux/debian/gpg docker "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+print_result $? "Added the Docker repository to 'apt'"
 
 # since secure repositories were just added to 'apt', must make sure that
 # 'apt-transport-https' is installed in order to update 'apt'
@@ -145,6 +145,7 @@ declare -a packages=(
   "curl"
   "dmidecode"
   "file"
+  "gnupg"
   "inxi"
   "linux-headers-amd64"
   "locate"
@@ -206,42 +207,103 @@ if [[ -d /nas/data/OSInstallFiles ]]; then  # if the NAS files are available
   chmod 600 "${HOME}"/BCSettings-lin*.bcpkg
   print_result $? "Set permissions for the Beyond Compare settings file"
 
+  # copy the samba config file to $HOME...it'll be put where it belongs later,
+  # after 'samba' is installed
+  cp -a smb.conf-nas "${HOME}"/smb.conf
+  print_result $? "Copied the samba config file"
+
   # copy programs that aren't available via 'apt'.  the programs must be
-  # previously downloaded and located in '/nas/data/Downloads/Linux/InUse/Installed'
+  # previously downloaded and located in '/nas/data/Downloads/Linux/InUse/Installed/Automated'
   declare -a programs=(
     "archey"
     "bcompare"
   )
   i=""
-  programdir="/nas/data/Downloads/Linux/InUse/Installed"  # the directory containing the programs to be copied
+  programdir="/nas/data/Downloads/Linux/InUse/Installed/Automated"  # the directory containing the programs to be copied
   programtmp="/tmp/programs"  # temporary location to hold programs until installed
-  if [[ ! -d "${programtmp}" ]]; then
-    mkdir "${programtmp}"
+  if [[ ! -d "${programtmp}" ]]; then  # if the temporary location doesn't exist ...
+    mkdir "${programtmp}"  # ... create it
     print_result $? "Created '${programtmp}'"
   else
     print_result 0 "'${programtmp}' exists"
   fi
-  for i in ${programs[@]}; do  # loop through the array of programs
-    cp -a "${programdir}"/"${i}"* "${programtmp}"  # copy the program to '/tmp/programs'
+  for i in ${programs[@]}; do  # loop through the array of programs to be installed ...
+    cp -a "${programdir}/${i}"* "${programtmp}"  # ... copying them to '/tmp/programs'
     print_result $? "Copied ${i}"
   done
+
+  # the Terabyte programs live in their own directory and thus can't be copied
+  # during the above, so copy Image For Linux (IFL) separately
+  cp -a "/nas/data/Downloads/TeraByte/InUse/Installed/ifl_en_cui_x64*" "${programtmp}"
+  print_result $? "Copied IFL"
+
+  # now copy over the files needed for running the necessary web apps under
+  # Docker, and create the symlink to move Docker's storage off of the SSD
+  declare -a webapps=(
+    "mariadb"
+    "owncloud"
+    "redis"
+    "shaarli"
+  )
+  i=""
+  for i in ${webapps[@]}; do  # loop through the array of webapps to be installed ...
+    cp -a "/nas/data/Downloads/Linux/InUse/Installed/Manual/Docker/nas/${i}.docker" "${HOME}"  # ... copying them to the user's HOME directory
+    print_result $? "Copied ${i}"
+  done
+  cp -a /nas/data/Downloads/Linux/InUse/Installed/Manual/Docker/nas/docker-compose.yaml "${HOME}"  # copy the Docker Compose .yaml file ...
+  print_result $? "Copied 'docker-compose.yaml'"
+  chmod 600 "${HOME}"/docker-compose.yaml  # ... and set its permissions
+  print_result $? "Set permissions for 'docker-compose.yaml'"
+  sudo ln -s /nas/docker /var/lib/docker
+  print_result $? "Created the symlink to get Docker storage off of the SSD"
+
+  # done with the NAS files
   cd "${currdir}"  # change back to where we were
   print_result $? "Changed back to '${currdir}'"
-
-  # install any '.deb' programs that were just copied, since they're easy to do
-  # in a script
-  shopt -s dotglob
-  shopt -s nullglob
-  filenames=("${programtmp}"/*.deb)  # get a list of all the '.deb' files in the '/tmp/programs' directory into an array.  filenames are of the format "/tmp/programs/<program>.deb"
-  shopt -u nullglob
-  for i in "${filenames[@]}"; do  # loop through all the '.deb' files that were found ...
-    apt_package_installer "${i}"  # ... installing them if necessary
-    rm "${i}"  # don't need the program installation file anymore, so delete it
-    print_result $? "Deleted ${i}"
-  done
 else
   print_result 1 "The NAS files aren't available...sensitive files/directories and non-apt programs must be copied manually"
 fi
+
+# install any '.deb' programs that were just copied, since they're easy to do
+# in a script
+shopt -s dotglob
+shopt -s nullglob
+filenames=("${programtmp}"/*.deb)  # get a list of all the '.deb' files in the '/tmp/programs' directory into an array.  filenames are of the format "/tmp/programs/<program>.deb"
+shopt -u nullglob
+for i in "${filenames[@]}"; do  # loop through all the '.deb' files that were found ...
+  yes | sudo apt install "${i}"  # ... installing them, automatically answering 'yes' to any prompts ...
+  print_result $? "Installed ${i}"  # ... and printing a message giving the status of the installation
+  rm "${i}"  # don't need this copy of the program installation file anymore, so delete it
+  print_result $? "Deleted ${i}"
+done
+
+# install IFL
+ifldir="${HOME}/ifl"
+if [[ ! -d "${ifldir}" ]]; then  # if the directory to install IFL in doesn't exist ...
+  mkdir "${ifldir}"  # ... create it
+  print_result $? "Created '${ifldir}'"
+else
+  print_result 0 "'${ifldir}' exists"
+fi
+unzip -d "${ifldir}" "${programtmp}"/ifl*.zip  # install IFL
+print_result $? "Installed IFL"
+rm "${programtmp}"/ifl*.zip  # don't need the IFL installation file anymore, so delete it
+print_result $? "Deleted the IFL installation file"
+
+# IFL has some dependencies which need to be installed
+declare -a dependencies=(
+  "lib32z1"
+  "libncursesw5:i386"
+  "libstdc++6:i386"
+)
+sudo dpkg --add-architecture i386  # IFL needs the 32-bit shared libraries, so add the i386 architecture to get to them
+sudo apt update  # update 'apt' so the libraries can be installed
+for i in "${dependencies[@]}"; do  # loop through the array of dependencies to be installed ...
+  yes | sudo apt install "${i}"  # ... installing them, automatically answering 'yes' to any prompts ...
+  print_result $? "Installed ${i}"  # ... and printing a message giving the status of the installation
+done
+sudo adduser "${username}" disk  # add the user to the 'disk' group so IFL can access the devices
+alias ifl='sudo ./ifl/imagel'  # create an alias to avoid the shame/anger/annoyance of forgetting to use 'sudo' to run IFL
 
 # set the RTC to local time
 sudo timedatectl set-local-rtc 1
@@ -291,6 +353,32 @@ print_result $? "Restarted 'systemd-timesyncd'"
 for progname in `sed -e 's/#.*//' -e '/^$/d' "${HOME}"/.APTfile.nas`; do
   apt_package_installer "${progname}"
 done
+
+# Now that Docker is installed, load the images for the web apps to be run and
+# start them
+cd "${HOME}"
+for i in "${webapps[@]}"; do  # loop through the array of webapps to be installed ...
+  sudo docker load -i "${i}.docker"  # ... and install them
+  print_result $? "Installed ${i}"
+  rm "${i}.docker"  # don't need this copy of the image file anymore, so delete it
+  print_result $? "Deleted ${i}"
+done
+sudo docker-compose up -d  # start the web apps
+
+# add the user to the 'docker' group so they don't have to use 'sudo'.  this
+# doesn't take effect until the user logs out and back in...which they'll be
+# doing once this script is done
+sudo usermod -aG docker "${username}"
+print_result $? "Added '${username}' to the 'docker' group"
+
+# the samba config file was copied to $HOME earlier.  now that samba has been
+# installed, the config file is moved to where it belongs
+sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.orig  # backup '/etc/samba/smb.conf' just in case
+print_result $? "Backed up '/etc/samba/smb.conf'"
+sudo mv "${HOME}"/smb.conf /etc/samba/smb.conf  # move 'smb.conf' to where it belongs ...
+print_result $? "Moved the samba config file to where it belongs"
+sudo chmod 644 /etc/samba/smb.conf  # ... and set its permissions
+print_result $? "Set permissions for '/etc/samba/smb.conf'"
 
 # Add the user to samba so they can access files on this computer from other
 # computers
