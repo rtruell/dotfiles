@@ -100,11 +100,11 @@ declare -a filesdirs=(
   ".ssh"
 )
 i=""
-retcode=""
+retcode=0
 currdir=${PWD}  # preserve the current directory
 # mount the NAS's data directory.  this will prompt for the user/password, then
 # try to create '/Volumes/data' and mount the NAS's data directory there
-osascript -e 'mount volume "smb://qnap2/data"' 1>/dev/null 2>&1
+osascript -e 'mount volume "smb://nas/data"' 1>/dev/null 2>&1
 retcode=$?
 if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
   print_result ${retcode} "Mounted NAS"
@@ -158,12 +158,6 @@ if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
   else
     print_result 0 "'${extractdir}' aleady exists"
   fi
-  if [[ ! -d "${appdir}" ]]; then  # if 'appdir' doesn't already exist, create it
-    mkdir "${appdir}"
-    print_result $? "Created '${appdir}'"
-  else
-    print_result 0 "'${appdir}' already exists"
-  fi
   shopt -s dotglob
   shopt -s nullglob
   programs=("${programdir}"/*)  # get a list of all the programs in 'programdir' into an array.  the filenames are in the format 'programdir/programfilename'
@@ -172,21 +166,13 @@ if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
     ext=`"${HOME}"/bin/fp -e "${i}"`  # extract the extension
     case "${ext}" in
       app)
-          cp -a "${i}" "${appdir}"  # if it's a '.app', then copy it to 'appdir' since it's an already-extracted program
+          cp -a "${i}" "${appdir}"  # if it's a '.app', it's an already-extracted program, so copy it to 'appdir'
           print_result $? "Installed ${i}"
           ;;
       xip)
-          cp -a "${i}" "${appdir}"  # if it's a '.xip', then copy it to 'appdir' to extract the program
+          cp -a "${i}" "${appdir}"  # if it's a '.xip', it's a zipped program, so copy it to 'appdir' for extraction and installation below
           print_result $? "Copied ${i} to ${appdir}"
-          xipdir=${PWD}  # preserve the current directory
-          cd "${appdir}"  # 'xip' extracts to the current directory, so change to 'appdir' ...
-          print_result $? "Changed to '${appdir}'"
-          xip -x "${i}"  # ... and then extract the program
-          print_result $? "Installed ${i}"
-          cd "${xipdir}"  # change back to where we were
-          print_result $? "Changed back to '${xipdir}'"
-          /bin/rm -d "${i}"  # we don't need this copy of the installer anymore, so delete it
-          print_result $? "Deleted ${i}"
+          xip=1
           ;;
         *)
           cp -a "${i}" "${extractdir}"  # if it's none of the others, then copy it to 'extractdir' to be installed below
@@ -194,50 +180,67 @@ if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
           ;;
     esac
   done
+  # done with the NAS
   cd "${currdir}"  # change back to where we were
   print_result $? "Changed back to '${currdir}'"
-
-  # of the installers just copied from the NAS, install any that can be
-  # installed from a script
-  shopt -s dotglob
-  shopt -s nullglob
-  installernames=("${extractdir}"/*)  # get a list of all the installers in 'extractdir' into an array.  the filenames are in the format 'extractdir/installername'
-  shopt -u nullglob
-  for i in "${installernames[@]}"; do  # loop through all the installers that were found
-    progname=`"${HOME}"/bin/fp -n "${i}"`  # extract the program name
-    ext=`"${HOME}"/bin/fp -e "${i}"`  # extract the extension
-    case "${ext}" in
-      dmg)
-          echo "Y" | hdiutil mount -nobrowse "${i}" -mountpoint "${extractdir}/${progname}" >/dev/null  # mount the installer, which creates the specified mountpoint, accepting any license agreement
-          cp -a "${extractdir}/${progname}"/*.app "${appdir}"  # copy any '.app' files to 'appdir'
-          print_result $? "Installed ${progname}"
-          hdiutil detach "${extractdir}/${progname}" >/dev/null  # unmount the installer, which also deletes the mountpoint
-          /bin/rm -d "${i}"  # we don't need this copy of the installer anymore, so delete it
-          print_result $? "Deleted ${i}"
-          ;;
-      pkg)
-          pkginstall "${i}"  # 'pkginstall' installs the program, checking to see if a reboot is needed or not
-          print_result $? "Installed ${progname}"
-          /bin/rm -d "${i}"  # we don't need this copy of the installer anymore, so delete it
-          print_result $? "Deleted ${i}"
-          ;;
-      zip)
-          unzip "${i}" -d "${extractdir}/${progname}" >/dev/null  # unzip the installer
-          cp -a "${extractdir}/${progname}"/*.app "${appdir}"  # copy any '.app' files to 'appdir'
-          print_result $? "Installed ${progname}"
-          /bin/rm -dfr "${extractdir}/${progname}"  # delete the directory the installer was unzip'd to
-          /bin/rm -d "${i}"  # we don't need this copy of the installer anymore, so delete it
-          print_result $? "Deleted ${i}"
-          ;;
-        *) ;;
-    esac
-  done
-
-  # done with the NAS, so try to unmount it
   diskutil unmount /Volumes/data 1>/dev/null 2>&1  # unmount the NAS.  this also automatically deletes '/Volumes/data'
   print_result $? "Unmounted NAS"
 else
   print_result ${retcode} "Mounting NAS failed...sensitive files/directories and third-party software must be copied manually"
+fi
+
+# of the installers just copied from the NAS, install any that can be
+# installed from a script
+shopt -s dotglob
+shopt -s nullglob
+installernames=("${extractdir}"/*)  # get a list of all the installers in 'extractdir' into an array.  the filenames are in the format 'extractdir/installername'
+shopt -u nullglob
+for i in "${installernames[@]}"; do  # loop through all the installers that were found
+  progname=`"${HOME}"/bin/fp -n "${i}"`  # extract the program name
+  ext=`"${HOME}"/bin/fp -e "${i}"`  # extract the extension
+  case "${ext}" in
+    dmg)
+        echo "Y" | hdiutil mount -nobrowse "${i}" -mountpoint "${extractdir}/${progname}" >/dev/null  # mount the installer, which creates the specified mountpoint, accepting any license agreement
+        cp -a "${extractdir}/${progname}"/*.app "${appdir}"  # copy any '.app' files to 'appdir'
+        print_result $? "Installed ${progname}"
+        hdiutil detach "${extractdir}/${progname}" >/dev/null  # unmount the installer, which also deletes the mountpoint
+        /bin/rm -d "${i}"  # we don't need this copy of the installer anymore, so delete it
+        print_result $? "Deleted ${i}"
+        ;;
+    pkg)
+        pkginstall "${i}"  # 'pkginstall' installs the program, checking to see if a reboot is needed or not
+        print_result $? "Installed ${progname}"
+        /bin/rm -d "${i}"  # we don't need this copy of the installer anymore, so delete it
+        print_result $? "Deleted ${i}"
+        ;;
+    zip)
+        unzip "${i}" -d "${extractdir}/${progname}" >/dev/null  # unzip the installer
+        cp -a "${extractdir}/${progname}"/*.app "${appdir}"  # copy any '.app' files to 'appdir'
+        print_result $? "Installed ${progname}"
+        /bin/rm -dfr "${extractdir}/${progname}"  # delete the directory the installer was unzip'd to
+        /bin/rm -d "${i}"  # we don't need this copy of the installer anymore, so delete it
+        print_result $? "Deleted ${i}"
+        ;;
+      *) ;;
+  esac
+done
+
+# check to see if any '.xip' files need to be installed.  if so, install them
+if [[ "${xip}" == 1 ]]; then
+  cd "${appdir}"  # 'xip' extracts to the current directory, so change to 'appdir'
+  print_result $? "Changed to '${appdir}'"
+  shopt -s dotglob
+  shopt -s nullglob
+  xips=(*.xip)  # get a list of all the *.xip programs into an array.  the filenames are in the format '<filename>.xip'
+  shopt -u nullglob
+  for i in ${xips[@]}; do  # loop through the array of '.xip' programs to be installed
+    xip -x "${i}"  # extract them, thus "installing" the program
+    print_result $? "Installed ${i}"
+    /bin/rm -d "${i}"  # we don't need this copy of the installer anymore, so delete it
+    print_result $? "Deleted ${i}"
+  done
+  cd "${currdir}"  # change back to where we were
+  print_result $? "Changed back to '${currdir}'"
 fi
 
 # XCode Command Line Tools
@@ -320,7 +323,6 @@ rmdir /Users/rtruell/Downloads  # remove the OS-installed 'Downloads' directory 
 print_result $? "Removed the OS-installed 'Downloads' directory"
 symlink_single_file "/Volumes/Downloads/RecentDownloads" "/Users/rtruell/Downloads"  # ... and replace it with a symlink to the external downloads directory, to get it off the SSD
 symlink_single_file "/Volumes/ExternalHome/rtruell/SourceCode" "/Users/rtruell/SourceCode"  # make the directory of source code projects easy to get to
-#symlink_single_file "/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/optparser/optparser" "/Users/rtruell/bin/optparser"
 # remove the default install location of the 'Moneydance' data files ...
 rmdir /Users/rtruell/Library/Containers/com.infinitekind.MoneydanceOSX/Data/Documents
 print_result $? "removed the default install location of the 'Moneydance' data files"
