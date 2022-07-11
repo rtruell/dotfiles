@@ -75,7 +75,7 @@ printf '%s\n' " "
 unset colours words z i r v
 
 # get the users login name
-username=`echo ${USER}`
+username=$(echo ${USER})
 print_result $? "User doing the install is '${username}'"
 
 # make it so the user can use 'sudo'.  the code that was in here suddenly
@@ -283,7 +283,7 @@ sudo systemctl restart systemd-timesyncd  # restart 'systemd-timesyncd' so the n
 print_result $? "Restarted 'systemd-timesyncd'"
 
 # install software from the repositories
-for progname in `sed -e 's/#.*//' -e '/^$/d' "${HOME}"/.APTfile.rpi4b-b`; do
+for progname in $(sed -e 's/#.*//' -e '/^$/d' "${HOME}"/.APTfile.rpi4b-b); do
   apt_package_installer "${progname}"
 done
 

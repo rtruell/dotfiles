@@ -74,7 +74,7 @@ printf '%s\n' " "
 unset colours words z i r v
 
 # get the users login name
-username=`echo ${USER}`
+username=$(echo ${USER})
 print_result $? "User doing the install is '${username}'"
 
 # make it so the user can use 'sudo'.  the code that was in here suddenly
@@ -163,7 +163,7 @@ if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
   programs=("${programdir}"/*)  # get a list of all the programs in 'programdir' into an array.  the filenames are in the format 'programdir/programfilename'
   shopt -u nullglob
   for i in ${programs[@]}; do  # loop through the array of programs to be installed
-    ext=`"${HOME}"/bin/fp -e "${i}"`  # extract the extension
+    ext=$("${HOME}"/bin/fp -e "${i}")  # extract the extension
     case "${ext}" in
       app)
           cp -a "${i}" "${appdir}"  # if it's a '.app', it's an already-extracted program, so copy it to 'appdir'
@@ -196,8 +196,8 @@ shopt -s nullglob
 installernames=("${extractdir}"/*)  # get a list of all the installers in 'extractdir' into an array.  the filenames are in the format 'extractdir/installername'
 shopt -u nullglob
 for i in "${installernames[@]}"; do  # loop through all the installers that were found
-  progname=`"${HOME}"/bin/fp -n "${i}"`  # extract the program name
-  ext=`"${HOME}"/bin/fp -e "${i}"`  # extract the extension
+  progname=$("${HOME}"/bin/fp -n "${i}")  # extract the program name
+  ext=$("${HOME}"/bin/fp -e "${i}")  # extract the extension
   case "${ext}" in
     dmg)
         echo "Y" | hdiutil mount -nobrowse "${i}" -mountpoint "${extractdir}/${progname}" >/dev/null  # mount the installer, which creates the specified mountpoint, accepting any license agreement
@@ -255,8 +255,8 @@ if ! xcode-select --print-path &> /dev/null; then
   done
   print_result $? "Install XCode Command Line Tools"
 
-  # Point the `xcode-select` developer directory to the appropriate directory in
-  # `Xcode.app`.  see https://github.com/alrra/dotfiles/issues/13
+  # Point the 'xcode-select' developer directory to the appropriate directory in
+  # 'Xcode.app'.  see https://github.com/alrra/dotfiles/issues/13
   sudo xcode-select --switch /Applications/Xcode.app/Contents/Developer
   print_result $? "Make 'xcode-select' developer directory point to Xcode"
 
