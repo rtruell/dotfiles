@@ -2,7 +2,6 @@ acpi  # displays information on ACPI devices
 amd64-microcode
 ansiweather
 audacity
-avidemux
 bash
 bash-completion
 bc
