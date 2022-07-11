@@ -1,7 +1,3 @@
-brew upgrade sublime-merge
-#1628720327
-brew upgrade thunderbird
-#1628720464
 smerge
 #1628758538
 brew info keepassxc
@@ -19965,3 +19961,25 @@ ll /
 b s archey
 #1657497593
 b i archey4
+#1657574071
+ls /
+#1657574085
+cat .bash_logout
+#1657574100
+ll
+#1657574106
+lal
+#1657574135
+la dotfiles
+#1657574181
+rm .bash_logout
+#1657574252
+ln -s dotfiles/.bash_logout-macmini .bash_logout
+#1657574260
+lal
+#1657574282
+rm .bash_logout
+#1657574322
+ln -s /Users/rtruell/dotfiles/.bash_logout-macmini .bash_logout
+#1657574325
+lal
