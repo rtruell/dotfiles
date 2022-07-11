@@ -86,7 +86,7 @@ print_result $? "User doing the install is '${username}'"
 # command line.  using an external script, the password only has to be typed
 # once, but each command can be on its own line, making it easier to follow
 # what's being done and to debug problems
-su -c 'source ./sudo.sh "${username}"'
+su -c 'source ./sudo.sh'
 
 # symlink the dotfiles into ${HOME}
 source ./symlink.sh
@@ -302,9 +302,9 @@ sudo smbpasswd -a "${username}"
 print_result $? "Added '${username}' to samba"
 
 # Create mount points for the 'data' and 'backups' directories on nas
-mkdir -p nas/data
+mkdir -p "${HOME}"/nas/data
 print_result $? "Created 'nas/data'"
-mkdir -p nas/backups
+mkdir -p "${HOME}"/nas/backups
 print_result $? "Created 'nas/backups'"
 
 # Adding mount commands for the nas shares to '/etc/fstab'
