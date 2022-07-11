@@ -4,6 +4,7 @@ ansiweather
 bash
 bash-completion
 bc
+bcompare
 boxes  # draw boxes around text
 bzip2
 cmake  # cross-platform make
