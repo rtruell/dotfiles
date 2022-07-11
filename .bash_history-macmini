@@ -1,5 +1,3 @@
-man brew
-#1628720189
 brew upgrade sublime-merge
 #1628720327
 brew upgrade thunderbird
@@ -19963,3 +19961,7 @@ sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.4.0-amd64-netinst.iso
 diskutil eject /dev/disk3
 #1657480364
 ll /
+#1657497564
+b s archey
+#1657497593
+b i archey4
