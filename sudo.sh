@@ -7,7 +7,7 @@ source ./.functions/print_success.function
 source ./.functions/print_warn.function
 
 # $1 contains the name of the user to give 'sudo' permissions to
-username="${1}"
+username=`echo ${USER}`
 print_result $? "User being given 'sudo' permissions is '${username}'"
 
 # make it so the user can use 'sudo'...without having to type their password
