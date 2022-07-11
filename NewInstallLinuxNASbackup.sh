@@ -127,6 +127,10 @@ print_result $? "Added the Sublime Text/Merge repository to 'apt'"
 sudo "${HOME}"/bin/add-apt-key https://download.docker.com/linux/debian/gpg docker "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
 print_result $? "Added the Docker repository to 'apt'"
 
+# add the repository for Beyond Compare to 'apt'
+sudo "${HOME}"/bin/add-apt-key http://www.scootersoftware.com/RPM-GPG-KEY-scootersoftware bcompare "deb http://www.scootersoftware.com/ bcompare4 non-free"
+print_result $? "Added the Beyond Compare repository to 'apt'"
+
 # since secure repositories were just added to 'apt', must make sure that
 # 'apt-transport-https' is installed in order to update 'apt'
 apt_package_installer "apt-transport-https"
@@ -216,7 +220,6 @@ if [[ -d /nas/data/OSInstallFiles ]]; then  # if the NAS files are available
   # previously downloaded and located in '/nas/data/Downloads/Linux/InUse/Installed/Automated'
   declare -a programs=(
     "archey"
-    "bcompare"
   )
   i=""
   programdir="/nas/data/Downloads/Linux/InUse/Installed/Automated"  # the directory containing the programs to be copied

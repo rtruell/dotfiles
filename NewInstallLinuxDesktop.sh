@@ -128,6 +128,10 @@ print_result $? "Added the Sublime Text/Merge repository to 'apt'"
 sudo "${HOME}"/bin/add-apt-key https://www.virtualbox.org/download/oracle_vbox_2016.asc virtualbox "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
 print_result $? "Added the VirtualBox repository to 'apt'"
 
+# add the repository for Beyond Compare to 'apt'
+sudo "${HOME}"/bin/add-apt-key http://www.scootersoftware.com/RPM-GPG-KEY-scootersoftware bcompare "deb http://www.scootersoftware.com/ bcompare4 non-free"
+print_result $? "Added the Beyond Compare repository to 'apt'"
+
 # since secure repositories were just added to 'apt', must make sure that
 # 'apt-transport-https' is installed in order to update 'apt'
 apt_package_installer "apt-transport-https"
@@ -221,7 +225,6 @@ if [[ "${retcode}" == 0 ]]; then  # if the NAS was mounted
   # previously downloaded and located in '${HOME}/mountpoint/Downloads/Linux/InUse/Installed/Automated'
   declare -a programs=(
     "archey"
-    "bcompare"
     "freequide"
     "imager"
     "zulu"
