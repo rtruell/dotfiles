@@ -298,7 +298,6 @@ for i in "${dependencies[@]}"; do  # loop through the array of dependencies to b
   print_result $? "Installed ${i}"  # ... and printing a message giving the status of the installation
 done
 sudo adduser "${username}" disk  # add the user to the 'disk' group so IFL can access the devices
-alias ifl='sudo ./ifl/imagel'  # create an alias to avoid the shame/anger/annoyance of forgetting to use 'sudo' to run IFL
 
 # set the RTC to local time
 sudo timedatectl set-local-rtc 1
@@ -398,7 +397,9 @@ case "${machinetype}" in
               # if the Guest Additions aren't installed, install them so the
               # window can be maximized, and to have bi-directional sharing of
               # folders and the clipboard
-              if [[ ! $(lsmod | grep vboxguest) ]]; then
+              if [[ -d /usr/lib/virtualbox ]]; then
+                print_result $? "Guest Additions installed"
+              else
                 printf '%s\n' "Go to the 'Devices' menu and select 'Insert Guest Additions CD image...'"  # prompt to insert the CD image
                 read -n1 -r -p "Press any key once that's done."
                 sudo mount /dev/cdrom  # mount the CD image
@@ -407,8 +408,6 @@ case "${machinetype}" in
                 print_result $? "Installed Guest Additions"
                 sudo umount /dev/cdrom  # unmount the CD image
                 print_result $? "CD image unmounted"
-              else
-                print_result 0 "Guest Additions installed"
               fi
               printf '\n%s\n' "Don't forget to maximize the screen after rebooting!"
 
