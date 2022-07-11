@@ -12,10 +12,10 @@ if [[ "$(uname)" != "Linux" ]]; then printf '%s\n' "This script is to be run onl
 exec 3>&1 4>&2  > >(tee -i "${HOME}"/installlog.txt) 2>&1
 
 # some functions are needed to set things up, so load them
-source ./.functions/answer_is_yes.function
+source ./.functions/answer_is_y.function
 source ./.functions/apt_package_installer.function
 source ./.functions/execute_command.function
-source ./.functions/findcommand.function
+source ./.functions/01#findcommand.function
 source ./.functions/print_error.function
 source ./.functions/print_result.function
 source ./.functions/print_success.function
