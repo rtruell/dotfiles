@@ -52,14 +52,29 @@ if [[ "${dotconfig}" == 1 ]]; then
   symlink_array_files "${PWD}" "${HOME}" <( (( ${#filenames[@]} )) && printf '%s\0' "${filenames[@]}") <( (( ${#excludefiles[@]} )) && printf '%s\0' "${excludefiles[@]}")
 fi
 
-# I've decided to keep separate '.bash_history' files for each computer, so
+# I've decided to keep separate '.bash_history' files for each computer, so I
 # included ".bash_history*" in the '.dotfiles.ignore' file so they wouldn't be
 # linked with the other dotfiles.  Now I have to figure out which computer I'm
 # installing on and link the appropriate '.bash_history-<hostname>' file
 printf "\n\e[0;35m  Now processing '.bash_history'.\e[0m\n\n"
-compname=$(hostname -s)  # get the hostname of the computer, stripping off the domainname if it's there
+compname=$(hostname -s)  # get the hostname of the computer, stripping off the domain name if it's there
 sourceFile="${PWD}/.bash_history-${compname}"  # prepend the PWD and "/.bash_history-" to the compname so that we have a full pathname to the ".bash_history" file for this computer
 targetFile="${HOME}/.bash_history"  # set the full pathname for the new link
+symlink_single_file "${sourceFile}" "${targetFile}"  # and call the function to symlink it
+
+# macmini gets a special 'bash_logout' that pushs its 'bash_history' to the
+# dotfiles repository, so '.bash_logout*' was added to the '.dotfiles.ignore'
+# file so they wouldn't be linked with the other dotfiles.  now we check to see
+# what machine is being installing to, and link the appropriate '.bash_logout'
+# file
+printf "\n\e[0;35m  Now processing '.bash_logout'.\e[0m\n\n"
+compname=$(hostname -s)  # get the hostname of the computer, stripping off the domain name if it's there
+if [[ "${compname}" == "macmini" ]]; then
+  sourceFile="${PWD}/.bash_logout-${compname}"  # it's macmini, so we use the special '.bash_logout', prepending the PWD to get a full pathname
+else
+  sourceFile="${PWD}/.bash_logout"  # it's not macmini, so we use just the regular '.bash_logout', prepending the PWD to get a full pathname
+fi
+targetFile="${HOME}/.bash_logout"  # set the full pathname for the new link
 symlink_single_file "${sourceFile}" "${targetFile}"  # and call the function to symlink it
 
 printf "\n\e[0;35m  Finished linking files and directories.\e[0m\n\n"
