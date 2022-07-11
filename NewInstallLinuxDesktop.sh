@@ -129,7 +129,7 @@ sudo "${HOME}"/bin/add-apt-key https://www.virtualbox.org/download/oracle_vbox_2
 print_result $? "Added the VirtualBox repository to 'apt'"
 
 # add the repository for Beyond Compare to 'apt'
-sudo "${HOME}"/bin/add-apt-key http://www.scootersoftware.com/RPM-GPG-KEY-scootersoftware bcompare "deb http://www.scootersoftware.com/ bcompare4 non-free"
+sudo "${HOME}"/bin/add-apt-key https://www.scootersoftware.com/RPM-GPG-KEY-scootersoftware bcompare "deb https://www.scootersoftware.com/ bcompare4 non-free"
 print_result $? "Added the Beyond Compare repository to 'apt'"
 
 # since secure repositories were just added to 'apt', must make sure that
@@ -427,6 +427,10 @@ esac
 # install software from the repositories
 for progname in `sed -e 's/#.*//' -e '/^$/d' "${HOME}"/.APTfile`; do
   apt_package_installer "${progname}"
+  if [[ "${progname}" == "bcompare" ]]; then
+    sudo rm /etc/apt/sources.list.d/scootersoftware.list
+    print_result $? "Deleted conflicting file '/etc/apt/sources.list.d/scootersoftware.list'"
+  fi
 done
 
 # the samba config file was copied to $HOME earlier.  now that samba has been
@@ -444,9 +448,9 @@ sudo smbpasswd -a "${username}"
 print_result $? "Added '${username}' to samba"
 
 # Create mount points for the 'data' and 'backups' directories on nas
-mkdir -p nas/data
+mkdir -p "${HOME}"/nas/data
 print_result $? "Created 'nas/data'"
-mkdir -p nas/backups
+mkdir -p "${HOME}"/nas/backups
 print_result $? "Created 'nas/backups'"
 
 # Adding mount commands for the nas shares to '/etc/fstab'
