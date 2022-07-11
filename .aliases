@@ -23,6 +23,7 @@ alias grep="grep -E --color=auto"  # highlight matches and use extended regular 
 alias h="history"  # saves typing
 alias home="cd $HOME"  # go home
 alias hosts="sudo ${EDITOR} /etc/hosts"  # easily edit the HOSTS file.  must use 'sudo' because the file is owned by 'root'
+alias ifl='sudo ./ifl/imagel'  # create an alias to avoid the shame/anger/annoyance of forgetting to use 'sudo' to run IFL
 alias iscommand="findcommand"  # is the command actually a command?
 alias la="ls -a"  # ls output includes hidden files
 alias lal="ls -al" # ls output in long format and including hidden files
