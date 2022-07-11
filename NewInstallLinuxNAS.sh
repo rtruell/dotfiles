@@ -86,7 +86,7 @@ print_result $? "User doing the install is '${username}'"
 # command line.  using an external script, the password only has to be typed
 # once, but each command can be on its own line, making it easier to follow
 # what's being done and to debug problems
-su -c 'source ./sudo.sh "${username}"'
+su -c 'source ./sudo.sh'
 
 # symlink the dotfiles into ${HOME}
 source ./symlink.sh
@@ -128,7 +128,7 @@ sudo "${HOME}"/bin/add-apt-key https://download.docker.com/linux/debian/gpg dock
 print_result $? "Added the Docker repository to 'apt'"
 
 # add the repository for Beyond Compare to 'apt'
-sudo "${HOME}"/bin/add-apt-key http://www.scootersoftware.com/RPM-GPG-KEY-scootersoftware bcompare "deb http://www.scootersoftware.com/ bcompare4 non-free"
+sudo "${HOME}"/bin/add-apt-key https://www.scootersoftware.com/RPM-GPG-KEY-scootersoftware bcompare "deb https://www.scootersoftware.com/ bcompare4 non-free"
 print_result $? "Added the Beyond Compare repository to 'apt'"
 
 # since secure repositories were just added to 'apt', must make sure that
@@ -237,7 +237,7 @@ if [[ -d /nas/data/OSInstallFiles ]]; then  # if the NAS files are available
 
   # the Terabyte programs live in their own directory and thus can't be copied
   # during the above, so copy Image For Linux (IFL) separately
-  cp -a "/nas/data/Downloads/TeraByte/InUse/Installed/ifl_en_cui_x64*" "${programtmp}"
+  cp -a /nas/data/Downloads/TeraByte/InUse/Installed/ifl_en_cui_x64* "${programtmp}"
   print_result $? "Copied IFL"
 
   # now copy over the files needed for running the necessary web apps under
@@ -306,7 +306,6 @@ for i in "${dependencies[@]}"; do  # loop through the array of dependencies to b
   print_result $? "Installed ${i}"  # ... and printing a message giving the status of the installation
 done
 sudo adduser "${username}" disk  # add the user to the 'disk' group so IFL can access the devices
-alias ifl='sudo ./ifl/imagel'  # create an alias to avoid the shame/anger/annoyance of forgetting to use 'sudo' to run IFL
 
 # set the RTC to local time
 sudo timedatectl set-local-rtc 1
@@ -355,6 +354,10 @@ print_result $? "Restarted 'systemd-timesyncd'"
 # install software from the repositories
 for progname in `sed -e 's/#.*//' -e '/^$/d' "${HOME}"/.APTfile.nas`; do
   apt_package_installer "${progname}"
+  if [[ "${progname}" == "bcompare" ]]; then
+    sudo rm /etc/apt/sources.list.d/scootersoftware.list
+    print_result $? "Deleted conflicting file '/etc/apt/sources.list.d/scootersoftware.list'"
+  fi
 done
 
 # Now that Docker is installed, load the images for the web apps to be run and
@@ -389,9 +392,9 @@ sudo smbpasswd -a "${username}"
 print_result $? "Added '${username}' to samba"
 
 # Create mount points for the 'data' and 'backups' directories on nasbackup
-mkdir -p nasbackup/data
+mkdir -p "${HOME}"/nasbackup/data
 print_result $? "Created 'nasbackup/data'"
-mkdir -p nasbackup/backups
+mkdir -p "${HOME}"/nasbackup/backups
 print_result $? "Created 'nasbackup/backups'"
 
 # Adding mount commands for the nasbackup shares to '/etc/fstab'
