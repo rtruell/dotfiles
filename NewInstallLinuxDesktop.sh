@@ -75,7 +75,7 @@ printf '%s\n' " "
 unset colours words z i r v
 
 # get the users login name
-username=`echo ${USER}`
+username=$(echo ${USER})
 print_result $? "User doing the install is '${username}'"
 
 # make it so the user can use 'sudo'.  the code that was in here suddenly
@@ -397,7 +397,7 @@ case "${machinetype}" in
               # if the Guest Additions aren't installed, install them so the
               # window can be maximized, and to have bi-directional sharing of
               # folders and the clipboard
-              if [[ -d /usr/lib/virtualbox ]]; then
+              if [[ $(lsmod | grep -i vboxsf) ]]; then
                 print_result $? "Guest Additions installed"
               else
                 printf '%s\n' "Go to the 'Devices' menu and select 'Insert Guest Additions CD image...'"  # prompt to insert the CD image
@@ -413,18 +413,18 @@ case "${machinetype}" in
 
               # if the user is not in the group 'vboxsf', add them so they're
               # able to access shared folders
-              if [[ ! $(groups | grep vboxsf) ]]; then
+              if [[ $(groups | grep vboxsf) ]]; then
+                print_result $? "'${username}' is already in group 'vboxsf'"
+              else
                 sudo adduser "${username}" vboxsf
                 print_result $? "Added '${username}' to group 'vboxsf'"
-              else
-                print_result 0 "'${username}' is already in group 'vboxsf'"
               fi
               ;;
            *) ;;
 esac
 
 # install software from the repositories
-for progname in `sed -e 's/#.*//' -e '/^$/d' "${HOME}"/.APTfile`; do
+for progname in $(sed -e 's/#.*//' -e '/^$/d' "${HOME}"/.APTfile); do
   apt_package_installer "${progname}"
   if [[ "${progname}" == "bcompare" ]]; then
     sudo rm /etc/apt/sources.list.d/scootersoftware.list
