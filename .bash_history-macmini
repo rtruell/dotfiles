@@ -1,25 +1,3 @@
-smerge
-#1628758538
-brew info keepassxc
-#1628765326
-brew search enpass
-#1628765354
-brew info enpass
-#1628765380
-brew search keepass
-#1628802338
-findshow 'brooklyn'
-#1628802355
-findshow 'bnn'
-#1628886948
-findshow 'barbarella'
-#1628891919
-(*)
-#1628892253
-df host
-#1628892262
-hf host
-#1628892287
 man hostname
 #1628892324
 hostname
