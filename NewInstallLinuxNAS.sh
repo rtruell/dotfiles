@@ -216,6 +216,11 @@ if [[ -d /nas/data/OSInstallFiles ]]; then  # if the NAS files are available
   cp -a smb.conf-nas "${HOME}"/smb.conf
   print_result $? "Copied the samba config file"
 
+  # copy the ddclient config file to $HOME...it'll be put where it belongs
+  # later, after 'ddclient' is installed
+  cp -a ddclient.conf "${HOME}"
+  print_result $? "Copied the ddclient config file"
+
   # copy programs that aren't available via 'apt'.  the programs must be
   # previously downloaded and located in '/nas/data/Downloads/Linux/InUse/Installed/Automated'
   declare -a programs=(
@@ -355,6 +360,9 @@ print_result $? "Restarted 'systemd-timesyncd'"
 for progname in $(sed -e 's/#.*//' -e '/^$/d' "${HOME}"/.APTfile.nas); do
   apt_package_installer "${progname}"
   if [[ "${progname}" == "bcompare" ]]; then
+    # Beyond Compare installs a repository file for use with 'apt' that
+    # conflicts with the one installed earlier, so get rid of the one that was
+    # just installed
     sudo rm /etc/apt/sources.list.d/scootersoftware.list
     print_result $? "Deleted conflicting file '/etc/apt/sources.list.d/scootersoftware.list'"
   fi
@@ -377,14 +385,34 @@ sudo docker-compose up -d  # start the web apps
 sudo usermod -aG docker "${username}"
 print_result $? "Added '${username}' to the 'docker' group"
 
-# the samba config file was copied to $HOME earlier.  now that samba has been
-# installed, the config file is moved to where it belongs
+# the 'samba' config file was copied to $HOME earlier.  now that 'samba' has
+# been installed, the config file is moved to where it belongs
 sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.orig  # backup '/etc/samba/smb.conf' just in case
 print_result $? "Backed up '/etc/samba/smb.conf'"
-sudo mv "${HOME}"/smb.conf /etc/samba/smb.conf  # move 'smb.conf' to where it belongs ...
+sudo mv "${HOME}"/smb.conf /etc/samba/smb.conf  # move 'smb.conf' to where it belongs
 print_result $? "Moved the samba config file to where it belongs"
-sudo chmod 644 /etc/samba/smb.conf  # ... and set its permissions
+sudo chown root:root /etc/samba/smb.conf  # set the owner/group properly
+print_result $? "Set the owner/group for '/etc/samba/smb.conf'"
+sudo chmod 644 /etc/samba/smb.conf  # set its permissions
 print_result $? "Set permissions for '/etc/samba/smb.conf'"
+
+# the 'ddclient' config file was copied to $HOME earlier.  now that 'ddclient'
+# has been installed, the config file is moved to where it belongs
+sudo mv /etc/ddclient.conf /etc/ddclient.conf.orig  # backup '/etc/ddclient.conf' just in case
+print_result $? "Backed up '/etc/ddclient.conf'"
+sudo mv "${HOME}"/ddclient.conf /etc/ddclient.conf  # move 'ddclient.conf' to where it belongs
+print_result $? "Moved the ddclient config file to where it belongs"
+sudo chown root:root /etc/ddclient.conf  # set the owner/group properly
+print_result $? "Set the owner/group for '/etc/ddclient.conf'"
+sudo chmod 600 /etc/ddclient.conf  # set its permissions
+print_result $? "Set permissions for '/etc/ddclient.conf'"
+
+# the settings in '/etc/default/ddclient' override ones set in
+# '/etc/ddclient.conf', even though it's supposed to be the other way around.
+# so now '/etc/default/ddclient' is changed so that 'ddclient' only checks for a
+# new external IP address once an hour, instead of every 5 minutes
+sudo sed -E 's/(daemon_interval=).*/\1"1h"/' -i /etc/default/ddclient
+print_result $? "Changed the delay value for 'ddclient'"
 
 # Add the user to samba so they can access files on this computer from other
 # computers
