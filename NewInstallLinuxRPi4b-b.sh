@@ -287,13 +287,15 @@ for progname in $(sed -e 's/#.*//' -e '/^$/d' "${HOME}"/.APTfile.rpi4b-b); do
   apt_package_installer "${progname}"
 done
 
-# the samba config file was copied to $HOME earlier.  now that samba has been
-# installed, the config file is moved to where it belongs
+# the 'samba' config file was copied to $HOME earlier.  now that 'samba' has
+# been installed, the config file is moved to where it belongs
 sudo mv /etc/samba/smb.conf /etc/samba/smb.conf.orig  # backup '/etc/samba/smb.conf' just in case
 print_result $? "Backed up '/etc/samba/smb.conf'"
-sudo mv "${HOME}"/smb.conf /etc/samba/smb.conf  # move 'smb.conf' to where it belongs ...
+sudo mv "${HOME}"/smb.conf /etc/samba/smb.conf  # move 'smb.conf' to where it belongs
 print_result $? "Moved the samba config file to where it belongs"
-sudo chmod 644 /etc/samba/smb.conf  # ... and set its permissions
+sudo chown root:root /etc/samba/smb.conf  # set the owner/group properly
+print_result $? "Set the owner/group for '/etc/samba/smb.conf'"
+sudo chmod 644 /etc/samba/smb.conf  # set its permissions
 print_result $? "Set permissions for '/etc/samba/smb.conf'"
 
 # Add the user to samba so they can access files on this computer from other
