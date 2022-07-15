@@ -21,7 +21,10 @@ docker-compose-plugin
 findutils
 firmware-misc-nonfree
 fontconfig
-fortune  # fortune cookie
+fortune  # fortune cookie program
+fortunes  # fortune cookies
+fortunes-debian-hints  # fortune cookies containing hints about using Debian
+fortunes-off  # offensive fortune cookies
 gcc
 gdebi-core  # command line '.deb' installer
 gparted
@@ -31,6 +34,9 @@ liquidprompt  # fancy command line prompt
 locales
 mlocate  # quickly find files on the filesystem based on their name
 moreutils
+netselect-apt  # find the fastest 'apt' mirror
+network-manager-openconnect
+nmap  # network mapper
 ntfs-3g  # read-write NTFS driver for Linux
 p7zip
 p7zip-full
@@ -54,13 +60,12 @@ synaptic
 tar
 tree
 unace
-unrar
+unrar-free
 unzip
 webmin
 wget  # get files from web
 whois
 xclip  # command line clipboard
 xmltv
-xmltv-gui
 xz-utils
 zip
