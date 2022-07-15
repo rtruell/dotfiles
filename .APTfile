@@ -14,13 +14,15 @@ dialog  # text-mode dialog boxes
 dkms  # allow kernel modules to be updated with having to update the whole kernel
 dlocate  # fast alternative to dpkg -L and dpkg -S
 findutils
-firefox
+firefox-esr
 firmware-misc-nonfree
 fontconfig
-fortune  # fortune cookie
+fortune  # fortune cookie program
+fortunes  # fortune cookies
+fortunes-debian-hints  # fortune cookies containing hints about using Debian
+fortunes-off  # offensive fortune cookies
 gcc
 gdebi-core  # command line '.deb' installer
-googleearth
 gparted
 gzip
 hardinfo  # info about computer's hardware
@@ -33,7 +35,7 @@ moreutils
 netselect-apt  # find the fastest 'apt' mirror
 network-manager-openconnect
 nmap  # network mapper
-non-free-codecs
+# non-free-codecs  # can't seem to find out how to install these in Debian/Linux
 ntfs-3g  # read-write NTFS driver for Linux
 p7zip
 p7zip-full
@@ -57,11 +59,10 @@ synaptic
 tar
 thunderbird
 tree
-ttf-mscorefonts-installer  # -- you need "multiverse" || "non-free" sources in your "source.list" --
+ttf-mscorefonts-installer  # you need "multiverse" or "non-free" sources in your "source.list"
 unace
-unrar
+unrar-free
 unzip
-usbimager
 virtualbox-6.1
 vlc  # video player
 webmin
@@ -69,7 +70,6 @@ wget  # get files from web
 whois
 xclip  # command line clipboard
 xmltv
-xmltv-gui
 xpdf  # graphical PDF viewer
 xz-utils
 zip
