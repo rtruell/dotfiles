@@ -359,7 +359,7 @@ case "${machinetype}" in
                 if [[ -e /etc/systemd/logind.conf.d/lid.conf ]]; then  # it does, so check to see if the file with the lid/suspend/hibernate commands is already in it
                   print_result $? "'/etc/systemd/logind.conf.d/lid.conf' exists"
                 else
-                  sudo cp lid.conf /etc/systemd/logind.conf.d/lid.conf >/dev/null  # it isn't, so copy the file
+                  sudo cp "${HOME}"/dotfiles/lid.conf /etc/systemd/logind.conf.d/lid.conf >/dev/null  # it isn't, so copy the file
                   print_result $? "Copied '/etc/systemd/logind.conf.d/lid.conf'"
                   sudo chmod 644 /etc/systemd/logind.conf.d/lid.conf  # and set its permissions
                   print_result $? "Set permissions for '/etc/systemd/logind.conf.d/lid.conf'"
@@ -369,7 +369,7 @@ case "${machinetype}" in
                 print_result $? "Created '/etc/systemd/logind.conf.d'"
                 sudo chmod 755 /etc/systemd/logind.conf.d  # and set its' permissions
                 print_result $? "Set permissions for '/etc/systemd/logind.conf.d'"
-                sudo cp lid.conf /etc/systemd/logind.conf.d/lid.conf >/dev/null  # copy the file with the lid/suspend/hibernate commands
+                sudo cp "${HOME}"/dotfiles/lid.conf /etc/systemd/logind.conf.d/lid.conf >/dev/null  # copy the file with the lid/suspend/hibernate commands
                 print_result $? "Copied '/etc/systemd/logind.conf.d/lid.conf'"
                 sudo chmod 644 /etc/systemd/logind.conf.d/lid.conf  # and set its permissions
                 print_result $? "Set permissions for '/etc/systemd/logind.conf.d/lid.conf'"
