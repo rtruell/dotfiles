@@ -135,11 +135,26 @@ print_result $? "Added the Beyond Compare repository to 'apt'"
 # 'apt-transport-https' is installed in order to update 'apt'
 apt_package_installer "apt-transport-https"
 
-# update apt to pick up the new repositories, and then do an upgrade
-sudo apt update
-print_result $? "apt updated"
-sudo apt upgrade
-print_result $? "apt upgraded"
+# update apt to pick up the new repositories, and then do an upgrade, just in
+# case.  one of the times this script was run caused a problem I've never had
+# before...a program prevented 'apt' from locking a directory, which
+# prevented 'apt' from updating the source file lists, which would have caused
+# this script to fail when trying to install programs from the just-added
+# repositories.  so, had to implement a check to make sure 'apt' could update
+# itself before continuing on.  and while I was at it, figured I'd better put in
+# a check for the 'apt upgrade' as well
+retcode=1
+while [[ "${retcode}" != 0 ]]; do
+  sudo apt update
+  retcode=$?
+done
+print_result "${retcode}" "apt updated"
+retcode=1
+while [[ "${retcode}" != 0 ]]; do
+  sudo apt upgrade
+  retcode=$?
+done
+print_result "${retcode}" "apt upgraded"
 
 # install some packages, if necessary, so everything in the rest of this script
 # can be done
@@ -171,7 +186,6 @@ declare -a filesdirs=(
   ".ssh"
 )
 i=""
-retcode=0
 currdir=${PWD}  # preserve the current directory
 if [[ -d /nas/data/OSInstallFiles ]]; then  # if the NAS files are available
   print_result 0 "NAS files are available"
@@ -305,7 +319,13 @@ declare -a dependencies=(
   "libstdc++6:i386"
 )
 sudo dpkg --add-architecture i386  # IFL needs the 32-bit shared libraries, so add the i386 architecture to get to them
-sudo apt update  # update 'apt' so the libraries can be installed
+print_result $? "i386 architecture added to apt"
+retcode=1
+while [[ "${retcode}" != 0 ]]; do
+  sudo apt update  # update 'apt' so the libraries can be installed, and make sure the update actually happened
+  retcode=$?
+done
+print_result "${retcode}" "apt updated"
 for i in "${dependencies[@]}"; do  # loop through the array of dependencies to be installed ...
   yes | sudo apt install "${i}"  # ... installing them, automatically answering 'yes' to any prompts ...
   print_result $? "Installed ${i}"  # ... and printing a message giving the status of the installation
