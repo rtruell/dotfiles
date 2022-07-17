@@ -8,6 +8,7 @@
 .DS_Store
 .macos*
 LICENSE*
+lid.conf
 NewInstall*
 README*
 sudo.sh
