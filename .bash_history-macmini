@@ -19961,3 +19961,11 @@ b ug imazing
 dotfiles
 #1658019371
 findtext lid.conf
+#1658022072
+ttype dave
+#1658022077
+echo $?
+#1658022087
+ttype find
+#1658022092
+echo $?
