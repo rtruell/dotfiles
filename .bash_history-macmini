@@ -1,11 +1,3 @@
-man git
-#1628918124
-man pause
-#1628918284
-man read
-#1628918292
-bashman read
-#1628918454
 cat ~/.logout
 #1628918465
 la
@@ -19969,3 +19961,7 @@ echo $?
 ttype find
 #1658022092
 echo $?
+#1658116168
+dotfiles
+#1658116175
+findtext compose
