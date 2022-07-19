@@ -262,6 +262,7 @@ if [[ -d /nas/data/OSInstallFiles ]]; then  # if the NAS files are available
   # now copy over the files needed for running the necessary web apps under
   # Docker, and create the symlink to move Docker's storage off of the SSD
   declare -a webapps=(
+    "apt-cacher-ng"
     "mariadb"
     "owncloud"
     "redis"
@@ -395,9 +396,9 @@ for i in "${webapps[@]}"; do  # loop through the array of webapps to be installe
   sudo docker load -i "${i}.docker"  # ... and install them
   print_result $? "Installed ${i}"
   rm "${i}.docker"  # don't need this copy of the image file anymore, so delete it
-  print_result $? "Deleted ${i}"
+  print_result $? "Deleted ${i} image file"
 done
-sudo docker-compose up -d  # start the web apps
+sudo docker compose up -d  # start the web apps
 
 # add the user to the 'docker' group so they don't have to use 'sudo'.  this
 # doesn't take effect until the user logs out and back in...which they'll be
