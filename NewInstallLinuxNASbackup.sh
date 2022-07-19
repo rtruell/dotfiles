@@ -377,7 +377,7 @@ for i in "${webapps[@]}"; do  # loop through the array of webapps to be installe
   rm "${i}.docker"  # don't need this copy of the image file anymore, so delete it
   print_result $? "Deleted ${i}"
 done
-sudo docker-compose up -d  # start the web apps
+sudo docker compose up -d  # start the web apps
 
 # add the user to the 'docker' group so they don't have to use 'sudo'.  this
 # doesn't take effect until the user logs out and back in...which they'll be
