@@ -16,7 +16,6 @@ dlocate  # fast alternative to dpkg -L and dpkg -S
 docker-ce
 docker-ce-cli
 containerd.io
-docker-compose
 docker-compose-plugin
 findutils
 firmware-misc-nonfree
