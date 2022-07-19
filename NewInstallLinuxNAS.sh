@@ -131,10 +131,6 @@ print_result $? "Added the Docker repository to 'apt'"
 sudo "${HOME}"/bin/add-apt-key https://www.scootersoftware.com/RPM-GPG-KEY-scootersoftware bcompare "deb https://www.scootersoftware.com/ bcompare4 non-free"
 print_result $? "Added the Beyond Compare repository to 'apt'"
 
-# since secure repositories were just added to 'apt', must make sure that
-# 'apt-transport-https' is installed in order to update 'apt'
-apt_package_installer "apt-transport-https"
-
 # update apt to pick up the new repositories, and then do an upgrade, just in
 # case.  one of the times this script was run caused a problem I've never had
 # before...a program prevented 'apt' from locking a directory, which

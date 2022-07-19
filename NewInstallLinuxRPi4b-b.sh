@@ -123,10 +123,6 @@ print_result $? "Added the Webmin repository to 'apt'"
 sudo "${HOME}"/bin/add-apt-key https://download.sublimetext.com/sublimehq-pub.gpg sublimehq "deb https://download.sublimetext.com/ apt/stable/"
 print_result $? "Added the Sublime Text/Merge repository to 'apt'"
 
-# since secure repositories were just added to 'apt', must make sure that
-# 'apt-transport-https' is installed in order to update 'apt'
-apt_package_installer "apt-transport-https"
-
 # update apt to pick up the new repositories, and then do an upgrade
 sudo apt update
 print_result $? "apt updated"
