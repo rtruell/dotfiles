@@ -1,5 +1,3 @@
-la
-#1628918515
 cat .bash_logout
 #1628918546
 cp .bash_logout ${HOME}
@@ -19963,3 +19961,78 @@ dotfiles
 findtext compose
 #1658557316
 ping -c 1 nas
+#1658613046
+nextcloud-conflicted "/Volumes/Nextcloud/BloodGlucose (conflicted copy 2022-07-23 142340).txt"
+#1658613137
+fp -h
+#1658613212
+nextcloud-conflicted "/Volumes/Nextcloud/BloodGlucose (conflicted copy 2022-07-23 142340).txt"
+#1658615131
+nextcloud-conflicted "/Volumes/Nextcloud/AllListings (conflicted copy 2022-07-23 153110).html"
+#1658629804
+addtest
+#1658631239
+addtest --help
+#1658632186
+echo $text
+#1658632196
+text="this is
+a test
+and some
+more text."
+#1658632235
+printf '%s\n' "${text}"
+#1658634404
+addtest --help
+#1658635404
+echo $test
+#1658635413
+test="--help"
+#1658635417
+echo $test
+#1658635430
+echo "${test}"
+#1658635454
+echo "${test##-}"
+#1658635466
+echo "${test##-*}"
+#1658635479
+echo "${test%%-*}"
+#1658635505
+echo "${test##-}"
+#1658635509
+echo "${test##--}"
+#1658636124
+addtest --help
+#1658636315
+addtest
+#1658636600
+addtest -b
+#1658636711
+addtest
+#1658636793
+addtest-z
+#1658636802
+addtest -z
+#1658636942
+addtest -h
+#1658636951
+addtest -a
+#1658639068
+addtest
+#1658639079
+addtest -z
+#1658639086
+addtest -h
+#1658639098
+addtest --help
+#1658639112
+addtest -a
+#1658639154
+addtest --acng
+#1658639164
+addtest -a a
+#1658639171
+addtest -a a b
+#1658647845
+addtest https://download.webmin.com/jcameron-key.asc webmin "deb https://download.webmin.com/download/repository sarge contrib"
