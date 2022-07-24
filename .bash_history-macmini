@@ -1,74 +1,3 @@
-cat .bash_logout
-#1628918546
-cp .bash_logout ${HOME}
-#1628918661
-ls dotfiles
-#1628974714
-findshow 'despicable'
-#1628978422
-man rm
-#1628978451
-man mv
-#1628978722
-echo ${targetFile"}
-#1628978753
-echo "${targetFile}"
-#1628978767
-targetFile=test
-#1628978769
-echo "${targetFile}"
-#1628978780
-echo mv -f "${targetFile}" "${targetFile}.old"
-ls
-ls -l
-source symlink.sh
-exit
-#1629006173
-localip
-#1629006234
-remoteip
-#1629006244
-externalip
-#1629006269
-localip
-#1629006290
-listfunction findshow
-#1629006368
-findshow 'barbar'
-#1629006389
-info
-#1629006404
-listfunction info
-#1629006540
-dotfiles
-#1629006567
-findtext 'info ('
-#1629006581
-findtext 'info \('
-#1629006605
-findtext 'info'
-#1629006864
-findtext 'hostinfo'
-#1629007031
-findtext 'status'
-#1629007619
-git push --help | less
-ls -l
-source symlink.sh
-exit
-#1629010056
-info
-#1629010116
-localip
-#1629010123
-myip
-#1629010130
-remoteip
-#1629010144
-externalip
-#1629010610
-info
-#1629010633
 externalip
 #1629010639
 localip
@@ -20036,3 +19965,7 @@ addtest -a a
 addtest -a a b
 #1658647845
 addtest https://download.webmin.com/jcameron-key.asc webmin "deb https://download.webmin.com/download/repository sarge contrib"
+#1658689559
+nextcloud-conflicted "/Volumes/Nextcloud/AllListings (conflicted copy 2022-07-23 153110).html"
+#1658690938
+man tee
