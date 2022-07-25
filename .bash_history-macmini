@@ -1,7 +1,3 @@
-externalip
-#1629010639
-localip
-#1629011173
 info
 #1629011227
 listfunction info
@@ -19969,3 +19965,13 @@ addtest https://download.webmin.com/jcameron-key.asc webmin "deb https://downloa
 nextcloud-conflicted "/Volumes/Nextcloud/AllListings (conflicted copy 2022-07-23 153110).html"
 #1658690938
 man tee
+#1658707359
+addtest https://download.webmin.com/jcameron-key.asc webmin "deb https://download.webmin.com/download/repository sarge contrib"
+#1658707973
+ls /tmp
+#1658708028
+file /tmp/jcameron-key.asc
+#1658709327
+rm /tmp/jcameron-key.asc
+#1658709333
+ll /tmp
