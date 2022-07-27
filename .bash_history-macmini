@@ -19965,3 +19965,13 @@ file /tmp/jcameron-key.asc
 rm /tmp/jcameron-key.asc
 #1658709333
 ll /tmp
+#1658902422
+ls /var/folders/9_/2kwgn1710ql97hyntzkldlqh0000gn/T/
+#1658902461
+ls /var/folders/9_/2kwgn1710ql97hyntzkldlqh0000gn/T/v*
+#1658902466
+ls /var/folders/9_/2kwgn1710ql97hyntzkldlqh0000gn/T/V*
+#1658902680
+ls /tmp
+#1658902697
+ll /tmp
