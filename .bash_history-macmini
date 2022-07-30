@@ -19965,3 +19965,37 @@ ls /var/folders/9_/2kwgn1710ql97hyntzkldlqh0000gn/T/V*
 ls /tmp
 #1658902697
 ll /tmp
+#1659165602
+dotfiles
+#1659165617
+hostname
+#1659165621
+host
+#1659165641
+hostname -s
+#1659165653
+findtext hostname
+#1659165760
+hostname -I
+#1659166701
+echo ${HOSTNAME}
+#1659166762
+osinfo
+#1659166832
+sysinfo
+#1659168056
+man printf
+#1659169003
+home
+#1659169020
+main.sh
+#1659169530
+dotfiles
+#1659169535
+findtest USER
+#1659169542
+findtext USER
+#1659169711
+home
+#1659169714
+main.sh
