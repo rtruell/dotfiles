@@ -1658,3 +1658,41 @@ REMOTE=$(git rev-parse "${UPSTREAM}")
 git status -uno
 #1660982921
 git --version
+#1661029514
+dotfilesscrdir
+#1661029523
+dotfiles
+#1661029544
+echo $DOTFILES
+#1661029552
+echo $DOTFILESSCRDIR
+#1661029583
+less .exports
+#1661029631
+echo $DOTFILESSRCDIR
+#1661029640
+home
+#1661029645
+dotfilessrcdir
+#1661029677
+alias
+#1661029701
+cd $DOTFILESSRCDIR
+#1661029711
+git remote update
+#1661029732
+UPSTREAM=${1:-'@{u}'}
+#1661029741
+LOCAL=$(git rev-parse @{0})
+#1661029752
+echo $UPSTREAM
+#1661029759
+echo $LOCAL
+#1661029777
+REMOTE=$(git rev-parse "${UPSTREAM}")
+#1661029796
+BASE=$(git merge-base @{0} "${UPSTREAM}")
+#1661029803
+echo $REMOTE
+#1661029815
+echo $BASE
