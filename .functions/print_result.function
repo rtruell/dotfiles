@@ -1,0 +1,8 @@
+# "pretty print" a status message based on the result of a command/program
+# $1 is the return code of the command/program
+# $2 is the success/error status message
+# $3 is "true" if the script is to be ended if the program/command failed
+function print_result {
+  [[ "${1}" -eq 0 ]] && print_success "${2}" || print_error "${2}"
+  [[ "${3}" == "true" ]] && [[ "${1}" -ne 0 ]] && exit "${1}"
+}

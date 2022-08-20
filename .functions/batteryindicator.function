@@ -1,0 +1,19 @@
+# echo a indicator for your battery-time
+function batteryindicator {
+  num=$(batterylife)
+  if [ ${num} -gt 95 ]; then
+    printf '%b\n' "${DULL_GREEN}‚ô•‚ô•‚ô•‚ô•‚ô•‚ô•${NORMAL}"  # 95-100% remaining : GREEN
+  elif [ ${num} -gt 85 ]; then
+    printf '%b\n' "${DULL_GREEN}‚ô•‚ô•‚ô•‚ô•‚ô•‚ô°${NORMAL}"  # 85-95% remaining : GREEN
+  elif [ ${num} -gt 65 ]; then
+    printf '%b\n' "${DULL_GREEN}‚ô•‚ô•‚ô•‚ô•‚ô°‚ô°${NORMAL}"  # 65-85% remaining : GREEN
+  elif [ ${num} -gt 45 ]; then
+    printf '%b\n' "${DULL_GREEN}‚ô•‚ô•‚ô•‚ô°‚ô°‚ô°${NORMAL}"  # 45-65% remaining : GREEN
+  elif [ ${num} -gt 25 ]; then
+    printf '%b\n' "${BRIGHT_YELLOW}‚ô•‚ô•‚ô°‚ô°‚ô°‚ô°${NORMAL}"  # 25-45% remaining : YELLOW
+  elif [ ${num} -gt 10 ]; then
+    printf '%b\n' "${BRIGHT_RED}‚ô•‚ô°‚ô°‚ô°‚ô°‚ô°${NORMAL}"  # 11-25% remaining : RED
+  else
+    printf '%b\n' "${ALERT}‚ô•‚ô°‚ô°‚ô°‚ô°‚ô°${NORMAL}"  # 0-10% remaining : ALERT
+  fi
+}

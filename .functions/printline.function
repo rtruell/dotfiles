@@ -1,0 +1,27 @@
+# A function to print a specific line from a file
+# TO-DO: Update it to handle globs e.g. 'printline 4 *'
+function printline {
+  if [[ -z "${1}" ]]; then  # if $1 is empty, print a usage message
+    printf '%s\n' "Usage:  printline n [file]" ""
+    printf '\t%s\n' "Print the Nth line of FILE." "" "With no FILE or when FILE is -, read standard input instead."
+    return 0
+  fi
+  case ${1} in
+    ''|*[!0-9]*) printf '%s\n' "[ERROR] printline: '${1}' does not appear to be a number." "" "Run 'printline' with no arguments for usage.";  # if $1 isn't a number, print an error message
+                 return 1
+                 ;;
+              *) lineNo="$((10#${1}))" ;;  # if it is a number, blindly convert it to base10 to remove any leading zeroes
+  esac
+  if [[ -n "${2}" ]]; then  # if $2 is set ...
+    if [[ ! -r "${2}" ]]; then  # ... but the file isn't readable, print an error message
+      printf '%s\n' "[ERROR] printline: '${2}' does not appear to exist or I can't read it." "" "Run 'printline' with no arguments for usage."
+      return 1
+    fi
+  fi
+  if findcommand sed &>/dev/null; then  # see if 'sed' can be found
+    sed -ne "${lineNo}{p;q;}" -e "\$s/.*/[ERROR] printline: End of stream reached./" -e '$ w /dev/stderr' "${2:-/dev/stdin}"  # if so, try to print the requested line number from the specified file (or stdin)
+  else
+    printf '%s\n' "[ERROR] printline: This function depends on 'sed' which was not found."  # if not, print an error message
+    return 1
+  fi
+}

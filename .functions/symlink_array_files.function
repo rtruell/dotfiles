@@ -1,0 +1,39 @@
+# symlink an array of filenames.  optionally provide an array of filenames that
+# shouldn't be symlinked
+# $1 is the directory where the files are located
+# $2 is the directory where the symlinks are to be put
+# $3 is the array of filenames to be symlinked
+# $4 is an array of filenames that shouldn't be symlinked (optional)
+function symlink_array_files {
+  b=""
+  sourceFile=""
+  targetFile=""
+  linkfiles=()
+  declare -a file_names exclude_files
+  [[ -z $1 ]] && { printf '%s\n' "Must supply source and target directories and an array of filenames to symlink."; return 1; }
+  [[ -z $2 ]] && { printf '%s\n' "Must supply target directory and an array of filenames to symlink."; return 1; }
+  [[ -z $3 ]] && { printf '%s\n' "Must supply an array of filenames to symlink."; return 1; }
+  sourceDir=$1; shift
+  targetDir=$1; shift
+  while IFS= read -r -d '' entry; do file_names+=( "$entry" ); done <"$1"
+  [[ -n $2 ]] && { while IFS= read -r -d '' entry; do exclude_files+=( "$entry" ); done <"$2"; }
+  for i in "${file_names[@]}"; do  # loop through all the file/directory names in the directory
+    found=0  # clear the 'found' flag
+    if [[ -n "${exclude_files}" ]]; then  # if an array of filenames that shouldn't be symlinked is supplied ...
+      for j in "${exclude_files[@]}"; do  # ... loop through it
+        if [[ ${i} == ${j} ]]; then found=1; fi  # if the current filename is one that should be excluded, we set the 'found' flag
+      done
+    fi
+    if [[ "${found}" == 0 ]]; then  # if the 'found' flag wasn't set ...
+      linkfiles+=(${i})  # ... we add the current file/directory name to the array of files/directories to be linked
+    else
+      print_warn "Not linking: ${i}"  # otherwise we print a warning that it isn't being linked
+      printf "\n"
+    fi
+  done
+  for b in ${linkfiles[@]}; do  # loop through all the files/directories to be linked
+    sourceFile="${sourceDir}/${b}"  # prepend the source directory and a slash to the file/directory so that we have its full pathname
+    targetFile="${targetDir}/${b}"  # prepend the target directory and a slash to the file/directory so that we have a full pathname for the new link
+    symlink_single_file ${sourceFile} ${targetFile}  # call the function to symlink 'sourceFile' to 'targetFile'
+  done
+}

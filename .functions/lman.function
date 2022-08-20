@@ -1,0 +1,11 @@
+# open the manual page for the last command executed.
+function lman {
+  cmd=""
+  set -- $(fc -nl -1)
+  while [[ $# > 0 && ("${1}" == "sudo" || "${1:0:1}" == "-") ]]; do
+    shift
+  done
+  cmd="$(basename "${1}")"
+  if [[ `type -t "${cmd}"` == "builtin"  ]]; then command="bashman";  else command="man"; fi
+  "${command}" "${cmd}" || help "${cmd}"
+}

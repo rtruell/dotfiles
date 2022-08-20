@@ -1,0 +1,17 @@
+# configure 'tree' to display nicely, piping through 'less' for screen control
+# options:
+#   a - includes hidden files
+#   n - turn colourization off
+#   Q - puts filenames in double-quotes instead of escaping spaces
+#   dirsfirst - lists any directories first
+#
+# passing "-s" to the function (tree -s [directory]) causes the file sizes to be
+# printed in human-readable format (G, M, K, etc.) as well (the 'h' option)
+function tree {
+  if [[ "${1}" == "-s" ]]; then
+    shift
+    command tree -ahnQ -I '.git|.Spotlight-V100|.TemporaryItems|.DocumentRevisions-V100|.fseventsd' --dirsfirst "$@" | less
+  else
+    command tree -anQ -I '.git|.Spotlight-V100|.TemporaryItems|.DocumentRevisions-V100|.fseventsd' --dirsfirst "$@" | less
+  fi
+}

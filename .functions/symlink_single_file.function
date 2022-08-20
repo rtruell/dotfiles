@@ -1,0 +1,26 @@
+# symlink a file and "pretty print" the success/error message
+# $1 is the path to the file to be linked
+# $2 is the path to where the symlink is to be placed
+function symlink_single_file {
+  [[ -z $1 ]] && { printf '%s\n' "Must supply source and target pathnames."; return 1; }
+  [[ -z $2 ]] && { printf '%s\n' "Must supply a target pathname."; return 1; }
+  source_path=$1
+  target_path=$2
+  if [ -e "${target_path}" ]; then  # if the link already exists
+    if [ "$(readlink "${target_path}")" != "${source_path}" ]; then  # and doesn't point to the function
+      print_warn "'${target_path}' already exists, do you want to overwrite it? (y/n) "  # ask if it should be overwritten...which in this case is actually renaming it and then recreating it
+      read -n 1
+      printf "\n"
+      if answer_is_y "${REPLY}"; then
+        mv -f "${target_path}" "${target_path}.old"  # rename with a '.old' extension so it can be checked later
+        execute_command "ln -s ${source_path} ${target_path}" "${target_path} → ${source_path}"  # call the 'execute_command' function with the symlink command and a status message
+      else
+        print_error "${target_path} → ${source_path}"  # the answer was not yes, so print an "error" message
+      fi
+    else
+      print_success "${target_path} → ${source_path}"  # pretend the already-existing symlink was just created, and print a "success" message
+    fi
+  else
+    execute_command "ln -s ${source_path} ${target_path}" "${target_path} → ${source_path}"  # call the 'execute_command' function with the symlink command and a status message
+  fi
+}

@@ -1,0 +1,8 @@
+# Provide 'up', so instead of e.g. 'cd ../../../' you simply type 'up 3'
+function up {
+  case "${1}" in
+    *[!0-9]*) : ;;
+          "") cd .. || return ;;
+           *) cd "$(eval "printf -- '../'%.0s {1..$1}")" || return ;;
+  esac
+}

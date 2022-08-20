@@ -1,0 +1,36 @@
+#!/usr/bin/env bash
+
+# filename parts - extract parts of a file pathname
+option="${1}"
+filepath="${2}"
+declare -a usage=(
+  " "
+  "fp: filename parts - extract parts of a file pathname"
+  " "
+  "Usage: fp option filepath"
+  " "
+  "Options:"
+  "   -h: print this help message."
+  "   -n: returns the name (no path or extension)"
+  "  -pn: returns the path and name (no extension)"
+  "  -ne: returns the name and extension (no path)"
+  "   -e: returns the extension (no path or name)"
+  "   -p: returns the path (no name or extension)"
+  "   -u: returns the pathname in uppercase"
+  "   -l: returns the pathname in lowercase"
+  " "
+)
+if [[ -z "${option}" ]]; then printf '%s\n' "Error: Must supply an option and a file pathname"; printf '%s\n' "${usage[@]}"; exit 1; fi
+if [[ -n "${option}" && "${option:0:1}" != "-" ]]; then  printf '%s\n' "Error: Must supply an option"; printf '%s\n' "${usage[@]}";  exit 1; fi
+if [[ "${option}" == "-h" ]]; then printf '%s\n' "${usage[@]}"; exit; fi
+if [[ -n "${option}" && -z "${filepath}" ]]; then printf '%s\n' "Error: Must supply a file pathname"; printf '%s\n' "${usage[@]}";  exit 1; fi
+case "${option}" in
+   -n) basename "${filepath%.*}";;
+  -pn) printf '%s' "${filepath%.*}";;
+  -ne) basename "${filepath}";;
+   -e) printf '%s' "${filepath##*.}";;
+   -p) dirname "${filepath}";;
+   -u) printf '%s' "${filepath}" | tr '[:lower:]' '[:upper:]';;
+   -l) printf '%s' "${filepath}" | tr '[:upper:]' '[:lower:]';;
+    *) printf '%s\n' "Error: Invalid option"; printf '%s\n' "${usage[@]}"; exit 1;;
+esac

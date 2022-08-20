@@ -1,0 +1,2 @@
+# gets and displays the external IP address
+function externalip { curl https://ipecho.net/plain;echo; }

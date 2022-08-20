@@ -1,0 +1,162 @@
+#!/usr/bin/env bash
+
+# set the PS1 prompt (with colors)
+# based on http://www-128.ibm.com/developerworks/linux/library/l-tip-prompt/
+# and http://networking.ringofsaturn.com/Unix/Bash-prompts.php
+# PS1="\[\e[36;1m\]\h:\[\e[32;1m\]\w$ \[\e[0m\]"  # original
+# PS1="${BRIGHT_CYAN}[${DULL_RED}\u@\h${BRIGHT_CYAN}]${BRIGHT_WHITE}:${BRIGHT_CYAN}[${DULL_RED}\w${BRIGHT_CYAN}]${NORMAL}\n\$ ${RESET}"  # old
+
+# #-------------------------------------------------------------
+# # Shell Prompt - for many examples, see:
+# #       http://www.debian-administration.org/articles/205
+# #       http://www.askapache.com/linux/bash-power-prompt.html
+# #       http://tldp.org/HOWTO/Bash-Prompt-HOWTO
+# #       https://github.com/nojhan/liquidprompt
+# #-------------------------------------------------------------
+# # Current Format: [TIME USER@HOST PWD] >
+# #
+# # TIME:
+# #    Bright Blue                  == machine load is low
+# #    Bright Red                   == machine load is medium
+# #    Dull Red                     == machine load is high
+# #    ALERT (Bright White on Red)  == machine load is very high
+# #
+# # USER:
+# #    Bright Cyan  == normal user
+# #    Bright Red   == SU to user
+# #    Dull Red     == root
+# #
+# # HOST:
+# #    Bright Cyan                  == local session
+# #    Dull Green                   == secured remote connection (via ssh)
+# #    ALERT (Bright White on Red)  == unsecured remote connection
+# #
+# # PWD:
+# #    Bright Blue                  == more than 10% free disk space
+# #    Bright Red                   == less than 10% free disk space
+# #    ALERT (Bright White on Red)  == less than 5% free disk space
+# #    Dull Red                     == current user does not have write privileges
+# #    Dull Cyan                    == current filesystem is size zero (like /proc)
+# #
+# # >:
+# #    Normal Colour  == no background or suspended jobs in this shell
+# #    Bright Cyan    == at least one background job in this shell
+# #    Bright Red     == at least one suspended job in this shell
+# #
+# # []:
+# #    purple, because I like that colour :-)
+# #
+# #    Command is added to the history file each time you hit enter,
+# #    so it's available to all shells (using 'history -a').
+#
+# # Returns a color indicating system load.
+# function load_color {
+#   # Get the system load and number of CPU's of the current host.
+#   if [ ${SYSTEM_TYPE} = "macOS" ]; then
+#     # macs - I hope. Seems to get same results as on linux machines, anyway.
+#     SYSLOAD=$(uptime | awk -F : '{ print $4 }' | cut -d " " -f2 | tr -d '.')
+#     NCPU=$(sysctl -n hw.physicalcpu)
+#   else
+#     # linux machines.
+#     SYSLOAD=$(cut -d " " -f1 /proc/loadavg | tr -d '.')
+#     NCPU=$(grep -c 'processor' /proc/cpuinfo)
+#   fi
+#
+#   SYSLOAD=$(echo $((10#$SYSLOAD)))  # Convert to decimal.
+#   SLOAD=$(( 100*${NCPU} ))  # Small load
+#   MLOAD=$(( 200*${NCPU} ))  # Medium load
+#   LLOAD=$(( 400*${NCPU} ))  # Large load
+#
+#   if [ ${SYSLOAD} -gt ${LLOAD} ]; then
+#     echo -en ${ALERT}
+#   elif [ ${SYSLOAD} -gt ${MLOAD} ]; then
+#     echo -en ${BRIGHT_RED}
+#   elif [ ${SYSLOAD} -gt ${SLOAD} ]; then
+#     echo -en ${DULL_RED}
+#   else
+#     echo -en ${BRIGHT_BLUE}
+#   fi
+# }
+#
+# # Returns a color according to free disk space in $PWD.
+# function disk_color
+# {
+#   if [ ! -w "${PWD}" ] ; then
+#     echo -en ${DULL_RED}  # No 'write' privilege in the current directory.
+#   elif [ -s "${PWD}" ] ; then
+#     used=$(command df -P "$PWD" | awk 'END {print $5}' | tr -d "%")
+#     if [ ${used} -gt 95 ]; then
+#       echo -en ${ALERT}  # Free disk space is almost gone (<5%).
+#     elif [ ${used} -gt 90 ]; then
+#       echo -en ${BRIGHT_RED}  # Free disk space is low (<10%).
+#     else
+#       echo -en ${BRIGHT_BLUE}  # Free disk space is ok.
+#     fi
+#   else
+#     echo -en ${DULL_CYAN}  # Current directory is size '0' (like /proc, /sys etc).
+#   fi
+# }
+#
+# # Returns a color according to running/suspended jobs.
+# function job_color {
+#   if [ $(jobs -s | wc -l) -gt "0" ]; then
+#     echo -en ${BRIGHT_RED}
+#   elif [ $(jobs -r | wc -l) -gt "0" ] ; then
+#     echo -en ${BRIGHT_CYAN}
+#   fi
+# }
+#
+# # Test connection type:
+# if [[ -n "${SSH_CONNECTION}" ]]; then
+#     CNX=${BRIGHT_GREEN}  # Connected on remote machine, via ssh (good).
+# elif [[ -n "${REMOTEHOST}" ]]; then
+#     CNX=${ALERT}  # Connected on remote machine, not via ssh (bad).
+# else
+#     CNX=${BRIGHT_CYAN}  # Connected on local machine.
+# fi
+#
+# # Test user type:
+# if [[ ${USER} == "root" ]]; then
+#     SU=${DULL_RED}  # User is root.
+# elif [[ ${USER} != $(logname) ]]; then
+#     SU=${BRIGHT_RED}  # User is not login user.
+# else
+#     SU=${BRIGHT_CYAN}  # User is normal (well ... most of us are).
+# fi
+#
+# # Construct the prompt.
+# case ${TERM} in
+#   *term* | rxvt | linux)
+#     PS1="${DULL_PURPLE}[\[\$(load_color)\]\t\[${NORMAL}\] "  # Time of day (with load info)
+#     PS1=${PS1}"\[${SU}\]\u\[${NORMAL}\]@\[${CNX}\]\h\[${NORMAL}\] "  # User@Host (with user and connection type info)
+#     PS1=${PS1}"\[\$(disk_color)\]\w${DULL_PURPLE}]\[${NORMAL}\] "  # PWD (with 'disk space' info)
+#     PS1=${PS1}"\[\$(job_color)\]>\[${NORMAL}\] "  # Prompt character (with 'job' info)
+#     PS1=${PS1}"\[\e]0;[\u@\h] \w\a\]"  # Set title of current xterm
+#     ;;
+#   *)
+#     PS1="(\t \u@\h \W) > "  # Shows full pathname of current dir.
+#     ;;
+# esac
+#
+# The above is the most recent prompt that I've been using.  I left it, and the
+# method used to construct it, in this file because I put a lot of work into
+# everything that goes into creating it and I want a record of how info was
+# gotten...the methods might come in handy for something else some day.
+#
+# But somewhere along the way of looking into **zsh**, someone mentioned
+# **Liquid Prompt**.  Upen checking into it, I found that it gets and displays all
+# the things in the above prompt...and a lot more.  So, I'm now using it instead.
+
+# Only load Liquid Prompt in interactive shells, not from a script or from scp
+#[[ $- = *i* ]] && source ~/liquidprompt/liquidprompt
+
+# Liquid Prompt is installed in different places on macOS and Linux, so ...
+if [ "${SYSTEM_TYPE}" == "macOS" ]; then
+  if [ -f /usr/local/share/liquidprompt ]; then
+    source /usr/local/share/liquidprompt
+  fi
+else
+  if [ -f /usr/share/liquidprompt/liquidprompt ]; then
+    source /usr/share/liquidprompt/liquidprompt
+  fi
+fi

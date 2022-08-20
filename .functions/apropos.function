@@ -1,0 +1,2 @@
+# Because you never know what crazy systems are out there
+findcommand apropos &>/dev/null || function apropos { man -k "$*"; }

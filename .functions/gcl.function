@@ -1,0 +1,40 @@
+# clone a remote repository with git
+function gcl {
+  declare -a usage=(
+    " "
+    "gcl: clone a remote repository with git"
+    " "
+    "Usage: gcl -h"
+    "       gcl -gh <user-name/repository-name>"
+    "       gcl -m <repository-name>"
+    "       gcl <full repository URL>"
+    " "
+    "Options:"
+    "   -h: print this help message."
+    "  -gh: clones <user-name/repository-name> from GitHub"
+    "   -m: clones <repository-name> from user 'rtruell' on GitHub"
+    " "
+  )
+  command=""
+  repo="${1}"
+  if [[ "${repo}" == "" ]]; then printf '%s\n' "Error: Must supply a full repository URL or an option"; repo="-z"; fi
+  while [[ "${repo}" != "" ]]; do
+    if [[ "${repo:0:1}" == "-" ]]; then
+      case "${repo}" in
+        -gh) if [[ "${2}" == "" ]]; then printf '%s\n' "Error: Must supply a GitHub user-name and repository"; gcl -z; return 1; fi
+             command+="https://github.com/${2}"
+             ;;
+         -m) if [[ "${2}" == "" ]]; then printf '%s\n' "Error: Must supply one of GitHub user rtruell's repositories"; gcl -z; return 1; fi
+             command+="https://github.com/rtruell/${2}"
+             ;;
+         -h) printf '%s\n' "${usage[@]}"; return;;
+          *) printf '%s\n' "${usage[@]}"; return 1;;
+      esac
+    else
+      command+="${repo}"
+    fi
+    repo=""
+  done
+  printf '%s\n' "Cloning ${command}"
+  git clone "${command}"
+}

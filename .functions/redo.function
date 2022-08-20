@@ -1,0 +1,25 @@
+# 'redo' the last command, optionally with search and replace
+# Usage:
+# redo <-- Invokes the last command
+# redo foo bar <-- last command, replaces first instance of 'foo' with 'bar'
+# redo -g foo bar <-- last command, replaces all instances of 'foo' with 'bar'
+function redo {
+  local last_cmd match_str replace_str
+  case "${1}" in
+    '')
+      fc -s
+      ;;
+    -g|--global)
+      shift 1
+      match_str="${1:?Search parameter missing}"
+      replace_str="${2:?Replacement parameter missing}"
+      fc -s "${match_str}"="${replace_str}"
+      ;;
+    *)
+      last_cmd=$(fc -l -- -1  | cut -d ' ' -f2-)
+      match_str="${1:?Search parameter missing}"
+      replace_str="${2:?Replacement parameter missing}"
+      ${last_cmd/$match_str/$replace_str}
+      ;;
+  esac
+}

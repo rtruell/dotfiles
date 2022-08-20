@@ -1,0 +1,12 @@
+# Function to list the members of a group.
+# Replicates the absolute basic functionality of a real 'members' command
+if ! findcommand members &>/dev/null; then
+  function members {
+    if [[ -z "${1}" ]]; then printf '%s\n' "Error: no group supplied"; return 1; fi
+    if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
+      dscacheutil -q group -a name "${1}" | grep users | cut -d ":" -f 2 | awk '{$1=$1};1' | sed 's/ /, /g'
+    else
+      getent group "${1}" | cut -d ":" -f 4 | sed 's/,/, /g'
+    fi
+  }
+fi

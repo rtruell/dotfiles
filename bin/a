@@ -1,0 +1,82 @@
+#!/usr/bin/env bash
+
+# a - short name for the 'apt' command
+
+# this started off as a bunch of aliases for 'apt', but since I don't use that
+# command all that frequently, I decided to turn them into a single script file
+# to save memory.
+if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
+  printf '%s\n' "Sorry, 'apt' doesn't run on macOS."
+  exit 1
+fi
+declare -a usage=(
+  " "
+  "a: short name for the 'apt' command.  Also uses short names for the more"
+  "   common 'apt' subcommands."
+  " "
+  "Usage: a [option] subcommand [argument(s)]"
+  " "
+  "Option:"
+  "    -h: print this help message."
+  " "
+  "Short subcommands:"
+  "     a: autoclean - clears out the local repository of retrieved package"
+  "        files that can no longer be downloaded and are largely useless.  *"
+  "     d: dump - writes a list of all the installed packages into the file"
+  "        '"${HOME}"/newapt'."
+  "     h: home - opens in the default web browser the home page, if supplied,"
+  "        for a package.  A package must be specified."
+  "     i: info - shows information about a package.  A package must be"
+  "        specified.  *"
+  "    in: install - installs a package.  A package must be specified.  *"
+  "     p: purge - completely uninstalls a package, including its config files."
+  "        A package must be specified."
+  "     r: remove - uninstalls a package but keeps its config files.  A package"
+  "        must be specified."
+  "     s: search - searches for the specified text or regex.  *"
+  "    ud: update - updates the package lists from the repositories.  *"
+  "    ug: upgrade - upgrades all the installed packages.  *"
+  " "
+  "    * - For these subcommands, additional options can be specified and are"
+  "        passed through to the 'apt' command."
+  " "
+  "Custom subcommands:"
+  "    ub: up both - does an update and then an upgrade."
+  "    uf: up full - does an update, an upgrade and finally an autoclean"
+  " "
+  "Any other subcommand is passed through to the 'apt' command unchanged."
+  ""
+  "Note: 'sudo' permission is required for many 'apt' commands."
+  " "
+)
+function nopackage { printf '%s\n' "Must supply a package name."; exit 1; }
+
+command="${1}"
+if [[ -z "${command}" ]]; then command="help"; fi
+shift
+if [[ "${command:0:1}" == "-" ]]; then
+  if [[ "${command}" == "-h" ]]; then
+    printf '%s\n' "${usage[@]}"
+    exit
+  fi
+fi
+case "${command}" in
+   a) sudo apt autoclean "$@";;
+   d) apt list --installed >"${HOME}"/newapt 2>/dev/null;;
+   h) if [[ -z "${1}" ]]; then nopackage; fi
+      webpage=`apt show "${1}" 2>/dev/null | grep -i "^homepage" | cut -d " " -f 2`
+      if [[ -z "${webpage}" ]]; then printf '%s\n' "Sorry, no homepage supplied for ${1}"; exit 1; fi
+      printf '%s\n' "Opening ${webpage}"
+      open "${webpage}"
+      ;;
+   i) if [[ -z "${1}" ]]; then nopackage; else apt show "$@"; fi;;
+  in) if [[ -z "${1}" ]]; then nopackage; else sudo apt install -V "$@"; fi;;
+   p) if [[ -z "${1}" ]]; then nopackage; else sudo apt remove --purge "${1}"; fi;;
+   r) if [[ -z "${1}" ]]; then nopackage; else sudo apt remove "${1}"; fi;;
+   s) if [[ -z "${1}" ]]; then printf '%s\n' "Must supply text or a regex to search for."; exit 1; else apt search "$@"; fi;;
+  ub) sudo apt update && sudo apt upgrade;;
+  ud) sudo apt update "$@";;
+  uf) sudo apt update && sudo apt upgrade && sudo apt autoclean;;
+  ug) sudo apt upgrade "$@";;
+   *) apt "${command}" "$@";;
+esac

@@ -1,0 +1,320 @@
+#!/usr/bin/env bash
+
+# This started off life as an answer by Robert Siemer to a question on Stack
+# Overflow (https://stackoverflow.com/questions/192249/how-do-i-parse-command-line-arguments-in-bash/29754866#29754866)
+# about parsing command line options in 'bash'...and then I completely rewrote
+# nearly all of it, keeping only a couple of portions.
+
+# After I got my new parser about half done, I ran into the problem of
+# determining which option had just been set...was it a long option or a short
+# one?  The same DDG (DuckDuckGo) search for parsing command line options that
+# had gotten me Robert's script had also turned up 'bash-getopt' by Stephen
+# Harris (https://gist.github.com/smhmic/9841936).  I really liked his idea of
+# passing information about the calling program's options, including a variable
+# name into which the value of an option was to be put (thus eliminating the
+# question of whether a short or long option had been set), to the parser and
+# allowing the parser to create the valid long and short option lists to be
+# passed to 'getopt', as well as the help/usage message.
+
+# So why didn't I just use 'bash-getopt' since it was ready-to-go and did pretty
+# much everything I wanted 'optparser' to do?  Because it, and every other
+# option parser I looked at, suffers from what I consider to be a fatal
+# problem: if an option requiring an argument is given and is followed, for
+# whatever reason, by another option rather than the expected argument, then
+# that next option is swallowed by the previous one as its argument (and
+# obviously isn't processed) and no error is generated...which causes the
+# calling program to not function in the expected way.  Since I'd already
+# written code for 'optparser' to get around this problem (the next option is
+# left alone and the option requiring an argument is checked to see if a
+# default value has been provided for it...if one has, it's used and 'optparser'
+# continues on, and if one hasn't, the option is added to the no-argument list
+# and an error is generated), it was easier to adapt the concepts of
+# 'bash-getopt' that I liked to 'optparser' than it was to figure out how and
+# where to fix the problem in 'bash-getopt'.
+
+# It may be important to note that while I may have implemented some of the
+# *concepts* from 'bash-getopt', I didn't use *any* of the code from the gist
+# linked to above.  Any similarity or exactness in code between the two
+# programs really is coincidental.  Great minds do think alike :-)
+
+# And so....'optparser'.
+
+
+# the output from 'optparser' is saved in a variable, so we need a way to
+# display errors to the user
+function optparser_error {
+  printf '%s\n' "${1}" >&2
+}
+
+# this requires the new, enhanced 'getopt', so check to see if it's installed
+getopt --test > /dev/null
+if [[ "${?}" != 4 ]]; then optparser_error "A newer version of 'getopt' is required."; exit 1; fi
+
+# some variables.  initializing variables in this manner is new to me.
+# typically, I'm the one-variable-per-line kind of guy, but that would result
+# in 23 quite short lines, so I decided to give this way a try.  seems to work
+# OK, so I may continue doing things this way in the future :-)
+declare -a shorts=() longs=() types=() defaults=() names=() descripts=()
+declare -a optparser_options=()
+parsed="" shortunknown="" longunknown="" noarg="" shortnoarg="" longnoarg=""
+needsarg=0 option="" unknown="" remaining_args="" longopts="" shortopts=""
+valuename="" calling_prog="" help_string="" number_elements=0 return_string=""
+opt_error=0
+
+# read the raw options data into an array.  each line contains all the data for
+# one option, and is in the format:
+# "o:|output:FILE@default_value variable_name description of the option"
+while IFS= read -r -d '' entry; do optparser_options+=( "$entry" ); done <"$1"
+shift  # since this positional parameter has been read, shift it away so the next one is ready to be used
+
+# loop through each element of the raw options array, splitting each option into
+# its various parts, saving each part into its appropriate array, building the
+# short and/or long option lists for 'getopt', and building the help message
+for ((i = 0 ; i < ${#optparser_options[@]} ; i++)); do
+  options="" short="" long="" name="" desc="" type="" default=""
+
+  # 'read' reads in a line, splits it at spaces, and puts each "word" in the
+  # variables provided.  if there are more "words" than variables provided,
+  # the last variable get all the remaining "words" in the line.  so, for the
+  # format shown above, the variables get:
+  # options -> "o:|output:FILE@default_value"
+  # name -> "variable_name"
+  # desc -> "description of the option", which is everything else in the line
+  while read -r options name desc; do
+    if [[ "${options}" == *"|"* ]]; then  #  if there's a "|" in 'options', then both short and long options were supplied
+      short=`printf '%s\n' "${options%|*}"`  # the short option gets everything to the left of the "|"
+      long=`printf '%s\n' "${options#*|}"`  # the long option gets everything to the right of the "|"
+    else  # otherwise only a short or long option was supplied
+      if [[ "${#options}" == 1 || "${options:1:1}" == ":" ]]; then  # if 'options' is only one character long, or the second character is a ":"
+        short="${options}"  # then it's a short option
+      else
+        long="${options}"  # otherwise it's a long option
+      fi
+    fi
+
+    # just for completeness, check both 'short' and 'long' options...if they're
+    # both empty - which should never happen - print an error message and exit
+    if [[ "${short}" == "" && "${long}" == "" ]]; then optparser_error "Error: must supply a list of either short or long options."; exit 20; fi
+
+    # the "argument type" and "default value" fields only exist if an option
+    # requires an argument, and a "@" is the delimiter between the two
+    if [[ "${short}" == *":"* ]]; then  # if 'short' contains a ":", then it requires an argument
+      default=`printf '%s\n' "${short#*:}"`  # extract the argument type and default value
+      short=`printf '%s\n' "${short%%:*}:"`  # extract the option and add back the ":"
+      type=`printf '%s\n' "${default%%@*}"`  # extract the argument type
+      default=`printf '%s\n' "${default##*@}"`  # remove the argument type, leaving the default value
+    fi
+    if [[ "${long}" == *":"* ]]; then  # if 'long' contains a ":", then it requires an argument
+      default=`printf '%s\n' "${long#*:}"`  # extract the argument type and default value
+      long=`printf '%s\n' "${long%%:*}:"`  # extract the option and add back the ":"
+      type=`printf '%s\n' "${default%%@*}"`  # extract the argument type
+      default=`printf '%s\n' "${default##*@}"`  # remove the argument type, leaving the default value
+    fi
+
+    # now that the various parts of the options are split off, save them to
+    # their respective arrays for later use
+    shorts+=("${short}")
+    longs+=("${long}")
+    types+=("${type}")
+    defaults+=("${default}")
+    names+=("${name}")
+    descripts+=("${desc}")
+    ((number_elements++))  # increment the counter keeping track of the number of options that have been supplied
+    shortopts+="${short}"  # add the short option to the short option list to be passed to 'getopt'
+    longopts+="${long},"  # add the long option to the long option list to be passed to 'getopt'
+
+    # start building the help message
+    help_string+="  -`printf '%s\n' "${short%%:*}"` | --`printf '%s\n' "${long%%:*}"`"  # if there's an ":" indicating a required argument, it's removed so options line up nicely ...
+    if [[ -n "${type}" ]]; then help_string+=" <${type}>"; fi  # ... and is replaced by putting the argument type after the long option
+    help_string+="${desc}"  # "" is used as a delimiter for 'column' to use to display the entire help message nicely
+    if [[ -n "${type}" ]]; then help_string+="  ${type} is required."; fi  # if an argument is required say so ...
+    if [[ -n "${default}" ]]; then help_string+="[nl](defaults to '${default}' if no value suppied on command line)\n"; else help_string+="\n"; fi  # ... and display the default value, if supplied
+  done <<< "${optparser_options[${i}]}"
+done
+
+# check to make sure that the number of elements read in is the same as the
+# counter used.  if not - again, something that should never happen - print an
+# error message and exit
+if [[ "${#names[@]}" != "${number_elements}" ]]; then optparser_error "Error: a fatal error occurred...quiting."; exit 25; fi
+shortopts+="h"
+longopts+="help"
+help_string+="  -h | --helpprint this help message.\n"
+calling_prog=`ps -o args= $PPID | cut -d ' ' -f 2`  # get the name of the program/script that called 'optparser', for use in the help message
+calling_prog=`basename "${calling_prog}"`  # get rid of any path that may be there
+
+# the user can place a "[nl]" in the option description string to indicate a new
+# line should start at that spot.  now the "[nl]" is replaced with a "\n"
+# so 'printf' will start a new line, and a "" so that 'column' will indent
+# the new line correctly
+help_string=`sed 's,\[nl],\n ,g' <<< "${help_string}"`
+help_string="$( column -s '' -t <<< `printf "${help_string}"` )"  # use 'column' to format the help message nicely
+help_string="\n  usage: ${calling_prog} [options]\n\n${help_string}\n\n"  # add a "usage" line to the start of the help message...and the help message is now ready to be displayed to the user
+
+# 'getopt' words the error messages differently depending on whether it's a
+# short option or a long option, and whether it's an unknown option or an option
+# requiring an argument without an argument supplied.  so, stderr is redirected
+# to stdout so the error messages can be captured, parsed and standardized in
+# their wording.  quoting/enhanced mode is selected by using “--options”, and
+# options/arguments supplied to the calling program are passed via '-- "$@"' to
+# separate them correctly
+parsed=$(getopt --options="${shortopts}" --longoptions="${longopts}" --name "${0}" -- "${@}" 2>&1)
+
+# the error messages generated by 'getopt' are:
+#
+# for an unknown short option ->  getopt: invalid option -- <short option>
+# for an unknown long option ->  getopt: unrecognized option `--<long option>'
+# for a short option with no argument ->  getopt: option requires an argument -- <short option>
+# for a long option with no argument ->  getopt: option `--<long option>' requires an argument
+#
+# since they all contain the word "option", start by looking for that in the
+# output from 'getopt', and read each line found into a variable for use in a
+# 'case' statement
+while read -r a; do
+  case "${a}" in
+         *"invalid option"*)
+                             # it's an unknown short option, so cut out the
+                             # fifth space-delimited field (the option followed
+                             # by a <newline>) and replace the <newline> with a
+                             # space
+                             shortunknown=`cut -d ' ' -f 5 <<< "${a}" | tr '\n' ' '`
+                             ;;
+    *"unrecognized option"*)
+                             # it's an unknown long option, so cut out the
+                             # fourth space-delimited field (the option
+                             # surrounded by punctuation and followed by a
+                             # <newline>), remove the punctuation and replace
+                             # the <newline> with a space
+                             longunknown=`cut -d ' ' -f 4 <<< "${a}" | tr -d [[:punct:]] | tr '\n' ' '`
+                             ;;
+        *"option requires"*)
+                             # it's a short option with no argument, so cut out
+                             # the seventh space-delimited field (the option
+                             # followed by a <newline>) and delete the
+                             # <newline>
+                             shortnoarg=`cut -d ' ' -f 7 <<< "${a}" | tr -d '\n'`
+                             ;;
+                          *)
+                             # it's a long option with no argument, so cut out
+                             # the third space-delimited field (the option
+                             # surrounded by punctuation and followed by a
+                             # <newline>) and remove the punctuation and the
+                             # <newline>
+                             longnoarg=`cut -d ' ' -f 3 <<< "${a}" | tr -d [[:punct:]] | tr  -d '\n'`
+                             ;;
+  esac
+done < <(grep option <<< "${parsed}")
+parsed=`sed 's,^.*option.*$,,' <<< "${parsed}"`  # remove the error messages from the output from 'getopt'
+parsed=`tr -d '\n' <<< "${parsed}"`  # delete any remaining <newline> in the output from 'getopt'
+
+# if an argument isn't supplied for a short or long option requiring one, it's
+# possible that a default value was supplied for the option, so it has to be
+# put back into the output from 'getopt' - but without the error message - for
+# further processing, and unflagged as an error
+if [[ -n "${shortnoarg}" ]]; then
+  parsed=" -${shortnoarg}${parsed}"
+  shortnoarg=""
+fi
+if [[ -n "${longnoarg}" ]]; then
+  parsed=" --${longnoarg}${parsed}"
+  longnoarg=""
+fi
+
+# now set the positional parameters so that the options/arguments can be
+# processed as normal
+eval set -- "${parsed}"
+
+# now check and set the valid options.  also confirm that options requiring
+# arguments actually have the arguments supplied, rather than swallowing any
+# following options.  if they have, undo the "swallowing" and check to see if
+# there's a default value supplied.  if there is, use that, and if not, flag
+# the option as an error
+while true; do
+  # reset some variables to make sure they don't keep values assigned in
+  # previous loops
+  needsarg=0
+  value=""
+  valuename=""
+  option="${1}"  # assign the first positional parameter
+
+  # if the user requested the help message, print it to stderr because stdout is
+  # being captured, and exit with code 255.  the return code from 'optparser'
+  # is being checked by the calling program, and code 255 tells it that help was
+  # requested and thus it can exit without an error
+  if [[ "${option}" == "-h" || "${option}" == "--help" ]]; then printf "${help_string}" >&2; exit 255; fi
+  if [[ "${option}" == "--" ]]; then shift; break; fi  # got to the end of the options, so break out of the 'while' loop
+  option=`sed 's,-,,g' <<<"${option}"`  # remove the leading dash(es), leaving just the short/long option name
+  for ((i = 0 ; i < "${number_elements}" ; i++)); do
+    # if the option doesn't requrire an argument, get its variable name
+    if [[ "${option}" == "${shorts[${i}]}" || "${option}" == "${longs[${i}]}" ]]; then valuename="${names[${i}]}";  fi
+    # if the option does require an argument
+    if [[ "${option}:" == "${shorts[${i}]}" || "${option}:" == "${longs[${i}]}" ]]; then
+      needsarg=1  # set the flag indicating the option needs an argument
+      valuename="${names[${i}]}"  # get the option's variable name
+      value="${defaults[${i}]}"  # get the option's default value, if one was supplied (will be the null string if not)
+    fi
+  done
+  if [[ "${needsarg}" == 1 ]]; then  # if an argument is required
+    if [[ "${2:0:1}" == "-" ]]; then  # find out if the next positional parameter starts with a '-' (which means its an option rather than an argument)
+      if [[ -z "${value}" ]]; then  # if it does, find out if a default value was supplied for the argument to this option
+        if [[ "${#option}" == 1 ]]; then  # if not, and the length of 'option' is 1
+          shortnoarg+="${option} "  # then it's a short option without a required argument
+        else
+          longnoarg+="${option} "  # otherwise it's a long option without a required argument
+        fi
+      fi
+    else
+      # the next positional parameter doesn't start with a '-', so it's the
+      # argument to the current option.  for a reason I wasn't able to figure
+      # out, sometimes the argument starts with an '='.  so, check to see if it
+      # does and, if so, strip off the '=' when saving it as the argument value
+      if [[ "${2}" == "="* ]]; then value="${2:1}"; else value="${2}"; fi
+
+      # the current positional parameter (the option being processed) hasn't
+      # been shifted away yet, but since the next one has just been dealt with,
+      # a 'shift' is done here so that when the 'shift' for the "current"
+      # positional parameter is finally done, both positional parameters will
+      # have been shifted away
+      shift
+    fi
+    # the option requires an argument, so assign 'value' to its variable.  at
+    # this point, 'value' contains one of:
+    # the argument passed on the command line;
+    # if no argument passed, then the default value supplied;
+    # if no default value supplied, then the null string
+    valuename="${valuename}=${value}"
+  else
+    # the option doesn't require an argument, so assign '1' to its variable
+    valuename="${valuename}=1"
+  fi
+  # add the current option's variable assignment to the string to be returned to
+  # the calling program, and then 'shift' the option away
+  return_string+="${valuename} "
+  shift
+done
+unknown="${shortunknown}${longunknown}"  # concatenate together long and short unknown options
+unknown=`sed -e 's, $,,' <<< "${unknown}"` # delete any trailing space
+noarg="${shortnoarg}${longnoarg}"  # concatenate together long and short options missing arguments
+noarg=`sed -e 's, $,,' <<< "${noarg}"` # delete any trailing space
+if [[ -n "${noarg}" ]]; then  # if there were any options requiring arguments without arguments or a default value supplied
+  opt_error=1  # set the error flag
+  read -ra errors -d '' <<< "${noarg}"  # and print out an error message for each of them
+  for a in "${errors[@]}"; do optparser_error "Error: option '${a}' requires an argument but one wasn't supplied."; done
+fi
+if [[ -n "${unknown}" ]]; then  # if there were any unknown options specified
+  opt_error=1  # set the error flag
+  read -ra errors -d '' <<< "${unknown}"  # and print out an error message for each of them
+  for a in "${errors[@]}"; do optparser_error "Error: option '${a}' is unknown."; done
+fi
+if [[ "$opt_error" == "1" ]]; then exit 1; fi  # if the error flag is set, exit with an error code
+if [[ "${#}" != 0 ]]; then  # if any non-option arguments were passed
+  remaining_args="${*}"
+  return_string+="remaining_args=\"${remaining_args}\""  # add them to the string to be returned to the calling program
+fi
+# 'return_string' now contains assignment statements of the names and values of
+#  all the valid options, plus of any remaining non-option arguments.  its
+#  format is:
+#  'option1=1 option2=<value> option3=1 remaining_args="<value1> <value2> ..."'
+#  where 'option2' required an argument but 'option1' and 'option3' didn't. this
+#  string is now printed as a return value to the calling program (which is
+#  capturing it to a variable for processing) and exits.
+printf '%s\n' "${return_string}"

@@ -1,0 +1,9 @@
+# copy the ssh key into the clipboard
+function copysshkey {
+  if [ -f "${HOME}/.ssh/id_rsa" ]; then
+    cat ${HOME}/.ssh/id_rsa.pub | putclip && echo "Copied to clipboard"
+  else
+    echo "No ssh key found"
+    return 1
+  fi
+}

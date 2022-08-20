@@ -1,0 +1,24 @@
+function ls {
+  moreoptions=""
+  while [[ "${1}" != "" ]]; do
+    if [[ "${1:0:1}" == "-" ]]; then
+      moreoptions="${moreoptions}${1} "
+      shift
+    else
+      break
+    fi
+  done
+  if [[ -z "${1}" ]]; then set -- .; fi
+  if [[ -n "${moreoptions}" ]]; then moreoptions=$(trim -t "${moreoptions}"); fi
+  if stat "${1}" 2>/dev/null | grep "\->" >/dev/null 2>&1  && file -bL "${1}" | grep "directory" >/dev/null 2>&1; then
+    link=`stat "${1}" | grep "\->" | cut -d" " -f6`
+    if [[ "${link:0:1}" != "/" ]]; then link="/${link}"; fi
+    printf '%s\n' "'${1}' is a symbolic link pointing to '${link}', which contains:"
+    item="${1}/"
+    set -- "${item}"
+  fi
+  # we have to use 'command' to run 'ls' otherwise we get an infinite loop of the function calling itself.  '-F' puts type indicators after
+  # directory/file names, 'h' displays sizes in human-readable form (K, M, G), and the other options are pretty obvious.  note that any aliases
+  # for other variants of 'ls' also use these options, since 'ls' in now only being run through this function.
+  command ls ${moreoptions} -Fh --group-directories-first --color=auto "${@}"
+}

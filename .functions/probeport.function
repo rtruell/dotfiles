@@ -1,0 +1,3 @@
+# A small function to test connectivity to a remote host's port.
+# Usage: probeport remote host [port (default: 22)] [tcp/udp (default: tcp)]
+function probeport { timeout 1 bash -c "</dev/${3:-tcp}/${1:?No target}/${2:-22}" 2>/dev/null; }

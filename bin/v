@@ -1,0 +1,113 @@
+#!/usr/bin/env bash
+
+# v - show/set the input/output/alert volumes and mute status
+
+# this started off as a bunch of aliases for macOS created by someone because of
+# http://xkcd.com/530, but then I found a way to do the same kind of thing on
+# Linux, so moved them to a script file and added the Linux equivilents.
+declare -a usage=(
+  " "
+  "v: show/set the input/output/alert volumes and mute status."
+  " "
+  "Usage: v [option] command"
+  " "
+  "Option:"
+  "       -h: print this help message."
+  " "
+  "Commands:"
+  "     amax: set alert volume to maximum."
+  "     amin: set alert volume to minium."
+  "    anorm: set alert volume to normal."
+  "     aoff: mute the alert."
+  "      aon: unmute the alert."
+  "     imax: set input volume to maximum."
+  "     imin: set input volume to minium."
+  "    inorm: set input volume to normal."
+  "     ioff: mute the input."
+  "      ion: unmute the input."
+  "     omax: set output volume to maximum."
+  "     omin: set output volume to minium."
+  "    onorm: set output volume to normal."
+  "     ooff: mute the output."
+  "      oon: unmute the output."
+  "      out: show the current output volume level"
+  "       in: show the current input volume level"
+  "    alert: show the current alert volume level"
+  "     mute: show the current mute status"
+  "      all: show the current output, input and alert volume levels, and the mute status"
+  " "
+  "Note: 'input' can not be muted (ioff/ion) on macOS."
+  " "
+)
+command="${1}"
+if [[ -z "${command}" ]]; then printf '%s\n' "Error: must supply an option or command."; exit 1; fi
+if [[ "${command:0:1}" == "-" ]]; then
+  if [[ "${command}" == "-h" ]]; then
+    printf '%s\n' "${usage[@]}"
+    exit
+  else
+    printf '%s\n' "Error: invalid option."
+    printf '%s\n' "${usage[@]}"
+    exit 1
+  fi
+fi
+if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
+#  echo running macOS
+  true
+else
+  while read -r file; do
+    if [[ `amixer -D pulse get "${file}" | grep -i capture` ]]; then capture="${file}"; fi
+    if [[ `amixer -D pulse get "${file}" | grep -i playback` ]]; then playback="${file}"; fi
+  done < <(amixer -D pulse scontrols | tr -d [:punct:][:digit:] | cut -d ' ' -f 4)
+fi
+case "${command}" in
+   amax) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then osascript -e 'set volume alert volume 100'; else xset b 100; fi;;
+   amin) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then osascript -e 'set volume alert volume 1'; else xset b 1; fi;;
+  anorm) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then osascript -e 'set volume alert volume 100'; else xset b 50; fi;;
+   aoff) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then v amin; else xset b off; fi;;
+    aon) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then v anorm; else xset b on; fi;;
+   imax) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then osascript -e 'set volume input volume 100'; else amixer -D pulse set "${capture}" 100%; fi;;
+   imin) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then osascript -e 'set volume input volume 1'; else amixer -D pulse set "${capture}" 1%; fi;;
+  inorm) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then osascript -e 'set volume input volume 17'; else amixer -D pulse set "${capture}" 17%; fi;;
+   ioff) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then printf '%s\n' "Error: input can not be muted or unmuted on macOS."; else v imin; fi;;
+    ion) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then printf '%s\n' "Error: input can not be muted or unmuted on macOS."; else v inorm; fi;;
+   omax) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then osascript -e 'set volume output volume 100'; else amixer -D pulse set "${playback}" 100%; fi;;
+   omin) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then osascript -e 'set volume output volume 1'; else amixer -D pulse set "${playback}" 1%; fi;;
+  onorm) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then osascript -e 'set volume output volume 50'; else amixer -D pulse set "${playback}" 50%; fi;;
+   ooff) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then osascript -e 'set volume output muted true'; else amixer -D pulse set "${playback}" mute; fi;;
+    oon) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then osascript -e 'set volume output muted false'; else amixer -D pulse set "${playback}" unmute; fi;;
+    out) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
+           osascript -e 'output volume of (get volume settings)'
+         else
+           amixer -D pulse get "${playback}" | grep -i "left: playback" | tr -s " " | tr -d [:punct:] | cut -d " " -f 6
+         fi
+         ;;
+     in) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
+           osascript -e 'input volume of (get volume settings)'
+         else
+           amixer -D pulse get "${capture}" | grep -i "left: capture" | tr -s " " | tr -d [:punct:] | cut -d " " -f 6
+         fi
+         ;;
+  alert) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
+           osascript -e 'alert volume of (get volume settings)'
+         else
+           xset q | grep -i "bell percent" | tr -s " " | cut -d " " -f 4
+         fi
+         ;;
+   mute) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
+           osascript -e 'output muted of (get volume settings)'
+         else
+           amixer -D pulse get "${playback}" | grep -i "left: playback" | tr -s " " | tr -d [:punct:] | cut -d " " -f 7
+         fi
+         ;;
+    all) if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
+           osascript -e 'get volume settings'
+         else
+           printf '%s' "output volume:`v out`, "
+           printf '%s' "input volume:`v in`, "
+           printf '%s' "alert volume:`v alert`, "
+           printf '%s\n' "output muted:`v mute`"
+         fi
+         ;;
+      *) printf '%s\n' "Error: invalid command"; printf '%s\n' "${usage[@]}"; exit 1;;
+esac

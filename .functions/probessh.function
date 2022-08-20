@@ -1,0 +1,3 @@
+# Use probessh to test a remote host's ssh connectivity
+# Usage: probessh remote host [port (default: 22000)]
+function probessh { probeport "${1:?No target}" "${2:-22000}"; }

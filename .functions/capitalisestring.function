@@ -1,0 +1,11 @@
+# Setup a function for capitalising a single string
+# This is used by (at least) the capitalise() function
+# The portable version depends on toupper() and trim()
+if (( BASH_VERSINFO >= 4 )); then
+  function capitalisestring { printf -- '%s\n' "${1^}"; }
+else
+  function capitalisestring {
+    # Split off the first character, uppercase it, trim and print from the second character onwards
+    printf -- '%s\n' "$(toupper "${1:0:1}" | trim)${1:1}"
+  }
+fi

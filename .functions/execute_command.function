@@ -1,0 +1,2 @@
+# silently execute a command and "pretty print" the result
+function execute_command { $1 &> /dev/null; print_result $? "${2:-$1}"; }

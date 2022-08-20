@@ -1,0 +1,23 @@
+# tail with search highlight and optional case-insentive search
+# usage: tailsearch [-i] filename [search string]
+function tailsearch {
+  if [[ $# -eq 0 ]]; then
+    printf '%s\n' "Usage: tailsearch [-i] filename [search string]" "       -i: case-insensitive search for [search string]"
+    return 1
+  else
+    sensitive=""
+    if [[ "${1:0:1}" == "-" ]]; then
+      case "${1}" in
+        -i) sensitive="i"; shift;;
+         *) printf '%s\n' "Error: invalid option."; return 1;;
+      esac
+    fi
+    if [[ -z "${1}" ]]; then printf '%s\n' "Error: must supply a filename to display"; return 1; fi
+    if [[ ! -e "${1}" ]]; then printf '%s\n' "Error: file doesn't exist"; return 1; fi
+    if [[ -n "${2}" ]]; then
+      tail -n 50 ${1} | perl -pe "s/${2}/${DULL_YELLOW}${ON_RED}$&${NORMAL}/${sensitive}g"
+    else
+      tail -n 50 ${1}
+    fi
+  fi
+}

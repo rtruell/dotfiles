@@ -1,0 +1,2 @@
+# print a warning status message, in bright yellow and preceed by "[?]"
+function print_warn { printf "\e[1;33m  [?] Warning: ${1}\e[0m"; }

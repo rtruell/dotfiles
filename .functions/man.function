@@ -1,0 +1,12 @@
+# got tired of running 'man' on a builtin command and getting only the stupid
+# page with a list of builtin commands.  so, wrote this 'man' over-ride function
+# that checks to see if the requested command is a builtin command and, if so,
+# runs my 'bashman' function instead.
+function man {
+  cmd="$(basename "${1}")"
+  if [[ `type -t "${cmd}"` == "builtin"  ]]; then
+    bashman "${cmd}"
+  else
+    command man "${cmd}"
+  fi
+}

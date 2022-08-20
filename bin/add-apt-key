@@ -1,0 +1,457 @@
+#!/usr/bin/env bash
+
+# Add APT key script
+# Version : 1.1.0-5
+# Release : 2022-05-25
+# Author  : Artur Meinild
+
+# Changelog
+# 2022-06-19  Rick Truell
+#
+# - put the location of the config file into a variable so it only has to be
+#   changed in one place
+#
+# - changed the location of the '.conf' file to reflect the setup on my systems.
+#   I also put the script in a 'bin' directory in my HOME directory, but that
+#   doesn't affect the running of the script
+#
+# - since I also use macOS, added a check to make sure this script is only run
+#   on Linux
+#
+# - changed the help message to indicate the script now accepts up to 3
+#   arguments, and added an example showing the use of all 3 arguments
+#
+# - Note: this script no longer puts an entry in /etc/apt/sources.list as that's
+#   a dangerous practice with third party repositories.  for why, see the first
+#   two paragraphs of the answer at
+#   https://askubuntu.com/questions/1286545/what-commands-exactly-should-replace-the-deprecated-apt-key/1307181#1307181
+#
+#   instead, if a third argument is present, the script automatically parses it
+#   to create entries in /etc/apt/sources.list.d and /etc/apt/preferences.d.  if
+#   not, the user must create those entries manually, or opt to create the less
+#   safe entry manually
+#
+# 2022-06-20  Rick Truell
+#
+# - the original script used either PWD or the directory where the keyfile is as
+#   a temporary directory.  that's what /tmp is for, so changed the script to
+#   use that location instead
+#
+# 2022-06-21  Rick Truell
+#
+# - turns out that a number of the changes I've made, particularly some of the
+#   ones for parsing the third parameter, don't work under 'sh' in Debian 11, so
+#   changed the shebang to 'bash'
+#
+# - seems that OpenPGP recently changed the type message as returned by the
+#   'file' command, so added code to account for that
+#
+# 2022-07-23  Rick Truell
+#
+# - started using 'apt-cacher-ng' so that installing Linux on multiple local
+#   machines didn't mean downloading the same packages from the repositories
+#   over and over again.  while 'apt-cacher-ng' has no problems with retrieving
+#   packages from secure repositories (accessed with HTTPS in the URL), it
+#   can't cache them "out of the box"...which is the whole point of using the
+#   program.  the URL's for secure repositories have to be modified before
+#   being added to 'apt', and changes made to the 'apt-cacher-ng' configuration
+#   file, in order for it to cache packages retrieved from such repositories.
+#   so, added not only the code to make these changes, but also an option to
+#   use the code...this way, the same program can be used to add both secure
+#   and non-secure repositories to 'apt'
+
+# check if script is being run on Linux
+if [[ "$(uname)" != "Linux" ]]; then exit_error "Can only be run on Linux"; fi
+
+# check if script is run as root
+if [[ "$(id -u)" != "0" ]]; then exit_error "Must run as root"; fi
+
+# default is no 'apt-cacher-ng' processing
+configacng=0
+
+# location of the config file
+#configfile="/usr/local/etc/add-apt-key.conf"  # most people should probably use this.  I'm not most people :-)  - R.T.
+configfile="${PWD}/binsupportfiles/add-apt-key.conf"
+
+# location for temporary files
+tmppath="/tmp"
+
+# initial configuration variables.  these can be overwritten from the config file
+keypath="/usr/share/keyrings/"
+acngconfigdir="/etc/apt-cacher-ng/"
+verbosity="No"
+removetmp="No"
+
+# 'apt-cacher-ng' configuration file name
+acngconfigfile="acng.conf"
+
+# include configuration file
+if [[ -f "${configfile}" ]]; then
+  source "${configfile}"
+fi
+
+# convert strings to lowercase
+verbosity="${verbosity,,}"
+removetmp="${removetmp,,}"
+
+# local function definition
+exit_error() {
+  printf '%s\n' "Error: ${1} (use '-h' for help)"
+  exit 1
+}
+
+# the help message
+read -r -d '' helpmsg <<HELP_MSG
+This script will help with installing PGP keys for APT repositories.
+
+Options: -h | --help: prints this help message.
+         -a | --acng: enables 'apt-cacher-ng' processing.
+
+This script supports up to 3 arguments:
+  - The first argument is a PGP keyfile.  This can be:
+    - A URL - the key will be downloaded into 'tmppath' using 'wget' or 'curl'.
+      if neither is installed, the script exits with an error message
+    - A file name - reads an existing key from the specified file in the current
+      path
+    - A pathname (path and file name) - reads an existing key from the specified
+      pathname
+  - The second argument is the output path and file name for the converted PGP
+    keyfile.  This can be:
+    - A file name - saved as the specified file in the path set in the
+      configuration file
+    - A pathname (path and file name) - saved in the specified pathname
+    - A path (ending with /) - the file name is taken from the PGP keyfile and
+      saved in the specified path
+    - Empty - the file name is taken from the PGP keyfile and saved in the path
+      set in the configuration file
+  - The third argument is the repository spec.  This can be:
+    - The repository URL, including type, release name and component (ie.
+      "deb https://download.webmin.com/download/repository sarge contrib").
+      Files for '/etc/apt/sources.list.d' and '/etc/apt/preferences.d' are
+      automatically created from the URL
+    - Empty - a message is printed saying that the files for
+      '/etc/apt/sources.list.d' and '/etc/apt/preferences.d' must be created
+      manually
+
+This script has a configuration file '"${configfile}"',
+where the following variables can be set:
+  - keypath: path to store the converted PGP key in - default is '/usr/share/keyrings/'
+  - acngconfigdir: directory containing the configuration file for
+    'apt-cacher-ng' - default is '/etc/apt-cacher-ng/'
+  - verbosity: if set to "Yes", displays extra output
+  - removetmp: if set to "Yes", removes temporary files
+
+Example 1: (PWD=/root)
+    sudo add-apt-key https://mariadb.org/mariadb_release_signing_key.asc \
+    /usr/local/share/keyrings/
+Will download the key into /tmp, convert it and store it as
+'/usr/local/share/keyrings/mariadb_release_signing_key.gpg'
+
+Example 2: (PWD=/home/user)
+    sudo add-apt-key /root/mariadb_release_signing_key.asc \
+    /usr/local/share/keyrings/mariadbkey
+Will use an existing key in /root, convert it and store it as
+'/usr/local/share/keyrings/mariadbkey.gpg'
+
+Example 3: (PWD=/home/user)
+    sudo add-apt-key mariadb_release_signing_key.asc mariadbkey
+Will use an existing key in /home/user, convert it and store it as
+'/usr/share/keyrings/mariadbkey.gpg'
+
+Example 4: (PWD=/home/user)
+    sudo add-apt-key mariadb_release_signing_key.asc mariadbkey \
+    "deb https://nyc2.mirrors.digitalocean.com/mariadb/repo/10.4/ubuntu/ bionic main"
+Will use an existing key in /home/user, convert it, store it as
+'/usr/share/keyrings/mariadbkey.gpg' and create the files for
+'/etc/apt/sources.list.d' and '/etc/apt/preferences.d'.  although the URL is for
+a secure repository (https://), the option for 'apt-cacher-ng' processing (-a or
+--acng) has not been specified, so packages downloaded from this repository will
+not be cached
+
+Example 5: (PWD=/home/user)
+    sudo add-apt-key --acng mariadb_release_signing_key.asc mariadbkey \
+    "deb https://nyc2.mirrors.digitalocean.com/mariadb/repo/10.4/ubuntu/ bionic main"
+Will use an existing key in /home/user, convert it, store it as
+'/usr/share/keyrings/mariadbkey.gpg' and create the files for
+'/etc/apt/sources.list.d' and '/etc/apt/preferences.d'.  the URL is for a secure
+repository (https://) and the option for 'apt-cacher-ng' processing (-a or
+--acng) has been specified, so the URL will be processed to create the files so
+that packages downloaded from this repository will be cached
+HELP_MSG
+
+# make sure there is at least one argument
+if [[ -z "${1}" ]]; then exit_error "need an option or a PGP keyfile as argument"; fi
+
+# check to see if the first argument is an option
+if [[ "${1:0:1}" == "-" ]]; then
+  case "${1}" in
+    -h | --help) printf '%s\n\n' "${helpmsg}"; exit 0;;
+    -a | --acng) shift
+                 if [[ $# != 3 ]]; then exit_error "'apt-cacher-ng' processing needs all 3 parameters"; fi
+                 configacng=1
+                 ;;
+              *) exit_error "Invalid option";;
+  esac
+fi
+
+# check argument 2 for keypath
+case "${2}" in
+  # $2 is only a path (ending with /)
+  /*/)
+    keypath="${2%/*}"
+    ;;
+  # $2 is a path
+  /*)
+    keypath="${2%/*}"
+    ;;
+esac
+
+# trim keypath (if ending with /)
+case "${keypath}" in
+  */)
+    keypath="${keypath%/*}"
+    ;;
+esac
+
+# check if keypath exist
+[[ "${verbosity}" = "yes" ]] && printf '%s\n' "Keypath: ${keypath}"
+if [[ ! -d  "${keypath}" ]]; then
+  exit_error "keypath does not exist"
+fi
+
+# check if argument 1 is an URL or a path
+case "${1}" in
+  # if $1 is a URL
+  http*)
+    echo "Downloading PGP keyfile ..."
+    tmpfile="${1##*/}"
+    if [ "$(command -v wget)" ]; then
+      # use wget
+      if wget -q --method=HEAD "${1}"; then
+        wget -qO "${tmppath}/${tmpfile}" "${1}"
+      else
+        exit_error "keyfile can't be downloaded"
+      fi
+    elif [ "$(command -v curl)" ]; then
+      # use curl
+      if curl -s --output /dev/null --head --fail "${1}"; then
+        curl -so "${tmppath}/${tmpfile}" "${1}"
+      else
+        exit_error "keyfile can't be downloaded"
+      fi
+    else
+      # exit with error if neither is installed
+      exit_error "wget or curl must be installed to download"
+    fi
+    ;;
+  # if $1 is a filepath
+  *)
+    case "${1}" in
+      # $1 is only a path (ending with /)
+      /*/)
+        exit_error "need a keyfile (or --help) as argument"
+        ;;
+      # $1 is a path and a filename
+      /*)
+        tmpfile="${1##*/}"
+        cp "${1}" "${tmppath}"
+        ;;
+      # $1 is only filename
+      *)
+        tmpfile="${1}"
+        cp "${1}" "${tmppath}"
+        ;;
+    esac
+    ;;
+esac
+
+# check if keyfile exists
+[[ "${verbosity}" = "yes" ]] && printf '%s\n' "Temporary path: ${tmppath}" "Keyfile name: ${tmpfile}"
+printf '%s\n' "Verifying PGP keyfile exists ..."
+if [[ ! -f "${tmppath}/${tmpfile}" ]]; then
+  exit_error "keyfile does not exist"
+fi
+
+# check argument 2 for filename
+case "${2}" in
+  # $2 is only a path (ending with /)
+  /*/)
+    filename="${tmpfile%%.*}"
+    ;;
+  # $2 is a path and a filename
+  /*)
+    filename="${2##*/}"
+    ;;
+  # $2 is only filename (or empty)
+  *)
+    if [[ "${#2}" != 0 ]]; then
+      filename="${2}"
+    else
+      filename="${tmpfile%%.*}"
+    fi
+    ;;
+esac
+
+# check tmpfile type and convert
+[[ "$verbosity" = "yes" ]] && printf '%s\n' "Converting keyfile ..."
+case $(file "${tmppath}/${tmpfile}") in
+  # ASCII armored (old)
+  *'PGP public key block Public-Key (old)')
+    gpg --batch --yes --dearmor --keyring=gnupg-ring "${tmppath}/${tmpfile}"
+    ;;
+  # Secret key
+  *'PGP public key block Secret-Key')
+    gpg --batch --yes --no-default-keyring --keyring=gnupg-ring:"${tmppath}/temp-keyring.gpg" --quiet --import "${tmppath}/${tmpfile}"
+    gpg --batch --yes --no-default-keyring --keyring=gnupg-ring:"${tmppath}/temp-keyring.gpg" --export --output "${tmppath}/${tmpfile}.gpg"
+    rm "${tmppath}/temp-keyring.gpg"
+    [ -f "${tmppath}/temp-keyring.gpg~" ] && rm "${tmppath}/temp-keyring.gpg~"
+    ;;
+  # key public ring (v4) (old file type ????)
+  *'PGP/GPG key public ring (v4)'*)
+    cp "${tmppath}/${tmpfile}" "${tmppath}/${tmpfile}.gpg"
+    ;;
+  # Public Key Version 4 (new file type ????)
+  *'OpenPGP Public Key Version 4'*)
+    cp "${tmppath}/${tmpfile}" "${tmppath}/{$tmpfile}.gpg"
+    ;;
+  *)
+    exit_error "invalid input keyfile format"
+    ;;
+esac
+
+# check if converted PGP keyfile exists
+printf '%s\n' "Verifying converted PGP keyfile exists ..."
+if [[ ! -f "${tmppath}/${tmpfile}.gpg" ]]; then
+  exit_error "converted keyfile does not exist"
+fi
+[[ "$verbosity" = "yes" ]] && printf '%s\n' "Converted keyfile name: ${tmpfile}.gpg"
+
+# make sure the converted keyfile is the right type
+printf '%s\n' "Verifying conversion process worked ..."
+case $(file "${tmppath}/${tmpfile}.gpg") in
+  *'PGP/GPG key public ring (v4)'*) ;;  # the 'old' right type, so just continue
+  *'OpenPGP Public Key Version 4'*) ;;  # the 'new' right type, so just continue
+  *) exit_error "keyfile is not a PGP/GPG key public ring";;  #  not the right type, so exit
+esac
+
+# move the converted keyfile to "$keypath"
+[[ "$verbosity" = "yes" ]] && printf '%s\n' "Moving converted keyfile to ${keypath} and renaming to ${filename}.gpg ..."
+mv "${tmppath}/${tmpfile}.gpg" "${keypath}/${filename}.gpg"
+
+# if 'removetmp' is "Yes", then remove the temporary files
+if [[ "${removetmp}" = "yes" ]]; then
+  [[ "$verbosity" = "yes" ]] && printf '%s\n' "Removing temporary files ..."
+  rm -f "${tmppath}/${tmpfile}"
+  rm -f "${1}"
+fi
+
+printf '\n%s\n' "The key for the repository has been added to APT."
+
+# check to see if the repository spec (third parameter) is present
+if [[ -z "${3}" ]]; then  # it isn't, so print message for manual repository installation
+  printf '%s\n' "However, you must manually create entries for /etc/apt/sources.list.d and /etc/apt/preferences.d"
+  printf '%s\n' "in order for the repository to be used.  For an example of the format for those entries, see"
+  printf '%s\n' "https://wiki.debian.org/DebianRepository/UseThirdParty#Complete_example"
+else  # it is, so parse it and create the necessary files
+  [[ "$verbosity" = "yes" ]] && printf '%s\n' "Parsing repository spec ..."
+  repospec="${3}"  # get the repository spec
+
+  # if options have been specified, they are enclosed in square brackets ( [] ),
+  # so check for an opening square bracket
+  if [[ "${repospec}" == *"["* ]]; then
+    # options have been specified, so get them
+    repooption="${repospec#*[}"  # get rid of everything before the '[' ...
+    repooption="${repooption%%]*}"  # ... and everything after the ']'
+    repooption="${repooption# }"  # get rid of a leading space ...
+    repooption="${repooption% }"  # ... and a trailing space
+
+    # now remove the options from the repo spec
+    rest="${repospec#*[}"  # get everything after the "[" ...
+    start=$(( ${#repospec} - ${#rest} - 1 ))  # ... and find its location in the repo spec
+    rest="${repospec#*]}"  # then get everything after the "]" ...
+    end=$(( ${#repospec} - ${#rest} ))  # ... and find its location in the repo spec
+    repospec="${repospec:0:${start}}${repospec:${end}}"  # reconstruct the repo spec without the option(s) ...
+    repospec="${repospec/ /}"  # ... and get rid of an unnecessary space
+  fi
+
+  # split up the various parts of the repo spec
+  repotype=`cut -d' ' -f1 <<< "${repospec}"`  # get the repo type
+  repourl=`cut -d' ' -f2 <<< "${repospec}"`  # get the repo URL
+  reporelease=`cut -d' ' -f3 <<< "${repospec}"`  # get the distro release name ('buster')
+  repocomponent=`cut -d' ' -f4- <<< "${repospec}"`  # get the component(s) the repo provides packages for ('main', 'contrib', etc.)
+  repodomain=`cut -d'/' -f3 <<< "${repourl}"`  # get the repo domain name
+
+  # check to see if 'apt-cacher-ng' processing was requested
+  if [[ "${configacng}" == 1 ]]; then
+    [[ "$verbosity" = "yes" ]] && printf '%s\n' "Processing for 'apt-cacher-ng' ..."
+    # check to see if there's already some remapping for secure repositories in
+    # the 'apt-cacher-ng' configuration file.  if there are, the section header
+    # "my repository remapping" will already be in the file.  if it's not there,
+    # add it
+    if [[ ! $(grep -i 'my repository remapping' "${acngconfigdir}${acngconfigfile}") ]]; then
+      printf '\n%s\n' "# my repository remapping" >>"${acngconfigdir}${acngconfigfile}"
+    fi
+
+    # add the remapping for the current repository to the 'apt-cacher-ng'
+    # configuration file
+    [[ "$verbosity" = "yes" ]] && printf '%s\n' "Adding repository remapping ..."
+    printf '%s\n' "Remap-${filename}: http://secure-${filename} ; file:secure-${filename}" >>"${acngconfigdir}${acngconfigfile}"
+
+    # create the remap file
+    [[ "$verbosity" = "yes" ]] && printf '%s\n' "Creating the remap file ..."
+    printf '%s\n' "${repourl}" >"${acngconfigdir}secure-${filename}"
+
+    # change the 'repourl' entry to the remapped repository URL
+    repourl="http://secure-${filename}"
+  fi
+
+  # create the file for '/etc/apt/sources.list.d'
+  [[ "$verbosity" = "yes" ]] && printf '%s\n' "Creating file '/etc/apt/sources.list.d/${filename}.sources' ..."
+  srcfilename="${tmppath}/${filename}.sources"
+  printf '%s\n' "Enabled: yes" >>"${srcfilename}"
+  printf '%s\n' "Types: ${repotype}" >>"${srcfilename}"
+  printf '%s\n' "URIs: ${repourl}" >>"${srcfilename}"
+  printf '%s\n' "Suites: ${reporelease}" >>"${srcfilename}"
+  printf '%s\n' "Components: ${repocomponent}" >>"${srcfilename}"
+  printf '%s\n' "Signed-By: ${keypath}/${filename}.gpg" >>"${srcfilename}"
+  read -ra options -d '' <<<"${repooption}"
+  for a in "${options[@]}"; do
+    b="${a%%=*}"  # get the name of the option
+    case "${b,,}" in  # convert the name to lowercase for easier comparison
+      # '${a#*=}' gets the value(s) of the option, '${a//,/ }' changes all commas to spaces
+      architectures | arch ) a="${a#*=}"; printf '%s\n' "Architectures: ${a//,/ }" >>"${srcfilename}";;
+      languages | lang ) a="${a#*=}"; printf '%s\n' "Languages: ${a//,/ }" >>"${srcfilename}";;
+      targets | target ) a="${a#*=}"; printf '%s\n' "Targets: ${a//,/ }" >>"${srcfilename}";;
+      pdiffs ) a="${a#*=}"; printf '%s\n' "PDiffs: ${a//,/ }" >>"${srcfilename}";;
+      by-hash ) a="${a#*=}"; printf '%s\n' "By-Hash: ${a//,/ }" >>"${srcfilename}";;
+      allow-insecure ) a="${a#*=}"; printf '%s\n' "Allow-Insecure: ${a//,/ }" >>"${srcfilename}";;
+      allow-weak ) a="${a#*=}"; printf '%s\n' "Allow-Weak: ${a//,/ }" >>"${srcfilename}";;
+      allow-downgrade-to-insecure ) a="${a#*=}"; printf '%s\n' "Allow-Downgrade-To-Insecure: ${a//,/ }" >>"${srcfilename}";;
+      trusted ) a="${a#*=}"; printf '%s\n' "Trusted: ${a//,/ }" >>"${srcfilename}";;
+      check-valid-until ) a="${a#*=}"; printf '%s\n' "Check-Valid-Until: ${a//,/ }" >>"${srcfilename}";;
+      valid-until-min ) a="${a#*=}"; printf '%s\n' "Valid-Until-Min: ${a//,/ }" >>"${srcfilename}";;
+      valid-until-max ) a="${a#*=}"; printf '%s\n' "Valid-Until-Max: ${a//,/ }" >>"${srcfilename}";;
+    esac
+  done
+  mv "${srcfilename}" /etc/apt/sources.list.d  # move the file to where it belongs
+  chmod 644 "/etc/apt/sources.list.d/${filename}.sources"  # and change its permissions
+
+  # create the file for '/etc/apt/preferences.d'
+  [[ "$verbosity" = "yes" ]] && printf '%s\n' "Creating file '/etc/apt/preferences.d/${filename}.pref' ..."
+  preffilename="${tmppath}/${filename}.pref"
+  printf '%s\n' "Package: *" >>"${preffilename}"
+  printf '%s\n' "Pin: origin ${repodomain}" >>"${preffilename}"
+  printf '%s\n' "Pin-Priority: 100" >>"${preffilename}"
+  mv "${preffilename}" /etc/apt/preferences.d  # move the file to where it belongs
+  chmod 644 "/etc/apt/preferences.d/${filename}.pref"  # and change its permissions
+
+  # print message for APT repository installation
+  printf '\n%s\n' "The files for '/etc/apt/sources.list.d' and '/etc/apt/preferences.d' have also"
+  printf '%s' "been created."
+  if [[ "${configacng}" == 1 ]]; then
+    printf '%s\n' "  Additionally, the files necessary so that 'apt-cacher-ng' can"
+    printf '%s' "cache packages from this secure repository have been created."
+  fi
+  printf '\n\n%s\n' "The repository is ready to be used.  Be sure to do 'sudo apt update' so that"
+  printf '%s\n' "packages in the repository can be installed."
+fi

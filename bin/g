@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+# g - short name for the 'git' command
+
+# this started off as a bunch of aliases for 'git', but since I don't use 'git'
+# from the command line all that frequently, I decided to turn them into a
+# single script file to save memory.
+declare -a usage=(
+  " "
+  "g: short name for the 'git' command.  Also uses short names for the more"
+  "   common 'git' subcommands."
+  " "
+  "Usage: g [option] subcommand [argument(s)]"
+  " "
+  "Option:"
+  "    -h: print this help message."
+  " "
+  "Short subcommands:"
+  "     a: add - add a file to be tracked.  A file must be specified."
+  "    aa: add all - all files in the local repo are updated/added."
+  "    au: add update - all tracked files in the local repo are updated/added."
+  "     b: branch - list, create or delete branches.  A branch can be specified."
+  "    bl: branch list - list branches.  A branch can be specified."
+  "     c: commit - commit changes to the repo.  A file can be specified."
+  "    ca: commit all - commit all changed files that are being tracked."
+  "     f: fetch - gets changes to the remote repo made since the local repo"
+  "         was last updated.  No merge is done.  A repository can be specified."
+  "     p: pull - gets and merges changes to the remote repo made since the"
+  "         local repo was last updated.  A repository can be specified."
+  "    pn: same as 'pull', but doesn't try to edit something.  I added this"
+  "         because 'git' complained every time I tried to update a local repo"
+  "         after making/pushing changes to the remote repo from another machine."
+  "    pu: push - pushes committed changes in the local repo to the remote repo."
+  "     s: status - shows the current status of the local repo."
+  " "
+  "For all of these subcommands, additional options can be specified and are"
+  "passed through to the 'git' command."
+  " "
+  "Any other subcommand is passed through to the 'git' command unchanged."
+  " "
+)
+command="${1}"
+if [[ -z "${command}" ]]; then command="--help"; fi
+shift
+if [[ "${command:0:1}" == "-" ]]; then
+  if [[ "${command}" == "-h" ]]; then
+    printf '%s\n' "${usage[@]}"
+    exit
+  fi
+fi
+case "${command}" in
+   a) if [[ -z "${1}" ]]; then printf '%s\n' "Must supply a file."; exit 1; else git add "$@"; fi;;
+  aa) git add -A "$@";;
+  au) git add -u "$@";;
+   b) git branch "$@";;
+  bl) git branch --list "$@";;
+   c) git commit "$@";;
+  ca) git commit -a "$@";;
+   f) git fetch "$@";;
+   p) git pull "$@";;
+  pn) git pull --no-edit "$@";;
+  pu) git push origin "$@";;
+   s) git status "$@";;
+   *) git "${command}" "$@";;
+esac

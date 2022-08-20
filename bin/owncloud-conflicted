@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+StartDir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd "${StartDir}"
+
+# save stdout (1) and stderr (2) in "backup" file descriptors (3 & 4), and then
+# redirect them so that the output and any error messages from the script are on
+# both the screen and in a file...just in case there are errors that need to be
+# referenced later.
+exec 3>&1 4>&2  > >(tee -ai "${HOME}"/owncloud-conflicted.txt) 2>&1
+
+printf '%s\n' "Path is >${PATH}<"
+conflictedfile=$1
+tmpname="/Volumes/Temp/conflictedfile"
+extension=$("${HOME}"/bin/fp -e "${conflictedfile}")
+name=$("${HOME}"/bin/fp -pn "${conflictedfile%% (*}").${extension}
+printf '%s\n' "Moving >${name}< to >${tmpname}<"
+mv "${name}" "${tmpname}"
+printf '%s\n' "Moving >${conflictedfile}< to >${name}<"
+mv "${conflictedfile}" "${name}"
+printf '%s\n' "Deleteing >${tmpname}<"
+rm "${tmpname}"
+
+# restore stdout (1) and stderr (2) and close the "backup" file descriptors (3 & 4)
+exec 1>&3 2>&4 3>&- 4>&-

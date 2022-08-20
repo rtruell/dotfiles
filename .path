@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+
+# add directories of my programs, if they exist, to the beginning of PATH so
+# they get used first.
+if [ -d /usr/local/sbin ] ; then
+  addpath -f /usr/local/sbin
+fi
+
+if [ -d /usr/sbin ] ; then
+  addpath -f /usr/sbin
+fi
+
+if [ -d ${HOME}/sbin ] ; then
+  addpath -f ${HOME}/sbin
+fi
+
+if [ -d ${HOME}/bin ] ; then
+  addpath -f ${HOME}/bin
+fi
+
+if [ -d ${HOME}/testscripts ] ; then
+  addpath -f ${HOME}/testscripts
+fi
+
+# if running macOS, add the Homebrew install directories to PATH and export the
+# Homebrew environment variables
+if [[ "$(uname)" == "Darwin" ]]; then
+  eval "$(brew shellenv)"
+fi
+
+# many of the utils Apple supplies in macOS are out-dated and less capable than
+# the same-named GNU versions.  I want to use the GNU versions instead, so if
+# they've been installed, the paths to them get added to the beginning of PATH
+if [[ "$(uname)" == "Darwin" ]]; then
+  if [ -d "${HOMEBREW_PREFIX}"/opt/gnu-sed ] ; then
+    addpath -f "${HOMEBREW_PREFIX}"/opt/gnu-sed/libexec/gnubin
+  fi
+
+  if [ -d "${HOMEBREW_PREFIX}"/opt/findutils ] ; then
+    addpath -f "${HOMEBREW_PREFIX}"/opt/findutils/libexec/gnubin
+  fi
+
+  if [ -d "${HOMEBREW_PREFIX}"/opt/coreutils ] ; then
+    addpath -f "${HOMEBREW_PREFIX}"/opt/coreutils/libexec/gnubin
+  fi
+
+  if [ -d "${HOMEBREW_PREFIX}"/opt/curl/bin ] ; then
+    addpath -f "${HOMEBREW_PREFIX}"/opt/curl/bin
+  fi
+
+  if [ -d "${HOMEBREW_PREFIX}"/opt/gnu-getopt/bin ] ; then
+    addpath -f "${HOMEBREW_PREFIX}"/opt/gnu-getopt/bin
+  fi
+fi
+
+delpath -n  # remove non-existent directories from PATH
+uniqpath  # remove duplicate pathnames from PATH

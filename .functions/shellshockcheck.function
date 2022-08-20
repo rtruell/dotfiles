@@ -1,0 +1,4 @@
+# http://www.openwall.com/lists/oss-security/2014/09/24/11
+function shellshockcheck {
+  env x='() { :;}; echo vulnerable' bash -c "echo if you see vulnerable, then you need a update";
+}

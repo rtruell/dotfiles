@@ -1,0 +1,2 @@
+# make a new directory (and parents if necessary) and change to it.
+function mcd { mkdir -p "${1}" && cd "${1}"; }

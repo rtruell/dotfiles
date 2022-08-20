@@ -1,0 +1,15 @@
+# convert from xml to plist after editing
+function toplist {
+  if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
+    if [[ -z "${1}" ]]; then printf '%s\n' "Error: must supply a filename to be converted."; return 1; fi
+    if [[ -f "${1}" ]]; then
+      plutil -convert binary1 ${1};
+    else
+      printf '%s\n' "Error: file '${1}' does not exist."
+      return 1
+    fi
+  else
+    printf '%s\n' "Sorry, this only works on macOS."
+    return 1
+  fi
+}

@@ -1,0 +1,12 @@
+# function to quickly get to certain sections of the bash manual
+function bashman {
+  [[ -z "${1}" ]] && { printf '%s\n' "Must supply something to search for."; return 1; }
+  search="${1}"
+  case "${search}" in
+    [[)      search="  \[\[";;           # the '[[' compound command
+    tests)   search="-a file";;          # conditional expression tests
+    special) search="  Special";;        # special parameters
+    *)       search="  ${search} [[]";;  # builtin commands
+  esac
+  man bash | less -p "${search}"
+}

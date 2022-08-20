@@ -1,0 +1,2 @@
+# print an error status message, in red and preceed by "[✖]"
+function print_error { printf "\e[0;31m  [✖] Error: ${1} ${2}\e[0m\n"; }

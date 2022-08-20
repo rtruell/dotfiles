@@ -1,0 +1,10 @@
+# grep for a process
+function processgrep {
+  if [[ ! -z ${1} ]] ; then
+    echo "Grepping for processes matching ${1}..."
+    ps aux | grep -i ${1} | grep -v grep
+  else
+    echo "!! Need a process-name to grep for"
+    return 1
+  fi
+}

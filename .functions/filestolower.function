@@ -1,0 +1,30 @@
+# rename all the files and directories in the current directory which contain
+# uppercase letters to lowercase
+function filestolower {
+  read -p "This will rename all the files and directories in the current directory to lowercase, continue? [y/n]: " letsdothis
+  if `answer_is_y "${letsdothis}"`; then
+    for x in `ls`; do
+      skip="false"
+      if [ -d "${x}" ]; then
+        read -p "'${x}' is a folder, rename it? [y/n]: " renamedir
+        if ! `answer_is_y "${renamedir}"`; then skip="true"; printf '%s\n' "Skipping."; fi
+      fi
+      if [ "${skip}" == "false" ]; then
+        lc=`echo "${x}" | tr '[A-Z]' '[a-z]'`
+        if [ "${lc}" != "${x}" ]; then
+          printf '%s\n' "renaming ${x} -> ${lc}"
+          if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
+            # filenames aren't case-sensitive in macOS so a temp file is needed
+            tempfile=tmp.$$
+            mv "${x}" "${tempfile}"
+            mv "${tempfile}" "${lc}"
+          else
+            mv "${x}" "${lc}"
+          fi
+        fi
+      fi
+    done
+  else
+    printf '%s\n' "Stopping."
+  fi
+}

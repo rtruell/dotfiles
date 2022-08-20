@@ -1,0 +1,72 @@
+#!/usr/bin/env bash
+
+# b - short name for the 'brew' command.
+
+# this started off as a bunch of aliases for Homebrew, but since I don't use the
+# 'brew' command all that frequently, I decided to turn them into a single
+# script file to save memory.
+declare -a usage=(
+  " "
+  "b: short name for the 'brew' command.  Also uses short names for the more"
+  "   common 'brew' subcommands."
+  " "
+  "Usage: b [option] subcommand [argument(s)]"
+  " "
+  "Option:"
+  "    -h: print this help message."
+  " "
+  "Short subcommands:"
+  "     b: bundle - installs all programs from '~/.Brewfile'."
+  "     c: cleanup - removes outdated downloads for all formulae and casks and"
+  "        removes old versions of installed formulae.  **"
+  "     d: dump - writes all installed casks, formulae, images, taps and MAS"
+  "        apps, including all dependencies, into the file '~/newbrew'."
+  "    dr: doctor - checks the system for potential problems."
+  "     h: home - opens in the default web browser the Homebrew home page or, if"
+  "        specified, the home page for the specified formula/cask.  *"
+  "     i: info - displays statistics of the Homebrew installation or, if"
+  "        specified, information about a formula/cask.  *"
+  "    in: install - installs the specified formula or cask.  *"
+  "     s: search - searches for the specified text or regex.  *"
+  "    ud: update - get the newest versions of Homebrew and the formulae, casks"
+  "        and taps.  *"
+  "    ug: upgrade - upgrades outdated casks and outdated, unpinned formulae"
+  "        using the same options they were originally installed with.  **"
+  " "
+  "     * - For these subcommands, additional options can be specified and are"
+  "         passed through to the 'brew' command."
+  " "
+  "    ** - For these subcommands, other options or formulae/casks can be"
+  "         specified and are passed through to the 'brew' command."
+  " "
+  "Custom subcommands:"
+  "    ub: up both - does an update and then an upgrade."
+  "    uf: up full - does an update, an upgrade, a cleanup and finally a doctor."
+  " "
+  "Any other subcommand is passed through to the 'brew' command unchanged."
+  " "
+)
+command="${1}"
+if [[ -z "${command}" ]]; then command="help"; fi
+shift
+if [[ "${command:0:1}" == "-" ]]; then
+  if [[ "${command}" == "-h" ]]; then
+    printf '%s\n' "${usage[@]}"
+    exit
+  fi
+fi
+case "${command}" in
+   b) brew bundle --global;;
+   c) brew cleanup "$@";;
+   d) brew bundle dump --all --file="${HOME}"/newbrew;;
+  dr) brew doctor;;
+   h) brew home "$@";;
+   i) brew info "$@";;
+  in) if [[ -z "${1}" ]]; then printf '%s\n' "Must supply a formula or cask."; exit 1; else brew install "$@"; fi;;
+   s) if [[ -z "${1}" ]]; then printf '%s\n' "Must supply text or a regex."; exit 1; else brew search "$@"; fi;;
+  ub) brew update && brew upgrade;;
+  ud) brew update "$@";;
+  uf) brew update && brew upgrade && brew cleanup && brew doctor;;
+  ug) brew upgrade "$@";;
+   *) brew "${command}" "$@";;
+esac

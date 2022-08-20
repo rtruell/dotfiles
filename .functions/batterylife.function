@@ -1,0 +1,5 @@
+# echo the percentage of battery life remaining
+function batterylife {
+  life=$(acpi -b | cut -d "," -f 2)
+  echo ${life%\%}  # the trailing % is stripped
+}

@@ -1,0 +1,9 @@
+# macOS only.  cd into whatever is the forefront Finder window.  maybe one day
+# I'll get this to work with Path Finder as well
+function cdf {
+  if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
+    cd "`osascript -e 'tell app "Finder" to POSIX path of (insertion location as alias)'`"
+  else
+    printf '%s\n' "Sorry, this only works on macOS."
+  fi
+}

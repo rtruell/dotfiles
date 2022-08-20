@@ -1,0 +1,9 @@
+# Sort history by most used commands, can optionally print n lines (e.g. histrank [n])
+function histrank {
+  history \
+    | awk '{out=$4; for(i=5;i<=NF;i++){out=out" "$i}; print out}' \
+    | sort \
+    | uniq -c \
+    | sort -nk1 \
+    | tail -n "${1:-$(tput lines)}"
+}

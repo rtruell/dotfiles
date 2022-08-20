@@ -1,0 +1,17 @@
+# Throttle stdout
+function throttle {
+  # Check that stdin isn't empty
+  if [[ -t 0 ]]; then
+    printf -- '%s\n' "Usage:  pipe | to | throttle [n]"
+    printf -- '\t%s\n'  "Increment line by line through the output of other commands" \
+      "Delay between each increment can be defined.  Default is 1 second."
+    return 0
+  fi
+  # Default the sleep time to 1 second
+  sleepTime="${1:-1}"
+  # Now we output line by line with a sleep in the middle
+  while read -r; do
+    printf -- '%s\n' "${REPLY}"
+    sleep "${sleepTime}" 2>/dev/null || sleep 1
+  done
+}

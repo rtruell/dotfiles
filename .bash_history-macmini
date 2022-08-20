@@ -1,0 +1,1660 @@
+b i sublime-test
+#1655183603
+b i sublime-text
+#1655317210
+cat /etc/fstab
+#1655317254
+b s super
+#1655317297
+b i superduper
+#1655317391
+b in superduper
+#1655317470
+ls /Users/rtruell/Applications
+#1655317489
+ls /Users/rtruell/Applications/super*
+#1655317502
+ls /Users/rtruell/Applications/Super*
+#1655317606
+b in superduper
+#1655322252
+b s nextcloud
+#1655322267
+b i nextcloud
+#1655322302
+b h nextcloud
+#1655351290
+b s micro
+#1655351326
+b i micro
+#1655408570
+b s nextcloud
+#1655408588
+b i nextcloud
+#1655519218
+b i ansiweather
+#1655519290
+b h ansiweather
+#1655519567
+aw
+#1655519803
+b h archey4
+#1655519958
+procps
+#1655521103
+b i audacity
+#1655521139
+b s audacity
+#1655521280
+b h audacity
+#1655521548
+b i avidemux
+#1655521564
+b h avidemux
+#1655522237
+b i bcompare
+#1655522267
+b i beyond-compare
+#1655522306
+b h beyond-compare
+#1655523091
+b s canon
+#1655527652
+b s xchm
+#1655528405
+b s libchm
+#1655528544
+b s archmage
+#1655529431
+b i kindle
+#1655529443
+b h kindle
+#1655529603
+b i kindle
+#1655529609
+b s kindle
+#1655530818
+b s blackhole
+#1655532241
+b s tech
+#1655532954
+b i whatroute
+#1655532964
+b h whatroute
+#1655533327
+b h x-mirage
+#1655533431
+b i x-mirage
+#1655578908
+ll /Volumes/
+#1655590747
+la
+#1655590769
+man netrc
+#1655590780
+man 5 netrc
+#1655702257
+b s nextcloud
+#1655702335
+b i nextcloud
+#1655702346
+b h nextcloud
+#1655848084
+ping duckduckgo.com
+#1655849642
+externalip
+#1655851283
+man mount
+#1655851315
+man fstab
+#1655873543
+b s ddclient
+#1655873560
+b i ddclient
+#1655879569
+cd /Volumes/SLAX/
+#1655879578
+cd slax
+#1655879588
+cd boot
+#1655879613
+sudo ./bootinst.sh
+#1655879661
+ll
+#1655879685
+ls ..
+#1655879692
+ls ../..
+#1655879761
+uname -m
+#1655879899
+which extlinux.x64
+#1655879907
+whereis' extlinux.x64
+#1655879918
+whereis extlinux.x64
+#1655880060
+sudo ./bootinst.sh
+#1655880139
+ls .
+#1655880152
+ll .
+#1655880264
+/Volumes/SLAX/slax/boot/bootinst.sh; exit
+#1655924467
+ls .functions
+#1655924492
+ls bin
+#1655924509
+unixtime2date 2644842
+#1655924534
+unixtime2date 2644842.640301
+#1656007911
+man sudo
+#1656068688
+man pv
+#1656069407
+b s cdrdao
+#1656069429
+b h cdrdao
+#1656303651
+cat bin/fp
+#1656303691
+fp -n archey4_4.13.4-1_all.deb
+#1656303817
+basename "${archey4_4.13.4-1_all.deb%.*}"
+#1656303883
+filepath="archey4_4.13.4-1_all.deb"
+#1656303903
+basename "${filepath%.*}"
+#1656303939
+basename archey4_4.13.4-1_all.deb%.*
+#1656303951
+basename "archey4_4.13.4-1_all.deb%.*"
+#1656309407
+repurl="deb [ arch=amd64,armel lang=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656309491
+echo "${repurl#*[}"
+#1656309562
+echo "${repurl%%]*}"
+#1656310149
+repourl="deb [ arch=amd64,armel lang=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656310338
+printf '%s\n' "${repourl}"
+#1656310454
+repooption="${repourl#*[}"
+#1656310467
+printf '%s\n' "${repooption}"
+#1656310546
+repooption="${repooption%%]*}"
+#1656310550
+printf '%s\n' "${repooption}"
+#1656310843
+printf '%s\n' ">${repooption}<"
+#1656311798
+printf '%s\n' ">${repourl}<"
+#1656311850
+cut -d' ' -f1` <<< "${repourl}"
+#1656311885
+cut -d' ' -f1 <<< "${repourl}"
+#1656311969
+cut -d' ' -f2 <<< "${repourl}"
+#1656312449
+printf '%s\n' ">${repourl}<"
+#1656312455
+printf '%s\n' "${repooption}"
+#1656312544
+printf '%s\n' ">${repourl/${repooption}}<"
+#1656313580
+rest="$repourlt#*[}"
+#1656313589
+echo $rest
+#1656313642
+rest=$repourlt#*[}
+#1656313680
+rest="${repourl#*$searchstring}"
+#1656313690
+echo $rest
+#1656313731
+rest="${repourl#*[}"
+#1656313736
+echo $rest
+#1656313802
+start=$(( ${#repourl} - ${#rest} - 1 ))
+#1656313833
+rest="${repourl#*]}"
+#1656313836
+echo $rest
+#1656313864
+end=$(( ${#repourl} - ${#rest} - 1 ))
+#1656313870
+echo start
+#1656313875
+echo $start
+#1656313879
+echo $end
+#1656314158
+echo "${repourl:0:4}"
+#1656314184
+echo "${repourl:${end}}"
+#1656314239
+end=$(( ${#repourl} - ${#rest} ))
+#1656314244
+echo "${repourl:${end}}"
+#1656314299
+echo "${repourl:0:${start}}"
+#1656314339
+echo "${repourl:0:${start}}${repourl:${end}}"
+#1656314576
+repospec="${repourl:0:${start}}${repourl:${end}}"
+#1656314606
+printf '%s\n' ">${repospec}<"
+#1656314734
+cut -d' ' -f1 <<< "${repospec}"
+#1656314746
+cut -d' ' -f2 <<< "${repospec}"
+#1656314806
+repospec="${repospec/ /}"
+#1656314812
+printf '%s\n' ">${repospec}<"
+#1656314819
+cut -d' ' -f1 <<< "${repospec}"
+#1656314824
+cut -d' ' -f2 <<< "${repospec}"
+#1656314870
+cut -d' ' -f3 <<< "${repospec}"
+#1656314883
+cut -d' ' -f4 <<< "${repospec}"
+#1656314964
+cut -d' ' -f2 <<< "${repospec}" | cut -d'/' -f3
+#1656315170
+cut -d' ' -f4- <<< "${repospec}"
+#1656362465
+repourl="deb [ arch=amd64,armel lang=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656362488
+printf '%s\n' "${repourl}"
+#1656362510
+rest="${repourl#*[}"
+#1656362518
+printf '%s\n' "${rest}"
+#1656362543
+start=$(( ${#repourl} - ${#rest} - 1 ))
+#1656362551
+printf '%s\n' "${start}"
+#1656362564
+rest="${repourl#*]}"
+#1656362570
+printf '%s\n' "${rest}"
+#1656362591
+end=$(( ${#repourl} - ${#rest} ))
+#1656362598
+printf '%s\n' "${end}"
+#1656362611
+repospec="${repourl:0:${start}}${repourl:${end}}"
+#1656362636
+printf '%s\n' "${repospec}"
+#1656362649
+printf '%s\n' ">${repospec}<"
+#1656362664
+repospec="${repospec/ /}"
+#1656362670
+printf '%s\n' ">${repospec}<"
+#1656362762
+repourl=`cut -d' ' -f2 <<< "${repospec}"`
+#1656362769
+printf '%s\n' ">${repourl}<"
+#1656362789
+repodomain=`cut -d'/' -f3 <<< "${repourl}"`
+#1656362800
+repodomain=`cut -d'/' -f3 <<< "${repodomain}"`
+#1656362831
+repodomain=`cut -d'/' -f3 <<< "${repourl}"`
+#1656362839
+printf '%s\n' ">${repodomain}<"
+#1656362941
+repourl="deb http://example.com/ubuntu disco main"
+#1656362992
+rest="${repourl#*[}"
+#1656363001
+start=$(( ${#repourl} - ${#rest} - 1 ))
+#1656363007
+rest="${repourl#*]}"
+#1656363014
+end=$(( ${#repourl} - ${#rest} ))
+#1656363039
+repospec="${repourl:0:${start}}${repourl:${end}}"
+#1656363065
+printf '%s\n' ">${start}<"
+#1656363073
+printf '%s\n' ">${end}<"
+#1656363089
+printf '%s\n' ">${repospec}<"
+#1656368012
+path
+#1656368021
+addtest
+#1656368030
+addtest --help
+#1656368350
+addtest keyfile dave deb [ arch=amd64,armel lang=en_US,en_CA ] http://example.com/ubuntu disco main
+#1656368714
+addtest keyfile dave "deb [ arch=amd64,armel lang=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656371653
+addtest keyfile dave "deb [ arch=amd64,armel languages=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656371797
+addtest keyfile dave "deb [ arch=amd64,armel Languages=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656372305
+b="DAVE"
+#1656372324
+"${b}"
+#1656372330
+"${b,,}"
+#1656372357
+echo "${b}"
+#1656372362
+echo "${b,,}"
+#1656372393
+addtest keyfile dave "deb [ arch=amd64,armel Languages=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656372581
+echo "${b}"
+#1656372618
+tr [:upper:] [:lower:] >>>"${b}
+#1656372631
+tr [:upper:] [:lower:] >>>"${b}"
+#1656372640
+man tr
+#1656372698
+tr [:upper:] [:lower:] <<<"${b}"
+#1656372815
+a="arch=amd64,armel"
+#1656372864
+tr [:upper:] [:lower:] <<<"${a%%=*}"
+#1656372877
+a="ARCH=amd64,armel"
+#1656372881
+tr [:upper:] [:lower:] <<<"${a%%=*}"
+#1656372957
+addtest keyfile dave "deb [ arch=amd64,armel Languages=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656372978
+addtest keyfile dave "deb [ ARCH=amd64,armel Languages=en_US,en_CA ] http://example.com/ubuntu disco main"
+#1656374463
+addtest keyfile dave "deb [ ARCH=amd64,armel Languages=en_US,en_CA trusted=no ] http://example.com/ubuntu disco main"
+#1656374647
+addtest keyfile dave "deb [ARCH=amd64,armel LangUages=en_US,en_CA trusted=no] http://example.com/ubuntu disco main"
+#1656374798
+addtest keyfile dave "deb-src [ARCH=amd64,armel LangUages=en_US,en_CA trusted=no] http://example.com/ubuntu disco main contrib non-free"
+#1656375040
+addtest keyfile dave "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
+#1656390200
+addtest keyfile dave "deb [lang=en_US] http://example.com/ubuntu disco main restricted universe multiverse"
+#1656390236
+addtest keyfile dave "deb [lAnG=en_US] http://example.com/ubuntu disco main restricted universe multiverse"
+#1656390279
+addtest keyfile dave "deb [] http://example.com.ubuntu disco main restricted multiverse universe"
+#1656390434
+verbosity="yes"
+#1656390448
+verbosity="YES"
+#1656390469
+printf '%s\n' "${verbosity}"
+#1656390481
+printf '%s\n' "${verbosity,,}"
+#1656390562
+add-apt-key
+#1656390813
+bashman tests
+#1656390861
+add-apt-key
+#1656391296
+echo $verbosity
+#1656391338
+[ "$verbosity" = "YES" ] && echo "Keypath: dave"
+#1656391350
+[[ "$verbosity" = "YES" ]] && echo "Keypath: dave"
+#1656392263
+file
+#1656392274
+file --help
+#1656394293
+addtest keyfile dave "deb http://example.com.ubuntu disco main restricted multiverse universe"
+#1656394743
+printf '%s\n' "${verbosity}"
+#1656394750
+printf '%s\n' "${verbosity,,}"
+#1656394817
+a="arch=amd64"
+#1656394829
+printf '%s\n' "${a}"
+#1656394853
+a="ARCH=amd64"
+#1656394856
+printf '%s\n' "${a}"
+#1656394877
+printf '%s\n' "${a%%=*}"
+#1656394886
+printf '%s\n' "${a%%=*,,}"
+#1656394918
+ttype printf
+#1656394922
+ttype tr
+#1656395180
+addtest keyfile dave "deb [ARCH=amd64] http://example.com.ubuntu disco main restricted multiverse universe"
+#1656395386
+addtest keyfile dave "deb-src [ARCH=amd64,armel LangUages=en_US,en_CA trusted=no] http://example.com/ubuntu disco main contrib non-free"
+#1656400081
+addtest keyfile dave "deb [ARCH=amd64,armel LangUages=en_US,en_CA trusted=no] http://example.com/ubuntu disco main contrib non-free"
+#1656400194
+string="deb [ARCH=amd64,armel LangUages=en_US,en_CA trusted=no] http://example.com/ubuntu disco main contrib non-free"
+#1656400231
+printf '%s\n' "${string:4:1}"
+#1656400239
+printf '%s\n' "${string:54:1}"
+#1656400322
+printf '%s\n' "${string:0:4}"
+#1656400335
+printf '%s\n' ">${string:0:4}<"
+#1656400367
+printf '%s\n' ">${string:54}<"
+#1656400447
+string="deb [ARCH=amd64,armel LangUages=en_US,en_CA trusted=no] http://example.com/ubuntu disco main contrib non-free"
+#1656400453
+addtest keyfile dave "deb [ARCH=amd64,armel LangUages=en_US,en_CA trusted=no] http://example.com/ubuntu disco main contrib non-free"
+#1656400459
+printf '%s\n' ">${string:54}<"
+#1656400472
+printf '%s\n' ">${string:55}<"
+#1656400518
+addtest keyfile dave "deb [ARCH=amd64,armel LangUages=en_US,en_CA trusted=no] http://example.com/ubuntu disco main contrib non-free"
+#1656400815
+addtest keyfile dave
+#1656400840
+addtest
+#1656400847
+addtest --help
+#1656495638
+ll /nas
+#1656516601
+python --version
+#1656517332
+docker images
+#1656517341
+docker image
+#1656563976
+lal
+#1656669265
+php --version
+#1656669272
+b search php
+#1656669318
+b i php
+#1656669552
+b i php@8.0
+#1656717163
+findtext gnupg
+#1656717209
+findtext gpg
+#1656721285
+hf addtest
+#1656721367
+addtest https://download.docker.com/linux/debian/gpg docker "deb [arch=amd64] https://download.docker.com/linux/debian bullseye stable"
+#1656803737
+b ud
+#1656803814
+b i archy
+#1656803845
+b h archy
+#1656804043
+b i betterandbetter
+#1656804072
+b h betterandbetter
+#1656804257
+b i betterdisplay
+#1656804279
+b h betterdisplay
+#1656804374
+b i ansiweather
+#1656804408
+b i bash
+#1656804456
+b i taskade
+#1656804475
+b s nextcloud
+#1656804491
+b i nextcloud
+#1656804514
+b in nextcloud
+#1656804645
+ls /
+#1656804684
+less /installer.failurrequests
+#1656804698
+less /installer.failurerequests
+#1656910603
+ln -s /Volumes/Nextcloud/dotfiles/ .
+#1656910611
+ll
+#1656910672
+ln -s /Volumes/Nextcloud/dotfiles .
+#1656910680
+ll
+#1656910720
+ls dotfiles
+#1656910745
+la dotfiles
+#1656910776
+la bin
+#1656912212
+alias dotfiles
+#1656912221
+dotfiles
+#1656912226
+pwd
+#1656912308
+ll ..
+#1656912338
+home
+#1656964819
+ll /Volumes/Nextcloud/
+#1656964843
+ll
+#1656965868
+pwd
+#1656965871
+ll
+#1657085076
+b s owncloud
+#1657085095
+b i owncloud
+#1657085142
+b ud
+#1657085623
+brew --version
+#1657086318
+brew --repo
+#1657086421
+brew outdated
+#1657086609
+b in owncloud
+#1657250162
+hostname
+#1657250273
+hostname -s
+#1657250434
+cat .bash_logout
+#1657250635
+man docker
+#1657338260
+b search owncloud
+#1657338280
+which owncloudcmd
+#1657338288
+whereis owncloudcmd
+#1657338295
+owncloudcmd
+#1657338314
+ls /usr/bin/o*
+#1657343414
+b s keeweb
+#1657343428
+b i keeweb
+#1657432257
+h | grep iso2
+#1657432310
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl
+#1657432369
+diskutil list
+#1657432424
+diskutil unmountDisk /dev/disk3
+#1657432524
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.4.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
+#1657432622
+diskutil eject /dev/disk3
+#1657480364
+ll /
+#1657497564
+b s archey
+#1657497593
+b i archey4
+#1657574071
+ls /
+#1657574085
+cat .bash_logout
+#1657574100
+ll
+#1657574106
+lal
+#1657574135
+la dotfiles
+#1657574181
+rm .bash_logout
+#1657574252
+ln -s dotfiles/.bash_logout-macmini .bash_logout
+#1657574260
+lal
+#1657574282
+rm .bash_logout
+#1657574322
+ln -s /Users/rtruell/dotfiles/.bash_logout-macmini .bash_logout
+#1657574325
+lal
+#1657927737
+b i imazing
+#1657927776
+b s imazing
+#1657927803
+b ud
+#1657927902
+b i alfred
+#1657927920
+b s alfred
+#1657927950
+b up imazing
+#1657927979
+b -h
+#1657928012
+b ug imazing
+#1658019363
+dotfiles
+#1658019371
+findtext lid.conf
+#1658022072
+ttype dave
+#1658022077
+echo $?
+#1658022087
+ttype find
+#1658022092
+echo $?
+#1658116168
+dotfiles
+#1658116175
+findtext compose
+#1658557316
+ping -c 1 nas
+#1658613046
+nextcloud-conflicted "/Volumes/Nextcloud/BloodGlucose (conflicted copy 2022-07-23 142340).txt"
+#1658613137
+fp -h
+#1658613212
+nextcloud-conflicted "/Volumes/Nextcloud/BloodGlucose (conflicted copy 2022-07-23 142340).txt"
+#1658615131
+nextcloud-conflicted "/Volumes/Nextcloud/AllListings (conflicted copy 2022-07-23 153110).html"
+#1658629804
+addtest
+#1658631239
+addtest --help
+#1658632186
+echo $text
+#1658632196
+text="this is
+a test
+and some
+more text."
+#1658632235
+printf '%s\n' "${text}"
+#1658634404
+addtest --help
+#1658635404
+echo $test
+#1658635413
+test="--help"
+#1658635417
+echo $test
+#1658635430
+echo "${test}"
+#1658635454
+echo "${test##-}"
+#1658635466
+echo "${test##-*}"
+#1658635479
+echo "${test%%-*}"
+#1658635505
+echo "${test##-}"
+#1658635509
+echo "${test##--}"
+#1658636124
+addtest --help
+#1658636315
+addtest
+#1658636600
+addtest -b
+#1658636711
+addtest
+#1658636793
+addtest-z
+#1658636802
+addtest -z
+#1658636942
+addtest -h
+#1658636951
+addtest -a
+#1658639068
+addtest
+#1658639079
+addtest -z
+#1658639086
+addtest -h
+#1658639098
+addtest --help
+#1658639112
+addtest -a
+#1658639154
+addtest --acng
+#1658639164
+addtest -a a
+#1658639171
+addtest -a a b
+#1658647845
+addtest https://download.webmin.com/jcameron-key.asc webmin "deb https://download.webmin.com/download/repository sarge contrib"
+#1658689559
+nextcloud-conflicted "/Volumes/Nextcloud/AllListings (conflicted copy 2022-07-23 153110).html"
+#1658690938
+man tee
+#1658707359
+addtest https://download.webmin.com/jcameron-key.asc webmin "deb https://download.webmin.com/download/repository sarge contrib"
+#1658707973
+ls /tmp
+#1658708028
+file /tmp/jcameron-key.asc
+#1658709327
+rm /tmp/jcameron-key.asc
+#1658709333
+ll /tmp
+#1658902422
+ls /var/folders/9_/2kwgn1710ql97hyntzkldlqh0000gn/T/
+#1658902461
+ls /var/folders/9_/2kwgn1710ql97hyntzkldlqh0000gn/T/v*
+#1658902466
+ls /var/folders/9_/2kwgn1710ql97hyntzkldlqh0000gn/T/V*
+#1658902680
+ls /tmp
+#1658902697
+ll /tmp
+#1659165602
+dotfiles
+#1659165617
+hostname
+#1659165621
+host
+#1659165641
+hostname -s
+#1659165653
+findtext hostname
+#1659165760
+hostname -I
+#1659166701
+echo ${HOSTNAME}
+#1659166762
+osinfo
+#1659166832
+sysinfo
+#1659168056
+man printf
+#1659169003
+home
+#1659169020
+main.sh
+#1659169530
+dotfiles
+#1659169535
+findtest USER
+#1659169542
+findtext USER
+#1659169711
+home
+#1659169714
+main.sh
+#1659217727
+pwd
+#1659217751
+cd /Volumes/ExternalHome/rtruell/GitRepositories/
+#1659217794
+cd GitHub/
+#1659217868
+ln -s test /Users/rtruell/superdotfiles
+#1659217874
+ll
+#1659217898
+home
+#1659217900
+ll
+#1659217913
+cd -
+#1659217918
+cd test
+#1659217931
+touch file1 file2 file3
+#1659217936
+home
+#1659217938
+ll
+#1659217946
+cd superdotfiles
+#1659217984
+cd bin
+#1659217994
+cd ..
+#1659218008
+ls superdotfiles
+#1659218056
+rm superdotfiles
+#1659218090
+ls /Volumes/ExternalHome/rtruell/GitRepositories/
+#1659218098
+ls /Volumes/ExternalHome/rtruell/GitRepositories/GitHub/
+#1659218104
+ls /Volumes/ExternalHome/rtruell/GitRepositories/GitHub/test/
+#1659218161
+ln -s /Volumes/ExternalHome/rtruell/GitRepositories/GitHub/test /Users/rtruell/superdotfiles
+#1659218166
+ll
+#1659218195
+cd superdotfiles
+#1659218200
+ls ..
+#1659218283
+ls ./superdotfiles
+#1659218291
+ls ../superdotfiles
+#1659218306
+ls ..
+#1659218327
+up
+#1659218328
+ll
+#1659218333
+ls superdotfiles
+#1659218437
+cd -
+#1659218443
+ls ..
+#1659218454
+ls .
+#1659218462
+ls ../test
+#1659218622
+ll
+#1659218626
+up
+#1659218627
+ll
+#1659218673
+rm superdotfiles
+#1659236490
+printenv
+printenv
+cd
+printenv
+bash --version
+exit
+#1659236500
+env -i bash --norc --noprofile
+#1659236589
+bash --version
+#1659236613
+printenv | less
+printenv
+echo $PATH
+ls
+cd
+exit
+#1659236724
+env -i bash --norc --noprofile
+#1659236868
+echo $HOME
+pwd
+printenv
+aliases
+exit
+#1659236937
+env -i HOME="${HOME}" bash --norc --noprofile
+#1659237003
+aliases
+#1659237009
+aliase
+#1659237020
+alias
+#1659237033
+lf f
+alias
+declare -F
+exit
+#1659237041
+env -i HOME="${HOME}" bash --norc --noprofile
+printenv
+exit
+#1659237242
+bee
+#1659238001
+alias
+ll
+ls
+cd testscripts
+ls
+./main.sh
+echo $?
+ls
+ls ..
+./main.sh
+echo $HOME
+pwd
+ls -a ..
+ls -a ../functions
+ls -a ../.functions
+clear
+main
+./main.sh
+ls
+ls ..
+ls -l ..
+less ../testscript.txt
+exit
+#1659238006
+bee
+#1659238458
+echo $TERM
+#1659244016
+echo $HOMEBREW_PREFIX
+#1659244022
+ls /usr/local/opt
+#1659244094
+ls /usr/local/opt/coreutils/libexec/gnubin
+#1659244132
+ls /usr/local/opt/findutils/libexec/gnubin
+#1659244140
+ls /usr/local/opt/moreutils/libexec/gnubin
+#1659244151
+ls /usr/local/opt/moreutils
+#1659244164
+ls /usr/local/opt/moreutils/libexec
+#1659244168
+ls /usr/local/opt/moreutils/libexec/bin
+#1659244190
+ls /usr/local/opt/moreutils/bin
+#1659244234
+whereis su
+#1659244247
+which su
+#1659244257
+/.sur/bin/su --help
+#1659244265
+/.usr/bin/su --help
+#1659244284
+/usr/bin/su --help
+#1659244303
+man suj
+#1659244307
+man su
+printenv
+cls
+clear
+ls
+less testscript.txt
+ls -l
+rm testscript.txt
+ls -l
+cd testscripts
+ls
+./main.sh
+pwd
+ls
+ls ..
+ls -l ..
+less ../testscript.txt
+rm ../testscript.txt
+./main.sh
+logname
+hostname
+hostname -s
+alias
+clear
+./main.sh
+./main.sh
+echo $username
+declare -F
+[[ -n "${HOME}" ]] echo set
+[[ -n "${HOME}" ]]
+echo $?
+[[ -n "${username}" ]]
+echo $?
+if [[ -n "${username}" ]]; then echo good; else echo bad; fi
+if [[ -n "${HOME}" ]]; then echo good; else echo bad; fi
+clear
+./main.sh
+ls -l
+ls -l ..
+less ../testscript.txt
+rm ../testscript.txt
+./main.sh
+echo $?
+ls -a ..
+pwd
+ls
+cd ../dotfiles-new
+pwd
+ls
+ls -l
+./NewInstall.sh
+man su
+which su
+whereis su
+su -c 'echo hello'
+su - -c 'echo hello'
+su 'echo hello'
+su 'echo hello'
+su - 'echo hello'
+ls
+less sudo.sh
+sudo source ./sudo.sh
+sudo . ./sudo.sh
+sudo ./sudo.sh
+./NewInstall.sh
+./NewInstall.sh
+./NewInstall.sh
+./NewInstall.sh
+exit
+#1659238611
+bee
+./NewInstall.sh
+cd dotfiles-new
+./NewInstall.sh
+su -help
+su -l 'echo hello'
+su -l 'echo hello'
+ls /etc
+less /etc/sudoers
+sudo less /etc/sudoers
+ls /etc/sudoers.d
+cat /etc/sudoers.d/rtruell
+sudo cat /etc/sudoers.d/rtruell
+exit
+#1659246208
+groups
+#1659246236
+ls /etc/sudoers.d
+#1659246245
+cat /etc/sudoers.d/rtruell
+#1659246249
+sudo cat /etc/sudoers.d/rtruell
+#1659246447
+ls -l
+#1659246652
+id
+#1659246995
+sudo less /etc/sudoers
+#1659249112
+/Users/rtruell/dotfiles-new/symlink.sh; exit
+#1659249112
+/Users/rtruell/dotfiles-new/sudo.sh; exit
+#1659249113
+/Users/rtruell/dotfiles-new/setup.sh; exit
+#1659249113
+/Users/rtruell/dotfiles-new/NewInstall.sh; exit
+#1659249113
+/Users/rtruell/dotfiles-new/banner.sh; exit
+#1659269867
+ls /etc/sudoers.d
+#1659269877
+sudo cat /etc/sudoers.d/rtruell
+#1659270350
+alias ls
+#1659270363
+alias ll
+#1659270376
+alias
+#1659270437
+env | less
+#1659270467
+echo $CLICOLOR
+#1659326601
+uname
+#1659329107
+cd dotfiles-new
+#1659329110
+ll
+#1659329137
+./NewInstall.sh
+#1659329205
+findtext answer_is_y
+#1659329794
+./NewInstall.sh
+#1659329853
+echo $?
+#1659329861
+./NewInstall.sh
+#1659329872
+echo $?
+#1659330160
+./NewInstall.sh
+#1659330188
+echo $?
+#1659330195
+./NewInstall.sh
+#1659330211
+echo $?
+#1659330384
+man tests
+#1659330388
+bashman tests
+#1659330411
+bashman [[
+#1659330602
+./NewInstall.sh
+#1659330674
+findtext answer_is_y
+#1659330761
+./NewInstall.sh
+#1659330960
+[[ "y" =~ ^[Yy]$ ]] && echo 0 || echo 1
+#1659330966
+[[ "n" =~ ^[Yy]$ ]] && echo 0 || echo 1
+#1659331020
+answer_is_y "y"
+#1659331025
+answer_is_y "n"
+#1659331030
+answer_is_y "y"
+#1659331038
+echo $?
+#1659331045
+answer_is_y "n"
+#1659331047
+echo $?
+#1659331101
+retcode=$(answer_is_y "y")
+#1659331138
+printf '%d\n' ${retcode}
+#1659331144
+retcode=$(answer_is_y "n")
+#1659331146
+printf '%d\n' ${retcode}
+#1659331308
+[[ answer_is_y "y" ]] && printf '%s\n' "yes" || printf '%s\n' "no"
+#1659331343
+[[ $(answer_is_y "y") ]] && printf '%s\n' "yes" || printf '%s\n' "no"
+#1659331360
+[[ $(answer_is_y "n") ]] && printf '%s\n' "yes" || printf '%s\n' "no"
+#1659331495
+if [[ $(answer_is_y "y") == 0 ]]; then printf '%s\n' "yes"; else printf '%s\n' "no"; fi
+#1659331539
+if [[ $(answer_is_y "y") == "0" ]]; then printf '%s\n' "yes"; else printf '%s\n' "no"; fi
+#1659331562
+if [[ $(answer_is_y "y") ]]; then printf '%s\n' "yes"; else printf '%s\n' "no"; fi
+#1659331653
+answer_is_y "y"; retcode=$?; printf '%d\n' ${retcode}
+#1659331663
+answer_is_y "n"; retcode=$?; printf '%d\n' ${retcode}
+#1659331763
+answer_is_y "y"; retcode=$?; [[ ${retcode} ]] && printf '%s\n' "yes" || printf '%s\n' "no"
+#1659331771
+answer_is_y "n"; retcode=$?; [[ ${retcode} ]] && printf '%s\n' "yes" || printf '%s\n' "no"
+#1659331852
+answer_is_y "y"; retcode=$?; if [[ ${retcode} == 0 ]]; then printf '%s\n' "yes"; else printf '%s\n' "no"; fi
+#1659331861
+answer_is_y "n"; retcode=$?; if [[ ${retcode} == 0 ]]; then printf '%s\n' "yes"; else printf '%s\n' "no"; fi
+#1659331914
+answer_is_y "y"; retcode=$?; [[ ${retcode} == 0 ]] && printf '%s\n' "yes" || printf '%s\n' "no"
+#1659331921
+answer_is_y "n"; retcode=$?; [[ ${retcode} == 0 ]] && printf '%s\n' "yes" || printf '%s\n' "no"
+#1659332066
+answer_is_y "y"; retcode=$?; [[ ${retcode} == 0 ]] && printf '%s\n' "yes" || printf '%s\n' "no"; exit ${retcode}
+#1659332285
+./NewInstall.sh
+#1659332302
+cd dotfiles-new
+#1659332304
+./NewInstall.sh
+#1659333120
+echo $?
+#1659333123
+./NewInstall.sh
+#1659333134
+echo $?
+#1659333498
+la
+#1659342638
+fl osinfo
+#1659342642
+lf osinfo
+#1659342649
+lf sysinfo
+#1659342679
+sysinfo
+#1659343054
+./NewInstall.sh
+#1659345105
+lf print_result
+#1659346579
+scp
+#1659346604
+la
+#1659346670
+scp .functions/osinfo.function rtruell@nas:/home/rtruell
+#1659346696
+scp .functions/sysinfo.function rtruell@nas:/home/rtruell
+#1659346800
+scp .functions/osinfo.function rtruell@rpi4b-b:/home/rtruell
+#1659346882
+scp -P 22000 .functions/osinfo.function rtruell@rpi4b-b:/home/rtruell
+#1659346899
+scp -P 22000 .functions/sysinfo.function rtruell@rpi4b-b:/home/rtruell
+#1659347109
+scp -P 22000 system.sh rtruell@rpi4b-b:/home/rtruell
+#1659353179
+echo $SYSTEM_TYPE
+#1659353485
+cat .exports
+#1659497956
+uname
+#1659497961
+man uname
+#1659497975
+man uname -a
+#1659497986
+uname -a
+#1659498436
+echo $PLATFORM
+#1659498485
+PLATFORM="$(uname)"
+#1659498487
+echo $PLATFORM
+#1659498495
+PLATFORM="$(uname),,"
+#1659498499
+echo $PLATFORM
+#1659498528
+PLATFORM="Dave,,"
+#1659498530
+echo $PLATFORM
+#1659498541
+PLATFORM=""
+#1659498584
+PLATFORM="$(uname)"
+#1659498648
+echo $PLATFORM
+#1659498681
+echo $PLATFORM,,
+#1659498709
+echo ${PLATFORM,,}
+#1659498977
+echo $OS_TYPE
+#1659498984
+echo $OSTYPE
+#1659499102
+trim
+#1659499142
+ttype trim
+#1659499239
+fl osinfo
+#1659499244
+lf osinfo
+#1659499302
+osinfo
+#1659499411
+lf sysinfo
+#1659499494
+ls -a .functions
+#1659499508
+lf trim
+#1659500658
+printf "\n\e[0;35m  Finished linking files and directories.\e[0m\n\n"
+#1659503586
+la *.sh
+#1659503653
+cd dotfiles-new
+#1659503656
+la
+#1659503660
+la *.sh
+#1659503682
+up
+#1659505332
+sudo less /etc/sudoers
+#1659598069
+system_profiler SPHardwareDataType | grep 'Model Identifier'
+#1659601633
+hostname
+#1659601688
+if [[ $(hostname) == "mac"* ]]; then echo mac; else echo not; fi
+#1659601699
+if [[ $(hostname) == "mac" ]]; then echo mac; else echo not; fi
+#1659601704
+if [[ $(hostname) == "mac*" ]]; then echo mac; else echo not; fi
+#1659601718
+if [[ $(hostname) == "mac"* ]]; then echo mac; else echo not; fi
+#1659907332
+findshow ' 119 '
+#1659907347
+findshow ' 102 '
+#1659907363
+findshow ' 104 '
+#1659907374
+findshow ' 100 '
+#1659907406
+findshow ' 145 '
+#1659907421
+findshow '145'
+#1659907427
+findshow ' 145'
+#1659907431
+findshow '145 '
+#1659907453
+findshow '145&nbsp'
+#1659907481
+findshow '119&nbsp'
+#1659907498
+findshow '102&nbsp'
+#1659907537
+findshow '104&nbsp'
+#1659907565
+findshow '108&nbsp'
+#1659907569
+findshow '106&nbsp'
+#1659907593
+findshow '101&nbsp'
+#1659907624
+findshow '100&nbsp'
+#1659907829
+findshow '11&nbsp'
+#1659907876
+findshow '9&nbsp'
+#1659907919
+findshow '8&nbsp'
+#1659907928
+findshow '08&nbsp'
+#1659907942
+findshow '008&nbsp'
+#1659907960
+findshow 'nbsp;8&nbsp'
+#1659907979
+findshow 'nbsp;7&nbsp'
+#1659907994
+findshow '7&nbsp'
+#1659907997
+findshow '07&nbsp'
+#1660103645
+externalip
+#1660109528
+gh
+#1660109563
+cd /Volumes/ExternalHome/rtruell/GitRepositories/GitHub/test/
+#1660109572
+touch test.sh
+#1660109667
+cat test.sh
+#1660109673
+./test.sh
+#1660109676
+ll
+#1660109689
+chmod 755 test.sh
+#1660109691
+ll
+#1660109706
+./test.sh
+#1660257642
+echo $DOTFILES
+#1660257674
+alias
+#1660257702
+dotfiles
+#1660257712
+ll
+#1660257755
+findtext dotfiles
+#1660259961
+up
+#1660259981
+back
+#1660260067
+home
+#1660260081
+cd dotfiles
+#1660260093
+back
+#1660260098
+dotfiles
+#1660260120
+home
+#1660260132
+alias back
+#1660260141
+dotfiles
+#1660260153
+back
+#1660260158
+cd dotfiles
+#1660260166
+la
+#1660260578
+back
+#1660260640
+alias
+#1660260657
+gt
+#1660260688
+less aliases
+#1660260698
+less .aliases
+#1660260760
+git rev-parse --show-toplevel
+#1660260778
+dotfiles
+#1660260784
+git rev-parse --show-toplevel
+#1660260819
+gt
+#1660260828
+pwd
+#1660260836
+back
+#1660260870
+cd dotfiles
+#1660260876
+git rev-parse --show-toplevel
+#1660260888
+less .aliases
+#1660261068
+cat .logout
+#1660261071
+la
+#1660261084
+cat .bash_logout
+#1660261103
+cat .bash_logout-macmini
+#1660285701
+owncloudcmd --version
+#1660285709
+whereis owncloudcmd
+#1660285714
+which owncloudcmd
+#1660285728
+ps aux | grep owncloud
+#1660285760
+ls /usr/bin/own*
+#1660285765
+ls /usr/bin/
+#1660285770
+ls /usr/bin/o*
+#1660363791
+ls Library/Mobile\ Documents/com~apple~CloudDocs/
+#1660363816
+ls Library/Mobile\ Documents/
+#1660363855
+ls Library/Mobile\ Documents/com~apple~Notes
+#1660363860
+ls Library/Mobile\ Documents/com~apple~Notes/Documents/
+#1660363878
+ls Library/Mobile\ Documents/com~apple~CloudDocs/
+#1660363958
+touch Library/Mobile\ Documents/com~apple~CloudDocs/test.txt
+#1660363961
+ls Library/Mobile\ Documents/com~apple~CloudDocs/
+#1660365549
+ll Library/Mobile\ Documents/com~apple~CloudDocs/
+#1660524429
+dotfiles
+#1660524448
+findtext next
+#1660524510
+findtext ownc
+#1660524536
+findtext maria
+#1660524588
+findtext redis
+#1660526402
+home
+#1660526407
+lal
+#1660527077
+echo $(uname)
+#1660527120
+echo "${$(uname),,}"
+#1660527816
+lal
+#1660527835
+lal >before.txt
+#1660528048
+lal
+#1660528081
+ls bin
+#1660528131
+ls /Users/rtruell/dotfiles/bin
+#1660528142
+ls /Users/rtruell/dotfiles
+#1660528264
+lal >after.txt
+#1660529516
+dotfiles
+#1660529533
+findtext '@{u}'
+#1660529992
+lal
+#1660530032
+cd ..
+#1660530034
+lal
+#1660530193
+date +%Y%m%d -r "${HOME}/.dotfilecheck"
+#1660530224
+date +%Y%m%d
+#1660530294
+cd "${DOTFILESSRCDIR}"
+#1660530316
+git remote update
+#1660530855
+if [[ $(hostname -s) == "macmini" ]]; then echo mac; else echo linux; fi
+#1660530868
+if [[ $(hostname -s) == "dave" ]]; then echo mac; else echo linux; fi
+#1660531696
+alias
+#1660531732
+env
+#1660531743
+env | grep dotfile
+#1660531779
+alias | grep dotfile
+#1660603854
+findhow devils
+#1660603862
+findshow devils
+#1660883408
+b up
+#1660883618
+b i duckduckgo
+#1660883641
+b i ved
+#1660883654
+b s firefox
+#1660883683
+b i firefox
+#1660883713
+b i firefox-esr
+#1660977678
+echo $DOTFILES
+#1660977684
+echo $DOTFILESSRCDIR
+#1660977751
+echo $BREW_PREFIX
+#1660977760
+ls /usr/local
+#1660977784
+ls /usr/local/bin
+#1660977847
+ls /usr/local/etc
+#1660978021
+diskusage /usr/local
+#1660978032
+ls bin
+#1660978057
+spaceused /usr/local
+#1660978083
+less bin/spaceused
+#1660978202
+spaceused
+#1660978264
+find "/usr/local" -maxdepth 1 ! -type d -printf '%s\n'
+#1660978288
+find "/usr/local" -maxdepth 1
+#1660978420
+man find
+#1660978672
+ls /usr/local
+#1660978691
+find "/usr/local" -maxdepth 1 ! -type d -printf '%s\n'
+#1660978705
+find . -maxdepth 1 ! -type d -printf '%s\n'
+#1660978734
+la
+#1660978746
+ll
+#1660978755
+lal
+#1660978949
+spaceused
+#1660978958
+spaceused /usr/local
+#1660978968
+cd /usr/local
+#1660978972
+spaceused
+#1660979009
+-
+#1660979012
+back
+#1660979043
+spaceused /usr/local/Caskroom
+#1660979057
+ls /usr/local/Caskroom
+#1660979067
+ls /usr/local/Cellar
+#1660979081
+ls /usr/local/Homebrew
+#1660979094
+spaceused /usr/local/Homebrew
+#1660979103
+spaceused /usr/local/bin
+#1660979419
+spaceused /usr/local
+#1660979567
+spaceused
+#1660979576
+spaceused .
+#1660979737
+cd "${DOTFILESSRCDIR}"
+#1660979750
+git remote update
+#1660979775
+UPSTREAM=${1:-'@{u}'}
+#1660979790
+LOCAL=$(git rev-parse @{0})
+#1660979810
+echo $UPSTREAM
+#1660979840
+echo $LOCAL
+#1660979849
+REMOTE=$(git rev-parse "${UPSTREAM}")
+#1660981775
+git status -uno
+#1660982921
+git --version

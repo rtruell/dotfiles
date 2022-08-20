@@ -1,0 +1,10 @@
+# clipboard access created to have the same command on macOS, Linux and Cygwin
+function getclip() {
+  if command -v pbpaste >/dev/null; then  # macOS
+    pbpaste
+  elif command -v xclip >/dev/null; then  # Linux
+    xclip -selection clipboard -o
+  elif [[ "$SYSTEM_TYPE" == "MINGW" || "$SYSTEM_TYPE" == "CYGWIN" ]]; then  # Cygwin
+    cat /dev/clipboard
+  fi
+}

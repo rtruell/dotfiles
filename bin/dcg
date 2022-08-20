@@ -1,0 +1,52 @@
+#!/usr/bin/env bash
+
+case_statements=""
+
+# I couldn't get a standard 'printf' command to print a newline when the command
+# was assigned to a variable, so created a variable containing a newline to use
+# instead
+printf -v new_line '\n'
+
+for ((i = 0 ; i < ${#getopt_options[@]} ; i++)); do  # loop through the array of option info
+  while read -r match_options match_name _; do  # read the option and the variable name its value is stored in
+    if [[ "${match_options}" == *":"* ]]; then  # if this option required an argument
+      match_code="printf \"${match_name} is ${!match_name}, so do something with it here${new_line}\""  # have the code print out the option name and the value assigned to it
+    else
+      match_code="printf \"${match_name} is set, so do something with it here${new_line}\""  # otherwise have the code print out just the option name
+    fi
+    case_statements+="${case_statements:+    }${match_name}) ${match_code};;"  # add the 'case' statement pattern and code for this option to the others
+  done <<< "${getopt_options[${i}]}"
+done
+
+# since 'remaining_args' isn't an option that can be specified but is created if
+# non-option arguments are supplied on the command line, its name and the code
+# to be executed when it matches are added to the case statements.  this is an
+# example of how multiple commands to be executed can be added using a "here
+# document"
+match_name="remaining_args"
+read -d '' match_code <<END_REMAINING_ARGS
+# check to see if there were any non-option arguments supplied to this program.
+                    # if there were, do something with them here
+                    printf \"There are additional, non-option arguments, so do something with them here${new_line}\"
+                    printf \"remaining arguments together are: >${remaining_args}<\"
+                    printf \"remaining arguments separate are:${new_line}\"
+                    read -ra non_options -d '' <<< "${remaining_args}"
+                    for a in "\${non_options[@]}"; do printf \">\${a}<${new_line}\"; done
+END_REMAINING_ARGS
+case_statements+="${case_statements:+    }${match_name}) ${match_code};;"
+case_statements="${case_statements%${new_line}}"  # if there's a newline at the end of the case statements, remove it since it's unneeded
+
+# now that the match patterns and code for the available options for use in
+# the 'case' statement has been generated, generate the code for the 'case'
+# statement itself, and store everything in a variable.  only the options that
+# were specified on the command line are considered, even though there may be
+# other options available to the program
+read -d '' case_code <<END_CASE_CODE
+for option_name in "\${set_options[@]}"; do
+  option_name="\${option_name/=*/}"
+  case "\${option_name}" in
+    ${case_statements}
+  esac
+done
+END_CASE_CODE
+printf '%s\n' "${case_code}"  # return the completed 'case' statement code to the calling program

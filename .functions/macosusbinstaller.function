@@ -1,0 +1,10 @@
+function macosusbinstaller {
+  if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
+    command="'/Applications/Install OS X "${1}".app/Contents/Resources/createinstallmedia' --volume /Volumes/Untitled --applicationpath '/Applications/Install OS X "${1}".app' --nointeraction"
+    printf '%s\n' "Running ${command}"
+    read -n 1 -s -p "Press any key to continue, Control-C to abort"
+    printf '\n%s\n' "sudo ${command}"
+  else
+    printf '%s\n' "Sorry, this only works on macOS."
+  fi
+}

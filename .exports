@@ -1,0 +1,203 @@
+#!/usr/bin/env bash
+
+# if HOSTNAME isn't set, then set it, stripping off the domainname if it's there
+if [[ -z "${HOSTNAME}" ]]; then
+  HOSTNAME=$(hostname -s)
+  export HOSTNAME
+fi
+
+# if EUID isn't set, then set it.  note that 'id -u' is now mostly portable here
+if [[ -z "${EUID}" ]]; then
+  EUID=$(id -u)
+  export EUID
+fi
+
+# if HOME isn't set, then set it
+if [[ -z "${HOME}" ]]; then
+  if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
+    HOME="/Users/$(id -un)"
+  else
+    HOME="/home/$(id -un)"
+  fi
+  export HOME
+fi
+
+export EDITOR="subl -w"  # use Sublime Text as the system editor
+export CONFIG_DEFAULT_USER="rtruell"
+export CONFIG_CHARSET_UTF8=true
+export CONFIG_LANG="en_CA"
+export CONFIG_TERM_LOCAL=""  # terms: screen byobu tmux
+export CONFIG_TERM_SSH=""
+export PYTHONIOENCODING='UTF-8'  # make Python use UTF-8 encoding for output to stdin, stdout, and stderr
+
+# 'macmini' is my main computer, and the local copies of my GitHub repositories
+# are on an external drive connected to it, with the 'dotfiles' repository
+# symlinked to $HOME.  all the other computers and VM's running Linux or macOS
+# clone the 'dotfiles' repository right to $HOME.  so, point the 'DOTFILES' and
+# 'DOTFILESSRCDIR' variables to the actual repository, rather than the symlink,
+# on 'macmini'
+if [[ $(hostname -s) == "macmini" ]]; then
+  export DOTFILES="/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/dotfiles"  # shortcut to where my dotfiles live, used by me as it's a lot easier to type than the next one
+  export DOTFILESSRCDIR="/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/dotfiles"  # shortcut to where my dotfiles live, used by the dotfiles themselves
+else
+  export DOTFILES="${HOME}/dotfiles"
+  export DOTFILESSRCDIR="${HOME}/dotfiles"
+fi
+
+# Pass some options to 'less': "F" causes immediate exit if output will fit on
+# one screen, "I" sets case-insensitive searches and "X" doesn't send termcap
+# initialization and deinitialization strings to the terminal.  then set 'PAGER'
+# and 'MANPAGER' to use 'less'
+export less="-FIX"
+export PAGER="less"
+export MANPAGER="less"
+
+# Canadian English (UTF-8)
+export LANG=en_CA.UTF-8
+
+# configure the way history works
+bind Space:magic-space  # enable history expansion with space e.g. typing !!<space> will replace the !! with your last command
+export HISTTIMEFORMAT='%F %T '  # use standard ISO 8601 timestamp. %F is equivalent to %Y-%m-%d (4 digit year), %T is equivalent to %H:%M:%S (24-hours format)
+export HISTCONTROL=ignoredups  # avoid succesive duplicates in the bash command history
+export HISTSIZE=10000  # number of commands stored in memory for current session
+export HISTFILESIZE=10000  # number of commands kept in the history file
+shopt -s histappend  # append commands to the bash command history file instead of overwriting it
+export HISTIGNORE="&:[ ]*:exit:ls:bg:fg:history*:clear:cls:h:yore*:redo*:exit"  # don't save some commands to the history
+shopt -s cmdhist  # save multi-line commands as one command
+export PROMPT_COMMAND='history -a; history -c; history -r'  # append commands to the history every time a prompt is shown, instead of after closing the session
+
+# LESS man page colors (makes Man pages more readable).
+export LESS_TERMCAP_mb=$'\E[00;31m'  # dull red, begin blinking
+export LESS_TERMCAP_md=$'\E[00;31m'  # dull red, begin bold
+export LESS_TERMCAP_me=$'\E[0m'  # normal, end mode
+export LESS_TERMCAP_se=$'\E[0m'  # normal, end standout-mode
+export LESS_TERMCAP_so=$'\E[01;44;33m'  # yellow on blue, begin standout-mode - info box
+export LESS_TERMCAP_ue=$'\E[0m'  # normal, end underline
+export LESS_TERMCAP_us=$'\E[01;34m'  # bright blue, begin underline
+
+# detect the os
+if [[ -n ${OSTYPE} ]]; then
+  case "${OSTYPE}" in
+     darwin*) SYSTEM_TYPE="macOS" ;;
+    solaris*) SYSTEM_TYPE="Solaris" ;;
+      linux*) SYSTEM_TYPE="Linux" ;;
+        bsd*) SYSTEM_TYPE="BSD" ;;
+       msys*) SYSTEM_TYPE="MinGW" ;;
+     cygwin*) SYSTEM_TYPE="Cygwin" ;;
+           *) SYSTEM_TYPE="Unknown" ;;
+  esac
+else
+  PLATFORM="$(uname)"
+  case "${PLATFORM,,}" in
+     darwin*) SYSTEM_TYPE="macOS" ;;
+      sunos*) SYSTEM_TYPE="Solaris" ;;
+      linux*) SYSTEM_TYPE="Linux" ;;
+    freebsd*) SYSTEM_TYPE="FreeBSD" ;;
+     netbsd*) SYSTEM_TYPE="Net_BSD" ;;
+    openbsd*) SYSTEM_TYPE="Open_BSD" ;;
+       msys*) SYSTEM_TYPE="MinGW" ;;
+      mingw*) SYSTEM_TYPE="MinGW" ;;
+     cygwin*) SYSTEM_TYPE="Cygwin" ;;
+           *) SYSTEM_TYPE="Unknown" ;;
+  esac
+fi
+if [[ -s /proc/version ]]; then
+  if [[ -n "$(cat /proc/version | grep '(Microsoft@Microsoft.com)')" ]]; then SYSTEM_TYPE="Win10_Linux"; fi
+fi
+export SYSTEM_TYPE
+
+# find os version
+if [ "${SYSTEM_TYPE}" == "macOS" ]; then
+  SYSTEM_VERSION="$(sw_vers -productVersion)"
+elif [ -e "/etc/os-release" ]; then
+  SYSTEM_VERSION=$(cat /etc/os-release | grep -i "version=" | cut -d'"' -f2 | cut -d'(' -f1)
+fi
+SYSTEM_VERSION=$(trim "${SYSTEM_VERSION}")
+export SYSTEM_VERSION
+
+# find os release name
+if [ "${SYSTEM_TYPE}" == "macOS" ]; then
+  case "${SYSTEM_VERSION}" in
+       13*) RELEASE_NAME="Ventura" ;;
+       12*) RELEASE_NAME="Monterey" ;;
+       11*) RELEASE_NAME="Big Sur" ;;
+    10.15*) RELEASE_NAME="Catalina" ;;
+    10.14*) RELEASE_NAME="Mojave" ;;
+    10.13*) RELEASE_NAME="High Sierra" ;;
+    10.12*) RELEASE_NAME="Sierra" ;;
+    10.11*) RELEASE_NAME="El Capitan" ;;
+    10.10*) RELEASE_NAME="Yosemite" ;;
+     10.9*) RELEASE_NAME="Mavericks" ;;
+     10.8*) RELEASE_NAME="Mountain Lion" ;;
+     10.7*) RELEASE_NAME="Lion" ;;
+     10.6*) RELEASE_NAME="Snow Leopard" ;;
+     10.5*) RELEASE_NAME="Leopard" ;;
+     10.4*) RELEASE_NAME="Tiger" ;;
+     10.3*) RELEASE_NAME="Panther" ;;
+     10.2*) RELEASE_NAME="Jaguar" ;;
+     10.1*) RELEASE_NAME="Puma" ;;
+     10.0*) RELEASE_NAME="Cheetah" ;;
+         *) RELEASE_NAME="Unknown" ;;
+  esac
+else
+  RELEASE_NAME=$(cat /etc/os-release | grep -i "version=" | cut -d'"' -f2 | cut -d'(' -f2 | cut -d ')' -f1)
+fi
+export RELEASE_NAME
+
+# find distro name
+if [ "${SYSTEM_TYPE}" != "macOS" ]; then DISTRO_NAME=$(lsb_release -is); fi
+export DISTRO_NAME
+
+# find out how software is installed
+if which brew >/dev/null 2>&1; then
+  INSTALL_TYPE="BREW"
+fi
+if which apt-get >/dev/null 2>&1; then
+  INSTALL_TYPE="APT"
+fi
+export INSTALL_TYPE
+
+# enable some Bash 4 features
+declare -a features=(
+  "autocd"  # typing "/path/to/directory" will 'cd' to "directory".  note: follows symlinks but does not display them in 'pwd'
+  "cdable_vars"  # "cd ${var}" assumes value of 'var' contains directory to 'cd' to
+  "cdspell"  # autocorrect typos in path names when using `cd`
+  "dirspell"  # autocorrect on directory names to match a glob.
+  "dotglob"  # includes filenames beginning with a ‘.’ in the results of filename expansion.  must specify "." and ".." explicitly to match them
+  "globstar"  # recursive globbing, e.g. `ls **/*.txt`
+  "no_empty_cmd_completion"  # do not autocomplete when accidentally pressing 'tab' on an empty line...it takes forever and yields "Display all 15 gazillion possibilites?"
+)
+file=""
+i=""
+for i in ${!features[*]}; do
+  file="${features[${i}]}"
+  shopt -s "${file}"
+done
+unset features file i
+
+# do not overwrite files when redirecting using ">".  note that you can still
+# override this with ">|".
+set -o noclobber
+
+# avoid issues with `gpg` as installed via Homebrew.
+# https://stackoverflow.com/a/42265848/96656
+export GPG_TTY=$(tty)
+
+# export some OS-specific things
+case "${SYSTEM_TYPE}" in
+  macOS)
+         export CLICOLOR=1  # turn on colourization for 'ls' on macOS
+         export LDFLAGS="-L/usr/local/opt/curl/lib"  # so compilers can find 'curl' installed from Homebrew
+         export CPPFLAGS="-I/usr/local/opt/curl/include"  # so compilers can find 'curl' installed from Homebrew
+         export PKG_CONFIG_PATH="/usr/local/opt/curl/lib/pkgconfig"  # so 'pkg-config' can find 'curl' installed from Homebrew
+
+         # export some environment variables for Homebrew
+         export HOMEBREW_CASK_OPTS="--appdir="${HOME}"/Applications"  # keep Casks separate from the programs installed by macOS
+         export HOMEBREW_EDITOR="${EDITOR}"  # use the system editor to edit Homebrew stuff
+         export HOMEBREW_CACHE="/Volumes/ExternalHome/rtruell/HomebrewCache"  # get the cache off the SSD
+         export BREW_PREFIX=$(brew --prefix)  # store Homebrew's installation directory so I don't have to keep issuing the command
+         export HOMEBREW_NO_ANALYTICS=1  # turn off Google analytics for Homebrew
+         ;;
+      *)
+         ;;
+esac

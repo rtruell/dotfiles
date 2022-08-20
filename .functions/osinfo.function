@@ -1,0 +1,11 @@
+# show some info about your system
+function osinfo {
+  printf '\n%s' "You are running a "
+  if [[ -n "${DISTRO_NAME}" ]]; then printf '%b' "${DULL_RED}${DISTRO_NAME}${NORMAL}/"; fi
+  if [[ -n "${SYSTEM_TYPE}" ]]; then printf '%b\n' "${DULL_RED}${SYSTEM_TYPE}${NORMAL} system."; fi
+  if [[ -n "${RELEASE_NAME}" ]]; then printf '%b\n' "The release name is ${DULL_RED}${RELEASE_NAME}${NORMAL}."; fi
+  if [[ -n "${SYSTEM_VERSION}" ]]; then printf '%b\n' "The version is ${DULL_RED}${SYSTEM_VERSION}${NORMAL}."; fi
+  if [[ -n "${INSTALL_TYPE}" ]]; then printf '%b\n' "Software is primarily installed using ${DULL_RED}${INSTALL_TYPE}${NORMAL}."; fi
+  if [[ -n "${HOSTNAME}" ]]; then printf '%b\n' "The system's hostname is ${DULL_RED}${HOSTNAME}${NORMAL}".; fi
+  if [[ -n "${HOME}" ]]; then printf '%b\n\n' "Your home directory is ${DULL_RED}\"${HOME}\"${NORMAL}."; fi
+}

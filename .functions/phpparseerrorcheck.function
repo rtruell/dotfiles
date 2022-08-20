@@ -1,0 +1,11 @@
+# check for PHP parse errors
+# usage: phpparseerrorcheck /var/www/web3/
+function phpparseerrorcheck {
+  if [[ ${1} ]]; then
+    local location=${1}
+  else
+    local location="."
+  fi
+
+  find ${location} -name "*.php" -exec php -l {} \; | grep "Parse error"
+}

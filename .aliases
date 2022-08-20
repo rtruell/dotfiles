@@ -1,0 +1,64 @@
+#!/usr/bin/env bash
+
+# These should work on all OS's
+alias aw="ansiweather -f 0; ansiweather"  # the first command shows the current weather, the second command shows a 7 day forcast.
+alias back="cd -"  # cd back to the previous directory
+alias badge="tput bel"  # ring the terminal bell (useful when executing time-consuming commands)
+alias bee="env -i TERM="${TERM}" HOME="${HOME}" bash --norc --noprofile"  # set up a (mostly) empty 'bash' environment for testing
+alias blog="cd /Volumes/ExternalHome/rtruell/hugo"  # quickly get to my blog directory
+alias cls="clear"  # MS-DOS clear screen command
+alias clc="fc -ln -1 | tr -d '\t' | sed 's/ //' | putclip"  # based on http://apple.stackexchange.com/questions/110343/copy-last-command-in-terminal
+alias cp="cp -i"  # copy in interactive mode, requiring confirmation for each file
+alias df="df -h"  # display sizes in human-readable form (K, M, G)
+alias dotfiles="cd ${DOTFILES}; ls"  # quickly get to, and list, the dotfiles directory
+alias du="du -h"  # display sizes in human-readable form (K, M, G)
+alias edit="${EDITOR}"  # make editing files a little easier
+alias egrep="egrep --color=auto"  # highlight matches
+alias exists="findcommand"  # does the command exist?
+alias fgrep="fgrep --color=auto"  # highlight matches
+alias fs="stat -c '%s bytes'"  # file size, formatted nicely
+alias ghrepos="cd /Volumes/ExternalHome/rtruell/GitRepositories/GitHub; ls"  # quickly get to, and list, my GitHub repository directory
+alias gt="cd $(git rev-parse --show-toplevel 2>/dev/null) || (echo '.'; echo 'Not within a git repository' >&2)"
+alias gemupdate="sudo gem update --system --no-document; sudo gem cleanup"  # update system Ruby gems but not documentation and then clean things up
+alias grep="grep -E --color=auto"  # highlight matches and use extended regular expressions all the time...this way, my regex's will work the way I expect them to!
+alias h="history"  # saves typing
+alias home="cd $HOME"  # go home
+alias hosts="sudo ${EDITOR} /etc/hosts"  # easily edit the HOSTS file.  must use 'sudo' because the file is owned by 'root'
+alias ifl='sudo ./ifl/imagel'  # create an alias to avoid the shame/anger/annoyance of forgetting to use 'sudo' to run IFL
+alias iscommand="findcommand"  # is the command actually a command?
+alias la="ls -a"  # ls output includes hidden files
+alias lal="ls -al" # ls output in long format and including hidden files
+alias ll="ls -lh"  # ls output in long format with human-readable sizes
+alias mkdd="mkdir $(date +%Y%m%d)"  # create a dir with today's date in yyyy-mm-dd format
+alias mkdir="mkdir -p"  # create a directory, including parent directories as necessary
+alias more="less"  # 'more' sucks, use 'less' instead
+alias mv="mv -i"  # move in interactive mode, requiring confirmation for each file
+alias pager="${PAGER}"  # in case something uses the lowercase version
+alias path="listpath"  # pretty print the path
+alias reloadconfig="source ${HOME}/.bash_profile"  # reloads the dot-files, useful to make new modifications take effect
+alias rm="rm -i"  # delete in interactive mode, requiring confirmation for each file
+alias rot13="tr a-zA-Z n-za-mN-ZA-M"  # ROT13-encode text. Works for decoding, too! ;)
+alias s="source"  # makes it easy to 'source' script files
+alias sanitise="sanitize"  # check for a typo
+alias sede="sed -E"  # have 'sed' use extended regular expressions, so my regex's will work the way I expect them to!
+alias starwars="telnet towel.blinkenlights.nl"  # fun in terminal
+alias sudo="sudo "  # allow aliases to be used with 'sudo'
+alias timer="echo 'Timer started. Stop with Ctrl-D.' && date && time cat && date"  # stopwatch
+alias ttype="type -t"  # show the type of a command: alias, (shell reserved) keyword, function, builtin or disk file
+alias where="which"  # sometimes i forget
+
+# OS-specific aliases
+case "${SYSTEM_TYPE}" in
+  macOS)
+    alias archey="archey -p"  # system info in a pretty format...with a logo!  '-p' prints the number of Homebrew packages installed
+    alias dscleanup="find . -type f -name '*.DS_Store' -ls -delete"  # Recursively delete `.DS_Store` files
+    alias macOSupdate="sudo softwareupdate -i -a"  # install any available App Store updates
+    alias mycasks="cd /Volumes/ExternalHome/rtruell/HomebrewCasks"  # my Homebrew Casks
+    alias myperlsubs="cd ${PERL5LIB}"  # my Perl subroutines
+    alias remote="Xephyr :1 -screen 1920x1030 -query "  # connect to a Linux system on the local network
+    ;;
+  *)
+    alias listuuids="ls -l /dev/disk/by-uuid"  # to get the UUID of a disk
+    alias pkgfiles="dpkg --listfiles"  # list the files installed by a package
+    ;;
+esac
