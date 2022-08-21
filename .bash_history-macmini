@@ -1696,3 +1696,37 @@ BASE=$(git merge-base @{0} "${UPSTREAM}")
 echo $REMOTE
 #1661029815
 echo $BASE
+#1661055537
+dotfiles
+#1661055554
+findtext 'ln -s'
+#1661055802
+pwd
+#1661055809
+home
+#1661055818
+pwd
+#1661056120
+cat /private/etc/hosts
+#1661056141
+ls /privat/etc
+#1661056146
+ls /private/etc
+#1661056161
+cat /private/etc/hosts.old
+#1661056196
+ping -c 1 firewall
+#1661056207
+ping -c 1 fileserver
+#1661056215
+ping -c 1 qnap1
+#1661056219
+ping -c 1 qnap2
+#1661056249
+ping -c 1 ricks-iphone
+#1661056262
+ping -c 1 Ricks-iPhone
+#1661056282
+ping -c 1 macmini
+#1661056288
+ping -c 1 macminiw
