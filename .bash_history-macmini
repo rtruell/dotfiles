@@ -1730,3 +1730,27 @@ ping -c 1 Ricks-iPhone
 ping -c 1 macmini
 #1661056288
 ping -c 1 macminiw
+#1661311304
+iscommand Xephyr
+#1661311327
+remote nas
+#1661311683
+ping nas
+#1661311705
+remote 192.168.2.22
+#1661312803
+ssh -X rtruell@nas
+#1661314379
+ls .ssh
+#1661314404
+ls /opt/X11
+#1661314413
+ls /opt/X11/bin
+#1661314545
+subl .ssh/config
+#1661314602
+ssh -X rtruell@nas
+#1661314634
+ls .ssh
+#1661314642
+rm .ssh/config
