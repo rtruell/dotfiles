@@ -2,34 +2,35 @@
 
 # some functions to save duplicating (or worse) code
 function add_webmin {
-# add the repository for Webmin to 'apt'
-sudo "${HOME}"/bin/add-apt-key --acng https://download.webmin.com/jcameron-key.asc webmin "deb https://download.webmin.com/download/repository sarge contrib"
-print_result $? "Added the Webmin repository to 'apt'"
+  # add the repository for Webmin to 'apt'
+  sudo "${HOME}"/bin/add-apt-key --acng https://download.webmin.com/jcameron-key.asc webmin "deb https://download.webmin.com/download/repository sarge contrib"
+  print_result $? "Added the Webmin repository to 'apt'"
 }
 
 function add_sublime {
-# add the repository for Sublime Text/Merge to 'apt'
-sudo "${HOME}"/bin/add-apt-key --acng https://download.sublimetext.com/sublimehq-pub.gpg sublimehq "deb https://download.sublimetext.com/ apt/stable/"
-print_result $? "Added the Sublime Text/Merge repository to 'apt'"
+  # add the repository for Sublime Text/Merge to 'apt'
+  sudo "${HOME}"/bin/add-apt-key --acng https://download.sublimetext.com/sublimehq-pub.gpg sublimehq "deb https://download.sublimetext.com/ apt/stable/"
+  print_result $? "Added the Sublime Text/Merge repository to 'apt'"
 }
 
 function add_bcompare {
-# add the repository for Beyond Compare to 'apt'
-sudo "${HOME}"/bin/add-apt-key --acng https://www.scootersoftware.com/RPM-GPG-KEY-scootersoftware bcompare "deb https://www.scootersoftware.com/ bcompare4 non-free"
-print_result $? "Added the Beyond Compare repository to 'apt'"
+  # add the repository for Beyond Compare to 'apt'
+  sudo "${HOME}"/bin/add-apt-key --acng https://www.scootersoftware.com/RPM-GPG-KEY-scootersoftware bcompare "deb https://www.scootersoftware.com/ bcompare4 non-free"
+  print_result $? "Added the Beyond Compare repository to 'apt'"
 }
 
 function add_docker {
-# add the repository for Docker to 'apt'
-sudo "${HOME}"/bin/add-apt-key --acng https://download.docker.com/linux/debian/gpg docker "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-print_result $? "Added the Docker repository to 'apt'"
+  # add the repository for Docker to 'apt'
+  sudo "${HOME}"/bin/add-apt-key --acng https://download.docker.com/linux/debian/gpg docker "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
+  print_result $? "Added the Docker repository to 'apt'"
 }
 
 function add_vbox {
-# add the repository for VirtualBox to 'apt'.  note that '$(lsb_release -cs)' is
-# replaced with the name of the current release, ie. 'buster', 'bullseye', etc.
-sudo "${HOME}"/bin/add-apt-key https://www.virtualbox.org/download/oracle_vbox_2016.asc virtualbox "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
-print_result $? "Added the VirtualBox repository to 'apt'"
+  # add the repository for VirtualBox to 'apt'.  note that '$(lsb_release -cs)'
+  # is replaced with the name of the current release, ie. 'buster', 'bullseye',
+  # etc.
+  sudo "${HOME}"/bin/add-apt-key https://www.virtualbox.org/download/oracle_vbox_2016.asc virtualbox "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
+  print_result $? "Added the VirtualBox repository to 'apt'"
 }
 
 function create_proxy_file {
