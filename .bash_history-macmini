@@ -1754,3 +1754,5 @@ ssh -X rtruell@nas
 ls .ssh
 #1661314642
 rm .ssh/config
+#1661316005
+ssh -X nas
