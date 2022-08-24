@@ -109,56 +109,11 @@ if [[ -s /proc/version ]]; then
   if [[ -n "$(cat /proc/version | grep '(Microsoft@Microsoft.com)')" ]]; then SYSTEM_TYPE="Win10_Linux"; fi
 fi
 
-# get the os version
-if [ "${SYSTEM_TYPE}" == "macOS" ]; then
-  SYSTEM_VERSION="$(sw_vers -productVersion)"
-elif [ -e "/etc/os-release" ]; then
-  SYSTEM_VERSION=$(cat /etc/os-release | grep -i "version=" | cut -d'"' -f2 | cut -d'(' -f1)
-fi
-SYSTEM_VERSION=$(trim "${SYSTEM_VERSION}")
-
-# get the os release name
-if [ "${SYSTEM_TYPE}" == "macOS" ]; then
-  case "${SYSTEM_VERSION}" in
-       13*) RELEASE_NAME="Ventura" ;;
-       12*) RELEASE_NAME="Monterey" ;;
-       11*) RELEASE_NAME="Big Sur" ;;
-    10.15*) RELEASE_NAME="Catalina" ;;
-    10.14*) RELEASE_NAME="Mojave" ;;
-    10.13*) RELEASE_NAME="High Sierra" ;;
-    10.12*) RELEASE_NAME="Sierra" ;;
-    10.11*) RELEASE_NAME="El Capitan" ;;
-    10.10*) RELEASE_NAME="Yosemite" ;;
-     10.9*) RELEASE_NAME="Mavericks" ;;
-     10.8*) RELEASE_NAME="Mountain Lion" ;;
-     10.7*) RELEASE_NAME="Lion" ;;
-     10.6*) RELEASE_NAME="Snow Leopard" ;;
-     10.5*) RELEASE_NAME="Leopard" ;;
-     10.4*) RELEASE_NAME="Tiger" ;;
-     10.3*) RELEASE_NAME="Panther" ;;
-     10.2*) RELEASE_NAME="Jaguar" ;;
-     10.1*) RELEASE_NAME="Puma" ;;
-     10.0*) RELEASE_NAME="Cheetah" ;;
-         *) RELEASE_NAME="Unknown" ;;
-  esac
-else
-  RELEASE_NAME=$(cat /etc/os-release | grep -i "version=" | cut -d'"' -f2 | cut -d'(' -f2 | cut -d ')' -f1)
-fi
-
-# get the distribution name...unless installing on macOS, since macOS doesn't
-# have distributions
-if [ "${SYSTEM_TYPE}" != "macOS" ]; then
-  DISTRO_NAME=$(lsb_release -is)
-fi
-
 printf '%s\n' "  The following information has been automatically detected.  If any of it is"
 printf '%s\n\n' "  wrong, or missing, reply 'n' to the prompt to abort the installation."
 printf '\t%s\n' "User: ${username}"
 printf '\t%s\n' "Computer: ${computername}"
 printf '\t%s\n' "OS: ${SYSTEM_TYPE}"
-if [[ "${SYSTEM_TYPE}" != "macOS" ]]; then printf '\t%s\n' "OS Distro name: ${DISTRO_NAME}"; fi
-printf '\t%s\n' "OS Version: ${SYSTEM_VERSION}"
-printf '\t%s\n' "OS Release name: ${RELEASE_NAME}"
 printf "\n"
 print_warn "Is this correct? (y/n) "
 read -n 1
@@ -397,7 +352,7 @@ else
     nas*)
           declare -a programs=(
             "archey"
-          )  # the programs array, each element of which is a program to be instalaled
+          )  # the programs array, each element of which is a program to be installed
           programdir="/nas/data/Downloads/Linux/InUse/Installed/Automated"  # the directory containing the programs to be copied
           ;;
     rpi*)
