@@ -26,8 +26,8 @@ alias home="cd $HOME"  # go home
 alias hosts="sudo ${EDITOR} /etc/hosts"  # easily edit the HOSTS file.  must use 'sudo' because the file is owned by 'root'
 alias ifl='sudo ./ifl/imagel'  # create an alias to avoid the shame/anger/annoyance of forgetting to use 'sudo' to run IFL
 alias iscommand="findcommand"  # is the command actually a command?
-alias la="ls -a"  # ls output includes hidden files
-alias lal="ls -al" # ls output in long format and including hidden files
+alias la="ls -A"  # ls output includes hidden files but not '.' or '..'
+alias lal="ls -Al" # ls output in long format and including hidden files but not '.' or '..'
 alias ll="ls -lh"  # ls output in long format with human-readable sizes
 alias mkdd="mkdir $(date +%Y%m%d)"  # create a dir with today's date in yyyy-mm-dd format
 alias mkdir="mkdir -p"  # create a directory, including parent directories as necessary
@@ -37,7 +37,7 @@ alias pager="${PAGER}"  # in case something uses the lowercase version
 alias path="listpath"  # pretty print the path
 alias reloadconfig="source ${HOME}/.bash_profile"  # reloads the dot-files, useful to make new modifications take effect
 alias rm="rm -i"  # delete in interactive mode, requiring confirmation for each file
-alias rot13="tr a-zA-Z n-za-mN-ZA-M"  # ROT13-encode text. Works for decoding, too! ;)
+alias rot13="tr a-zA-Z n-za-mN-ZA-M"  # ROT13-encode text.  works for decoding, too! ;)
 alias s="source"  # makes it easy to 'source' script files
 alias sanitise="sanitize"  # check for a typo
 alias sede="sed -E"  # have 'sed' use extended regular expressions, so my regex's will work the way I expect them to!
@@ -51,14 +51,15 @@ alias where="which"  # sometimes i forget
 case "${SYSTEM_TYPE}" in
   macOS)
     alias archey="archey -p"  # system info in a pretty format...with a logo!  '-p' prints the number of Homebrew packages installed
-    alias dscleanup="find . -type f -name '*.DS_Store' -ls -delete"  # Recursively delete `.DS_Store` files
+    alias dscleanup="find . -type f -name '*.DS_Store' -ls -delete"  # recursively delete `.DS_Store` files
     alias macOSupdate="sudo softwareupdate -i -a"  # install any available App Store updates
     alias mycasks="cd /Volumes/ExternalHome/rtruell/HomebrewCasks"  # my Homebrew Casks
     alias myperlsubs="cd ${PERL5LIB}"  # my Perl subroutines
     alias remote="Xephyr :1 -screen 1920x1030 -query "  # connect to a Linux system on the local network
     ;;
   *)
-    alias listuuids="ls -l /dev/disk/by-uuid"  # to get the UUID of a disk
+    alias gparted="sudo -E gparted"  # to use 'gparted' over SSH
+    alias listuuids="ls -l /dev/disk/by-uuid"  # list the UUID's of the partitions
     alias pkgfiles="dpkg --listfiles"  # list the files installed by a package
     ;;
 esac
