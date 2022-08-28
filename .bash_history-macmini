@@ -1756,3 +1756,49 @@ ls .ssh
 rm .ssh/config
 #1661316005
 ssh -X nas
+#1661661523
+b ud
+#1661661603
+which brew
+#1661661607
+whereis brew
+#1661661629
+less /usr/local/bin/brew
+#1661661706
+subl /usr/local/bin/brew
+#1661661925
+echo $HOMEBREW_PREFIX
+#1661661938
+ls /usr/local
+#1661661952
+ls /usr/local/bin
+#1661661986
+ll /usr/local/bin/b*
+#1661662012
+ls /usr/local
+#1661662025
+cd /usr/local/Homebrew/
+#1661662230
+brew --version
+#1661663702
+port version
+#1661664061
+b s xmltv
+#1661664162
+archie
+#1661664166
+alias
+#1661664177
+archey
+#1661664980
+b i bash
+#1661665267
+b i gcc
+#1661665289
+b s gcc
+#1661665300
+b s bash
+#1661666641
+cd home
+#1661666643
+home
