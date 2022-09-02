@@ -1814,3 +1814,5 @@ b i php
 brew search php
 #1662157231
 pip --version
+#1662157685
+whereis php
