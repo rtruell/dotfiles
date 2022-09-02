@@ -1802,3 +1802,15 @@ b s bash
 cd home
 #1661666643
 home
+#1662157149
+php --version
+#1662157159
+b up
+#1662157194
+b s php
+#1662157203
+b i php
+#1662157215
+brew search php
+#1662157231
+pip --version
