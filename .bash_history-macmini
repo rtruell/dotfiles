@@ -1816,3 +1816,7 @@ brew search php
 pip --version
 #1662157685
 whereis php
+#1662181615
+system_profiler SPHardwareDataType | grep 'Model Identifier'
+#1662181677
+python --version
