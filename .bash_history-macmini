@@ -1820,3 +1820,29 @@ whereis php
 system_profiler SPHardwareDataType | grep 'Model Identifier'
 #1662181677
 python --version
+#1662244134
+cd /Volumes/data/xmltv
+#1662244146
+cd data
+#1662244204
+mkdir 2014-2015
+#1662244217
+mkdir 2015-2016
+#1662244224
+mkdir 2016-2017
+#1662244234
+mkdir 2017-2018
+#1662244242
+mkdir 2018-2019
+#1662244252
+mkdir 2019-2020
+#1662244262
+mkdir 2020-2021
+#1662244269
+mkdir 2021-2022
+#1662244323
+home
+#1662263275
+java -version
+#1662263282
+update-alternatives --config java
