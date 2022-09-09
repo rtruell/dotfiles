@@ -13,21 +13,44 @@ for i in "${filenames[@]}"; do  # loop through all the '.deb' files that were fo
   print_result $? "Deleted ${i}"
 done
 
+# change the timeout value in 'grub'
+sudo cp /etc/default/grub /etc/default/grub.orig  # back up '/etc/default/grub', just in case
+print_result $? "Backed up '/etc/default/grub'"
+sudo sed -E 's/(GRUB_TIMEOUT=).*/\110/' -i /etc/default/grub  # change the timeout to 10 seconds, regardless of what it was
+print_result $? "Changed the timeout value for 'grub'"
+sudo update-grub  # update grub so the new value takes effect
+print_result $? "Updated 'grub'"
+
+# if not installing on a Raspberry Pi, install IFL
 if [[ "${computername}" != "rpi"* ]]; then
-  # install IFL
   ifldir="${HOME}/ifl"
   [[ -d "${ifldir}" ]]  # check to see if the directory to install IFL in exists
   retcode=$?
   if [[ "${retcode}" == 0 ]]; then
-    print_result 0 "'${ifldir}' exists"  # it exists
+    print_result retcode "'${ifldir}' exists"  # it exists
   else
     mkdir "${ifldir}"  # it doesn't exist, so create it
     print_result $? "Created '${ifldir}'"
   fi
-  unzip -d "${ifldir}" "${programtmp}"/ifl*.zip  # install IFL
+  sudo cp -a /etc/grub.d/40_custom /etc/grub.d/40_custom-orig  # back up '/etc/grub.d/40_custom'
+  print_result $? "Backed up '/etc/grub.d/40_custom'"
+  sudo cp -a /boot/grub/grub.cfg /boot/grub/grub.cfg-orig  # back up '/boot/grub/grub.cfg'
+  print_result $? "Backed up '/boot/grub/grub.cfg'"
+  unzip -d "${ifldir}" "${programtmp}"/ifl*.zip >/dev/null  # install IFL
   print_result $? "Installed IFL"
   rm "${programtmp}"/ifl*.zip  # don't need the IFL installation file anymore, so delete it
   print_result $? "Deleted the IFL installation file"
+  cd "${ifldir}"  # change to the IFL directory
+  print_result $? "Changed to '${ifldir}'"
+  unzip config.zip >/dev/null  # unzip the configuration files
+  print_result $? "Installed IFL's configuration files"
+  mv config.txt config.txt.orig  # backup 'config.txt'
+  print_result $? "Backed up 'config.txt'"
+  for i in ${iflconfigfiles[@]}; do
+    mv ../"${i}" .  # move the license and config files to where they belong
+    print_result $? "Moved '${i}' to '${ifldir}'"
+    chmod 644 "${i}"  # make sure the file permissions are set properly
+  done
 
   # IFL has some dependencies which need to be installed
   declare -a dependencies=(
@@ -47,8 +70,18 @@ if [[ "${computername}" != "rpi"* ]]; then
     yes | sudo apt install "${i}"  # ... installing them, automatically answering 'yes' to any prompts ...
     print_result $? "Installed ${i}"  # ... and printing a message giving the status of the installation
   done
-  sudo adduser "${username}" disk  # add the user to the 'disk' group so IFL can access the devices
-  print_result $? "Added ${username} to the 'disk' group to run IFL"
+
+  # configure IFL
+  sudo ./setup
+  print_result $? "Configured IFL"
+
+  # add the user to the 'disk' group so IFL can be run without 'sudo'
+  sudo adduser "${username}" disk
+  print_result $? "Added '${username}' to the 'disk' group"
+
+  # create and install the GRUB files
+  sudo ./makeGRUB
+  print_result $? "Created and installed the GRUB files"
 fi
 
 # set the RTC to local time
@@ -76,14 +109,6 @@ else
   sudo chmod 600 /etc/ssh/sshd_config.d/port.conf  # and set its permissions
   print_result $? "Changed permissions for '/etc/ssh/sshd_config.d/port.conf'"
 fi
-
-# change the timeout value in 'grub'
-sudo cp /etc/default/grub /etc/default/grub.orig  # back up '/etc/default/grub', just in case
-print_result $? "Backed up '/etc/default/grub'"
-sudo sed -E 's/(GRUB_TIMEOUT=).*/\110/' -i /etc/default/grub  # change the timeout to 10 seconds, regardless of what it was
-print_result $? "Changed the timeout value for 'grub'"
-sudo update-grub  # update grub so the new value takes effect
-print_result $? "Updated 'grub'"
 
 # change the servers the clock is synced to
 sudo cp /etc/systemd/timesyncd.conf /etc/systemd/timesyncd.conf.orig  # back up '/etc/systemd/timesyncd.conf', just in case
