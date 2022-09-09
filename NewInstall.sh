@@ -364,11 +364,11 @@ else
        *)
           declare -a programs=(
             "archey"
+            "dummy"
             "freequide"
             "google-earth"
             "imager"
             "usbimager"
-            "zulu"
           )
           programdir="${HOME}/mountpoint/Downloads/Linux/InUse/Installed/Automated"
           ;;
@@ -389,16 +389,25 @@ else
   done
 
   # the Terabyte programs live in their own directory, and the path to their
-  # directory depends on the machine being installed on.  so, set 'iflprogram'
-  # appropriately and copy IFL...unless installing on a Raspberry Pi
+  # directory depends on the machine being installed on.  so, set 'iflprogramdir'
+  # appropriately and copy the IFL files...unless installing on a Raspberry Pi
   if [[ "${computername}" != "rpi"* ]]; then
+    declare -a iflconfigfiles=(
+      "BOOTITBM.INI"
+      "config.txt"
+      "ifl.ini"
+    )
     if [[ "${computername}" == "nas"* ]]; then
-      iflprogram="/nas/data/Downloads/TeraByte/InUse/Installed/ifl_en_cui_x64"
+      iflprogramdir="/nas/data/Downloads/TeraByte/InUse/Installed"
     else
-      iflprogram="/mountpoint/Downloads/TeraByte/InUse/Installed/ifl_en_cui_x64"
+      iflprogramdir="/mountpoint/Downloads/TeraByte/InUse/Installed"
     fi
-    cp -a "${iflprogram}"* "${programtmp}"
-    print_result $? "Copied IFL"
+    cp -a "${iflprogramdir}"/ifl_en_cui_x64* "${programtmp}"
+    print_result $? "Copied IFL to '${programtmp}'"
+    for i in ${iflconfigfiles[@]}; do
+      cp -a "${iflprogramdir}/ConfigFiles/${i}" "${HOME}"
+      print_result $? "Copied '${i}' to '${HOME}'"
+    done
   fi
 fi
 
