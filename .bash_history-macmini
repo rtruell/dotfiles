@@ -1848,3 +1848,65 @@ java -version
 update-alternatives --config java
 #1662676532
 /Volumes/data/Text/E-bookReadingOrder/Master\ Book\ List.sh; exit
+#1662785830
+b i neofetch
+#1662785870
+b ud
+#1662785945
+b i neofetch
+#1662785955
+b in neofetch
+#1662785979
+neofetch
+#1662785996
+b in neofetch
+#1662786021
+which brew
+#1662786028
+less /usr/local/bin/brew
+#1662786178
+cat /usr/local/bin/brew
+#1662786198
+echo $HOMEBREW_LIBRARY
+#1662786224
+which brew
+#1662786227
+whereis brew
+#1662786244
+less /usr/local/bin/brew
+#1662786371
+echo $HOMEBREW_PREFIX
+#1662786379
+less /usr/local/brew
+#1662786389
+less /usr/local/bin/brew
+#1662786553
+pico /usr/local/bin/brew
+#1662786624
+b i archey4
+#1662786656
+less /usr/local/Homebrew?library/Homebrew/brew.sh
+#1662786680
+less /usr/local/Homebrew/Library/Homebrew/brew.sh
+#1662786813
+pico /usr/local/Homebrew/Library/Homebrew/brew.sh
+#1662786881
+b ud
+#1662786910
+b i neofetch
+#1662786934
+b i archey4
+#1662786949
+b in neofetch
+#1662786985
+pico /usr/local/Homebrew/Library/Homebrew/brew.sh
+#1662787002
+less /usr/local/Homebrew/Library/Homebrew/brew.sh
+#1662787103
+pico /usr/local/Homebrew/Library/Homebrew/brew.sh
+#1662787171
+less /usr/local/Homebrew/Library/Homebrew/brew.sh
+#1662787196
+b in neofetch
+#1662787243
+less /usr/local/Homebrew/Library/Homebrew/brew.sh
