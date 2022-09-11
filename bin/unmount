@@ -1,0 +1,19 @@
+#!/usr/bin/env bash
+
+# I've had problems trying to unmount an SMB share in a script once I'm done
+# using it.  this script makes 10 attempts, pausing for 2 seconds between
+# attempts, to unmount the share before error-ing out
+mountpoint="${1}"
+for i in `seq 1 10`; do
+  umount "${mountpoint}"
+  if [[ "$?" = "0" ]]; then
+    printf '%s\n' "Unmounted ${mountpoint}"
+  else
+    printf '%s\n' "Attempt ${i}: Failed to unmount ${mountpoint}"
+    if [[ "${i}" = "10" ]]; then
+      exit 1
+    else
+      sleep 2
+    fi
+  fi
+done
