@@ -1,6 +1,7 @@
 acpi  # displays information on ACPI devices
 amd64-microcode
 ansiweather
+apt-file
 audacity
 bash
 bash-completion
@@ -33,6 +34,7 @@ locales
 lynx  # text web browser
 mlocate  # quickly find files on the filesystem based on their name
 moreutils
+neofetch
 netselect-apt  # find the fastest 'apt' mirror
 network-manager-openconnect
 nmap  # network mapper
