@@ -51,6 +51,8 @@ if [[ "${computername}" != "rpi"* ]]; then
     print_result $? "Moved '${i}' to '${ifldir}'"
     chmod 644 "${i}"  # make sure the file permissions are set properly
   done
+  mv ../daily-backup ./scripts  # move the backup script to where it belongs
+  print_result $? "Moved 'daily-backup' to '${ifldir}/scripts'"
 
   # IFL has some dependencies which need to be installed
   declare -a dependencies=(
