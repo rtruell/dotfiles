@@ -1914,3 +1914,7 @@ less /usr/local/Homebrew/Library/Homebrew/brew.sh
 b s imager
 #1662843411
 b s rpi
+#1662869593
+man mktemp
+#1662869623
+mktemp -d
