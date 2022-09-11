@@ -408,6 +408,7 @@ else
       cp -a "${iflprogramdir}/ConfigFiles/${i}" "${HOME}"
       print_result $? "Copied '${i}' to '${HOME}'"
     done
+    cp -a "${iflprogramdir}/ConfigFiles/daily-backup" "${HOME}"
   fi
 fi
 
@@ -419,7 +420,7 @@ if [[ "${SYSTEM_TYPE,,}" == "macos" ]]; then
   print_result $? "Unmounted NAS"
 else
   if [[ "${computername}" != "nas"* ]]; then
-    sudo umount "${HOME}"/mountpoint  # unmount the NAS
+    sudo "${HOME}"/bin/unmount "${HOME}"/mountpoint  # unmount the NAS
     print_result $? "Unmounted NAS"
     rmdir "${HOME}"/mountpoint  # delete the mountpoint
     print_result $? "Deleted mount point"
