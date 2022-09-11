@@ -1918,3 +1918,13 @@ b s rpi
 man mktemp
 #1662869623
 mktemp -d
+#1662933861
+cd /Volumes/ExternalHome/rtruell/GitRepositories/GitHub/dotfiles/
+#1662933882
+textfind manual
+#1662933889
+findtext manual
+#1662933951
+findtext
+#1662933962
+findtext -i manual
