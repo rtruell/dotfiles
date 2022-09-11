@@ -59,6 +59,7 @@ case "${SYSTEM_TYPE}" in
     ;;
   *)
     alias gparted="sudo -E gparted"  # to use 'gparted' over SSH
+    alias installfiles="apt-file list"  # list the files that will be installed by a package
     alias listuuids="ls -l /dev/disk/by-uuid"  # list the UUID's of the partitions
     alias pkgfiles="dpkg --listfiles"  # list the files installed by a package
     ;;
