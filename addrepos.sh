@@ -29,7 +29,7 @@ function add_vbox {
   # add the repository for VirtualBox to 'apt'.  note that '$(lsb_release -cs)'
   # is replaced with the name of the current release, ie. 'buster', 'bullseye',
   # etc.
-  sudo "${HOME}"/bin/add-apt-key https://www.virtualbox.org/download/oracle_vbox_2016.asc virtualbox "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
+  sudo "${HOME}"/bin/add-apt-key --acng https://www.virtualbox.org/download/oracle_vbox_2016.asc virtualbox "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
   print_result $? "Added the VirtualBox repository to 'apt'"
 }
 
