@@ -1936,3 +1936,5 @@ findtext -i docker
 home
 #1662954966
 ls /etc
+#1663021224
+findshow monarch
