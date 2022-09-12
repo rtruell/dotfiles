@@ -1928,3 +1928,11 @@ findtext manual
 findtext
 #1662933962
 findtext -i manual
+#1662934164
+cd /Volumes/ExternalHome/rtruell/GitRepositories/GitHub/dotfiles/
+#1662934177
+findtext -i docker
+#1662938038
+home
+#1662954966
+ls /etc
