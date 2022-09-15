@@ -1950,3 +1950,7 @@ findtext xmltv
 findtext ".xmltv"
 #1663217366
 findtext "\.xmltv"
+#1663282443
+findtext -i new
+#1663282741
+findtext -i movie
