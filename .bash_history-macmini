@@ -1944,3 +1944,9 @@ b s virtualbox
 findtext movie
 #1663216723
 findtext new
+#1663217309
+findtext xmltv
+#1663217343
+findtext ".xmltv"
+#1663217366
+findtext "\.xmltv"
