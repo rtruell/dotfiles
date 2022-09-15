@@ -1940,3 +1940,7 @@ ls /etc
 findshow monarch
 #1663045277
 b s virtualbox
+#1663216277
+findtext movie
+#1663216723
+findtext new
