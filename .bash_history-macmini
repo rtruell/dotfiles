@@ -2066,3 +2066,7 @@ rm test-fixed.xml
 fixjsonxmltv
 #1663305178
 ll
+#1663347161
+v norm
+#1663347180
+v onorm
