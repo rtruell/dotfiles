@@ -1954,3 +1954,115 @@ findtext "\.xmltv"
 findtext -i new
 #1663282741
 findtext -i movie
+#1663300245
+aline="<display-name>KTLA</display-name>"
+#1663300295
+echo "${aline#>}"
+#1663300318
+echo $aline
+#1663300350
+echo "${aline#*>}"
+#1663300398
+channelname="${aline#*>}"
+#1663300409
+echo $channelname
+#1663300454
+channelname="${channelname%<*}"
+#1663300456
+echo $channelname
+#1663300691
+aline="    <display-name>9145</display-name>"
+#1663300725
+channelnumber="${aline#*>}"
+#1663300735
+echo $channelnumber
+#1663300761
+channelnumber="${channelnumber%<*}"
+#1663300764
+echo $channelnumber
+#1663301105
+aline="    <display-name>ABLEGSD</display-name>"
+#1663301495
+channelname="${aline#*>}"
+#1663301505
+channelname="${channelname%<*}"
+#1663301510
+echo $aline
+#1663301517
+echo $channelname
+#1663301522
+echo $channelnumber
+#1663301654
+sed 's,${channelname},${channelnumber}${channelname}' <<<${aline}
+#1663301683
+sed 's,${channelname},${channelnumber}${channelname},' <<<${aline}
+#1663301853
+sed "s,${channelname},${channelnumber}${channelname}," <<<${aline}
+#1663301870
+echo ${aline}
+#1663301911
+sed "s,${channelname},${channelnumber} ${channelname}," <<<${aline}
+#1663301972
+aline="    <display-name>ABLEGSD</display-name>"
+#1663301976
+echo ${aline}
+#1663301983
+sed "s,${channelname},${channelnumber} ${channelname}," <<<${aline}
+#1663302284
+sed "s,${channelname},${channelnumber} ${channelname}," <<< ${aline}
+#1663302493
+sed 's,'"${channelname}"',${channelnumber} &,' <<< ${aline}
+#1663302533
+sed 's,'"${channelname}"',"${channelnumber}" &,' <<< ${aline}
+#1663302603
+sed "s,${channelname},${channelnumber} ${channelname}," <<<${aline}
+#1663302626
+dave=$(sed "s,${channelname},${channelnumber} ${channelname}," <<<${aline})
+#1663302648
+echo ">${dave}<"
+#1663302882
+echo ${aline}
+#1663302919
+printf '%s\n' ">${dave}<"
+#1663302926
+echo $aline
+#1663302971
+aline="    <display-name>ABLEGSD</display-name>"
+#1663302973
+echo $aline
+#1663302997
+printf '%s\n' ">${aline}<"
+#1663303052
+channelname="${aline#*>}"
+#1663303063
+channelname="${channelname%<*}"
+#1663303079
+printf '%s\n' ">${channelname}<"
+#1663303085
+printf '%s\n' ">${channelnumber}<"
+#1663303094
+printf '%s\n' ">${aline}<"
+#1663303118
+dave=$(sed "s,${channelname},${channelnumber} ${channelname}," <<<${aline})
+#1663303129
+printf '%s\n' ">${dave}<"
+#1663304245
+path
+#1663304673
+cd testscripts/
+#1663304689
+ll
+#1663304698
+less fixjsonxmltv
+#1663304716
+fixjsonxmltv
+#1663304720
+ll
+#1663304764
+less test-fixed.xml
+#1663305165
+rm test-fixed.xml
+#1663305175
+fixjsonxmltv
+#1663305178
+ll
