@@ -2070,3 +2070,185 @@ ll
 v norm
 #1663347180
 v onorm
+#1663449425
+aline="  <episode-num system="xmltv_ns"> 0 / 1 . 14 .  </episode-num>"
+#1663449434
+printf 
+#1663449460
+printf '%s\n' ">${aline}<"
+#1663449541
+season="${aline#*ns> }"
+#1663449553
+printf '%s\n' ">${season}<"
+#1663449604
+season="${season%% /*}"
+#1663449608
+printf '%s\n' ">${season}<"
+#1663449794
+episode="${aline#*. }"
+#1663449803
+printf '%s\n' ">${episode}<"
+#1663449868
+episode="${episode% .*}"
+#1663449871
+printf '%s\n' ">${episode}<"
+#1663450331
+((season++))
+#1663450344
+printf '%s\n' ">${season}<"
+#1663450357
+printf '%s\n' ">${episode}<"
+#1663450372
+((episode++))
+#1663450376
+printf '%s\n' ">${episode}<"
+#1663450840
+if [[ ${#episode} < 2 ]]; then episode="0${episode}"
+#1663450860
+if [[ ${#episode} < 2 ]]; then episode="0${episode}"; fi
+#1663450865
+printf '%s\n' ">${episode}<"
+#1663450899
+episode="2"
+#1663450906
+if [[ ${#episode} < 2 ]]; then episode="0${episode}"; fi
+#1663450911
+printf '%s\n' ">${episode}<"
+#1663450984
+printf '%s\n' ">${season}<"
+#1663450987
+printf '%s\n' ">${episode}<"
+#1663450996
+aline="  <episode-num system=\"onscreen\">${season}${episode}</episode-num>"
+#1663451024
+printf '%s\n' ">${aline}<"
+#1663452120
+cd /Volumes/Temp/
+#1663452261
+findtext "airdate" 2022-09-16-telus-json-sql-nomythtvorder.xml | less
+#1663452283
+findtext -h
+#1663452314
+findtext "airdate" 2022-09-16-telus-json-sql-nomythtvorder.xml
+#1663452366
+findtext "airdate" *nomythtvorder.xml
+#1663452394
+ttype findtext
+#1663452400
+lf findtest
+#1663452404
+lf findtext
+#1663452501
+find . -type f -name *nomythtvorder.xml
+#1663452583
+findtext "airdate" *nomythtvorder.xml
+#1663452603
+findtext -i "airdate" *nomythtvorder.xml
+#1663452823
+back
+#1663454183
+aline="  <episode-num system="schedulesdirect.org">originalAirDate/20220916 +0000</episode-num>"
+#1663454294
+originalAirDate="${aline#*/}"
+#1663454310
+printf '%s\n' ">${aline}<"
+#1663454335
+printf '%s\n' ">${originalAirDate}<"
+#1663454382
+originalAirDate="${originalAirDate% *}"
+#1663454389
+printf '%s\n' ">${originalAirDate}<"
+#1663454754
+aline="  <date>${originalAirDate}</date>"
+#1663454768
+printf '%s\n' ">${aline}<"
+#1663456753
+aline="  <length units="seconds">1260</length>"
+#1663456756
+printf '%s\n' ">${aline}<"
+#1663456783
+aline="  <length units=\"seconds\">1260</length>"
+#1663456785
+printf '%s\n' ">${aline}<"
+#1663456839
+programlength="${aline#*>}"
+#1663456849
+printf '%s\n' ">${programlength}<"
+#1663456908
+programlength="${programlength%<*}"
+#1663456912
+printf '%s\n' ">${programlength}<"
+#1663457196
+((programlength/60))
+#1663457202
+printf '%s\n' ">${programlength}<"
+#1663457392
+programlength=$((programlength/60))
+#1663457395
+printf '%s\n' ">${programlength}<"
+#1663457615
+aline="  <length units=\"minutes\">${programlength}</length>"
+#1663457623
+programlength="${aline#*>}"
+#1663457646
+printf '%s\n' ">${aline}<"
+#1663458859
+cd testscripts
+#1663458870
+cat test.xml
+#1663458904
+fixjsonxmltv
+#1663473223
+less test-fixed.xml
+#1663473296
+less test.xml
+#1663473308
+less test-fixed.xml
+#1663473568
+aline="  <episode-num system="xmltv_ns"> 10 / 1 . 4 .  </episode-num>"
+#1663473578
+printf '%s\n' ">${aline}<"
+#1663473620
+aline="  <episode-num system=\"xmltv_ns\"> 10 / 1 . 4 .  </episode-num>"
+#1663473622
+printf '%s\n' ">${aline}<"
+#1663473655
+season="${aline#*ns> }"
+#1663473666
+season="${season%% /*}"
+#1663473674
+printf '%s\n' ">${season}<"
+#1663473709
+printf '%s\n' ">${aline}<"
+#1663473720
+season="${aline#*ns> }"
+#1663473726
+printf '%s\n' ">${season}<"
+#1663473764
+printf '%s\n' ">${aline}<"
+#1663473787
+season="${aline#*> }"
+#1663473793
+printf '%s\n' ">${season}<"
+#1663473823
+season="${season%% /*}"
+#1663473830
+printf '%s\n' ">${season}<"
+#1663473958
+aline="  <length units="seconds">1500</length>"
+#1663473971
+printf '%s\n' ">${aline}<"
+#1663474071
+cat test-fixed.xml
+#1663474136
+cat test.xml
+#1663474164
+rm test-fixed.xml
+#1663474189
+fixjsonxmltv
+#1663474204
+list test-fixed.xml
+#1663474214
+less test-fixed.xml
+#1663474779
+rm test-fixed.xml
