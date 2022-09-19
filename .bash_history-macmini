@@ -2262,3 +2262,49 @@ fixjsonxmltv test.xml
 ll
 #1663562467
 less test.xml-fixed
+#1663591951
+cd testscripts/
+#1663591961
+fixjsonxmltv test.xml
+#1663592369
+rm test.xml-fixed
+#1663592375
+fixjsonxmltv test.xml
+#1663592380
+ll
+#1663592390
+less text.xml-fixed
+#1663592402
+less test.xml-fixed
+#1663592925
+aline="  <category>Reality</category>"
+#1663593028
+allcategory="${aline#*<}"
+#1663593095
+printf '%s\n' ">${allcategory}<"
+#1663593110
+allcategory="${aline#*>}"
+#1663593112
+printf '%s\n' ">${allcategory}<"
+#1663593165
+allcategory="${allcategory%<*}"
+#1663593169
+printf '%s\n' ">${allcategory}<"
+#1663597961
+rm test.xml-fixed
+#1663597977
+fixjsonxmltv test.xml
+#1663598029
+ll
+#1663598046
+less test.xml-fixed
+#1663598281
+ll
+#1663598288
+rm test.xml-fixed
+#1663598298
+fixjsonxmltv test.xml
+#1663598302
+ll
+#1663598312
+less test.xml-fixed
