@@ -2308,3 +2308,47 @@ fixjsonxmltv test.xml
 ll
 #1663598312
 less test.xml-fixed
+#1663600546
+cd testscripts/
+#1663600565
+fixjsonxmltv test1.xml
+#1663600567
+ll
+#1663600850
+fixjsonxmltv test1.xml
+#1663600853
+ll
+#1663620913
+fixjsonxmltv test.xml
+#1663620939
+less test.xml
+#1663620960
+less test.xml-fixed
+#1663621039
+rm test.xml-fixed
+#1663621546
+fixjsonxmltv test.xml
+#1663621561
+less test.xml-fixed
+#1663622552
+rm test.xml-fixed
+#1663622656
+fixjsonxmltv test.xml
+#1663622660
+less test.xml-fixed
+#1663622738
+rm test.xml-fixed
+#1663622809
+fixjsonxmltv test.xml
+#1663622814
+less test.xml-fixed
+#1663622871
+rm test.xml-fixed
+#1663622898
+fixjsonxmltv test.xml
+#1663622900
+less test.xml-fixed
+#1663623094
+rm test.xml-fixed
+#1663623555
+back
