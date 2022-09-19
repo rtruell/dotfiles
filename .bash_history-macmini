@@ -2252,3 +2252,13 @@ list test-fixed.xml
 less test-fixed.xml
 #1663474779
 rm test-fixed.xml
+#1663562396
+cd testscripts
+#1663562408
+fixjsonxmltv
+#1663562432
+fixjsonxmltv test.xml
+#1663562436
+ll
+#1663562467
+less test.xml-fixed
