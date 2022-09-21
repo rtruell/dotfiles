@@ -2352,3 +2352,51 @@ less test.xml-fixed
 rm test.xml-fixed
 #1663623555
 back
+#1663745573
+findshow " 300 
+#1663745587
+findshow " 300 "
+#1663745596
+findshow " 145 "
+#1663745629
+findshow "stargirl"
+#1663745694
+findshow ";145& "
+#1663745704
+findshow ";145&"
+#1663745730
+findshow ";145&" | less
+#1663745766
+findshow ";300&"
+#1663745817
+findshow ";557&"
+#1663745856
+findshow ";301&"
+#1663745911
+findshow ";302&"
+#1663745987
+findshow ";280&"
+#1663746004
+findshow ";386&"
+#1663746041
+findshow ";393&"
+#1663746067
+findshow ";462&"
+#1663746105
+findshow ";604&"
+#1663746125
+findshow ";600&"
+#1663746171
+findshow ";500&"
+#1663746231
+findshow ";705&"
+#1663746254
+findshow ";306&"
+#1663746276
+findshow ";390&"
+#1663746304
+findshow ";700&"
+#1663746330
+findshow ";329&"
+#1663746381
+findshow ";331&"
