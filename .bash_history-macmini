@@ -2450,3 +2450,11 @@ fromplist org.freeguide-tv.maincontroller.plist
 fromplist org.freeguide-tv.misc.plist
 #1663883838
 fromplist org.freeguide-tv.modules.plist
+#1663885032
+/Volumes/ExternalHome/rtruell/freeguide/freeguide; exit
+#1663887456
+toplist org.freeguide-tv.maincontroller.plist
+#1663887468
+toplist org.freeguide-tv.misc.plist
+#1663887473
+toplist org.freeguide-tv.modules.plist
