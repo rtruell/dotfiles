@@ -2440,3 +2440,13 @@ plistedit org.freeguide-tv.misc.plist
 plistedit org.freeguide-tv.modules.plist
 #1663883352
 /Volumes/ExternalHome/rtruell/freeguide/freeguide; exit
+#1663883761
+lf fromplist
+#1663883782
+ls org.free*
+#1663883818
+fromplist org.freeguide-tv.maincontroller.plist
+#1663883832
+fromplist org.freeguide-tv.misc.plist
+#1663883838
+fromplist org.freeguide-tv.modules.plist
