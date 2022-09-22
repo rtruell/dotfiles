@@ -2412,3 +2412,29 @@ echo $JAVA_HOME
 javac -version
 #1663881648
 java -version
+#1663882059
+/Volumes/ExternalHome/rtruell/freeguide/freeguide; exit
+#1663882567
+cd Library/Preferences/
+#1663882579
+ls org*
+#1663882599
+less org.freeguide-tv.misc.plist
+#1663882617
+ls org.free*
+#1663882627
+alias
+#1663882653
+f
+#1663882675
+lf plistedit
+#1663882702
+ls org.free*
+#1663882721
+plistedit org.freeguide-tv.maincontroller.plist
+#1663882896
+less org.freeguide-tv.maincontroller.plist
+#1663882923
+plistedit org.freeguide-tv.misc.plist
+#1663882944
+plistedit org.freeguide-tv.modules.plist
