@@ -2400,3 +2400,15 @@ findshow ";700&"
 findshow ";329&"
 #1663746381
 findshow ";331&"
+#1663879640
+java --version
+#1663879692
+update-alternatives --config java
+#1663879844
+/usr/libexec/java_home -V
+#1663880119
+echo $JAVA_HOME
+#1663881638
+javac -version
+#1663881648
+java -version
