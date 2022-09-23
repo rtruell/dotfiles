@@ -2466,3 +2466,19 @@ home
 which getlistings.sh
 #1663888614
 getlistings.sh
+#1663889979
+sleep 5
+#1663889989
+time=5
+#1663890001
+sleep "${time}"
+#1663890026
+time=10
+#1663890030
+sleep "${time}"
+#1663890213
+getlistings.sh
+#1663891029
+man bash
+#1663891463
+getlistings.sh
