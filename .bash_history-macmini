@@ -2482,3 +2482,113 @@ getlistings.sh
 man bash
 #1663891463
 getlistings.sh
+#1664049442
+java -v
+#1664049449
+java -V
+#1664049458
+java -version
+#1664049472
+/usr/libexec/java_home -V
+#1664049563
+alias jdks="/usr/libexec/java_home -V"
+#1664049568
+jdks
+#1664053934
+java -version
+#1664054139
+java -version | grep version
+#1664054424
+java -version 2>&1 | grep version
+#1664054549
+java -version 2>&1 | grep version | cut -d'"' -f2
+#1664055058
+which java
+#1664055296
+/usr/libexec/java_home -V
+#1664055318
+/usr/libexec/java_home -V | grep "
+#1664055329
+/usr/libexec/java_home -V | grep '"'
+#1664055459
+/usr/libexec/java_home -V | cut -d' ' -f4
+#1664055488
+/usr/libexec/java_home -V | cut -d'" ' -f2
+#1664055521
+/usr/libexec/java_home -V | cut -d'"' -f2
+#1664055550
+man ct
+#1664055553
+man cut
+#1664055639
+/usr/libexec/java_home -V
+#1664055653
+/usr/libexec/java_home -V | cut -d'\"' -f2
+#1664055711
+/usr/libexec/java_home -V | cut -d'.' -f2
+#1664055728
+/usr/libexec/java_home -V >/dev/null
+#1664055775
+/usr/libexec/java_home -V 2>&1 | cut -d' ' -f4
+#1664055805
+/usr/libexec/java_home -V 2>&1 | cut -d'"' -f2
+#1664055896
+man tr
+#1664055947
+/usr/libexec/java_home -V 2>&1 | tr -s ' '
+#1664055953
+man tr
+#1664056011
+/usr/libexec/java_home -V 2>&1 | tr -s [:space:]
+#1664056038
+/usr/libexec/java_home -V 2>&1
+#1664056205
+man tr
+#1664056287
+/usr/libexec/java_home -V 2>&1
+#1664056301
+/usr/libexec/java_home -V 2>&1 | tr -s \t
+#1664056331
+/usr/libexec/java_home -V 2>&1 | cut -d'"' -f2
+#1664056374
+/usr/libexec/java_home -V 2>&1 | grep '"'
+#1664056404
+/usr/libexec/java_home -V 2>&1 | grep '"' | cut -d'"' -f2
+#1664056504
+/usr/libexec/java_home -V 2>&1 | grep '"' | cut -d'/' -f4
+#1664056543
+/usr/libexec/java_home -V 2>&1 | grep '"' | cut -d'/' -f5
+#1664056887
+man cut
+#1664056909
+man tr
+#1664056933
+/usr/libexec/java_home -V 2>&1 | grep '"' | cut -d'"' -f2
+#1664056977
+/usr/libexec/java_home -V 2>&1 | grep '"' | cut -d'"' -f2 | tr [:alpha:] ""
+#1664056996
+/usr/libexec/java_home -V 2>&1 | grep '"' | cut -d'"' -f2 | tr [:alpha:]
+#1664057025
+man tr
+#1664057111
+/usr/libexec/java_home -V 2>&1 | grep '"' | cut -d'"' -f2 | tr -d [:alpha:]
+#1664057130
+/usr/libexec/java_home -V 2>&1 | grep '"' | cut -d'"' -f2 | tr -d [:alpha:][:space:]
+#1664057170
+/usr/libexec/java_home -V 2>&1 | grep '"' | cut -d'"' -f2 | tr -d [:alpha:] | tr -d [:space:]
+#1664057181
+man tr
+#1664057229
+/usr/libexec/java_home -V 2>&1 | grep '"' | cut -d'"' -f2 | tr -d [:alpha:] | tr -d [:blank:]
+#1664057765
+/usr/libexec/java_home -V 2>&1 | grep '"' | cut -d'"' -f2 | tr -d [:alpha:]
+#1664057776
+/usr/libexec/java_home -V 2>&1 | grep '"' | cut -d'"' -f2 | tr -d [:alpha:][:blank:]
+#1664057992
+getlistings.sh
+#1664058154
+ping -c 1 rtruell.ca
+#1664058165
+echo $?
+#1664058261
+getlistings.sh
