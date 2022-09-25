@@ -2592,3 +2592,101 @@ ping -c 1 rtruell.ca
 echo $?
 #1664058261
 getlistings.sh
+#1664061558
+man bash
+#1664075505
+getlistings.sh
+#1664076059
+man seq
+#1664076773
+getlistings.sh
+#1664077447
+icheck
+#1664077473
+getlistings.sh
+#1664078518
+pausetime=10
+#1664078538
+echo $(( ${pausetime} * 6 ))
+#1664078550
+echo $(( ${pausetime} * 6 / 60 ))
+#1664078575
+echo $(( (${pausetime} * 6) / 60 ))
+#1664078601
+pausetime=600
+#1664078613
+echo $(( (${pausetime} * 6) / 60 ))
+#1664078721
+pausetime=3600
+#1664078723
+echo $(( (${pausetime} * 6) / 60 ))
+#1664078966
+echo $(( (${pausetime} * 6) / 3600 ))
+#1664079048
+echo $(( (${pausetime} * 6) / ${pausetime} ))
+#1664079059
+pausetime=600
+#1664079065
+echo $(( (${pausetime} * 6) / ${pausetime} ))
+#1664079461
+getlistings.sh
+#1664081963
+ping rtruell.ca
+#1664081976
+echo $?
+#1664081987
+ping duckduckgo.com
+#1664082010
+ping -c 1 duckduckgo.com
+#1664082016
+echo $?
+#1664082024
+ping -c 1 duckduckgo.com
+#1664082121
+ping -c 1 rtruell.ca
+#1664082131
+ping -c 1 duckduckgo.com
+#1664082270
+curl https://ipecho.net/plain
+#1664082282
+man curl
+#1664082358
+curl https://ipecho.net/plain -o /dev/null
+#1664082374
+man curl
+#1664082379
+curl https://ipecho.net/plain
+#1664082389
+curl https://ipecho.net/plain -o /dev/null
+#1664082396
+curl https://ipecho.net/plain
+#1664082404
+curl https://ipecho.net/plain > /dev/null
+#1664082438
+man curl
+#1664082561
+curl -s https://ipecho.net/plain
+#1664082574
+curl -s https://ipecho.net/plain -o /dev/null
+#1664082811
+echo $?
+#1664082821
+curl -s https://ipecho.net/plain -o /dev/null
+#1664082863
+man curl
+#1664083033
+curl -s --stderr - https://ipecho.net/plain -o /dev/null
+#1664083069
+curl -s https://ipecho.net/plain 2>1 >/dev/null
+#1664083188
+ll
+#1664083196
+rm 1
+#1664083208
+curl -s https://ipecho.net/plain 2>&1 >/dev/null
+#1664083298
+curl -s https://ipecho.net/plain &>/dev/null
+#1664083377
+curl -s https://ipecho.net/plain >/dev/null
+#1664083444
+curl -s https://ipecho.net/plain &>/dev/null
