@@ -2690,3 +2690,23 @@ curl -s https://ipecho.net/plain &>/dev/null
 curl -s https://ipecho.net/plain >/dev/null
 #1664083444
 curl -s https://ipecho.net/plain &>/dev/null
+#1664137025
+man stty
+#1664141805
+tput setaf 1
+#1664141822
+printf "\rSIGINT caught      "
+#1664141839
+tput sgr0
+#1664145982
+ls .functions
+#1664145994
+s .functions/checkforinternet.function
+#1664146005
+checkforinternet
+#1664146129
+s .functions/checkforinternet.function
+#1664146131
+checkforinternet
+#1664146273
+s .functions/checkforinternet.function
