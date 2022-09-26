@@ -2818,3 +2818,7 @@ getlistings.sh
 s .functions/trapctrlc.function
 #1664177372
 getlistings.sh
+#1664226897
+man killall
+#1664227006
+gl
