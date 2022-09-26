@@ -2774,3 +2774,23 @@ getlistings.sh
 man tests
 #1664171689
 bashman tests
+#1664173151
+getlistings.sh
+#1664173204
+osinfo
+#1664173212
+sysinfo
+#1664174052
+getlistings.sh
+#1664174590
+ls .functions
+#1664174603
+s .functions/trapctrlc.function
+#1664174610
+getlistings.sh
+#1664174639
+f
+#1664174718
+export -f trapctrlc
+#1664174721
+getlistings.sh
