@@ -2794,3 +2794,11 @@ f
 export -f trapctrlc
 #1664174721
 getlistings.sh
+#1664174974
+s .functions/trapctrlc.function
+#1664174979
+f
+#1664174990
+lf trapctrlc
+#1664174996
+getlistings.sh
