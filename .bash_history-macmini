@@ -2802,3 +2802,19 @@ f
 lf trapctrlc
 #1664174996
 getlistings.sh
+#1664176301
+ttype trapctrlc
+#1664176307
+ttype checkforinternet
+#1664176314
+which checkforinternet
+#1664176340
+getlistings.sh
+#1664176941
+s .functions/trapctrlc.function
+#1664176943
+getlistings.sh
+#1664177369
+s .functions/trapctrlc.function
+#1664177372
+getlistings.sh
