@@ -2710,3 +2710,67 @@ s .functions/checkforinternet.function
 checkforinternet
 #1664146273
 s .functions/checkforinternet.function
+#1664146275
+checkforinternet
+#1664163095
+f
+#1664163130
+getlistings.sh
+#1664164740
+osinfo
+#1664164802
+echo $DULL_RED
+#1664164892
+getlistings.sh
+#1664165049
+printf '%b\n' "This ${DULL_RED}is a ${NORMAL}test."
+#1664165098
+getlistings.sh
+#1664165189
+env | less
+#1664165284
+osinfo
+#1664165298
+set | less
+#1664165542
+getlistings.sh
+#1664166608
+tput cols
+#1664166615
+tput rows
+#1664166692
+tput longname
+#1664166295
+man tput
+#1664166806
+less /usr/share/terminfo
+#1664166812
+man tput
+#1664166847
+ls /usr/share/terminfo
+#1664166864
+ls /usr/share/terminfo/31
+#1664166893
+ls /usr/share/terminfo/*
+#1664166950
+echo $TERM
+#1664166974
+ls /usr/share/terminfo/*/xterm-256color
+#1664166992
+less /usr/share/terminfo/78/xterm-256color
+#1664167016
+man tput
+#1664167053
+man terminfo
+#1664167359
+getlistings.sh
+#1664167798
+man 5 terminfo
+#1664168195
+man terminfo(5)
+#1664170038
+getlistings.sh
+#1664171684
+man tests
+#1664171689
+bashman tests
