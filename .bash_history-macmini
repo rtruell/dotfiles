@@ -2842,3 +2842,79 @@ gl.sh
 man stty
 #1664228046
 gl.sh
+#1664228215
+gl
+#1664228221
+gl.sh
+#1664228962
+if [[ "01" == "10" ]]; then echo yes; else echo no; fi
+#1664228972
+if [[ "10" == "10" ]]; then echo yes; else echo no; fi
+#1664229006
+if [[ "001" == "100" ]]; then echo yes; else echo no; fi
+#1664229020
+if [[ "010" == "100" ]]; then echo yes; else echo no; fi
+#1664229027
+if [[ "100" == "100" ]]; then echo yes; else echo no; fi
+#1664229888
+gl.sh
+#1664230045
+isdigit 4
+#1664230086
+isinteger 4
+#1664230095
+isinteger a
+#1664230106
+isinteger 1440
+#1664230113
+isinteger 4.5
+#1664231012
+gl.sh
+#1664231204
+[[ isinteger 4 ]] && echo yes
+#1664231230
+[[ $(isinteger 4) ]] && echo yes
+#1664231255
+[[ $(isinteger 4,5) ]] && echo yes
+#1664231288
+if [[ $(isinteger 4) == 0 ]]; then echo yes; fi
+#1664231308
+if [[ $(isinteger 4) == 0 ]]; then echo yes; else echo no; fi
+#1664231330
+isinteger 4
+#1664231352
+if [[ "$(isinteger 4)" == "0" ]]; then echo yes; else echo no; fi
+#1664231407
+returncode=$(isinteger 4)
+#1664231419
+echo ${returncode}
+#1664231495
+lf isinteger
+#1664231522
+returncode=$(isinteger 4.5)
+#1664231526
+echo ${returncode}
+#1664231532
+returncode=$(isinteger 4.5)
+#1664231536
+echo $?
+#1664231557
+dave=4
+#1664231589
+isinteger "${dave}"; echo $?
+#1664231597
+dave=4.5
+#1664231603
+isinteger "${dave}"; echo $?
+#1664231672
+isinteger "${dave}"
+#1664231692
+[[ ! $? ]] && echo yes
+#1664231811
+gl.sh
+#1664253413
+printf; printf "test"; printf
+#1664253433
+printf ""; printf "test"; printf ""
+#1664253475
+printf '\n'; printf '%s\n' "test"; printf '\n'
