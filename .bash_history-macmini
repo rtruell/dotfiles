@@ -2918,3 +2918,23 @@ printf; printf "test"; printf
 printf ""; printf "test"; printf ""
 #1664253475
 printf '\n'; printf '%s\n' "test"; printf '\n'
+#1664340685
+copystart=$(elapsed)
+#1664340719
+printf '%s\n' "File copy elapsed time: $(elapsed ${copystart})"
+#1664340735
+copystart=$(elapsed)
+#1664340745
+printf '%s\n' "File copy elapsed time: $(elapsed ${copystart})"
+#1664344666
+copystart=$(elapsed)
+#1664344715
+elapsed ${copystart}
+#1664345752
+s dotfiles/.functions/elapsed.function
+#1664345762
+lf elapsed
+#1664345805
+copystart=$(elapsed)
+#1664345815
+elapsed ${copystart}
