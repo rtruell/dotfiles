@@ -2938,3 +2938,5 @@ lf elapsed
 copystart=$(elapsed)
 #1664345815
 elapsed ${copystart}
+#1664380181
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl
