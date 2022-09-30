@@ -2940,3 +2940,7 @@ copystart=$(elapsed)
 elapsed ${copystart}
 #1664380181
 awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl
+#1664515262
+gl
+#1664515272
+gl.sh
