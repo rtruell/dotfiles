@@ -1,0 +1,174 @@
+#!/usr/bin/env bash
+
+StartDir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd "${StartDir}"
+Today=$(date +"%Y-%m-%d")
+#exec 1>../"${Today}"-getlistings.log 2>&1
+#exec > >(tee -i ../"${Today}"-getlistings.log) 2>&1
+
+scriptstart=$(elapsed)
+indent="    "
+filemount=0
+backupmount=0
+filecopy=0
+backupcopy=0
+fileupdate=0
+backupupdate=0
+xmltvdir="${HOME}/.xmltv"
+xmltvdatadir="${xmltvdir}/data"
+xmlfile="${xmltvdatadir}/${Today}-telus.xml"
+outputxmlfile="${xmltvdatadir}/${Today}-telus-fixed.xml"
+Yesterday=$(date --date=yesterday +"%Y-%m-%d")
+
+# check to see if there's a connection to the Internet.  the number of times to
+# check before giving up and exiting the script can be specified, otherwise the
+# default value of 1440 attempts (with 30 seconds between attempts, that's
+# approximately 12 hours) will be used
+checkforinternet
+returncode="${?}"
+if [[ "${returncode}" != 0 ]]; then exit "${returncode}"; fi  # an Internet connection isn't available, so exit
+
+printf '\n%s\n\n' "Getting the TV listings."
+
+# # Schedules Direct dd command
+# printf '%s\n' "tv_grab_na_dd --days 14 --config-file ./.xmltv/tv_grab_na_dd-telus.conf --output ./data/\"${Today}\"-telus.xml --dd-data ./data/\"${Today}\"-telus-raw.xml"
+# tv_grab_na_dd --days 14 --config-file ./.xmltv/tv_grab_na_dd-telus.conf --output ./data/"${Today}"-telus.xml --dd-data ./data/"${Today}"-telus-raw.xml
+
+# Schedules Direct json commands
+returncode=1
+while [[ "${returncode}" != 0 ]]; do
+  printf '%s\n' "${indent}Running: 'tv_grab_zz_sdjson_sqlite --days 14 --output \"${xmlfile}\"'."
+  downloadstart=$(elapsed)
+  tv_grab_zz_sdjson_sqlite --days 14 --output "${xmlfile}"
+  returncode="${?}"
+  if [[ "${returncode}" != 0 ]]; then
+    if [[ -e "${xmlfile}" ]]; then rm "${xmlfile}"; fi
+    rm "${xmltvdir}"/SchedulesDirect.DB
+    cp "${xmltvdir}"/SchedulesDirect.DB."${Yesterday}" "${xmltvdir}"/SchedulesDirect.DB
+    printf '%s\n' "${indent}There was a problem at Schedules Direct...will try again in 30 minutes."
+    sleep 1800
+  fi
+done
+printf '%s\n' "${indent}Elapsed time to download listings and create xml file: $(elapsed ${downloadstart})."
+
+printf '\n%s\n\n' "Fixing the XML file."
+printf '%s\n' "${indent}Running: 'fixjsonxml \"${xmlfile}\" \"${outputxmlfile}\"'."
+fixxmlstart=$(elapsed)
+fixjsonxml "${xmlfile}" "${outputxmlfile}"
+if [[ "${?}" == "0" ]]; then
+  printf '%s\n' "${indent}Elapsed time to fix the XML file: $(elapsed ${fixxmlstart})."
+else
+  printf '%s\n' "${indent}ERROR: unable to fix the XML file."
+fi
+
+printf '\n%s\n\n' "Backing up the database."
+printf '%s\n' "${indent}Running: 'cp \"${xmltvdir}\"/SchedulesDirect.DB \"${xmltvdir}\"/SchedulesDirect.DB.\"${Today}\"'."
+cp "${xmltvdir}"/SchedulesDirect.DB "${xmltvdir}"/SchedulesDirect.DB."${Today}"
+if [[ "${?}" == "0" ]]; then
+  printf '%s\n' "${indent}database backed up."
+else
+  printf '%s\n' "${indent}ERROR: unable to back up the database."
+fi
+
+printf '\n%s\n\n' "Mounting network drives to copy files."
+mkdir "${HOME}"/nas
+mkdir "${HOME}"/nasbackup
+
+sudo mount -t cifs -o user=rtruell,pass=c0c0b7d //qnap2/data "${HOME}"/nas >/dev/null 2>&1
+if [[ "${?}" != "0" ]]; then
+  filemount=0
+  printf '%s\n' "${indent}'qnap2' not mounted...further actions involving 'qnap2' will be skipped."
+else
+  filemount=1
+  printf '%s\n' "${indent}'qnap2' mounted."
+fi
+sudo mount -t cifs -o user=rtruell,pass=c0c0b7d //nasbackup/data "${HOME}"/nasbackup >/dev/null 2>&1
+if [[ "${?}" != "0" ]]; then
+  backupmount=0
+  printf '%s\n' "${indent}'nasbackup' not mounted...further actions involving 'nasbackup' will be skipped."
+else
+  backkupmount=1
+  printf '%s\n' "${indent}'nasbackup' mounted."
+fi
+
+printf '\n%s\n\n' "Copying the data files."
+copystart=$(elapsed)
+if [[ "${filemount}" == "1" ]]; then
+  sudo cp "${xmltvdatadir}"/* "${HOME}"/nas/XMLTV/data/CurrentYear
+  if [[ "${?}" == "0" ]]; then
+    filecopy=1
+    printf '%s\n' "${indent}files copied to 'qnap2'."
+  else
+    filecopy=0
+    printf '%s\n' "${indent}ERROR: unable to copy files to 'qnap2'."
+  fi
+fi
+if [[ "${backupmount}" == "1" ]]; then
+  sudo cp "${xmltvdatadir}"/* "${HOME}"/nasbackup/XMLTV/data/CurrentYear
+  if [[ "${?}" == "0" ]]; then
+    backupcopy=1
+    printf '%s\n' "${indent}files copied to 'nasbackup'."
+  else
+    backupcopy=0
+    printf '%s\n' "${indent}ERROR: unable to copy files to 'nasbackup'."
+  fi
+fi
+printf '%s\n' "${indent}File copy elapsed time: $(elapsed ${copystart})."
+
+printf '\n%s\n\n' "Updating time stamps"
+touch "${xmltvdatadir}"/ref.txt >/dev/null 2>&1
+if [[ "${filecopy}" == "1" ]]; then
+  sudo touch -r "${xmltvdatadir}"/ref.txt "${HOME}"/nas/XMLTV/data/CurrentYear/"${Today}"-*
+  if [[ "${?}" == "0" ]]; then
+    fileupdate=1
+    printf '%s\n' "${indent}time stamps updated on 'qnap2'."
+  else
+    fileupdate=0
+    printf '%s\n' "${indent}ERROR: unable to update time stamps on 'qnap2'."
+  fi
+fi
+if [[ "${backupcopy}" == "1" ]]; then
+  sudo touch -r "${xmltvdatadir}"/ref.txt "${HOME}"/nasbackup/XMLTV/data/CurrentYear/"${Today}"-*
+  if [[ "${?}" == "0" ]]; then
+    backupupdate=1
+    printf '%s\n' "${indent}time stamps updated on 'nasbackup'."
+  else
+    backupupdate=0
+    printf '%s\n' "${indent}ERROR: unable to update time stamps on 'nasbackup'."
+  fi
+fi
+
+printf '\n%s\n\n' "Unmounting network drives."
+if [[ "${filemount}" == "1" ]]; then
+  sudo unmount "${HOME}"/nas
+  if [[ "${?}" == "0" ]]; then
+    printf '%s\n' "${indent}'qnap2' unmounted."
+  else
+    printf '%s\n' "${indent}ERROR: 'qnap2' not unmounted."
+  fi
+fi
+if [[ "${backupmount}" == "1" ]]; then
+  sudo unmount "${HOME}"/nasbackup
+  if [[ "${?}" == "0" ]]; then
+    printf '%s\n' "${indent}'nasbackup' unmounted."
+  else
+    printf '%s\n' "${indent}ERROR: 'nasbackup' not unmounted."
+  fi
+fi
+
+printf '\n%s\n\n' "Deleting the data files."
+if [[ "${filecopy}" == "0" && "${backupcopy}" == "0" ]]; then
+  printf '%s\n' "${indent}WARNING: data files not copied, so keeping them."
+else
+  rm "${xmltvdatadir}"/*
+  if [[ "${?}" == "0" ]]; then
+    printf '%s\n' "${indent}data files deleted."
+  else
+    printf '%s\n' "${indent}ERROR: data files not deleted."
+  fi
+fi
+rmdir "${HOME}"/nas
+rmdir "${HOME}"/nasbackup
+
+printf '\n%s\n\n' "All finished."
+printf '%s\n' "Script elapsed time: $(elapsed ${scriptstart})."

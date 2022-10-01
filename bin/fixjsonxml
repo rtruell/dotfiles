@@ -1,0 +1,88 @@
+#!/usr/bin/env bash
+
+StartDir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd "${StartDir}"
+
+function changeline {
+  case "${aline}" in
+    *\<category\>*)
+      # programs, whether a TV show or a Movie, might have multiple 'category'
+      # elements, but *freeguide* only displays the first one.  so, combine all
+      # the 'category' elements together into one element
+      allcategory=""
+      firstcategory=""
+      thisline="${aline}"
+      while [[ "${aline}" =~ "<category>" ]]; do
+        category="${aline#*>}"
+        category="${category%<*}"
+        if [[ "${firstcategory}" == "" ]]; then firstcategory="${category}"; fi
+        allcategory+="${category}/"
+        read -r aline
+      done
+      allcategory=$(sed 's,/$,,' <<< "${allcategory}")  # delete any trailing '/'
+      thisline=$(sed "s,${firstcategory},${allcategory}," <<< ${thisline})
+      printf '%s\n' "${thisline}" >> "${outputxmlfile}"
+      changeline
+      ;;
+    *display-name*)
+      # add the channel number to the channel name and rearrange the order of
+      # the '<display-name>' lines
+      secondname="${aline}"
+      read -r aline
+      firstname="${aline}"
+      channelname="${firstname#*>}"
+      channelname="${channelname%<*}"
+      read -r aline
+      channelnumber="${aline#*>}"
+      channelnumber="${channelnumber%<*}"
+      firstname=$(sed "s,${channelname},${channelnumber} ${channelname}," <<< ${firstname})
+      printf '%s\n' "${firstname}" "${secondname}" >> "${outputxmlfile}"
+      ;;
+    *xmltv_ns*)
+      # format the season and episode number correctly and change the element
+      # name
+      season="${aline#*> }"
+      season="${season%% /*}"
+      if [[ "${season}" =~ "</episode-num>" ]]; then season="${season%% .*}"; fi
+      ((season++))
+      episode="${aline#*. }"
+      episode="${episode% .*}"
+      ((episode++))
+      aline="  <episode-num system=\"onscreen\">${season}.${episode}</episode-num>"
+      ;;
+    *originalAirDate*)
+      # use the 'originalAirDate' element to create a 'date' element.  this is
+      # only for TV shows - movies don't have an 'originalAirDate' element and
+      # already have a 'date' element - and is used by *freeguide* to determine
+      # whether or not to colour an episode as 'new'
+      originalAirDate="${aline#*/}"
+      originalAirDate="${originalAirDate% *}"
+      aline="  <date>${originalAirDate}</date>"
+      ;;
+    *=\"seconds\"*)
+      # change the program length from 'seconds' to 'minutes'
+      programlength="${aline#*>}"
+      programlength="${programlength%<*}"
+      programlength=$((programlength/60))
+      aline="  <length units=\"minutes\">${programlength}</length>"
+      ;;
+    # get rid of some things that get displayed unnecessarily
+    *programID/*) ;&
+    *newEpisode/*) ;&
+    *resourceID/*)
+      skipline=1
+      ;;
+  esac
+}
+
+inputxmlfile="${1}"
+outputxmlfile="${2}"
+oldIFS="${IFS}"
+IFS=
+
+while read -r aline; do
+  skipline=0
+  changeline
+  if [[ "${skipline}" == 0 ]]; then printf '%s\n' "${aline}" >> "${outputxmlfile}"; fi
+done < ${inputxmlfile}
+IFS="${oldIFS}"

@@ -1,0 +1,31 @@
+#!/usr/bin/env bash
+
+# check for a connection to the Internet by trying to retrieve the computer's
+# public IP address.  if the script can, it returns immediately.  otherwise, it
+# continues to check, pausing 30 seconds between each check, for the number of
+# attempts specified (defaults to 1440, or approximately 12 hours) before
+# giving up and exiting with an error code
+
+numberoftries=${1:-1440}  # set the number of attempts to what was supplied, or 1440 if nothing was supplied
+isinteger "${numberoftries}"  # check to make sure an integer was supplied and not a letter or something else
+if [[ ! "${?}" == "0"  ]]; then printf '%s\n' "The value for the number of tries must be an integer"; exit 200 ; fi  # what was supplied isn't an integer, so print an error message and exit with an error code
+printf '%s\n' "Attempting to connect to the Internet."
+for i in `seq 1 "${numberoftries}"`; do
+  while [[ ${#i} != ${#numberoftries} ]]; do i="0${i}"; done  # left-pad the attempt number with zeros until it's the same length as the number of attempts value
+  printf '%s' "Attempt ${i}: "
+  curl -s https://ipecho.net/plain &>/dev/null  # try to get the computer's public IP address
+  if [[ "${?}" = "0" ]]; then
+    printf '%s\n' "Connected to the Internet."  # got it, so say so and exit
+    exit
+  else
+    printf '%s' "Not connected to the Internet"  # didn't get it, so say so
+    if [[ "${i}" == "${numberoftries}" ]]; then
+      printf '%s\n' "."  # if the specified number of attempts has been reached, terminate the sentence
+    else
+      printf '%s\n' "...pausing for 30 seconds."  # otherwise, say there'll be a 30 second pause before attempting again
+      sleep 30
+    fi
+  fi
+done
+printf '%s\n' "Couldn't connect to the Internet after ${numberoftries} attempts...giving up."  # didn't get the IP address before reaching the specified number of attempts to make, so say so ...
+exit 100  # ... and exit with an error code
