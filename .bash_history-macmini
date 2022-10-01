@@ -2944,3 +2944,11 @@ awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl
 gl
 #1664515272
 gl.sh
+#1664646319
+v onorm
+#1664646329
+v min
+#1664646342
+v omin
+#1664646347
+v onorm
