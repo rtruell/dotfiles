@@ -24,10 +24,11 @@ alias grep="grep -E --color=auto"  # highlight matches and use extended regular 
 alias h="history"  # saves typing
 alias home="cd $HOME"  # go home
 alias hosts="sudo ${EDITOR} /etc/hosts"  # easily edit the HOSTS file.  must use 'sudo' because the file is owned by 'root'
+alias icheck="ping -c 1 rtruell.ca"
 alias ifl='sudo ./ifl/imagel'  # create an alias to avoid the shame/anger/annoyance of forgetting to use 'sudo' to run IFL
 alias iscommand="findcommand"  # is the command actually a command?
 alias la="ls -A"  # ls output includes hidden files but not '.' or '..'
-alias lal="ls -Al" # ls output in long format and including hidden files but not '.' or '..'
+alias lal="ls -Alh" # ls output in long format, including hidden files but not '.' or '..', with human-readable sizes
 alias ll="ls -lh"  # ls output in long format with human-readable sizes
 alias mkdd="mkdir $(date +%Y%m%d)"  # create a dir with today's date in yyyy-mm-dd format
 alias mkdir="mkdir -p"  # create a directory, including parent directories as necessary
