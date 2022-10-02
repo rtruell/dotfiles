@@ -8,6 +8,7 @@ for i in `seq 1 10`; do
   umount "${mountpoint}"
   if [[ "$?" = "0" ]]; then
     printf '%s\n' "Unmounted ${mountpoint}"
+    exit
   else
     printf '%s\n' "Attempt ${i}: Failed to unmount ${mountpoint}"
     if [[ "${i}" = "10" ]]; then
