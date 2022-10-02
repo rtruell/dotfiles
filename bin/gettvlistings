@@ -140,7 +140,7 @@ fi
 
 printf '\n%s\n\n' "Unmounting network drives."
 if [[ "${filemount}" == "1" ]]; then
-  sudo unmount "${HOME}"/nas
+  sudo "${HOME}"/bin/unmount "${HOME}"/nas
   if [[ "${?}" == "0" ]]; then
     printf '%s\n' "${indent}'qnap2' unmounted."
   else
@@ -148,7 +148,7 @@ if [[ "${filemount}" == "1" ]]; then
   fi
 fi
 if [[ "${backupmount}" == "1" ]]; then
-  sudo unmount "${HOME}"/nasbackup
+  sudo "${HOME}"/bin/unmount "${HOME}"/nasbackup
   if [[ "${?}" == "0" ]]; then
     printf '%s\n' "${indent}'nasbackup' unmounted."
   else
