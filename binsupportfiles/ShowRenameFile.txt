@@ -13,3 +13,4 @@ United States of Al,USOA,b
 Fear the Walking Dead,Fear The Walking Dead,m
 Grey's Anatomy,Grey's Anatomy,b
 In the Dark,In The Dark,m
+House of the Dragon,House Of The Dragon,m
