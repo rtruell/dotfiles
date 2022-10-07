@@ -1,11 +1,3 @@
-defaults read /Library/Preferences/com.apple.loginwindow Hide500Users
-#1634863215
-defaults read /Library/Preferences/com.apple.loginwindow showInputMenu
-#1634863236
-defaults read /Library/Preferences/com.apple.loginwindow loginWindowIdleTime
-#1634863275
-defaults read /Library/Preferences/com.apple.loginwindow autoLoginUser
-#1634864276
 defaults write NSGlobalDomain KeyRepeat
 #1634864286
 defaults read NSGlobalDomain KeyRepeat
@@ -19851,3 +19843,19 @@ v omin
 v onorm
 #1664825750
 icheck
+#1665086877
+hazelguide1.sh 2022-06-06.html
+#1665087118
+less 2022-06-06.html
+#1665087258
+hazelguide1.sh 2022-10-06.html
+#1665088323
+path
+#1665088342
+hazelguide.sh 2022-10-06.html
+#1665119586
+home
+#1665119595
+sysinfo
+#1665121463
+h | grep -i awk
