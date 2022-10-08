@@ -1,19 +1,3 @@
-defaults write NSGlobalDomain KeyRepeat
-#1634864286
-defaults read NSGlobalDomain KeyRepeat
-#1634864305
-defaults read NSGlobalDomain initialKeyRepeat
-#1634864310
-defaults read NSGlobalDomain InitialKeyRepeat
-#1634875663
-defaults read NSGlobalDomain AppleICUForce12HourTime
-#1634876786
-defaults read NSGlobalDomain "AppleEnableMenuBarTransparency"
-#1634884819
-ll .ssh
-#1634884844
-ll
-#1634884851
 lal
 #1634884869
 ll .ssh
@@ -19859,3 +19843,43 @@ home
 sysinfo
 #1665121463
 h | grep -i awk
+#1665182243
+icheck
+#1665182251
+getvbox
+#1665182519
+line="052f26cf8c619b1aa0cad94c05ece0c1ae326248b4746c95e1deb0729ae4417a *Oracle_VM_VirtualBox_Extension_Pack-6.1.38.vbox-extpack"
+#1665182540
+extpackcsum="${line% *}"
+#1665182551
+echo $extpackcsum
+#1665182572
+extpackname="${line# *}"
+#1665182580
+echo $extpackname
+#1665182634
+extpackname="${line#* \*}"
+#1665182636
+echo $extpackname
+#1665182810
+getvbox
+#1665204584
+man sed
+#1665204704
+exec 1> >(sed -r 's/^(.*)/  \1/g')
+#1665204912
+exec 1> >(sed 's/^/  /')
+#1665205750
+_ test
+#1665205845
+function _ { eval "$@" |& sed "s/^/\t/" ; return "$PIPESTATUS" ;}
+#1665205851
+_ test
+#1665205856
+_ ls
+#1665206204
+virboxlatest="$(curl https://download.virtualbox.org/virtualbox/LATESTONE.TXT 2>/dev/null)"
+#1665206215
+echo $?
+#1665206227
+echo ${virboxlatest}
