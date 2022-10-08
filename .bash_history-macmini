@@ -1,43 +1,3 @@
-lal
-#1634884869
-ll .ssh
-#1634884873
-lal
-#1634885127
-ll dotfiles/.ssh
-#1634885147
-lal dotfiles
-#1634885249
-chmod 700 ~/.ssh
-#1634885255
-lal
-#1634885280
-lal dotfiles
-#1634885350
-ll ~/.ssh
-#1634885365
-ll ~/dotfiles/.ssh
-#1634885406
-chmod 600 ~/.ssh/*
-#1634885413
-ll ~/.ssh
-#1634885421
-ll ~/dotfiles/.ssh
-#1634930197
-volall
-#1634930919
-b s --debian tree
-#1634930941
-b s --debian
-#1634930969
-b s --debian 
-#1634930988
-b s --debian ' '
-#1634931583
-git-open dotfiles
-#1634931796
-b i git-open
-#1634931812
 b h git-open
 #1634931996
 man git
@@ -19883,3 +19843,5 @@ virboxlatest="$(curl https://download.virtualbox.org/virtualbox/LATESTONE.TXT 2>
 echo $?
 #1665206227
 echo ${virboxlatest}
+#1665269578
+vboxmanage list vms
