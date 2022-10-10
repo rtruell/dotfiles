@@ -131,7 +131,7 @@ while read -r line; do  # read each line of the input file one by one, stripping
                                 ColouringIndicator="${ProgramColouring[i]}"  # save the colouring indicator for the show
                               fi
                             done
-                            d="${d} ()"  # add a space and brackets (' ()') to the show name to contain the episode's name or sequence number (301, season 3 episode 1)
+                            d="${d} ()"  # add a space and brackets (' ()') to the show name to contain the episode's name or sequence number (301 or 3.1, season 3 episode 1)
                             case "${ColouringIndicator}" in  # check the colouring indicator for this show
                               g)  # the show is for Gordon only, so insert the
                                   # colouring HTML code for him before the show
@@ -158,6 +158,49 @@ while read -r line; do  # read each line of the input file one by one, stripping
                       *)  continue ;;  # everything else gets thrown away
   esac
 done < ${InputFile}
+declare -A EarlyEvening LateEvening
+TwentyOne=$(date2unixtime "09:00PM")
+for ((i=0; i<"${NumberOfShows}"; i++)); do
+  start="${ShowStart[i]/1PM/0PM}"
+  start=$(date2unixtime "${start}")
+  end="${ShowEnd[i]/1PM/0PM}"
+  end=$(date2unixtime "${end}")
+  if [[ ${start} -lt ${TwentyOne} ]]; then (('EarlyEvening[$start]++')); else (('LateEvening[$start]++')); fi
+  if [[ ${end} -lt ${TwentyOne} ]]; then (('EarlyEvening[$end]++')); else (('LateEvening[$end]++')); fi
+done
+for ((i=0; i<"${NumberOfShows}"-1; i++)); do
+  if [[ "${ShowStart[i]}" == "" ]]; then continue; fi
+  # somewhere in here goes the code to skip joining shows
+  for ((j=i+1; j<"${NumberOfShows}"; j++)); do
+    if [[ "${ShowStart[j]}" == "${ShowEnd[i]}" && "${ShowChannel[i]}" == "${ShowChannel[j]}" ]]; then
+      showtime1=`datediff -m "${ShowStart[i]}" "${ShowEnd[i]}"`
+      showtime2=`datediff -m "${ShowStart[j]}" "${ShowEnd[j]}"`
+      if [[ $((${showtime1}%30)) != 0 && "${ShowName[i]}" != *" () ("* ]]; then ShowName[i]="${ShowName[i]/ ()/ () (${showtime1}m)}"; fi
+      if [[ $((${showtime2}%30)) != 0 && "${ShowName[j]}" != *" () ("* ]]; then ShowName[j]="${ShowName[j]/ ()/ () (${showtime2}m)}"; fi
+      ShowEnd[i]="${ShowEnd[j]}"
+      ShowName[i]+="_${ShowName[j]}"
+      unset ShowStart[j]
+      unset ShowEnd[j]
+      unset ShowChannel[j]
+      unset ShowName[j]
+      ((JoinedShows++))
+    fi
+  done
+done
+declare -a new_array1=() new_array2=() new_array3=() new_array4=()
+for i in "${!ShowStart[@]}"; do
+  new_array1+=("${ShowStart[i]}")
+  new_array2+=("${ShowEnd[i]}")
+  new_array3+=("${ShowChannel[i]}")
+  new_array4+=("${ShowName[i]}")
+done
+ShowStart=("${new_array1[@]}")
+ShowEnd=("${new_array2[@]}")
+ShowChannel=("${new_array3[@]}")
+ShowName=("${new_array4[@]}")
+unset new_array1 new_array2 new_array3 new_array4
+NumberOfShows=$(($NumberOfShows-$JoinedShows))
+if [[ "${#ShowStart[@]}" != "${NumberOfShows}" ]]; then printf '%s\n' "A horrific error has occurred!"; fi
 
 # now create the "groomed" listing data
 ListingString+="${StartDayHeader}${DayHeader}${EndDayHeader}\n"  # rebuild the 'dayheader' line and add it
