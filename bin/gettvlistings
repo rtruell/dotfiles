@@ -70,6 +70,9 @@ else
   printf '%s\n' "${indent}ERROR: unable to back up the database."
 fi
 
+printf '\n%s\n\n' "Displaying file sizes."
+ll -R "${xmltvdir}"
+
 printf '\n%s\n\n' "Mounting network drives to copy files."
 mkdir "${HOME}"/nas
 mkdir "${HOME}"/nasbackup
