@@ -19843,3 +19843,9 @@ sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.5.0-amd64-netinst.iso
 diskutil eject /dev/disk3
 #1665378458
 diskutil list
+#1665431198
+dotfiles
+#1665431208
+findtext 'qnap'
+#1665431528
+home
