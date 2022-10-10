@@ -1,9 +1,3 @@
-man cp
-#1634943812
-cp -ra ./.ssh ~
-#1634944058
-copylastcommand
-#1634944127
 pwd
 #1634944139
 currdir=pwd
@@ -19849,3 +19843,7 @@ dotfiles
 findtext 'qnap'
 #1665431528
 home
+#1665431881
+dotfiles
+#1665431895
+findtext -i bind
