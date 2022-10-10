@@ -65,7 +65,6 @@ ttf-mscorefonts-installer  # you need "multiverse" or "non-free" sources in your
 unace
 unrar-free
 unzip
-virtualbox-6.1
 vlc  # video player
 webmin
 wget  # get files from web
