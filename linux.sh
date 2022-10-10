@@ -50,6 +50,7 @@ if [[ "${computername}" != "rpi"* ]]; then
     mv ../"${i}" .  # move the license and config files to where they belong
     print_result $? "Moved '${i}' to '${ifldir}'"
     chmod 644 "${i}"  # make sure the file permissions are set properly
+    print_result $? "Set the file permissions for '${i}'"
   done
   mv ../daily-backup ./scripts  # move the backup script to where it belongs
   print_result $? "Moved 'daily-backup' to '${ifldir}/scripts'"
@@ -257,6 +258,68 @@ if [[ "${computername}" == "nas"* ]]; then
   # a new external IP address once an hour, instead of every 5 minutes
   sudo sed -E 's/(daemon_interval=).*/\1"1h"/' -i /etc/default/ddclient
   print_result $? "Changed the delay value for 'ddclient'"
+fi
+
+# if not installing on nas, nasbackup or a Raspberry Pi, install VirtualBox
+if [[ "${computername}" != "nas"* && "${computername}" != "rpi"* ]]; then
+  printf '\t%s\n' "Installing VirtualBox"
+  printf '\t%s\n' "Retrieving checksums and the latest version number"
+  virboxversion="$(curl https://download.virtualbox.org/virtualbox/LATEST.TXT 2>/dev/null)"  # get the latest release version
+  osreleasename="$(lsb_release -cs)"  # get the OS release name (buster, bullseye, etc)
+  while read -r line; do  # read each line of the checksum file
+    case "${line}" in
+      *"${osreleasename}"* )  # if it's for the release of VirtualBox for this OS
+        virboxcsum="${line% *}"  # extract the checksum
+        virboxname="${line#* \*}"  # extract the filename
+        virboxpath="${programtmp}/${virboxname}"  # create the pathname where VirtualBox will be temporarily stored
+        ;;
+      *"${virboxversion}".vbox* )  # if it's for the Extension Pack
+        extpackcsum="${line% *}"  # extract the checksum
+        extpackname="${line#* \*}"  # extract the filename
+        extpackpath="${programtmp}/${extpackname}"  # create the pathname where the Extension Pack will be temporarily stored
+        ;;
+    esac
+  done < <(curl https://download.virtualbox.org/virtualbox/"${virboxversion}"/SHA256SUMS 2>/dev/null)
+  printf '\t%s\n' "Downloading VirtualBox"
+  curl https://download.virtualbox.org/virtualbox/"${virboxversion}"/"${virboxname}" -o "${virboxpath}" 2>/dev/null  # download VirtualBox
+  if [[ "$(sha256sum "${virboxpath}" | cut -d' ' -f1)" != "${virboxcsum}" ]]; then  # check to see if the checksum of the downloaded file matches what it's supposed to
+    print_result $? "Error: VirtualBox checksum doesn't match...VirtualBox and its Extension Pack must be downloaded and installed manually"
+  else
+    print_result $? "Checksums match...successfully downloaded VirtualBox"
+    printf '\t%s\n' "Downloading the Extension Pack"
+    extpackok=0
+    curl https://download.virtualbox.org/virtualbox/"${virboxversion}"/"${extpackname}" -o "${extpackpath}" 2>/dev/null  # download the Extension Pack
+    if [[ "$(sha256sum "${extpackpath}" | cut -d' ' -f1)" != "${extpackcsum}" ]]; then  # check to see if the checksum of the downloaded file matches what it's supposed to
+      print_result $? "Error: Extension pack checksum doesn't match...the Extension Pack must be downloaded and installed manually"
+      extpackok=1  # since the checksums didn't match, set a flag so no attempt is made to install the invalid Extension Pack
+    else
+      print_result $? "Checksums match...successfully downloaded the VirtualBox Extension Pack"
+    fi
+    yes | sudo apt install "${virboxpath}"  # install VirtualBox, automatically answering 'yes' to any prompts
+    retcode="$?"
+    print_result "${retcode}" "Installed VirtualBox"
+    if [[ "${retcode}" != 0 ]]; then  # if VirtualBox didn't install properly ...
+      if [[ "${extpackok}" == 0 ]]; then  # ... but the Extension Pack downloaded successfully ...
+        print_warn "${retcode}" "The Extension Pack must be installed manually after fixing the problem with installing VirtualBox"  # ... print a manual install notification
+      fi
+    else
+      rm "${virboxpath}"  # VirtualBox installed successfully and this copy of the installation file isn't needed anymore, so delete it
+      print_result $? "Deleted ${virboxpath}"
+      if [[ "${extpackok}" == 0 ]]; then  # if the Extension Pack downloaded successfully ...
+        sudo VBoxManage extpack install --replace "${extpackpath}"  # ... try to install it
+        retcode="$?"
+        print_result $? "Installed the VirtualBox Extension Pack"
+        if [[ "${retcode}" != 0 ]]; then  # oops...it didn't install successfully
+          print_result "${retcode}" "Error: The Extension Pack must be installed manually"
+        else
+          rm "${extpackpath}"  # it installed successfully and this copy of the installation file isn't needed anymore, so delete it
+          print_result $? "Deleted ${extpackpath}"
+          sudo VBoxManage extpack cleanup  # probably not necessary after a new install, but never hurts to clean things up
+          print_result $? "Cleaned up the Extension Pack install"
+        fi
+      fi
+    fi
+  fi
 fi
 
 # Create mount points for the 'data' and 'backups' directories
