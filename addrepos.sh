@@ -25,14 +25,6 @@ function add_docker {
   print_result $? "Added the Docker repository to 'apt'"
 }
 
-function add_vbox {
-  # add the repository for VirtualBox to 'apt'.  note that '$(lsb_release -cs)'
-  # is replaced with the name of the current release, ie. 'buster', 'bullseye',
-  # etc.
-  sudo "${HOME}"/bin/add-apt-key --acng https://www.virtualbox.org/download/oracle_vbox_2016.asc virtualbox "deb [arch=amd64] https://download.virtualbox.org/virtualbox/debian $(lsb_release -cs) contrib"
-  print_result $? "Added the VirtualBox repository to 'apt'"
-}
-
 function create_proxy_file {
   printf "Acquire::http { Proxy \"http://nas:3142\"; };\n" | sudo tee /etc/apt/apt.conf.d/00proxy >/dev/null  # create the 'apt' proxy config file
   print_result $? "Created '/etc/apt/apt.conf.d/00proxy'"
@@ -75,8 +67,8 @@ print_result 0 "Updated '/etc/apt/sources.list' with the 'contrib' and 'non-free
 # add software repositories to 'apt' based on the computer name
 case "${computername,,}" in
   nas | nasbackup) add_webmin; add_sublime; add_bcompare; add_docker ;;
-             rpi*) add_webmin; add_sublime ;;
-                *) add_webmin; add_sublime; add_bcompare; add_vbox ;;
+  rpi*) add_webmin; add_sublime ;;
+  *) add_webmin; add_sublime; add_bcompare ;;
 esac
 
 # add a file to '/etc/apt/apt.conf.d' so that this machine will proxy 'apt'
