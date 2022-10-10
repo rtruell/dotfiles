@@ -1,5 +1,3 @@
-b h git-open
-#1634931996
 man git
 #1634932172
 git config --get github.user
@@ -19845,3 +19843,43 @@ echo $?
 echo ${virboxlatest}
 #1665269578
 vboxmanage list vms
+#1665348690
+hazelguide1.sh 2022-10-06.html
+#1665348706
+hazelguide.sh 2022-10-06.html
+#1665348716
+hazelguide.sh ./2022-10-06.html
+#1665348761
+hazelguide.sh ~/2022-10-06.html
+#1665348775
+ls .
+#1665348791
+hazelguide.sh ~/testscripts/2022-10-06.html
+#1665348947
+ls /Volumes/ExternalHome/rtruell/freeguide/share/listings/CurrentYear/
+#1665349038
+HazelGuide1 /Volumes/ExternalHome/rtruell/freeguide/share/listings/CurrentYear/2022-10-09.html
+#1665349043
+HazelGuide1.sh /Volumes/ExternalHome/rtruell/freeguide/share/listings/CurrentYear/2022-10-09.html
+#1665349064
+whereis hazelguide1.sh
+#1665349070
+which hazelguide1.sh
+#1665349180
+HazelGuide1.sh /Volumes/ExternalHome/rtruell/freeguide/share/listings/CurrentYear/2022-10-09.html
+#1665349359
+/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/dotfiles/bin/HazelGuide.sh /Volumes/ExternalHome/rtruell/freeguide/share/listings/CurrentYear/2022-10-09.html
+#1665349796
+hoem
+#1665349797
+home
+#1665371727
+dotfiles
+#1665371762
+findtext -i 'apt install'
+#1665374070
+findtext -i 'yes |'
+#1665374088
+findtext -i 'yes '
+#1665374174
+findtext -i 'yes \|'
