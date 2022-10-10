@@ -19,6 +19,7 @@ xmltvdatadir="${xmltvdir}/data"
 xmlfile="${xmltvdatadir}/${Today}-telus.xml"
 outputxmlfile="${xmltvdatadir}/${Today}-telus-fixed.xml"
 Yesterday=$(date --date=yesterday +"%Y-%m-%d")
+computername=$(hostname -s)  # get the computer's host name, stripping off the domain name if it's there
 
 # check to see if there's a connection to the Internet.  the number of times to
 # check before giving up and exiting the script can be specified, otherwise the
@@ -77,13 +78,17 @@ printf '\n%s\n\n' "Mounting network drives to copy files."
 mkdir "${HOME}"/nas
 mkdir "${HOME}"/nasbackup
 
-sudo mount -t cifs -o user=rtruell,pass=c0c0b7d //qnap2/data "${HOME}"/nas >/dev/null 2>&1
+if [[ "${computername}" == "nas" ]]; then
+  sudo mount --bind /nas/data "${HOME}"/nas
+else
+  sudo mount -t cifs -o user=rtruell,pass=c0c0b7d //nas/data "${HOME}"/nas >/dev/null 2>&1
+fi
 if [[ "${?}" != "0" ]]; then
   filemount=0
-  printf '%s\n' "${indent}'qnap2' not mounted...further actions involving 'qnap2' will be skipped."
+  printf '%s\n' "${indent}'nas' not mounted...further actions involving 'nas' will be skipped."
 else
   filemount=1
-  printf '%s\n' "${indent}'qnap2' mounted."
+  printf '%s\n' "${indent}'nas' mounted."
 fi
 sudo mount -t cifs -o user=rtruell,pass=c0c0b7d //nasbackup/data "${HOME}"/nasbackup >/dev/null 2>&1
 if [[ "${?}" != "0" ]]; then
@@ -100,10 +105,10 @@ if [[ "${filemount}" == "1" ]]; then
   sudo cp "${xmltvdatadir}"/* "${HOME}"/nas/XMLTV/data/CurrentYear
   if [[ "${?}" == "0" ]]; then
     filecopy=1
-    printf '%s\n' "${indent}files copied to 'qnap2'."
+    printf '%s\n' "${indent}files copied to 'nas'."
   else
     filecopy=0
-    printf '%s\n' "${indent}ERROR: unable to copy files to 'qnap2'."
+    printf '%s\n' "${indent}ERROR: unable to copy files to 'nas'."
   fi
 fi
 if [[ "${backupmount}" == "1" ]]; then
@@ -124,10 +129,10 @@ if [[ "${filecopy}" == "1" ]]; then
   sudo touch -r "${xmltvdatadir}"/ref.txt "${HOME}"/nas/XMLTV/data/CurrentYear/"${Today}"-*
   if [[ "${?}" == "0" ]]; then
     fileupdate=1
-    printf '%s\n' "${indent}time stamps updated on 'qnap2'."
+    printf '%s\n' "${indent}time stamps updated on 'nas'."
   else
     fileupdate=0
-    printf '%s\n' "${indent}ERROR: unable to update time stamps on 'qnap2'."
+    printf '%s\n' "${indent}ERROR: unable to update time stamps on 'nas'."
   fi
 fi
 if [[ "${backupcopy}" == "1" ]]; then
@@ -145,9 +150,9 @@ printf '\n%s\n\n' "Unmounting network drives."
 if [[ "${filemount}" == "1" ]]; then
   sudo "${HOME}"/bin/unmount "${HOME}"/nas
   if [[ "${?}" == "0" ]]; then
-    printf '%s\n' "${indent}'qnap2' unmounted."
+    printf '%s\n' "${indent}'nas' unmounted."
   else
-    printf '%s\n' "${indent}ERROR: 'qnap2' not unmounted."
+    printf '%s\n' "${indent}ERROR: 'nas' not unmounted."
   fi
 fi
 if [[ "${backupmount}" == "1" ]]; then
