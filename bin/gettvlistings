@@ -71,7 +71,7 @@ else
 fi
 
 printf '\n%s\n\n' "Displaying file sizes."
-ll -R "${xmltvdir}"
+ls -lhR "${xmltvdir}"
 
 printf '\n%s\n\n' "Mounting network drives to copy files."
 mkdir "${HOME}"/nas
