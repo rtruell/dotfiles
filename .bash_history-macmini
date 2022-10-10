@@ -1,41 +1,3 @@
-ls /Volumes/data/Text
-#1634938489
-ls /Volumes/data/Text/OSInstall/
-#1634938540
-less /Volumes/data/Text/OSInstall/"LinuxInstall - Desktop.sh"
-#1634938749
-mount
-#1634938790
-mount //backupserver/backups /Volumes/backups -o user=rtruell
-#1634938928
-mount -t smbfs //backupserver/backups /Volumes/backups -o user=rtruell
-#1634938946
-man mount
-#1634939418
-mount -t smbfs //rtruell@backupserver/backups /Volumes/backups
-#1634939497
-open "smb://rtruell@backupserver/backups /Volumes/backups"
-#1634939696
-osascript -e "mount volume \"smb://rtruell:c0c0b7d@backupserver/backup\""
-#1634939709
-ls /Volumes/
-#1634940439
-osascript -e "mount volume \"smb://rtruell:c0c0b7d@backupserver/backup\""
-#1634940444
-copylastcommand
-#1634940569
-ls /Volumes/
-#1634940580
-diskutil unmount /Volumes/backup
-#1634940584
-ls /Volumes/
-#1634940871
-expect  -v
-#1634942418
-b s remount
-#1634942442
-b i xmount
-#1634942519
 ls /etc/auto_master
 #1634942530
 cat /etc/auto_master
@@ -19881,3 +19843,17 @@ date --date='#1665375789'
 dotfiles
 #1665376587
 findtext -i 'apt-get install'
+#1665378167
+hf 'iso2'
+#1665378178
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl
+#1665378231
+diskutil list
+#1665378284
+diskutil unmountDisk /dev/disk3
+#1665378366
+sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.5.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
+#1665378453
+diskutil eject /dev/disk3
+#1665378458
+diskutil list
