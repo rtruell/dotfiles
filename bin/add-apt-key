@@ -384,22 +384,27 @@ else  # it is, so parse it and create the necessary files
   # check to see if 'apt-cacher-ng' processing was requested
   if [[ "${configacng}" == 1 ]]; then
     [[ "$verbosity" = "yes" ]] && printf '%s\n' "Processing for 'apt-cacher-ng' ..."
-    # check to see if there's already some remapping for secure repositories in
-    # the 'apt-cacher-ng' configuration file.  if there are, the section header
-    # "my repository remapping" will already be in the file.  if it's not there,
-    # add it
-    if [[ ! $(grep -i 'my repository remapping' "${acngconfigdir}${acngconfigfile}") ]]; then
-      printf '\n%s\n' "# my repository remapping" >>"${acngconfigdir}${acngconfigfile}"
+
+    # check to see if this machine is running 'apt-cacher-ng'.  if it is, then
+    # some changes need to be made to the 'apt-cacher-ng' configuration
+    if [[ -d "${acngconfigdir}" ]]; then
+      # check to see if there's already some remapping for secure repositories in
+      # the 'apt-cacher-ng' configuration file.  if there are, the section header
+      # "my repository remapping" will already be in the file.  if it's not there,
+      # add it
+      if [[ ! $(grep -i 'my repository remapping' "${acngconfigdir}${acngconfigfile}") ]]; then
+        printf '\n%s\n' "# my repository remapping" >>"${acngconfigdir}${acngconfigfile}"
+      fi
+
+      # add the remapping for the current repository to the 'apt-cacher-ng'
+      # configuration file
+      [[ "$verbosity" = "yes" ]] && printf '%s\n' "Adding repository remapping ..."
+      printf '%s\n' "Remap-${filename}: http://secure-${filename} ; file:secure-${filename}" >>"${acngconfigdir}${acngconfigfile}"
+
+      # create the remap file
+      [[ "$verbosity" = "yes" ]] && printf '%s\n' "Creating the remap file ..."
+      printf '%s\n' "${repourl}" >"${acngconfigdir}secure-${filename}"
     fi
-
-    # add the remapping for the current repository to the 'apt-cacher-ng'
-    # configuration file
-    [[ "$verbosity" = "yes" ]] && printf '%s\n' "Adding repository remapping ..."
-    printf '%s\n' "Remap-${filename}: http://secure-${filename} ; file:secure-${filename}" >>"${acngconfigdir}${acngconfigfile}"
-
-    # create the remap file
-    [[ "$verbosity" = "yes" ]] && printf '%s\n' "Creating the remap file ..."
-    printf '%s\n' "${repourl}" >"${acngconfigdir}secure-${filename}"
 
     # change the 'repourl' entry to the remapped repository URL
     repourl="http://secure-${filename}"
