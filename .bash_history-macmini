@@ -1,43 +1,3 @@
-man git
-#1634932172
-git config --get github.user
-#1634932182
-cat .config
-#1634932191
-cat .gitconfig
-#1634932200
-cat .gitconfig.local
-#1634932212
-git config --get user.user
-#1634932218
-git config --get user.mail
-#1634932228
-git config --get user.email
-#1634932244
-git config --get user.email [B
-#1634932269
-git config --set github.user rtruell
-#1634932372
-git config --global github.user rtruell
-#1634932382
-cat .gitconfig
-#1634932641
-cat .gitconfig.local
-#1634932650
-git-open dotfiles
-#1634934061
-ll
-#1634934069
-lal
-#1634936873
-mount
-#1634938428
-ls /Volumes/data/OSInstallFiles/
-#1634938438
-ls /Volumes/data/OSInstallFiles/OS
-#1634938443
-ls /Volumes/data/OSInstallFiles/OS/linux
-#1634938472
 ls /Volumes/data/Text
 #1634938489
 ls /Volumes/data/Text/OSInstall/
@@ -19883,3 +19843,41 @@ findtext -i 'yes |'
 findtext -i 'yes '
 #1665374174
 findtext -i 'yes \|'
+#1665375758
+findtext -i 'apt-get install'
+#1665375785
+dotfiles
+#1665375789
+findtext -i 'apt-get install'
+#1665376222
+up
+#1665376230
+less .bash_history-macmini
+#1665376233
+la
+#1665376239
+home
+#1665376241
+less .bash_history-macmini
+#1665376243
+la
+#1665376265
+less .bash_history
+#1665376368
+date --date='1665376222'
+#1665376389
+man date
+#1665376417
+less .bash_history
+#1665376430
+date --date='@1665376222'
+#1665376473
+less .bash_history
+#1665376519
+date --date='@1665375789'
+#1665376541
+date --date='#1665375789'
+#1665376578
+dotfiles
+#1665376587
+findtext -i 'apt-get install'
