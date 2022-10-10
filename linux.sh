@@ -350,3 +350,6 @@ print_result $? "Added mount command for the 'backups' directory on ${nasdevice}
 # update the locate database
 sudo updatedb
 print_result $? "updated the 'locate' database"
+
+# extra commands to execute
+symlink_single_file "/nas/xmltv" "${HOME}/.xmltv"  # move the TV listings xml files and databases off the SSD
