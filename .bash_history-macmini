@@ -1,17 +1,3 @@
-ls /etc/auto_master
-#1634942530
-cat /etc/auto_master
-#1634942588
-cat /etc/fstab
-#1634942945
-man cp
-#1634943520
-cd /Volumes/data/OSInstallFiles/
-#1634943592
-la
-#1634943640
-cp -r ./.ssh ~
-#1634943703
 man cp
 #1634943812
 cp -ra ./.ssh ~
