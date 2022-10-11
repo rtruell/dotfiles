@@ -1,7 +1,3 @@
-pwd
-#1634944139
-currdir=pwd
-#1634944142
 echo currdir
 #1634944170
 currdir=$(pwd)
@@ -19847,3 +19843,15 @@ home
 dotfiles
 #1665431895
 findtext -i bind
+#1665469587
+man sha256sum
+#1665469671
+sha256sum -c --ignore-missing raspiOS-sha256-checksums-2022-09-22
+#1665469699
+sha256sum -c --ignore-missing raspiOS-sha256-checksums-2022-09-22.txt
+#1665470067
+cd /Volumes/data/Downloads/RaspberryPi/
+#1665470099
+sha256sum -c raspiOS-sha256-checksums-2022-09-06.txt
+#1665470215
+sha256sum -c raspiOS-sha256-checksums-2022-09-22.txt
