@@ -32,13 +32,6 @@ function create_proxy_file {
   print_result $? "Changed permissions for '/etc/apt/apt.conf.d/00proxy'"
 }
 
-# if installing to 'nas', the web apps running in 'docker' are temporarily shut
-# down while 1) repositories are added to 'apt' and 2) 'apt' is configured to
-# use 'apt-cacher-ng' as a proxy
-if [[ "${computername}" == "nas" ]]; then
-  sudo docker compose down
-fi
-
 # discovered when installing from the Debian 11.2.0 DVD that the installer
 # didn't comment out all of the installation media lines in
 # '/etc/apt/sources.list', causing a problem when doing an 'apt update', so the
@@ -103,12 +96,6 @@ else
   sudo chmod 755 /etc/apt/apt.conf.d  # change its' permissions
   print_result $? "Changed permissions for '/etc/apt/apt.conf.d'"
   create_proxy_file  # create the file with the proxy config
-fi
-
-# done adding repositories and configuring 'apt', so if installing to 'nas',
-# time to start the web apps again
-if [[ "${computername}" == "nas" ]]; then
-  sudo docker compose up -d
 fi
 
 # update apt to pick up the new repositories, and then do an upgrade, just in
