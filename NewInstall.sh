@@ -133,15 +133,14 @@ if [[ "${retcode}" == 0 ]]; then
   source ./symlink.sh
   print_result $? "Symlinked dotfiles"
 
-  # if installing onto 'nas' or 'nasbackup', docker gets installed
-  if [[ "${computername}" == "nas"* ]]; then source ./docker-nas.sh; print_result $? "Docker installed"; fi
-
-  # if not installing on macOS, add software repositories to 'apt' and then
-  # install some packages, if necessary, so everything in the rest of this
-  # script can be done
-  if [[ "${SYSTEM_TYPE,,}" != "macos" ]]; then
+  if [[ "${SYSTEM_TYPE,,}" != "macos" ]]; then  # if not installing on macOS
+    # add third-party software repositories to 'apt'
     source ./addrepos.sh
     print_result $? "Software repositories added"
+    # if installing onto 'nas' or 'nasbackup', docker gets installed
+    if [[ "${computername}" == "nas"* ]]; then source ./docker-nas.sh; print_result $? "Docker installed"; fi
+    # install some packages, if necessary, so everything in the rest of this
+    # script can be done
     declare -a packages=(
       "build-essential"
       "cifs-utils"
