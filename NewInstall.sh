@@ -127,7 +127,7 @@ if [[ "${retcode}" == 0 ]]; then
   else
     su -c 'source ./sudo.sh'
   fi
-  print_result $? "Configured 'sudo'" "true"
+  print_result 0 "Configured 'sudo'" "true"
 
   # symlink the dotfiles into ${HOME}
   source ./symlink.sh
