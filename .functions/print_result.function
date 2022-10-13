@@ -1,8 +1,12 @@
 # "pretty print" a status message based on the result of a command/program
 # $1 is the return code of the command/program
-# $2 is the success/error status message
-# $3 is "true" if the script is to be ended if the program/command failed
+# $2 is the status message to be printed
+# $3 is "true" if the script is to be ended if the command/program failed
 function print_result {
-  [[ "${1}" -eq 0 ]] && print_success "${2}" || print_error "${2}"
-  [[ "${3}" == "true" ]] && [[ "${1}" -ne 0 ]] && exit "${1}"
+  if [[ "${1}" == 0 ]]; then
+    print_success "${2}"
+  else
+    print_error "${2}"
+    if [[ "${3}" == "true" ]]; then exit "${1}"; fi
+  fi
 }
