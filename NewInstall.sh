@@ -124,10 +124,12 @@ if [[ "${retcode}" == 0 ]]; then
   # make it so the user can use 'sudo', and without having to type a password
   if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
     sudo source ./sudo.sh
+    retcode=$?
   else
     su -c 'source ./sudo.sh'
+    retcode=$?
   fi
-  print_result 0 "Configured 'sudo'" "true"
+  print_result "${retcode}" "Configured 'sudo'" "true"
 
   # symlink the dotfiles into ${HOME}
   source ./symlink.sh
