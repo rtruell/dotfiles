@@ -19843,3 +19843,5 @@ cd "/Users/rtruell"; clear
 cd "/Users/rtruell"; clear
 #1665697219
 findtext -i 'print_result'
+#1665728547
+findtext -i acng
