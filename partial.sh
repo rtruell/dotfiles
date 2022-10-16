@@ -32,7 +32,7 @@ export -f trim
 
 computername=$(hostname -s)
 source ./symlink.sh
-source ./sudo.sh
+su -c 'source ./sudo.sh'
 apt_package_installer "liquidprompt"
 
 printf '%s\n' "All done.  Now, exit the shell and then re-open it."
