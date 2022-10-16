@@ -19843,3 +19843,5 @@ cd "/Users/rtruell"; clear
 findtext -i 'print_result'
 #1665728547
 findtext -i acng
+#1665960547
+findtext 'apt-cacher'
