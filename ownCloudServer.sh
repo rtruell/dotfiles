@@ -133,7 +133,7 @@ sudo sed -E \
 print_result "${?}" "Apache upload filesizes changed"
 
 # create the Apache 'owncloud.conf' file
-cat <<'APACHE_OWNCLOUD_CONF' |  sudo tee /etc/apache2/sites-available/owncloud.conf
+cat <<'APACHE_OWNCLOUD_CONF' |  sudo tee /etc/apache2/sites-available/owncloud.conf >/dev/null
 Alias /owncloud "/var/www/owncloud/"
 
 <Directory /var/www/owncloud/>
@@ -159,7 +159,7 @@ sudo -u ${htuser} php "${ocDir}"/occ maintenance:install \
   --database-pass "${ocDbUserPw}" \
   --admin-user "${ocAdminUser}" \
   --admin-pass "${ocAdminUserPw}" \
-  --data-dir "${ocDataDir}"
+  --data-dir "${ocDataDir}" >/dev/null
 print_result "${?}" "Configured ownCloud"
 
 # configure the owncloud logfile
@@ -176,7 +176,7 @@ print_result "${?}" "ownCloud logfile ownership changed"
 sudo sed -i "s/);/  'memcache.local' => '\\\OC\\\Memcache\\\APCu',\n);/" /var/www/owncloud/config/config.php
 print_result "${?}" "Configured ownCloud to use 'apcu'"
 
-sudo a2enmod rewrite mime unique_id ssl headers  # enable Apache modules needed for ownCloud
+sudo a2enmod rewrite mime unique_id  # enable Apache modules needed for ownCloud
 sudo a2ensite owncloud  # enable the ownCloud website
 sudo systemctl restart apache2  # restart Apache
 sudo systemctl status apache2  # show Apache's status
