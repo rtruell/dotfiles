@@ -8,7 +8,7 @@ function symlink_single_file {
   target_path=$2
   if [ -e "${target_path}" ]; then  # if the link already exists
     if [ "$(readlink "${target_path}")" != "${source_path}" ]; then  # and doesn't point to the function
-      print_warn "'${target_path}' already exists, do you want to overwrite it? (y/n) "  # ask if it should be overwritten...which in this case is actually renaming it and then recreating it
+      print_warn "'${target_path}' already exists, do you want to preserve it? (y/n) "  # ask if it should be presrved...which is renaming it and then creating the symlink
       read -n 1
       printf "\n"
       if answer_is_y "${REPLY}"; then
