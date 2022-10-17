@@ -1,7 +1,3 @@
-bashman local
-#1635046345
-echo $PWD
-#1635046350
 echo $HOME
 #1635049104
 bashman declare
@@ -19847,3 +19843,9 @@ findtext 'apt-cacher'
 findtext -i virtualbox
 #1665974960
 findtext -i owncloud
+#1665977673
+findtext -i "a2enmod"
+#1665977722
+man s2enmod
+#1665977757
+man a2enmod
