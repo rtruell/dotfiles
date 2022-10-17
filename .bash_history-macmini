@@ -1,5 +1,3 @@
-bash -version
-#1635025037
 bashman local
 #1635046345
 echo $PWD
@@ -19845,3 +19843,7 @@ findtext -i 'print_result'
 findtext -i acng
 #1665960547
 findtext 'apt-cacher'
+#1665970398
+findtext -i virtualbox
+#1665974960
+findtext -i owncloud
