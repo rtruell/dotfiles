@@ -240,7 +240,7 @@ printf '%s\n' "Enter the SAMBA password for ${username}"
 sudo smbpasswd -a "${username}"
 print_result $? "Added '${username}' to samba"
 
-if [[ "${computername}" == "nas"* ]]; then
+if [[ "${computername}" == "nas" ]]; then
   # the 'ddclient' config file was copied to $HOME earlier.  now that 'ddclient'
   # has been installed, the config file is moved to where it belongs
   sudo mv /etc/ddclient.conf /etc/ddclient.conf.orig  # backup '/etc/ddclient.conf' just in case
@@ -258,6 +258,9 @@ if [[ "${computername}" == "nas"* ]]; then
   # a new external IP address once an hour, instead of every 5 minutes
   sudo sed -E 's/(daemon_interval=).*/\1"1h"/' -i /etc/default/ddclient
   print_result $? "Changed the delay value for 'ddclient'"
+
+  # install ownCloud
+  source ./ownCloudServer.sh
 fi
 
 # if not installing on nas, nasbackup or a Raspberry Pi, install VirtualBox
