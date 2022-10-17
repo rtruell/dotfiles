@@ -2,9 +2,10 @@
 
 # when it all went to hell and you want a familiar environment in which to fix
 # things, clone the 'dotfiles' repository and then run this.  it loads some
-# functions and makes them available outside this script, symlinks the dotfiles,
-# gives 'sudo' permissions to 'rtruell' and installs 'liquidprompt' to give a
-# nice prompt.
+# functions and makes them available outside this script, symlinks the
+# dotfiles, gives 'sudo' permissions to 'rtruell', sets the RTC to local time
+# so I don't have to keep futzing with the BIOS to reset the time properly
+# every time I reboot, and installs 'liquidprompt' to give a nice prompt.
 
 source ./.functions/answer_is_y.function
 source ./.functions/apt_package_installer.function
@@ -33,6 +34,8 @@ export -f trim
 computername=$(hostname -s)
 source ./symlink.sh
 su -c 'source ./sudo.sh'
+sudo timedatectl set-local-rtc 1
+print_result $? "RTC set to local time"
 apt_package_installer "liquidprompt"
 
 printf '%s\n' "All done.  Now, exit the shell and then re-open it."
