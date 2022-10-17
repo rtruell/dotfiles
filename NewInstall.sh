@@ -147,7 +147,6 @@ if [[ "${retcode}" == 0 ]]; then
       "build-essential"
       "cifs-utils"
       "curl"
-      "dkms"
       "dmidecode"
       "file"
       "gnupg"
