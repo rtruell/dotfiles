@@ -177,8 +177,14 @@ sudo sed -i "s/);/  'memcache.local' => '\\\OC\\\Memcache\\\APCu',\n);/" /var/ww
 print_result "${?}" "Configured ownCloud to use 'apcu'"
 
 sudo a2enmod rewrite mime unique_id  # enable Apache modules needed for ownCloud
-sudo a2ensite owncloud  # enable the ownCloud website
+print_result "${?}" "Enabled modules for Apache"
+sudo a2ensite owncloud  # enable the ownCloud app
+print_result "${?}" "enabled the ownCloud app"
 sudo systemctl restart apache2  # restart Apache
+print_result "${?}" "Restarted Apache"
 sudo systemctl status apache2  # show Apache's status
+print_result "${?}" "Checked Apache's status"
 sudo systemctl is-enabled mariadb  # check to see if Mariadb is enabled
+print_result "${?}" "Checked to make sure Mariadb is enabled"
 sudo systemctl status mariadb  # show Mariadb's status
+print_result "${?}" "Checked Mariad's status"
