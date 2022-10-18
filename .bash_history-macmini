@@ -1,9 +1,3 @@
-ll
-#1635104567
-cd Downloads/Mac/
-#1635104578
-curl -sLO https://raw.githubusercontent.com/myspaghetti/macos-guest-virtualbox/master/macos-guest-virtualbox.sh
-#1635104591
 home
 #1635106489
 listfunction symlink_single_file
