@@ -4,7 +4,7 @@
 # (https://github.com/michaelwiesing/Owncloud-Auto-Setup-for-Raspberry-Pi-2)
 
 # Hostname
-hostname=$(hostname -s)
+computername=$(hostname -s)
 
 # Mariadb configuration
 mysqlRootPw="c0c0b7d"  # password for the root user of mysql
@@ -25,16 +25,6 @@ ocDataDir="/var/www/owncloud/data"  # where the user files are kept
 # ocDataDir="/nas/owncloud-server/"  # where the user files are kept
 logTimeZone="America/Edmonton"  # the time zone - defaults to UTC, which is bad
 logFile="/var/log/owncloud.log"  # path where owncloud log should be saved
-
-# create the ownCloud data directory, if necessary
-if [[ -d "${ocDataDir}" ]]; then
-  print_result "${?}" "'${ocDataDir}' already exists"
-else
-  sudo mkdir "${ocDataDir}"
-  print_result "${?}" "'${ocDataDir}' created"
-  sudo chown ${htuser}:${htgroup} ${ocDataDir}
-  print_result "${?}" "'${ocDataDir}' ownership changed"
-fi
 
 # # PHP 8 repository
 # sudo "${HOME}"/bin/add-apt-key https://packages.sury.org/php/apt.gpg php "deb https://packages.sury.org/php/ $(lsb_release -sc) main"
@@ -82,6 +72,8 @@ sudo sed -E \
   -e 's,(^post_max_size = ).*,\1600M,' \
   -e 's,(^max_execution_time = ).*,\1300,' \
   -e 's,^;(date.timezone =).*,\1 America/Edmonton,' \
+  -e 's,^;(date.default_latitude = ).*,\153.6316,' \
+  -e 's,^;(date.default_longitude = ).*,\1-113.3239,' \
   -e 's,(^output_buffering = ).*,\1Off,' \
   -e 's,^;(opcache.revalidate_freq=).*,\11,' \
   -e 's,^;(zend_extension=opcache.*),\1,' \
@@ -151,8 +143,18 @@ Alias /owncloud "/var/www/owncloud/"
 APACHE_OWNCLOUD_CONF
 print_result "${?}" "'owncloud.conf' file for Apache created"
 
-# ownCloud configuration (see: https://doc.owncloud.com/server/10.11/admin_manual/configuration/server/occ_command.html#command-line-installation)
-sudo -u ${htuser} php "${ocDir}"/occ maintenance:install \
+# create the ownCloud data directory, if necessary
+if [[ -d "${ocDataDir}" ]]; then
+  print_result "${?}" "'${ocDataDir}' already exists"
+else
+  sudo mkdir "${ocDataDir}"
+  print_result "${?}" "'${ocDataDir}' created"
+  sudo chown ${htuser}:${htgroup} ${ocDataDir}
+  print_result "${?}" "'${ocDataDir}' ownership changed"
+fi
+
+# ownCloud configuration (see: https://doc.owncloud.com/server/10.11/admin_manual/configuration/server/occ_command.html#command-description)
+sudo -u ${htuser} "${ocDir}"/occ maintenance:install \
   --database "mysql" \
   --database-name "${ocDb}" \
   --database-user "${ocDbUser}" \
@@ -161,6 +163,16 @@ sudo -u ${htuser} php "${ocDir}"/occ maintenance:install \
   --admin-pass "${ocAdminUserPw}" \
   --data-dir "${ocDataDir}" >/dev/null
 print_result "${?}" "Configured ownCloud"
+
+# configure ownCloud's trusted domains
+if [[ "$(sudo grep -iq "${computername}" /var/www/owncloud/config/config.php)" == 0 ]]; then
+  print_result "${?}" "'${computername}' is already in the ownCloud trusted domains list"
+else
+  readarray -t trusteddomains < <(sudo -u ${htuser} "${ocDir}"/occ config:system:get trusted_domains)  # get a list of the current trusted domains
+  numberdomains=${#trusteddomains[@]}  # get the number of domains already trusted
+  sudo -u "${htuser}" "${ocDir}"/occ config:system:set trusted_domains "${numberdomains}" --value="${computername}"  # add this computer to the list
+  print_result "${?}" "'${computername}' has been added to the ownCloud trusted domains list"
+fi
 
 # configure the owncloud logfile
 logFileMasked=$(printf '%s' "${logFile}" | sed 's/\//\\\//g')
@@ -176,10 +188,10 @@ print_result "${?}" "ownCloud logfile ownership changed"
 sudo sed -i "s/);/  'memcache.local' => '\\\OC\\\Memcache\\\APCu',\n);/" /var/www/owncloud/config/config.php
 print_result "${?}" "Configured ownCloud to use 'apcu'"
 
-sudo a2enmod rewrite mime unique_id  # enable Apache modules needed for ownCloud
+sudo a2enmod rewrite headers env dir mime unique_id  # enable Apache modules needed for ownCloud
 print_result "${?}" "Enabled modules for Apache"
-sudo a2ensite owncloud  # enable the ownCloud app
-print_result "${?}" "enabled the ownCloud app"
+sudo a2ensite owncloud  # enable the ownCloud site
+print_result "${?}" "enabled the ownCloud site"
 sudo systemctl restart apache2  # restart Apache
 print_result "${?}" "Restarted Apache"
 sudo systemctl status apache2  # show Apache's status
