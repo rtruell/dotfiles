@@ -19843,3 +19843,9 @@ findtext -i "a2enmod"
 man s2enmod
 #1665977757
 man a2enmod
+#1666070051
+ls /Volumes/ExternalHome/rtruell/
+#1666070057
+cd /Volumes/ExternalHome/rtruell/
+#1666070078
+findtext 'nextcloud'
