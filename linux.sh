@@ -1,5 +1,49 @@
 #!/usr/bin/env bash
 
+if [[ "${computername}" == "nas"* ]]; then
+  # add some symlinks to get files off the SSD, even though most of the
+  # programs using them won't be installed until later.
+  symlink_single_file "/nas/xmltv" "${HOME}/.xmltv"  # TV listings xml files and databases
+  symlink_single_file "/nas/mysql" "/var/lib/mysql"  # Mariadb
+  symlink_single_file "/nas/apt-cacher-ng/data" "/var/cache/apt-cacher-ng"  # apt-cacher-ng data directory
+  symlink_single_file "/nas/apt-cacher-ng/config" "/etc/apt-cacher-ng"  # apt-cacher-ng config directory
+  # install and configure 'apt-cacher-ng'
+  apt_package_installer "apt-cacher-ng"  # install 'apt-cacher-ng'
+  print_result $? "'apt-cacher-ng' installed"
+  sudo cp /etc/apt-cacher-ng/acng.conf /etc/apt-cacher-ng/acng.conf.orig  # back up the config file, just in case
+  print_result $? "config file backed up"
+  printf '\n%s\n' "Allow data pass-through mode to CONNECT to everything" | sudo tee -a /etc/apt-cacher-ng/acng.conf >/dev/null
+  print_result $? "Added header for new section"
+  printf '%s\n' "PassThroughPattern: .*" | sudo tee -a /etc/apt-cacher-ng/acng.conf >/dev/null
+  print_result $? "Added pattern for pass-through mode"
+  sudo systemctl restart apt-cacher-ng  # restart 'apt-cacher-ng' to pick up the changes made to the config
+  print_result $? "'apt-cacher-ng' restarted"
+fi
+# add third-party software repositories to 'apt'
+source ./addrepos.sh
+print_result $? "Software repositories added"
+# if installing onto 'nas' or 'nasbackup', docker gets installed
+if [[ "${computername}" == "nas"* ]]; then source ./docker-nas.sh; print_result $? "Docker installed"; fi
+# install some packages, if necessary, so everything in the rest of this
+# script can be done
+declare -a packages=(
+  "build-essential"
+  "curl"
+  "dmidecode"
+  "file"
+  "gnupg"
+  "inxi"
+  "linux-headers-amd64"
+  "locate"
+  "make"
+  "openssh-server"
+  "procps"
+  "systemd"
+)
+for i in ${packages[@]}; do  # loop through the array of packages ...
+  apt_package_installer "${i}"  # ... installing them if necessary
+done
+
 # install any '.deb' programs that were copied, since they're easy to do in a
 # script
 shopt -s dotglob
@@ -353,6 +397,3 @@ print_result $? "Added mount command for the 'backups' directory on ${nasdevice}
 # update the locate database
 sudo updatedb
 print_result $? "updated the 'locate' database"
-
-# extra commands to execute
-symlink_single_file "/nas/xmltv" "${HOME}/.xmltv"  # move the TV listings xml files and databases off the SSD
