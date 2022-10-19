@@ -135,34 +135,6 @@ if [[ "${retcode}" == 0 ]]; then
   source ./symlink.sh
   print_result $? "Symlinked dotfiles"
 
-  if [[ "${SYSTEM_TYPE,,}" != "macos" ]]; then  # if not installing on macOS
-    # add third-party software repositories to 'apt'
-    source ./addrepos.sh
-    print_result $? "Software repositories added"
-    # if installing onto 'nas' or 'nasbackup', docker gets installed
-    if [[ "${computername}" == "nas"* ]]; then source ./docker-nas.sh; print_result $? "Docker installed"; fi
-    # install some packages, if necessary, so everything in the rest of this
-    # script can be done
-    declare -a packages=(
-      "build-essential"
-      "cifs-utils"
-      "curl"
-      "dmidecode"
-      "file"
-      "gnupg"
-      "inxi"
-      "linux-headers-amd64"
-      "locate"
-      "make"
-      "openssh-server"
-      "procps"
-      "systemd"
-    )
-    for i in ${packages[@]}; do  # loop through the array of packages ...
-      apt_package_installer "${i}"  # ... installing them if necessary
-    done
-  fi
-
   # mount the NAS' 'data' directory to access files and programs to be copied or
   # installed.  if installing on 'nas' or 'nasbackup', the files and programs
   # are directly available and nothing needs to be mounted.  however, even on
@@ -185,6 +157,10 @@ if [[ "${retcode}" == 0 ]]; then
            fi
            ;;
         *)
+           # in Linux, the 'cifs-utils' package is needed in order to mount SMB
+           # shares, so install it if necessary
+           apt_package_installer "cifs-utils"
+           print_result "${?}" "'cifs-utils' package installed"
            case "${computername}" in
              nas*)
                    # if installing on 'NAS' or 'NASbackup'
