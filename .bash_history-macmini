@@ -1,5 +1,3 @@
-home
-#1635106489
 listfunction symlink_single_file
 #1635106596
 echo $PWD
@@ -19843,3 +19841,15 @@ ls /Volumes/ExternalHome/rtruell/
 cd /Volumes/ExternalHome/rtruell/
 #1666070078
 findtext 'nextcloud'
+#1666124621
+findtext -i 'apt-cacher-ng'
+#1666129043
+findtext -i 'symlink_single'
+#1666132152
+findtext -i 'apt-cacher-ng'
+#1666133532
+findtext -i 'sudo tee'
+#1666135648
+findtext -i 'docker compose'
+#1666135683
+findtext -i 'compose down'
