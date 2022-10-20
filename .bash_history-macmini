@@ -1,13 +1,3 @@
-listfunction symlink_single_file
-#1635106596
-echo $PWD
-#1635106602
-echo $HOME
-#1635106605
-dotfiles
-#1635106615
-echo $PWD
-#1635106617
 echo $HOME
 #1635106892
 declare -a filenames=("file1" "file2" "file3" "file4")
@@ -19853,3 +19843,5 @@ findtext -i 'sudo tee'
 findtext -i 'docker compose'
 #1666135683
 findtext -i 'compose down'
+#1666249976
+findtext 'apt-cacher-ng'
