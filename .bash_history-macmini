@@ -1,5 +1,3 @@
-echo $HOME
-#1635106892
 declare -a filenames=("file1" "file2" "file3" "file4")
 #1635106941
 declare -a excludes=("file1" "file3")
@@ -19845,3 +19843,7 @@ findtext -i 'docker compose'
 findtext -i 'compose down'
 #1666249976
 findtext 'apt-cacher-ng'
+#1666322464
+findtext -i bind
+#1666322582
+man mount
