@@ -1,5 +1,3 @@
-[[ -z $PWD ]] && echo empty
-#1635107011
 [[ -n $PWD ]] && echo full
 #1635107050
 [[ -n $filenames ]] && echo full
@@ -19845,3 +19843,5 @@ findtext -i bind
 man mount
 #1666592341
 findtext -i tput
+#1666643612
+h | less
