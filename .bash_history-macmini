@@ -19843,3 +19843,5 @@ findtext 'apt-cacher-ng'
 findtext -i bind
 #1666322582
 man mount
+#1666592341
+findtext -i tput
