@@ -1,5 +1,3 @@
-[[ -n $PWD ]] && echo full
-#1635107050
 [[ -n $filenames ]] && echo full
 #1635107058
 [[ -z $filenames ]] && echo full
