@@ -268,7 +268,15 @@ if [[ "${retcode}" == 0 ]]; then
   # $HOME...it'll be put where it belongs after 'ddclient' is installed
   if [[ "${computername}" == "nas"* ]]; then
     cp -a ddclient.conf "${HOME}"
-    print_result $? "Copied the ddclient config file"
+    print_result $? "Copied the 'ddclient' config file"
+  fi
+
+  # if not installing on 'nas', 'nasbackup' or a Raspberry Pi, copy the updated
+  # 'freeguide' .jar file...it'll be put where it belongs after 'freeguide' is
+  #  installed
+  if [[ "${computername}" != "nas"* && "${computername}" != "rpi"* ]]; then
+    cp -a FreeGuide.jar "${HOME}"
+    print_result $? "Copied the updated 'freeguide' .jar file"
   fi
 
   # copy third-party programs to a temporary location, to be installed later
