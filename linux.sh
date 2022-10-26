@@ -86,9 +86,11 @@ if [[ "${computername}" == "nas"* ]]; then
   sudo systemctl start apt-cacher-ng  # changes to the config are done, so start 'apt-cacher-ng' again
   print_result "${?}" "'apt-cacher-ng' restarted"
 fi
+
 # add third-party software repositories to 'apt'
 source ./addrepos.sh
 print_result "${?}" "Software repositories added"
+
 # # if installing onto 'nas' or 'nasbackup', docker gets installed
 # if [[ "${computername}" == "nas"* ]]; then source ./docker-nas.sh; print_result "${?}" "Docker installed"; fi
 
@@ -435,8 +437,9 @@ APACHE_SHAARLI_CONF
   print_result "${?}" "Restarted Apache"
 fi
 
-# if not installing on nas, nasbackup or a Raspberry Pi, install VirtualBox
+# if not installing on nas, nasbackup or a Raspberry Pi
 if [[ "${computername}" != "nas"* && "${computername}" != "rpi"* ]]; then
+  # install 'VirtualBox'
   printf '\t%s\n' "Installing VirtualBox"
   printf '\t%s\n' "Retrieving checksums and the latest version number"
   virboxversion="$(curl https://download.virtualbox.org/virtualbox/LATEST.TXT 2>/dev/null)"  # get the latest release version
@@ -495,6 +498,18 @@ if [[ "${computername}" != "nas"* && "${computername}" != "rpi"* ]]; then
       fi
     fi
   fi
+
+  # the updated 'freeguide' .jar file was copied to $HOME earlier.  now that
+  # 'freeguide' has been installed, the .jar file is moved to where it belongs
+  freeguidejar="/usr/share/freeguide/FreeGuide.jar"
+  sudo mv "${freeguidejar}" "${freeguidejar}".orig  # backup '/usr/share/freeguide/FreeGuide.jar' just in case
+  print_result "${?}" "Backed up '${freeguidejar}'"
+  sudo mv "${HOME}"/FreeGuide.jar "${freeguidejar}"  # move 'FreeGuide.jar' to where it belongs
+  print_result "${?}" "Moved 'FreeGuide.jar' to where it belongs"
+  sudo chown root:root "${freeguidejar}"  # set the owner/group properly
+  print_result "${?}" "Set the owner/group for '${freeguidejar}'"
+  sudo chmod 644 "${freeguidejar}"  # set its permissions
+  print_result "${?}" "Set permissions for '${freeguidejar}'"
 fi
 
 # Create mount points for the 'data' and 'backups' directories
