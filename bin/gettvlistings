@@ -45,7 +45,7 @@ while [[ "${returncode}" != 0 ]]; do
   if [[ "${returncode}" != 0 ]]; then
     if [[ -e "${xmlfile}" ]]; then rm "${xmlfile}"; fi
     rm "${xmltvdir}"/SchedulesDirect.DB
-    cp "${xmltvdir}"/SchedulesDirect.DB."${Yesterday}" "${xmltvdir}"/SchedulesDirect.DB
+    cp -a "${xmltvdir}"/SchedulesDirect.DB."${Yesterday}" "${xmltvdir}"/SchedulesDirect.DB
     printf '%s\n' "${indent}There was a problem at Schedules Direct...will try again in 30 minutes."
     sleep 1800
   fi
@@ -63,8 +63,8 @@ else
 fi
 
 printf '\n%s\n\n' "Backing up the database."
-printf '%s\n' "${indent}Running: 'cp \"${xmltvdir}\"/SchedulesDirect.DB \"${xmltvdir}\"/SchedulesDirect.DB.\"${Today}\"'."
-cp "${xmltvdir}"/SchedulesDirect.DB "${xmltvdir}"/SchedulesDirect.DB."${Today}"
+printf '%s\n' "${indent}Running: 'cp -a \"${xmltvdir}\"/SchedulesDirect.DB \"${xmltvdir}\"/SchedulesDirect.DB.\"${Today}\"'."
+cp -a "${xmltvdir}"/SchedulesDirect.DB "${xmltvdir}"/SchedulesDirect.DB."${Today}"
 if [[ "${?}" == "0" ]]; then
   printf '%s\n' "${indent}database backed up."
 else
@@ -102,7 +102,7 @@ fi
 printf '\n%s\n\n' "Copying the data files."
 copystart=$(elapsed)
 if [[ "${filemount}" == "1" ]]; then
-  sudo cp "${xmltvdatadir}"/* "${HOME}"/nas/XMLTV/data/CurrentYear
+  sudo cp -a "${xmltvdatadir}"/* "${HOME}"/nas/XMLTV/data/CurrentYear
   if [[ "${?}" == "0" ]]; then
     filecopy=1
     printf '%s\n' "${indent}files copied to 'nas'."
@@ -112,7 +112,7 @@ if [[ "${filemount}" == "1" ]]; then
   fi
 fi
 if [[ "${backupmount}" == "1" ]]; then
-  sudo cp "${xmltvdatadir}"/* "${HOME}"/nasbackup/XMLTV/data/CurrentYear
+  sudo cp -a "${xmltvdatadir}"/* "${HOME}"/nasbackup/XMLTV/data/CurrentYear
   if [[ "${?}" == "0" ]]; then
     backupcopy=1
     printf '%s\n' "${indent}files copied to 'nasbackup'."
