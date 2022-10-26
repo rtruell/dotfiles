@@ -160,7 +160,6 @@ if [[ "${retcode}" == 0 ]]; then
            # in Linux, the 'cifs-utils' package is needed in order to mount SMB
            # shares, so install it if necessary
            apt_package_installer "cifs-utils"
-           print_result "${?}" "'cifs-utils' package installed"
            case "${computername}" in
              nas*)
                    # if installing on 'NAS' or 'NASbackup'
@@ -312,7 +311,7 @@ if [[ "${retcode}" == 0 ]]; then
              print_result $? "Installed ${i}"
              ;;
         xip)
-             cp -a "${i}" "${appdir}"  # if it's a '.xip', it's a zipped program, so copy it to 'appdir' for extraction and installation below
+             cp -a "${i}" "${appdir}"  # if it's a '.xip', it's a zipped program, so copy it to 'appdir' for extraction and installation later
              print_result $? "Copied ${i} to ${appdir}"
              xip=1
              ;;
