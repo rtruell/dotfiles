@@ -25,6 +25,24 @@ function add_docker {
   print_result $? "Added the Docker repository to 'apt'"
 }
 
+function add_php8 {
+  # add the repository for PHP 8 to 'apt'
+  sudo "${HOME}"/bin/add-apt-key --acng https://packages.sury.org/php/apt.gpg php8 "deb https://packages.sury.org/php/ $(lsb_release -cs) main"
+  print_result $? "Added the PHP 8 repository to 'apt'"
+}
+
+function add_owncloud_server {
+  # add the repository for ownCloud server to 'apt'
+  sudo "${HOME}"/bin/add-apt-key --acng https://download.opensuse.org/repositories/isv:ownCloud:server:10/Debian_11/Release.key ocserver "deb https://download.opensuse.org/repositories/isv:/ownCloud:/server:/10/Debian_11/ /"
+  print_result $? "Added the ownCloud server repository to 'apt'"
+}
+
+function add_owncloud_client {
+  # add the repository for ownCloud client to 'apt'
+  sudo "${HOME}"/bin/add-apt-key --acng https://download.owncloud.com/desktop/ownCloud/stable/latest/linux/Debian_11/Release.key occlient "deb https://download.owncloud.com/desktop/ownCloud/stable/latest/linux/Debian_11/ /"
+  print_result $? "Added the ownCloud client repository to 'apt'"
+}
+
 function create_proxy_file {
   printf "Acquire::http { Proxy \"http://nas:3142\"; };\n" | sudo tee /etc/apt/apt.conf.d/00proxy >/dev/null  # create the 'apt' proxy config file
   print_result $? "Created '/etc/apt/apt.conf.d/00proxy'"
@@ -59,7 +77,7 @@ print_result 0 "Updated '/etc/apt/sources.list' with the 'contrib' and 'non-free
 
 # add software repositories to 'apt' based on the computer name
 case "${computername,,}" in
-  nas | nasbackup) add_webmin; add_sublime; add_bcompare; add_docker ;;
+  nas | nasbackup) add_webmin; add_sublime; add_bcompare; add_owncloud_server ;;
   rpi*) add_webmin; add_sublime ;;
   *) add_webmin; add_sublime; add_bcompare ;;
 esac
