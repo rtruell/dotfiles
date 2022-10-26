@@ -21,49 +21,42 @@ htgroup="${htuser}"  # group Apache runs under
 ocAdminUser="rtruell"  # name of the owncloud administrator
 ocAdminUserPw="c0c0b7d"  # password for the owncloud administrator
 ocDir="/var/www/owncloud"  # where ownCloud lives
-ocDataDir="/var/www/owncloud/data"  # where the user files are kept
-# ocDataDir="/nas/owncloud-server/"  # where the user files are kept
+ocDataDir="/nas/owncloud-server/"  # where the user files are kept
 logTimeZone="America/Edmonton"  # the time zone - defaults to UTC, which is bad
 logFile="/var/log/owncloud.log"  # path where owncloud log should be saved
 
-# # PHP 8 repository
-# sudo "${HOME}"/bin/add-apt-key https://packages.sury.org/php/apt.gpg php "deb https://packages.sury.org/php/ $(lsb_release -sc) main"
-# print_result "${?}" "Added PHP 8 repository"
-# ownCloud server repository
-sudo "${HOME}"/bin/add-apt-key https://download.opensuse.org/repositories/isv:ownCloud:server:10/Debian_11/Release.key owncloud "deb http://download.opensuse.org/repositories/isv:/ownCloud:/server:/10/Debian_11/ /"
-print_result "${?}" "Added ownCloud repository"
-retcode=1
-while [[ "${retcode}" != 0 ]]; do
-  sudo apt update  # update 'apt' so ownCloud can be installed, and make sure the update actually happened
-  retcode="${?}"
-done
-print_result "${retcode}" "Updated 'apt'"
-
-# packages needed to run ownCloud
-declare -a packages=(
-  "apache2"
-  "curl"
-  "libapache2-mod-php"
-  "mariadb-server"
-  "php"
-  "unzip"
-  "php-apcu"
-  "php-bcmath"
-  "php-bz2"
-  "php-curl"
-  "php-gd"
-  "php-gmp"
-  "php-imagick"
-  "php-intl"
-  "php-mbstring"
-  "php-mysql"
-  "php-xml"
-  "php-zip"
-  "owncloud-complete-files"
-)
-for i in ${packages[@]}; do  # loop through the array of packages ...
-  apt_package_installer "${i}"  # ... installing them if necessary
-done
+# move the 'mariadb' data directory off the SSD
+sudo systemctl stop mariadb  # stop 'mariadb' to make configuration changes
+print_result "${?}" "Stopped 'mariadb'"
+if [[ -d /nas/mysql ]]; then  # if '/nas/mysql' exists
+  print_result "${?}" "'/nas/mysql' already exists"  # say so
+else
+  sudo mkdir /nas/mysql  # otherwise, create it
+  print_result "${?}" "'/nas/mysql' created"
+  sudo chown mysql:mysql /nas/mysql  # change ownership of the new data directory
+  print_result "${?}" "Chanaged ownership of '/nas/mysql'"
+fi
+if [[ "$(ls -A /var/lib/mysql)" ]]; then  # check for files/directories in '/var/lib/mysql'
+  print_warn "'/var/lib/mysql' has files/directories in it"
+  if [[ "$(ls -A /nas/mysql)" ]]; then  # there were some, so check for files/directories in '/nas/mysql'
+    print_warn "'/nas/mysql' has files/directories in it"
+    diff -q /var/lib/mysql /nas/mysql >/dev/null  # there were some, so compare the directories
+    if [[ "${?}" == 0 ]]; then  # if the directories are identical
+      print_result 0 "The directories are identical"
+    else
+      print_warn "The directories are different"
+      sudo cp -a /var/lib/mysql /var/lib/mysql.orig  # back up '/var/lib/mysql' for later comparison
+      print_result "${?}" "Backed up '/var/lib/mysql for later comparison"
+    fi
+    sudo rm /var/lib/mysql/*  # delete the files/directories in '/var/lib/mysql'
+    print_result "${?}" "Deleted the files/directories in '/var/lib/mysql"
+  else
+    sudo mv /var/lib/mysql/* /nas/mysql  # move 'mariadb' data files to their new location off the SSD
+    print_result "${?}" "Moved 'mariadb' data files to '/nas/mysql"
+  fi
+fi
+sudo mount --bind /nas/mysql /var/lib/mysql  # mount the new 'mariadb' data directory location to the old one
+print_result "${?}" "Mounted '/nas/mysql' -> '/var/lib/mysql'"
 
 # configure PHP for Apache
 sudo sed -E \
@@ -84,6 +77,8 @@ sudo sed -E \
   -e 's,^;(opcache.save_comments=1.*),\1,' \
   -i /etc/php/7.4/apache2/php.ini
 print_result "${?}" "PHP configured"
+sudo systemctl start mariadb  # changes to the config are done, so start 'mariadb' again
+print_result "${?}" "'mariadb' restarted"
 
 # Set database root password with `debconf-set-selections`
 sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password ${mysqlRootPw}" # password for the MySQL root user
@@ -124,8 +119,11 @@ sudo sed -E \
   -i /var/www/owncloud/.htaccess
 print_result "${?}" "Apache upload filesizes changed"
 
-# create the Apache 'owncloud.conf' file
-cat <<'APACHE_OWNCLOUD_CONF' |  sudo tee /etc/apache2/sites-available/owncloud.conf >/dev/null
+# create the Apache 'owncloud.conf' file if necessary
+if [[ -e /etc/apache2/sites-available/owncloud.conf ]]; then
+  print_result "${?}" "'owncloud.conf' already exists"
+else
+  cat <<'APACHE_OWNCLOUD_CONF' | sudo tee /etc/apache2/sites-available/owncloud.conf >/dev/null
 Alias /owncloud "/var/www/owncloud/"
 
 <Directory /var/www/owncloud/>
@@ -141,7 +139,8 @@ Alias /owncloud "/var/www/owncloud/"
 
 </Directory>
 APACHE_OWNCLOUD_CONF
-print_result "${?}" "'owncloud.conf' file for Apache created"
+  print_result "${?}" "'owncloud.conf' created"
+fi
 
 # create the ownCloud data directory, if necessary
 if [[ -d "${ocDataDir}" ]]; then
@@ -164,13 +163,13 @@ sudo -u ${htuser} "${ocDir}"/occ maintenance:install \
   --data-dir "${ocDataDir}" >/dev/null
 print_result "${?}" "Configured ownCloud"
 
-# configure ownCloud's trusted domains
+# configure ownCloud's trusted domains, if necessary
 if [[ "$(sudo grep -iq "${computername}" /var/www/owncloud/config/config.php)" == 0 ]]; then
   print_result "${?}" "'${computername}' is already in the ownCloud trusted domains list"
 else
   readarray -t trusteddomains < <(sudo -u ${htuser} "${ocDir}"/occ config:system:get trusted_domains)  # get a list of the current trusted domains
   numberdomains=${#trusteddomains[@]}  # get the number of domains already trusted
-  sudo -u "${htuser}" "${ocDir}"/occ config:system:set trusted_domains "${numberdomains}" --value="${computername}"  # add this computer to the list
+  sudo -u "${htuser}" "${ocDir}"/occ config:system:set trusted_domains "${numberdomains}" --value="${computername}" >/dev/null  # add this computer to the list
   print_result "${?}" "'${computername}' has been added to the ownCloud trusted domains list"
 fi
 
@@ -188,15 +187,15 @@ print_result "${?}" "ownCloud logfile ownership changed"
 sudo sed -i "s/);/  'memcache.local' => '\\\OC\\\Memcache\\\APCu',\n);/" /var/www/owncloud/config/config.php
 print_result "${?}" "Configured ownCloud to use 'apcu'"
 
-sudo a2enmod rewrite headers env dir mime unique_id  # enable Apache modules needed for ownCloud
+sudo a2enmod rewrite headers env dir mime unique_id >/dev/null  # enable Apache modules needed for ownCloud
 print_result "${?}" "Enabled modules for Apache"
-sudo a2ensite owncloud  # enable the ownCloud site
+sudo a2ensite owncloud >/dev/null  # enable the ownCloud site
 print_result "${?}" "enabled the ownCloud site"
 sudo systemctl restart apache2  # restart Apache
 print_result "${?}" "Restarted Apache"
 sudo systemctl status apache2  # show Apache's status
 print_result "${?}" "Checked Apache's status"
-sudo systemctl is-enabled mariadb  # check to see if Mariadb is enabled
+sudo systemctl is-enabled mariadb >/dev/null # check to see if Mariadb is enabled
 print_result "${?}" "Checked to make sure Mariadb is enabled"
 sudo systemctl status mariadb  # show Mariadb's status
 print_result "${?}" "Checked Mariad's status"
