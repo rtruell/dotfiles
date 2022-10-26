@@ -11,3 +11,4 @@ United States of Al,USOA,m
 Fear the Walking Dead,Fear The Walking Dead,m
 In the Dark,In The Dark,m
 House of the Dragon,House Of The Dragon,m
+The Goldbergs,TG,m
