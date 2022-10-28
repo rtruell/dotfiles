@@ -4,50 +4,50 @@
 function add_webmin {
   # add the repository for Webmin to 'apt'
   sudo "${HOME}"/bin/add-apt-key --acng https://download.webmin.com/jcameron-key.asc webmin "deb https://download.webmin.com/download/repository sarge contrib"
-  print_result $? "Added the Webmin repository to 'apt'"
+  print_result "${?}" "Added the Webmin repository to 'apt'"
 }
 
 function add_sublime {
   # add the repository for Sublime Text/Merge to 'apt'
   sudo "${HOME}"/bin/add-apt-key --acng https://download.sublimetext.com/sublimehq-pub.gpg sublimehq "deb https://download.sublimetext.com/ apt/stable/"
-  print_result $? "Added the Sublime Text/Merge repository to 'apt'"
+  print_result "${?}" "Added the Sublime Text/Merge repository to 'apt'"
 }
 
 function add_bcompare {
   # add the repository for Beyond Compare to 'apt'
   sudo "${HOME}"/bin/add-apt-key --acng https://www.scootersoftware.com/RPM-GPG-KEY-scootersoftware bcompare "deb https://www.scootersoftware.com/ bcompare4 non-free"
-  print_result $? "Added the Beyond Compare repository to 'apt'"
+  print_result "${?}" "Added the Beyond Compare repository to 'apt'"
 }
 
 function add_docker {
   # add the repository for Docker to 'apt'
   sudo "${HOME}"/bin/add-apt-key --acng https://download.docker.com/linux/debian/gpg docker "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
-  print_result $? "Added the Docker repository to 'apt'"
+  print_result "${?}" "Added the Docker repository to 'apt'"
 }
 
 function add_php8 {
   # add the repository for PHP 8 to 'apt'
   sudo "${HOME}"/bin/add-apt-key --acng https://packages.sury.org/php/apt.gpg php8 "deb https://packages.sury.org/php/ $(lsb_release -cs) main"
-  print_result $? "Added the PHP 8 repository to 'apt'"
+  print_result "${?}" "Added the PHP 8 repository to 'apt'"
 }
 
 function add_owncloud_server {
   # add the repository for ownCloud server to 'apt'
   sudo "${HOME}"/bin/add-apt-key --acng https://download.opensuse.org/repositories/isv:ownCloud:server:10/Debian_11/Release.key ocserver "deb https://download.opensuse.org/repositories/isv:/ownCloud:/server:/10/Debian_11/ /"
-  print_result $? "Added the ownCloud server repository to 'apt'"
+  print_result "${?}" "Added the ownCloud server repository to 'apt'"
 }
 
 function add_owncloud_client {
   # add the repository for ownCloud client to 'apt'
   sudo "${HOME}"/bin/add-apt-key --acng https://download.owncloud.com/desktop/ownCloud/stable/latest/linux/Debian_11/Release.key occlient "deb https://download.owncloud.com/desktop/ownCloud/stable/latest/linux/Debian_11/ /"
-  print_result $? "Added the ownCloud client repository to 'apt'"
+  print_result "${?}" "Added the ownCloud client repository to 'apt'"
 }
 
 function create_proxy_file {
   printf "Acquire::http { Proxy \"http://nas:3142\"; };\n" | sudo tee /etc/apt/apt.conf.d/00proxy >/dev/null  # create the 'apt' proxy config file
-  print_result $? "Created '/etc/apt/apt.conf.d/00proxy'"
+  print_result "${?}" "Created '/etc/apt/apt.conf.d/00proxy'"
   sudo chmod 644 /etc/apt/apt.conf.d/00proxy  # and set its permissions
-  print_result $? "Changed permissions for '/etc/apt/apt.conf.d/00proxy'"
+  print_result "${?}" "Changed permissions for '/etc/apt/apt.conf.d/00proxy'"
 }
 
 # discovered when installing from the Debian 11.2.0 DVD that the installer
@@ -58,7 +58,7 @@ function create_proxy_file {
 # packages in the 'contrib' and 'non-free' repositories, so I add them to the
 # repository lines here as well
 sudo mv /etc/apt/sources.list /etc/apt/sources.list.orig  # back up 'sources.list', just in case
-print_result $? "Backed up '/etc/apt/sources.list'"
+print_result "${?}" "Backed up '/etc/apt/sources.list'"
 while read -r repoline; do  # read in /etc/apt/sources.list.orig one line at a time
   if [[ ${repoline} == *"cdrom:"* ]]; then  # if it's a line for the installation media, comment it out, even if it's already commented out
     repoline="#"${repoline}
@@ -91,18 +91,18 @@ esac
 # the proxy config file and create it if necessary
 
 if [[ -d /etc/apt/apt.conf.d ]]; then
-  print_result $? "'/etc/apt/apt.conf.d' exists"
+  print_result "${?}" "'/etc/apt/apt.conf.d' exists"
   if [[ -e /etc/apt/apt.conf.d/00proxy ]]; then  # the directory exists, so check to see if the proxy config file is already in it
-    print_result $? "'/etc/apt/apt.conf.d/00proxy' exists"
+    print_result "${?}" "'/etc/apt/apt.conf.d/00proxy' exists"
     if [[ $(grep -i 'nas:3142' /etc/apt/apt.conf.d/00proxy) ]]; then  # it is, so check to see if the proxy config is in it
-      print_result $? "and already contains the proxy config"
+      print_result "${?}" "and already contains the proxy config"
     else
-      grep_result=$?  # it isn't, so print some warning messages, back up the current file and create the new one
+      grep_result="${?}"  # it isn't, so print some warning messages, back up the current file and create the new one
       print_warn ${grep_result} "but doesn't contain the proxy config"
       print_warn ${grep_result} "backing it up for later comparison"
       print_warn ${grep_result} "and creating a new one"
       sudo mv /etc/apt/apt.conf.d/00proxy /etc/apt/apt.conf.d/00proxy-old
-      print_result $? "backed up '/etc/apt/apt.conf.d/00proxy'"
+      print_result "${?}" "backed up '/etc/apt/apt.conf.d/00proxy'"
       create_proxy_file
     fi
   else
@@ -110,11 +110,16 @@ if [[ -d /etc/apt/apt.conf.d ]]; then
   fi
 else
   sudo mkdir /etc/apt/apt.conf.d  # the directory doesn't exist, so create it
-  print_result $? "Created '/etc/apt/apt.conf.d'"
+  print_result "${?}" "Created '/etc/apt/apt.conf.d'"
   sudo chmod 755 /etc/apt/apt.conf.d  # change its' permissions
-  print_result $? "Changed permissions for '/etc/apt/apt.conf.d'"
+  print_result "${?}" "Changed permissions for '/etc/apt/apt.conf.d'"
   create_proxy_file  # create the file with the proxy config
 fi
+
+# changes to the configuration for 'apt' and 'apt-cacher-ng' are done, so
+# restart 'apt-cacher-ng' again
+sudo systemctl restart apt-cacher-ng
+print_result "${?}" "'apt-cacher-ng' restarted"
 
 # update apt to pick up the new repositories, and then do an upgrade, just in
 # case.  one of the times this script was run caused a problem I've never had
@@ -127,14 +132,14 @@ fi
 retcode=1  # set the return code to 'failed' to start trying to update 'apt'
 while [[ "${retcode}" != 0 ]]; do  # keep trying as long as the last try failed
   sudo apt update  # try to update
-  retcode=$?  # preserve the return code
+  retcode="${?}"  # preserve the return code
   if [[ "${retcode}" != 0 ]]; then sleep 5; fi  # if the update failed, wait 5 seconds before trying again
 done
 print_result "${retcode}" "apt updated"  # finally...a successful update!!
 retcode=1  # now do the same thing trying to upgrade the packages
 while [[ "${retcode}" != 0 ]]; do
   sudo apt upgrade
-  retcode=$?
+  retcode="${?}"
   if [[ "${retcode}" != 0 ]]; then sleep 5; fi
 done
 print_result "${retcode}" "apt upgraded"
