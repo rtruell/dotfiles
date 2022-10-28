@@ -12,7 +12,6 @@ bzip2
 cmake  # cross-platform make
 coreutils
 ddclient
-dialog  # text-mode dialog boxes
 dkms  # allow kernel modules to be updated with having to update the whole kernel
 dlocate  # fast alternative to dpkg -L and dpkg -S
 findutils
