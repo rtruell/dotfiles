@@ -2,9 +2,9 @@
 function apt_package_installer {
   package=$1
   if $(apt list --installed 2>/dev/null | grep "^${package}/" >/dev/null); then  # check to see if the package is already installed
-    print_result 0 "${package} already installed"  # it is, so print a message saying so
+    print_result "${?}" "${package} already installed"  # it is, so print a message saying so
   else
     yes | sudo apt install "${package}"  # it isn't, so install it, automatically answering 'yes' to any prompts
-    print_result $? "Installed ${package}"  # and print a message giving the status of the installation
+    print_result "${?}" "Installed ${package}"  # and print a message giving the status of the installation
   fi
 }

@@ -84,13 +84,13 @@ export HOMEBREW_CASK_OPTS="--appdir="${HOME}"/Applications"  # keep Casks separa
 export HOMEBREW_EDITOR="${EDITOR}"  # use the system editor to edit Homebrew stuff
 export HOMEBREW_CACHE="/Volumes/ExternalHome/rtruell/HomebrewCache"  # get the cache off the SSD
 export HOMEBREW_NO_ANALYTICS=1  # turn off Google analytics for Homebrew
-print_result 0 "Exported Homebrew environment variables"
+print_result "${?}" "Exported Homebrew environment variables"
 printf "\n" | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"  # install Homebrew
 print_result "${?}" "Installed Homebrew"
 # temporarily add its directories to PATH and export the main environment
 # variables (this is done permanently in the 'path' dotfile)
 eval "$(brew shellenv)"
-print_result 0 "Added Homebrew directories to PATH and exported the main environment variables"
+print_result "${?}" "Added Homebrew directories to PATH and exported the main environment variables"
 # temporarily store Homebrew's installation directory.  this is done permanently
 # in the 'exports' dotfile
 export BREW_PREFIX=$(brew --prefix)

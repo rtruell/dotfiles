@@ -73,7 +73,7 @@ while read -r repoline; do  # read in /etc/apt/sources.list.orig one line at a t
   fi
   printf '%s\n' "${repoline}" | sudo tee -a /etc/apt/sources.list >/dev/null  # print the (possibly updated) line to a new '/etc/apt/sources.list'
 done < /etc/apt/sources.list.orig
-print_result 0 "Updated '/etc/apt/sources.list' with the 'contrib' and 'non-free' repositories, and commented out the installation media lines"
+print_result "${?}" "Updated '/etc/apt/sources.list' with the 'contrib' and 'non-free' repositories, and commented out the installation media lines"
 
 # add software repositories to 'apt' based on the computer name
 case "${computername,,}" in

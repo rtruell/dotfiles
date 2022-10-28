@@ -43,7 +43,7 @@ if [[ "${computername}" == "nas"* ]]; then
       printf "\n"
       diff -q /var/cache/apt-cacher-ng /nas/apt-cacher-ng/data >/dev/null  # there were some, so compare the directories
       if [[ "${?}" == 0 ]]; then  # if the directories are identical
-        print_result 0 "The directories are identical"
+        print_result "${?}" "The directories are identical"
       else
         print_warn "The directories are different"
         sudo cp -a /var/cache/apt-cacher-ng /var/cache/apt-cacher-ng.orig  # back up '/var/cache/apt-cacher-ng' for later comparison
@@ -66,7 +66,7 @@ if [[ "${computername}" == "nas"* ]]; then
       printf "\n"
       diff -q /etc/apt-cacher-ng /nas/apt-cacher-ng/config >/dev/null  # there were some, so compare the directories
       if [[ "${?}" == 0 ]]; then  # if the directories are identical
-        print_result 0 "The directories are identical"
+        print_result "${?}" "The directories are identical"
       else
         print_warn "The directories are different"
         sudo cp -a /etc/apt-cacher-ng /etc/apt-cacher-ng.orig  # back up '/etc/apt-cacher-ng' for later comparison
@@ -299,7 +299,7 @@ if [[ "${computername}" != "nas"* && "${computername}" != "rpi"* ]]; then
                   sudo chmod 644 /etc/systemd/logind.conf.d/lid.conf  # and set its permissions
                   print_result "${?}" "Set permissions for '/etc/systemd/logind.conf.d/lid.conf'"
                 fi
-                print_result 0 "Closing lid won't put computer into 'sleep' mode"
+                print_result "${?}" "Closing lid won't put computer into 'sleep' mode"
                 sudo systemctl restart systemd-logind.service  # restart the service so the changes take effect immediately
                 print_result "${?}" "Service restarted"
 
