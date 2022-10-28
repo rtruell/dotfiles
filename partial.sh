@@ -35,7 +35,7 @@ computername=$(hostname -s)
 source ./symlink.sh
 su -c 'source ./sudo.sh'
 sudo timedatectl set-local-rtc 1
-print_result $? "RTC set to local time"
+print_result "${?}" "RTC set to local time"
 apt_package_installer "liquidprompt"
 
 printf '%s\n' "All done.  Now, exit the shell and then re-open it."

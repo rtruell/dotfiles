@@ -42,7 +42,7 @@ if [[ "$(ls -A /var/lib/mysql)" ]]; then  # check for files/directories in '/var
     print_warn "'/nas/mysql' has files/directories in it"
     diff -q /var/lib/mysql /nas/mysql >/dev/null  # there were some, so compare the directories
     if [[ "${?}" == 0 ]]; then  # if the directories are identical
-      print_result 0 "The directories are identical"
+      print_result "${?}" "The directories are identical"
     else
       print_warn "The directories are different"
       sudo cp -a /var/lib/mysql /var/lib/mysql.orig  # back up '/var/lib/mysql' for later comparison
