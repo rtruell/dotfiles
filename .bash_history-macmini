@@ -19843,3 +19843,9 @@ h | less
 findshow "the goldbergs"
 #1666814071
 findshow "tg"
+#1666997674
+dotfiles
+#1666997701
+findtext -i "print_result 0"
+#1666998287
+findtext -i "print_result 1"
