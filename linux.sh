@@ -37,8 +37,10 @@ if [[ "${computername}" == "nas"* ]]; then
   fi
   if [[ "$(ls -A /var/cache/apt-cacher-ng)" ]]; then  # check for files/directories in '/var/cache/apt-cacher-ng'
     print_warn "'/var/cache/apt-cacher-ng' has files/directories in it"
+    printf "\n"
     if [[ "$(ls -A /nas/apt-cacher-ng/data)" ]]; then  # there were some, so check for files/directories in '/nas/apt-cacher-ng/data'
       print_warn "'/nas/apt-cacher-ng/data' has files/directories in it"
+      printf "\n"
       diff -q /var/cache/apt-cacher-ng /nas/apt-cacher-ng/data >/dev/null  # there were some, so compare the directories
       if [[ "${?}" == 0 ]]; then  # if the directories are identical
         print_result 0 "The directories are identical"
@@ -58,8 +60,10 @@ if [[ "${computername}" == "nas"* ]]; then
   print_result "${?}" "Mounted '/nas/apt-cacher-ng/data' -> '/var/cache/apt-cacher-ng'"
   if [[ "$(ls -A /etc/apt-cacher-ng)" ]]; then  # check for files/directories in '/etc/apt-cacher-ng'
     print_warn "'/etc/apt-cacher-ng' has files/directories in it"
+    printf "\n"
     if [[ "$(ls -A /nas/apt-cacher-ng/config)" ]]; then  # there were some, so check for files/directories in '/nas/apt-cacher-ng/config'
       print_warn "'/nas/apt-cacher-ng/config' has files/directories in it"
+      printf "\n"
       diff -q /etc/apt-cacher-ng /nas/apt-cacher-ng/config >/dev/null  # there were some, so compare the directories
       if [[ "${?}" == 0 ]]; then  # if the directories are identical
         print_result 0 "The directories are identical"
@@ -100,6 +104,7 @@ declare -a packages=(
   "apache2"
   "build-essential"
   "curl"
+  "dialog"
   "dmidecode"
   "file"
   "gnupg"
@@ -177,6 +182,7 @@ if [[ "${computername}" != "rpi"* ]]; then
   print_result "${?}" "Installed IFL"
   rm "${programtmp}"/ifl*.zip  # don't need the IFL installation file anymore, so delete it
   print_result "${?}" "Deleted the IFL installation file"
+  currdir=${PWD}  # preserve the current directory
   cd "${ifldir}"  # change to the IFL directory
   print_result "${?}" "Changed to '${ifldir}'"
   unzip config.zip >/dev/null  # unzip the configuration files
@@ -216,12 +222,16 @@ if [[ "${computername}" != "rpi"* ]]; then
   print_result "${?}" "Configured IFL"
 
   # add the user to the 'disk' group so IFL can be run without 'sudo'
-  sudo adduser "${username}" disk
+  sudo adduser "${username}" disk >/dev/null
   print_result "${?}" "Added '${username}' to the 'disk' group"
 
   # create and install the GRUB files
   sudo ./makeGRUB
   print_result "${?}" "Created and installed the GRUB files"
+
+  # change back to where we were
+  cd "${currdir}"
+  print_result "${?}" "Changed back to '${currdir}'"
 fi
 
 # set the RTC to local time
@@ -461,14 +471,14 @@ if [[ "${computername}" != "nas"* && "${computername}" != "rpi"* ]]; then
   printf '\t%s\n' "Downloading VirtualBox"
   curl https://download.virtualbox.org/virtualbox/"${virboxversion}"/"${virboxname}" -o "${virboxpath}" 2>/dev/null  # download VirtualBox
   if [[ "$(sha256sum "${virboxpath}" | cut -d' ' -f1)" != "${virboxcsum}" ]]; then  # check to see if the checksum of the downloaded file matches what it's supposed to
-    print_result "${?}" "Error: VirtualBox checksum doesn't match...VirtualBox and its Extension Pack must be downloaded and installed manually"
+    print_result "${?}" "VirtualBox checksum doesn't match...VirtualBox and its Extension Pack must be downloaded and installed manually"
   else
     print_result "${?}" "Checksums match...successfully downloaded VirtualBox"
     printf '\t%s\n' "Downloading the Extension Pack"
     extpackok=0
     curl https://download.virtualbox.org/virtualbox/"${virboxversion}"/"${extpackname}" -o "${extpackpath}" 2>/dev/null  # download the Extension Pack
     if [[ "$(sha256sum "${extpackpath}" | cut -d' ' -f1)" != "${extpackcsum}" ]]; then  # check to see if the checksum of the downloaded file matches what it's supposed to
-      print_result "${?}" "Error: Extension pack checksum doesn't match...the Extension Pack must be downloaded and installed manually"
+      print_result "${?}" "Extension pack checksum doesn't match...the Extension Pack must be downloaded and installed manually"
       extpackok=1  # since the checksums didn't match, set a flag so no attempt is made to install the invalid Extension Pack
     else
       print_result "${?}" "Checksums match...successfully downloaded the VirtualBox Extension Pack"
@@ -488,7 +498,7 @@ if [[ "${computername}" != "nas"* && "${computername}" != "rpi"* ]]; then
         retcode="${?}"
         print_result "${?}" "Installed the VirtualBox Extension Pack"
         if [[ "${retcode}" != 0 ]]; then  # oops...it didn't install successfully
-          print_result "${retcode}" "Error: The Extension Pack must be installed manually"
+          print_result "${retcode}" "The Extension Pack must be installed manually"
         else
           rm "${extpackpath}"  # it installed successfully and this copy of the installation file isn't needed anymore, so delete it
           print_result "${?}" "Deleted ${extpackpath}"
