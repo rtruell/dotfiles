@@ -7,6 +7,10 @@ function print_result {
     print_success "${2}"
   else
     print_error "${2}"
+    # if you want to keep track of the number of errors that occur while running
+    # a script, then put 'numberoferrors=0' at the start of the script.  if
+    # 'numberoferrors' is not set to a value, then the next line does nothing
+    if typeset -p numberoferrors 2> /dev/null | grep -q '^'; then (( numberoferrors++ )); fi
     if [[ "${3}" == "true" ]]; then exit "${1}"; fi
   fi
 }
