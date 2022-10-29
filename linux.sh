@@ -427,7 +427,7 @@ if [[ "${computername}" == "nas"* ]]; then
     mv "${shaarlidir}" "${shaarlidir}".orig  # back up '${shaarlidir}' for later comparison
     print_result "${?}" "backed up '${shaarlidir}' for later comparison"
   fi
-  unzip -d /nas shaarli-full.zip >/dev/null
+  unzip -d /nas "${HOME}"/shaarli-full.zip >/dev/null
   print_result "${?}" "Installed 'shaarli'"
   sudo chown -R www-data:www-data "${shaarlidir}"
   print_result "${?}" "Changed ownership of files and directories of 'shaarli'"
