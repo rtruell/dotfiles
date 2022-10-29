@@ -46,10 +46,11 @@ if [[ "${computername}" == "nas"* ]]; then
         print_result "${?}" "The directories are identical"
       else
         print_warn "The directories are different"
+        printf "\n"
         sudo cp -a /var/cache/apt-cacher-ng /var/cache/apt-cacher-ng.orig  # back up '/var/cache/apt-cacher-ng' for later comparison
         print_result "${?}" "Backed up '/var/cache/apt-cacher-ng for later comparison"
       fi
-      sudo rm /var/cache/apt-cacher-ng/*  # delete the files/directories in '/var/cache/apt-cacher-ng'
+      sudo rm -rf /var/cache/apt-cacher-ng/*  # delete the files/directories in '/var/cache/apt-cacher-ng'
       print_result "${?}" "Deleted the files/directories in '/var/cache/apt-cacher-ng"
     else
       sudo mv /var/cache/apt-cacher-ng/* /nas/apt-cacher-ng/data  # move 'apt-cacher-ng' data files to their new location off the SSD
@@ -64,11 +65,12 @@ if [[ "${computername}" == "nas"* ]]; then
     if [[ "$(ls -A /nas/apt-cacher-ng/config)" ]]; then  # there were some, so check for files/directories in '/nas/apt-cacher-ng/config'
       print_warn "'/nas/apt-cacher-ng/config' has files/directories in it"
       printf "\n"
-      diff -q /etc/apt-cacher-ng /nas/apt-cacher-ng/config >/dev/null  # there were some, so compare the directories
+      sudo diff -q /etc/apt-cacher-ng /nas/apt-cacher-ng/config >/dev/null  # there were some, so compare the directories
       if [[ "${?}" == 0 ]]; then  # if the directories are identical
         print_result "${?}" "The directories are identical"
       else
         print_warn "The directories are different"
+        printf "\n"
         sudo cp -a /etc/apt-cacher-ng /etc/apt-cacher-ng.orig  # back up '/etc/apt-cacher-ng' for later comparison
         print_result "${?}" "Backed up '/etc/apt-cacher-ng for later comparison"
       fi
@@ -226,6 +228,7 @@ if [[ "${computername}" != "rpi"* ]]; then
   print_result "${?}" "Added '${username}' to the 'disk' group"
 
   # create and install the GRUB files
+  clear
   sudo ./makeGRUB
   print_result "${?}" "Created and installed the GRUB files"
 
@@ -420,6 +423,7 @@ if [[ "${computername}" == "nas"* ]]; then
   shaarlidir="/nas/Shaarli"  # shaarli install directory
   if [[ -d "${shaarlidir}" ]]; then
     print_warn "${shaarlidir} already exists"
+    printf "\n"
     mv "${shaarlidir}" "${shaarlidir}".orig  # back up '${shaarlidir}' for later comparison
     print_result "${?}" "backed up '${shaarlidir}' for later comparison"
   fi
