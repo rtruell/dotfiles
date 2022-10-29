@@ -376,7 +376,7 @@ if [[ "${retcode}" == 0 ]]; then
       fi
       for i in ${programs[@]}; do  # loop through the array of programs to be installed ...
         cp -a "${programdir}/${i}"* "${programtmp}"  # ... copying them to '/tmp/programs'
-        print_result "${?}" "Copied ${i}"
+        print_result "${?}" "Copied ${i} to '${programtmp}'"
       done
 
       # the Terabyte programs live in their own directory, and the path to their
@@ -402,6 +402,13 @@ if [[ "${retcode}" == 0 ]]; then
         done
         cp -a "${iflprogramdir}/ConfigFiles/daily-backup" "${HOME}"
         print_result "${?}" "Copied 'daily-backup' script to '${HOME}'"
+      fi
+
+      # if installing on 'nas' or 'nasbackup', copy the 'shaarli' .zip file to
+      # $HOME to be installed later
+      if [[ "${computername}" == "nas"* ]]; then
+        cp -a /nas/data/Downloads/Linux/InUse/Installed/shaarli* "${HOME}"/shaarli-full.zip
+        print_result "${?}" "Copied the 'shaarli' .zip file to '${HOME}'"
       fi
     fi
 
