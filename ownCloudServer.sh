@@ -201,4 +201,4 @@ print_result "${?}" "Checked Apache's status"
 sudo systemctl is-enabled mariadb >/dev/null # check to see if Mariadb is enabled
 print_result "${?}" "Checked to make sure Mariadb is enabled"
 sudo systemctl status mariadb  # show Mariadb's status
-print_result "${?}" "Checked Mariad's status"
+print_result "${?}" "Checked Mariadb's status"
