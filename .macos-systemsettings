@@ -566,8 +566,8 @@ defaults write com.apple.Safari com.apple.Safari.ContentPageGroupIdentifier.WebK
 # Show the full URL in the address bar (note: this still hides the scheme)
 defaults write com.apple.Safari ShowFullURLInSmartSearchField -bool true
 
-# Set Safari’s home page to "http://fileserver/shaarli/"
-defaults write com.apple.Safari HomePage -string "http://fileserver/shaarli/"
+# Set Safari’s home page to "http://nas/shaarli/"
+defaults write com.apple.Safari HomePage -string "http://nas/shaarli/"
 
 # Prevent Safari from opening ‘safe’ files automatically after downloading
 defaults write com.apple.Safari AutoOpenSafeDownloads -bool false
