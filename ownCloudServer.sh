@@ -38,17 +38,20 @@ else
 fi
 if [[ "$(ls -A /var/lib/mysql)" ]]; then  # check for files/directories in '/var/lib/mysql'
   print_warn "'/var/lib/mysql' has files/directories in it"
+  printf "\n"
   if [[ "$(ls -A /nas/mysql)" ]]; then  # there were some, so check for files/directories in '/nas/mysql'
     print_warn "'/nas/mysql' has files/directories in it"
-    diff -q /var/lib/mysql /nas/mysql >/dev/null  # there were some, so compare the directories
+    printf "\n"
+    sudo diff -q /var/lib/mysql /nas/mysql >/dev/null  # there were some, so compare the directories
     if [[ "${?}" == 0 ]]; then  # if the directories are identical
       print_result "${?}" "The directories are identical"
     else
       print_warn "The directories are different"
+      printf "\n"
       sudo cp -a /var/lib/mysql /var/lib/mysql.orig  # back up '/var/lib/mysql' for later comparison
       print_result "${?}" "Backed up '/var/lib/mysql for later comparison"
     fi
-    sudo rm /var/lib/mysql/*  # delete the files/directories in '/var/lib/mysql'
+    sudo rm -rf /var/lib/mysql/*  # delete the files/directories in '/var/lib/mysql'
     print_result "${?}" "Deleted the files/directories in '/var/lib/mysql"
   else
     sudo mv /var/lib/mysql/* /nas/mysql  # move 'mariadb' data files to their new location off the SSD
