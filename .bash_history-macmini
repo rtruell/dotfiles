@@ -1,13 +1,3 @@
-symlink_array_files
-#1635107564
-symlink_array_files $PWD
-#1635107583
-symlink_array_files $PWD $HOME
-#1635107628
-symlink_array_files $PWD $HOME filenames
-#1635107868
-s functions/symlink_array_files
-#1635107879
 s ./functions/symlink_array_files
 #1635107888
 la
@@ -19853,3 +19843,21 @@ ls /Volumes/data-1
 ls /Volumes/data
 #1667071519
 dot_clean -n -s /Volumes/data-1
+#1667545981
+less dotfiles/.exports
+#1667545999
+locale
+#1667546021
+less dotfiles/.exports
+#1667546054
+remote
+#1667546062
+remote nas
+#1667546156
+remote amdlaptop
+#1667546255
+export LC_TIME=
+#1667546258
+locale
+#1667546274
+date
