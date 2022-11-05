@@ -19843,3 +19843,43 @@ mountinfo -p
 mountpoint
 #1667682518
 mountinfo
+#1667685901
+lf ls
+#1667686039
+s dotfiles/ls.function
+#1667686052
+s dotfiles/functions/ls.function
+#1667686071
+ls dotfiles/
+#1667686080
+la dotfiles/
+#1667686088
+s dotfiles/.functions/ls.function
+#1667686104
+lf ls
+#1667686325
+s dotfiles/.functions/ls.function
+#1667686464
+ls bin
+#1667686481
+ls binsupportfiles
+#1667686671
+cp dotfiles/.functions/ls.function /Volumes/Temp/
+#1667687681
+s dotfiles/.functions/ls.function
+#1667687687
+ls bin
+#1667687704
+ls /etc/ssh
+#1667687711
+sudo ls /etc/ssh
+#1667687718
+ls /etc
+#1667687729
+ls /etc/sudoers.d
+#1667687742
+ls binsupportfiles
+#1667687786
+cp dotfiles/.functions/ls.function /Volumes/Temp/
+#1667687926
+rm /Volumes/Temp/ls.function 
