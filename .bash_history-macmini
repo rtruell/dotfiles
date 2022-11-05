@@ -1,21 +1,3 @@
-s ./functions/symlink_array_files
-#1635107888
-la
-#1635107898
-s .functions/symlink_array_files
-#1635107906
-s ./.functions/symlink_array_files
-#1635107918
-s .functions/symlink_array_files.functions
-#1635107927
-s .functions/symlink_array_files.function
-#1635107948
-listfunction symlink_array_files
-#1635107967
-symlink_array_files
-#1635107972
-symlink_array_files $PWD
-#1635107980
 symlink_array_files $PWD $HOME
 #1635107987
 symlink_array_files $PWD $HOME filenames
@@ -19861,3 +19843,19 @@ export LC_TIME=
 locale
 #1667546274
 date
+#1667681009
+findmnt
+#1667681039
+b s findmnt
+#1667681499
+mount
+#1667681505
+mountinfo
+#1667681510
+mountinfo -p
+#1667681663
+man mount
+#1667682207
+mountinfo
+#1667682259
+mountinfo -p
