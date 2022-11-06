@@ -1,43 +1,3 @@
-symlink_array_files $PWD $HOME filenames
-#1635108887
-symlink_array_files $PWD $HOME filenames excludes
-#1635109250
-s .functions/symlink_array_files.function
-#1635109260
-s .functions/symlink_single_file.function
-#1635109268
-symlink_array_files $PWD $HOME filenames
-#1635109508
-s .functions/symlink_array_files.function
-#1635109516
-symlink_array_files $PWD $HOME filenames
-#1635110079
-s .functions/symlink_array_files.function
-#1635110089
-s .functions/symlink_single_file.function
-#1635110110
-symlink_array_files $PWD $HOME filenames
-#1635110227
-symlink_array_files $PWD $HOME filenames excludes
-#1635112843
-echo $pwd
-#1635113065
-alias dotfiles
-#1635113096
-echo $HOME
-#1635128861
-home
-#1635129972
-b s tesseract
-#1635129997
-b i tesseract
-#1635130011
-b h tesseract
-#1635132548
-sw_vers
-#1635132610
-dmg2img -version
-#1635132681
 vboxmanage -v
 #1635136999
 ls /
@@ -19883,3 +19843,168 @@ ls binsupportfiles
 cp dotfiles/.functions/ls.function /Volumes/Temp/
 #1667687926
 rm /Volumes/Temp/ls.function 
+#1667707339
+man mount
+#1667707783
+df
+#1667707798
+mount
+#1667707802
+mountinfo
+#1667707833
+man df
+#1667708378
+mountinfo
+#1667708553
+df -Th
+#1667708622
+man df
+#1667708983
+mountinfo
+#1667708988
+df -h --output=source,fstype,target | grep "^/"
+#1667709480
+df --output=source /home/ | tail -n1
+#1667709594
+mountpoint
+#1667709708
+stat "./."
+#1667709731
+stat "./.."
+#1667709933
+b s mountpoint
+#1667710475
+mountinfo
+#1667710665
+man sort
+#1667710944
+man head
+#1667710988
+man tail
+#1667711304
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount |                                                      # print a header with an '&' between the column titles, and then run the 'mount' command.
+  grep "^/" |                                                                                             # save only lines starting with '/' (device names).
+  sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' |                                   # remove the first occurances of "(", ")", "on " and "type ", and add a space after every comma.
+  awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) |  # remove the comma from field 3, print fields 1, 2 and 3 with an '&' after them,
+  column -t -s "&" |                                                                                      # print the output in columns, using the '&' placed in the output as a column separator.
+#1667711349
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount |                                                      # print a header with an '&' between the column titles, and then run the 'mount' command.
+  grep "^/" |                                                                                             # save only lines starting with '/' (device names).
+  sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' |                                   # remove the first occurances of "(", ")", "on " and "type ", and add a space after every comma.
+  awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) |  # remove the comma from field 3, print fields 1, 2 and 3 with an '&' after them,
+  column -t -s "&" |                                                                                      # print the output in columns, using the '&' placed in the output as a column separator.
+( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount |                                                      # print a header with an '&' between the column titles, and then run the 'mount' command.
+  grep "^/" |                                                                                             # save only lines starting with '/' (device names).
+  sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' |                                   # remove the first occurances of "(", ")", "on " and "type ", and add a space after every comma.
+  awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) |  # remove the comma from field 3, print fields 1, 2 and 3 with an '&' after them,
+  column -t -s "&"                                                                                       # print the output in columns, using the '&' placed in the output as a column separator.
+#1667712641
+mountpoint
+#1667712645
+mountinfo
+#1667712648
+mountinfo -p
+#1667713862
+df -h --output=source,fstype,target | grep "^/"
+#1667713913
+df -h --output=source,target,fstype | grep "^/"
+#1667713986
+df -h --output=source,target,fstype
+#1667714089
+df -h --output=source,target,fstype | sort -k 1.6
+#1667714148
+df -h --output=source,target,fstype | sort -k 2
+#1667715553
+df -h --output=source,target,fstype | sort -k 1.6
+#1667715557
+df -h --output=source,target,fstype | sort -k 1
+#1667716505
+df -h --output=source,target,fstype 2>/dev/null | grep -i "^/|type" | (sed -u 1q; sort -bdk 1)
+#1667716538
+df -h --output=source,target,fstype 2>/dev/null | grep -i "^/|type" | (sed -u 1q; sort -bdk 2)
+#1667716625
+hr
+#1667716626
+hl
+#1667716640
+df -h --output=source,target,fstype 2>/dev/null | grep -i "^/|type" | (sed -u 1q;hl; sort -bdk 2)
+#1667716661
+hl -h
+#1667716668
+lf hl
+#1667716766
+df -h --output=source,target,fstype 2>/dev/null | grep -i "^/|type" | (sed -u 1q; hl 40 -; sort -bdk 2)
+#1667716787
+df -h --output=source,target,fstype 2>/dev/null | grep -i "^/|type" | (sed -u 1q; hl - 40; sort -bdk 2)
+#1667717026
+df -h --output=source,target,fstype 2>/dev/null | grep -i "^/|type" | (sed -u 1q; hl - 50; sort -bdk 2)
+#1667717038
+man sed
+#1667717173
+mountinfo
+#1667717202
+man sed
+#1667717611
+df -h --output=source,target,fstype 2>/dev/null | grep -i "^/|type" | (sed 's/[a-z]/\U&' -u 1q; hl - 50; sort -bdk 2)
+#1667717628
+df -h --output=source,target,fstype 2>/dev/null | grep -i "^/|type" | (sed 's/[a-z]/\U&/' -u 1q; hl - 50; sort -bdk 2)
+#1667717832
+df -h --output=source,target,fstype 2>/dev/null | grep -i "^/|type" | (read -r; printf "%s\n" "$REPLY"; sort -bdk 2)
+#1667717844
+df -h --output=source,target,fstype 2>/dev/null | grep -i "^/|type" | (read -r; printf "%s\n" "$REPLY^^"; sort -bdk 2)
+#1667717871
+df -h --output=source,target,fstype 2>/dev/null | grep -i "^/|type" | (read -r; printf "%s\n" "${REPLY^^}"; sort -bdk 2)
+#1667717912
+df -h --output=source,target,fstype 2>/dev/null | grep -i "^/|type" | (read -r; printf "%s\n" "${REPLY^^}"; sort -bdk 1)
+#1667718642
+mountinfo
+#1667718716
+df -h --output=source,target,fstype 2>/dev/null | grep -i "^/|type" | (read -r; printf "%s\n" "${REPLY^^}"; sort -bdk 1)
+#1667718724
+mountinfo
+#1667718829
+mountinfo -p
+#1667718860
+df -h --output=source,target,fstype 2>/dev/null | grep -i "^/|type" | (read -r; printf "%s\n" "${REPLY^^}"; sort -bdk 1)
+#1667718879
+ll bin
+#1667718964
+mountinfo -p
+#1667719106
+mountinfo
+#1667719152
+df -h --output=source,target,fstype 2>/dev/null
+#1667719194
+df -h --output=source,target,fstype 2>/dev/null | grep -i "^/|type"
+#1667719212
+mountinfo
+#1667719301
+man grep
+#1667719423
+mountinfo
+#1667719539
+mountinfo -p
+#1667719650
+mountinfo
+#1667719668
+mountinfo -h
+#1667720164
+man df
+#1667720778
+man sort
+#1667721399
+mountinfo -h
+#1667721413
+mountinfo -z
+#1667721421
+mountinfo
+#1667721449
+mountinfo -m
+#1667721597
+mountinfo -t
+#1667721611
+mountinfo
+#1667721621
+mountinfo -z
+#1667721636
+mountinfo -h
