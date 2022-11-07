@@ -1,181 +1,3 @@
-vboxmanage -v
-#1635136999
-ls /
-#1635137203
-ls /tmp
-#1635137313
-hdiutil create -size 10g -type UDTO -layout SPUD -fs JHFS+ /tmp/Mojave.cdr && open /tmp/Mojave.cdr
-#1635137374
-df /tmp
-#1635137391
-ls /volumes
-#1635138044
-sudo "/Volumes/data/Downloads/Mac/OSX installers/Apps/Install 10.14.6 (macOS Mojave).app/Contents/Resources/createinstallmedia" --volume /Volumes/untitled --nointeraction
-#1635138399
-ls /Volumes
-#1635138452
-hdiutil detach "/Volumes/Install macOS Mojave"
-#1635138465
-ls /Volumes
-#1635138521
-mv /tmp/Mojave.cdr /tmp/Mojave.iso
-#1635138527
-ll /tmp
-#1635143145
-cd /Volumes/data/Downloads/mac/OSX\ installers/
-#1635143196
-./FixmacosVM.sh
-#1635143209
-home
-#1635193781
-dotfiles
-#1635193792
-findtext @:
-#1635193811
-cd functions
-#1635193821
-findtext @:
-#1635193857
-home
-#1635194202
-man declare
-#1635194382
-echo ARG_MAX
-#1635194388
-echo $ARG_MAX
-#1635194401
-man bash
-#1635195106
-bashman declare
-#1635195589
-man read
-#1635195835
-bashman mapfile
-#1635196751
-bashman shift
-#1635198951
-defaults read com.apple.systemuiserver menuExtras
-#1635260750
-/Volumes/ExternalHome/rtruell/MacInstallFiles/updateappconfigfiles.sh; exit
-#1635282065
-onsetapp1
-#1635282081
-onsetapp1.rb
-#1635282904
-onsetapp.rb
-#1635282968
-b i terminal-notifier
-#1635283101
-wifi-password
-#1635283342
-archey
-#1635283450
-ansiweather
-#1635283501
-aw
-#1635284238
-ls ./
-#1635284259
-cat ./set.txt
-#1635284494
-cd Desktop
-#1635284498
-cd .
-#1635284500
-cd ..
-#1635284672
-dir dotfiles
-#1635284703
-ls dotfiles
-#1635284752
-la dotfiles
-#1635284773
-ll dotfiles
-#1635284778
-lal dotfiles
-#1635284819
-chmod 755 dotfiles/.macos-macmini
-#1635284823
-lal dotfiles
-#1635287818
-exists sudo
-#1635287835
-which sudo
-#1635287838
-type sudo
-#1635287859
-man exists
-#1635287875
-bashman exists
-#1635287904
-which sudo
-#1635287908
-which rick
-#1635288005
-man which
-#1635291186
-echo '$PATH'
-#1635291262
-printf '%s' "this '$PATH'"
-#1635291312
-printf "this '$PATH'"
-#1635291323
-printf "this 'PATH'"
-#1635291444
-printf "\e[0;31m  [✖] /usr/bin/sudo not found.  Please run 'sudo ln -s $(which sudo) /usr/bin/sudo'\e[0m\n"
-#1635291486
-printf "\e[0;31m  [✖] /usr/bin/sudo not found, and I couldn't find 'sudo' in '$PATH'\e[0m\n"
-#1635291522
-printf "\e[0;31m  [✖] /usr/bin/sudo not found, and I couldn't find 'sudo' in '\$PATH'\e[0m\n"
-#1635292448
-man tee
-#1635292467
-tee -v
-#1635347895
-cd /Users/rtruell/dotfiles
-#1635347974
-printf $BASH_VERSION
-#1635368954
-cd "/Volumes/Recordings"; clear
-#1635368987
-home
-#1635372518
-man source
-#1635372554
-bashman source
-#1635372564
-man source
-#1635372599
-bashman source
-#1635372612
-man bash
-#1635373066
-hf source
-#1635391090
-echo $currdir
-#1635391094
-currdir=$(PWD)
-#1635391097
-echo $currdir
-#1635391941
-bashman tests
-#1635394440
-man mount
-#1635394525
-man oascript
-#1635395440
-cat .credentials
-#1635395448
-echo $username
-#1635395455
-echo $password
-#1635395463
-source ./.credentials
-#1635395471
-echo $username
-#1635395476
-echo $password
-#1635433598
 test.sh
 #1635433635
 cat test.sh
@@ -20008,3 +19830,23 @@ mountinfo
 mountinfo -z
 #1667721636
 mountinfo -h
+#1667805289
+cd Library/Application\ Support/Sublime\ Text\ 3/Packages/
+#1667805308
+ls User/
+#1667805484
+ls User
+#1667805519
+ls /Volumes/Owncloud/SublimeText/
+#1667805526
+ls /Volumes/Owncloud/SublimeText/User
+#1667805549
+ls User
+#1667805556
+rm -r User
+#1667805600
+ln -s /Volumes/Owncloud/SublimeText/User
+#1667805610
+ls User
+#1667805621
+home
