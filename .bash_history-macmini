@@ -1,24 +1,4 @@
 ./test.sh
-#1635434102
-diskutil umount /Volumes/Public
-#1635434160
-./test.sh
-#1635434273
-diskutil umount /Volumes/Public
-#1635434278
-./test.sh
-#1635434417
-diskutil umount /Volumes/Public
-#1635434422
-./test.sh
-#1635434557
-diskutil umount /Volumes/Public
-#1635434564
-./test.sh
-#1635434588
-diskutil umount /Volumes/Public
-#1635434591
-./test.sh
 #1635434608
 diskutil umount /Volumes/Public
 #1635434625
@@ -19850,3 +19830,89 @@ if [[ "${SYSTEM_VERSION%%.*}" -ge "10" ]]; then echo good; else echo bad; fi
 echo "${SYSTEM_VERSION%%.*}"
 #1668032476
 if [[ "${SYSTEM_VERSION%%.*}" -ge "11" ]]; then echo good; else echo bad; fi
+#1668118930
+ansiweather
+#1668118948
+alias
+#1668118956
+aw
+#1668118996
+which ansiweather
+#1668119133
+ls /Volumes/Temp/
+#1668119153
+/Volumes/Temp/ansiweather
+#1668119438
+archey
+#1668119580
+pip
+#1668119588
+python--version
+#1668119594
+python --version
+#1668121435
+ls /usr/local
+#1668121445
+ll /usr/local
+#1668121522
+ls /usr/local/bin
+#1668121549
+which ansiweather
+#1668121557
+bash --version
+#1668121562
+which bash
+#1668121584
+ll /usr/local/bin/bash
+#1668121598
+ll /usr/local/bin/ansiweather
+#1668121651
+man bash
+#1668121698
+which nextcloud
+#1668121703
+which owncloud
+#1668121716
+which nextcloudcmd
+#1668121721
+which owncloudcmd
+#1668121789
+cp /usr/local/bin/bash .
+#1668121816
+ll /usr/local/bin/bash
+#1668121823
+ll
+#1668121882
+ll /usr/local/Cellar/bash/5.0.17/bin/bash
+#1668121932
+diff /usr/local/Cellar/bash/5.0.17/bin/bash bash
+#1668122029
+ls /usr/local
+#1668122037
+ls /usr/local/bin
+#1668122073
+ll /usr/local/bin/gsed
+#1668122082
+path
+#1668122100
+ls /usr/local/opt
+#1668122131
+ls /usr/local/opt/gnu-sed/libexec/gnubin
+#1668122144
+ll /usr/local/opt/gnu-sed/libexec/gnubin
+#1668122220
+ll /usr/local/opt/gnu-sed
+#1668122224
+ll /usr/local/opt/gnu-sed/bin
+#1668122314
+which bat
+#1668122317
+which boxes
+#1668122326
+which cmake
+#1668122334
+which curl
+#1668122340
+which dialog
+#1668122359
+which fortune
