@@ -1,90 +1,4 @@
 ./test.sh
-#1635434608
-diskutil umount /Volumes/Public
-#1635434625
-./test.sh
-#1635434638
-ls /Volumes/Public
-#1635434642
-diskutil umount /Volumes/Public
-#1635434660
-./test.sh
-#1635435063
-mkdir mountpoint
-#1635435094
-mount //backupserver/Public ~/mountpoint
-#1635435107
-mount -t smbfs //backupserver/Public ~/mountpoint
-#1635435130
-ls mountpoint
-#1635435186
-umount ~/mountpoint
-#1635435190
-ls mountpoint
-#1635435363
-man mount
-#1635435519
-man mount_smbfs
-#1635435602
-mount -t smbfs //backupserver/Public ~/mountpoint -o credentials=~/credentials
-#1635435644
-man mount_cifs
-#1635435696
-man mount_smbfs
-#1635435724
-man mount
-#1635435775
-man mount_smbfs
-#1635452171
-findshow 'toy story'
-#1635503376
-man exit
-#1635503484
-man call
-#1635503500
-man bash
-#1635504006
-./test.sh
-#1635504029
-b s call
-#1635506345
-man exec
-#1635506352
-bashman exec
-#1635506501
-man tee
-#1635508191
-./test.sh
-#1635508270
-cat log.txt
-#1635508282
-ll
-#1635508350
-rm log.txt
-#1635508377
-man tee
-#1635508534
-./test.sh
-#1635508550
-ll
-#1635508557
-cat log.txt
-#1635508644
-rm log.txt
-#1635508847
-./test.sh
-#1635508893
-cat log.txt
-#1635508932
-./test.sh
-#1635508943
-ll
-#1635508965
-./test.sh
-#1635508987
-ll
-#1635508991
-./test.sh
 #1635508998
 ll
 #1635509245
@@ -19916,3 +19830,9 @@ which curl
 which dialog
 #1668122359
 which fortune
+#1668405136
+mas -h
+#1668405139
+mas 
+#1668405149
+mas list
