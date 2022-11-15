@@ -19852,3 +19852,15 @@ export LC_TIME="C"
 date
 #1668490958
 less dotfiles/.exports
+#1668490352
+locate locale | less
+#1668491094
+locate locale
+#1668491160
+cd /Volumes/Downloads/RecentDownloads/Mac
+#1668491204
+cd /Volumes/data/Downloads/Mac/InUse/Installed/Automated/
+#1668491293
+diff paragon-1091-peu_macinstallunlock_15.5.106.dmg paragon-ntfsformac-1091-peu_macinstallunlock_15.5.106.dmg
+#1668491300
+home
