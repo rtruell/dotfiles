@@ -1,11 +1,3 @@
-./test.sh
-#1635508998
-ll
-#1635509245
-./test.sh
-#1635509258
-cat log.txt
-#1635509378
 ls /Volumes
 #1635509395
 rm log.txt
@@ -19836,3 +19828,27 @@ mas -h
 mas 
 #1668405149
 mas list
+#1668490337
+locate locale
+#1668490702
+ls /opt/X11/share/X11
+#1668490710
+ls /opt/X11/share/X11/locale
+#1668490732
+locale
+#1668490761
+locale -a
+#1668490875
+export LC_TIME="af_ZA.UTF-8"
+#1668490879
+date
+#1668490918
+export LC_TIME="en_CA.UTF-8"
+#1668490920
+date
+#1668490939
+export LC_TIME="C"
+#1668490940
+date
+#1668490958
+less dotfiles/.exports
