@@ -1,37 +1,3 @@
-ls /Volumes
-#1635509395
-rm log.txt
-#1635509402
-./test.sh
-#1635510744
-ls /volumes
-#1635510770
-diskutil unmount /volumes/public
-#1635510776
-ls /volumes
-#1635511022
-rm log.txt
-#1635511068
-./test.sh 2>&1 | tee -i ~/log.txt
-#1635511084
-cat log.txt
-#1635511949
-rm log.txt
-#1635511963
-./test.sh
-#1635511979
-cat log.txt
-#1635511994
-less log.txt
-#1635512295
-rm log.txt
-#1635512301
-./test.sh
-#1635512314
-cat log.txt
-#1635512462
-rm log.txt
-#1635512470
 ./test.sh
 #1635512498
 less log.txt
@@ -19864,3 +19830,83 @@ cd /Volumes/data/Downloads/Mac/InUse/Installed/Automated/
 diff paragon-1091-peu_macinstallunlock_15.5.106.dmg paragon-ntfsformac-1091-peu_macinstallunlock_15.5.106.dmg
 #1668491300
 home
+#1668492460
+defaults read .GlobalPreferences AppleLanguages
+#1668492579
+ls /usr/share/locale
+#1668492645
+export LC_TIME="en_GB"
+#1668492647
+date
+#1668492675
+export LC_TIME="en_GB.UTF-8"
+#1668492678
+date
+#1668492688
+locale
+#1668492908
+ls /usr/local/share
+#1668492915
+ls /usr/local/share/locale
+#1668492925
+ls /usr/local/share/locale/ca
+#1668492932
+ls /usr/local/share/locale/ca/LC_TIME
+#1668492945
+ls /usr/local/share/locale/af
+#1668492953
+ls /usr/local/share/locale/af/LC_TIME
+#1668492986
+ls /usr/share/locale
+#1668493008
+less /usr/share/locale/en_CA.UTF-8
+#1668493018
+ls /usr/share/locale/en_CA.UTF-8
+#1668493029
+ll /usr/share/locale/en_CA.UTF-8
+#1668493099
+ll /usr/share/locale/en_CA.UTF-8/LC_TIME
+#1668493122
+ll /usr/share/locale/en_GB.UTF-8/LC_TIME
+#1668493151
+ll /usr/share/locale/en_GB.ISO8859/LC_TIME
+#1668493160
+ll /usr/share/locale/en_GB.ISO8859-1/LC_TIME
+#1668493168
+less /usr/share/locale/en_GB.ISO8859-1/LC_TIME
+#1668493474
+cal
+#1668493481
+ncal
+#1668493543
+date '+Today is %A, %B %d, %Y.'
+#1668493592
+type -p date
+#1668493655
+type -t gdate
+#1668493662
+lf ttype
+#1668493667
+alias ttype
+#1668493684
+type -t date
+#1668493692
+type -p date
+#1668493694
+type -p gdate
+#1668493863
+date '+Today is %A, %B %d, %Y.'
+#1668493953
+date '+Today is %A, %B %d, %Y @ %T.'
+#1668494057
+date '+Today is %A, %B %d, %Y @ %H:%M:%s.'
+#1668494070
+date '+Today is %A, %B %d, %Y @ %H:%M:%S.'
+#1668494100
+man gdate
+#1668494137
+date '+Today is %A, %B %d, %Y @ %H:%M:%S.'
+#1668494150
+date '+Today is %A, %B %d, %Y @ %T.'
+#1668494282
+date '+%A, %B %d, %Y @ %T.'
