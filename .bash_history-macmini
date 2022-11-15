@@ -1,83 +1,3 @@
-./test.sh
-#1635512498
-less log.txt
-#1635512535
-cat log.txt
-#1635512640
-rm log.txt
-#1635512654
-./test.sh
-#1635512689
-cat log.txt
-#1635512804
-rm log.txt
-#1635512820
-diskutil umount /volumes/backup
-#1635512825
-diskutil umount /volumes/public
-#1635512833
-ls /volumes
-#1635512843
-./test.sh
-#1635512870
-ls /volumes
-#1635512896
-./test.sh
-#1635512944
-less log.txt
-#1635512949
-ll
-#1635512957
-rm log.txt
-#1635512963
-diskutil umount /volumes/public
-#1635513245
-ls /volumes
-#1635513265
-./test.sh
-#1635513281
-less log.txt
-#1635513318
-diskutil umount /volumes/public
-#1635513325
-rm log.txt
-#1635513409
-./test.sh
-#1635513507
-cat log.txt
-#1635513642
-rm log.txt
-#1635513647
-diskutil umount /volumes/public
-#1635513659
-./test.sh
-#1635513719
-cat log.txt
-#1635513737
-diskutil umount /volumes/public
-#1635513746
-rm log.txt
-#1635514521
-ls /volumes
-#1635515085
-cat test.sh
-#1635515103
-./test.sh
-#1635515143
-less log.txt
-#1635515175
-rm log.txt
-#1635515190
-ls /volumes
-#1635515212
-./test.sh
-#1635515263
-cat .log.txt
-#1635515273
-cat log.txt
-#1635539020
-which xcode
-#1635539024
 whereis xcode
 #1635539031
 whereis Xcode
@@ -19910,3 +19830,15 @@ date '+Today is %A, %B %d, %Y @ %H:%M:%S.'
 date '+Today is %A, %B %d, %Y @ %T.'
 #1668494282
 date '+%A, %B %d, %Y @ %T.'
+#1668494598
+ttype date
+#1668494605
+which date
+#1668494622
+f
+#1668494632
+ls bin
+#1668494640
+datef
+#1668494652
+less bin/datef
