@@ -1,15 +1,3 @@
-bash --version
-#1635564406
-man readarray
-#1635564411
-bashman readarray
-#1635564699
-bashman read
-#1635565469
-bashman readarray
-#1635565562
-bashman read
-#1635566959
 dotfiles
 #1635566973
 findtext -i readarray
@@ -19842,3 +19830,39 @@ findtext -i "ln -s"
 findtext -i "symlink_"
 #1668901318
 home
+#1669011195
+neofetch
+#1669011204
+b s neofetch
+#1669011674
+cd /Volumes/ExternalHome/rtruell/SourceCode/
+#1669011682
+cd neofetch-7.1.0/
+#1669011700
+make PREFIX=/usr/local install
+#1669011711
+path
+#1669011722
+which neofetch
+#1669011729
+neofetch
+#1669011754
+man neofetch
+#1669011787
+home
+#1669011788
+la
+#1669011822
+ls .config
+#1669011828
+ls .config/neofetch
+#1669011859
+cd .config/neofetch
+#1669011872
+mv config.conf config.conf.orig
+#1669011880
+subl config.conf
+#1669012252
+bcompare config.conf.orig config.conf
+#1669012291
+neofetch
