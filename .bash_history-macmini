@@ -1,140 +1,4 @@
 dotfiles
-#1635566973
-findtext -i readarray
-#1635567102
-findtext -i bash_profile
-#1635567210
-echo $BASH_VERSION
-#1635567857
-echo $BASH_VERSINFO
-#1635568420
-bashman readarray
-#1635568465
-which readarray
-#1635568476
-whereis readarray
-#1635568483
-home
-#1635568494
-man readarray
-#1635568532
-man maparray
-#1635568542
-bashman maparray
-#1635568549
-bashman readarray
-#1635568621
-readarray -v
-#1635568644
-readarray
-#1635568839
-declare -p BASH_VERSION
-#1635569533
-echo $BASH_VERSION
-#1635569682
-echo ${BASH_VERSION:0:1}
-#1635570518
-bashman tests
-#1635571049
-./test.sh
-#1635571081
-cat dotfiles/.dotfiles.ignore
-#1635618449
-findshow 'the nevers'
-#1635624286
-dotfiles
-#1635624296
-findtext 'readarray'
-#1635624378
-findtext 'bash_profile'
-#1635624780
-bashman tests
-#1635625379
-home
-#1635625385
-./test.sh
-#1635625418
-cat dotfiles/.dotfile.ignore
-#1635625427
-cat dotfiles/.dotfiles.ignore
-#1635626868
-man local
-#1635626878
-bashman local
-#1635626949
-bashman declare
-#1635628709
-echo $SHELL
-#1635634341
-hf files
-#1635634357
-hf filenames
-#1635634368
-hf excludes
-#1635636507
-findtext symlink_array_files
-#1635636533
-dotfiles
-#1635636536
-findtext symlink_array_files
-#1635638145
-man read
-#1635638165
-bashman read
-#1635657901
-up
-#1635657923
-ls mountpoint
-#1635657928
-mount
-#1635657950
-mountinfo
-#1635658065
-mount -t smbfs //backupserver/backup mountpoint
-#1635658075
-ls /mountpoint
-#1635658103
-ls mountpoint
-#1635658123
-unmount mountpoint
-#1635658133
-umount mountpoint
-#1635658137
-ls mountpoint
-#1635658171
-mount -t smbfs //backupserver/public mountpoint
-#1635658180
-ls mountpoint
-#1635658202
-umount mountpoint
-#1635658204
-ls mountpoint
-#1635658226
-mount -t smbfs //backupserver/public mountpoint
-#1635658232
-ls mountpoint
-#1635658235
-umount mountpoint
-#1635658304
-mount -t smbfs //backupserver/web mountpoint
-#1635658342
-mount -t smbfs //backupserver/download mountpoint
-#1635660054
-git-open alrra dotfiles
-#1635660742
-cd /Volumes/ExternalHome/rtruell/dotfiles-extras/
-#1635660772
-findtext 'is_dotfiles_bin'
-#1635661989
-man exec
-#1635661997
-bashman exec
-#1635662256
-home
-#1635720440
-echo $@INC
-#1635720538
-dotfiles
 #1635720545
 findtext 'INC'
 #1635720617
@@ -19866,3 +19730,103 @@ subl config.conf
 bcompare config.conf.orig config.conf
 #1669012291
 neofetch
+#1669062706
+ls .config
+#1669062713
+la
+#1669062734
+cat .archey-ip
+#1669062750
+la .config
+#1669062834
+archey
+#1669062857
+icheck
+#1669062914
+archey
+#1669062922
+archey4
+#1669062931
+archey --version
+#1669062962
+ttype archey
+#1669062967
+alias archey
+#1669062980
+\archey --version
+#1669062989
+\archey --help
+#1669063052
+ls /Volumes/data-1/Downloads/Mac/InUse/Installed/
+#1669063058
+ls /Volumes/data-1/Downloads/Mac/InUse/Installed/Automated/
+#1669063110
+ls /Volumes/
+#1669063130
+ls /Volumes/Downloads
+#1669063152
+ls /Volumes/Downloads/RecentDownloads/Mac
+#1669063186
+ls /Volumes/data/Downloads/Mac/InUse/Installed/Automated/
+#1669063326
+pip3
+#1669063345
+python3 --version
+#1669063369
+python --version
+#1669063396
+archey
+#1669063405
+neofetch
+#1669063981
+ls /Volumes/
+#1669064100
+ls /Volumes/rtruell/
+#1669064129
+ls /Volumes/rtruell/.config/neofetch
+#1669064147
+ls .config/neofetch
+#1669064170
+bcompare /Volumes/rtruell/.config/neofetch .config/neofetch
+#1669064267
+archey
+#1669064283
+la
+#1669064316
+la .config
+#1669064458
+ls /Volumes/rtruell/.config/
+#1669064465
+ls /Volumes/rtruell/.config/archey4/
+#1669064486
+cp /Volumes/rtruell/.config/archey4 .config
+#1669064494
+cp -ar /Volumes/rtruell/.config/archey4 .config
+#1669064571
+ll .config
+#1669064595
+chmod 755 archey4
+#1669064602
+chmod 755 .config/archey4
+#1669064605
+ll .config
+#1669064621
+ll .config/archey4
+#1669064626
+ll .config/neofetch
+#1669064651
+chmod 644 .config/archey4/config.json
+#1669064659
+ll .config/neofetch
+#1669064662
+ll .config/archey4
+#1669064675
+archey
+#1669064685
+man archey
+#1669065617
+archey
+#1669065625
+neofetch
+#1669065730
+a s python3-distro
