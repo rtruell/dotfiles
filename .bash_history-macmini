@@ -1,9 +1,3 @@
-findshow 'teen wolf'
-#1636057697
-his
-#1636057751
-diskutil list
-#1636057762
 diskutil unmountDisk /dev/disk3
 #1636057803
 sudo dd if="/Volumes/data/Downloads/Live CD ISOs/lmde-4-cinnamon-64bit.iso" of=/dev/rdisk3 bs=4M status=progress
@@ -19835,4 +19829,10 @@ hostname
 #1669095374
 echo $HOSTNAME
 #1669095381
+neofetch
+#1669132410
+v onorm
+#1669132415
+hostname
+#1669132434
 neofetch
