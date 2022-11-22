@@ -1,5 +1,3 @@
-dotfiles
-#1635720545
 findtext 'INC'
 #1635720617
 eval `perl -I /Volumes/ExternalHome/rtruell/perl5/lib/perl5 -Mlocal::lib=/Volumes/ExternalHome/rtruell/perl5`
@@ -19830,3 +19828,249 @@ archey
 neofetch
 #1669065730
 a s python3-distro
+#1669067216
+/Applications/Python\ 3.11/Install\ Certificates.command ; exit;
+#1669067307
+python --version
+#1669067312
+python3 --version
+#1669067381
+pip --version
+#1669067387
+pip3 --version
+#1669067462
+icheck
+#1669067786
+ls /usr/bin/python
+#1669067790
+ll /usr/bin/python
+#1669067798
+which python
+#1669067804
+python --version
+#1669067818
+which python2
+#1669067821
+which python3
+#1669068039
+ls -ltr /usr/local/bin/python*
+#1669068122
+path
+#1669068420
+pip3 --version
+#1669068431
+python3 --version
+#1669068636
+pip3 install distro
+#1669068706
+distro
+#1669068713
+which distro
+#1669068716
+whereis distro
+#1669069010
+pip3 install netifaces
+#1669069083
+python3.11 -m pip install --upgrade pip
+#1669069126
+pip3 install netifaces
+#1669069173
+alias
+#1669069197
+cd /Volumes/ExternalHome/rtruell/SourceCode/
+#1669069242
+wget -qO archey4.tar.gz "https://github.com/HorlogeSkynet/archey4/archive/v4.14.0.1.tar.gz"
+#1669069263
+wget
+#1669069448
+ls /Volumes/Downloads
+#1669069464
+ls /Volumes/Downloads/RecentDownloads/Mac/
+#1669069512
+cp /Volumes/Downloads/RecentDownloads/Mac/archey4-4.14.0.1.tar.gz .
+#1669069567
+cd archey4-4.14.0.1/
+#1669069592
+pip3 install .
+#1669069738
+up
+#1669069745
+cd archey4-4.14.0.1
+#1669069753
+pip3 install .
+#1669069797
+which archey
+#1669069812
+ll /usr/local/bin
+#1669069817
+ll /usr/local/bin/a*
+#1669069830
+ls /usr/local/bin/a*
+#1669069866
+which archey4
+#1669069872
+whereis archey4
+#1669069934
+ls /Library/Frameworks/Python.framework/Versions/3.11/bin
+#1669069967
+/Library/Frameworks/Python.framework/Versions/3.11/bin/archey --version
+#1669069985
+/Library/Frameworks/Python.framework/Versions/3.11/bin/archey
+#1669070046
+home
+#1669070060
+less .config/archey4/config.json
+#1669070083
+lf addpath
+#1669070102
+less dotfiles/.paths
+#1669070105
+less dotfiles/.path
+#1669070130
+addpath -f /Library/Frameworks/Python.framework/Versions/3.11/bin
+#1669070132
+path
+#1669070137
+archey
+#1669070151
+archey --version
+#1669070166
+archey -h
+#1669070241
+alias archey
+#1669070252
+\archey
+#1669070283
+\archey -v
+#1669070472
+neofetch
+#1669072851
+hostname
+#1669074855
+echo $TERM_PROGRAM
+#1669075650
+ls /Volumes/rtruell/.config/neofetch/
+#1669075659
+ll /Volumes/rtruell/.config/neofetch/
+#1669075712
+ll .config/neofetch/
+#1669075753
+cp -a /Volumes/rtruell/.config/neofetch/config.conf .config/neofetch
+#1669075759
+ll .config/neofetch/
+#1669075797
+neofetch
+#1669091936
+ll .config/neofetch
+#1669093227
+ls /Volumes/Owncloud/
+#1669093234
+ls /Volumes/Owncloud/neofetch/
+#1669093237
+ll /Volumes/Owncloud/neofetch/
+#1669093260
+ll .config/neofetch
+#1669093303
+mv .config/neofetch/config.conf.orig /Volumes/Owncloud/neofetch
+#1669093307
+ll .config/neofetch
+#1669093314
+ll /Volumes/Owncloud/neofetch/
+#1669093352
+ls .config.neofetch
+#1669093358
+ls .config/neofetch
+#1669093372
+rm -rf .config/neofetch
+#1669093377
+ls .config
+#1669093422
+ln -s /nas/owncloud-client/neofetch .config/neofetch 
+#1669093426
+ll .config
+#1669093448
+neofetch
+#1669093478
+ls .config
+#1669093484
+ls .config/neofetch
+#1669093546
+ll .config
+#1669093554
+ll .config/neofetch
+#1669093580
+ls .config/neofetch
+#1669093599
+rm .config/neofetch/.config/neofetch
+#1669093620
+rm .config/neofetch
+#1669093628
+ls .config
+#1669093671
+ls /Volumes/Owncloud/
+#1669093710
+ln -s /Volumes/Owncloud/neofetch/ .config/neofetch
+#1669093714
+ll .config
+#1669093738
+rm /Volumes/Owncloud/neofetch/
+#1669093754
+rm .config/neofetch
+#1669093760
+ll .config
+#1669093772
+ln -s /Volumes/Owncloud/neofetch .config/neofetch
+#1669093776
+ll .config
+#1669093797
+ls .config/neofetch
+#1669093803
+neofetch
+#1669093826
+locale
+#1669093964
+neofetch
+#1669094019
+less .config/neofetch/config.conf
+#1669094054
+which neofetch
+#1669094062
+less /usr/local/bin/neofetch
+#1669094149
+neofetch
+#1669094170
+less /usr/local/bin/neofetch
+#1669094342
+echo $HOSTNAME
+#1669094350
+hostname -f
+#1669094355
+man hostname
+#1669094402
+hostname -f
+#1669094414
+man hostname
+#1669094516
+dotfiles
+#1669094529
+findtext -i hostname
+#1669094586
+home
+#1669094850
+echo $HOSTNAME
+#1669095234
+sudo scutil --set HostName macmini
+#1669095236
+echo $HOSTNAME
+#1669095269
+sudo scutil --set LocalHostName macmini
+#1669095270
+echo $HOSTNAME
+#1669095303
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "macmini"
+#1669095305
+echo $HOSTNAME
+#1669095325
+hostname
+#1669095331
+hostname -f
