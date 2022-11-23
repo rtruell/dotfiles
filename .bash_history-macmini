@@ -19832,3 +19832,35 @@ aw
 neofetch
 #1669213979
 which neofetch
+#1669213990
+less /usr/local/bin/neofetch
+#1669214415
+neofetch --version
+#1669214859
+which uptime
+#1669214867
+which neofetch
+#1669214885
+less /usr/local/bin/neofetch
+#1669215044
+ls /usr/bin/ansi
+#1669215048
+ls /usr/bin
+#1669215071
+which ansiweather
+#1669215085
+ls /usr/local/bin
+#1669215168
+cp -a /usr/local/bin/neofetch ./dotfiles/bin
+#1669215179
+ll /usr/local/bin/neofetch
+#1669215190
+ll dotfiles/bin/neofetch
+#1669215239
+mv /usr/local/bin/neofetch /usr/local/bin/neofetch.old
+#1669215258
+ls /usr/local/bin
+#1669215267
+which neofetch
+#1669215274
+neofetch
