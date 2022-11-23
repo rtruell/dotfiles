@@ -1,9 +1,3 @@
-diskutil unmountDisk /dev/disk3
-#1636057803
-sudo dd if="/Volumes/data/Downloads/Live CD ISOs/lmde-4-cinnamon-64bit.iso" of=/dev/rdisk3 bs=4M status=progress
-#1636058241
-diskutil eject /dev/disk3
-#1636062862
 man brew
 #1636073673
 volall
@@ -19836,3 +19830,87 @@ v onorm
 hostname
 #1669132434
 neofetch
+#1669154789
+ansiweather
+#1669154796
+alias
+#1669154804
+aw
+#1669154829
+archey
+#1669154846
+\archey
+#1669154864
+alias aw
+#1669154991
+neofetch
+#1669155215
+man anisweather
+#1669157339
+ansiweather --version
+#1669157345
+ansiweather -v
+#1669157482
+la
+#1669157491
+less .ansiweatherrc
+#1669158320
+aw
+#1669158578
+pico .ansiweatherrc
+#1669158716
+which ansiweather
+#1669158729
+less /usr/local/bin/ansiweather
+#1669158817
+pico .ansiweatherrc
+#1669158848
+aw
+#1669158895
+neofetch
+#1669158940
+date
+#1669159061
+whereis ansiweatherrc.example
+#1669159085
+locate ansiweather
+#1669159158
+ls /usr/local/opt/ansiweather
+#1669159170
+ls /usr/local/opt/ansiweather/bin
+#1669159255
+pico .ansiweatherrc
+#1669159410
+la
+#1669159416
+lal
+#1669159573
+ls .config
+#1669159589
+la .config
+#1669159597
+lal .config
+#1669159936
+ls .config/.rainlendar2
+#1669159951
+ls .config/liquidprompt
+#1669160701
+la
+#1669160708
+ls /Volumes/Temp/
+#1669160736
+bcompare /Volumes/Temp/ansiweather.example .ansiweatherrc
+#1669160989
+aw
+#1669179316
+ls /nas/owncloud-client
+#1669179340
+ls /Volumes/Owncloud/
+#1669179349
+la
+#1669179447
+cp -a .ansiweatherrc /Volumes/Owncloud/ansiweather
+#1669179525
+cp -a dotfiles/.ansiweatherrc /Volumes/Owncloud/ansiweather
+#1669180821
+aw
