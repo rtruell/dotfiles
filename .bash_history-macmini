@@ -1,225 +1,3 @@
-man 5 sudoers
-#1636209545
-ll /etc
-#1636209578
-ll /
-#1636209603
-ll /etc/apache2
-#1636209616
-which httpd
-#1636210148
-man 5 sudoers
-#1636210217
-ls /etc/sudoers.d
-#1636214838
-bashman tests
-#1636214879
-[[ -d /etc/sudoers.d ]] && echo "it exists"
-#1636224026
-findshow 20-03-16
-#1636224147
-findshow 'green lan"
-#1636224160
-findshow 'green lan'
-#1636224263
-findshow 'andromeda'
-#1636226811
-listfunction execute_command
-#1636228339
-dotfiles
-#1636228352
-findtext 'eval'
-#1636228433
-findtext 'command'
-#1636228616
-listfunction execute_command symlink_single_file
-#1636228630
-listfunction symlink_single_file
-#1636235503
-bashman tests
-#1636236228
-up
-#1636237316
-listfunction print_result
-#1636237348
-listfunction print_success
-#1636238379
-man 5 sudoers
-#1636238442
-cat /etc/sudoers
-#1636238447
-sudo cat /etc/sudoers
-#1636238549
-printf hello
-#1636239300
-listfunction print_results
-#1636239323
-uname
-#1636239340
-listfunction execute_command
-#1636239356
-listfunction print_success
-#1636239361
-listfunction print_error
-#1636239367
-listfunction print_results
-#1636239384
-listfunction print_result
-#1636239440
-subl test.sh
-#1636239718
-less test.sh
-#1636239737
-source ./test.sh
-#1636240465
-printf '\n%s
-#1636240499
-printf '\n%s' 'this is a test'
-#1636240563
-printf '\n%s' '@includedir /etc/sudoers.d'
-#1636240631
-printf '\n%s' '@includedir /etc/sudoers.d' >>rick.txt
-#1636240639
-cat rick.txt
-#1636240660
-sudo cat /etc/sudoers
-#1636240673
-cat rick.txt
-#1636240687
-printf '\n%s\n' '@includedir /etc/sudoers.d' >>rick.txt
-#1636240699
-rm rick.txt
-#1636240704
-printf '\n%s\n' '@includedir /etc/sudoers.d' >>rick.txt
-#1636240709
-cat rick.txt
-#1636240769
-cat test.sh
-#1636240787
-subl test.sh
-#1636240821
-source ./test.sh
-#1636240961
-rm rick.txt
-#1636254564
-man su
-#1636260955
-yes
-#1636260967
-man yes
-#1636260994
-which yes
-#1636261001
-whereis yes
-#1636261020
-inxi
-#1636261037
-inxi -Fx
-#1636261558
-b s inxi
-#1636265099
-man bash
-#1636344189
-man su
-#1636348105
-man trasmutate
-#1636348960
-sucommand=(su -c )
-#1636348987
-sucommand+=(')
-#1636349124
-echo "${sucommand[@]}"
-#1636349202
-sucommand+=('"$command"')
-#1636349206
-echo "${sucommand[@]}"
-#1636349287
-sucommand+=('"printf '\n%s\n' '@includedir /etc/sudoers.d' >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && "')
-#1636349289
-echo "${sucommand[@]}"
-#1636349315
-sucommand=(su -c )
-#1636349381
-sucommand+=('printf '\n%s\n' '@includedir /etc/sudoers.d' >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && ')
-#1636349389
-echo "${sucommand[@]}"
-#1636349470
-sucommand=(su -c )
-#1636349474
-echo "${sucommand[@]}"
-#1636349534
-sucommand+=(\'printf \'\n%s\n\' "@includedir /etc/sudoers.d" >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && \')
-#1636349558
-echo "${sucommand[@]}"
-#1636349576
-sucommand+=(\'printf \'\n%s\n\' \"@includedir /etc/sudoers.d\" >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && \')
-#1636349617
-sucommand+=(\'printf \'\n%s\n\' \'@includedir /etc/sudoers.d\' >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && \')
-#1636349648
-sucommand+=('printf \'\n%s\n\' \'@includedir /etc/sudoers.d\' >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && \)
-#1636349677
-echo $command
-#1636349698
-command="printf '\n%s\n' '@includedir /etc/sudoers.d' >>/etc/sudoers && mkdir /etc/sudoers.d && chmod 755 /etc/sudoers.d && "
-#1636349708
-sucommand=(su -c )
-#1636349716
-echo "${sucommand[@]}"
-#1636349721
-echo $command
-#1636349830
-sucommand+=('"$command"')
-#1636349838
-echo "${sucommand[@]}"
-#1636349894
-sucommand=(su -c )
-#1636349916
-sucommand+=(')
-sucommand+=("$command")
-sucommand+=(')
-#1636350050
-echo "${sucommand[@]}"
-#1636350152
-echo $command
-#1636350162
-sucommand=(su -c )
-#1636350168
-echo "${sucommand[@]}"
-#1636350332
-hf 'su -c'
-#1636351053
-su -c 'ls'
-#1636351202
-man su
-#1636351272
-b search su
-#1636351337
-which su
-#1636351341
-whereis su
-#1636351397
-b s util-linux
-#1636351411
-b h util-linux
-#1636351682
-man su
-#1636351697
-su root -c ls
-#1636352227
-printf '\n%s\n' '@includedir /etc/sudoers.d'
-#1636352267
-printf '\n%s\n' '@includedir /etc/sudoers.d'
-#1636352293
-printf "\n%s\n" "@includedir /etc/sudoers.d"
-#1636352562
-printf '\n%s\n' '@includedir /etc/sudoers.d'
-#1636352567
-copylastcommand
-#1636414769
-whoami
-#1636414778
-echo $username
-#1636414784
 echo $USERNAME
 #1636414804
 username=$(whoami)
@@ -19908,3 +19686,149 @@ which ansiweather
 aw
 #1669206049
 ansiweather -f 0
+#1669206125
+which ansiweather
+#1669206128
+aw
+#1669206371
+la
+#1669206381
+ll
+#1669206386
+lal
+#1669208389
+aw
+#1669209226
+neofetch
+#1669209314
+lal
+#1669209447
+ls /Volumes/Owncloud/
+#1669209454
+ls /Volumes/Owncloud/ansiweather/
+#1669209515
+diff /Volumes/Owncloud/ansiweather/ansiweatherrc dotfiles/.ansiweather
+#1669209535
+la dotfiles
+#1669209560
+diff /Volumes/Owncloud/ansiweather/ansiweatherrc dotfiles/.ansiweatherrc
+#1669209573
+bcompare /Volumes/Owncloud/ansiweather/ansiweatherrc dotfiles/.ansiweatherrc
+#1669209641
+lal
+#1669209665
+rm .ansiweatherrc
+#1669209761
+ls /Volumes/Owncloud/ansiweather/
+#1669209788
+ln -s /Volumes/Owncloud/ansiweather/ansiweatherrc .ansiweatherrc
+#1669209795
+la
+#1669209801
+lal
+#1669209809
+aw
+#1669211314
+conflictedfile="/Volumes/Owncloud/ansiweather/ansiweatherrc (conflicted copy 2022-11-23 063500)"
+#1669211322
+echo $conflictedfile
+#1669211349
+fp -e "${conflictedfile}"
+#1669211451
+extension=$("${HOME}"/bin/fp -e "${conflictedfile}")
+#1669211470
+name=$("${HOME}"/bin/fp -pn "${conflictedfile%% (*}").${extension}
+#1669211476
+echo $extension
+#1669211482
+echo $name
+#1669211540
+lf fp
+#1669211546
+ttype fp
+#1669211553
+less bin/fp
+#1669211688
+if [[ "${conflictedfile}" == *"."* ]]; then echo extension; else echo none; fi
+#1669211731
+conflictedfile="test.txt"
+#1669211734
+if [[ "${conflictedfile}" == *"."* ]]; then echo extension; else echo none; fi
+#1669211751
+conflictedfile="/Volumes/Owncloud/ansiweather/ansiweatherrc (conflicted copy 2022-11-23 063500)"
+#1669211754
+if [[ "${conflictedfile}" == *"."* ]]; then echo extension; else echo none; fi
+#1669211821
+extension=""
+#1669211840
+name=$("${HOME}"/bin/fp -pn "${conflictedfile%% (*}").${extension}
+#1669211849
+echo $extension
+#1669211855
+echo $name
+#1669212236
+conflictedfile="/Volumes/Owncloud/ansiweather/ansiweatherrc (conflicted copy 2022-11-23 063500)"
+#1669212256
+if [[ "${conflictedfile}" == *"."* ]]; then echo extension; else echo none; fi
+#1669212271
+extension=""
+#1669212285
+name=$("${HOME}"/bin/fp -pn "${conflictedfile%% (*}")${extension}
+#1669212297
+echo $conflictedfile
+#1669212301
+echo $extension
+#1669212307
+echo $name
+#1669212337
+conflictedfile="test.txt"
+#1669212345
+if [[ "${conflictedfile}" == *"."* ]]; then echo extension; else echo none; fi
+#1669212393
+conflictedfile="/Volumes/Owncloud/ansiweather/ansiweatherrc.txt (conflicted copy 2022-11-23 063500)"
+#1669212399
+if [[ "${conflictedfile}" == *"."* ]]; then echo extension; else echo none; fi
+#1669212412
+extension=".$("${HOME}"/bin/fp -e "${conflictedfile}")"
+#1669212423
+name=$("${HOME}"/bin/fp -pn "${conflictedfile%% (*}")${extension}
+#1669212432
+echo $conflictedfile
+#1669212443
+echo $extension
+#1669212451
+echo $name
+#1669212678
+conflictedfile="/Volumes/Owncloud/ansiweather/ansiweatherrc (conflicted copy 2022-11-23 063500).txt"
+#1669212699
+if [[ "${conflictedfile}" == *"."* ]]; then echo extension; else echo none; fi
+#1669212711
+extension=".$("${HOME}"/bin/fp -e "${conflictedfile}")"
+#1669212721
+name=$("${HOME}"/bin/fp -pn "${conflictedfile%% (*}")${extension}
+#1669212726
+echo $conflictedfile
+#1669212730
+echo $extension
+#1669212734
+echo $name
+#1669212775
+conflictedfile="/Volumes/Owncloud/ansiweather/ansiweatherrc (conflicted copy 2022-11-23 063500)"
+#1669212784
+if [[ "${conflictedfile}" == *"."* ]]; then echo extension; else echo none; fi
+#1669212796
+extension=""
+#1669212804
+name=$("${HOME}"/bin/fp -pn "${conflictedfile%% (*}")${extension}
+#1669212807
+echo $conflictedfile
+#1669212812
+echo $extension
+#1669212815
+echo $name
+#1669213325
+aw
+#1669213418
+neofetch
+#1669213979
+which neofetch
