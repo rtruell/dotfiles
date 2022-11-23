@@ -1,87 +1,3 @@
-man brew
-#1636073673
-volall
-#1636085015
-dotfiles
-#1636085038
-findtext "ln -"
-#1636085212
-cd /Volumes/ExternalHome/rtruell/dotfiles-extras
-#1636085224
-findtext "ln -"
-#1636085504
-hoem
-#1636085505
-home
-#1636086476
-man ln
-#1636087118
-cd -
-#1636087141
-cd /Volumes/ExternalHome/rtruell/dotfiles-extras
-#1636087159
-findtext "execute_command"
-#1636122818
-dotfiles
-#1636122834
-findtext PWD
-#1636122857
-PWD
-#1636122862
-pwd
-#1636127108
-up
-#1636138220
-dotfiles
-#1636138228
-findtext 'credentials'
-#1636138351
-alias dotfiles
-#1636138372
-cd /Volumes/data/Text/
-#1636138384
-findtext 'credentials'
-#1636138427
-cd OSInstall/
-#1636138430
-findtext 'credentials'
-#1636138482
-home
-#1636139182
-b s cifs
-#1636140987
-cat /etc/sudoers
-#1636140992
-sudo cat /etc/sudoers
-#1636141056
-groups
-#1636179005
-cat /etc/sudoers
-#1636179010
-sudo cat /etc/sudoers
-#1636179029
-groups
-#1636179201
-man grups
-#1636179206
-man groups
-#1636179225
-groups | grep admin
-#1636179268
-groups | grep " admin "
-#1636179302
-man grep
-#1636179410
-grep admin /etc/sudoers
-#1636179415
-sudo grep admin /etc/sudoers
-#1636209130
-ll /etc
-#1636209159
-cat /etc/sudoers
-#1636209163
-sudo cat /etc/sudoers
-#1636209240
 man 5 sudoers
 #1636209545
 ll /etc
@@ -19914,3 +19830,81 @@ cp -a .ansiweatherrc /Volumes/Owncloud/ansiweather
 cp -a dotfiles/.ansiweatherrc /Volumes/Owncloud/ansiweather
 #1669180821
 aw
+#1669200251
+ansiweather -v
+#1669200769
+which ansiweather
+#1669200780
+less /usr/local/bin/ansiweather
+#1669201193
+cp -a /usr/local/bin/ansiweather /Volumes/Temp
+#1669201262
+ls /Volumes/
+#1669201270
+ls /Volumes/rtruell
+#1669201305
+mv /Volumes/Temp/ansiweather /Volumes/rtruell
+#1669201393
+ls /Volumes/
+#1669201403
+ls /Volumes/Downloads
+#1669201456
+ls /Volumes/Downloads/RecentDownloads/Linux
+#1669201479
+cp -a /Volumes/Downloads/RecentDownloads/Linux/ansiweather-1.18.0.tar.gz .
+#1669201552
+tar -h
+#1669201606
+tar -x ansiweather-1.18.0.tar.gz
+#1669201853
+ls .tar.gz
+#1669201859
+ls *.tar.gz
+#1669201865
+rm *.tar.gz
+#1669201900
+cp -a /Volumes/Downloads/RecentDownloads/Linux/ansiweather-1.18.0.tar.gz /Volumes/rtruell/
+#1669205207
+ls /Volumes/
+#1669205213
+ls /Volumes/rtruell/
+#1669205369
+ls dotfiles/bin
+#1669205384
+la dotfiles/bin
+#1669205407
+ll
+#1669205425
+ll /Volumes/rtruell/
+#1669205466
+cp -a /Volumes/rtruell/ansiweather ./dotfiles/bin
+#1669205480
+la dotfiles/bin
+#1669205490
+ll dotfiles/bin
+#1669205592
+which ansiweather
+#1669205595
+aw
+#1669205606
+path
+#1669205668
+ls /Library/Frameworks/Python.framework/Versions/3.11/bin/
+#1669205866
+alias aw
+#1669205884
+ll /usr/local/bin
+#1669205947
+mv /usr/local/bin/ansiweather /usr/local/bin/ansiweather.old
+#1669205952
+ll /usr/local/bin
+#1669205976
+aw
+#1669205999
+alias aw
+#1669206011
+which ansiweather
+#1669206016
+aw
+#1669206049
+ansiweather -f 0
