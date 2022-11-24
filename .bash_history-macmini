@@ -1,35 +1,3 @@
-echo $USERNAME
-#1636414804
-username=$(whoami)
-#1636414808
-echo $username
-#1636500157
-b s beyond
-#1636500181
-b i beyond-compare
-#1636500225
-b s path-finder
-#1636500242
-b i path-finder
-#1636500292
-b s logitech
-#1636500333
-b i logitech-options
-#1636500363
-b i logitech-control-center
-#1636500379
-b h logitech-options
-#1636500603
-b h logitech-control-center
-#1636500770
-b s right
-#1636500812
-b i rightzoom
-#1636500826
-b h rightzoom
-#1636500955
-b s superduper
-#1636500969
 b i superduper
 #1636501024
 ls /etc/
@@ -19864,3 +19832,355 @@ ls /usr/local/bin
 which neofetch
 #1669215274
 neofetch
+#1669215310
+which neofetch
+#1669215315
+neofetch
+#1669215862
+ls /Volumes/Temp/
+#1669215897
+bcompare /Volumes/Temp/neofetch ./dotfiles/bin/neofetch
+#1669216276
+neofetch
+#1669217474
+which ansiweather
+#1669217479
+which neofetch
+#1669218094
+aw
+#1669218103
+neofetch
+#1669244489
+archey
+#1669244497
+archey4
+#1669244509
+\archey
+#1669244981
+archey
+#1669244988
+archey4
+#1669244994
+which archey
+#1669245011
+ls /usr/bin/ar*
+#1669245019
+ls /usr/bin/
+#1669245046
+ls /usr/local/bin/
+#1669245060
+ls /usr/local/bin/archey
+#1669245070
+ll /usr/local/bin/archey
+#1669245082
+/usr/local/bin/archey
+#1669245092
+/usr/local/bin/archey -h
+#1669245112
+/usr/local/bin/archey -p
+#1669245175
+neofetch
+#1669248518
+echo 'things to change/fix in neofetch: "load average" "processes" "window manager (kwin)" "desktop environment (KDE)" "terminal (xterm)" "temperature" "memory-space between value and unit" "local IP (IPv6 address)"'
+#1669248530
+sysinfo
+#1669248588
+ps
+#1669248606
+osinfo
+#1669248633
+ttype sysinfo
+#1669248640
+lf sysinfo
+#1669248678
+sysinfo
+#1669248688
+uptime
+#1669248719
+uptime | tr -s " "
+#1669248782
+uptime | tr -s " " | cut -d ',' -f 3-
+#1669248796
+uptime | tr -s " " | cut -d ', ' -f 3-
+#1669248804
+uptime | tr -s " " | cut -d ',' -f 3-
+#1669248933
+uptime | tr -s " " | cut -d ',' -f 3- | cut -d ':' -f 2
+#1669248958
+uptime | tr -s " " | cut -d ',' -f 3- | cut -d ':' -f 2 | tr ',' ''
+#1669249012
+uptime | tr -s " " | cut -d ',' -f 3- | cut -d ':' -f 2 | tr ', ' ' '
+#1669249075
+uptime | tr -s " " | cut -d ',' -f 3- | cut -d ':' -f 2 | tr ', ' ' ' | tr -s " "
+#1669249087
+uptime | cut -d ',' -f 3- | cut -d ':' -f 2 | tr ', ' ' ' | tr -s " "
+#1669249115
+uptime | cut -d ',' -f 3- | cut -d ':' -f 2 | tr ', ' ' ' | tr -s " " | trim -l
+#1669249143
+trim -l <<<$(uptime | cut -d ',' -f 3- | cut -d ':' -f 2 | tr ', ' ' ' | tr -s " ")
+#1669249164
+trim -l <$(uptime | cut -d ',' -f 3- | cut -d ':' -f 2 | tr ', ' ' ' | tr -s " ")
+#1669249179
+trim -l <<< $(uptime | cut -d ',' -f 3- | cut -d ':' -f 2 | tr ', ' ' ' | tr -s " ")
+#1669249212
+hf trim
+#1669249333
+trim -l $(uptime | cut -d ',' -f 3- | cut -d ':' -f 2 | tr ', ' ' ' | tr -s " ")
+#1669249347
+uptime | cut -d ',' -f 3- | cut -d ':' -f 2 | tr ', ' ' ' | tr -s " " | trim -l
+#1669249355
+uptime | cut -d ',' -f 3- | cut -d ':' -f 2 | tr ', ' ' ' | tr -s " "
+#1669249361
+trim -l $(uptime | cut -d ',' -f 3- | cut -d ':' -f 2 | tr ', ' ' ' | tr -s " ")
+#1669249387
+trim -l "$(uptime | cut -d ',' -f 3- | cut -d ':' -f 2 | tr ', ' ' ' | tr -s " ")"
+#1669249396
+uptime | cut -d ',' -f 3- | cut -d ':' -f 2 | tr ', ' ' ' | tr -s " "
+#1669249398
+trim -l "$(uptime | cut -d ',' -f 3- | cut -d ':' -f 2 | tr ', ' ' ' | tr -s " ")"
+#1669249613
+echo 'things to change/fix in neofetch: "load average" "processes" "window manager (kwin)" "desktop environment (KDE)" "terminal (xterm)" "temperature" "memory-space between value and unit" "local IP (IPv6 address)"'
+#1669249777
+neofetch
+#1669250234
+ps -u "$(echo $(w -h | cut -d ' ' -f1 | sort -u))" o user= | sort | uniq -c | sort -rn
+#1669250552
+echo /proc/[0-9]* | wc -w
+#1669250569
+archey
+#1669250577
+\archey
+#1669250598
+/usr/local/bin/archey -p
+#1669250624
+/usr/local/bin/archey
+#1669250641
+ls /usr/local/bin
+#1669250655
+ll /usr/local/bin/archey
+#1669250673
+/usr/local/bin/archey
+#1669250738
+ls /usr/local/Cellar/archey/1.6.0_1/bin/archey
+#1669250746
+/usr/local/Cellar/archey/1.6.0_1/bin/archey
+#1669250778
+echo /proc/[0-9]* | wc -w
+#1669250788
+ps haux Ou | cut '-d ' -f1 | uniq -c
+#1669250874
+ps aux | awk '{print $11}'
+#1669250982
+pgrep '^.*$' | awk 'END{print NR}'
+#1669251075
+ps aux --no-heading | wc -l
+#1669251088
+pgrep '^.*$' | awk 'END{print NR}'
+#1669251129
+man ps
+#1669251583
+neofetch
+#1669251714
+echo 'things to change/fix in neofetch: "window manager (kwin)" "desktop environment (KDE)" "terminal (xterm)" "temperature" "memory-space between value and unit" "local IP (IPv6 address)"'
+#1669268154
+neofetch
+#1669268663
+df -P -h
+#1669268954
+less .config/neofetch/config.conf
+#1669268979
+df -P -h / /nas
+#1669269197
+df --version
+#1669269340
+IFS=$'\n' read -d "" -ra disks <<< "$(df "${df_flags[@]}" "${disk_show[@]:-/}")"
+#1669269353
+unset "disks[0]"
+#1669269377
+IFS=" " read -ra disk_info <<< "$disk"
+#1669269390
+echo $disk_info
+#1669269429
+echo $disk_info[-2]
+#1669269461
+echo ${disk_info[-2]}
+#1669269504
+IFS=$'\n' read -d "" -ra disks <<< "$(df -P -h "${disk_show[@]:-/}")"
+#1669269514
+echo $disks
+#1669269559
+IFS=$'\n' read -d "" -ra disks <<< "$(df -P -h /)"
+#1669269561
+echo $disks
+#1669269592
+unset "disks[0]"
+#1669269610
+IFS=" " read -ra disk_info <<< "$disk"
+#1669269621
+echo $disk_info
+#1669269651
+df -P -h /
+#1669269686
+disk_perc=${disk_info[-2]/\%}
+#1669269860
+echo $disks[@]
+#1669269869
+echo ${disks[@]}
+#1669269931
+IFS=" " read -ra disk_info <<< "${disks[@]}"
+#1669269946
+echo $disk_info
+#1669269964
+echo ${disk_info[-2]}
+#1669269982
+disk_perc=${disk_info[-2]/\%}
+#1669269989
+echo disk_perc
+#1669269995
+echo $disk_perc
+#1669270054
+disk_perc=${disk_info[-2]/\%}
+#1669270062
+echo ${disk_info[-4]}
+#1669270096
+echo ${disk_info[-5]}
+#1669270126
+disk="${disk_info[-4]/i} / ${disk_info[-5]/i}${disk_perc:+ ($disk_perc%)}"
+#1669270129
+echo $disk
+#1669270806
+neofetch
+#1669270841
+man df
+#1669270891
+df -P -h /
+#1669270896
+df -P -H /
+#1669270925
+ttype df
+#1669270930
+alias df
+#1669270943
+df
+#1669270950
+df -P
+#1669271276
+disk_used="${disk_info[-4]/i}"
+#1669271282
+echo $disk_used
+#1669271439
+echo ${disk_used:(-1):1}
+#1669271502
+used_units="${disk_used:(-1):1}"
+#1669271511
+echo $used_units
+#1669271556
+echo ${disk_used/${used_units}}
+#1669272457
+archey
+#1669272464
+/archey
+#1669273415
+neofetch
+#1669273440
+df -P /
+#1669273993
+echo 'things to change/fix in neofetch: "window manager (kwin)" "desktop environment (KDE)" "terminal (xterm)" "temperature" "local IP (IPv6 address)"'
+#1669274082
+echo $local_ip
+#1669274099
+local_ip="$(ipconfig getifaddr en0)"
+#1669274102
+echo $local_ip
+#1669274143
+ipconfig getifaddr en0
+#1669274149
+ipconfig getifaddr en1
+#1669274162
+man ipconfig
+#1669274345
+ipconfig getpacket en0
+#1669274382
+ipconfig ifcount
+#1669274394
+ipconfig
+#1669274790
+ifconfig en0
+#1669274799
+ipconfig en0
+#1669274825
+archey
+#1669274830
+\archey
+#1669274843
+/usr/local/bin/archey
+#1669274883
+ipconfig en0
+#1669274886
+ifconfig en0
+#1669275629
+ip a
+#1669275678
+ifconfig en0 | grep inet
+#1669276015
+curl --remote-name -L https://github.com/brona/iproute2mac/raw/master/src/ip.py
+#1669276020
+ll
+#1669276036
+chmod +x ip.py
+#1669276038
+ll
+#1669276059
+./ip.py
+#1669276072
+./ip.py a
+#1669276170
+./ip.py a | grep inet
+#1669276352
+ip a | grep inet | grep -v 1/
+#1669276377
+mv ip.py bin
+#1669276381
+ip a | grep inet | grep -v 1/
+#1669276394
+less bin/ip.py
+#1669276434
+ip a | grep inet | grep -v 1/
+#1669276537
+ip a | grep inet | grep -v 1/ | cut -d ' ' -f 2
+#1669276576
+ip a | grep inet | grep -v 1/ | cut -d ' ' -f 2 | cut -d '/' -f 1
+#1669276924
+alias grep
+#1669277542
+ip a | grep inet | grep -v 1/ | tr -s ' ' | cut -d ' ' -f 3 | cut -d '/' -f 1
+#1669277564
+ip a | grep inet | grep -v 1/ | tr -s ' ' 
+#1669277589
+ip a | grep inet | grep -v 1/
+#1669277595
+man tr
+#1669277633
+ip a | grep inet | grep -v 1/ | tr -s ' '
+#1669277662
+man tr
+#1669277747
+ip a | grep inet | grep -v 1/ | tr -s [:blank:]
+#1669277761
+ip a | grep inet | grep -v 1/ | tr -s [:space:]
+#1669277838
+ip a | grep inet | grep -v 1/ | tr -s '\t'
+#1669277892
+addresses=$(ip a | grep inet | grep -v 1/ | tr -s ' ')
+#1669277902
+echo ">addresses<"
+#1669277908
+echo ">$addresses<"
+#1669277981
+addresses=$(ip a | grep inet | grep -v 1/ | cut -d ' ' -f 2 | cut -d '/' -f 1)
+#1669277985
+echo ">$addresses<"
+#1669278344
+ifconfig
+#1669278549
+ifconfig | grep inet
