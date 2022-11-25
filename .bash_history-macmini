@@ -1,355 +1,3 @@
-b i superduper
-#1636501024
-ls /etc/
-#1636501038
-cat /etc/hosts
-#1636501067
-cat /etc/hosts.equiv
-#1636501080
-ll /etc/
-#1636501101
-cat /etc/hosts
-#1636519287
-b s macjournal
-#1636519306
-b i macjournal
-#1636519342
-b h macjournal
-#1636609037
-hf iso2usb
-#1636609050
-awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl
-#1636609058
-diskutil list
-#1636609092
-diskutil unmountDisk /dev/disk3
-#1636609150
-udo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.1.0-amd64-i386-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
-#1636609166
-sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.1.0-amd64-i386-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
-#1636609342
-diskutil eject /dev/disk3
-#1636673764
-diskutil list
-#1636673778
-diskutil unmountDisk /dev/disk3
-#1636673817
-sudo dd if="/Volumes/data/Downloads/Live CD ISOs/lmde-4-cinnamon-64bit.iso" of=/dev/rdisk3 bs=4M status=progress
-#1636674230
-diskutil eject /dev/disk3
-#1636675659
-diskutil list
-#1636675664
-diskutil unmountDisk /dev/disk3
-#1636675726
-ls /etc/
-#1636675735
-cat /etc/soduers
-#1636675747
-cat /etc/sudoers
-#1636675756
-sudo cat /etc/sudoers
-#1636675791
-ls /etc
-#1636675821
-sudo dd if="/Volumes/data/Downloads/Live CD ISOs/ubuntu-mate-20.04.3-desktop-amd64.iso" of=/dev/rdisk3 bs=4M status=progress
-#1636676501
-diskutil eject /dev/disk3
-#1636677486
-diskutil list
-#1636677496
-diskutil unmountDisk /dev/disk3
-#1636677527
-sudo dd if="/Volumes/data/Downloads/Live CD ISOs/linuxmint-20.2-mate-64bit.iso" of=/dev/rdisk3 bs=4M status=progress
-#1636678040
-diskutil eject /dev/disk3
-#1636695057
-diskutil list
-#1636695065
-diskutil unmountDisk /dev/disk3
-#1636695103
-sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.1.0-i386-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
-#1636695203
-diskutil eject /dev/disk3
-#1636742009
-diskutil list
-#1636742045
-diskutil unmountDisk /dev/disk3
-#1636742117
-sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-9.5.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
-#1636742197
-diskutil eject /dev/disk3
-#1636753896
-diskutil list
-#1636753900
-diskutil unmountDisk /dev/disk3
-#1636753925
-sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-9.0.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress
-#1636753995
-diskutil eject /dev/disk3
-#1636768678
-ll /etc
-#1636768832
-sudo nana /etc/sudoers
-#1636768843
-sudo nano /etc/sudoers
-#1636768863
-sudo visudo
-#1636768893
-man visudo
-#1636769078
-sudo visudo --with-env-editor
-#1636769097
-sudo nano /etc/sudoers
-#1636769132
-man visudo
-#1636769172
-echo $VISUAL
-#1636769182
-echo $EDITOR
-#1636769334
-ll /
-#1636769344
-ls /private
-#1636769193
-sudo nano /etc/sudoers
-#1636769394
-sudo cat /etc/sudoers
-#1636769413
-sudo nano /etc/sudoers
-#1636769443
-sudo mkdir /etc/sudoers.d
-#1636769465
-su -c 'mkdir /etc/sudoers.d'
-#1636769472
-su -C 'mkdir /etc/sudoers.d'
-#1636769481
-man su
-#1636769547
-su root -c 'mkdir /etc/sudoers.d'
-#1636769575
-ls /etc
-#1636769590
-sudo nano /etc/sudoers
-#1636769632
-cd /etc
-#1636769643
-cp sudoers sudoers.bak
-#1636769669
-sudo cp sudoers sudoers.bak
-#1636769803
-su -c "cp /etc/sudoers sudoers"
-#1636769818
-su root -c "cp /etc/sudoers sudoers"
-#1636769988
-man sudo
-#1636770180
-sudo -e /etc/sudoers
-#1636770209
-man sudoers
-#1636770373
-man su
-#1636770404
-su -
-#1636771185
-sudo cat /etc/sudoers
-#1636771221
-sudo visudo
-#1636771263
-ls /etc
-#1636771288
-ll /private/etc
-#1636771321
-sudo cat /etc/sudoers
-#1636771336
-sudo mkdir /etc/sudoers.d
-#1636771340
-ll /etc
-#1636771407
-sudo mkdir /etc/sudoers.d
-#1636771416
-echo $?
-#1636771423
-ll /etc
-#1636771432
-ll /etc/sudoers.d
-#1636771444
-sudo ll /etc/sudoers.d
-#1636771477
-dotfiles
-#1636771483
-cat rtruell
-#1636771509
-sudo cp rtruell /etc/sudoers.d
-#1636771519
-ls /etc/
-#1636771550
-ll /etc
-#1636771576
-ll /etc/sudoers.d
-#1636771584
-sudo ll /etc/sudoers.d
-#1636771657
-sudo chmod 440 /etc/sudoers.d/rtruell
-#1636771662
-sudo ll /etc/sudoers.d
-#1636771674
-cd
-#1636772625
-cat /etc/sudoers
-#1636772639
-sudo cat /etc/sudoers
-#1636772853
-ll /etc
-#1636772873
-sudo chmod 755 /etc/sudoers.d
-#1636772879
-ll /etc
-#1636772942
-sudo cat /etc/sudoers
-#1636773559
-cat /bin/iso2usb.pl
-#1636773571
-cat bin/iso2usb.pl
-#1636773611
-diskutil list | grep _scheme | grep -v grep | tr -d '*' | tr -s ' '
-#1636773626
-diskutil list
-#1636773641
-diskutil list | grep _scheme 
-#1636773669
-diskutil list | grep _scheme | grep -v grep 
-#1636773694
-diskutil list | grep _scheme | grep -v grep | tr -d '*'
-#1636773714
-diskutil list | grep _scheme | grep -v grep | tr -d '*' | tr -s ' '
-#1636773791
-cat bin/iso2usb.pl
-#1636774099
-bin/iso2usb.pl
-#1636774163
-less .exports
-#1636774222
-less .bash_profile
-#1636774294
-dotfiles
-#1636774308
-findtext -i '@inc'
-#1636774351
-less .bash_profile
-#1636774383
-eval `perl -I /Volumes/ExternalHome/rtruell/perl5/lib/perl5 -Mlocal::lib=/Volumes/ExternalHome/rtruell/perl5`
-#1636774390
-hoem
-#1636774394
-up
-#1636774402
-bin/iso2usb.pl
-#1636774459
-cat bin/iso2usb.pl
-#1636774970
-hf disk3
-#1636775238
-diskutil list
-#1636775267
-diskutil unmountDisk /dev/disk3 
-#1636775375
-sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-8.8.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress 
-#1636775445
-diskutil eject /dev/disk3 
-#1636778959
-diskutil list
-#1636778966
-diskutil unmountDisk /dev/disk3 
-#1636778999
-sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-8.0.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress 
-#1636779045
-diskutil eject /dev/disk3 
-#1636779745
-diskutil list
-#1636779752
-diskutil unmountDisk /dev/disk3 
-#1636779794
-sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-7.8.0-amd64-netinst.iso" of=/dev/rdisk3 bs=4M status=progress 
-#1636779833
-diskutil eject /dev/disk3 
-#1636838379
-b s beyond-compare
-#1636838439
-b s firefox-esr
-#1636838459
-b s thunderbird
-#1636838691
-b i beyond-compare
-#1636838759
-man brew
-#1636839151
-cat /etc/sudoers
-#1636839158
-sudo cat /etc/sudoers
-#1636839278
-b s webmin
-#1636839418
-b s synaptic
-#1636839471
-b s debi
-#1636839507
-b h debianutils
-#1636839592
-b s samba
-#1636839620
-b i samba
-#1636839728
-b s sublime-
-#1636841690
-b s --fedora tree
-#1636841749
-b s --fedora
-#1636841794
-b s --debian tree
-#1636841840
-b s --debian firefox-esr
-#1636841953
-b s tldr
-#1636841969
-b i tldr
-#1636841989
-b h tldr
-#1636842515
-b h firefox-esr
-#1636843911
-printf '\n%s\n' "This is\na test"
-#1636843931
-printf '\n%s\n' "This is\\na test"
-#1636843967
-printf '\n%s\n%s\n' "This is" "a test"
-#1636844720
-printf '\n%s\n%s\n' "This is" "a test" >rick.test
-#1636844726
-cat rick.test
-#1636844741
-rm rick.test
-#1636844923
-cat /etc/apt/sources.list
-#1636844950
-cat /etc/sudoers.d/rtruell
-#1636847688
-csl
-#1636858690
-volnorm
-#1636858693
-volall
-#1636919885
-findshow 'hardy boys'
-#1637080771
-set | grep rtruell
-#1637080836
-print_result $? 'user doing the install is: ${USER}'
-#1637080863
-print_result $? 'user doing the install is: "${USER}"'
-#1637080898
-print_result $? 'user doing the install is: rtruell'
-#1637080996
 echo $USER
 #1637081009
 print_result $? 'user doing the install is: rtruell'
@@ -20184,3 +19832,145 @@ echo ">$addresses<"
 ifconfig
 #1669278549
 ifconfig | grep inet
+#1669352319
+date
+#1669352608
+ipconfig
+#1669352699
+ip a
+#1669352733
+ip a | grep inet
+#1669352770
+ip a | grep inet | grep -v 1/
+#1669352814
+man grep
+#1669353038
+ip a | grep inet | grep -v 1/ | grep -o " .*/[:digit:] "
+#1669353048
+ip a | grep inet | grep -v 1/ | grep -o " .*\/[:digit:] "
+#1669353073
+ip a | grep inet | grep -v 1/ | grep -o " .*/[:digit:]+ "
+#1669353078
+ip a | grep inet | grep -v 1/ | grep -o " .*\/[:digit:]+ "
+#1669353223
+ip a | grep inet | grep -v 1/ | grep -oE " .*/[:digit:] "
+#1669353232
+ip a | grep inet | grep -v 1/ | grep -oE " .*/[:digit:]+ "
+#1669353592
+ip a | grep inet | grep -v 1/ | sed -e 's,inet[:digit:}? ,,'
+#1669353679
+ip a | grep inet | grep -v 1/ | sed 's,inet[:digit:}? ,,'
+#1669353705
+ip a | grep inet | grep -v 1/ | sed -e 's,inet[:digit:]? ,,'
+#1669353718
+ip a | grep inet | grep -v 1/ | sed -e 's,inet[[:digit:]]? ,,'
+#1669353766
+ip a | grep inet | grep -v 1/ | sed -e 's,inet,,'
+#1669353792
+ip a | grep inet | grep -v 1/ | sed -e 's,inet[[:digit:]]* ,,'
+#1669353825
+ip a | grep inet | grep -v 1/ | sed -e 's,^.*inet[[:digit:]]* ,,'
+#1669353891
+ip a | grep inet | grep -v 1/ | sed -e 's,^.*inet[[:digit:]]* ,,' | cut -d '/' -f 1)
+#1669353898
+ip a | grep inet | grep -v 1/ | sed -e 's,^.*inet[[:digit:]]* ,,' | cut -d '/' -f 1
+#1669353906
+ip a
+#1669354118
+man ip
+#1669354185
+ip a
+#1669354226
+ip a | grep inet | grep -v 1/ | sed -e 's,^.*inet[[:digit:]]* ,,' | cut -d '/' -f 1
+#1669355036
+addresses=$(ip a | grep inet | grep -v 1/ | sed -e 's,^.*inet[[:digit:]]* ,,' | cut -d '/' -f 1)
+#1669355073
+printf '%s\n' ">${addresses}<"
+#1669355984
+networksetup -listallhardwareports
+#1669356243
+networksetup -listallhardwareports | awk '/Wi-Fi/{getline; print $2}'
+#1669356307
+networksetup -listallhardwareports
+#1669356366
+ip a en0
+#1669356397
+ip a show en0
+#1669356411
+ip a show en1
+#1669356567
+networksetup -listallhardwareports | awk '/Wi-Fi/{getline; print $2}'
+#1669356589
+networksetup -listallhardwareports | awk '/Ethernet/{getline; print $2}'
+#1669356675
+networksetup -listallhardwareports | awk '/ Ethernet/{getline; print $2}'
+#1669356693
+networksetup -listallhardwareports | awk '/ Wi-Fi/{getline; print $2}'
+#1669357246
+ls /sys/class/net
+#1669359002
+echo $SYSTEM
+#1669359015
+less .exports
+#1669359090
+uname -s
+#1669359109
+less .exports
+#1669359135
+echo $SYSTEM_TYPE
+#1669359215
+less .exports
+#1669359361
+networksetup -listallhardwareports
+#1669359461
+networksetup -listallhardwareports | awk '/ Wi-Fi/{getline; print $2}'
+#1669360221
+device_status=$(networksetup -listallhardwareports)
+#1669360238
+echo $device_status
+#1669360280
+awk '/ Ethernet/{getline; print $2}' <<< "${device_status}"
+#1669360298
+awk '/ Wi-Fi/{getline; print $2}' <<< "${device_status}"
+#1669360399
+ethernet_device=$(awk '/ Ethernet/{getline; print $2}' <<< "${device_status}")
+#1669360410
+wifi_device=$(awk '/ Wi-Fi/{getline; print $2}' <<< "${device_status}")
+#1669360426
+echo $ethernet_device
+#1669360434
+echo $wifi_device
+#1669360536
+ip a show $ethernet_device
+#1669360557
+ip a show $wifi_device
+#1669360687
+ip a show $ethernet_device | grep "inet "
+#1669360721
+ip a show $ethernet_device | grep "inet " | sed -e 's,^.*inet[[:digit:]]* ,,' | cut -d '/' -f 1
+#1669361075
+ethernet_device_status=$(ip a show $ethernet_device)
+#1669361091
+ethernet_ipv4=$(grep "inet " <<< "${ethernet_device_status}" | sed -e 's,^.*inet[[:digit:]]* ,,' | cut -d '/' -f 1)
+#1669361129
+ethernet_ipv6=$(grep "inet6" <<< "${ethernet_device_status}" | sed -e 's,^.*inet[[:digit:]]* ,,' | cut -d '/' -f 1)
+#1669361150
+echo ${ethernet_ipv4}
+#1669361158
+echo ${ethernet_ipv6}
+#1669362695
+echo $ethernet_device
+#1669362702
+echo $wifi_device
+#1669362811
+ip a show $ethernet_device
+#1669362818
+ip a show $wifi_device
+#1669363124
+grep "inet6" <<< "${ethernet_device_status}" | sed -e 's,^.*inet6 ,,' | cut -d '/' -f 1)
+#1669363128
+grep "inet6" <<< "${ethernet_device_status}" | sed -e 's,^.*inet6 ,,' | cut -d '/' -f 1
+#1669363178
+grep "inet " <<< "${ethernet_device_status}" | sed -e 's,^.*inet ,,' | cut -d '/' -f 1
+#1669364533
+address
