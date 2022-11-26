@@ -1,145 +1,3 @@
-echo $USER
-#1637081009
-print_result $? 'user doing the install is: rtruell'
-#1637081058
-printf '%s\n' "${USER}"
-#1637085423
-echo $message
-#1637085484
-message="User doing the install is: ${USER}"
-#1637085516
-print_result $? '$message'
-#1637085538
-print_result $? '${message}'
-#1637085546
-echo $message
-#1637085560
-print_result $? '${message}'
-#1637085572
-print_result $? "${message}"
-#1637085633
-print_result $? "user doing the install is: ${USER}"
-#1637089255
-printf '%s\n' "This is a test"
-#1637089262
-sudo printf '%s\n' "This is a test"
-#1637089291
-sudo 'printf '%s\n' "This is a test"'
-#1637089309
-sudo printf '%s\n' "This is a test"
-#1637089321
-sudo printf '%s\n' "This is a test" >>/dev/null
-#1637089336
-sudo 'printf '%s\n' "This is a test" >>/dev/null'
-#1637089751
-dotfiles
-#1637089760
-findtext 'case '
-#1637089867
-home
-#1637089929
-machinetype=$(inxi -M | grep -i type | tr -s ' ' | cut -d' ' -f3)
-#1637089983
-printf "%s\n" ">${machinetype}<"
-#1637090009
-echo $machinetype
-#1637090028
-inxi -M | grep -i type | tr -s ' ' | cut -d' ' -f3
-#1637090039
-inzi -M
-#1637090045
-inxi -M
-#1637090227
-man bsh
-#1637090230
-man bash
-#1637117855
-dotfles
-#1637117857
-dotfiles
-#1637117883
-home
-#1637117916
-cd /Volumes/ExternalHome/rtruell/dotfiles-extras
-#1637117945
-findtext -i homebrew
-#1637118472
-curl -fsSL https://raw.githubusercontent.com/Homebrew/install/master/install
-#1637123455
-cd /Volumes/ExternalHome/rtruell/dotfiles-extras
-#1637123465
-findtext -i case
-#1637123818
-home
-#1637274353
-gpg --version
-#1637274393
-b s gpg
-#1637274441
-b i gpg
-#1637274470
-b i gpg1
-#1637274566
-b i gpg2
-#1637277353
-b i gnupg
-#1637277378
-b h gnupg
-#1637277453
-b h gpg
-#1637277659
-b in black-ink
-#1637277693
-b i black-ink
-#1637277718
-b s black-ink
-#1637277938
-b i gnupg
-#1637277948
-b i gpg
-#1637278285
-b i gnupg
-#1637278296
-b i gpg
-#1637278338
-man gpg
-#1637278350
-man gnupg
-#1637278382
-man gpg
-#1637279282
-gpg --version
-#1637276361
-b in gpg
-#1637293801
-gpg --version
-#1637295214
-man wget
-#1637296701
-ls /Volumes/ExternalHome/rtruell/
-#1637296746
-ls /Volumes/Downloads/RecentDownloads/
-#1637296756
-ls /Volumes/Downloads/RecentDownloads/jcam*
-#1637296763
-file /Volumes/Downloads/RecentDownloads/jcam*
-#1637296780
-file /Volumes/Downloads/RecentDownloads/sub*
-#1637296803
-man file
-#1637296914
-file -i /Volumes/Downloads/RecentDownloads/sub*
-#1637297187
-gpg --batch --yes --dearmor --keyring=gnupg-ring /Volumes/Downloads/RecentDownloads/sub*
-#1637297219
-ls /Volumes/Downloads/RecentDownloads/jcam*
-#1637297226
-ls /Volumes/Downloads/RecentDownloads/
-#1637297261
-file -i /Volumes/Downloads/RecentDownloads/sub*
-#1637297271
-file /Volumes/Downloads/RecentDownloads/sub*
-#1637300196
 ll /Volumes/Downloads/RecentDownloads/
 #1637303775
 spaceusesd
@@ -19974,3 +19832,47 @@ grep "inet6" <<< "${ethernet_device_status}" | sed -e 's,^.*inet6 ,,' | cut -d '
 grep "inet " <<< "${ethernet_device_status}" | sed -e 's,^.*inet ,,' | cut -d '/' -f 1
 #1669364533
 address
+#1669414012
+networksetup -listallhardwareports
+#1669414514
+address
+#1669421360
+echo $ethernet_device
+#1669421426
+ipconfig getifaddr en0
+#1669421440
+ipconfig getifaddr en1
+#1669421471
+ipconfig
+#1669421496
+man ipconfig
+#1669421553
+ifconfig
+#1669421604
+ifconfig en0
+#1669421629
+ip a show en0
+#1669421679
+ifconfig --version
+#1669421687
+ifconfig -v
+#1669421694
+man ifconfig
+#1669421722
+ifconfig --version
+#1669421731
+man ifconfig
+#1669421787
+ifconfig en0
+#1669421795
+ifconfig en1
+#1669421820
+man ifconfig
+#1669422243
+neofetch
+#1669442914
+echo "This is\ta test."
+#1669442927
+printf '%s\n' "This is\ta test."
+#1669442996
+neofetch
