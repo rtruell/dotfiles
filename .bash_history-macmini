@@ -1,47 +1,3 @@
-ll /Volumes/Downloads/RecentDownloads/
-#1637303775
-spaceusesd
-#1637303788
-spaceused
-#1637306335
-echo $(USERLIBRARY)
-#1637372279
-findshow 'harry potter'
-#1637380222
-cd dotfiles/bin
-#1637380241
-ll
-#1637380269
-home
-#1637380513
-ls mountpoint
-#1637380519
-rm mountpoint
-#1637381162
-ls /bin
-#1637381172
-ls bin
-#1637381181
-pwd
-#1637381192
-echo $HOME
-#1637381331
-pwd
-#1637381334
-echo $HOME
-#1637381349
-ls $HOME/bin
-#1637381592
-ls /usr/share
-#1637381612
-ls /usr/share/keyrings
-#1637381635
-ll /usr/share
-#1637384569
-echo "this is a test"
-#1637384583
-echo "this is a \"test\""
-#1637521447
 cd /Volumes/data/OSInstallFiles/
 #1637521472
 la
@@ -19876,3 +19832,94 @@ echo "This is\ta test."
 printf '%s\n' "This is\ta test."
 #1669442996
 neofetch
+#1669502894
+neofectch
+#1669502898
+neofetch
+#1669508306
+icheck
+#1669508314
+neofetch
+#1669528053
+screenresolution
+#1669528078
+system_profiler SPDisplaysDataType
+#1669528226
+system_profiler SPDisplaysDataType | awk '/Resolution:/ {printf $2"x"$4" @ "$6"Hz, "}'
+#1669528239
+system_profiler SPDisplaysDataType | awk '/Resolution:/ {printf $2"x"$4" @ "$6", "}'
+#1669528494
+neofetch
+#1669528635
+system_profiler SPDisplaysDataType | awk '/Resolution:/ {printf $2"x"$4" @ "$6", "}'
+#1669528641
+system_profiler SPDisplaysDataType | awk '/Resolution:/ {printf $2" x "$4" @ "$6", "}'
+#1669528673
+rez=$(system_profiler SPDisplaysDataType | awk '/Resolution:/ {printf $2" x "$4" @ "$6", "}')
+#1669528678
+echo $rez
+#1669528730
+rez="${rez/Hz/ Hz}"
+#1669528735
+echo $rez
+#1669528905
+resolution="$(system_profiler SPDisplaysDataType |\
+                              awk '/Resolution:/ {printf $2" x "$4" @ "$6", "}')"
+#1669528914
+echo $resolution
+#1669528984
+[[ "$resolution" == *"@ Hz"* ]] &&                 resolution="${resolution//@ Hz}"
+#1669528989
+echo $resolution
+#1669529016
+ls /Library/Preferences/com.apple.windowserver.plist
+#1669529021
+less /Library/Preferences/com.apple.windowserver.plist
+#1669529033
+ll /Library/Preferences/com.apple.windowserver.plist
+#1669529061
+PlistBuddy --version
+#1669529140
+[[ "$resolution" == *"0Hz"* ]] &&                 resolution="${resolution// @ 0Hz}"
+#1669529146
+echo $resolution
+#1669529177
+neofetch
+#1669529242
+echo $rez
+#1669529317
+neofetch
+#1669538031
+sysctl -n machdep.cpu.brand_string
+#1669540224
+neofetch
+#1669540293
+sysctl -n machdep.cpu.brand_string
+#1669540404
+neofetch
+#1669540658
+sudo powermetrics --samplers smc |grep -i "CPU die temperature"
+#1669540675
+sudo powermetrics --samplers smc 
+#1669540716
+man powermetrics
+#1669540773
+sudo powermetrics -h
+#1669541407
+ioreg -n IOHWSensor
+#1669541412
+ioreg -n IOHWSensor | less
+#1669541827
+sudo powermetrics --samplers smc
+#1669542037
+ruby --version
+#1669542104
+gem install istats
+#1669542128
+gem install iStats
+#1669542226
+sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future gem install iStats
+#1669542362
+sudo powermetrics
+#1669542381
+sudo powermetrics | less
