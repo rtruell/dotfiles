@@ -1,95 +1,3 @@
-cd /Volumes/data/OSInstallFiles/
-#1637521472
-la
-#1637521490
-ls ..
-#1637521546
-ls ../Downloads/Linux/InUse/Installed/
-#1637521576
-ls ../Downloads/Linux/InUse/Installed/*.deb
-#1637521645
-ls ../Downloads/Linux/InUse/Installed/bcom*.deb
-#1637523168
-cd ../Downloads/Linux/InUse/Installed
-#1637523171
-pwd
-#1637524384
-ll /
-#1637524434
-ll /private
-#1637524477
-ll /private/tmp
-#1637525202
-dotfiles
-#1637525216
-findtext nullglob
-#1637533931
-up
-#1637533936
-b s moneydance
-#1637533950
-b i moneydance
-#1637555817
-dotfiles
-#1637555826
-findtext arry
-#1637634995
-python3 -c "import os; print(os.environ)"
-#1637635005
-python -c "import os; print(os.environ)"
-#1637635032
-python -c "import os; print(os.environ)" | less
-#1637726112
-listfunction b
-#1637726230
-b upd
-#1637726293
-b outdated
-#1637726327
-b s imaz
-#1637726344
-b i imazing
-#1637726397
-b upg imaxing
-#1637726415
-b upg imazing
-#1637733680
-b s taskade
-#1637733694
-b i taskade
-#1637733719
-b h taskade
-#1637733745
-b in taskade
-#1637768708
-b i firefox-est
-#1637768725
-b i firefox-esr
-#1637768750
-b i thunderbird
-#1637779182
-findshow 'heartland christ'
-#1637967131
-cd /Volumes/ExternalHome/rtruell/
-#1637967145
-findtext superstore journal.txt
-#1637967174
-listfunction findtext
-#1637967252
-findtext -i superstore journal.txt
-#1637967281
-findtext -i *superstore* journal.txt
-#1637967302
-findtext -i \*superstore\* journal.txt
-#1637967332
-findtext -i "*pc optimum*" journal.txt
-#1637967345
-findtext -i "\*pc optimum\*" journal.txt
-#1637967372
-findtext -i "*pc optimum*" journal.txt
-#1638031941
-findshow 'promet'
-#1638129947
 findshow 'sister act'
 #1638154661
 volnorm
@@ -19923,3 +19831,137 @@ sudo ARCHFLAGS=-Wno-error=unused-command-line-argument-hard-error-in-future gem 
 sudo powermetrics
 #1669542381
 sudo powermetrics | less
+#1669585008
+man bash
+#1669587255
+neofetch
+#1669592007
+hl -h
+#1669592011
+hl
+#1669592016
+hl a
+#1669592021
+type hl
+#1669592058
+hl z 10
+#1669592070
+hl   10
+#1669592079
+hl 10
+#1669592107
+ttype seq
+#1669592115
+man seq
+#1669592197
+printf '%10s' "z"
+#1669592437
+length=5
+#1669592466
+printf '%0.s-' $(seq 1 "${length}")
+#1669592480
+printf '%0.s ' $(seq 1 "${length}")
+#1669592563
+dave=2
+#1669592594
+printf '%0.s ' $(seq "${dave}" "${length}")
+#1669592604
+printf '%0.s-' $(seq "${dave}" "${length}")
+#1669592634
+dave=4
+#1669592640
+printf '%0.s-' $(seq "${dave}" "${length}")
+#1669592723
+echo (( "${dave}"+1 ))
+#1669592743
+echo (( "${dave}" + 1 ))
+#1669592772
+(( "${dave}"+1 ))
+#1669592776
+echo $dave
+#1669592787
+(( "${dave}"+1 ))
+#1669592790
+echo $dave
+#1669592795
+(( "${dave}" + 1 ))
+#1669592797
+echo $dave
+#1669592841
+echo "${dave} + 1"
+#1669592856
+eval "${dave} + 1"
+#1669592882
+man eval
+#1669592909
+eval "${dave}+1"
+#1669592942
+echo "${dave} + 1" | bc
+#1669592971
+echo "${dave}++"
+#1669593001
+echo $(${dave}++)
+#1669593028
+sam="${dave}++"
+#1669593031
+echo $sam
+#1669593126
+echo ((dave++)
+#1669593137
+echo ((dave++))
+#1669593199
+same=((dave++))
+#1669593210
+((dave++))
+#1669593213
+echo $dave
+#1669593298
+printf '%0.s-' $(seq "${dave}" "${length}")
+#1669593420
+((dave--))
+#1669593423
+echo $dave
+#1669593425
+((dave--))
+#1669593427
+echo $dave
+#1669593573
+echo $length
+#1669593577
+echo $dave
+#1669593589
+dave=5
+#1669593591
+echo $length
+#1669593594
+echo $dave
+#1669593601
+printf '%0.s-' $(seq "${dave}" "${length}")
+#1669594257
+neofetch
+#1669594587
+echo 'things to change/fix in neofetch: "window manager (kwin)" "desktop environment (KDE)" "terminal (xterm)" "temperature"'
+#1669615126
+osx-cpu-temp
+#1669615151
+istats
+#1669615253
+sensors
+#1669615771
+ruby --version
+#1669615784
+sudo gem install iStats
+#1669616162
+curl -Lks 'https://git.io/rg-ssl' | ruby
+#1669616290
+gem install bundler
+#1669616429
+gem update --system
+#1669616476
+gem --version
+#1669617030
+ps
+#1669617033
+dig
+#1669617571
+neofetch
