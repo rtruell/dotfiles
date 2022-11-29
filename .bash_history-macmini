@@ -1,137 +1,3 @@
-findshow 'sister act'
-#1638154661
-volnorm
-#1638212434
-findshow 'heartland'
-#1638250606
-volnorm
-#1638254079
-findshow '392'
-#1638331981
-volnorm
-#1638398328
-dotfiles
-#1638398356
-findtext -i 'homebrew'
-#1638428944
-ls bcompare
-#1638428950
-ls bcompare*
-#1638429259
-ls firefox*
-#1638484260
-dirname `locate -ir ".*brew/sbin$"`
-#1638484293
-locate -ir ".*brew/sbin$"
-#1638484307
-man locate
-#1638484370
-locate homebrew | less
-#1638484378
-locate
-#1638484387
-locate --help
-#1638484423
-locate brew
-#1638484436
-findcommand brew
-#1638484443
-brew --prefix
-#1638484482
-sudo locate brew
-#1638484561
-path
-#1638484609
-locate sudo
-#1638484626
-man locate
-#1638484654
-listfunction findcommand
-#1638484686
-findcommand sudo
-#1638484695
-findcommand brew
-#1638484490
-sudo updatedb
-#1638484723
-dirname `findcommand brew`
-#1638484747
-locate brew
-#1638484777
-locate -ir ".*brew/sbin$"
-#1638484870
-brew --prefix
-#1638484885
-which brew
-#1638484892
-ll /usr/local/bin/brew
-#1638484812
-locate brew | less
-#1638484957
-locate -ir ".*brew/sbin$"
-#1638485063
-ll /usr/local/bin
-#1638485073
-ll /usr/local
-#1638485080
-ll /usr/local/sbin
-#1638484983
-locate brew | less
-#1638485163
-locate -ir ".*brew/bin$"
-#1638485208
-locate -ir ".*brew/sbin$"
-#1638485320
-ls /
-#1638485812
-brew --prefix
-#1638485824
-path
-#1638487505
-cat .exports
-#1638487529
-cat .path
-#1638487562
-locate -ir ".*brew/sbin$"
-#1638487598
-echo $hbpathname
-#1638487645
-dirname `locate -ir ".*brew/sbin$"`
-#1638487708
-dotfiles
-#1638487714
-git config --list
-#1638487741
-git config --list --global
-#1638487752
-git config --list --local
-#1638487775
-git config --list --system
-#1638571736
-dotfiles
-#1638571757
-findtext -i dirname
-#1638572068
-hf dirname
-#1638572112
-dirname `locate -ir ".*brew/sbin$"` 
-#1638572177
-path
-#1638572187
-man locate
-#1638572244
-locate bash
-#1638572259
-which bash
-#1638572262
-whereis bash
-#1638572299
-/usr/local/bin/bash --version
-#1638572314
-/bin/bash --version
-#1638572330
-locate --version
-#1638572340
 /bin/bash
 #1638572445
 which locate
@@ -19964,4 +19830,20 @@ ps
 #1669617033
 dig
 #1669617571
+neofetch
+#1669671062
+port version
+#1669672191
+echo 'things to change/fix in neofetch: "window manager (kwin)" "desktop environment (KDE)" "terminal (xterm)" "temperature"'
+#1669672207
+neofetch
+#1669672784
+echo $TERM_PROGRAM
+#1669679947
+neofetch
+#1669705107
+kextstat
+#1669705390
+lspci
+#1669706758
 neofetch
