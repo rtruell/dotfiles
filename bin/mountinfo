@@ -1,13 +1,7 @@
 #!/usr/bin/env bash
 
-# displays mounted drive information in a nicely formatted manner (based on #21 at http://catonmat.net/blog/another-ten-one-liners-from-commandlingfu-explained)
-function sortit {
-  if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then  # sorting works differently on Linux than macOS, so an additional option to 'sort' is needed.
-    sort -k "${1}"
-  else
-    sort -g -k "${1}"
-  fi
-}
+# displays mounted drive information in a nicely formatted manner (based on #21
+# at http://catonmat.net/blog/another-ten-one-liners-from-commandlingfu-explained)
 declare -a usage=(
   " "
   "mountinfo: displays mounted drive information in a nicely formatted manner."
@@ -16,24 +10,32 @@ declare -a usage=(
   " "
   "Options:"
   "   -h: print this help message."
-  "   -p: sort on the PATH column."
-  "       (default is to sort on the DEVICE column)"
+  "   -m: sort on the MOUNTED ON column."
+  "   -t: sort on the TYPE column."
+  " "
+  "   default is to sort on the FILESYSTEM column"
   " "
 )
-sortfield="1.6"  # sort by field 1, character 6 - DEVICE.
+sortfield="1"  # sort by field 1 - FILESYSTEM.
 if [[ -n "${1}" ]]; then
   case "${1}" in
-    -h) printf '%s\n' "${usage[@]}"; exit;;                             # print the usage message.
-    -p) sortfield="2";;                                                 # sort by field 2 - PATH.
-     *) printf '%s\n' "Error: Invalid option." "${usage[@]}"; exit 1;;  # invalid option given, so print an error message and the usage message.
+    -h) printf '%s\n' "${usage[@]}"; exit ;;                             # print the usage message.
+    -m) sortfield="2" ;;                                                 # sort by field 2 - MOUNTED ON.
+    -t) sortfield="3" ;;                                                 # sort by field 3 - TYPE.
+     *) printf '%s\n' "Error: Invalid option." "${usage[@]}"; exit 1 ;;  # invalid option given, so print an error message and the usage message.
   esac
 fi
 printf '\n'
-( printf '%s\n' "DEVICE&PATH&TYPE& FLAGS" && mount |                                                      # print a header with an '&' between the column titles, and then run the 'mount' command.
-  grep "^/" |                                                                                             # save only lines starting with '/' (device names).
-  sed -e 's|(||' -e 's|)||' -e 's|on ||' -e 's|type ||' -e 's|,|, |g' |                                   # remove the first occurances of "(", ")", "on " and "type ", and add a space after every comma.
-  awk '{gsub(/,/,"",$3)1; printf $1"&"$2"&"$3"&"; for(i=4;i<=NF;i++){printf " %s", $i} printf "\n"}' ) |  # remove the comma from field 3, print fields 1, 2 and 3 with an '&' after them,
-                                                                                                          # and print the rest of the fields with a space before each of them.
-  column -t -s "&" |                                                                                      # print the output in columns, using the '&' placed in the output as a column separator.
-  sortit "${sortfield}"                                                                                   # sort the output either by DEVICE (the default) or PATH.
+# call the disk usage program, printing only the filesystem (source), mount
+# point (target) and filesystem type (fstype) data, routing any error messages
+# to /dev/null
+df --output=source,target,fstype 2>/dev/null |
+# pass on lines that either start with a '/' (devices) or contain the word
+# 'type' (the header output from 'df')
+grep -Ei "^/|type" |
+# read the first line (the header), print it out in upper-case, and pass the
+# rest of the output to 'sort'.  'sort' ignores any leading blanks (-b) and
+# does a dictionary-order sort ('d', considering only blanks and alphanumeric
+# characters) on the specified field (k "${sortfield}")
+(read -r; printf "%s\n" "${REPLY^^}"; sort -bdk "${sortfield}")
 printf '\n'
