@@ -6,13 +6,14 @@ units:metric
 ansi:true
 symbols:true
 forecast:7
+show_feels_like:true
 show_uvi:true
 show_wind:true
 show_humidity:true
 show_pressure:true
 show_daylight:true
 dateformat:%a %b %d
-timeformat:%b %d %r
+timeformat:%b %d %T
 api_key:85a4e3c55b73909f42c6a23ec35b7147
 
 # Text and Colors
@@ -23,6 +24,7 @@ delimiter:\033[35m:
 dashes:\033[34m-
 forecast_text:forecast
 greeting_text:Weather in
+feels_like_text:Feels like
 humidity_text:Humidity
 pressure_text:Pressure
 sunrise_text:Sunrise
