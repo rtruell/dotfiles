@@ -1,5 +1,9 @@
 #!/usr/bin/env bash
 
+# if installing to 'nas' or 'nasbackup', 'XMLTV' and 'apt-cacher-ng' get
+# installed, so create any necessary directories, check to make sure data and
+# configuration files aren't going to be eliminated, and mount the data and
+# configuration directories off the SSD
 if [[ "${computername}" == "nas"* ]]; then
   # move the data directory for 'XMLTV' off the SSD
   if [[ -d /nas/xmltv ]]; then  # if '/nas/xmltv' exists
@@ -14,6 +18,28 @@ if [[ "${computername}" == "nas"* ]]; then
     mkdir "${HOME}"/.xmltv  # otherwise, create it
     print_result "${?}" "'${HOME}/.xmltv' created"
   fi
+  if [[ "$(ls -A ${HOME}/.xmltv)" ]]; then  # check for files/directories in '"${HOME}"/.xmltv'
+    print_warn "'${HOME}/.xmltv' has files/directories in it"
+    printf "\n"
+    if [[ "$(ls -A /nas/xmltv)" ]]; then  # there were some, so check for files/directories in '/nas/xmltv'
+      print_warn "'/nas/xmltv' has files/directories in it"
+      printf "\n"
+      diff -q "${HOME}"/.xmltv /nas/xmltv >/dev/null  # there were some, so compare the directories
+      if [[ "${?}" == 0 ]]; then  # if the directories are identical
+        print_result "${?}" "The directories are identical"  # say so
+      else
+        print_warn "The directories are different"  # otherwise, warn that the directories are different
+        printf "\n"
+        sudo cp -a "${HOME}"/.xmltv "${HOME}"/.xmltv.orig  # and back up '"${HOME}"/.xmltv' for later comparison
+        print_result "${?}" "Backed up '"${HOME}"/.xmltv' for later comparison"
+      fi
+      sudo rm -rf "${HOME}"/.xmltv/*  # delete the files/directories in '"${HOME}"/.xmltv'
+      print_result "${?}" "Deleted the files/directories in '"${HOME}"/.xmltv'"
+    else
+      sudo mv "${HOME}"/.xmltv/* /nas/xmltv  # move 'xmltv' data files to their new location off the SSD
+      print_result "${?}" "Moved 'xmltv' data files to '/nas/xmltv"
+    fi
+  fi
   sudo mount --bind /nas/xmltv "${HOME}"/.xmltv  # mount the 'xmltv' directory off the SSD
   print_result "${?}" "Mounted '/nas/xmltv' -> '${HOME}/.xmltv'"
 
@@ -26,7 +52,7 @@ if [[ "${computername}" == "nas"* ]]; then
   else
     sudo mkdir /nas/apt-cacher-ng/data  # otherwise, create it
     print_result "${?}" "'/nas/apt-cacher-ng/data' created"
-    sudo chown apt-cacher-ng:apt-cacher-ng /nas/apt-cacher-ng/data  # change ownership of the new data directory
+    sudo chown apt-cacher-ng:apt-cacher-ng /nas/apt-cacher-ng/data  # and change ownership of the new data directory
     print_result "${?}" "Chanaged ownership of '/nas/apt-cacher-ng/data'"
   fi
   if [[ -d /nas/apt-cacher-ng/config ]]; then  # if '/nas/apt-cacher-ng/config' exists
@@ -43,18 +69,18 @@ if [[ "${computername}" == "nas"* ]]; then
       printf "\n"
       diff -q /var/cache/apt-cacher-ng /nas/apt-cacher-ng/data >/dev/null  # there were some, so compare the directories
       if [[ "${?}" == 0 ]]; then  # if the directories are identical
-        print_result "${?}" "The directories are identical"
+        print_result "${?}" "The directories are identical"  # say so
       else
-        print_warn "The directories are different"
+        print_warn "The directories are different"  # otherwise, warn that the directories are different
         printf "\n"
-        sudo cp -a /var/cache/apt-cacher-ng /var/cache/apt-cacher-ng.orig  # back up '/var/cache/apt-cacher-ng' for later comparison
-        print_result "${?}" "Backed up '/var/cache/apt-cacher-ng for later comparison"
+        sudo cp -a /var/cache/apt-cacher-ng /var/cache/apt-cacher-ng.orig  # and back up '/var/cache/apt-cacher-ng' for later comparison
+        print_result "${?}" "Backed up '/var/cache/apt-cacher-ng' for later comparison"
       fi
       sudo rm -rf /var/cache/apt-cacher-ng/*  # delete the files/directories in '/var/cache/apt-cacher-ng'
-      print_result "${?}" "Deleted the files/directories in '/var/cache/apt-cacher-ng"
+      print_result "${?}" "Deleted the files/directories in '/var/cache/apt-cacher-ng'"
     else
       sudo mv /var/cache/apt-cacher-ng/* /nas/apt-cacher-ng/data  # move 'apt-cacher-ng' data files to their new location off the SSD
-      print_result "${?}" "Moved 'apt-cacher-ng' data files to '/nas/apt-cacher-ng/data"
+      print_result "${?}" "Moved 'apt-cacher-ng' data files to '/nas/apt-cacher-ng/data'"
     fi
   fi
   sudo mount --bind /nas/apt-cacher-ng/data /var/cache/apt-cacher-ng  # mount the new 'apt-cacher-ng' data directory location to the old one
@@ -67,27 +93,27 @@ if [[ "${computername}" == "nas"* ]]; then
       printf "\n"
       sudo diff -q /etc/apt-cacher-ng /nas/apt-cacher-ng/config >/dev/null  # there were some, so compare the directories
       if [[ "${?}" == 0 ]]; then  # if the directories are identical
-        print_result "${?}" "The directories are identical"
+        print_result "${?}" "The directories are identical"  # say so
       else
-        print_warn "The directories are different"
+        print_warn "The directories are different"  # otherwise, warn that the directories are different
         printf "\n"
-        sudo cp -a /etc/apt-cacher-ng /etc/apt-cacher-ng.orig  # back up '/etc/apt-cacher-ng' for later comparison
-        print_result "${?}" "Backed up '/etc/apt-cacher-ng for later comparison"
+        sudo cp -a /etc/apt-cacher-ng /etc/apt-cacher-ng.orig  # and back up '/etc/apt-cacher-ng' for later comparison
+        print_result "${?}" "Backed up '/etc/apt-cacher-ng' for later comparison"
       fi
       sudo rm /etc/apt-cacher-ng/*  # delete the files/directories in '/etc/apt-cacher-ng'
-      print_result "${?}" "Deleted the files/directories in '/etc/apt-cacher-ng"
+      print_result "${?}" "Deleted the files/directories in '/etc/apt-cacher-ng'"
     else
       sudo mv /etc/apt-cacher-ng/* /nas/apt-cacher-ng/config  # move 'apt-cacher-ng' configuration files to their new location off the SSD
-      print_result "${?}" "Moved 'apt-cacher-ng' configuration files to '/nas/apt-cacher-ng/config"
+      print_result "${?}" "Moved 'apt-cacher-ng' configuration files to '/nas/apt-cacher-ng/config'"
     fi
   fi
   sudo mount --bind /nas/apt-cacher-ng/config /etc/apt-cacher-ng  # mount the new 'apt-cacher-ng' configuration directory location to the old one
   print_result "${?}" "Mounted '/nas/apt-cacher-ng/config' -> '/etc/apt-cacher-ng'"
   sudo cp -a /etc/apt-cacher-ng/acng.conf /etc/apt-cacher-ng/acng.conf.orig  # back up the configuration file, just in case
   print_result "${?}" "'apt-cacher-ng' config file backed up"
-  printf '\n%s\n' "# Allow data pass-through mode to CONNECT to everything" | sudo tee -a /etc/apt-cacher-ng/acng.conf >/dev/null
+  printf '\n%s\n' "# Allow data pass-through mode to CONNECT to everything" | sudo tee -a /etc/apt-cacher-ng/acng.conf >/dev/null  # add a separator line and header for a new section to the configuration file
   print_result "${?}" "Added a blank separator line and a header for the new section"
-  printf '%s\n' "PassThroughPattern: .*" | sudo tee -a /etc/apt-cacher-ng/acng.conf >/dev/null
+  printf '%s\n' "PassThroughPattern: .*" | sudo tee -a /etc/apt-cacher-ng/acng.conf >/dev/null  # add a pattern for 'pass-through' mode
   print_result "${?}" "Added pattern for pass-through mode"
   sudo systemctl start apt-cacher-ng  # changes to the config are done, so start 'apt-cacher-ng' again
   print_result "${?}" "'apt-cacher-ng' restarted"
@@ -97,13 +123,9 @@ fi
 source ./addrepos.sh
 print_result "${?}" "Software repositories added"
 
-# # if installing onto 'nas' or 'nasbackup', docker gets installed
-# if [[ "${computername}" == "nas"* ]]; then source ./docker-nas.sh; print_result "${?}" "Docker installed"; fi
-
-# install some packages, if necessary, so everything in the rest of this
-# script can be done
+# install some packages, if necessary, so everything in the rest of this script
+# can be done
 declare -a packages=(
-  "apache2"
   "build-essential"
   "curl"
   "dialog"
@@ -111,35 +133,59 @@ declare -a packages=(
   "file"
   "gnupg"
   "inxi"
-  "libapache2-mod-php"
   "linux-headers-amd64"
   "locate"
   "make"
-  "mariadb-server"
   "openssh-server"
-  "openssl"
-  "owncloud-complete-files"
-  "php"
-  "unzip"
-  "php-apcu"
-  "php-bcmath"
-  "php-bz2"
-  "php-ctype"
-  "php-curl"
-  "php-gd"
-  "php-gmp"
-  "php-iconv"
-  "php-imagick"
-  "php-intl"
-  "php-json"
-  "php-mbstring"
-  "php-mysql"
-  "php-simplexml"
-  "php-xml"
-  "php-zip"
+  "owncloud-client"
   "procps"
   "systemd"
 )
+
+# if installing on 'nas' or 'nasbackup', then 'ownCloud' server and 'shaarli'
+# will be installed, so the packages they require get added to the packages
+# array and installed now
+if [[ "${computername}" == "nas"* ]]; then
+  # packages needed to run 'ownCloud' server.  in addition to these, 'curl' is
+  # also needed, but since it's already in the array to be installed, it's not
+  # repeated here.  'apache2' was probably installed during the OS installation,
+  # but since it's needed, we'll just make sure it gets installed
+  packages+=(
+    "apache2"
+    "libapache2-mod-php"
+    "mariadb-server"
+    "php"
+    "php-apcu"
+    "php-bcmath"
+    "php-bz2"
+    "php-curl"
+    "php-gd"
+    "php-gmp"
+    "php-imagick"
+    "php-intl"
+    "php-mbstring"
+    "php-mysql"
+    "php-xml"
+    "php-zip"
+    "unzip"
+    "owncloud-complete-files"
+  )
+
+  # packages needed to run 'shaarli'.  in addition to these, 'apache2',
+  # 'libapache2-mod-php', 'php-curl', 'php-gd', 'php-intl', 'php-mbstring' and
+  # 'php-zip' are also needed, but since they're already in the array to be
+  # installed, they're not repeated here.  'openssl' was probably installed
+  # during the OS installation, but since it's needed, we'll just make sure it
+  # gets installed
+  packages+=(
+    "openssl"
+    "php-ctype"
+    "php-iconv"
+    "php-json"
+    "php-simplexml"
+  )
+fi
+
 for i in ${packages[@]}; do  # loop through the array of packages ...
   apt_package_installer "${i}"  # ... installing them if necessary
 done
@@ -416,25 +462,43 @@ if [[ "${computername}" == "nas"* ]]; then
     print_result "${?}" "Disabled 'ddclient' on 'nasbackup"
   fi
 
-  # install 'ownCloud'
+  # install 'ownCloud' server
   source ./ownCloudServer.sh
+
+  # set up 'ownCloud' client
+  if [[ -d /nas/owncloud-client ]]; then
+    print_result "${?}" "'/nas/owncloud-client' already exists"
+  else
+    sudo mkdir /nas/owncloud-client
+    print_result "${?}" "Created '/nas/owncloud-client'"
+    sudo chown rtruell: /nas/owncloud-client
+    print_result "${?}" "Changed ownership of '/nas/owncloud-client'"
+  fi
 
   # install 'shaarli'
   shaarlidir="/nas/Shaarli"  # shaarli install directory
-  if [[ -d "${shaarlidir}" ]]; then
-    print_warn "${shaarlidir} already exists"
+  if [[ -d "${shaarlidir}" ]]; then  # if the install directory already exists
+    print_warn "'${shaarlidir}' already exists"  # say so
     printf "\n"
-    mv "${shaarlidir}" "${shaarlidir}".orig  # back up '${shaarlidir}' for later comparison
+    mv "${shaarlidir}" "${shaarlidir}".orig  # and back it up for later comparison
     print_result "${?}" "backed up '${shaarlidir}' for later comparison"
   fi
-  sudo unzip -d /nas "${HOME}"/shaarli-full.zip >/dev/null
+  sudo unzip -d /nas "${HOME}"/shaarli-full.zip >/dev/null  # install 'shaarli'
   print_result "${?}" "Installed 'shaarli'"
-  sudo chown -R www-data:www-data "${shaarlidir}"
+  sudo chown -R www-data:www-data "${shaarlidir}"  # change ownership of the 'shaarli' files and directories
   print_result "${?}" "Changed ownership of files and directories of 'shaarli'"
-  sudo chmod -R g+rX "${shaarlidir}"
+  sudo chmod -R g+rX "${shaarlidir}"  # add 'read' and 'execute' permissions for the group 'apache' runs under to the 'shaarli' files and directories
   print_result "${?}" "Changed permissions of files and directories of 'shaarli'"
-  sudo chmod -R g+rwX "${shaarlidir}"/{cache/,data/,pagecache/,tmp/}
+  sudo chmod -R g+rwX "${shaarlidir}"/{cache/,data/,pagecache/,tmp/}  # add 'read', 'write' and 'execute' permissions for the group 'apache' runs under to the 'shaarli' cache, data and temp files and dirs
   print_result "${?}" "Changed permissions of the cache, data, pagecache and temp directories of 'shaarli'"
+  if [[ -d /etc/apache2/sites-available/shaarli.conf ]]; then  # if the 'shaarli' web site configuration file for 'apache' exists
+    print_warn "'/etc/apache2/sites-available/shaarli.conf' already exists"  # say so
+    printf "\n"
+    mv /etc/apache2/sites-available/shaarli.conf /etc/apache2/sites-available/shaarli.conf.orig  # and back it up for later comparison
+    print_result "${?}" "backed up '/etc/apache2/sites-available/shaarli.conf' for later comparison"
+  fi
+
+  # create the 'shaarli' web site configuration file for 'apache'
   cat <<APACHE_SHAARLI_CONF | sudo tee /etc/apache2/sites-available/shaarli.conf >/dev/null
 Alias /shaarli "${shaarlidir}"
 
@@ -443,11 +507,11 @@ Alias /shaarli "${shaarlidir}"
 </Directory>
 APACHE_SHAARLI_CONF
   print_result "${?}" "Created 'shaarli.conf'"
-  sudo a2ensite shaarli >/dev/null
+  sudo a2ensite shaarli >/dev/null  # enable the 'shaarli' web site
   print_result "${?}" "Enabled 'shaarli'"
-  sudo a2enmod rewrite headers >/dev/null
+  sudo a2enmod rewrite headers >/dev/null  # enable the 'apache' modules that 'shaarli' needs
   print_result "${?}" "Enabled needed Apache modules"
-  sudo systemctl restart apache2
+  sudo systemctl restart apache2  # restart 'apache'
   print_result "${?}" "Restarted Apache"
 fi
 
