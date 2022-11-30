@@ -9,11 +9,16 @@ cd "${StartDir}"
 # referenced later.
 exec 3>&1 4>&2  > >(tee -ai "${HOME}"/owncloud-conflicted.txt) 2>&1
 
-printf '%s\n' "Path is >${PATH}<"
+printf '\n'
+date '+%A, %B %d, %Y @ %T'
 conflictedfile=$1
 tmpname="/Volumes/Temp/conflictedfile"
-extension=$("${HOME}"/bin/fp -e "${conflictedfile}")
-name=$("${HOME}"/bin/fp -pn "${conflictedfile%% (*}").${extension}
+if [[ "${conflictedfile}" == *"."* ]]; then
+  extension=".$("${HOME}"/bin/fp -e "${conflictedfile}")"
+else
+  extension=""
+fi
+name=$("${HOME}"/bin/fp -pn "${conflictedfile%% (*}")${extension}
 printf '%s\n' "Moving >${name}< to >${tmpname}<"
 mv "${name}" "${tmpname}"
 printf '%s\n' "Moving >${conflictedfile}< to >${name}<"
