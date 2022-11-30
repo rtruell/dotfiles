@@ -113,6 +113,7 @@ cask "xquartz"
 mas "BitdefenderVirusScanner", id: 500154009
 # mas "CarMaintenance", id: 413628447
 # mas "CHM Reader", id: 424182884
+mas "HashTab", id: 517065482
 # mas "My Medical", id: 489690915
 mas "Parcel", id: 639968404
 mas "PopClip", id: 445189367
