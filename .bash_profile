@@ -74,7 +74,7 @@ unset dotfiles file i
 #eval `perl -I /Volumes/ExternalHome/rtruell/perl5/lib/perl5 -Mlocal::lib=/Volumes/ExternalHome/rtruell/perl5`
 
 echo
-date
+date '+%A, %B %d, %Y @ %T'
 echo
 if [ "${SYSTEM_TYPE}" == "macOS" ]; then
   if [ -x /usr/local/bin/fortune ]; then
