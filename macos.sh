@@ -78,47 +78,51 @@ if ! xcode-select --print-path &> /dev/null; then
   print_result "${?}" "Agreed to the XCode Command Line Tools licence"
 fi
 
-# temporarily export some environment variables for Homebrew.  this is done
-# permanently in the 'exports' dotfile
-export HOMEBREW_CASK_OPTS="--appdir="${HOME}"/Applications"  # keep Casks separate from the programs installed by macOS
-export HOMEBREW_EDITOR="${EDITOR}"  # use the system editor to edit Homebrew stuff
-export HOMEBREW_CACHE="/Volumes/ExternalHome/rtruell/HomebrewCache"  # get the cache off the SSD
-export HOMEBREW_NO_ANALYTICS=1  # turn off Google analytics for Homebrew
-print_result "${?}" "Exported Homebrew environment variables"
-printf "\n" | /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"  # install Homebrew
-print_result "${?}" "Installed Homebrew"
-# temporarily add its directories to PATH and export the main environment
-# variables (this is done permanently in the 'path' dotfile)
-eval "$(brew shellenv)"
-print_result "${?}" "Added Homebrew directories to PATH and exported the main environment variables"
-# temporarily store Homebrew's installation directory.  this is done permanently
-# in the 'exports' dotfile
-export BREW_PREFIX=$(brew --prefix)
-print_result "${?}" "Exported Homebrew's installation directory"
-brew update  # update brew
-print_result "${?}" "Updated Homebrew"
-brew doctor  # check it
-print_result "${?}" "Checked Homebrew"
+# minimal macOS installation requirements for 'Homebrew' keep changing, so check
+# to see if this system can run it...if so, install it.
+if [[ "${SYSTEM_VERSION%%.*}" -ge "11" ]]; then
+  # temporarily export some environment variables for Homebrew.  this is done
+  # permanently in the 'exports' dotfile
+  export HOMEBREW_CASK_OPTS="--appdir="${HOME}"/Applications"  # keep Casks separate from the programs installed by macOS
+  export HOMEBREW_EDITOR="${EDITOR}"  # use the system editor to edit Homebrew stuff
+  export HOMEBREW_CACHE="/Volumes/ExternalHome/rtruell/HomebrewCache"  # get the cache off the SSD
+  export HOMEBREW_NO_ANALYTICS=1  # turn off Google analytics for Homebrew
+  print_result "${?}" "Exported Homebrew environment variables"
+  printf "\n" | eval $(trim -l "$(curl -Ls brew.sh | grep -i "install.sh" | sed 's|<[^>]*>||g')")  # get the current Homebrew install command and run it
+  print_result "${?}" "Installed Homebrew"
+  # temporarily add its directories to PATH and export the main environment
+  # variables (this is done permanently in the 'path' dotfile)
+  eval "$(brew shellenv)"
+  print_result "${?}" "Added Homebrew directories to PATH and exported the main environment variables"
+  # temporarily store Homebrew's installation directory.  this is done permanently
+  # in the 'exports' dotfile
+  export BREW_PREFIX=$(brew --prefix)
+  print_result "${?}" "Exported Homebrew's installation directory"
+  brew update  # update brew
+  print_result "${?}" "Updated Homebrew"
+  brew doctor  # check it
+  print_result "${?}" "Checked Homebrew"
 
-# install all the things
-printf '%s\n' "About to install the .Brewfile contents...this could take a while!!"
-brew bundle --global
-print_result "${?}" "Installed desired formulas, Casks and MAS apps"
+  # install all the things
+  printf '%s\n' "About to install the .Brewfile contents...this could take a while!!"
+  brew bundle --global
+  print_result "${?}" "Installed desired formulas, Casks and MAS apps"
 
-# remove outdated versions from the cellar
-brew cleanup
-print_result "${?}" "Cleaned up Homebrew"
+  # remove outdated versions from the cellar
+  brew cleanup
+  print_result "${?}" "Cleaned up Homebrew"
 
-# switch to using the brew-installed bash as default shell
-if [[ -x "${BREW_PREFIX}/bin/bash" ]]; then
- if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then  # if the new bash isn't already in the list of shell programs
-   sudo printf '%s\n' "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells  # add it
-   print_result "${?}" "Updated '/etc/shell' with the just-installed version of bash"
- fi
- chsh -s "${BREW_PREFIX}/bin/bash"  # change the shell to the new bash
- print_result "${?}" "Changed the shell to the new version of bash: ${BASH_VERSION} (should be 4+)"  # should be 4+ not the old 3.2.x
-else
- print_result "${?}" "bash not installed properly by Homebrew"
+  # switch to using the brew-installed bash as default shell
+  if [[ -x "${BREW_PREFIX}/bin/bash" ]]; then
+   if ! fgrep -q "${BREW_PREFIX}/bin/bash" /etc/shells; then  # if the new bash isn't already in the list of shell programs
+     sudo printf '%s\n' "${BREW_PREFIX}/bin/bash" | sudo tee -a /etc/shells  # add it
+     print_result "${?}" "Updated '/etc/shell' with the just-installed version of bash"
+   fi
+   chsh -s "${BREW_PREFIX}/bin/bash"  # change the shell to the new bash
+   print_result "${?}" "Changed the shell to the new version of bash: ${BASH_VERSION} (should be 4+)"  # should be 4+ not the old 3.2.x
+  else
+   print_result "${?}" "bash not installed properly by Homebrew"
+  fi
 fi
 
 # set up the default system settings
