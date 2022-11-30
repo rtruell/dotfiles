@@ -19,12 +19,16 @@ function add_bcompare {
   print_result "${?}" "Added the Beyond Compare repository to 'apt'"
 }
 
+# I'm not using 'docker' anymore, but I'm keeping the repo info for it just in
+# case I want/need it in the future
 function add_docker {
   # add the repository for Docker to 'apt'
   sudo "${HOME}"/bin/add-apt-key --acng https://download.docker.com/linux/debian/gpg docker "deb [arch=$(dpkg --print-architecture)] https://download.docker.com/linux/debian $(lsb_release -cs) stable"
   print_result "${?}" "Added the Docker repository to 'apt'"
 }
 
+# I'm not using 'PHP 8' anymore, but I'm keeping the repo info for it just in
+# case I want/need it in the future
 function add_php8 {
   # add the repository for PHP 8 to 'apt'
   sudo "${HOME}"/bin/add-apt-key --acng https://packages.sury.org/php/apt.gpg php8 "deb https://packages.sury.org/php/ $(lsb_release -cs) main"
@@ -77,7 +81,7 @@ print_result "${?}" "Updated '/etc/apt/sources.list' with the 'contrib' and 'non
 
 # add software repositories to 'apt' based on the computer name
 case "${computername,,}" in
-  nas | nasbackup) add_webmin; add_sublime; add_bcompare; add_owncloud_server ;;
+  nas | nasbackup) add_webmin; add_sublime; add_bcompare; add_owncloud_server; add_owncloud_client ;;
   rpi*) add_webmin; add_sublime ;;
   *) add_webmin; add_sublime; add_bcompare ;;
 esac
