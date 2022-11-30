@@ -277,9 +277,9 @@ if [[ "${retcode}" == 0 ]]; then
       print_result "${?}" "Copied the 'ddclient' config file"
     fi
 
-    # if not installing on 'nas', 'nasbackup' or a Raspberry Pi, copy the updated
-    # 'freeguide' .jar file...it'll be put where it belongs after 'freeguide' is
-    #  installed
+    # if not installing on 'nas', 'nasbackup' or a Raspberry Pi, copy the
+    # updated 'freeguide' .jar file...it'll be put where it belongs after
+    # 'freeguide' is installed
     if [[ "${computername}" != "nas"* && "${computername}" != "rpi"* ]]; then
       cp -a FreeGuide.jar "${HOME}"
       print_result "${?}" "Copied the updated 'freeguide' .jar file"
@@ -297,10 +297,10 @@ if [[ "${retcode}" == 0 ]]; then
         mkdir "${HOME}"/Applications  # it doesn't, so create it
         print_result "${?}" "Created '${HOME}/Applications'"
       fi
-      # copy third-party programs that aren't available in 'Homebrew' or that the
-      # versions in 'Homebrew' won't run on the version of macOS I'm running.  the
-      # programs must have been previously downloaded and located on the NAS,
-      # with 'programdir' set to the directory they're located in
+      # copy third-party programs that aren't available in 'Homebrew' or that
+      # the versions in 'Homebrew' won't run on the version of macOS I'm
+      # running.  the programs must have been previously downloaded and located
+      # on the NAS, with 'programdir' set to the directory they're located in
       i=""
       programdir="/Volumes/data/Downloads/Mac/InUse/Installed/Automated"  # the directory containing the program files to be copied
       extractdir="/Volumes/Temp/Installers"  # the directory the program files get copied to so the programs can be extracted
