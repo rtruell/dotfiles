@@ -1,5 +1,6 @@
 function ls {
   moreoptions=""
+  message=""
   while [[ "${1}" != "" ]]; do
     if [[ "${1:0:1}" == "-" ]]; then
       moreoptions="${moreoptions}${1} "
@@ -10,13 +11,23 @@ function ls {
   done
   if [[ -z "${1}" ]]; then set -- .; fi
   if [[ -n "${moreoptions}" ]]; then moreoptions=$(trim -t "${moreoptions}"); fi
-  if stat "${1}" 2>/dev/null | grep "\->" >/dev/null 2>&1  && file -bL "${1}" | grep "directory" >/dev/null 2>&1; then
-    link=`stat "${1}" | grep "\->" | cut -d" " -f6`
-    if [[ "${link:0:1}" != "/" ]]; then link="/${link}"; fi
-    printf '%s\n' "'${1}' is a symbolic link pointing to '${link}', which contains:"
-    item="${1}/"
-    set -- "${item}"
+  directory="${1}"
+  if mountpoint -q "${directory}" >/dev/null 2>&1; then
+    mountsource=$(findmnt "${directory}" -no SOURCE)
+    mountsource="${mountsource#*[}"
+    mountsource="${mountsource%]*}"
+    mountdevice=$(findmnt "${directory}" -vno SOURCE)
+    mountdevicename="$(findmnt -n "${mountdevice}" | grep -v "\[" | cut -d' ' -f1)"
+    message="'${directory}' is a mount point for '${mountdevicename}${mountsource}', which contains:"
   fi
+  if stat "${directory}" 2>/dev/null | grep "\->" >/dev/null 2>&1  && file -bL "${directory}" | grep "directory" >/dev/null 2>&1; then
+    link=`stat "${directory}" | grep "\->" | cut -d" " -f6`
+    if [[ "${link:0:1}" != "/" ]]; then link="/${link}"; fi
+    message="'${directory}' is a symbolic link pointing to '${link}', which contains:"
+    directory="${directory}/"
+  fi
+  if [[ -n "${message}" ]]; then printf '%s\n' "${message}"; fi
+  set -- "${directory}"
   # we have to use 'command' to run 'ls' otherwise we get an infinite loop of the function calling itself.  '-F' puts type indicators after
   # directory/file names, 'h' displays sizes in human-readable form (K, M, G), and the other options are pretty obvious.  note that any aliases
   # for other variants of 'ls' also use these options, since 'ls' in now only being run through this function.
