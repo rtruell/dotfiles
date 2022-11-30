@@ -1,19 +1,3 @@
-/bin/bash
-#1638572445
-which locate
-#1638572449
-whereis locate
-#1638572459
-/usr/bin/locate --version
-#1638572521
-dirname `/usr/bin/locate -ir ".*brew/sbin$"` 
-#1638572598
-which dirname
-#1638572603
-whereis dirname
-#1638572612
-/usr/bin/dirname `/usr/bin/locate -ir ".*brew/sbin$"` 
-#1638572781
 uname
 #1638573030
 echo $brewpre
@@ -19846,4 +19830,86 @@ kextstat
 #1669705390
 lspci
 #1669706758
+neofetch
+#1669848746
+lal
+#1669848777
+hf ansiweatherrc
+#1669848836
+diff /Volumes/Owncloud/ansiweather/ansiweatherrc dotfiles/.ansiweatherrc
+#1669848858
+ls dotfiles
+#1669848865
+la dotfiles
+#1669848879
+rm .ansiweatherrc
+#1669848951
+ln -s ./dotfiles/.ansiweatherrc .ansiweatherrc
+#1669848954
+lal
+#1669848972
+rm .ansiweatherrc
+#1669848986
+ln -s $HOME/dotfiles/.ansiweatherrc .ansiweatherrc
+#1669848989
+lal
+#1669849033
+aw
+#1669849144
+less .ansiweatherrc
+#1669849167
+which ansiweather
+#1669849182
+less bin/ansiweather
+#1669849748
+aw
+#1669849860
+la
+#1669849871
+la .config
+#1669849884
+lal .config
+#1669850032
+lal dotfiles
+#1669850062
+lal dotfiles/.config
+#1669850131
+lal
+#1669850221
+lal .config
+#1669850263
+lal .config/.rainlendar2
+#1669850291
+lal /Users/rtruell/dotfiles/.config/.rainlendar2
+#1669850666
+ls .config
+#1669850671
+ll .config
+#1669850697
+lal .config
+#1669850727
+cd .config
+#1669850729
+lal
+#1669850763
+hf neofetch
+#1669850821
+lal
+#1669850827
+rm neofetch
+#1669850935
+ln -s $HOME/dotfiles/.config/neofetch neofetch
+#1669850937
+lal
+#1669850956
+up
+#1669850961
+ls .config
+#1669850966
+ls .config/neofetch
+#1669850982
+ls dotfiles
+#1669851025
+less .config/neofetch/config.conf
+#1669851042
 neofetch
