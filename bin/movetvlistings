@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+StartDir=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
+cd "${StartDir}"
+
+args="--color=auto"
+
+ls ${args} /media/sf_Volumes/Temp/StuffForVM .freeguide/data
+mv /media/sf_Volumes/Temp/StuffForVM/*.xmltv .freeguide/data
+ls ${args} /media/sf_Volumes/Temp/StuffForVM .freeguide/data
