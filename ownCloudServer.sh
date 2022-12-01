@@ -3,27 +3,28 @@
 # some parts/ideas in this script taken from a script by Michael Wiesing
 # (https://github.com/michaelwiesing/Owncloud-Auto-Setup-for-Raspberry-Pi-2)
 
-# Hostname
+# hostname
 computername=$(hostname -s)
 
-# Mariadb configuration
-mysqlRootPw="c0c0b7d"  # password for the root user of mysql
-ocDb="owncloud"  # name of the mysql database for owncloud
-ocDbUser="owncloud"  # name of the mysql user for owncloud
-ocDbUserPw="c0c0b7d"  # password for the mysql user for owncloud
+# 'mariadb' configuration variables
+mysqlRootPw="c0c0b7d"  # password for the root user of 'mariadb'
+ocDb="owncloud"  # name of the 'mariadb' database for 'owncloud'
+ocDbUser="owncloud"  # name of the 'mariadb' user for 'owncloud'
+ocDbUserPw="c0c0b7d"  # password for the 'mariadb' user for 'owncloud'
 
-# Apache configuration
-maxFileSize="1024M"  # max size of files that can be uploaded to owncloud
-htuser=$(ps -ef | egrep '(apache|apache2)' | grep -v `whoami` | grep -v root | head -n1 | awk '{print $1}')  # user Apache runs under
-htgroup="${htuser}"  # group Apache runs under
+# 'apache' configuration variables
+maxFileSize="1024M"  # max size of files that can be uploaded to 'owncloud'
+apacheusrgrp=$(apachectl -S)  # get the status of 'apache' to determine the user and group it's running under
+htuser=$(grep -i "user:" <<<"${apacheusrgrp}" | cut -d'"' -f2)  # get the user
+htgroup=$(grep -i "group:" <<<"${apacheusrgrp}" | cut -d'"' -f2)  # get the group
 
-# ownCloud configuration
-ocAdminUser="rtruell"  # name of the owncloud administrator
-ocAdminUserPw="c0c0b7d"  # password for the owncloud administrator
-ocDir="/var/www/owncloud"  # where ownCloud lives
+# 'owncloud' configuration variables
+ocAdminUser="rtruell"  # name of the 'owncloud' administrator
+ocAdminUserPw="c0c0b7d"  # password for the 'owncloud' administrator
+ocDir="/var/www/owncloud"  # where 'owncloud' lives
 ocDataDir="/nas/owncloud-server/"  # where the user files are kept
 logTimeZone="America/Edmonton"  # the time zone - defaults to UTC, which is bad
-logFile="/var/log/owncloud.log"  # path where owncloud log should be saved
+logFile="/var/log/owncloud.log"  # path where the 'owncloud' log should be saved
 
 # move the 'mariadb' data directory off the SSD
 sudo systemctl stop mariadb  # stop 'mariadb' to make configuration changes
@@ -44,11 +45,11 @@ if [[ "$(ls -A /var/lib/mysql)" ]]; then  # check for files/directories in '/var
     printf "\n"
     sudo diff -q /var/lib/mysql /nas/mysql >/dev/null  # there were some, so compare the directories
     if [[ "${?}" == 0 ]]; then  # if the directories are identical
-      print_result "${?}" "The directories are identical"
+      print_result "${?}" "The directories are identical"  # say so
     else
-      print_warn "The directories are different"
+      print_warn "The directories are different"  # otherwise, warn that the directories are different
       printf "\n"
-      sudo cp -a /var/lib/mysql /var/lib/mysql.orig  # back up '/var/lib/mysql' for later comparison
+      sudo cp -a /var/lib/mysql /var/lib/mysql.orig  # and back up '/var/lib/mysql' for later comparison
       print_result "${?}" "Backed up '/var/lib/mysql for later comparison"
     fi
     sudo rm -rf /var/lib/mysql/*  # delete the files/directories in '/var/lib/mysql'
@@ -61,68 +62,85 @@ fi
 sudo mount --bind /nas/mysql /var/lib/mysql  # mount the new 'mariadb' data directory location to the old one
 print_result "${?}" "Mounted '/nas/mysql' -> '/var/lib/mysql'"
 
-# configure PHP for Apache
-sudo sed -E \
-  -e 's,(^memory_limit = ).*,\1512M,' \
-  -e 's,(^upload_max_filesize = ).*,\1500M,' \
-  -e 's,(^post_max_size = ).*,\1600M,' \
-  -e 's,(^max_execution_time = ).*,\1300,' \
-  -e 's,^;(date.timezone =).*,\1 America/Edmonton,' \
-  -e 's,^;(date.default_latitude = ).*,\153.6316,' \
-  -e 's,^;(date.default_longitude = ).*,\1-113.3239,' \
-  -e 's,(^output_buffering = ).*,\1Off,' \
-  -e 's,^;(opcache.revalidate_freq=).*,\11,' \
-  -e 's,^;(zend_extension=opcache.*),\1,' \
-  -e 's,^;(opcache.enable=1.*),\1,' \
-  -e 's,^;(opcache.interned_strings_buffer=8.*),\1,' \
-  -e 's,^;(opcache.max_accelerated_files=10000.*),\1,' \
-  -e 's,^;(opcache.memory_consumption=128.*),\1,' \
-  -e 's,^;(opcache.save_comments=1.*),\1,' \
-  -i /etc/php/7.4/apache2/php.ini
-print_result "${?}" "PHP configured"
+# configure 'php' for 'apache'
+phpversion=$(ls /etc/php | cut -d '/' -f 1)  # get the version of 'php' that's being used
+phpini="/etc/php/${phpversion}/apache2/php.ini"  # the 'php' configuration file full pathname
+if [[ $(grep -i edmonton "${phpini}" ]]; then  # if the changes have already been made
+  print_result "${?}" "'php' already configured for 'apache'"  # say so
+else
+  cp -a "${phpini}" "${phpini}".orig  # otherwise, back up the configuration file just in case
+  sudo sed -E \
+    -e 's,(^memory_limit = ).*,\1512M,' \
+    -e 's,(^upload_max_filesize = ).*,\1500M,' \
+    -e 's,(^post_max_size = ).*,\1600M,' \
+    -e 's,(^max_execution_time = ).*,\1300,' \
+    -e 's,^;(date.timezone =).*,\1 America/Edmonton,' \
+    -e 's,^;(date.default_latitude = ).*,\153.6316,' \
+    -e 's,^;(date.default_longitude = ).*,\1-113.3239,' \
+    -e 's,(^output_buffering = ).*,\1Off,' \
+    -e 's,^;(opcache.revalidate_freq=).*,\11,' \
+    -e 's,^;(zend_extension=opcache.*),\1,' \
+    -e 's,^;(opcache.enable=1.*),\1,' \
+    -e 's,^;(opcache.interned_strings_buffer=8.*),\1,' \
+    -e 's,^;(opcache.max_accelerated_files=10000.*),\1,' \
+    -e 's,^;(opcache.memory_consumption=128.*),\1,' \
+    -e 's,^;(opcache.save_comments=1.*),\1,' \
+    -i "${phpini}"  # and make the changes
+  print_result "${?}" "'php' configured for 'apache'"
+fi
 sudo systemctl start mariadb  # changes to the config are done, so start 'mariadb' again
 print_result "${?}" "'mariadb' restarted"
 
-# Set database root password with `debconf-set-selections`
-sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password ${mysqlRootPw}" # password for the MySQL root user
-retcode1="${?}"
-sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password ${mysqlRootPw}" # repeat password for the MySQL root user
-retcode2="${?}"
-if [[ "${retcode1}" == 0 && "${retcode2}" == 0 ]]; then
-  retcode=0
+# check to see if the 'owncloud' database exists.  if it does, then 'mariadb'
+# has been secured and its root password has been set as well.  if not, do both
+# of those items and then create the 'owncloud' database
+if [[ $(sudo mysqlshow | grep -io owncloud) ]]; then  # if the 'owncloud' database already exists
+  print_result "${?}" "The 'owncloud' database already exists, so 'mariadb' has been secured and its root password set as well"  # say so
 else
-  retcode=1
-fi
-print_result "${retcode}" "Mariadb root password set"
+  # Set 'mariadb' root password with 'debconf-set-selections'
+  sudo debconf-set-selections <<< "mysql-server mysql-server/root_password password ${mysqlRootPw}" # password for the 'mariadb' root user
+  retcode1="${?}"
+  sudo debconf-set-selections <<< "mysql-server mysql-server/root_password_again password ${mysqlRootPw}" # repeat password for the 'mariadb' root user
+  retcode2="${?}"
+  if [[ "${retcode1}" == 0 && "${retcode2}" == 0 ]]; then
+    retcode=0
+  else
+    retcode=1
+  fi
+  print_result "${retcode}" "'mariadb' root password set"
 
-# secure Mariadb
-sudo mysql --user=root --password=${mysqlRootPw} << SECURE_MARIADB
-  DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
-  DELETE FROM mysql.user WHERE User='';
-  DROP DATABASE IF EXISTS test;
-  DELETE FROM mysql.db WHERE Db='test' OR Db='test_%';
-  FLUSH PRIVILEGES;
+  # secure 'mariadb'
+  sudo mysql --user=root --password=${mysqlRootPw} << SECURE_MARIADB
+    DELETE FROM mysql.user WHERE User='root' AND Host NOT IN ('localhost', '127.0.0.1', '::1');
+    DELETE FROM mysql.user WHERE User='';
+    DROP DATABASE IF EXISTS test;
+    DELETE FROM mysql.db WHERE Db='test' OR Db='test_%';
+    FLUSH PRIVILEGES;
 SECURE_MARIADB
-print_result "${?}" "Mariadb secured"
+  print_result "${?}" "'mariadb' secured"
 
-# create the ownCloud database
-sudo mysql --user=root --password=${mysqlRootPw} <<CREATE_DATABASE
-  CREATE DATABASE ${ocDb};
-  CREATE USER ${ocDbUser}@localhost IDENTIFIED BY '${ocDbUserPw}';
-  GRANT ALL PRIVILEGES ON ${ocDb}.* TO ${ocDbUser}@localhost;
-  FLUSH PRIVILEGES;
+  # create the 'owncloud' database
+  sudo mysql --user=root --password=${mysqlRootPw} <<CREATE_DATABASE
+    CREATE DATABASE ${ocDb};
+    CREATE USER ${ocDbUser}@localhost IDENTIFIED BY '${ocDbUserPw}';
+    GRANT ALL PRIVILEGES ON ${ocDb}.* TO ${ocDbUser}@localhost;
+    FLUSH PRIVILEGES;
 CREATE_DATABASE
-print_result "${?}" "ownCloud database created"
+  print_result "${?}" "'owncloud' database created"
+fi
 
-# change Apache upload filesize in the .htaccess file
+# change the 'apache' upload and post maximum filesizes plus the memory limit in
+# the .htaccess file
+apachehtaccess="/var/www/owncloud/.htaccess"  # the .htaccess file full pathname
+sudo cp -a "${apachehtaccess}" "${apachehtaccess}".orig  # back it up just in case
 sudo sed -E \
   -e "s/php_value upload_max_filesize .*/php_value upload_max_filesize ${maxFileSize}/" \
   -e "s/php_value post_max_size .*/php_value post_max_size ${maxFileSize}/" \
   -e "s/php_value memory_limit .*/php_value memory_limit ${maxFileSize}/" \
-  -i /var/www/owncloud/.htaccess
-print_result "${?}" "Apache upload filesizes changed"
+  -i "${apachehtaccess}"  # make the changes
+print_result "${?}" "'apache' upload and post maximum filesizes changed"
 
-# create the Apache 'owncloud.conf' file if necessary
+# create the 'owncloud' site file for 'apache' if necessary
 if [[ -e /etc/apache2/sites-available/owncloud.conf ]]; then
   print_result "${?}" "'owncloud.conf' already exists"
 else
@@ -145,7 +163,7 @@ APACHE_OWNCLOUD_CONF
   print_result "${?}" "'owncloud.conf' created"
 fi
 
-# create the ownCloud data directory, if necessary
+# create the 'owncloud' data directory, if necessary
 if [[ -d "${ocDataDir}" ]]; then
   print_result "${?}" "'${ocDataDir}' already exists"
 else
@@ -155,50 +173,60 @@ else
   print_result "${?}" "'${ocDataDir}' ownership changed"
 fi
 
-# ownCloud configuration (see: https://doc.owncloud.com/server/10.11/admin_manual/configuration/server/occ_command.html#command-description)
-sudo -u ${htuser} "${ocDir}"/occ maintenance:install \
-  --database "mysql" \
-  --database-name "${ocDb}" \
-  --database-user "${ocDbUser}" \
-  --database-pass "${ocDbUserPw}" \
-  --admin-user "${ocAdminUser}" \
-  --admin-pass "${ocAdminUserPw}" \
-  --data-dir "${ocDataDir}" >/dev/null
-print_result "${?}" "Configured ownCloud"
+# configure 'owncloud'
+owncloudconfig="/var/www/owncloud/config/config.php"  # the 'owncloud' configuration file full pathname
+if [[ $(grep -i edmonton "${owncloudconfig}" ]]; then  # if the changes have already been made
+  print_result "${?}" "'owncloud' already configured"  # say so
+else  # otherwise, make all the configuration changes
+  cp -a "${owncloudconfig}" "${owncloudconfig}".orig # back up the configuration file just in case
 
-# configure ownCloud's trusted domains, if necessary
-if [[ "$(sudo grep -iq "${computername}" /var/www/owncloud/config/config.php)" == 0 ]]; then
-  print_result "${?}" "'${computername}' is already in the ownCloud trusted domains list"
-else
-  readarray -t trusteddomains < <(sudo -u ${htuser} "${ocDir}"/occ config:system:get trusted_domains)  # get a list of the current trusted domains
-  numberdomains=${#trusteddomains[@]}  # get the number of domains already trusted
-  sudo -u "${htuser}" "${ocDir}"/occ config:system:set trusted_domains "${numberdomains}" --value="${computername}" >/dev/null  # add this computer to the list
-  print_result "${?}" "'${computername}' has been added to the ownCloud trusted domains list"
+  # 'owncloud' database configuration (see:
+  # https://doc.owncloud.com/server/10.11/admin_manual/configuration/server/occ_command.html#command-description )
+  sudo -u ${htuser} "${ocDir}"/occ maintenance:install \
+    --database "mysql" \
+    --database-name "${ocDb}" \
+    --database-user "${ocDbUser}" \
+    --database-pass "${ocDbUserPw}" \
+    --admin-user "${ocAdminUser}" \
+    --admin-pass "${ocAdminUserPw}" \
+    --data-dir "${ocDataDir}" >/dev/null
+  print_result "${?}" "Configured 'owncloud'"
+
+  # configure the 'owncloud' trusted domains, if necessary
+  if [[ "$(sudo grep -iq "${computername}" "${owncloudconfig}")" == 0 ]]; then  # if this computer is already in the trusted domains list
+    print_result "${?}" "'${computername}' is already in the 'owncloud' trusted domains list"  # say so
+  else  # otherwise, add it
+    readarray -t trusteddomains < <(sudo -u ${htuser} "${ocDir}"/occ config:system:get trusted_domains)  # get a list of the current trusted domains
+    numberdomains=${#trusteddomains[@]}  # get the number of domains already trusted
+    sudo -u "${htuser}" "${ocDir}"/occ config:system:set trusted_domains "${numberdomains}" --value="${computername}" >/dev/null  # add this computer to the list
+    print_result "${?}" "'${computername}' has been added to the 'owncloud' trusted domains list"
+  fi
+
+  # configure the 'owncloud' logfile
+  logFileMasked=$(printf '%s' "${logFile}" | sed 's/\//\\\//g')  # escape the slashes in the log pathname
+  logTimezoneMasked=$(printf '%s' "${logTimeZone}" | sed 's/\//\\\//g')  # escape the slashes in the timezone
+  # change the timezone and add the logfile pathname and log level
+  sudo sed -i "s/  'logtimezone' => 'UTC',/  'logtimezone' => '${logTimezoneMasked}',\n  'logfile' => '${logFileMasked}',\n  'loglevel' => '2',/" "${owncloudconfig}"
+  print_result "${?}" "Configured 'owncloud' logfile"
+  sudo touch "${logFile}"  # create the logfile
+  print_result "${?}" "Created 'owncloud' logfile"
+  sudo chown "${htuser}":"${htgroup}" "${logFile}"  # change the ownership of the logfile
+  print_result "${?}" "'owncloud' logfile ownership changed"
+
+  # configure 'owncloud' to use apcu
+  sudo sed -i "s/);/  'memcache.local' => '\\\OC\\\Memcache\\\APCu',\n);/" "${owncloudconfig}"
+  print_result "${?}" "Configured 'owncloud' to use 'apcu'"
 fi
 
-# configure the owncloud logfile
-logFileMasked=$(printf '%s' "${logFile}" | sed 's/\//\\\//g')
-logTimezoneMasked=$(printf '%s' "${logTimeZone}" | sed 's/\//\\\//g')
-sudo sed -i "s/  'logtimezone' => 'UTC',/  'logtimezone' => '${logTimezoneMasked}',\n  'logfile' => '${logFileMasked}',\n  'loglevel' => '2',/" /var/www/owncloud/config/config.php
-print_result "${?}" "Configured ownCloud logfile"
-sudo touch "${logFile}"
-print_result "${?}" "Created ownCloud logfile"
-sudo chown "${htuser}":"${htgroup}" "${logFile}"
-print_result "${?}" "ownCloud logfile ownership changed"
-
-# configure ownCloud to use apcu
-sudo sed -i "s/);/  'memcache.local' => '\\\OC\\\Memcache\\\APCu',\n);/" /var/www/owncloud/config/config.php
-print_result "${?}" "Configured ownCloud to use 'apcu'"
-
-sudo a2enmod rewrite headers env dir mime unique_id >/dev/null  # enable Apache modules needed for ownCloud
-print_result "${?}" "Enabled modules for Apache"
-sudo a2ensite owncloud >/dev/null  # enable the ownCloud site
-print_result "${?}" "enabled the ownCloud site"
-sudo systemctl restart apache2  # restart Apache
-print_result "${?}" "Restarted Apache"
-sudo systemctl status apache2  # show Apache's status
-print_result "${?}" "Checked Apache's status"
-sudo systemctl is-enabled mariadb >/dev/null # check to see if Mariadb is enabled
-print_result "${?}" "Checked to make sure Mariadb is enabled"
-sudo systemctl status mariadb  # show Mariadb's status
-print_result "${?}" "Checked Mariadb's status"
+sudo a2enmod rewrite headers env dir mime unique_id >/dev/null  # enable 'apache' modules needed for 'owncloud'
+print_result "${?}" "Enabled 'apache' modules needed for 'owncloud'"
+sudo a2ensite owncloud >/dev/null  # enable the 'owncloud' site
+print_result "${?}" "enabled the 'owncloud' site"
+sudo systemctl restart apache2  # restart 'apache'
+print_result "${?}" "Restarted 'apache'"
+sudo systemctl status apache2  # show the status of 'apache'
+print_result "${?}" "Checked the status of 'apache'"
+sudo systemctl is-enabled mariadb >/dev/null # check to see if 'mariadb' is enabled
+print_result "${?}" "Checked to make sure 'mariadb' is enabled"
+sudo systemctl status mariadb  # show the status of 'mariadb'
+print_result "${?}" "Checked the status of 'mariadb'"
