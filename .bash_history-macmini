@@ -1,85 +1,3 @@
-uname
-#1638573030
-echo $brewpre
-#1638573055
-brewpre=`brew --prefix`
-#1638573057
-echo $brewpre
-#1638573067
-brew --prefix
-#1638573567
-echo $brewprefix
-#1638573586
-brewprefix=`brew --prefix`
-#1638573589
-echo $brewprefix
-#1638573599
-brew --prefix
-#1638574848
-"${brewprefix}"/bin/brew --version
-#1638574869
-"${brewprefix}/bin/brew" --version
-#1638574980
-echo $brewprefix
-#1638575004
-if [ -d "${brewprefix}"/opt/gnu-sed ] ; then echo exists; else echo no; fi
-#1638575018
-if [ -d "${brewprefix}"/opt/gnu-see ] ; then echo exists; else echo no; fi
-#1638575031
-if [ -d "${brewprefix}"/opt/gnu-sed ] ; then echo exists; else echo no; fi
-#1638576287
-uname
-#1638576429
-echo $OSTYPE
-#1638576460
-echo "uname is >`uname`<"
-#1638576592
-sed --version
-#1638576608
-b s gnu-sed
-#1638576624
-b i gnu-sed
-#1638647997
-b upd
-#1638648107
-nmap
-#1638648112
-b in nmap
-#1638648276
-nmap
-#1638648304
-nmap localhost
-#1638648392
-nmap -A localhost
-#1638648540
-sudo nmap -A localhost
-#1638648650
-arp -a
-#1638648894
-dotfiles
-#1638648900
-ls ..
-#1638648904
-la ..
-#1638648946
-la
-#1638648965
-sed 's/#.*//' "${HOME}"/dotfiles/.APTfile
-#1638648991
-less .aptfile
-#1638649798
-sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | less
-#1638649830
-man sed
-#1638649891
-sed -e 's/#.*//' -e 's/^$//' "${HOME}"/dotfiles/.APTfile | less
-#1638650043
-sed 's/#.*$//' "${HOME}"/dotfiles/.APTfile | less
-#1638650075
-sed 's/#.*\n//' "${HOME}"/dotfiles/.APTfile | less
-#1638650096
-sed 's/#.*$\n//' "${HOME}"/dotfiles/.APTfile | less
-#1638650125
 sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | less
 #1638650151
 sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | xargs echo
@@ -19913,3 +19831,35 @@ ls dotfiles
 less .config/neofetch/config.conf
 #1669851042
 neofetch
+#1670107209
+hf "ln -s"
+#1670107264
+la
+#1670107294
+less .bash_history
+#1670107421
+cd Library/Application\ Support/Sublime\ Text\ 3/Packages/ 
+#1670107427
+lal
+#1670107478
+ls $HOME/dotfiles
+#1670107534
+ls $HOME/dotfiles/SublimeText/User/
+#1670107542
+ls $HOME/dotfiles/SublimeText/User
+#1670107578
+ln -s $HOME/dotfiles/SublimeText/User User1
+#1670107582
+lal
+#1670107606
+lal .config
+#1670107614
+lal $HOME/.config
+#1670107651
+rm User
+#1670107657
+mv User1 User
+#1670107659
+lal
+#1670107676
+home
