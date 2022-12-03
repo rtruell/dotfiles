@@ -7,8 +7,6 @@ tap "mas-cli/tap"
 # for uniclip, cross-platform clipboard sharing program
 tap "quackduck/tap"
 
-brew "ansiweather"
-brew "archey4"
 brew "bash"
 brew "bash-completion@2"
 brew "bat"
@@ -32,7 +30,6 @@ brew "highlight"
 brew "hugo"
 brew "httrack"
 brew "inxi"  # Full featured CLI system information tool
-brew "iproute2mac"
 brew "liquidprompt"
 brew "mas"
 brew "moreutils"
