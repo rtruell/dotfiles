@@ -1,0 +1,18 @@
+{
+	"bootstrapped": true,
+	"in_process_packages":
+	[
+	],
+	"installed_packages":
+	[
+		"Dotfiles Syntax Highlighting",
+		"EditorConfig",
+		"Markdown Table Formatter",
+		"MarkdownEditing",
+		"MarkdownPreview",
+		"Package Control",
+		"SublimeLinter",
+		"SublimeLinter-shellcheck",
+		"Theme - Soda",
+	],
+}

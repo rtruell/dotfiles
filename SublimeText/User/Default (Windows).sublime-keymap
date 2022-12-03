@@ -1,0 +1,65 @@
+[
+    // inserts "pc" at the caret (insert point) position
+    // original binding: none
+    // new one used to be: none
+    { "keys": ["ctrl+alt+1"], "command": "run_macro_file", "args": {"file": "Packages/User/insertpc.sublime-macro"} },
+    // inserts "dl" at the caret position
+    // original binding: none
+    // new one used to be: none
+    { "keys": ["ctrl+alt+2"], "command": "run_macro_file", "args": {"file": "Packages/User/insertdl.sublime-macro"} },
+    // inserts "avi" at the caret position
+    // original binding: none
+    // new one used to be: none
+    { "keys": ["ctrl+alt+3"], "command": "run_macro_file", "args": {"file": "Packages/User/insertavi.sublime-macro"} },
+    // inserts "pvr" at the caret position
+    // original binding: none
+    // new one used to be: none
+    { "keys": ["ctrl+alt+4"], "command": "run_macro_file", "args": {"file": "Packages/User/insertpvr.sublime-macro"} },
+    // inserts HTML tags <strike> and </strike> around the current TV show listing
+    // original binding: none
+    // new one used to be: none
+    { "keys": ["ctrl+alt+d"], "command": "run_macro_file", "args": {"file": "Packages/User/donewithshow.sublime-macro"} },
+    // move the caret to the top of the screen
+    // original binding: none
+    // new one used to be: none
+    { "keys": ["alt+up"], "command": "move_caret_top" },
+    // move the caret to the bottom of the screen
+    // original binding: none
+    // new one used to be: none
+    { "keys": ["alt+down"], "command": "move_caret_bottom"},
+    // move the caret up 10 lines
+    // original binding: none
+    // new one used to be: none
+    { "keys": ["alt+left"], "command": "move_caret_back", "args": {"nlines": 10} },
+    // move the caret down 10 lines
+    // original binding: none
+    // new one used to be: none
+    { "keys": ["alt+right"], "command": "move_caret_forward", "args": {"nlines": 10} },
+    // "edit -> code folding ->fold tag attributes".  I want to use the old one for something
+    // else but still have a keybinding for this one
+    // original binding: "super+k", "super+t"
+    // new one used to be: none
+    { "keys": ["super+k", "super+f"], "command": "fold_tag_attributes" },
+    // "edit -> convert case -> title case".  makes it similar to the other case-conversion
+    // command keybindings
+    // original binding: none
+    // new one used to be: "edit -> code folding ->fold tag attributes"
+    { "keys": ["super+k", "super+t"], "command": "title_case" },
+    // "edit -> wrap -> wrap paragraph at ruler".  this one makes more sense to me
+    // original binding: "super+alt+q"
+    // new one used to be: "toggle regex" in the "find -> find" dialog
+    { "keys": ["super+alt+r"], "command": "wrap_lines" },
+    // "edit -> wrap -> wrap paragraph at 78 characters"
+    // original binding: none
+    // new one used to be: "edit -> wrap -> wrap paragraph at ruler"
+    { "keys": ["super+alt+q"], "command": "wrap_lines", "args": {"width": 78} },
+    // "view -> word wrap".  toggles it
+    // original binding: none
+    // new one used to be: "toggle whole word" in the "find -> find" dialog
+    { "keys": ["super+alt+w"], "command": "toggle_setting", "args": {"setting": "word_wrap"} },
+    // render Markdown in web browser
+    // original binding: none
+    // new one used to be: none
+    { "keys": ["shift+alt+m"], "command": "markdown_preview", "args": {"target": "browser", "parser": "markdown"} }
+
+]
