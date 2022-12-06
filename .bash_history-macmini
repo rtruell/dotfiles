@@ -1,35 +1,3 @@
-sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | less
-#1638650151
-sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | xargs echo
-#1638650185
-sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | xargs printf '%s\n'
-#1638650224
-man xargs
-#1638651325
-sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | xargs printf '%s\n'
-#1638651354
-cd /Volumes/ExternalHome/rtruell/dotfiles-extras/
-#1638651835
-brew list thunderbird
-#1638651856
-brew list firefox
-#1638653037
-sed 's/#.*//' "${HOME}"/dotfiles/.APTfile
-#1638653107
-sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | sed 's/^$//'
-#1638653167
-sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | sed 's/^ $//'
-#1638653177
-sed 's/#.*//' "${HOME}"/dotfiles/.APTfile | sed 's/^$\n//'
-#1638653186
-sed 's/#.*//' "${HOME}"/dotfiles/.APTfile
-#1638653265
-sed 's/#.*//' "${HOME}"/dotfiles/.APTfile >ricktest.txt
-#1638653606
-sed -e 's/#.*//' -e '/^$/d' "${HOME}"/dotfiles/.APTfile
-#1638653654
-sed -e 's/#.*//' -e '/^$/d' "${HOME}"/dotfiles/.APTfile >ricktest.txt
-#1638654266
 for word in `sed -e 's/#.*//' -e '/^$/d' "${HOME}"/dotfiles/.APTfile`; do echo "package is $word"; done
 #1638654287
 copylastcommand
@@ -19863,3 +19831,11 @@ mv User1 User
 lal
 #1670107676
 home
+#1670282423
+ls Library/Application\ Support/Sublime\ Text\ 3/Packages/
+#1670282429
+ll Library/Application\ Support/Sublime\ Text\ 3/Packages/
+#1670282447
+echo $HOME
+#1670306015
+aw
