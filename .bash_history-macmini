@@ -1,11 +1,3 @@
-for word in `sed -e 's/#.*//' -e '/^$/d' "${HOME}"/dotfiles/.APTfile`; do echo "package is $word"; done
-#1638654287
-copylastcommand
-#1638651373
-findtext -i brew | less
-#1638656593
-b i nmap
-#1638656616
 b in nmap
 #1638656869
 hf brew
@@ -19839,3 +19831,11 @@ ll Library/Application\ Support/Sublime\ Text\ 3/Packages/
 echo $HOME
 #1670306015
 aw
+#1670389296
+ls .config
+#1670389853
+dotfiles
+#1670389864
+findtest -i osinstallfiles
+#1670389871
+findtext -i osinstallfiles
