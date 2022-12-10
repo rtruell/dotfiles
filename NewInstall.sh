@@ -242,7 +242,7 @@ if [[ "${retcode}" == 0 ]]; then
         if [[ "${retcode}" == 0 ]]; then  # it does
           print_result ${retcode} "'.config/bcompare' already exists"
         else
-          mkdir "${HOME}"/.config/bcompare  # it doesn't, so create it
+          mkdir -p "${HOME}"/.config/bcompare  # it doesn't, so create it
           print_result "${?}" "Created '.config/bcompare'"
           chmod 755 "${HOME}"/.config/bcompare  # and set its permissions
           print_result "${?}" "Set permissions for '.config/bcompare'"
@@ -283,6 +283,80 @@ if [[ "${retcode}" == 0 ]]; then
     if [[ "${computername}" != "nas"* && "${computername}" != "rpi"* ]]; then
       cp -a FreeGuide.jar "${HOME}"
       print_result "${?}" "Copied the updated 'freeguide' .jar file"
+    fi
+
+    # if not installing on macOS, copy KDE configuration files
+    if [[ "${SYSTEM_TYPE,,}" != "macos" ]]; then
+      # configure the lock screen
+      lock_screen_clock="/usr/share/plasma/look-and-feel/org.kde.breeze.desktop/contents/components/Clock.qml"
+      if [[ -f "${lock_screen_clock}" ]]; then  # if the lock screen clock display exists (which it should)
+        print_warn "The lock screen clock display already exists"  # say so
+        printf "\n"
+        sudo mv "${lock_screen_clock}" "${lock_screen_clock}".orig  # and back it up for later comparison
+        print_result "${?}" "Backed it up for later comparison"
+      fi
+      sudo cp -a Clock-lock.qml "${lock_screen_clock}"  # copy the new lock screen display
+      print_result "${?}" "Copied the new lock screen display"
+      sudo chown root: "${lock_screen_clock}"  # change its ownership
+      print_result "${?}" "Changed its ownership"
+      sudo chmod 644 "${lock_screen_clock}"  # and change its permissions
+      print_result "${?}" "Changed its permissions"
+
+      # configure the login screen
+      login_screen_clock="/usr/lib/x86_64-linux-gnu/qt5/qml/SddmComponents/Clock.qml"
+      if [[ -f "${login_screen_clock}" ]]; then  # if the login screen clock display exists (which it should)
+        print_warn "The login screen clock display already exists"  # say so
+        printf "\n"
+        sudo mv "${login_screen_clock}" "${login_screen_clock}".orig  # and back it up for later comparison
+        print_result "${?}" "Backed it up for later comparison"
+      fi
+      sudo cp -a Clock-login.qml "${login_screen_clock}"  # copy the new login screen display
+      print_result "${?}" "Copied the new login screen display"
+      sudo chown root: "${login_screen_clock}"  # change its ownership
+      print_result "${?}" "Changed its ownership"
+      sudo chmod 644 "${login_screen_clock}"  # and change its permissions
+      print_result "${?}" "Changed its permissions"
+
+      # change to the '.config' directory and copy files
+      cd .config  # change to the directory where the KDE configuration files are
+      shopt -s dotglob
+      shopt -s nullglob
+      configfiles=(*)  # get a list of all the files in '.config' into an array.  the filenames are in the format 'filename'
+      shopt -u nullglob
+      for i in ${configfiles[@]}; do  # loop through the array of files to be copied
+        configfilename="${HOME}/.config/${i}"
+        if [[ -f "${configfilename}" ]]; then  # if the file already exists
+          print_warn "${i} already exists"  # say so
+          printf "\n"
+          mv "${configfilename}" "${configfilename}".orig  # and back it up for later comparison
+          print_result "${?}" "Backed it up for later comparison"
+        fi
+        cp -a "${i}" "${configfilename}"  # copy the updated file
+        print_result "${?}" "Copied ${i}"
+        chmod 600 "${configfilename}"  # and change its permissions
+        print_result "${?}" "Changed permissions for ${i}"
+      done
+      cd ..  # change back to previous directory
+
+      # configure the 'dolphin' view properties
+      dolphin_view_prop_dir="${HOME}/.local/share/dolphin/view_properties/global"
+      if [[ -f "${dolphin_view_prop_dir}/.directory" ]]; then  # if the file already exists
+        print_warn "'${dolphin_view_prop_dir}/.directory' already exists"  # say so
+        printf "\n"
+        mv "${dolphin_view_prop_dir}/.directory" "${dolphin_view_prop_dir}/.directory.orig"  # and back it up for later comparison
+        print_result "${?}" "Backed it up for later comparison"
+      else
+        if [[ -d "${dolphin_view_prop_dir}" ]]; then  # if the directory the file goes in already exists
+          print_result ${retcode} "'${dolphin_view_prop_dir}' already exists"  # say so
+        else
+          mkdir -p "${dolphin_view_prop_dir}"  # otherwise, create it (and its parent directories as needed)
+          print_result ${retcode} "Created '${dolphin_view_prop_dir}'"  # say so
+        fi
+      fi
+      cp -a .directory "${dolphin_view_prop_dir}"  # copy the updated file
+      print_result "${?}" "Copied ${dolphin_view_prop_dir}/.directory"
+      chmod 600 "${dolphin_view_prop_dir}/.directory"  # and change its permissions
+      print_result "${?}" "Changed permissions for ${dolphin_view_prop_dir}/.directory"
     fi
 
     # copy third-party programs to a temporary location, to be installed later
@@ -341,27 +415,26 @@ if [[ "${retcode}" == 0 ]]; then
       # 'programdir' set to the directory they're located in
       case "${computername}" in
         nas*)
-              declare -a programs=(
-                "archey"
-              )  # the programs array, each element of which is a program to be installed
-              programdir="/nas/data/Downloads/Linux/InUse/Installed/Automated"  # the directory containing the programs to be copied
+              # all programs to be installed on 'nas' and 'nasback' are
+              # available via 'apt'.  however, if there were some, this is the
+              # directory they'd be located in
+              #programdir="/nas/data/Downloads/Linux/InUse/Installed/Automated"
               ;;
         rpi*)
-              declare -a programs=(
-                "archey"
-              )
-              programdir="${HOME}/mountpoint/Downloads/Linux/InUse/Installed/Automated"
+              # all programs to be installed on Raspberry Pi machines are
+              # available via 'apt'.  however, if there were some, this is the
+              # directory they'd be located in
+              #programdir="${HOME}/mountpoint/Downloads/Linux/InUse/Installed/Automated"
               ;;
            *)
               declare -a programs=(
-                "archey"
                 "first"
                 "freequide"
                 "google-earth"
                 "imager"
                 "usbimager"
-              )
-              programdir="${HOME}/mountpoint/Downloads/Linux/InUse/Installed/Automated"
+              )  # the programs array, each element of which is a program to be installed
+              programdir="${HOME}/mountpoint/Downloads/Linux/InUse/Installed/Automated"  # the directory containing the programs to be copied
               ;;
       esac
       i=""
