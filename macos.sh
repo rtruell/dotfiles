@@ -129,6 +129,16 @@ fi
 source ./.macos-systemsettings
 print_result "${?}" "Set up the macOS default system settings"
 
+# the Sublime Text 'User' directory is being shared between machines for a
+# consistent usage environment, so symlink it
+if [[ -d "${HOME}/Library/Application Support/Sublime Text/Packages/User" ]]; then  # if the 'User' directory already exists
+  print_warn "The 'User' directory for 'sublime text' already exists"  # say so
+  printf "\n"
+  mv "${HOME}/Library/Application Support/Sublime Text/Packages/User" "${HOME}/Library/Application Support/Sublime Text/Packages/User.old"  # and back it up for later comparison
+  print_result "${?}" "Backed it up for later comparison"
+fi
+symlink_single_file "${HOME}/dotfiles/SublimeText/User" "${HOME}/Library/Application Support/Sublime Text/Packages/User"  # symlink the 'User' directory
+
 # extra commands to execute
 rmdir /Users/rtruell/Downloads  # remove the OS-installed 'Downloads' directory ...
 print_result "${?}" "Removed the OS-installed 'Downloads' directory"
