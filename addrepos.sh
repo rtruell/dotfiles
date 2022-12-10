@@ -81,7 +81,7 @@ print_result "${?}" "Updated '/etc/apt/sources.list' with the 'contrib' and 'non
 
 # add software repositories to 'apt' based on the computer name
 case "${computername,,}" in
-  nas | nasbackup) add_webmin; add_sublime; add_bcompare; add_owncloud_server; add_owncloud_client ;;
+  nas*) add_webmin; add_sublime; add_bcompare; add_owncloud_server ;;
   rpi*) add_webmin; add_sublime ;;
   *) add_webmin; add_sublime; add_bcompare ;;
 esac
@@ -113,7 +113,7 @@ if [[ -d /etc/apt/apt.conf.d ]]; then
     create_proxy_file  # it isn't, so create the file
   fi
 else
-  sudo mkdir /etc/apt/apt.conf.d  # the directory doesn't exist, so create it
+  sudo mkdir -p /etc/apt/apt.conf.d  # the directory doesn't exist, so create it
   print_result "${?}" "Created '/etc/apt/apt.conf.d'"
   sudo chmod 755 /etc/apt/apt.conf.d  # change its' permissions
   print_result "${?}" "Changed permissions for '/etc/apt/apt.conf.d'"
