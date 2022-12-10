@@ -25,7 +25,7 @@ alias h="history"  # saves typing
 alias home="cd $HOME"  # go home
 alias hosts="sudo ${EDITOR} /etc/hosts"  # easily edit the HOSTS file.  must use 'sudo' because the file is owned by 'root'
 alias icheck="ping -c 1 rtruell.ca"
-alias ifl='sudo ./ifl/imagel'  # create an alias to avoid the shame/anger/annoyance of forgetting to use 'sudo' to run IFL
+alias ifl="sudo ./ifl/imagel"  # create an alias to avoid the shame/anger/annoyance of forgetting to use 'sudo' to run IFL
 alias iscommand="findcommand"  # is the command actually a command?
 alias la="ls -A"  # ls output includes hidden files but not '.' or '..'
 alias lal="ls -Alh" # ls output in long format, including hidden files but not '.' or '..', with human-readable sizes
@@ -51,8 +51,8 @@ alias where="which"  # sometimes i forget
 # OS-specific aliases
 case "${SYSTEM_TYPE}" in
   macOS)
-    alias archey="archey -p"  # system info in a pretty format...with a logo!  '-p' prints the number of Homebrew packages installed
     alias dscleanup="find . -type f -name '*.DS_Store' -ls -delete"  # recursively delete `.DS_Store` files
+    alias ip="macosip"
     alias macOSupdate="sudo softwareupdate -i -a"  # install any available App Store updates
     alias mycasks="cd /Volumes/ExternalHome/rtruell/HomebrewCasks"  # my Homebrew Casks
     alias myperlsubs="cd ${PERL5LIB}"  # my Perl subroutines
