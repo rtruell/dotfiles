@@ -2,7 +2,7 @@
 
 # if installing to 'nas' or 'nasbackup', 'XMLTV' and 'apt-cacher-ng' get
 # installed, so create any necessary directories, check to make sure data and
-# configuration files aren't going to be eliminated, and mount the data and
+# configuration files aren't going to be clobbered, and mount the data and
 # configuration directories off the SSD
 if [[ "${computername}" == "nas"* ]]; then
   # move the data directory for 'XMLTV' off the SSD
@@ -50,7 +50,7 @@ if [[ "${computername}" == "nas"* ]]; then
   if [[ -d /nas/apt-cacher-ng/data ]]; then  # if '/nas/apt-cacher-ng/data' exists
     print_result "${?}" "'/nas/apt-cacher-ng/data' already exists"  # say so
   else
-    sudo mkdir /nas/apt-cacher-ng/data  # otherwise, create it
+    sudo mkdir -p /nas/apt-cacher-ng/data  # otherwise, create it
     print_result "${?}" "'/nas/apt-cacher-ng/data' created"
     sudo chown apt-cacher-ng:apt-cacher-ng /nas/apt-cacher-ng/data  # and change ownership of the new data directory
     print_result "${?}" "Chanaged ownership of '/nas/apt-cacher-ng/data'"
@@ -58,7 +58,7 @@ if [[ "${computername}" == "nas"* ]]; then
   if [[ -d /nas/apt-cacher-ng/config ]]; then  # if '/nas/apt-cacher-ng/config' exists
     print_result "${?}" "'/nas/apt-cacher-ng/config' already exists"  # say so
   else
-    sudo mkdir /nas/apt-cacher-ng/config  # otherwise, create it
+    sudo mkdir -p /nas/apt-cacher-ng/config  # otherwise, create it
     print_result "${?}" "'/nas/apt-cacher-ng/config' created"
   fi
   if [[ "$(ls -A /var/cache/apt-cacher-ng)" ]]; then  # check for files/directories in '/var/cache/apt-cacher-ng'
@@ -137,7 +137,6 @@ declare -a packages=(
   "locate"
   "make"
   "openssh-server"
-  "owncloud-client"
   "procps"
   "systemd"
 )
@@ -299,7 +298,7 @@ if [[ -d /etc/ssh/sshd_config.d ]]; then  # check to see if the directory '/etc/
     print_result "${?}" "Changed permissions for '/etc/ssh/sshd_config.d/port.conf'"
   fi
 else
-  sudo mkdir /etc/ssh/sshd_config.d  # the directory doesn't exist, so create it
+  sudo mkdir -p /etc/ssh/sshd_config.d  # the directory doesn't exist, so create it
   print_result "${?}" "Created '/etc/ssh/sshd_config.d'"
   sudo chmod 755 /etc/ssh/sshd_config.d  # change its' permissions
   print_result "${?}" "Changed permissions for '/etc/ssh/sshd_config.d'"
@@ -339,7 +338,7 @@ if [[ "${computername}" != "nas"* && "${computername}" != "rpi"* ]]; then
                     print_result "${?}" "Set permissions for '/etc/systemd/logind.conf.d/lid.conf'"
                   fi
                 else
-                  sudo mkdir /etc/systemd/logind.conf.d  # the directory doesn't exist, so create it
+                  sudo mkdir -p /etc/systemd/logind.conf.d  # the directory doesn't exist, so create it
                   print_result "${?}" "Created '/etc/systemd/logind.conf.d'"
                   sudo chmod 755 /etc/systemd/logind.conf.d  # and set its' permissions
                   print_result "${?}" "Set permissions for '/etc/systemd/logind.conf.d'"
@@ -465,16 +464,6 @@ if [[ "${computername}" == "nas"* ]]; then
   # install 'ownCloud' server
   source ./ownCloudServer.sh
 
-  # set up 'ownCloud' client
-  if [[ -d /nas/owncloud-client ]]; then
-    print_result "${?}" "'/nas/owncloud-client' already exists"
-  else
-    sudo mkdir /nas/owncloud-client
-    print_result "${?}" "Created '/nas/owncloud-client'"
-    sudo chown rtruell: /nas/owncloud-client
-    print_result "${?}" "Changed ownership of '/nas/owncloud-client'"
-  fi
-
   # install 'shaarli'
   shaarlidir="/nas/Shaarli"  # shaarli install directory
   if [[ -d "${shaarlidir}" ]]; then  # if the install directory already exists
@@ -589,6 +578,16 @@ if [[ "${computername}" != "nas"* && "${computername}" != "rpi"* ]]; then
   sudo chmod 644 "${freeguidejar}"  # set its permissions
   print_result "${?}" "Set permissions for '${freeguidejar}'"
 fi
+
+# the Sublime Text 'User' directory is being shared between machines for a
+# consistent usage environment, so symlink it
+if [[ -d "${HOME}/.config/sublime-text/Packages/User" ]]; then  # if the 'User' directory already exists
+  print_warn "The 'User' directory for 'sublime text' already exists"  # say so
+  printf "\n"
+  mv ${HOME}/.config/sublime-text/Packages/User ${HOME}/.config/sublime-text/Packages/User.old  # and back it up for later comparison
+  print_result "${?}" "Backed it up for later comparison"
+fi
+symlink_single_file "${HOME}/dotfiles/SublimeText/User" "${HOME}/.config/sublime-text/Packages/User"  # symlink the 'User' directory
 
 # Create mount points for the 'data' and 'backups' directories
 if [[ "${computername}" == "nas" ]]; then
