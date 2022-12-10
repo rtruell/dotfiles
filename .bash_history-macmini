@@ -1,11 +1,3 @@
-b in nmap
-#1638656869
-hf brew
-#1638656893
-b l thunderbird
-#1638656904
-b list thunderbird
-#1638656917
 b list firefox
 #1638656933
 echo $?
