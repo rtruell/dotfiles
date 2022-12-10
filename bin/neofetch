@@ -3800,8 +3800,8 @@ get_local_ip() {
             ethernet_device_length="${#ethernet_device}"
             wifi_device=$(awk '/ Wi-Fi/{getline; print $2}' <<< "${device_status}")
             wifi_device_length="${#wifi_device}"
-            ethernet_device_addresses=$(ip a show "${ethernet_device}")
-            wifi_device_addresses=$(ip a show "${wifi_device}")
+            ethernet_device_addresses=$(macosip a show "${ethernet_device}")
+            wifi_device_addresses=$(macosip a show "${wifi_device}")
             if [ "${ethernet_device_length}" -gt "${wifi_device_length}" ]; then device_name_length="${ethernet_device_length}"; else device_name_length="${wifi_device_length}"; fi
             if [[ -n "${ethernet_device_addresses}" ]]; then
               ethernet_ipv4=$(grep "inet " <<< "${ethernet_device_addresses}" | sed -e 's,^.*inet ,,' | cut -d '/' -f 1)
