@@ -1,17 +1,3 @@
-echo $?
-#1638686412
-bashman tests
-#1638689077
-dotfiles
-#1638689105
-findtext -i export
-#1638689293
-up
-#1638690305
-b --prefix
-#1638690324
-set | grep -i /usr/local
-#1638690352
 alias path
 #1638690361
 path
@@ -19845,3 +19831,11 @@ dotfiles
 findtext mkdir
 #1670710958
 home
+#1670715671
+softwareupdate -l
+#1670715766
+cd /Volumes/ExternalTemp
+#1670715792
+softwareupdate --fetch-full-installer --full-installer-version 12.6.1
+#1670716034
+softwareupdate --list-full-installers
