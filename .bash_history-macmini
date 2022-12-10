@@ -1,9 +1,3 @@
-b list firefox
-#1638656933
-echo $?
-#1638656938
-b list thunderbird
-#1638656941
 echo $?
 #1638686412
 bashman tests
@@ -19837,3 +19831,17 @@ ip
 macosip
 #1670709931
 macosip a
+#1670710280
+ip
+#1670710286
+ip a
+#1670710293
+newfetch
+#1670710299
+neofetch
+#1670710312
+dotfiles
+#1670710325
+findtext mkdir
+#1670710958
+home
