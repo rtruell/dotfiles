@@ -28,8 +28,11 @@ function ls {
   fi
   if [[ -n "${message}" ]]; then printf '%s\n' "${message}"; fi
   set -- "${directory}"
-  # we have to use 'command' to run 'ls' otherwise we get an infinite loop of the function calling itself.  '-F' puts type indicators after
-  # directory/file names, 'h' displays sizes in human-readable form (K, M, G), and the other options are pretty obvious.  note that any aliases
-  # for other variants of 'ls' also use these options, since 'ls' in now only being run through this function.
+  # we have to use 'command' to run 'ls' otherwise we get an infinite loop of
+  # the function calling itself.  '-F' puts type indicators after directory/
+  # file names, 'h' displays sizes in human-readable form (K, M, G), and the
+  # other options are pretty obvious.  note that any aliases for other variants
+  # of 'ls' also use these options, since 'ls' in now only being run through
+  # this function.
   command ls ${moreoptions} -Fh --group-directories-first --color=auto "${@}"
 }
