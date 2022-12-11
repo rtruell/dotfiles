@@ -377,7 +377,7 @@ if [[ "${retcode}" == 0 ]]; then
       # on the NAS, with 'programdir' set to the directory they're located in
       i=""
       programdir="/Volumes/data/Downloads/Mac/InUse/Installed/Automated"  # the directory containing the program files to be copied
-      extractdir="/Volumes/Temp/Installers"  # the directory the program files get copied to so the programs can be extracted
+      extractdir="/tmp/Installers"  # the directory the program files get copied to so the programs can be extracted
       appdir="${HOME}/Applications"  # the directory the extracted programs get copied/installed to
       [[ -d "${extractdir}" ]]  # check to see if 'extractdir' exists
       retcode="${?}"
