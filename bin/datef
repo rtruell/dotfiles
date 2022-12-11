@@ -20,7 +20,8 @@ declare -a usage=(
   "  2ymd: year-month-day (2 digit year)"
   "    4y: year (yyyy)"
   "  4ymd: year-month-day (4 digit year)"
-  "  apmu: AM or PM (noon is PM, midnight is AM) (doesn't seem to work on Yosemite, gives same result as apml)"
+  "  apmu: AM or PM (noon is PM, midnight is AM) (doesn't seem to work on macOS"
+  "        Yosemite; gives same result as apml)"
   "  apml: am or pm (noon is pm, midnight is am)"
   "   dom: day of the month (01..31)"
   "   dow: day of the week (1..7, Mon is 1)"
@@ -36,39 +37,44 @@ declare -a usage=(
   "  smon: short month (Jan, Feb)"
   "    tz: timezone name or abbreviation (CST, MDT)"
   "   tzo: +hhmm/-hhmm (hour and minute offset from UTC)"
-  "   woy: ISO 8601 week of year (01..53, week 01 is the first week of the year having at least 4 days)"
+  "   woy: ISO 8601 week of year (01..53, week 01 is the first week of the year"
+  "        having at least 4 days)"
   " "
   "Anything other than these options is passed through to the 'date'"
-  "command unchanged.  If no option is supplied, the date and time as returned"
-  "by 'date' is returned."
+  "command unchanged.  If no option is supplied, the date and time is returned"
+  "in the format 'Saturday, January 01, 2022 @ 14:01:01'."
   " "
 )
-case "${1}" in
-     -h) printf '%s\n' "${usage[@]}";;  # print the usage message
-    12h) date "+%I";;                   # hour (01..12)
-  12hms) date "+%I:%M:%S";;             # hour:minute:second (12 hour)
-    24h) date "+%H";;                   # hour (00..23)
-  24hms) date "+%H:%M:%S";;             # hour:minute:second (24 hour)
-     2y) date "+%y";;                   # year (00..99)
-   2ymd) date "+%y-%m-%d";;             # year-month-day (2 digit year)
-     4y) date "+%Y";;                   # year (yyyy)
-   4ymd) date "+%Y-%m-%d";;             # year-month-day (4 digit year)
-   apmu) date "+%p";;                   # AM or PM (noon is PM, midnight is AM) (doesn't seem to work on Yosemite, gives same result as apml)
-   apml) date "+%P";;                   # am or pm (noon is pm, midnight is am)
-    dom) date "+%d";;                   # day of the month (01..31)
-    dow) date "+%u";;                   # day of the week (1..7, Mon is 1)
-    doy) date "+%j";;                   # day of year (001..366)
-  epoch) date "+%s";;                   # number of seconds since the Epoch, 1970-01-01 00:00:00 +0000 (UTC)
-    iso) date "+%Y%m%dT%H%M%S";;        # ISO 8601 format, ie 20200705T142254
-   ldow) date "+%A";;                   # day of the week (Monday, Tuesday)
-   lmon) date "+%B";;                   # month (January, February)
-    min) date "+%M";;                   # minute (00..59)
-    mon) date "+%m";;                   # month (01..12)
-   sdow) date "+%a";;                   # day of the week (Mon, Tue)
-    sec) date "+%S";;                   # second (00..60)
-   smon) date "+%b";;                   # month (Jan, Feb)
-     tz) date "+%Z";;                   # timezone name or abbreviation (CST, MDT)
-    tzo) date "+%z";;                   # +hhmm/-hhmm (hour and minute offset from UTC)
-    woy) date "+%V";;                   # ISO 8601 week of year (01..53, week 01 is the first week of the year having at least 4 days)
-      *) date "$@";;                    # pretend we're 'date'
-esac
+if [[ -z "${1}" ]]; then
+  date '+%A, %B %d, %Y @ %T'
+else
+  case "${1}" in
+       -h) printf '%s\n' "${usage[@]}";;  # print the usage message
+      12h) date '+%I';;                   # hour (01..12)
+    12hms) date '+%I:%M:%S';;             # hour:minute:second (12 hour)
+      24h) date '+%H';;                   # hour (00..23)
+    24hms) date '+%H:%M:%S';;             # hour:minute:second (24 hour)
+       2y) date '+%y';;                   # year (00..99)
+     2ymd) date '+%y-%m-%d';;             # year-month-day (2 digit year)
+       4y) date '+%Y';;                   # year (yyyy)
+     4ymd) date '+%Y-%m-%d';;             # year-month-day (4 digit year)
+     apmu) date '+%p';;                   # AM or PM (noon is PM, midnight is AM) (doesn't seem to work on Yosemite, gives same result as apml)
+     apml) date '+%P';;                   # am or pm (noon is pm, midnight is am)
+      dom) date '+%d';;                   # day of the month (01..31)
+      dow) date '+%u';;                   # day of the week (1..7, Mon is 1)
+      doy) date '+%j';;                   # day of year (001..366)
+    epoch) date '+%s';;                   # number of seconds since the Epoch, 1970-01-01 00:00:00 +0000 (UTC)
+      iso) date '+%Y%m%dT%H%M%S';;        # ISO 8601 format, ie 20200705T142254
+     ldow) date '+%A';;                   # day of the week (Monday, Tuesday)
+     lmon) date '+%B';;                   # month (January, February)
+      min) date '+%M';;                   # minute (00..59)
+      mon) date '+%m';;                   # month (01..12)
+     sdow) date '+%a';;                   # day of the week (Mon, Tue)
+      sec) date '+%S';;                   # second (00..60)
+     smon) date '+%b';;                   # month (Jan, Feb)
+       tz) date '+%Z';;                   # timezone name or abbreviation (CST, MDT)
+      tzo) date '+%z';;                   # +hhmm/-hhmm (hour and minute offset from UTC)
+      woy) date '+%V';;                   # ISO 8601 week of year (01..53, week 01 is the first week of the year having at least 4 days)
+        *) date "$@";;                    # pretend we're 'date'
+  esac
+fi
