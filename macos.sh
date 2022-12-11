@@ -81,6 +81,7 @@ fi
 # minimal macOS installation requirements for 'Homebrew' keep changing, so check
 # to see if this system can run it...if so, install it.
 if [[ "${SYSTEM_VERSION%%.*}" -ge "11" ]]; then
+  print_result "${?}" "This version of macOS can run Homebrew...installing"
   # temporarily export some environment variables for Homebrew.  this is done
   # permanently in the 'exports' dotfile
   export HOMEBREW_CASK_OPTS="--appdir="${HOME}"/Applications"  # keep Casks separate from the programs installed by macOS
@@ -123,6 +124,8 @@ if [[ "${SYSTEM_VERSION%%.*}" -ge "11" ]]; then
   else
    print_result "${?}" "bash not installed properly by Homebrew"
   fi
+else
+  print_result "${?}" "This version of macOS is too old to run Homebrew...skipping"
 fi
 
 # set up the default system settings
