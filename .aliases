@@ -9,6 +9,7 @@ alias blog="cd /Volumes/ExternalHome/rtruell/hugo"  # quickly get to my blog dir
 alias cls="clear"  # MS-DOS clear screen command
 alias clc="fc -ln -1 | tr -d '\t' | sed 's/ //' | putclip"  # based on http://apple.stackexchange.com/questions/110343/copy-last-command-in-terminal
 alias cp="cp -i"  # copy in interactive mode, requiring confirmation for each file
+alias date="datef"
 alias df="df -h"  # display sizes in human-readable form (K, M, G)
 alias dotfiles="cd ${DOTFILES}; ls"  # quickly get to, and list, the dotfiles directory
 alias du="du -h"  # display sizes in human-readable form (K, M, G)
