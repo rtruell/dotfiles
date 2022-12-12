@@ -1,29 +1,3 @@
-whereis brew
-#1638694109
-which brew
-#1638694230
-echo $HOMEBREW_CELLAR
-#1638694246
-echo $HOMEBREW_SHELLENV_PREFIX
-#1638694258
-echo $MANPATH
-#1638694398
-brew shellenv | xargs echo setting
-#1638694456
-man eval
-#1638694464
-bashman eval
-#1638694512
-brew shellenv | xargs eval
-#1638694542
-echo $HOMEBREW_SHELLENV_PREFIX
-#1638694571
-brew shellenv | xargs
-#1638694586
-brew shellenv | xargs printf "%s\n"
-#1638694624
-brew shellenv | xargs printf "%s%s\n"
-#1638694634
 brew shellenv | xargs printf "%s %s\n"
 #1638694648
 brew shellenv | xargs printf "%s %s\n" | eval
@@ -19855,3 +19829,7 @@ if [[ "${version}" -ge "11.0.0" ]]; then echo can; else echo cannot; fi
 version=10.14.6
 #1670802236
 if [[ "${version}" -ge "11.0.0" ]]; then echo can; else echo cannot; fi
+#1670880648
+dotfiles
+#1670881249
+man grep
