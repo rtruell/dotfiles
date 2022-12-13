@@ -6,7 +6,7 @@ function sysinfo {
   printf '\n%b' "${DULL_PURPLE}You are logged on:${NORMAL} ${HOSTNAME}, which is running ${RELEASE_NAME} (${type} ${SYSTEM_VERSION})"
   printf '\n\n%b' "${DULL_PURPLE}System information:${NORMAL} " ; uname -a
   printf '\n%b\n' "${DULL_PURPLE}Users logged on:${NORMAL} " ; w -h | grep -v "w -h" | grep -v "grep"
-  printf '\n%b' "${DULL_PURPLE}Current date:${NORMAL} " ; date
+  printf '\n%b' "${DULL_PURPLE}Current date:${NORMAL} " ; datef
   printf '\n%b' "${DULL_PURPLE}Uptime:${NORMAL}" ; uptime | tr -s " "
   printf '\n%b' "${DULL_PURPLE}Public IP Address:${NORMAL} " ; externalip
   printf '\n%b' "${DULL_PURPLE}Local IP Address:${NORMAL} " ; localip

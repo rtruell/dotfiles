@@ -1,2 +1,2 @@
 # gets and displays the local IP address
-function localip { ip a | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//' | cut -d/ -f1; }
+function localip { macosip a | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//' | cut -d/ -f1; }
