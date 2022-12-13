@@ -22,15 +22,41 @@ osascript -e 'tell application "System Preferences" to quit'
 ###############################################################################
 
 # Set computer name, as done via "System Preferences -> Sharing" and "System
-# Preferences -> Network".
-case "${computername}" in
-  macmini)
-           sudo scutil --set ComputerName "Ricks Mac mini"
-           sudo scutil --set HostName "macmini"
-           sudo scutil --set LocalHostName "macmini"
-           sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "macmini"
-           ;;
-esac
+# Preferences -> Network"
+
+# I sometimes install a release of macOS in a Virtual Machine, so check to see
+# if that's the case now
+if [[ $(ioreg -l | grep -e Manufacturer -e 'Vendor Name' | grep -e Virtual -e Oracle -e VMware -e Parallels) ]]; then
+  # it is, so create the various name strings based on the name of this release
+  # of macOS
+  source ./.systeminfo  # get the release name (and lots of unneeded stuff as well, but this is the easiest way to get the release name)
+  orn="${RELEASE_NAME// /}"  # remove any spaces in the release name
+  SystemComputerName="${orn}VM"  # create the various name strings
+  SystemHostName="${orn}VM"
+  SystemLocalHostName="${orn}VM"
+  SystemNetBIOSName="${orn}VM"
+else
+  # it isn't, and since I might have multiple physical Macs, create the various
+  # name strings based on the hostname of the machine
+  case "${computername}" in
+    macmini)
+      SystemComputerName="Ricks Mac mini"
+      SystemHostName="macmini"
+      SystemLocalHostName="macmini"
+      SystemNetBIOSName="macmini"
+      ;;
+    *)
+      SystemComputerName="default"
+      SystemHostName="default"
+      SystemLocalHostName="default"
+      SystemNetBIOSName="default"
+      ;;
+  esac
+fi
+sudo scutil --set ComputerName "${SystemComputerName}"
+sudo scutil --set HostName "${SystemHostName}"
+sudo scutil --set LocalHostName "${SystemLocalHostName}"
+sudo defaults write /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName -string "${SystemNetBIOSName}"
 
 # Set the timezone; see `systemsetup -listtimezones` for other values
 sudo systemsetup -settimezone "America/Edmonton" > /dev/null
