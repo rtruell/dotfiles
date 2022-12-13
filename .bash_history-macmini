@@ -19919,3 +19919,29 @@ home
 sysinfo
 #1670887562
 systeminfo
+#1670889791
+RELEASE_NAME="Big Sir"
+#1670889836
+echo ${RELEASE_NAME}
+#1670889842
+SystemComputerName="${RELEASE_NAME}VM"
+#1670889856
+echo ${SystemComputerName}
+#1670889872
+SystemComputerName="${RELEASE_NAME// /}VM"
+#1670889875
+echo ${SystemComputerName}
+#1670889918
+RELEASE_NAME="This Is A Test"
+#1670889924
+echo ${RELEASE_NAME}
+#1670889929
+SystemComputerName="${RELEASE_NAME// /}VM"
+#1670889934
+echo ${SystemComputerName}
+#1670892523
+ioreg -l | grep -e Manufacturer -e 'Vendor Name' | grep -e Virtual -e Oracle -e VMware -e Parallels
+#1670892536
+ioreg -l | grep -e Manufacturer -e 'Vendor Name'
+#1670892544
+ioreg -l | grep -e Manufacturer
