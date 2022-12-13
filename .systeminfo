@@ -1,0 +1,83 @@
+#!/usr/bin/env bash
+
+# detect the os
+if [[ -n ${OSTYPE} ]]; then
+  case "${OSTYPE}" in
+     darwin*) SYSTEM_TYPE="macOS" ;;
+    solaris*) SYSTEM_TYPE="Solaris" ;;
+      linux*) SYSTEM_TYPE="Linux" ;;
+        bsd*) SYSTEM_TYPE="BSD" ;;
+       msys*) SYSTEM_TYPE="MinGW" ;;
+     cygwin*) SYSTEM_TYPE="Cygwin" ;;
+           *) SYSTEM_TYPE="Unknown" ;;
+  esac
+else
+  PLATFORM="$(uname)"
+  case "${PLATFORM,,}" in
+     darwin*) SYSTEM_TYPE="macOS" ;;
+      sunos*) SYSTEM_TYPE="Solaris" ;;
+      linux*) SYSTEM_TYPE="Linux" ;;
+    freebsd*) SYSTEM_TYPE="FreeBSD" ;;
+     netbsd*) SYSTEM_TYPE="Net_BSD" ;;
+    openbsd*) SYSTEM_TYPE="Open_BSD" ;;
+       msys*) SYSTEM_TYPE="MinGW" ;;
+      mingw*) SYSTEM_TYPE="MinGW" ;;
+     cygwin*) SYSTEM_TYPE="Cygwin" ;;
+           *) SYSTEM_TYPE="Unknown" ;;
+  esac
+fi
+if [[ -s /proc/version ]]; then
+  if [[ -n "$(cat /proc/version | grep '(Microsoft@Microsoft.com)')" ]]; then SYSTEM_TYPE="Win10_Linux"; fi
+fi
+export SYSTEM_TYPE
+
+# find os version
+if [ "${SYSTEM_TYPE}" == "macOS" ]; then
+  SYSTEM_VERSION="$(sw_vers -productVersion)"
+elif [ -e "/etc/os-release" ]; then
+  SYSTEM_VERSION=$(cat /etc/os-release | grep -i "version=" | cut -d'"' -f2 | cut -d'(' -f1)
+fi
+SYSTEM_VERSION=$(trim "${SYSTEM_VERSION}")
+export SYSTEM_VERSION
+
+# find os release name
+if [ "${SYSTEM_TYPE}" == "macOS" ]; then
+  case "${SYSTEM_VERSION}" in
+       13*) RELEASE_NAME="Ventura" ;;
+       12*) RELEASE_NAME="Monterey" ;;
+       11*) RELEASE_NAME="Big Sur" ;;
+    10.15*) RELEASE_NAME="Catalina" ;;
+    10.14*) RELEASE_NAME="Mojave" ;;
+    10.13*) RELEASE_NAME="High Sierra" ;;
+    10.12*) RELEASE_NAME="Sierra" ;;
+    10.11*) RELEASE_NAME="El Capitan" ;;
+    10.10*) RELEASE_NAME="Yosemite" ;;
+     10.9*) RELEASE_NAME="Mavericks" ;;
+     10.8*) RELEASE_NAME="Mountain Lion" ;;
+     10.7*) RELEASE_NAME="Lion" ;;
+     10.6*) RELEASE_NAME="Snow Leopard" ;;
+     10.5*) RELEASE_NAME="Leopard" ;;
+     10.4*) RELEASE_NAME="Tiger" ;;
+     10.3*) RELEASE_NAME="Panther" ;;
+     10.2*) RELEASE_NAME="Jaguar" ;;
+     10.1*) RELEASE_NAME="Puma" ;;
+     10.0*) RELEASE_NAME="Cheetah" ;;
+         *) RELEASE_NAME="Unknown" ;;
+  esac
+else
+  RELEASE_NAME=$(cat /etc/os-release | grep -i "version=" | cut -d'"' -f2 | cut -d'(' -f2 | cut -d ')' -f1)
+fi
+export RELEASE_NAME
+
+# find distro name
+if [ "${SYSTEM_TYPE}" != "macOS" ]; then DISTRO_NAME=$(lsb_release -is); fi
+export DISTRO_NAME
+
+# find out how software is installed
+if which brew >/dev/null 2>&1; then
+  INSTALL_TYPE="BREW"
+fi
+if which apt-get >/dev/null 2>&1; then
+  INSTALL_TYPE="APT"
+fi
+export INSTALL_TYPE
