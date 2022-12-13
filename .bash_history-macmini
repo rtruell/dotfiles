@@ -1,5 +1,3 @@
-brew shellenv | xargs printf "%s %s\n"
-#1638694648
 brew shellenv | xargs printf "%s %s\n" | eval
 #1638695906
 brew shellenv
@@ -19833,3 +19831,91 @@ if [[ "${version}" -ge "11.0.0" ]]; then echo can; else echo cannot; fi
 dotfiles
 #1670881249
 man grep
+#1670881362
+kextstat
+#1670881430
+kextstat | grep -F -e "FakeSMC" -e "VirtualSMC"
+#1670881467
+sysctl -n hw.model
+#1670881476
+sysctl
+#1670881485
+man sysctl
+#1670881502
+sysctl -a
+#1670881558
+sysctl -a | less
+#1670880667
+findtext -i virtual
+#1670881907
+man ioreg
+#1670881927
+ioreg -l
+#1670881944
+ioreg -l | grep -e Manufacturer -e 'Vendor Name'
+#1670882417
+echo $OSTYPE
+#1670883374
+ioreg -l | grep -e Manufacturer
+#1670883399
+ioreg -l | grep -e Manufacturer -e 'Vendor Name'
+#1670883737
+hostname -s
+#1670883845
+ioreg -l | grep -e Manufacturer -e 'Vendor Name' | grep -e Virtual -e Oracle -e VMware -e Parallels 
+#1670883853
+home
+#1670884757
+ioreg -l | grep -e Manufacturer -e 'Vendor Name' | grep -e Virtual -e Oracle -e VMware -e Parallels
+#1670884863
+if $(ioreg -l | grep -e Manufacturer -e 'Vendor Name' | grep -e Virtual -e Oracle -e VMware -e Parallels); then echo virtual; else echo physical; fi
+#1670884907
+if $(ioreg -l | grep -e Manufacturer -e 'Vendor Name' | grep -e Virtual -e Oracle -e VMware -e Parallels -e Apple); then echo virtual; else echo physical; fi
+#1670884957
+if $(ioreg -l | grep -e Manufacturer -e 'Vendor Name' | grep -e Virtual -e Oracle -e VMware -e Parallels); then echo virtual; else echo physical; fi
+#1670884978
+if $(ioreg -l | grep -e Manufacturer -e 'Vendor Name' | grep -e Virtual -e Oracle -e VMware -e Parallels -e Apple); then echo virtual; else echo physical; fi
+#1670885016
+if [[ $(ioreg -l | grep -e Manufacturer -e 'Vendor Name' | grep -e Virtual -e Oracle -e VMware -e Parallels -e Apple) ]]; then echo virtual; else echo physical; fi
+#1670885057
+if [[ $(ioreg -l | grep -e Manufacturer -e 'Vendor Name' | grep -e Virtual -e Oracle -e VMware -e Parallels) ]]; then echo virtual; else echo physical; fi
+#1670885164
+dotfiles
+#1670885173
+findtext -i machinetype
+#1670885219
+inxi
+#1670885280
+sudo inxi
+#1670885297
+inxi -M
+#1670885775
+if [[ $(ioreg -l | grep -e Manufacturer -e 'Vendor Name' | grep -e Virtual -e Oracle -e VMware -e Parallels) ]]; then echo virtual; else echo physical; fi
+#1670887048
+osinfo
+#1670887060
+type osinfo
+#1670887109
+sysinfo
+#1670887117
+osinfo
+#1670887387
+ip a | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//' | cut -d/ -f1
+#1670887400
+macOSip a | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//' | cut -d/ -f1
+#1670887414
+sysinfo
+#1670887471
+s .functions/sysinfo.function
+#1670887479
+s .functions/localip.function
+#1670887483
+sysinfo
+#1670887513
+hoem
+#1670887515
+home
+#1670887555
+sysinfo
+#1670887562
+systeminfo
