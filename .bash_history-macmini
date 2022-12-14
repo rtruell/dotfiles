@@ -1,13 +1,3 @@
-findshow 'toy story'
-#1639114302
-b upd
-#1639114400
-b i hugo
-#1639114419
-hugo --version
-#1639114448
-hugo version
-#1639114462
 b i hugo
 #1639114510
 b i hugo | grep hugo:
@@ -19841,3 +19831,7 @@ lal
 ln -s dotfiles/.systeminfo .
 #1670979057
 la
+#1670979114
+xcode-select --print-path
+#1670997959
+man open
