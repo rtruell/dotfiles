@@ -128,7 +128,7 @@ if [[ "${retcode}" == 0 ]]; then
 
   # make it so the user can use 'sudo', and without having to type a password
   if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
-    sudo source ./sudo.sh
+    sudo -s source ./sudo.sh
     retcode="${?}"
   else
     su -c 'source ./sudo.sh'
