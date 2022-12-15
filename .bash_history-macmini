@@ -1,7 +1,3 @@
-b i hugo
-#1639114510
-b i hugo | grep hugo:
-#1639114538
 b i hugo | grep hugo: | cut -d' ' -f 3
 #1639114829
 b i hugo | grep hugo: | cut -d' ' -f 3 | cut -d',' -f1
