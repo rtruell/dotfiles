@@ -30,7 +30,7 @@ else
   print_result "${?}" "Created '/etc/sudoers.d/${username}'"
   chmod 440 /etc/sudoers.d/${username}  # and change its permissions
   print_result "${?}" "Changed permissions for '/etc/sudoers.d/${username}'"
-  if [[ $(grep -i 'includedir /etc/sudoers.d' /etc/sudoers) ]]; then  # check to see if '/etc/sudoers.d' already gets included by '/etc/sudoers'
+  if [[ $(grep -i 'includedir.*sudoers.d' /etc/sudoers) ]]; then  # check to see if '/etc/sudoers.d' already gets included by '/etc/sudoers'
     print_result "${?}" "'/etc/sudoers.d' already included by '/etc/sudoers'"
   else
     printf "\n%s\n" "#includedir /etc/sudoers.d" >>/etc/sudoers  # it doesn't, so add an 'includedir' directive to the end of '/etc/sudoers'
