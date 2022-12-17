@@ -1,5 +1,3 @@
-b i hugo | grep hugo: | cut -d' ' -f 3
-#1639114829
 b i hugo | grep hugo: | cut -d' ' -f 3 | cut -d',' -f1
 #1639186387
 volnorm
@@ -19833,3 +19831,73 @@ xcode-select --print-path
 man open
 #1671256720
 pv
+#1671257029
+cp --version
+#1671257039
+man c
+#1671257042
+man cp
+#1671257589
+pgrep -xn cp
+#1671257598
+ps aux
+#1671257657
+pgrep -xn login
+#1671257754
+ls /proc
+#1671257760
+sudo ls /proc
+#1671257829
+man cp
+#1671258062
+man ps
+#1671258271
+ps -Flww -p 500
+#1671258287
+man ps
+#1671258332
+ps -l -p 500
+#1671258350
+pgrep -xn login
+#1671258356
+ps -l -p 450
+#1671258368
+man ps
+#1671258383
+ps -l -p 450
+#1671258388
+ps -p 450
+#1671258426
+ps aux
+#1671258550
+ls /proc
+#1671258822
+bc
+#1671258838
+bc --version
+#1671259221
+ls /Volumes/data/Downloads/Mac/InUse/Installed/Manual/
+#1671259332
+stat -c%s "/Volumes/data/Downloads/Mac/InUse/Installed/Manual/Command_Line_Tools_for_Xcode_11.3.1 (macOS 10.14).dmg"
+#1671259340
+ll /Volumes/data/Downloads/Mac/InUse/Installed/Manual/
+#1671259389
+stat --version
+#1671259442
+echo --version
+#1671259451
+man echo
+#1671259494
+ttype echo
+#1671259502
+bashman echo
+#1671259516
+ttype man
+#1671259522
+lf man
+#1671260345
+stat -c%s "/Volumes/data/Downloads/Mac/InUse/Installed/Manual/Command_Line_Tools_for_Xcode_11.3.1 (macOS 10.14).dmg"
+#1671260349
+stat -Lc%s "/Volumes/data/Downloads/Mac/InUse/Installed/Manual/Command_Line_Tools_for_Xcode_11.3.1 (macOS 10.14).dmg"
+#1671260357
+man stat
