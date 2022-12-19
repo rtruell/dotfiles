@@ -1,73 +1,3 @@
-b i hugo | grep hugo: | cut -d' ' -f 3 | cut -d',' -f1
-#1639186387
-volnorm
-#1639241328
-/Volumes/Recordings/xmltv/.xmltv/sortconf.sh; exit
-#1639244469
-findshow 'space jam'
-#1639576143
-man ln
-#1639576274
-ll /
-#1639576326
-ls -s /Volumes/ExternalHome /
-#1639576337
-ll /
-#1639576365
-ls 
-#1639576414
-ls /
-#1639576443
-ls -s /Volumes/ExternalHome /Volumes/testmount
-#1639576460
-ls /Volumes/
-#1639576605
-ls movies
-#1639576630
-ls ./Movies
-#1639576649
-ln -s ./Movies /Volumes/testmount
-#1639576681
-echo $?
-#1639576689
-ls /Volumes/
-#1639576763
-ls /Volumes/testmount
-#1639576769
-ls /Volumes/testmount/
-#1639576789
-ll /Volumes/
-#1639576831
-ls /Volumes/testmount/
-#1639576857
-ls ./Movies/
-#1639576885
-ls /Volumes/testmount/X-M
-#1639576918
-ls /Vol
-#1639576921
-ls /Volumes/
-#1639576939
-rm /Volumes/testmount 
-#1639576954
-ls ./Movies/
-#1639577165
-cat /etc/fstab
-#1639577216
-listfunction link_single_file
-#1639577230
-listfunction symlink_single_file
-#1639577567
-ls /Volumes/
-#1639577585
-pwd
-#1639577608
-ln -s /Users/rtruell/Movies /Volumes/testpoint
-#1639577616
-echo $?
-#1639577624
-ls /Volumes/
-#1639577630
 ls /Volumes/testpoint/
 #1639577709
 ll /Volumes/
@@ -19901,3 +19831,37 @@ stat -c%s "/Volumes/data/Downloads/Mac/InUse/Installed/Manual/Command_Line_Tools
 stat -Lc%s "/Volumes/data/Downloads/Mac/InUse/Installed/Manual/Command_Line_Tools_for_Xcode_11.3.1 (macOS 10.14).dmg"
 #1671260357
 man stat
+#1671406195
+echo $COLUMNS
+#1671406481
+progressbar
+#1671406514
+man read
+#1671406579
+progressbar
+#1671423639
+ls /proc
+#1671423641
+ls /dev
+#1671423652
+ls /dev/fd
+#1671423756
+ls /dev/fd/0
+#1671423769
+ll /dev/fd
+#1671423778
+ll /dev/fd3
+#1671423786
+ll /dev/fd/3
+#1671423802
+sudo ll /dev/fd/3
+#1671424080
+ps aux
+#1671424153
+lsof -p 41
+#1671424179
+lsof -p 436
+#1671424186
+man lsof
+#1671425097
+man sysctl
