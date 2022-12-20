@@ -1,87 +1,3 @@
-findshow 'black-ish'
-#1640725219
-findshow 'league'
-#1640812058
-sysinfo
-#1640907438
-ifconfig
-#1640908737
-findtext -i babylon
-#1640982519
-sysinfo
-#1640982546
-ping www.google.com
-#1640982573
-ping ipecho.net
-#1640982578
-sysinfo
-#1640983223
-ping www.google.com
-#1640983250
-ping duckduckgo.com
-#1640983313
-ping schedulesdirect.com
-#1640983513
-ping duckduckgo.com
-#1640985404
-pwd
-#1640985412
-cd /Volumes/data
-#1640985444
-ls ..
-#1640985449
-ls ../Downloads
-#1640985460
-ls ../data
-#1640985464
-ls ../data-1
-#1640985473
-hoem
-#1640985474
-home
-#1640985484
-ls /Volumes/
-#1640985574
-sudo umount data
-#1640985582
-sudo umount data-1
-#1640985616
-fdisk
-#1640985643
-ls /Volumes/
-#1640985657
-rm /Volumes/data
-#1640985663
-rmdir /Volumes/data
-#1640985668
-ls /Volumes/
-#1640985768
-rmdir /Volumes/data-1
-#1640985781
-diskutil list
-#1640985829
-mount
-#1640985854
-sudo umount /Volumes/data-1
-#1640985878
-sudo diskutil umount /Volumes/data-1
-#1640987137
-b s xmltv
-#1640987632
-cd /Volumes/ExternalHome/rtruell/XMLTV/
-#1640987643
-ls ./bin
-#1640987674
-./bin/tv_grab_na_dd
-#1640987711
-less ./bin/tv_grab_na_dd
-#1640987738
-./bin/tv_grab_na_dd --version
-#1640987767
-subl ./bin/tv_grab_na_dd
-#1640993554
-ls /Volumes
-#1640996651
 findshow 'batman'
 #1641010296
 diskutil list
@@ -19915,3 +19831,29 @@ printf '%b\n\n' "Your home directory is ${ESC}[${BRIGHT};${FG_RED}m\"${HOME}\"${
 printf '%b\n\n' "Your home directory is ${ESC}[${UNDERLINE};${FG_RED}m\"${HOME}\"${NORMAL}."
 #1671572068
 EXIT
+#1671572111
+printf '%b\n\n' "Your home directory is ${ESC}[${DULL};${FG_RED}m\"${HOME}\"${NORMAL}."
+#1671572119
+printf '%b\n\n' "Your home directory is ${ESC}[${BRIGHT};${FG_RED}m\"${HOME}\"${NORMAL}."
+#1671572131
+printf '%b\n\n' "Your home directory is ${ESC}[${DIM};${FG_RED}m\"${HOME}\"${NORMAL}."
+#1671572182
+printf '%b\n\n' "Your home directory is ${ESC}[${UNDERLINE};${FG_RED}m\"${HOME}\"${NORMAL}."
+#1671572260
+printf '%b\n\n' "Your home directory is ${ESC}[${BLINK};${FG_RED}m\"${HOME}\"${NORMAL}."
+#1671572287
+printf '%b\n\n' "Your home directory is ${ESC}[${REVERSE};${FG_RED}m\"${HOME}\"${NORMAL}."
+#1671572305
+printf '%b\n\n' "Your home directory is ${ESC}[${DULL};${FG_RED}m\"${HOME}\"${NORMAL}."
+#1671572325
+printf '%b\n\n' "Your home directory is ${ESC}[${HIDDEN};${FG_RED}m\"${HOME}\"${NORMAL}."
+#1671572613
+printf '%b\n\n' "${RESET}This is a test."
+#1671572653
+printf '%b\n\n' "Your home directory is ${ESC}[${RESET}m\"${HOME}\"${NORMAL}."
+#1671572799
+printf '%b\n\n' "${ESC}[${BRIGHT};${FG_RED}mYour home directory is${RESET} \"${HOME}\"${NORMAL}."
+#1671572841
+printf '%b\n\n' "${ESC}[${BRIGHT};${FG_RED}mYour home directory is${NORMAL} \"${HOME}\"."
+#1671572905
+printf '%b\n\n' "${ESC}[${BRIGHT};${FG_RED}mYour home directory is${RESET} \"${HOME}\"."
