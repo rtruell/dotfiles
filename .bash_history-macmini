@@ -1,93 +1,3 @@
-chown rtruell:staff /Volumes/testpoint
-#1639578567
-ll /Volumes/
-#1639578597
-chown rtruell:staff /Volumes/testpoint
-#1639578601
-echo $?
-#1639578605
-ll /Volumes/
-#1639578662
-ls /Volumes/testpoint/
-#1639578677
-rm /Volumes/testpoint
-#1639578704
-mkdir /Volumes/testpoint
-#1639578710
-ll /Volumes/
-#1639578750
-chown rtruell:staff /Volumes/testpoint
-#1639578752
-ll /Volumes/
-#1639578806
-chmod 775 /Volumes/testpoint
-#1639578808
-ll /Volumes/
-#1639578892
-rmdir /Volumes/testpoint
-#1639578897
-ll /Volumes/
-#1639588550
-b upd
-#1639588717
-b i imazing
-#1639588735
-b upd imazing
-#1639847197
-findshow 'harry potter'
-#1640382005
-findshow 'prep and landing'
-#1640382021
-findshow 'prep & landing'
-#1640382143
-findshow 'shrek'
-#1640455224
-findshow 'blackish'
-#1640455264
-findshow 'black-ish'
-#1640455445
-findshow 'how the grinch'
-#1640455468
-findshow 'grinch'
-#1640455589
-findshow 'zach'
-#1640455602
-findshow 'zack'
-#1640455674
-findshow 'suicide'
-#1640455731
-findshow 'friends'
-#1640456014
-findshow 'industry'
-#1640476287
-b s moneydance
-#1640476301
-b i moneydance
-#1640558147
-b s chrome
-#1640558176
-b i google-chrome
-#1640558188
-b h google-chrome
-#1640558253
-b in google-chrome
-#1640560508
-info
-#1640560522
-sysinfo
-#1640561092
-sudo less /etc/services
-#1640562540
-sysinfo
-#1640570297
-b upd
-#1640572228
-up
-#1640637877
-findshow 'grinch'
-#1640724621
-findshow 'blackish'
-#1640724641
 findshow 'black-ish'
 #1640725219
 findshow 'league'
@@ -19921,3 +19831,87 @@ ll
 mv test.txt test1024mb.txt
 #1671513744
 scriptstart=$(elapsed);progresscp test1024mb.txt test1.txt;printf '%s\n' "Script elapsed time: $(elapsed ${scriptstart})."
+#1671566298
+cd /Volumes/Temp/
+#1671566300
+ll
+#1671566310
+rm test1.txt
+#1671566352
+scriptstart=$(elapsed);progresscp test1024mb.txt /dev/null;printf '%s\n' "Script elapsed time: $(elapsed ${scriptstart})."
+#1671566367
+scriptstart=$(elapsed);progresscp test1024mb.txt test1.txt;printf '%s\n' "Script elapsed time: $(elapsed ${scriptstart})."
+#1671567191
+rm test1.txt
+#1671567197
+scriptstart=$(elapsed);progresscp test1024mb.txt test1.txt;printf '%s\n' "Script elapsed time: $(elapsed ${scriptstart})."
+#1671567500
+echo (( 7 % 60))
+#1671567507
+echo $(( 7 % 60))
+#1671567559
+rm test1.txt
+#1671567572
+scriptstart=$(elapsed);progresscp test1024mb.txt test1.txt;printf '%s\n' "Script elapsed time: $(elapsed ${scriptstart})."
+#1671567743
+echo $((146285714 / 1048576))
+#1671568140
+printf '%d\n' $((146285714 / 1048576))
+#1671568152
+printf '%.2f\n' $((146285714 / 1048576))
+#1671568199
+printf %.2f "$((10**3 * 1/3))e-3"
+#1671568215
+printf '%.2f\n' "$((10**3 * 1/3))e-3"
+#1671568310
+printf '%.2f\n' "$((10**3 * 146285714 / 1048576))e-3"
+#1671568510
+speed=146285714
+#1671568526
+printf '%.2f\n' "$((10**3 * speed / 1048576))e-3"
+#1671568588
+printf '%.2f\n' "$((10**3 * speed / $((1024 * 1024))))e-3"
+#1671568659
+megabytes=$((1024*1024))
+#1671568685
+printf '%.2f\n' "$((10**3 * speed / megabytes))e-3"
+#1671568885
+ll
+#1671568892
+rm test1.txt
+#1671568901
+scriptstart=$(elapsed);progresscp test1024mb.txt test1.txt;printf '%s\n' "Script elapsed time: $(elapsed ${scriptstart})."
+#1671569001
+hl 20 -
+#1671569012
+hl 20 "-"
+#1671569025
+hl - 20
+#1671569052
+rm test1.txt
+#1671569058
+scriptstart=$(elapsed);progresscp test1024mb.txt test1.txt;printf '%s\n' "Script elapsed time: $(elapsed ${scriptstart})."
+#1671569724
+rm test1.txt
+#1671569732
+scriptstart=$(elapsed);progresscp test1024mb.txt test1.txt;printf '%s\n' "Script elapsed time: $(elapsed ${scriptstart})."
+#1671569862
+rm test1.txt
+#1671569869
+scriptstart=$(elapsed);progresscp test1024mb.txt test1.txt;printf '%s\n' "Script elapsed time: $(elapsed ${scriptstart})."
+#1671569916
+rm test1.txt
+#1671569941
+progresscp test1024mb.txt test1.txt
+#1671571915
+printf '%b\n\n' "Your home directory is ${DULL_RED}\"${HOME}\"${NORMAL}."
+#1671571982
+printf '%b\n\n' "Your home directory is ${ESC}[${DULL};${FG_RED}m\"${HOME}\"${NORMAL}."
+#1671571992
+printf '%b\n\n' "Your home directory is ${ESC}[${DIM};${FG_RED}m\"${HOME}\"${NORMAL}."
+#1671572011
+printf '%b\n\n' "Your home directory is ${ESC}[${BRIGHT};${FG_RED}m\"${HOME}\"${NORMAL}."
+#1671572044
+printf '%b\n\n' "Your home directory is ${ESC}[${UNDERLINE};${FG_RED}m\"${HOME}\"${NORMAL}."
+#1671572068
+EXIT
