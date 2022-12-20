@@ -1,37 +1,3 @@
-ls /Volumes/testpoint/
-#1639577709
-ll /Volumes/
-#1639577763
-ls /Volumes/testpoint/
-#1639577777
-ls ./Movies
-#1639578200
-rm /Volumes/testpoint
-#1639578214
-ll /Volumes/
-#1639578229
-mkdir /Volumes/testpoint
-#1639578238
-ll /Volumes/
-#1639578302
-chmod 775 /Volumes/testpoint
-#1639578304
-ll /Volumes/
-#1639578403
-chown rtruell:staff /Volumes/testpoint
-#1639578414
-ll /Volumes/
-#1639578458
-rm /Volumes/testpoint
-#1639578466
-rmdir /Volumes/testpoint
-#1639578470
-ll /Volumes/
-#1639578493
-ln -s /Users/rtruell/Movies /Volumes/testpoint
-#1639578498
-ll /Volumes/
-#1639578564
 chown rtruell:staff /Volumes/testpoint
 #1639578567
 ll /Volumes/
@@ -19865,3 +19831,93 @@ lsof -p 436
 man lsof
 #1671425097
 man sysctl
+#1671480220
+sysctl -a | less
+#1671484764
+which sha1sum
+#1671484795
+ls /usr/local/opt/coreutils/libexec/gnubin/sha*
+#1671484806
+\ls /usr/local/opt/coreutils/libexec/gnubin/sha*
+#1671484819
+command ls /usr/local/opt/coreutils/libexec/gnubin/sha*
+#1671484871
+ls bin
+#1671485053
+s dotfiles/.functions/ls.function
+#1671485069
+ls bin
+#1671485081
+ls /usr/local/opt/coreutils/libexec/gnubin/sha*
+#1671485131
+ls -1 /usr/local/opt/coreutils/libexec/gnubin/sha*
+#1671485162
+s dotfiles/.functions/ls.function
+#1671485164
+ls -1 /usr/local/opt/coreutils/libexec/gnubin/sha*
+#1671485425
+s dotfiles/.functions/ls.function
+#1671485435
+ls .
+#1671485440
+ls bin
+#1671485449
+ls -1 /usr/local/opt/coreutils/libexec/gnubin/sha*
+#1671485465
+ls /usr/local/opt/coreutils/libexec/gnubin/sha*
+#1671485520
+s dotfiles/.functions/ls.function
+#1671485528
+ls .
+#1671485532
+ls bin
+#1671485559
+ls -1 /usr/local/opt/coreutils/libexec/gnubin/sha*
+#1671485569
+ls /usr/local/opt/coreutils/libexec/gnubin/sha*
+#1671510790
+v onorm
+#1671512763
+mountinfo
+#1671512827
+cd /Volumes/Temp/
+#1671512885
+ls /dev/urandom
+#1671512898
+ls test*
+#1671512903
+dd if=/dev/urandom of=test.txt bs=1000MB count=1
+#1671512982
+df
+#1671512994
+ll
+#1671512997
+ll test*
+#1671513047
+scriptstart=$(elapsed);./progresssha test.txt;printf '%s\n' "Script elapsed time: $(elapsed ${scriptstart})."
+#1671513092
+path
+#1671513116
+ls $HOME/testscripts
+#1671513142
+scriptstart=$(elapsed);progresssha test.txt;printf '%s\n' "Script elapsed time: $(elapsed ${scriptstart})."
+#1671513225
+dd if=/dev/urandom of=test.txt bs=100MB count=1
+#1671513240
+ll
+#1671513289
+scriptstart=$(elapsed);progresscp test.txt test1.txt;printf '%s\n' "Script elapsed time: $(elapsed ${scriptstart})."
+#1671513329
+rm test1.txt
+#1671513332
+ll
+#1671513347
+mv test.txt test100mb.txt
+#1671513360
+dd if=/dev/urandom of=test.txt bs=1024MB count=1
+#1671513701
+ll
+#1671513715
+mv test.txt test1024mb.txt
+#1671513744
+scriptstart=$(elapsed);progresscp test1024mb.txt test1.txt;printf '%s\n' "Script elapsed time: $(elapsed ${scriptstart})."
