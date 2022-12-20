@@ -1,75 +1,3 @@
-df | grep data
-#1641010816
-diskutil mount /dev/disk3s1
-#1641012254
-diskutil list
-#1641013441
-diskutil list | grep data | sed 's/^.*(disk.*)$/\1/'
-#1641013456
-diskutil list | grep data
-#1641013475
-diskutil list | grep data | tr -s
-#1641013486
-man tr
-#1641013506
-diskutil list | grep data | tr -s ' '
-#1641013544
-diskutil list | grep data | tr -s ' ' | cut -d ' ' -f 6
-#1641013560
-diskutil list | grep data | tr -s ' ' | cut -d ' ' -f 7
-#1641068461
-findtext -i 'data'
-#1641070765
-bashman ls
-#1641070779
-man ls
-#1641070806
-ls -R *.vd*
-#1641070837
-\ls -R *.vd*
-#1641070898
-ls -R *.vdi
-#1641070909
-listfunction ls
-#1641071005
-which ls
-#1641071011
-whereis ls
-#1641071029
-/bin/ls -R *.vi*
-#1641071075
-/usr/local/opt/coreutils/libexec/gnubin/ls -R *.vi*
-#1641071094
-/usr/local/opt/coreutils/libexec/gnubin/ls -R *.vd*
-#1641071147
-/usr/local/opt/coreutils/libexec/gnubin/ls -R 'Debian 10.10.0 DKE'.vd*
-#1641071161
-/usr/local/opt/coreutils/libexec/gnubin/ls -R 'Debian 10.10.0 KDE'.vd*
-#1641071179
-/usr/local/opt/coreutils/libexec/gnubin/ls -R 'Debian 10.10.0 KDE'*.vd*
-#1641071205
-/usr/local/opt/coreutils/libexec/gnubin/ls -R 'Debian 10.10.0 KDE'/*.vd*
-#1641071284
-/usr/local/opt/coreutils/libexec/gnubin/ls -R 'Debian 10.10.0 KDE'
-#1641071352
-ls -R ./
-#1641071389
-ls -R ./*/*.vd*
-#1641071437
-ls -R ./ *.vd*
-#1641071500
-home
-#1641071546
-cd -
-#1641071560
-listfunction findfile
-#1641071570
-functions
-#1641071603
-alias
-#1641071685
-cd
-#1641074493
 ping schedulesdirect.com
 #1641074560
 ping schedulesdirect.org
@@ -19903,3 +19831,37 @@ printf '%b\n\n' "Your home directory is ${ESC}[0;45m\"${HOME}\"${NORMAL}."
 printf '%b\n\n' "Your home directory is ${ESC}[0;46m\"${HOME}\"${NORMAL}."
 #1671575708
 printf '%b\n\n' "Your home directory is ${ESC}[0;47m\"${HOME}\"${NORMAL}."
+#1671576242
+printf '%b\n\n' "Your home directory is ${DULL_RED}\"${HOME}\"${NORMAL}."
+#1671576252
+printf '%b\n\n' "Your home directory is ${BRIGHT_RED}\"${HOME}\"${NORMAL}."
+#1671576259
+printf '%b\n\n' "Your home directory is ${DIM_RED}\"${HOME}\"${NORMAL}."
+#1671576288
+printf '%b\n\n' "Your home directory is ${ITALICS_RED}\"${HOME}\"${NORMAL}."
+#1671576322
+printf '%b\n\n' "Your home directory is ${UNDERLINE_RED}\"${HOME}\"${NORMAL}."
+#1671576331
+printf '%b\n\n' "Your home directory is ${BLINK_RED}\"${HOME}\"${NORMAL}."
+#1671576337
+printf '%b\n\n' "Your home directory is ${HIDDEN_RED}\"${HOME}\"${NORMAL}."
+#1671576343
+printf '%b\n\n' "Your home directory is ${REVERSE_RED}\"${HOME}\"${NORMAL}."
+#1671576377
+CLS
+#1671576419
+printf '%b\n\n' "Your home directory is ${ESC}[0;31m\"${HOME}\"${NORMAL}."
+#1671576428
+printf '%b\n\n' "Your home directory is ${ESC}[1;31m\"${HOME}\"${NORMAL}."
+#1671576431
+printf '%b\n\n' "Your home directory is ${ESC}[2;31m\"${HOME}\"${NORMAL}."
+#1671576434
+printf '%b\n\n' "Your home directory is ${ESC}[3;31m\"${HOME}\"${NORMAL}."
+#1671576439
+printf '%b\n\n' "Your home directory is ${ESC}[4;31m\"${HOME}\"${NORMAL}."
+#1671576442
+printf '%b\n\n' "Your home directory is ${ESC}[5;31m\"${HOME}\"${NORMAL}."
+#1671576445
+printf '%b\n\n' "Your home directory is ${ESC}[6;31m\"${HOME}\"${NORMAL}."
+#1671576448
+printf '%b\n\n' "Your home directory is ${ESC}[7;31m\"${HOME}\"${NORMAL}."
