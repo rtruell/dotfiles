@@ -1,37 +1,3 @@
-ping schedulesdirect.com
-#1641074560
-ping schedulesdirect.org
-#1641079552
-ls Applications
-#1641079592
-./Applications/mc2xml-v1.3 --version
-#1641079602
-./Applications/mc2xml-v1.3 --help
-#1641079607
-./Applications/mc2xml-v1.3 -help
-#1641079615
-./Applications/mc2xml-v1.3
-#1641155716
-hf iso2usb
-#1641155745
-awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl 
-#1641155777
-cd /Volumes/data/Downloads/IPFire/
-#1641155798
-awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl 
-#1641155883
-diskutil list
-#1641155970
-diskutil unmountDisk /dev/disk4
-#1641156118
-sudo dd if="ipfire-2.27.x86_64-full-core162.iso" of=/dev/rdisk4 bs=4M status=progress
-#1641156276
-diskutil eject /dev/disk4
-#1641184213
-date --help
-#1641184223
-man date
-#1641238333
 ls /Volumes/
 #1641270527
 diskutil list
@@ -19865,3 +19831,127 @@ printf '%b\n\n' "Your home directory is ${ESC}[5;31m\"${HOME}\"${NORMAL}."
 printf '%b\n\n' "Your home directory is ${ESC}[6;31m\"${HOME}\"${NORMAL}."
 #1671576448
 printf '%b\n\n' "Your home directory is ${ESC}[7;31m\"${HOME}\"${NORMAL}."
+#1671576960
+printf '%b\n\n' "Your home directory is ${DULL_RED}\"${HOME}\"${NORMAL}."
+#1671576966
+printf '%b\n\n' "Your home directory is ${BRIGHT_RED}\"${HOME}\"${NORMAL}."
+#1671576970
+printf '%b\n\n' "Your home directory is ${DIM_RED}\"${HOME}\"${NORMAL}."
+#1671576980
+printf '%b\n\n' "Your home directory is ${ITALICS_RED}\"${HOME}\"${NORMAL}."
+#1671576986
+printf '%b\n\n' "Your home directory is ${UNDERLINE_RED}\"${HOME}\"${NORMAL}."
+#1671576992
+printf '%b\n\n' "Your home directory is ${BLINK_RED}\"${HOME}\"${NORMAL}."
+#1671577003
+printf '%b\n\n' "Your home directory is ${HIDDEN_RED}\"${HOME}\"${NORMAL}."
+#1671577008
+printf '%b\n\n' "Your home directory is ${REVERSE_RED}\"${HOME}\"${NORMAL}."
+#1671577940
+LL
+#1671577945
+ll
+#1671577987
+cd /Volumes/Temp/
+#1671577988
+ll
+#1671577995
+rm test1.txt
+#1671578031
+progresscp test1024mb.txt test1.txt
+#1671578091
+ll
+#1671578117
+rm test1.txt
+#1671578125
+ll
+#1671578131
+progresscp test1024mb.txt test1.txt
+#1671578995
+rm test1.txt
+#1671578999
+progresscp test1024mb.txt test1.txt
+#1671579048
+rm test1.txt
+#1671579055
+progresscp test1024mb.txt test1.txt
+#1671579088
+rm test1.txt
+#1671579093
+progresscp test1024mb.txt test1.txt
+#1671579134
+rm test1.txt
+#1671579138
+progresscp test1024mb.txt test1.txt
+#1671579208
+man rm
+#1671579231
+\rm test1.txt
+#1671579235
+progresscp test1024mb.txt test1.txt
+#1671579559
+\rm test1.txt
+#1671579561
+progresscp test1024mb.txt test1.txt
+#1671579599
+\rm test1.txt
+#1671579601
+progresscp test1024mb.txt test1.txt
+#1671579790
+\rm test1.txt
+#1671579792
+progresscp test1024mb.txt test1.txt
+#1671581354
+\rm test1.txt
+#1671581358
+progresscp test1024mb.txt test1.txt
+#1671581431
+\rm test1.txt
+#1671581434
+progresscp test1024mb.txt test1.txt
+#1671581596
+\rm test1.txt
+#1671581597
+progresscp test1024mb.txt test1.txt
+#1671598661
+\rm test1.txt
+#1671598663
+progresscp test1024mb.txt test1.txt
+#1671598696
+\rm test1.txt
+#1671598698
+progresscp test1024mb.txt test1.txt
+#1671599276
+demo
+#1671599972
+\rm test1.txt
+#1671599975
+progresscp test1024mb.txt test1.txt
+#1671600014
+\rm test1.txt
+#1671600015
+progresscp test1024mb.txt test1.txt
+#1671600033
+\rm test1.txt
+#1671600035
+progresscp test1024mb.txt test1.txt
+#1671600080
+\rm test1.txt
+#1671600084
+progresscp test1024mb.txt test1.txt
+#1671600116
+\rm test1.txt
+#1671600119
+progresscp test1024mb.txt test1.txt
+#1671600166
+\rm test1.txt
+#1671600167
+progresscp test1024mb.txt test1.txt
+#1671600454
+\rm test1.txt
+#1671600457
+progresscp test1024mb.txt test1.txt
+#1671600582
+\rm test1.txt
+#1671600584
+progresscp test1024mb.txt test1.txt
