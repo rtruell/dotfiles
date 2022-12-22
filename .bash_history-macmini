@@ -19849,3 +19849,55 @@ ls newfiles
 cp -a test1024mb.txt test.txt
 #1671687237
 progress -M
+#1671688045
+back
+#1671688079
+cd /Volumes/ExternalHome/rtruell/SourceCode/pv-1.6.20/
+#1671688100
+./generate.sh
+#1671688184
+sh ./configure
+#1671688390
+make
+#1671688460
+make install
+#1671688502
+which pv
+#1671688510
+man pv
+#1671688531
+cd /Volumes/Temp/
+#1671688532
+ll
+#1671688539
+\rm test.txt
+#1671688665
+cp -av test1024bm.txt test.txt | pv > logfile
+#1671688679
+\rm test.txt
+#1671688691
+cp -av test1024mb.txt test.txt | pv > logfile
+#1671688716
+\rm test.txt logfile
+#1671688722
+cp -av test1024mb.txt test.txt | pv > logfile
+#1671688771
+\rm test.txt logfile
+#1671688897
+cp -av newfiles newfiles1 | pv -l -s 2 > logfile
+#1671689017
+ll
+#1671689082
+cp test1024mb.txt test.txt & progress -mp $!
+#1671689136
+\rm test.txt logfile
+#1671689146
+cp -a test1024mb.txt test.txt & progress -mp $!
+#1671689178
+\rm test.txt logfile
+#1671689183
+ll
+#1671689295
+progresscp test1024mb.txt test.txt
+#1671689428
+sha512sum -b - <test1024mb.txt & progress -mp $!
