@@ -1,77 +1,3 @@
-b upd
-#1644184222
-b in tesseract
-#1644190065
-hostname
-#1644190070
-hostname -s
-#1644729427
-ls /etc/
-#1644729452
-less /etc/hosts.equiv
-#1644729468
-less /etc/hosts
-#1644729496
-mv /etc/hosts /etc/hosts.old
-#1644729506
-sudo mv /etc/hosts /etc/hosts.old
-#1644729520
-ping firewall
-#1644729533
-ping qnap1
-#1644729542
-ping qnap2
-#1644896681
-man sed
-#1644897124
-chmod 755 /Volumes/data/Text/E-bookReadingOrder/Master\ Book\ List.sh
-#1644897146
-ll /Volumes/data/Text/E-bookReadingOrder
-#1644897191
-ll /Volumes/data/Text/
-#1644897223
-ll /Volumes/data
-#1644897238
-ll /Volumes
-#1644897334
-chmod 775 /Volumes/data
-#1644897337
-ll /Volumes
-#1644897351
-sudo chmod 775 /Volumes/data
-#1644897354
-ll /Volumes
-#1644897374
-sudo chmod 755 /Volumes/data/Text/E-bookReadingOrder/Master\ Book\ List.sh
-#1644897383
-ll /Volumes/data/Text/E-bookReadingOrder
-#1644897403
-/Volumes/data/Text/E-bookReadingOrder/Master\ Book\ List.sh; exit
-#1644897557
-man sed'
-#1644897566
-man sed
-#1644897739
-/Volumes/data/Text/E-bookReadingOrder/Master\ Book\ List.sh; exit
-#1644898889
-man sed
-#1644899466
-/Volumes/data/Text/E-bookReadingOrder/Master\ Book\ List.sh; exit
-#1644965794
-print_result 255 "This is a test"
-#1644965815
-print_result 0 "This is a good test"
-#1644967320
-/Volumes/data/Text/E-bookReadingOrder/Master\ Book\ List.sh; exit
-#1644987672
-volnorm
-#1645138220
-brew --cache
-#1645138245
-set | grep brew
-#1645138261
-set | grep brew | grep -v _brew
-#1645138268
 brew --cache
 #1645138357
 ls /Volumes/ExternalHome/rtruell/homebrewcache
@@ -19901,3 +19827,25 @@ ll
 progresscp test1024mb.txt test.txt
 #1671689428
 sha512sum -b - <test1024mb.txt & progress -mp $!
+#1671719884
+cd /Volumes/Temp/
+#1671719891
+ll
+#1671719937
+progress
+#1671719963
+man xip
+#1671720182
+xip -x Xcode*.xip
+#1671720253
+ll
+#1671720314
+ls /Applications/
+#1671720403
+\rm test.txt
+#1671720422
+sha512sum -b test1024mb.txt
+#1671720455
+progresssha test1024mb.txt
+#1671719950
+progress -M -a xip
