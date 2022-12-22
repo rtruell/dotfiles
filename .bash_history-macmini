@@ -1,281 +1,3 @@
-ls /Volumes/
-#1641270527
-diskutil list
-#1641270600
-diskutil unmountdisk /dev/disk4
-#1641270640
-cd /Volumes/data/Downloads/IPFire/
-#1641270652
-hf dd
-#1641271028
-xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=4M of=/dev/rdisk4 status=progress
-#1641271194
-xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=1M of=/dev/rdisk4 status=progress
-#1641271215
-diskutil list
-#1641271258
-sync
-#1641271276
-diskutil eject /dev/disk4
-#1641312908
-ls /etc
-#1641312920
-cat /etc/sudoers
-#1641312930
-sudo cat /etc/sudoers
-#1641312953
-ls /etc/sudoers.d
-#1641312966
-cat /etc/sudoers.d/rtruell
-#1641312971
-sudo cat /etc/sudoers.d/rtruell
-#1641313475
-ls .config
-#1641334730
-ls /Volumes/data
-#1641335361
-ll /Volumes/
-#1641335828
-ll /Volumes/Temp/
-#1641355580
-cd /Volumes/data/Downloads/Live\ CD\ ISOs/
-#1641355630
-hf usb2iso
-#1641355678
-awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl 
-#1641355688
-diskutil list
-#1641355723
-diskutil unmountDisk /dev/disk3
-#1641355783
-sudo dd if="ubuntu-20.04.3-desktop-amd64.iso" of=/dev/rdisk3 bs=4M status=progress
-#1641356422
-diskutil eject /dev/disk3
-#1641365765
-ls ..
-#1641365787
-cd ../IPFire/
-#1641365853
-ls OldVersions
-#1641366239
-cd /Volumes/Downloads/
-#1641366254
-cd ../data
-#1641366260
-ls linux
-#1641366282
-cd Downloads/
-#1641366286
-ls linux
-#1641366288
-ls mac
-#1641366328
-diff linux/imager_1.4.dmg mac/imager_1.4.dmg
-#1641366611
-awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl 
-#1641366617
-diskutil list
-#1641366652
-diskutil unmountDisk /dev/disk3
-#1641366784
-sudo dd if="ipfire-2.27.aarch64-full-core162.iso" of=/dev/rdisk3 bs=4M status=progress
-#1641366939
-diskutil eject /dev/disk3
-#1641367103
-diskutil list
-#1641367159
-diskutil unmountDisk /dev/disk3
-#1641367432
-xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=1M of=/dev/disk3 status=progress
-#1641367628
-sync
-#1641367641
-diskutil eject /dev/disk3
-#1641599785
-ll /volumes
-#1641599944
-ll /volumes/Downloads
-#1641600001
-chown rtruell:staff /Volumes/Downloads/
-#1641600009
-sudo chown rtruell:staff /Volumes/Downloads/
-#1641600020
-ll /volumes
-#1641600121
-ll /volumes/ExternalHome/
-#1641600140
-sudo chown rtruell:staff /Volumes/ExternalHome/
-#1641600184
-sudo chown rtruell:staff /Volumes/Owncloud/
-#1641600188
-ll /volumes/ExternalHome/
-#1641600192
-ll /volumes
-#1641754380
-diskutil list
-#1641754460
-diskutil unmountdisk /dev/disk3
-#1641754550
-cd /Volumes/data/Downloads/IPFire/
-#1641754717
-xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=1m of=/dev/disk3 status=progress
-#1641754733
-xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=4M of=/dev/disk3 status=progress
-#1641754947
-sync
-#1641754965
-diskutil eject /dev/disk3
-#1641755866
-diskutil list
-#1641755883
-diskutil unmountdisk /dev/disk3
-#1641756213
-xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=4M of=/dev/disk3 status=progress
-#1641756256
-diskutil list
-#1641756266
-diskutil unmountdisk /dev/disk3
-#1641756286
-xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=4M of=/dev/disk3 status=progress
-#1641756297
-xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=1M of=/dev/disk3 status=progress
-#1641756358
-diskutil eject /dev/disk3
-#1641756384
-diskutil list
-#1641756511
-diskutil unmountdisk /dev/disk3
-#1641756615
-xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=4M of=/dev/disk3 status=progress
-#1641757072
-diskutil list
-#1641757078
-diskutil unmountdisk /dev/disk3
-#1641757202
-xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=4M of=/dev/disk3 status=progress
-#1641757258
-diskutil list
-#1641757271
-diskutil unmountdisk /dev/disk3
-#1641757362
-c;s
-#1641757503
-diskutil list
-#1641757518
-diskutil unmountdisk /dev/disk3
-#1641757828
-diskutil list
-#1641757836
-diskutil unmountdisk /dev/disk3
-#1641757868
-xzcat ipfire-2.27.2gb-ext4.aarch64-full-core162.img.xz | sudo dd bs=4M of=/dev/disk3 status=progress
-#1641758062
-sync
-#1641758072
-diskutil eject /dev/disk3
-#1641762588
-cd
-#1641762592
-man cifs
-#1641762598
-man mount.cifs
-#1641762604
-man mount
-#1641762622
-man mount_cifs
-#1641762624
-man mount
-#1641762652
-man mount_smbfs
-#1641763610
-hf awk
-#1641763620
-awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl 
-#1641763630
-disutil list
-#1641763643
-diskutil list
-#1641763671
-diskutil unmountDisk /dev/disk3
-#1641763738
-sudo dd if="/Volumes/data/Downloads/Live CD ISOs/kubuntu-20.04.3-desktop-amd64.iso" of=/dev/rdisk3 bs=4M status=progress
-#1641764396
-diskutil eject /dev/disk3
-#1641771953
-findshow 'euph'
-#1641772101
-findshow 'wynonna'
-#1641783834
-ping fileserver
-#1641783845
-ipconfig
-#1641783851
-ifconfig
-#1641783870
-ping firewall
-#1641783880
-ping backupserver
-#1641792186
-ping fileserver
-#1641858168
-man touch
-#1641943676
-findshow 'wynonna'
-#1642033376
-findshow 'resident alien'
-#1642359341
-findshow ' 393 '
-#1642359350
-findshow '393'
-#1642359415
-findshow 'walking dead'
-#1642359471
-findshow '327'
-#1642395524
-which dot_clean
-#1642395536
-man dot_clean
-#1642997508
-hdiutil mount "/Volumes/data/Downloads/Live CD ISOs/debian-11.1.0-i386-netinst.iso"
-#1643152908
-hf ipfire
-#1643256274
-blkid
-#1643409729
-man rsync
-#1644006521
-b s moneydance
-#1644006554
-b i moneydance
-#1644006624
-b h moneydance
-#1644092701
-ln -s /Volumes/ExternalHome/rtruell/MoneydanceData /Users/rtruell/Library/Containers/com.infinitekind.MoneydanceOSX/Data/Documents
-#1644180620
-b s cisdem
-#1644180664
-b i cisdem-pdf-converter-ocr
-#1644181379
-b s pdfpen
-#1644181404
-b i pdfpen
-#1644181411
-b i pdfpenpro
-#1644181428
-b h pdfpen
-#1644181540
-b h pdfpenpro
-#1644181585
-b h cisdem-pdf-converter-ocr
-#1644182624
-b s tesseract
-#1644182640
-b -h
-#1644182658
-b
-#1644182668
-listfunction b
-#1644182712
 b upd
 #1644184222
 b in tesseract
@@ -19955,3 +19677,175 @@ progresscp test1024mb.txt test1.txt
 \rm test1.txt
 #1671600584
 progresscp test1024mb.txt test1.txt
+#1671653769
+./advcpmv-install.sh
+#1671653812
+ls -t
+#1671653820
+man ls
+#1671653926
+cd coreutils-91.
+#1671653934
+cd coreutils-9.1
+#1671654522
+man ls
+#1671655280
+cd /Volumes/Temp/
+#1671655282
+ll
+#1671655296
+\rm test1.txt
+#1671655320
+./advcp test1024mb.txt test1.txt
+#1671656467
+\rm test1.txt
+#1671656493
+rsync -r --progress test1024mb.txt test1.txt
+#1671656536
+ll
+#1671656549
+\rm test1.txt
+#1671656565
+rsync -r --progress test100mb.txt test1.txt
+#1671656596
+\rm test1.txt
+#1671656601
+rsync -r --progress test1024mb.txt test1.txt
+#1671656651
+\rm test1.txt
+#1671656657
+ls test*
+#1671656699
+mkdir testfiles
+#1671656722
+rsync -r --progress test* testfiles
+#1671656799
+rm -rf testfiles
+#1671656806
+ll
+#1671656811
+mkdir newfiles
+#1671656839
+rsync -r --progress test100mb.txt test1024mb.txt newfiles
+#1671656905
+rsync --version
+#1671657317
+rm newfiles/*
+#1671657334
+rsync -rq --progress test100mb.txt test1024mb.txt newfiles
+#1671657352
+rm newfiles/*
+#1671657359
+ls newfiles
+#1671657855
+rsync -a --stats --progress test100mb.txt test1024mb.txt newfiles
+#1671657924
+rm newfiles/*
+#1671657941
+rsync -a --progress test100mb.txt test1024mb.txt newfiles
+#1671658253
+man cp
+#1671658664
+man nc
+#1671660170
+man cp
+#1671660638
+find . | wc -l
+#1671660659
+man find
+#1671660712
+find -maxdepth 1 . | wc -l
+#1671660728
+man find
+#1671660781
+find . -maxdepth 1 | wc -l
+#1671660826
+find . -maxdepth 0 | wc -l
+#1671660837
+find . -maxdepth 0 
+#1671660845
+find . -maxdepth 1
+#1671661010
+find . -maxdepth 1 | wc -l
+#1671661243
+man rsync
+#1671661482
+man tar
+#1671662161
+du -sh .
+#1671662175
+du -sh newfiles
+#1671662197
+man du
+#1671662222
+du -h newfiles
+#1671662628
+man rm
+#1671663445
+man wc
+#1671663572
+find . -maxdepth 1 | wc -l
+#1671663577
+find . -maxdepth 1 | wc
+#1671663588
+man wc
+#1671664889
+man diff
+#1671667908
+home
+#1671686619
+cd /Volumes/ExternalHome/rtruell/SourceCode/progress/
+#1671686655
+make
+#1671686876
+ls /usr/local/bin
+#1671686890
+make install
+#1671686915
+ls /usr/local/bin
+#1671686937
+ll /usr/local/pinky
+#1671686945
+ll /usr/local/bin/pinky
+#1671686954
+pinky --version
+#1671686966
+home
+#1671686971
+pinky -h
+#1671686987
+man pinky
+#1671687040
+pinky rtruell
+#1671687045
+pinky -l rtruell
+#1671687063
+finger rtruell
+#1671687089
+man progress
+#1671687167
+cd /Volumes/Temp/
+#1671687168
+ll
+#1671687187
+progress -v
+#1671687192
+progress -h
+#1671687272
+cd /Volumes/Temp/
+#1671687273
+ll
+#1671687325
+which progresssha
+#1671687346
+less $HOME/testscripts/progresssha
+#1671687383
+man sha512sum
+#1671687413
+sha512sum -b - <test1024mb.txt
+#1671687485
+ls newfiles
+#1671687507
+cp -a test1024mb.txt test.txt
+#1671687237
+progress -M
