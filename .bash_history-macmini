@@ -19837,3 +19837,7 @@ cd /Volumes/Temp/
 xip -x Xcode*.xip
 #1671721117
 progress -M -a xip
+#1671721423
+progress -M -a xip&
+#1671721441
+ps aux
