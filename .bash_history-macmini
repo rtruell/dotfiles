@@ -1,21 +1,3 @@
-ls /Volumes/backup
-#1645159646
-ls /Volumes/backup/Nasbackup
-#1645159753
-diskutil unmount /Volumes/backup
-#1645159761
-ls /Volumes/
-#1645160354
-man mount
-#1645160434
-man 2 mount
-#1645160464
-man osascript
-#1645161925
-mount
-#1645163061
-echo $USER
-#1645163604
 b s autofs
 #1645163657
 b s automount
@@ -19839,3 +19821,13 @@ ll
 ll
 #1671721757
 rm test1.txt
+#1671721675
+progress -M -a xip
+#1671721786
+which progress
+#1671721791
+whereis progress
+#1671721980
+cp -a /usr/local/bin/progress /Volumes/data/Downloads/Mac/InUse/Installed/Manual
+#1671722168
+progress -M -a xip&
