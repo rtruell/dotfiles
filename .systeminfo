@@ -12,8 +12,8 @@ if [[ -n ${OSTYPE} ]]; then
            *) SYSTEM_TYPE="Unknown" ;;
   esac
 else
-  PLATFORM="$(uname)"
-  case "${PLATFORM,,}" in
+  PLATFORM=$(tr '[:upper:]' '[:lower:]' <<<$(uname))
+  case "${PLATFORM}" in
      darwin*) SYSTEM_TYPE="macOS" ;;
       sunos*) SYSTEM_TYPE="Solaris" ;;
       linux*) SYSTEM_TYPE="Linux" ;;
