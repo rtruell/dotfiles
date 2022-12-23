@@ -1,43 +1,3 @@
-b s autofs
-#1645163657
-b s automount
-#1645163674
-man autoconf
-#1645164936
-ls /etc/auto_master
-#1645164944
-cat /etc/auto_master
-#1645164961
-autofs --version
-#1645165068
-cat /etc/auto_smb
-#1645327079
-b s httrack
-#1645327094
-b h httrack
-#1645385850
-subl /etc/hosts
-#1645385874
-ls /etc/
-#1645385893
-cat /etc/hosts.old
-#1645385917
-ping qnap2
-#1645385926
-ping fileserver
-#1645385950
-ping firewall
-#1645385986
-mv /etc/hosts.old /etc/hosts
-#1645385991
-sudo mv /etc/hosts.old /etc/hosts
-#1645385999
-ls /etc/
-#1645386009
-ping firewall
-#1645386032
-ping qnap2
-#1645386037
 ping fileserver
 #1645386387
 ls /etc/
@@ -19871,3 +19831,31 @@ java -version 2>&1
 java -version 2>&1 | grep version 
 #1671772532
 java -version 2>&1 | grep version | cut -d'"' -f2
+#1671833846
+cd /Volumes/ExternalHome/rtruell/GitRepositories/GitHub/dotfiles/
+#1671833862
+findtext ,,}
+#1671835263
+tr '[:upper:]' '[:lower:]' <<<$(uname)
+#1671835353
+platform=$(tr '[:upper:]' '[:lower:]' <<<$(uname))
+#1671835360
+echo $platform
+#1671835847
+findtext ,,}
+#1671835874
+findtext ,}
+#1671836127
+findtext ^}
+#1671836185
+findtext \^}
+#1671836279
+lf findtext
+#1671836308
+findtext "\^}"
+#1671836698
+mountinfo
+#1671836731
+man df
+#1671836815
+findtext "\^}"
