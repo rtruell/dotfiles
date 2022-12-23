@@ -9,6 +9,7 @@ shopt -u nullglob
 for i in "${installernames[@]}"; do  # loop through all the installers that were found
   progname=$("${HOME}"/bin/fp -n "${i}")  # extract the program name
   ext=$("${HOME}"/bin/fp -e "${i}")  # extract the extension
+  printf "\n\e[0;35m  Installing '${progname}'.\e[0m\n\n"
   case "${ext}" in
     dmg)
          echo "Y" | hdiutil mount -nobrowse "${i}" -mountpoint "${extractdir}/${progname}" >/dev/null  # mount the installer, which creates the specified mountpoint, accepting any license agreement
@@ -46,6 +47,8 @@ if [[ "${xip}" == 1 ]]; then
   xips=(*.xip)  # get a list of all the *.xip programs into an array.  the filenames are in the format '<filename>.xip'
   shopt -u nullglob
   for i in ${xips[@]}; do  # loop through the array of '.xip' programs to be installed
+    progname=$("${HOME}"/bin/fp -n "${i}")  # extract the program name
+    printf "\n\e[0;35m  Installing '${progname}'.\e[0m\n\n"
     xip -x "${i}"  # extract them, thus "installing" the program
     print_result "${?}" "Installed ${i}"
     /bin/rm -d "${i}"  # we don't need this copy of the installer anymore, so delete it
