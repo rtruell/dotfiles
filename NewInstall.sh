@@ -94,8 +94,8 @@ if [[ -n ${OSTYPE} ]]; then
            *) SYSTEM_TYPE="Unknown" ;;
   esac
 else
-  PLATFORM="$(uname)"
-  case "${PLATFORM,,}" in
+  PLATFORM=$(tr '[:upper:]' '[:lower:]' <<<$(uname))
+  case "${PLATFORM}" in
      darwin*) SYSTEM_TYPE="macOS" ;;
       sunos*) SYSTEM_TYPE="Solaris" ;;
       linux*) SYSTEM_TYPE="Linux" ;;
@@ -149,8 +149,8 @@ if [[ "${retcode}" == 0 ]]; then
     currdir=${PWD}  # preserve the current directory
     message=""  # holds a status message to be printed
     osinstallfilesdir=""  # holds the directory where the files and program are located
-    case "${SYSTEM_TYPE,,}" in
-      macos)
+    case "${SYSTEM_TYPE}" in
+      macOS)
              # this will prompt for the user/password, then try to create
              # mountpoint '/Volumes/data' and mount the NAS' data directory there
              osascript -e 'mount volume "smb://nas/data"' 1>/dev/null 2>&1
@@ -227,7 +227,7 @@ if [[ "${retcode}" == 0 ]]; then
 
     # if not installing on a Raspberry Pi, copy config files for Beyond Compare
     if [[ "${computername}" != "rpi"* ]]; then
-      if [[ "${SYSTEM_TYPE,,}" == "macos" ]]; then
+      if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
         sudo cp -a BC4Key.txt /etc
         print_result "${?}" "Copied the Beyond Compare key file to '/etc'"
         sudo chmod 644 /etc/BC4Key.txt
@@ -260,7 +260,7 @@ if [[ "${retcode}" == 0 ]]; then
 
     # if not installing on macOS, copy the samba config file to $HOME...it'll be
     # put where it belongs after 'samba' is installed
-    if [[ "${SYSTEM_TYPE,,}" != "macos" ]]; then
+    if [[ "${SYSTEM_TYPE}" != "macOS" ]]; then
       case "${computername}" in
               nas) smbconffile="smb.conf-nas" ;;
         nasbackup) smbconffile="smb.conf-nasbackup" ;;
@@ -286,7 +286,7 @@ if [[ "${retcode}" == 0 ]]; then
     fi
 
     # if not installing on macOS, copy KDE configuration files
-    if [[ "${SYSTEM_TYPE,,}" != "macos" ]]; then
+    if [[ "${SYSTEM_TYPE}" != "macOS" ]]; then
       # configure the lock screen
       lock_screen_clock="/usr/share/plasma/look-and-feel/org.kde.breeze.desktop/contents/components/Clock.qml"
       if [[ -f "${lock_screen_clock}" ]]; then  # if the lock screen clock display exists (which it should)
@@ -360,7 +360,7 @@ if [[ "${retcode}" == 0 ]]; then
     fi
 
     # copy third-party programs to a temporary location, to be installed later
-    if [[ "${SYSTEM_TYPE,,}" == "macos" ]]; then
+    if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
       # if necessary, create a directory for Homebrew Casks and third-party
       # software
       [[ -d "${HOME}"/Applications ]]  # check to see if '"${HOME}"/Applications' exists
@@ -488,7 +488,7 @@ if [[ "${retcode}" == 0 ]]; then
     # done with the NAS
     cd "${currdir}"  # change back to where we were
     print_result "${?}" "Changed back to '${currdir}'"
-    if [[ "${SYSTEM_TYPE,,}" == "macos" ]]; then
+    if [[ "${SYSTEM_TYPE}" == "macOS" ]]; then
       diskutil unmount /Volumes/data 1>/dev/null 2>&1  # unmount the NAS.  this also automatically deletes mountpoint '/Volumes/data'
       print_result "${?}" "Unmounted NAS"
     else
@@ -506,8 +506,8 @@ if [[ "${retcode}" == 0 ]]; then
     # things that others do.  but from this point on, nothing that gets installed
     # on a macOS system gets installed on a Linux system, and vice versa.  so,
     # now OS-dependent scripts get sourced to finish things off
-    case "${SYSTEM_TYPE,,}" in
-      macos) source ./macos.sh ;;
+    case "${SYSTEM_TYPE}" in
+      macOS) source ./macos.sh ;;
           *) source ./linux.sh ;;
     esac
     retcode="${numberoferrors}"
