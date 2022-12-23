@@ -19831,3 +19831,43 @@ whereis progress
 cp -a /usr/local/bin/progress /Volumes/data/Downloads/Mac/InUse/Installed/Manual
 #1671722168
 progress -M -a xip&
+#1671771738
+/usr/libexec/java_home -V 2>&1 | grep '"' | cut -d'"' -f2 | tr -d [:alpha:][:blank:]
+#1671771756
+/usr/libexec/java_home -V
+#1671771893
+man grep
+#1671772002
+/usr/libexec/java_home -V 2>&1 | grep -v i386 | grep '"' | cut -d'"' -f2 | tr -d [:alpha:][:blank:]
+#1671772012
+/usr/libexec/java_home -V 2>&1 
+#1671772035
+/usr/libexec/java_home -V 2>&1 | grep -v i386 
+#1671772110
+/usr/libexec/java_home -V 2>&1 | grep -e '"' -e 'x86_64' | cut -d'"' -f2 | tr -d [:alpha:][:blank:]
+#1671772156
+/usr/libexec/java_home -V 2>&1 
+#1671772170
+/usr/libexec/java_home -V 2>&1 | grep -e '"' -e 'x86_64' 
+#1671772197
+man grep
+#1671772270
+/usr/libexec/java_home -V 2>&1 | grep -e '"' -e 'x86\_64' 
+#1671772304
+/usr/libexec/java_home -V 2>&1 | grep -v i386 
+#1671772325
+/usr/libexec/java_home -V 2>&1 | grep -v i386 | grep '"' | cut -d'"' -f2 | tr -d [:alpha:][:blank:]
+#1671772338
+/usr/libexec/java_home -V 2>&1 | grep -v i386 | grep '"' 
+#1671772373
+/usr/libexec/java_home -V 2>&1 | grep -v i386 | grep '"' | cut -d'"' -f2 
+#1671772409
+/usr/libexec/java_home -V 2>&1 | grep -v i386 | grep '"' | cut -d'"' -f2 | tr -d [:alpha:][:blank:]
+#1671772484
+java -version 2>&1 | grep version | cut -d'"' -f2
+#1671772490
+java -version 2>&1 
+#1671772514
+java -version 2>&1 | grep version 
+#1671772532
+java -version 2>&1 | grep version | cut -d'"' -f2
