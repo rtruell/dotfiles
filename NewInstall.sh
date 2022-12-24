@@ -211,7 +211,7 @@ if [[ "${retcode}" == 0 ]]; then
     i=""
     for i in ${filesdirs[@]}; do  # loop through the array of files and directories to be copied
       if [[ -d "${i}" ]]; then  # if it's a directory
-        cp -ra "${i}" "${HOME}"  # copy it and all its files
+        cp -a "${i}" "${HOME}"  # copy it and all its files
         print_result "${?}" "Copied directory ${i}"
         chmod 700 "${HOME}/${i}"  # set the permissions on the directory itself to read/write/execute for the owner and nothing for others
         print_result "${?}" "Set permissions for the ${i} directory"
@@ -389,7 +389,7 @@ if [[ "${retcode}" == 0 ]]; then
       fi
       shopt -s dotglob
       shopt -s nullglob
-      programs=("${programdir}"/*)  # get a list of all the programs in 'programdir' into an array.  the filenames are in the format 'programdir/programfilename'
+      programs=("${programdir}/*")  # get a list of all the programs in 'programdir' into an array.  the filenames are in the format 'programdir/programfilename'
       shopt -u nullglob
       for i in ${programs[@]}; do  # loop through the array of programs to be installed
         ext=$("${HOME}"/bin/fp -e "${i}")  # extract the extension
