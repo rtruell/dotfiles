@@ -1,7 +1,3 @@
-scutil --get LocalHostName
-#1645390552
-defaults read /Library/Preferences/SystemConfiguration/com.apple.smb.server NetBIOSName
-#1645390567
 hostname
 #1645390571
 hostname -s
@@ -19833,3 +19829,5 @@ progname="SuperDuper!"
 printf "\n\e[0;35m  Installing '${progname}'.\e[0m\n\n"
 #1671857599
 man cp
+#1671857724
+icheck
