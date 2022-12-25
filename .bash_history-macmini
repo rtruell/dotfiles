@@ -19831,3 +19831,23 @@ printf "\n\e[0;35m  Installing '${progname}'.\e[0m\n\n"
 man cp
 #1671857724
 icheck
+#1671948208
+ls /private/var/vm
+#1671948216
+ll /private/var/vm
+#1671948627
+man plistbuddy
+#1671948635
+plistbuddy -h
+#1671948646
+PlistBuddy
+#1671948662
+/usr/libexec/PlistBuddy -h
+#1671949268
+man tmutil
+#1671949530
+tmutil listlocalsnapshots
+#1671949544
+tmutil listlocalsnapshots /
+#1671949565
+man tmutil
