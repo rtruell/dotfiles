@@ -19831,3 +19831,365 @@ which dmidecode
 less ~/bin/dmidecode
 #1672032076
 hostnamectl
+#1672087141
+echo $RELEASE_NAME
+#1672087151
+echo $RELEASE_VERSION
+#1672087163
+cat .systeminfo
+#1672087208
+echo $SYSTEM_VERSION
+#1672087229
+findtext -i 'in a vm'
+#1672088734
+ls /usr/sbin
+#1672088779
+path
+#1672088871
+ll /
+#1672088889
+ll /usr
+#1672088903
+groups
+#1672088965
+less .paths
+#1672088977
+less ~/.paths
+#1672088994
+home
+#1672088995
+la
+#1672089012
+back
+#1672089016
+less ~/.path
+#1672089153
+findtext -i dmidecode
+#1672089193
+ttype findtext
+#1672089201
+lf findtext
+#1672089217
+findtext -i dmidecode
+#1672089232
+lf hf
+#1672089251
+man find
+#1672089264
+lf findtext
+#1672089279
+man find
+#1672089565
+man egrep
+#1672089636
+findtext -i dmidecode
+#1672090477
+findtext -i inxi
+#1672090702
+inxi -M
+#1672090745
+inxi -M | grep -i type | tr -s ' ' | cut -d' ' -f3
+#1672090754
+inxi -M | grep -i type | tr -s ' ' | cut -d' ' -f5
+#1672090764
+inxi -M | grep -i type | tr -s ' ' 
+#1672091554
+dmidecode | grep -i -e virtualbox -e oracle -e vmware -e parallels
+#1672091562
+sudo dmidecode | grep -i -e virtualbox -e oracle -e vmware -e parallels
+#1672091570
+echo $?
+#1672091652
+less Brewfile
+#1672091662
+la
+#1672091686
+less .Brewfile
+#1672092340
+home
+#1672092347
+back
+#1672092383
+dmidecode | grep -i -e virtualbox -e oracle -e vmware -e parallels
+#1672092400
+findtext -i inxi
+#1672092493
+findtext -i dmidecode
+#1672093627
+inxi -M | grep -i type | tr -s ' ' | cut -d' ' -f3
+#1672093644
+which inxi
+#1672093648
+whereis inxi
+#1672094494
+inxi -M | grep -i type | tr -s ' ' | cut -d' ' -f3
+#1672094499
+inxi -M | grep -i type | tr -s ' ' | cut -d' ' -f5
+#1672094502
+inxi -M | grep -i type | tr -s ' ' | cut -d' ' -f6
+#1672095541
+inxiprog="./inxi"
+#1672095576
+if [[ $("${inxiprog}" -M | grep -i type | tr -s ' ' | cut -d' ' -f5) == "innotek" ]]; then echo vm; else echo physical; fi
+#1672095584
+inxiprog="inxi"
+#1672095586
+if [[ $("${inxiprog}" -M | grep -i type | tr -s ' ' | cut -d' ' -f5) == "innotek" ]]; then echo vm; else echo physical; fi
+#1672095970
+home
+#1672111644
+inxiprog="./inxi"
+#1672111647
+if [[ $("${inxiprog}" -M | grep -i type | tr -s ' ' | cut -d' ' -f5) == "innotek" ]]; then echo vm; else echo physical; fi
+#1672111651
+inxiprog="inxi"
+#1672111653
+if [[ $("${inxiprog}" -M | grep -i type | tr -s ' ' | cut -d' ' -f5) == "innotek" ]]; then echo vm; else echo physical; fi
+#1672111661
+which inxi
+#1672111665
+whereis inxi
+#1672111681
+ll /usr/local/bin/inxi
+#1672111768
+cp -a /usr/local/Cellar/inxi/3.3.08-1/bin/inxi .
+#1672111807
+dif inxi /usr/local/bin/inxi
+#1672111813
+diff inxi /usr/local/bin/inxi
+#1672112487
+whereis dmidecode
+#1672112493
+which dmidecode
+#1672112525
+dmidecode | grep -i -e virtualbox -e oracle -e vmware -e parallels
+#1672112536
+sudo dmidecode | grep -i -e virtualbox -e oracle -e vmware -e parallels
+#1672112804
+ls /etc
+#1672112937
+brew install cavaliercoder/dmidecode/dmidecode
+#1672113550
+rm /Volumes/ExternalHome/rtruell/HomebrewCache/downloads/42d7a441974d3c0ef0578ee47ff93568167df11a487b2fedc3520c464a14c900--v3.1.tar.gz
+#1672113564
+brew install cavaliercoder/dmidecode/dmidecode
+#1672113625
+rm /Volumes/ExternalHome/rtruell/HomebrewCache/downloads/42d7a441974d3c0ef0578ee47ff93568167df11a487b2fedc3520c464a14c900--v3.1.tar.gz
+#1672113639
+brew install cavaliercoder/dmidecode/dmidecode
+#1672113656
+rm /Volumes/ExternalHome/rtruell/HomebrewCache/downloads/42d7a441974d3c0ef0578ee47ff93568167df11a487b2fedc3520c464a14c900--v3.1.tar.gz
+#1672114349
+man ls
+#1672114850
+which dmidecode
+#1672114856
+whereis dmidecode
+#1672114924
+sudo dmidecode | grep -i -e virtualbox -e oracle -e vmware -e parallels
+#1672114963
+la
+#1672115584
+b s progress
+#1672115641
+b s dmidecode
+#1672115822
+pwd
+#1672115826
+cd /Volumes/ExternalHome/rtruell/SourceCode/dmidecode-osx
+#1672115842
+make
+#1672115853
+make install
+#1672115913
+whereis dmidecode
+#1672115919
+which dmidecode
+#1672115932
+home
+#1672115935
+whereis dmidecode
+#1672115938
+which dmidecode
+#1672115943
+ls bin
+#1672115957
+path
+#1672115988
+ls /usr/local/sbin
+#1672116020
+diff /usr/local/sbin/dmidecode ./bin/dmidecode
+#1672116037
+.bin/dmidecode --version
+#1672116045
+./bin/dmidecode --version
+#1672116055
+dmidecode --version
+#1672117301
+which dmidecode
+#1672117420
+back
+#1672117438
+make uninstall
+#1672117466
+whereis dmidecode
+#1672117470
+which dmidecode
+#1672117477
+dmidecode --version
+#1672117508
+home
+#1672117510
+dmidecode --version
+#1672117650
+/temp/dmidecode --version
+#1672117663
+/Volumes/Temp/dmidecode --version
+#1672117757
+man dmidecode
+#1672118084
+cd /Volumes/ExternalHome/rtruell/SourceCode/dmidecode-3.4a
+#1672118087
+make
+#1672118253
+dmidecode
+#1672118275
+~/bin/dmidecode --version
+#1672118298
+/Volumes/Temp/dmidecode --version
+#1672118455
+ls ..
+#1672118474
+cd ../dmidecode-3.3c
+#1672118485
+make
+#1672118517
+make install
+#1672118568
+ls ../dmidecode-3.4a
+#1672118594
+less ../dmidecode-3.4a/Makefile
+#1672118716
+less Makefile 
+#1672118775
+diff Makefile ../dmidecode-3.4a/Makefile
+#1672118846
+bcompare ../dmidecode-3.3c ../dmidecode-3.4a
+#1672119029
+uname -s
+#1672119268
+make install
+#1672119836
+dmidecode --version
+#1672119843
+whereis dmidecode
+#1672119847
+which dmidecode
+#1672119857
+home
+#1672119860
+whereis dmidecode
+#1672119862
+which dmidecode
+#1672119875
+./bin/dmidecode --version
+#1672119883
+dmidecode --version
+#1672119890
+man dmidecode
+#1672119911
+sudo dmidecode | grep -i -e virtualbox -e oracle -e vmware -e parallels
+#1672119942
+ls /usr/local/share
+#1672119990
+ls /usr/local/share/man
+#1672120006
+ls /usr/local/share/man/man8
+#1672120026
+ls /usr/local/share/doc
+#1672120039
+ll /usr/local/share/doc
+#1672120057
+ls /usr/local/share/doc
+#1672120063
+ls /usr/local/share/doc/dmidecode
+#1672120085
+which dmidecode
+#1672120259
+which progress
+#1672120263
+whereis progress
+#1672120274
+back
+#1672120277
+ls ..
+#1672120286
+cd ../progress
+#1672120298
+less Makefile 
+#1672120452
+man progress
+#1672120469
+home
+#1672120739
+whereis progress
+#1672120743
+which progress
+#1672120747
+which dmidecode
+#1672120777
+diff /usr/local/bin/progress /Volumes/data/Downloads/Mac/InUse/Installed/Manual/progress
+#1672120816
+cp -a /usr/local/sbin/dmidecode /Volumes/data/Downloads/Mac/InUse/Installed/Manual
+#1672120836
+diff /usr/local/sbin/dmidecode /Volumes/data/Downloads/Mac/InUse/Installed/Manual/dmidecode 
+#1672121001
+back
+#1672121015
+less Makefile 
+#1672121070
+cd ../dmidecode-3.3c/
+#1672121077
+less Makefile 
+#1672121239
+uname -m
+#1672121243
+less Makefile 
+#1672121413
+man install
+#1672121558
+dotfiles
+#1672121573
+findtext -i progress
+#1672121685
+lf findtext
+#1672121700
+man egrep
+#1672121747
+la
+#1672121769
+man egrep
+#1672121952
+less ./.functions/findtext.function
+#1672121966
+s ./.functions/findtext.function
+#1672121976
+findtext -i progress
+#1672121996
+lf hf
+#1672122006
+hf progress
+#1672122024
+tf
+#1672122028
+ft
+#1672122044
+findtext -i progress
+#1672122113
+findtext -i dmidecode
+#1672122150
+findtext -i inxi
+#1672122232
+home
+#1672122478
+sudo dmidecode | grep -i -e virtualbox -e oracle -e vmware -e parallels
