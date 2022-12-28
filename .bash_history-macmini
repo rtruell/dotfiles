@@ -1,47 +1,3 @@
-whereis dmidecode
-#1646912253
-hf dmidecode
-#1646912284
-b s dmidecode
-#1646913367
-system_profiler
-#1646913560
-system_profiler -listdatatypes
-#1646913691
-system_profiler SPSoftwareDataType SPHardwareDataType
-#1646914996
-brew install cavaliercoder/dmidecode/dmidecode
-#1646915086
-ls /Volumes/ExternalHome/rtruell/HomebrewCache/downloads
-#1646915122
-rm /Volumes/ExternalHome/rtruell/HomebrewCache/downloads/42d7a441974d3c0ef0578ee47ff93568167df11a487b2fedc3520c464a14c900--v3.1.tar.gz
-#1646915132
-brew install cavaliercoder/dmidecode/dmidecode
-#1646915863
-ls Applications
-#1646915886
-./Applications/dmidecode
-#1646915929
-./Applications/dmidecode -help
-#1646915941
-./Applications/dmidecode --help
-#1646915997
-inxi -M
-#1646916081
-dmidecode -V
-#1646916087
-inxi -M
-#1646916137
-inxi
-#1646916147
-inxi -b
-#1646916165
-inxi -F
-#1646916252
-dmidecode
-#1646916265
-dmidecode | grep "lunch box"
-#1646916285
 inxi -M
 #1646916299
 dmidecode | grep -i "lunch box"
@@ -19877,3 +19833,7 @@ s dotfiles/.functions/print_info.function
 print_info "This is a test."
 #1672268898
 print_info "This\nis\na\ntest\n."
+#1672269584
+dotfiles
+#1672269633
+findtext -i "/print_"
