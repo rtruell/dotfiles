@@ -1,363 +1,3 @@
-b s chm
-#1645915577
-b s speedtest
-#1645915618
-b s maintenance
-#1645915639
-b s bitdefender
-#1645915678
-b s medical
-#1645915690
-b s parcel
-#1646003196
-mas -?
-#1646003201
-mas -help
-#1646003210
-mas --help
-#1646003214
-mas
-#1646003226
-mas account
-#1646003238
-mas info
-#1646003247
-mas help info
-#1646003273
-mas list
-#1646003330
-mas info 489690915
-#1646003421
-mas info 405399194
-#1646003499
-mas info 639968404
-#1646003535
-mas info 489690915
-#1646003564
-mas info 500154009
-#1646003598
-mas info 413628447
-#1646003622
-mas info 1153157709
-#1646003645
-mas info 424182884
-#1646003664
-mas info 445189367
-#1646003724
-mas info 517065482
-#1646159344
-ping c2d2930
-#1646159365
-ping c2d-2930
-#1646159376
-ping backupserver
-#1646159380
-ping qnap1
-#1646159401
-ping c2d2930
-#1646170280
-hostname
-#1646170344
-if [[ $(hostname -s) == "dave" ]] then; echo it worked; fi
-#1646170384
-if [[ `hostname -s` == "dave" ]] then; echo it worked; fi
-#1646170413
-if [[ $(hostname -s) == "dave" ]]; then echo it worked; fi
-#1646170430
-if [[ $(hostname -s) == "macmini" ]]; then echo it worked; fi
-#1646173828
-hf awk
-#1646173842
-awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl 
-#1646173853
-diskutil list
-#1646173920
-diskutil unmountDisk /dev/disk3
-#1646174013
-sudo dd if="/Volumes/data/Downloads/Live CD ISOs/debian-11.2.0-amd64-DVD-1.iso" of=/dev/rdisk3 bs=4M status=progress
-#1646174838
-diskutil eject /dev/disk3
-#1646513196
-source ./test.sh rick
-#1646513201
-source ./test.sh dave
-#1646515063
-./test1.sh
-#1646515745
-dotfiles
-#1646515759
-findtext 'grep'
-#1646515801
-findtext "'grep"
-#1646515824
-findtext "`grep"
-findtext "\`grep"
-findtext 'grep'
-#1646515898
-findtext "\`grep"
-#1646515927
-findtext "`grep"
-#1646516223
-ls /etc/apt
-#1646516670
-ls /etc
-#1646516681
-ls ..
-#1646517020
-ls /etc
-#1646517053
-dotfiles
-#1646517058
-ls /etc
-#1646520753
-bashman tests
-#1646521070
-findtext print_result
-#1646540924
-hostname
-#1646601631
-man printf
-#1646601905
-man grep
-#1646602000
-bashman case
-#1646602587
-man grep
-#1646602793
-cd /Volumes/Temp/
-#1646602798
-ll
-#1646602805
-cat test.sh
-#1646602830
-source ./test.sh
-#1646603282
-cat sources.list
-#1646603354
-source ./test.sh
-#1646604733
-cat source.list
-#1646604741
-cat sources.list
-#1646604754
-source ./test.sh
-#1646604907
-cat sources.list
-#1646604926
-source ./test.sh
-#1646605056
-cat sources.list
-#1646605061
-source ./test.sh
-#1646606041
-bashman test
-#1646606044
-bashman tests
-#1646607367
-home
-#1646627771
-dotfiles
-#1646627780
-findtext /bin/bash
-#1646627916
-findtext /usr/bin/sudo
-#1646629718
-findtext askyn
-#1646629832
-findtext answer_is_y
-#1646630858
-findtext timer
-#1646631019
-timer
-#1646631076
-date
-#1646631082
-time cat
-#1646632281
-findtext /bin/bash
-#1646632393
-findtext /usr/bin/sudo
-#1646632417
-home
-#1646633066
-man pause
-#1646633088
-man sleep
-#1646633153
-sleep 2
-#1646633188
-sleep 1
-#1646633361
-declare -a colours=(   "\033[0;30m"   "\033[1;30m"   "\033[0;36m"   "\033[0;34m"   "\033[0;31m"   "\033[0;32m"   "\033[0;35m"   "\033[0;33m"   "\033[1;33m"   "\033[0;37m" )
-#1646633361
-# a banner display in the style as shown in the movie "Matrix"...although not
-#1646633361
-# nearly as good :-)
-#1646633361
-for z in {1..40}; do   for i in {1..16}; do     r="$(($RANDOM % 2))";     if [[ $(($RANDOM % 5)) == 1 ]]; then       if [[ $(($RANDOM % 4)) == 1 ]]; then         v+="${colours[$((1 + $RANDOM % 10))]} ${r}   ";       else         v+="${colours[$((1 + $RANDOM % 10))]} ${r}   ";       fi;     else       v+="${colours[$((1 + $RANDOM % 10))]}     ";     fi;   done;   printf "${v}\n";   sleep 1;   v=""; done
-#1646633401
-# emphasize that this is a new install :-)
-#1646633402
-printf "\033[0m\n"
-#1646633402
-printf " #    # ###### #    #       # #    #  ####  #####   ##   #      #        ### ###\n"
-#1646633402
-printf " ##   # #      #    #       # ##   # #        #    #  #  #      #        ### ###\n"
-#1646633402
-printf " # #  # #####  #    #       # # #  #  ####    #   #    # #      #        ### ###\n"
-#1646633402
-printf " #  # # #      # ## #       # #  # #      #   #   ###### #printf " #  #  printf " #  #intf " #   ## #      ##  ##     printf " #     printf " #  # #printf " #  #  printf " #  #printprintf " #  # # #      # ## #       # #  # #      #   #   ###### #printf " ###printf " #  # # #  "
-#1646633402
-printf " #  # # #   v
-#1646633437
-cat test1.sh
-#1646633456
-rm test1.sh
-#1646633466
-subl test.sh
-#1646633507
-man slepp
-#1646633510
-man sleep
-#1646633528
-source ./test.sh
-#1646715258
-findshow 'playboy'
-#1646715433
-listdf
-#1646715449
-la
-#1646715671
-listdf -f
-#1646715889
-spaceused
-#1646866093
-volall
-#1646866131
-volnorm
-#1646866135
-volall
-#1646866238
-aw
-#1646866362
-sysinfo
-#1646866424
-set | grep yosemite
-#1646866669
-echo "${SYSTEM_TYPE}"
-#1646866697
-echo "${SYSTEM_VERSION}"
-#1646866748
-echo "${RELEASE_NAME}"
-#1646866786
-echo "${INSTALL_TYPE}"
-#1646867601
-sysinfo
-#1646867614
-la
-#1646867643
-s .functions/sysinfo.function
-#1646867649
-sysinfo
-#1646867696
-s .functions/sysinfo.function
-#1646867698
-sysinfo
-#1646867719
-s .functions/sysinfo.function
-#1646867721
-sysinfo
-#1646868117
-s .functions/sysinfo.function
-#1646868119
-sysinfo
-#1646868150
-s .functions/sysinfo.function
-#1646868152
-sysinfo
-#1646868223
-s .functions/sysinfo.function
-#1646868225
-sysinfo
-#1646868251
-s .functions/sysinfo.function
-#1646868252
-sysinfo
-#1646868287
-s .functions/sysinfo.function
-#1646868288
-sysinfo
-#1646868344
-s .functions/sysinfo.function
-#1646868345
-sysinfo
-#1646868378
-s .functions/sysinfo.function
-#1646868379
-sysinfo
-#1646868439
-printf '\n%b' "${DULL_PURPLE}You are logged on:${NORMAL} `hostname -s`" ; hostname -s
-#1646868451
-printf '\n%b' "${DULL_PURPLE}You are logged on:${NORMAL} `hostname -s`"
-#1646868556
-s .functions/sysinfo.function
-#1646868709
-sysinfo
-#1646868916
-s .functions/sysinfo.function
-#1646868918
-sysinfo
-#1646869016
-printf '\n%b' "${DULL_PURPLE}You are:${NORMAL} `whoami`"
-#1646869093
-s .functions/sysinfo.function
-#1646869098
-sysinfo
-#1646869189
-s .functions/sysinfo.function
-#1646869191
-sysinfo
-#1646869219
-s .functions/sysinfo.function
-#1646869221
-sysinfo
-#1646869289
-externalip
-#1646869297
-localip
-#1646869309
-alias externalip
-#1646869317
-listfunction externalip
-#1646869326
-listfunction localip
-#1646869353
-ip
-#1646869362
-ifconfig
-#1646869373
-listfunction localip
-#1646869555
-b i iproute2mac
-#1646869597
-b h iproute2mac
-#1646869705
-ifconfig | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//' | cut -d/ -f1
-#1646869729
-ifconfig | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//'
-#1646869748
-ifconfig | grep 'inet '
-#1646869763
-ifconfig | grep 'inet ' | grep -v 127
-#1646869783
-ifconfig | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//'
-#1646869817
-ifconfig | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//' | cut -f1
-#1646869827
-ifconfig | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//' | cut -d' ' -f1
-#1646869924
-iproute2mac
-#1646869928
 ip
 #1646869954
 ls /usr/local/Cellar/iproute2mac
@@ -20193,3 +19833,177 @@ findtext -i inxi
 home
 #1672122478
 sudo dmidecode | grep -i -e virtualbox -e oracle -e vmware -e parallels
+#1672137263
+osinfo
+#1672137270
+lf osinfo
+#1672137328
+echo $DISTRO_NAME
+#1672137339
+echo $SYSTEM_TYPE
+#1672138755
+echo $RELEASE_NAME
+#1672139427
+sw_vers -productVersion
+#1672139456
+test="$(sw_vers -productVersion)"
+#1672139487
+printf '%s\n' ">${test}<"
+#1672141611
+man declare
+#1672141950
+perl
+#1672141961
+perl --version
+#1672143816
+sw_vers
+#1672143887
+system_profiler
+#1672143919
+system_profiler | less
+#1672144612
+uname -v
+#1672144858
+uname -s
+#1672144861
+uname -r
+#1672144865
+uname -m
+#1672145453
+echo $HOSTTYPE
+#1672148090
+man hostname
+#1672153731
+ls /sys
+#1672153735
+ls /
+#1672153756
+ls /System/
+#1672153803
+dmidecode | grep -i -e virtualbox -e oracle -e vmware -e parallels
+#1672153829
+whereis dmidecode
+#1672153833
+which dmidecode
+#1672155007
+dmidecode | grep -i -e virtualbox -e oracle -e vmware -e parallels
+#1672155016
+dmidecode | grep -i -e intel -e oracle -e vmware -e parallels
+#1672155025
+echo $?
+#1672155033
+dmidecode | grep -i -e virtualbox -e oracle -e vmware -e parallels
+#1672155035
+echo $?
+#1672156572
+if [[ $("${HOME}/dmidecode" | grep -i -e virtualbox -e oracle -e vmware -e parallels) ]]; then echo vm; elsse echo not; fi
+#1672156608
+which dmidecode
+#1672156640
+cp -a /usr/local/sbin/dmidecode .
+#1672156652
+if [[ $("${HOME}/dmidecode" | grep -i -e virtualbox -e oracle -e vmware -e parallels) ]]; then echo vm; elsse echo not; fi
+#1672156663
+if [[ $("${HOME}/dmidecode" | grep -i -e virtualbox -e oracle -e vmware -e parallels) ]]; then echo vm; else echo not; fi
+#1672156682
+./dmidecode | less
+#1672156702
+if [[ $("${HOME}/dmidecode" | grep -i -e virtualbox -e oracle -e vmware -e parallels) ]]; then echo vm; else echo not; fi
+#1672156714
+if [[ $("${HOME}/dmidecode" | grep -i -e intel -e oracle -e vmware -e parallels) ]]; then echo vm; else echo not; fi
+#1672158227
+dotfiles
+#1672158247
+findtext -i :upper:
+#1672159888
+home
+#1672181191
+osinfo
+#1672184607
+hostnamectl
+#1672198329
+man grep
+#1672198783
+if [[ $("${HOME}/dmidecode" | grep -i -f vmpatterns.txt) ]]; then echo vm; else echo not; fi
+#1672198796
+dotfils
+#1672198803
+dotfiles
+#1672198812
+if [[ $("${HOME}/dmidecode" | grep -i -f vmpatterns.txt) ]]; then echo vm; else echo not; fi
+#1672198848
+dmidecode
+#1672198860
+dmidecode | less
+#1672198913
+if [[ $("${HOME}/dmidecode" | grep -i -f vmpatterns.txt) ]]; then echo vm; else echo not; fi
+#1672198945
+home
+#1672200233
+dotfiles
+#1672200240
+if [[ $("${HOME}/dmidecode" | grep -i -f vmpatterns.txt) ]]; then echo vm; else echo not; fi
+#1672200285
+"${HOME}/dmidecode" | grep -i -f vmpatterns.txt
+#1672201314
+vmcommand="${HOME}/dmidecode | grep -i -e virtualbox -e oracle"
+#1672201322
+echo $vmcommand
+#1672201356
+"${vmcommand}" | grep -i -f vmpatterns.txt
+#1672201385
+home
+#1672201389
+"${vmcommand}" | grep -i -f vmpatterns.txt
+#1672201472
+if [[ $("${HOME}/dmidecode" | grep -i -e virtualbox -e oracle -e vmware -e parallels) ]]; then echo vm; else echo not; fi
+#1672201509
+"${vmcommand}" | grep -i -e virtualbox -e oracle -e vmware -e parallels
+#1672201516
+echo $vmcommand
+#1672201536
+"${vmcommand}"
+#1672201575
+vmcommand="\"${HOME}/dmidecode\" | grep -i -e virtualbox -e oracle"
+#1672201581
+echo $vmcommand
+#1672201608
+"${vmcommand}"
+#1672201619
+${vmcommand}
+#1672201633
+eval "${vmcommand}"
+#1672201681
+vmcommand="${HOME}/dmidecode | grep -i -e virtualbox -e oracle"
+#1672201685
+eval "${vmcommand}"
+#1672201697
+vmcommand="${HOME}/dmidecode | grep -i -e virtualbox -e oracle -e apple"
+#1672201700
+eval "${vmcommand}"
+#1672201829
+if [[ $(eval "${vmcommand}") ]]; then echo vm; else echo not; fi
+#1672201841
+vmcommand="${HOME}/dmidecode | grep -i -e virtualbox -e oracle"
+#1672201843
+if [[ $(eval "${vmcommand}") ]]; then echo vm; else echo not; fi
+#1672203232
+if [[ $("${HOME}"/dmidecode | grep -i -e virtualbox -e oracle) ]]; then echo vm; else echo not; fi
+#1672203244
+if [[ $("${HOME}"/dmidecode | grep -i -e virtualbox -e oracle -e apple) ]]; then echo vm; else echo not; fi
+#1672203263
+if [[ $("${HOME}"/dmidecode | grep -i -e virtualbox -e oracle) ]]; then echo vm; else echo not; fi
+#1672203743
+osinfo
+#1672204692
+if [[ "${computername}" != "$(hostname -s)" ]]; then echo changed; else echo same; fi
+#1672204702
+echo $computername
+#1672204742
+computername=$(hostname -s)
+#1672204749
+if [[ "${computername}" != "$(hostname -s)" ]]; then echo changed; else echo same; fi
+#1672204783
+computername="Debian-Bullseye-VM"
+#1672204787
+if [[ "${computername}" != "$(hostname -s)" ]]; then echo changed; else echo same; fi
