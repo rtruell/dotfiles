@@ -1,177 +1,3 @@
-ip
-#1646869954
-ls /usr/local/Cellar/iproute2mac
-#1646869964
-ls /usr/local/Cellar/iproute2mac/1.2.3
-#1646869970
-ls /usr/local/Cellar/iproute2mac/1.2.3/bin
-#1646869981
-ll /usr/local/Cellar/iproute2mac/1.2.3/bin
-#1646870020
-which ip
-#1646870023
-whereis ip
-#1646870036
-/usr/local/Cellar/iproute2mac/1.2.3/bin/ip
-#1646870079
-/usr/local/Cellar/iproute2mac/1.2.3/bin/ip a | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//' | cut -d/ -f1
-#1646870153
-b upd
-#1646870302
-b i iproute2mac
-#1646870326
-listfunction b
-#1646870392
-b upg iproute2mac
-#1646870533
-ip
-#1646870545
-b i iproute2mac
-#1646870611
-/usr/local/Cellar/iproute2mac/1.2.3/bin/ip a | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//' | cut -d/ -f1
-#1646870626
-ifconfig | grep 'inet ' | grep -v 127 | sed -E 's/(.*inet )//' | cut -d' ' -f1
-#1646870675
-sysinfo
-#1646870757
-listfunction sysinfo
-#1646888037
-hf install
-#1646888171
-b i raspberry
-#1646888182
-b s raspberry
-#1646888236
-b i raspberry
-#1646888249
-b i raspberry-pi-imager
-#1646888317
-b i quickhash
-#1646888326
-b h quickhash
-#1646888478
-b s quickhash
-#1646888552
-which easy_install 
-#1646888564
-man easy_install 
-#1646888578
-easy_install -h
-#1646888685
-easy_install -i
-#1646888720
-easy_install -r easyinstall.txt
-#1646888736
-easy_install --record easyinstall.txt
-#1646888779
-ls /Library/Python
-#1646888785
-ls /Library/Python/2.7
-#1646888792
-ls /Library/Python/2.7/site-packages
-#1646888887
-hf install
-#1646888984
-hf "b i"
-#1646890236
-brew file casklist
-#1646890266
-man brew
-#1646891338
-hf "b i"
-#1646891456
-b i uniclip
-#1646891482
-b s uniclip
-#1646891768
-b s inxi
-#1646891804
-b i inxi
-#1646891933
-b s gpg
-#1646891947
-b i gpg
-#1646891984
-b i gnupg
-#1646892064
-b s taskade
-#1646892127
-b s nmap
-#1646892213
-b -H
-#1646892223
-b -h
-#1646892241
-b dave
-#1646892252
-listfunction b
-#1646892278
-b
-#1646892329
-hf 'b in '
-#1646892570
-hf 'mas '
-#1646892740
-mas info 405399194
-#1646892842
-mas info 639968404
-#1646892880
-b s parcel
-#1646892908
-mas info 489690915
-#1646892927
-b s medical
-#1646893021
-mas info 500154009
-#1646893077
-b s bitdefender
-#1646893122
-mas info 413628447
-#1646893140
-b s car
-#1646893192
-b s maintain
-#1646893220
-b s mainten
-#1646893236
-b i maintenance
-#1646893292
-mas info 1153157709
-#1646893314
-b s speed
-#1646893374
-b i speedtest-cli
-#1646893402
-b h speedtest-cli
-#1646893607
-mas info 424182884
-#1646893628
-b s chm
-#1646893690
-mas info 445189367
-#1646893710
-b s popclip
-#1646893725
-b h popclip
-#1646894193
-mas info 517065482
-#1646894225
-mas list
-#1646894246
-mas list | grep 517
-#1646911782
-inxi -M 
-#1646911801
-inxi
-#1646911852
-b i dmidecode
-#1646912086
-inxi -b
-#1646912160
-inxi -F
-#1646912217
-which dmidecode
-#1646912222
 whereis dmidecode
 #1646912253
 hf dmidecode
@@ -20007,3 +19833,47 @@ if [[ "${computername}" != "$(hostname -s)" ]]; then echo changed; else echo sam
 computername="Debian-Bullseye-VM"
 #1672204787
 if [[ "${computername}" != "$(hostname -s)" ]]; then echo changed; else echo same; fi
+#1672268167
+printf "\n\e[0;35m  Installing 'progname'.\e[0m\n\n"
+#1672268173
+printf "\n\e[1;35m  Installing 'progname'.\e[0m\n\n"
+#1672268188
+printf "\n\e[1;33m  Installing 'progname'.\e[0m\n\n"
+#1672268193
+printf "\n\e[0;33m  Installing 'progname'.\e[0m\n\n"
+#1672268459
+ls dotfiles
+#1672268484
+s dotfiles/.functions/print_info.function
+#1672268511
+print_info "This is a test."
+#1672268548
+print_warn "This is a test."
+#1672268644
+s dotfiles/.functions/print_info.function
+#1672268651
+s dotfiles/.functions/print_warn.function
+#1672268654
+print_warn "This is a test."
+#1672268667
+print_info "This is a test."
+#1672268724
+print_warn "This is a test."
+#1672268728
+print_info "This is a test."
+#1672268742
+print_warn "This is a test.\n"
+#1672268762
+print_warn "This\tis\ta]ttest.\n"
+#1672268775
+print_warn "This\tis\ta\ttest.\n"
+#1672268816
+print_warn "This\tis\ta\ttest\t.\n\n"
+#1672268833
+print_info "This is a test."
+#1672268858
+s dotfiles/.functions/print_info.function
+#1672268861
+print_info "This is a test."
+#1672268898
+print_info "This\nis\na\ntest\n."
