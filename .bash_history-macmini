@@ -1,49 +1,3 @@
-inxi -M
-#1646916299
-dmidecode | grep -i "lunch box"
-#1646916316
-dmidecode | less
-#1646916390
-inxi -F
-#1646916417
-dmidecode -h
-#1646918268
-dmidecode | less
-#1646918575
-b h inxi
-#1646911913
-man inxi
-#1646952732
-b s 1pass
-#1646952774
-b i 1password
-#1646952780
-b i 1password6
-#1646953211
-cd temp
-#1646953221
-cd /Volumes/Temp/
-#1646953388
-hdiutil attach ABFRX11.dmg
-#1646953469
-ls /Volumes/
-#1646953510
-ls "/Volumes/A Better Finder Rename 11"/
-#1646953521
-ll "/Volumes/A Better Finder Rename 11"/
-#1646953611
-cp "/Volumes/A Better Finder Rename 11/A Better Finder rename 11.app" .
-#1646953646
-cp -r "/Volumes/A Better Finder Rename 11/A Better Finder rename 11.app" .
-#1646953765
-hdiutil detach /dev/disk3s2
-#1646953797
-hdiutil attach Alfred*.dmg
-#1646953816
-ls /Volumes/Alfred/
-#1646953848
-hdiutil detach /dev/disk3s1
-#1646953876
 hdiutil attach avidemux*.dmg
 #1646953898
 ls /Volumes/avidemux_2.4.4_Gtk_Quartz_universal/
@@ -19837,3 +19791,61 @@ print_info "This\nis\na\ntest\n."
 dotfiles
 #1672269633
 findtext -i "/print_"
+#1672287513
+print_info "Installing '${progname}'"
+#1672287528
+print_info "\nInstalling '${progname}'\n\n"
+#1672287552
+print_info "Installing 'test'"
+#1672287572
+print_info "\nInstalling 'test'\n\n"
+#1672287603
+print_warn "'${HOME}/.xmltv' has files/directories in it"
+#1672287617
+print_warn "'${HOME}/.xmltv' has files/directories in it\n"
+#1672289312
+print_info "Installing 'test'\n"
+#1672289706
+dotfiles
+#1672289718
+findtext -i tee
+#1672290760
+printf "\e[0mThis is a test"
+#1672290801
+s dotfiles/.functions/print_normal.function
+#1672290826
+s $HOME/dotfiles/.functions/print_normal.function
+#1672290849
+print_normal "This is a test"
+#1672290904
+print_normal "This is a test\n"
+#1672290922
+print_normal "\tThis is a test\n\n"
+#1672290964
+findtext -i print_
+#1672291136
+print_info "This is a test\n"
+#1672291146
+neofetch
+#1672291225
+print_info "This is a test\n"
+#1672291245
+which neofetch
+#1672291248
+whereis neofetch
+#1672291321
+uname -s
+#1672291358
+echo $kernel_name
+#1672291371
+echo $darwin_name
+#1672291521
+less /System/Library/CoreServices/SystemVersion.plist
+#1672291269
+less $HOME/bin/neofetch
+#1672291665
+subl $HOME/bin/neofetch
+#1672292665
+lf print_info
+#1672292676
+lf print_normal
