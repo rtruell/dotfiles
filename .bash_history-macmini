@@ -1,317 +1,3 @@
-hdiutil detach /dev/disk3s2
-#1646954493
-disk=`hdiutil attach avidemux*.dmg | grep avi | cut -d' ' -f1`
-#1646954500
-echo $disk
-#1646954526
-ls /Volumes/avidemux*
-#1646954555
-hdiutil detach "${disk}"
-#1646954690
-progname="avidemux"
-#1646954774
-hdiutil attach "${progname}*.app"
-#1646954826
-hdiutil attach "${progname}*.dmg"
-#1646954857
-echo $progname
-#1646954912
-hdiutil attach `echo $progname`*.dmg
-#1646954936
-echo $disk
-#1646954989
-ls "/Volumes/${progname}*"
-#1646955012
-ls "/Volumes/`echo ${progname}`*"
-#1646955049
-ls /Volumes
-#1646955064
-ls /Volumes/avidemux*
-#1646955241
-cp -r "/Volumes/${progname}*/${progname}*.app" .
-#1646955304
-command="cp -r "/Volumes/${progname}*/${progname}*.app" ."
-#1646955309
-echo $command
-#1646955342
-${command}
-#1646955426
-dotfiles
-#1646955459
-findtext execute_command
-#1646955563
-execute_command "cp -r "/Volumes/${progname}*/${progname}*.app" ."
-#1646955641
-echo $disk
-#1646955665
-hdiutil detach "${disk}"
-#1646955790
-echo $disk1
-#1646956285
-diskutil list
-#1646956339
-progname="ABFRX11"
-#1646956380
-echo $progname
-#1646956405
-disk=`hdiutil attach `echo $progname`*.dmg | grep "${progname}" | cut -d' ' -f1`
-#1646956954
-echo $progname
-#1646956983
-command="`hdiutil attach `echo $progname`*.dmg | grep "${progname}" | cut -d' ' -f1`"
-#1646957017
-command="hdiutil attach `echo $progname`*.dmg | grep "${progname}" | cut -d' ' -f1"
-#1646957028
-echo $command
-#1646957110
-program="avidemux"
-#1646957121
-echo command
-#1646957125
-echo $command
-#1646957131
-command="hdiutil attach `echo $progname`*.dmg | grep "${progname}" | cut -d' ' -f1"
-#1646957133
-echo $command
-#1646957178
-progname="avidemux"
-#1646957189
-echo $progname
-#1646957195
-echo $command
-#1646957201
-command="hdiutil attach `echo $progname`*.dmg | grep "${progname}" | cut -d' ' -f1"
-#1646957204
-echo $command
-#1646957338
-command="hdiutil attach $progname*.dmg | grep "${progname}" | cut -d' ' -f1"
-#1646957341
-echo $command
-#1646957376
-command=""
-#1646957379
-echo $command
-#1646957400
-echo $progname
-#1646957474
-command="hdiutil attach "${progname}"*.dmg | grep "${progname}" | cut -d' ' -f1"
-#1646957478
-echo $command
-#1646957523
-command=""
-#1646957558
-echo $command
-#1646957586
-man cut
-#1646957648
-echo '${command}'
-#1646957673
-printf '%s\n' '${command}'
-#1646957702
-man cut
-#1646957725
-echo $progname
-#1646957729
-echo $command
-#1646957770
-command='hdiutil attach "${progname}"*.dmg | grep "${progname}" | cut -d" " -f1'
-#1646957777
-echo $command
-#1646957824
-echo $disk
-#1646957829
-disk=""
-#1646957831
-echo $disk
-#1646957841
-disk=`${command}`
-#1646957950
-echo $disk
-#1646957998
-command="hdiutil attach "${progname}"*.dmg | grep "${progname}" | cut -d' ' -f1"
-#1646958006
-echo $command
-#1646958154
-progname="ABFRX11"
-#1646958160
-echo $progname
-#1646958181
-command="hdiutil attach "${progname}"*.dmg | grep "${progname}" | cut -d' ' -f1"
-#1646958185
-echo $command
-#1646958201
-disk=`${command}`
-#1646958273
-disk=${command}
-#1646958278
-echo disk
-#1646958283
-echo $disk
-#1646958393
-command="`hdiutil attach "${progname}"*.dmg` | grep "${progname}" | cut -d' ' -f1"
-#1646958451
-hdiutil attach "${progname}"*.dmg
-#1646958528
-man hdiutil
-#1646958690
-hdiutil detach /dev/disk3s2
-#1646958707
-hdiutil attach "${progname}"*.dmg -nobrowse
-#1646958998
-command=" "
-#1646959006
-disk="'
-command=""
-echo $command
-#1646959031
-disk=""
-#1646959037
-command=""
-#1646959040
-echo $disk
-#1646959044
-echo $command
-#1646959050
-echo $progname
-#1646959074
-command="`hdiutil attach "${progname}"*.dmg -nobrowse` | grep "${progname}" | cut -d' ' -f1"
-#1646959100
-echo $command
-#1646959287
-hdiutil attach "${progname}"*.dmg -nobrowse
-#1646959397
-up
-#1646959408
-b s finder
-#1646959449
-b i a-better-finder-rename
-#1646959658
-b h a-better-finder-rename
-#1646959949
-hdiutil detach /dev/disk3s2
-#1646959958
-command=""
-#1646959967
-command="`hdiutil attach "${progname}"*.dmg -nobrowse` | grep "${progname}" | cut -d' ' -f1"
-#1646959987
-echo $command
-#1646960004
-hdiutil detach /dev/disk3s2
-#1646960020
-hdiutil attach "${progname}"*.dmg -nobrowse
-#1646960052
-hdiutil detach /dev/disk3s2
-#1646960069
-hdiutil attach "${progname}"*.dmg -nobrowse >/dev/null
-#1646960299
-hdiutil detach /dev/disk3s2
-#1646960549
-diskutil list
-#1646976566
-progname="avidemux"
-#1646976594
-command="`hdiutil attach "${progname}"*.dmg -nobrowse` | grep "${progname}" | cut -d' ' -f1"
-#1646976603
-echo $command
-#1646976669
-command=`hdiutil attach "${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
-#1646976676
-echo $command
-#1646976707
-hdiutil detach /dev/disk3s2
-#1646976720
-command=''
-#1646976726
-echo $command
-#1646976733
-command=`hdiutil attach "${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
-#1646976743
-echo $command
-#1646976776
-echo $disk
-#1646976818
-hdiutil detach /dev/disk3s2
-#1646976822
-echo $disk
-#1646976847
-dmgdisk=`hdiutil attach "${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
-#1646976859
-echo $dmgdisk
-#1646976928
-ls /Volumes/
-#1646976935
-mount
-#1646976991
-ls /Volumes/avidemux_2.4.4_Gtk_Quartz_universal/
-#1646977134
-echo $progname
-#1646977171
-ls "/Volumes/${progname}*"
-#1646977220
-command="ls /Volumes/${progname}*"
-#1646977227
-echo $command
-#1646977242
-${command}
-#1646977333
-command="cp -r "/Volumes/${progname}*/*.app" ."
-#1646977341
-echo $command
-#1646977355
-${command}
-#1646977462
-echo $dmgdisk
-#1646977474
-hdiutil detach "${dmgdisk}"
-#1646977645
-progname="alfred"
-#1646977685
-dmgdisk=`hdiutil attach "${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
-#1646977709
-echo $dmgdisk
-#1646977737
-progname="Alfred"
-#1646977743
-dmgdisk=`hdiutil attach "${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
-#1646977757
-echo $dmgdisk
-#1646977793
-diskutil list
-#1646977849
-ls /Volumes/
-#1646977865
-ls /Volumes/Alfred
-#1646977904
-command="cp -r "/Volumes/${progname}*/*.app" ."
-#1646977909
-echo $command
-#1646977962
-${command}
-#1646978044
-command="cp -r "\"/Volumes/${progname}*/*.app\"" ."
-#1646978049
-echo $command
-#1646978136
-${command}
-#1646978213
-cp -r "/Volumes/Alfred/*.app" .
-#1646978334
-cat test.sh
-#1646978868
-man cp
-#1646979024
-echo "${HOME}"
-#1646979096
-subl test1.sh
-#1646979216
-mkdir Applications
-#1647042810
-cd /Volumes/Temp/
-#1647042821
-./test.sh
-#1647043487
-progname="avidemux"
-#1647043513
 dmgdisk=`hdiutil attach "${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
 #1647043530
 echo $dmgdisk
@@ -19975,3 +19661,183 @@ pinxi
 rm bin/pinxi
 #1672531595
 bin/inxi
+#1672551017
+dotfiles
+#1672551029
+git status
+#1672551079
+git status -s
+#1672551197
+findtext -i dotfilecheck
+#1672551339
+date +%Y%m%d -r "${HOME}/.dotfilecheck
+#1672551357
+date +%Y%m%d -r "${HOME}/.dotfilecheck"
+#1672551380
+date +%Y%m%d
+#1672551441
+git remote update
+#1672551460
+UPSTREAM=${1:-'@{u}'}
+#1672551470
+LOCAL=$(git rev-parse @{0})
+#1672551480
+REMOTE=$(git rev-parse "${UPSTREAM}")
+#1672551489
+BASE=$(git merge-base @{0} "${UPSTREAM}")
+#1672551501
+echo $UPSTREAM
+#1672551512
+echo $LOCAL
+#1672551520
+echo $REMOTE
+#1672551527
+echo $BASE
+#1672551605
+if [ ${LOCAL} = ${REMOTE} ]; then echo same; else echo different; fi
+#1672551673
+git status -s
+#1672551829
+man git
+#1672552155
+git status -s
+#1672552160
+git status 
+#1672552300
+man grep
+#1672552308
+git status | grep modified -c
+#1672552361
+git status | grep Untracked -c
+#1672552949
+up
+#1672554940
+https://github.com/MirkoLedda/git-summary
+#1672554951
+https://github.com/MirkoLedda/git-summary.git
+#1672554977
+git clone https://github.com/MirkoLedda/git-summary
+#1672555012
+git-summary
+#1672555031
+up
+#1672555072
+./git-summary/git-summary
+#1672555472
+cd git-summary/
+#1672555482
+pico git-summary
+#1672555507
+u
+#1672555508
+up
+#1672555513
+./git-summary/git-summary
+#1672555632
+git clone https://github.com/fboender/multi-git-status
+#1672555655
+cd multi-git-status/
+#1672555686
+ls ~/.local
+#1672555690
+ls ~/.local/share
+#1672555706
+ls ~/.local/share/inxi
+#1672555715
+lal ~/.local/share/inxi
+#1672555723
+lal ~/.local/share/pinxi
+#1672555749
+PREFIX=~/.local make install
+#1672555778
+up
+#1672555789
+multi-git-status
+#1672555792
+up
+#1672555805
+ls ~/.local
+#1672555833
+~/.local/bin/mgitstatus
+#1672555860
+./git-summary/git-summary
+#1672555869
+~/.local/bin/mgitstatus
+#1672555951
+./git-summary/git-summary =h
+#1672555957
+./git-summary/git-summary -h
+#1672555990
+./git-summary/git-summary -l
+#1672555996
+./git-summary/git-summary -q
+#1672556010
+./git-summary/git-summary -s
+#1672556025
+~/.local/bin/mgitstatus
+#1672556160
+pwd
+#1672556228
+home
+#1672556240
+~/.local/bin/mgitstatus /Volumes/ExternalHome/rtruell/GitRepositories/GitHub
+#1672556265
+~/.local/bin/mgitstatus -e /Volumes/ExternalHome/rtruell/GitRepositories/GitHub
+#1672556284
+~/.local/bin/mgitstatus -f /Volumes/ExternalHome/rtruell/GitRepositories/GitHub
+#1672556327
+~/.local/bin/mgitstatus --flatten /Volumes/ExternalHome/rtruell/GitRepositories/GitHub
+#1672556364
+~/.local/bin/mgitstatus /Volumes/ExternalHome/rtruell/GitRepositories/GitHub
+#1672556510
+./git-summary/git-summary -h
+#1672556517
+./git-summary/git-summary --help
+#1672556525
+man git-summary
+#1672557239
+man dir
+#1672557283
+dir /ad /b
+#1672557351
+man for
+#1672557358
+bashman for
+#1672557371
+man for
+#1672557395
+man bash
+#1672557416
+man for
+#1672557435
+man bash
+#1672557448
+man for
+#1672557525
+man bash
+#1672557768
+for /f "tokens=*" %a in ('dir /ad /b') do git --git-dir=%a/.git --work-tree=%a status
+#1672557999
+find . -name .git -execdir bash -c 'echo -en "\033[1;31m"repo: "\033[1;34m"; basename "`git rev-parse --show-toplevel`"; git status -s' \;
+#1672558026
+back
+#1672558029
+find . -name .git -execdir bash -c 'echo -en "\033[1;31m"repo: "\033[1;34m"; basename "`git rev-parse --show-toplevel`"; git status -s' \;
+#1672558109
+git status rtruell.github.io
+#1672558120
+rtruell.github.io/
+#1672558125
+git status
+#1672558261
+up
+#1672558280
+find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -s && echo)' \;
+#1672558305
+man git-status
+#1672558590
+find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -bs && echo)' \;
+#1672558663
+find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status --porcelain && echo)' \;
+#1672558729
+find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -s --column && echo)' \;
