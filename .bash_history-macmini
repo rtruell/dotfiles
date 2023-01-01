@@ -1,11 +1,3 @@
-hdiutil attach avidemux*.dmg | grep avi | cut -d' ' -f1
-#1646954295
-ls /Volumes/avidemux*
-#1646954323
-cp -r /Volumes/avidemux*.app .
-#1646954388
-cp -r /Volumes/avidemux*/avidemux*.app .
-#1646954459
 hdiutil detach /dev/disk3s2
 #1646954493
 disk=`hdiutil attach avidemux*.dmg | grep avi | cut -d' ' -f1`
@@ -19841,3 +19833,145 @@ whereis inxi
 which inxi
 #1672527904
 less /usr/local/bin/inxi
+#1672528048
+inxi --version
+#1672528090
+inxi -h
+#1672528155
+inxi --recommends
+#1672528302
+inxi -U
+#1672528314
+which inxi
+#1672528322
+ll /usr/local/bin/inxi
+#1672528913
+cd SourceCode/
+#1672528917
+pwd
+#1672528928
+cd inxi
+#1672528932
+ll
+#1672528957
+home
+#1672528976
+./SourceCode/inxi/inxi --version
+#1672528988
+inxi --version
+#1672529126
+ls bin
+#1672529140
+back
+#1672529175
+symlink_single_file ./inxi $HOME/bin
+#1672529198
+symlink_single_file ./inxi $HOME/bin/inxi
+#1672529208
+which inxi
+#1672529212
+whereis inxi
+#1672529223
+inxi --version
+#1672529229
+path
+#1672529266
+inxi --version
+#1672529268
+home
+#1672529275
+./bin/inxi --version
+#1672529296
+ll bin
+#1672529333
+rm  bin/inxi
+#1672529338
+back
+#1672529343
+pwd
+#1672529370
+symlink_single_file $PWD/inxi $HOME/bin/inxi
+#1672529384
+home
+#1672529390
+./bin/inxi --version
+#1672529480
+./bin/inxi -U
+#1672529532
+timy
+#1672529534
+tiny
+#1672530060
+man inxi
+#1672530128
+inxi
+#1672530143
+inxi --version
+#1672530158
+./bin/inxi --version
+#1672530166
+./bin/inxi
+#1672530226
+sudo ./bin/inxi
+#1672530254
+subl bin/inxi
+#1672530376
+./bin/inxi -M
+#1672530392
+./bin/inxi -a
+#1672530411
+dmidecode -M
+#1672530419
+dmidecode
+#1672530433
+./bin/inxi -a
+#1672530437
+dmidecode -M
+#1672530440
+./bin/inxi -M
+#1672530446
+./bin/inxi -M -y 1
+#1672530728
+./bin/inxi -b
+#1672530807
+sudo ./bin/inxi -b
+#1672530866
+sudo inxi -b
+#1672531144
+cd bin
+#1672531146
+ll
+#1672531180
+wget -O pinxi smxi.org/pinxi; chmod +x pinxi
+#1672531206
+man curl
+#1672531335
+subl pinxi
+#1672531362
+ll p*
+#1672531374
+chmod +x pinxi
+#1672531377
+ll p*
+#1672531424
+cd bin
+#1672531442
+diff inxi pinxi
+#1672531451
+up
+#1672531456
+pinxi --version
+#1672531472
+pinxi
+#1672531485
+pinxi -b
+#1672531522
+xini
+#1672531534
+inxi
+#1672531546
+pinxi
+#1672531586
+rm bin/pinxi
+#1672531595
+bin/inxi
