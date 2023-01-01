@@ -19841,3 +19841,33 @@ find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git sta
 find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status --porcelain && echo)' \;
 #1672558729
 find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -s --column && echo)' \;
+#1672559169
+find . -maxdepth 1 -mindepth 1 -type d -exec sh -c '(echo {} && cd {} && git status -bs && echo)' \;
+#1672559184
+home
+#1672559228
+./git-summary/git-summary /Volumes/ExternalHome/rtruell/GitRepositories/GitHub
+#1672559253
+/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/git-summary/git-summary /Volumes/ExternalHome/rtruell/GitRepositories/GitHub
+#1672559281
+~/.local/bin/mgitstatus /Volumes/ExternalHome/rtruell/GitRepositories/GitHub
+#1672559484
+git clone https://github.com/fboender/multi-git-status.git
+#1672559492
+cd multi-git-status/
+#1672559516
+sudo make install
+#1672559530
+up
+#1672559652
+cd multi-git-status/
+#1672559659
+sudo make uninstall
+#1672559701
+up
+#1672559710
+rm -rf multi-git-status/
+#1672559732
+~/.local/bin/mgitstatus /Volumes/ExternalHome/rtruell/GitRepositories/GitHub
+#1672560924
+mgitstatus /Volumes/ExternalHome/rtruell/GitRepositories/GitHub
