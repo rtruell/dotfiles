@@ -1,53 +1,3 @@
-/bin/rm test.txt
-#1647127507
-s ./test.sh
-#1647127716
-man unzip
-#1647128428
-echo $i
-#1647128499
-echo $programdir
-#1647128513
-echo $extractdir
-#1647128666
-i="/Volumes/Temp/iTerm2-3_1_7.zip"
-#1647128670
-echo $i
-#1647128832
-i="iTerm"
-#1647128838
-echo $i
-#1647128867
-cp -a "${programdir}/${i}"* "${extractdir}"
-#1647129021
-i="/Volumes/Temp/Installers/iTerm2-3_1_7.zip"
-#1647129029
-echo $i
-#1647129052
-progname=`echo "${i##/*/}" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f1`
-#1647129061
-echo $progname
-#1647129109
-echo $extractdir
-#1647129113
-echo $progname
-#1647129118
-echo $i
-#1647129161
-unzip "${i}" -d "${extractdir}/${progname}"
-#1647129338
-cp -r "${extractdir}/${progname}"/*.app "${appdir}"
-#1647129485
-man cp
-#1647129588
-cp -a "${extractdir}/${progname}"/*.app "${appdir}"
-#1647129736
-man rm
-#1647129971
-echo $extractdir
-#1647129976
-echo $progname
-#1647130005
 rm -dfr "${extractdir}/${progname}"
 #1647130038
 echo $i
@@ -19847,3 +19797,79 @@ man updatedb
 echo $LOCATE_PATH
 #1672630017
 man locate
+#1672630660
+ls /Volumes/data
+#1672630764
+find /Volumes/data -not \( -path /Volumes/data/'@Recycle' -prune \) -iname currentyear
+#1672631286
+find /Volumes/data -name \*currentyear\* -and -type d
+#1672631336
+find /Volumes/data-1 -name \*currentyear\* -and -type d
+#1672631769
+df -P .
+#1672631814
+df -P . | awk 'NR==2 {print $6}'
+#1672631867
+cd /Volumes/data
+#1672631871
+df -P . | awk 'NR==2 {print $6}'
+#1672631881
+df -P .
+#1672631911
+cd Music/
+#1672631952
+home
+#1672632534
+tree
+#1672632543
+alias tree
+#1672632549
+ttype tree
+#1672632553
+lf tree
+#1672632578
+tree -h
+#1672632604
+less dotfiles/.functions/tree.function
+#1672632665
+man tree
+#1672632846
+tree -d /Volumes/data | less
+#1672633459
+man tree
+#1672633037
+tree -d /Volumes/data | grep -i currentyear
+#1672634245
+progress -M -a tree
+#1672634331
+ps aux | grep tree
+#1672634427
+fd
+#1672634460
+fd -i currentyear /Volumes/data-1
+#1672634644
+fd -i currentyear /Volumes/data
+#1672634731
+progress -M
+#1672633784
+command tree -dif /Volumes/data | grep -i currentyear
+#1672638128
+ls /Volumes/data/xmltv-old/data
+#1672638941
+lf df
+#1672638952
+fl df
+#1672638969
+ttype fd
+#1672638980
+ttype fl
+#1672638987
+ttype lf
+#1672638991
+lf fd
+#1672639014
+man find
+#1672639276
+find /Volumes/data-1 -type d -iname currentyear 2>&-
+#1672639317
+find /Volumes/data-1 -type d -iname currentyear 2>&- | sort
