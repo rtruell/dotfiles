@@ -1,437 +1,3 @@
-dmgdisk=`hdiutil attach "${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
-#1647043530
-echo $dmgdisk
-#1647043718
-appdir="/Volumes/Temp/Applications"
-#1647043774
-echo "${appdir}/${progname}"*.dmg
-#1647043862
-dmgdisk=`hdiutil attach "${appdir}/${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
-#1647043871
-echo $dmgdisk
-#1647043876
-diskutil list
-#1647043903
-ls /Volumes/
-#1647043909
-ls /Volumes/avi*
-#1647044057
-cp -r "/Volumes/${progname}*/*.app" .
-#1647044174
-cp -r "/Volumes/${progname}"*/*.app .
-#1647044370
-hdiutil detach "${dmgdisk}"
-#1647044377
-diskutil list
-#1647044539
-ls avi*
-#1647044564
-ls avidemux2_gtk.app/
-#1647044572
-ls avi*
-#1647044578
-rmdir avi*
-#1647044582
-man rmdir
-#1647044619
-rmdir --ignore-fail-on-non-empty avi*
-#1647044667
-ls avi*
-#1647044687
-man rmdir
-#1647044707
-man rm
-#1647044780
-rmdir --ignore-fail-on-non-empty avi*[B
-#1647044796
-rm -r avi*
-#1647044820
-man rm
-#1647044966
-rm -dfr avi*
-#1647045042
-ls /Volumes/
-#1647045083
-mkdir temp
-#1647045088
-cd temp
-#1647045094
-touch dave.app
-#1647045097
-touch sam.app
-#1647045102
-touch rick.app
-#1647045155
-echo $appdir
-#1647045208
-cp -r *.app "${appdir}"
-#1647045217
-echo $appdir
-#1647045390
-up
-#1647045401
-ls Applications/
-#1647045420
-./test/sh
-#1647045434
-./test.sh
-#1647045447
-ls Applications/
-#1647045464
-echo $appdir
-#1647045489
-progname="avidemux"
-#1647045526
-dmgdisk=`hdiutil attach "${appdir}/${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
-#1647045545
-echo $progname
-#1647045548
-echo $disk
-#1647045556
-echo $dmgdisk
-#1647045584
-cp -r "/Volumes/${progname}"*/*.app "${appdir}"
-#1647045595
-ls $appdir
-#1647045618
-hdiutil detach "${dmgdisk}"
-#1647045623
-diskutil list
-#1647045680
-progname="Alfred"
-#1647045685
-echo $progname
-#1647045706
-dmgdisk=`hdiutil attach "${appdir}/${progname}"*.dmg -nobrowse | grep "${progname}" | cut -d' ' -f1`
-#1647045719
-echo $dmgdisk
-#1647045724
-diskutil list
-#1647045770
-ls /Volumes/
-#1647045777
-ls /Volumes/Alfred/
-#1647045791
-cp -r "/Volumes/${progname}"*/*.app "${appdir}"
-#1647045813
-ls $appdir
-#1647045895
-hdiutil detach "${dmgdisk}"
-#1647045903
-diskutil list
-#1647057131
-cd /Volumes/Temp/
-#1647057139
-ls Applications/
-#1647057159
-./test.sh
-#1647057365
-diskutil list
-#1647057392
-diskutil list | grep "super"
-#1647057404
-diskutil list | grep -i "super"
-#1647057811
-echo "/Volumes/Temp/Applications/Alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f4
-#1647057846
-echo "/Volumes/Temp/Applications/Alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ' '
-#1647057866
-echo "/Volumes/Temp/Applications/Alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ''
-#1647057881
-echo "/Volumes/Temp/Applications/Alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ' '
-#1647058130
-echo "/Volumes/Temp/Applications/Alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5
-#1647058525
-mountinfo
-#1647058570
-osinfo
-#1647058964
-echo $OLDPWD
-#1647059002
-ls /Users/rtruell/Applications/Alfred*
-#1647059017
-ls /Users/rtruell/Applications
-#1647059166
-if [[ -d alfred* ]]; then echo yes; fi
-#1647059174
-if [[ -d Alfred* ]]; then echo yes; fi
-#1647059225
-if [[ -d /Users/rtruell/Applications/alfred* ]]; then echo yes; fi
-#1647059236
-if [[ -d /Users/rtruell/Applications/Alfred* ]]; then echo yes; fi
-#1647059643
-whereis alfred
-#1647059648
-whereis Alfred
-#1647059659
-which alfted
-#1647059669
-which alfred
-#1647059674
-which Alfred
-#1647060040
-b list
-#1647060186
-b i alfred
-#1647060243
-b i sublime-text
-#1647060303
-b i imazing
-#1647060322
-b i sublime-merge
-#1647060389
-echo "/Volumes/Temp/Applications/Alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5
-#1647060487
-b list | grep alfred
-#1647060502
-b list | grep sublime-text
-#1647060688
-brew list | grep "`echo "/Volumes/Temp/Applications/Alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`"
-#1647060700
-brew list | grep "`echo "/Volumes/Temp/Applications/alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`"
-#1647060775
-brew list | grep -i "`echo "/Volumes/Temp/Applications/Alfred_4.0.3.1092.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`"
-#1647060824
-brew list | grep "`echo "/Volumes/Temp/Applications/fortune" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`"
-#1647060853
-brew list | grep -i "`echo "/Volumes/Temp/Applications/fortune" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`"
-#1647060904
-echo $?
-#1647060928
-brew list | grep -i "`echo "/Volumes/Temp/Applications/sam_4.1.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`"
-#1647060933
-echo $?
-#1647060970
-echo "/Volumes/Temp/Applications/sam_4.1.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5
-#1647060979
-brew list
-#1647061011
-b i python@3.8
-#1647061089
-brew list | grep -i "`echo "/Volumes/Temp/Applications/python_3.8.12.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`"
-#1647061119
-b i python
-#1647061226
-brew list | grep -i "`echo "/Volumes/Temp/Applications/python_3.8.12.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`" >/dev/null
-#1647061233
-echo $?
-#1647061257
-brew list | grep -i "`echo "/Volumes/Temp/Applications/sam-3.8.12.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`" >/dev/null
-#1647061262
-echo $?
-#1647061282
-echo "/Volumes/Temp/Applications/sam-4.1.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5
-#1647063787
-echo $appdir
-#1647059986
-man brew
-#1647063818
-echo $appdir
-#1647063970
-ls Applications/
-#1647063976
-s test.sh
-#1647064020
-s ./test.sh
-#1647064029
-alias s
-#1647064077
-cat test.sh
-#1647064095
-cd -
-#1647064110
-cd /Volumes/Temp/
-#1647064129
-s ./test.sh
-#1647064143
-echo $appdir
-#1647064712
-mountinfo
-#1647064769
-diskutil list
-#1647064789
-ll
-#1647064806
-alias ll
-#1647064819
-listfunction ls
-#1647064986
-man trim
-#1647065002
-bashman trim
-#1647065017
-trim -h
-#1647065042
-bashman ls
-#1647065046
-man ls
-#1647065097
-man brew
-#1647065314
-b i
-#1647065493
-ls $appdir
-#1647065565
-echo $appdir
-#1647065822
-echo "/Volumes/Temp/Applications/sam-4.1.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5
-#1647066068
-progname=`echo "/Volumes/Temp/Applications/sam-4.1.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`
-#1647066076
-echo $progname
-#1647066160
-ls Applications/
-#1647066198
-echo $progname
-#1647066239
-progname=`echo "/Volumes/Temp/Applications/avidemux_2.4.4_Gtk_Quartz_universal.dmg" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f5`
-#1647066242
-echo $progname
-#1647066569
-i="/Volumes/Temp/Applications/avidemux_2.4.4_Gtk_Quartz_universal.dmg"
-#1647066685
-echo ${i##/*}
-#1647066714
-echo $i
-#1647066730
-echo ${i}
-#1647066747
-echo ${i##/}
-#1647066758
-echo ${i##\/}
-#1647066770
-echo ${i##\/*}
-#1647066805
-echo ${i%%\/*}
-#1647066878
-echo ${i##/*/}
-#1647066933
-echo "${i##/*/}"
-#1647066989
-echo "${i##/*/}" | tr '[:punct:][:digit:]' ' '
-#1647067039
-echo "${i##/*/}" | tr '[:punct:][:digit:]' ' ' | cut -d' ' -f1
-#1647067051
-echo $progname
-#1647068115
-s ./test.sh
-#1647086049
-man cp
-#1647086067
-cd /Volumes/Temp/
-#1647086075
-ls Applications/
-#1647086619
-s ./test.sh
-#1647087777
-echo $i
-#1647087786
-echo $progname
-#1647087978
-hdiutil mount -nobrowse "${i}" -mountpoint "/Volumes/${progname}"
-#1647088021
-ls /Volumes/avidemux/
-#1647088113
-hdiutil unmount "/Volumes/${progname}"
-#1647088136
-ls /Volumes/avidemux/
-#1647088142
-diskutil list
-#1647088180
-man hdiutil
-#1647088419
-hdiutil detach "/Volumes/${progname}"
-#1647088515
-hdiutil detach /dev/disk3s2
-#1647088522
-diskutil list
-#1647088557
-hdiutil mount -nobrowse "${i}" -mountpoint "/Volumes/${progname}"
-#1647088595
-ls /Volumes/${progname}
-#1647088682
-hdiutil detach "/Volumes/${progname}"
-#1647088692
-diskutil list
-#1647089044
-hdiutil mount -nobrowse "${i}" -mountpoint "/Volumes/${progname}" >/dev/null
-#1647089069
-ls "/Volumes/${progname}"
-#1647089099
-diskutil list
-#1647089159
-mountinfo
-#1647089214
-hdiutil detach "/Volumes/${progname}" >/dev/null
-#1647089223
-ls "/Volumes/${progname}"
-#1647089230
-diskutil list
-#1647089236
-mountinfo
-#1647089479
-s ./test/sh
-#1647089517
-s ./test.sh
-#1647089615
-echo $i
-#1647089620
-echo $progname
-#1647089699
-hdiutil mount -nobrowse "${i}" -mountpoint "/Volumes/${progname}" >/dev/null
-#1647089706
-mountinfo
-#1647089738
-ls "/Volumes/avidemux"
-#1647089766
-hdiutil detach "/Volumes/${progname}" >/dev/null
-#1647089771
-mountinfo
-#1647089776
-ls "/Volumes/avidemux"
-#1647090384
-s ./test.sh
-#1647091515
-mountinfo
-#1647116341
-externalip
-#1647126756
-s ./test.sh
-#1647127060
-alias rm
-#1647127083
-touch temp.txt
-#1647127092
-rm temp.txt
-#1647127101
-man rm
-#1647127158
-which rm
-#1647127165
-whereis rm
-#1647127193
-ll /bin
-#1647127221
-touch test.txt
-#1647127231
-rm test.txt >/dev/null
-#1647127248
-touch test.txt
-#1647127255
-rm test.txt 2>/dev/null
-#1647127266
-touch test.txt
-#1647127302
-yes | rm test.txt
-#1647127316
-touch test.txt
-#1647127327
-yes | rm test.txt 2>/dev/null
-#1647127344
-touch test.txt
-#1647127363
-/bin/rm temp.txt
-#1647127408
 /bin/rm test.txt
 #1647127507
 s ./test.sh
@@ -19871,3 +19437,413 @@ rm -rf multi-git-status/
 ~/.local/bin/mgitstatus /Volumes/ExternalHome/rtruell/GitRepositories/GitHub
 #1672560924
 mgitstatus /Volumes/ExternalHome/rtruell/GitRepositories/GitHub
+#1672605958
+ft
+#1672605981
+fd
+#1672606457
+ft
+#1672606469
+s dotfiles/.functions/ft.function
+#1672606472
+ft
+#1672606558
+s dotfiles/.functions/ft.function
+#1672606562
+ft
+#1672606587
+lf ft
+#1672606627
+find . -type d -print0
+#1672606655
+find . -type d -print0 | less
+#1672606678
+lf ft
+#1672606737
+find . -type d -print0 | xargs -0 egrep --exclude *bash_hist* --color=auto -Hsn "current
+#1672606752
+find . -type d -print0 | xargs -0 egrep --exclude *bash_hist* --color=auto -Hsn "current"
+#1672606788
+find . -type d -print0 | less
+#1672606899
+man egrep
+#1672606988
+man bash
+#1672607101
+ft
+#1672607151
+ft -t
+#1672607156
+ft -x
+#1672607436
+s dotfiles/.functions/fd.function
+#1672607439
+f
+#1672607440
+fd
+#1672607472
+fd -t
+#1672607485
+fd -i current
+#1672607513
+dotfiles
+#1672607527
+up 3
+#1672607545
+cd freeguide
+#1672607551
+fd -i current
+#1672607585
+ls share
+#1672607617
+man find
+#1672608451
+locate current
+#1672608509
+locate --basename current
+#1672608586
+find . -type d -name "current"
+#1672608595
+ls share
+#1672608608
+ls share/Listings
+#1672608621
+find . -type d -name "Current"
+#1672608640
+find . -type d -name "CurrentYear"
+#1672608673
+find . -type d -name "Current*"
+#1672608681
+find . -type d -name "current*"
+#1672608753
+find . -type d -iname "current*"
+#1672608803
+lf fd
+#1672608833
+fd -i current*
+#1672609337
+s dotfiles/.functions/fd.function
+#1672609354
+s $HOME/dotfiles/.functions/fd.function
+#1672609369
+fd
+#1672609381
+fd current*
+#1672609402
+fd -i current*
+#1672609412
+fd -i "current*"
+#1672609424
+lf fd
+#1672609492
+find . -type d -iname "current*"
+#1672609520
+find . -type d -iname current*
+#1672609535
+fd -i current*
+#1672609562
+s $HOME/dotfiles/.functions/fd.function
+#1672609566
+fd -i current*
+#1672609596
+find . -type d iname current* | less -FX
+#1672609643
+s $HOME/dotfiles/.functions/fd.function
+#1672609647
+fd -i current*
+#1672609659
+fd current*
+#1672609738
+find "${HOME}" -type d iname current* | less -FX
+#1672609759
+find "${HOME}" -type d -iname current* | less -FX
+#1672609816
+lf ft
+#1672609860
+fd
+#1672610009
+s $HOME/dotfiles/.functions/fd.function
+#1672610056
+fd current*
+#1672610064
+fd -i current*
+#1672610105
+fd -i current* "${HOME}"
+#1672610134
+fd
+#1672610218
+s $HOME/dotfiles/.functions/fd.function
+#1672610236
+fd
+#1672610273
+s $HOME/dotfiles/.functions/fd.function
+#1672610276
+fd
+#1672610296
+s $HOME/dotfiles/.functions/fd.function
+#1672610297
+fd
+#1672610332
+fd current*
+#1672610340
+fd -i current*
+#1672610362
+fd -i current* "${HOME}"
+#1672610381
+fd current* "${HOME}"
+#1672610456
+home
+#1672610475
+fd -i current /Volumes/ExternalHome/rtruell/freeguide
+#1672610488
+fd -i current* /Volumes/ExternalHome/rtruell/freeguide
+#1672610506
+fd -i currentyear /Volumes/ExternalHome/rtruell/freeguide
+#1672610521
+ls /Volumes/
+#1672610552
+mountinfo
+#1672610591
+ls /Volumes/ExternalTempApplications/
+#1672610611
+ls /Volumes/ExternalTempApplications/Install\ macOS\ Monterey.app/
+#1672610653
+ll /Volumes/
+#1672610711
+ls /Volumes/ExternalTempApplications/Install\ macOS\ Monterey.app/
+#1672610715
+ls /Volumes/ExternalTempApplications/Install\ macOS\ Monterey.app/Contents/
+#1672610719
+ls /Volumes/ExternalTempApplications/Install\ macOS\ Monterey.app/Contents/SharedSupport/
+#1672610754
+ll /Volumes/ExternalTempApplications/Install\ macOS\ Monterey.app/Contents/SharedSupport/
+#1672610762
+ls /Volumes/ExternalTempApplications/Install\ macOS\ Monterey.app/Contents/SharedSupport/
+#1672610811
+ls "/Volumes/"
+#1672610829
+ls "/Volumes/ExternalTempApplications/"
+#1672610835
+ls "/Volumes/ExternalTempApplications/Install macOS Monterey.app"/
+#1672610892
+ls "/Volumes/ExternalTempApplications/Install macOS Monterey.app\Contents"
+#1672610910
+ls /Volumes/ExternalTempApplications/Install\ macOS\ Monterey.app/Contents/SharedSupport/
+#1672610926
+ls "/Volumes/ExternalTempApplications/Install\ macOS\ Monterey.app/Contents/SharedSupport/"
+#1672610942
+ls "/Volumes/ExternalTempApplications/Install macOS Monterey.app/Contents/SharedSupport/"
+#1672610975
+ll "/Volumes/ExternalTempApplications/Install macOS Monterey.app/Contents/SharedSupport/"
+#1672611002
+lal /Volumes/
+#1672611223
+diskutil list
+#1672611241
+mount
+#1672611369
+lal /Volumes/
+#1672611387
+ll "/Volumes/ExternalTempApplications/Install macOS Monterey.app/Contents/SharedSupport/"
+#1672611416
+ll "/Volumes/ExternalTempApplications/Install macOS Monterey.app/Contents/SharedSupport/SharedSupport.dmg"
+#1672611464
+ls /etc/mtab
+#1672611468
+ls /etc
+#1672611554
+umount /Volumes/ExternalTempApplications
+#1672611568
+umount -f /Volumes/ExternalTempApplications
+#1672611580
+ls /Volumes/
+#1672611662
+sudo umount /Volumes/ExternalTempApplications
+#1672611671
+sudo umount -f /Volumes/ExternalTempApplications
+#1672611699
+less /etc/fstab
+#1672611979
+diskutil unmount /Volumes/ExternalTempApplications
+#1672612020
+hdiutil detach /Volumes/ExternalTempApplications
+#1672612149
+rmdir /Volumes/ExternalTempApplications
+#1672612154
+sudo rmdir /Volumes/ExternalTempApplications
+#1672612169
+sudo rm -rf /Volumes/ExternalTempApplications
+#1672612177
+ls /Volumes/
+#1672612265
+pwd
+#1672612272
+whoami
+#1672612275
+whereami
+#1672612331
+ls /Applicatons
+#1672612338
+sudo ls /Applicatons
+#1672612348
+ls /
+#1672612357
+ls /Applications/
+#1672612390
+ls /
+#1672612434
+fd -i currentyear /Volumes/ExternalHome/rtruell/freeguide
+#1672612451
+fd -i currentyear /Volumes
+#1672612527
+ls /Volumes/
+#1672612541
+ll /Volumes/
+#1672612562
+ls /Volumes/
+#1672612573
+fd -i currentyear /Volumes/Downloads
+#1672612593
+fd -i currentyear /Volumes/ExternalHome
+#1672612826
+s dotfiles/.functions/fd.function
+#1672612833
+lf df
+#1672612838
+lf fd
+#1672612860
+ls /Volumes/
+#1672612871
+fd -i currentyear /Volumes/Downloads
+#1672612883
+fd -i currentyear /Volumes/ExternalHome
+#1672612966
+fd -i currentyear /Volumes/Owncloud
+#1672612975
+fd -i currentyear /Volumes/SuperDuper
+#1672612984
+fd -i currentyear /Volumes/Temp
+#1672613008
+fd -i currentyear /Volumes/VMs
+#1672613032
+fd -i currentyear /Volumes/data
+#1672613282
+fd -i currentyear /Volumes/data-1
+#1672613391
+mountinfo
+#1672613457
+ll /Volumes/
+#1672613469
+ll /Volumes/data-1
+#1672613479
+ll /Volumes/data
+#1672613523
+lf df
+#1672613526
+lf fd
+#1672613568
+fd -i currentyear /Volumes/data
+#1672613664
+find /Volumes/data -type d -iname currentyear | less -FX
+#1672613893
+find /Volumes/data -type d -iname currentyear >stdout.txt 2>stderr.txt
+#1672613965
+ll
+#1672613977
+less stdout.txt
+#1672614005
+less stderr.txt
+#1672614045
+cat stderr.txt
+#1672615313
+locate currentyear
+#1672615326
+man locate
+#1672615341
+locate -i currentyear
+#1672615365
+locate -i currentyear | less
+#1672615499
+alias find
+#1672615512
+man locate
+#1672616261
+man find
+#1672616398
+find /Volumes/data -depth -type d -iname currentyear
+#1672616430
+find /Volumes/data -depth -mindepth 1 -type d -iname currentyear
+#1672616694
+man find
+#1672616886
+find /Volumes/data-1 -depth -mindepth 1 -type d -iname currentyear
+#1672616928
+find /Volumes/data -depth -mindepth 1 -type d -iname currentyear
+#1672617084
+find /Volumes/data -type d -iname currentyear
+#1672617119
+find /Volumes/data-1 -depth -mindepth 1 -type d -iname currentyear
+#1672617160
+find /Volumes/data-1 -type d -iname currentyear
+#1672617207
+fd -i currentyear /Volumes/data
+#1672617253
+fd -i currentyear /Volumes/data-1
+#1672617311
+man find
+#1672617944
+find /Volumes/data -type d -path @Recycle -prune -iname currentyear
+#1672618067
+find /Volumes/data-1 -type d -path @Recycle -prune -iname currentyear
+#1672618107
+find /Volumes/data-1 -type d -path @Recycle -prune -o -iname currentyear
+#1672618137
+find /Volumes/data -type d -path @Recycle -prune -o -iname currentyear
+#1672618206
+find /Volumes/data -type d -path /Volumes/data/@Recycle -prune -o -iname currentyear
+#1672618482
+find /Volumes/data-1 -type d -path /Volumes/data/@Recycle -prune -o -iname currentyear
+#1672618526
+find /Volumes/data -type d -path ./@Recycle -prune -o -iname currentyear
+#1672618592
+find /Volumes/data -type d -path /Volumes/data/@Recycle -prune -o -iname currentyear
+#1672618606
+find /Volumes/data-1 -type d -path /Volumes/data/@Recycle -prune -o -iname currentyear
+#1672618739
+find /Volumes/data -type d -path /Volumes/data/@Recycle -prune -o -iname currentyear
+#1672620686
+updatedb
+#1672627922
+sudo updatedb
+#1672628151
+hf locate
+#1672628166
+locate -i currentyear | less 
+#1672628228
+man locate
+#1672628436
+locate -ir "currentyear$" | less 
+#1672628497
+locate -i currentyear | less 
+#1672628669
+ls /Volumes/data/E-Documents/BankStatements/PCFinancial/CurrentYear/
+#1672628704
+locate -i pcfinancial | less 
+#1672628868
+locate -i /Volumes/datata/*pcfinancial* | less 
+#1672628982
+locate -i /Volumes/data/*pcfinancial*
+#1672629004
+locate -i /Volumes/data/E-Documents
+#1672629812
+ls /
+#1672629836
+ll /
+#1672629879
+less /installer.failurerequests
+#1672629720
+man updatedb
+#1672630064
+echo $LOCATE_PATH
+#1672630017
+man locate
