@@ -1,335 +1,3 @@
-./test1.sh dave rick
-#1647208509
-./test1.sh
-#1647208513
-./test1.sh dave rick
-#1647208532
-./test1.sh dave rick sam susan deb karen
-#1647208971
-rm test1.sh
-#1647211157
-shich zsh
-#1647211164
-which zsh
-#1647211169
-whereis zsh
-#1647211181
-zsh -version
-#1647211194
-zsh -v
-#1647211288
-zsh --v
-#1647211294
-zsh --h
-#1647211307
-zsh -h
-#1647211497
-which zsh
-#1647211502
-whereis zsh
-#1647211516
-./test1.sh
-#1647211634
-/Volumes/Temp/test1.sh
-#1647215180
-dirname "/Volumes/Temp/test1.sh"
-#1647215187
-basename "/Volumes/Temp/test1.sh"
-#1647215542
-test1.sh
-#1647215554
-./test1.sh
-#1647216331
-`basename $fullpathname`##*. "/Volumes/Temp/test.sh"
-#1647216374
-`basename "/Volumes/Temp/test.sh"`##*.
-#1647229222
-print_result 0 "it worked"
-#1647229247
-result=`print_result 0 "it worked"`
-#1647229258
-echo $result
-#1647229275
-listfunction print_result
-#1647229441
-./test1.sh
-#1647229944
-basename "/Volumes/Temp/test.sh"
-#1647230199
-echo $filename
-#1647230221
-filename="/Volumes/Temp/test.sh"
-#1647230247
-basename "${filename}
-#1647230259
-basename "${filename}"
-#1647230376
-basename "${filename}"##*.
-#1647230539
-rmount
-#1647231961
-`basename "${filename}"`##*.
-#1647232005
-echo `basename "${filename}"`
-#1647232029
-echo `basename "${filename}"`##*.
-#1647232130
-${filename##*.}
-#1647232140
-echo ${filename##*.}
-#1647232165
-echo $filename
-#1647232550
-echo ${`basename "${fullpathname}"`%%.*}
-#1647232602
-echo ${`basename "${fullpathname%%.*}"`
-#1647232629
-echo `basename "${fullpathname%%.*}"`
-#1647232673
-echo $fullpathname
-#1647232681
-echo $filename
-#1647232691
-fullpathname=$filename
-#1647232694
-echo $fullpathname
-#1647232699
-echo `basename "${fullpathname%%.*}"`
-#1647233021
-echo ${fullpathnamename##*.}
-#1647233039
-echo $fullpathname
-#1647233066
-echo ${fullpathnamename##*.}
-#1647233073
-echo "${fullpathnamename##*.}"
-#1647233139
-echo ${fullpathname##*.}
-#1647233158
-echo $fullpathname
-#1647233164
-echo ${fullpathname##*.}
-#1647233172
-echo ${fullpathname%*.}
-#1647233377
-echo ${fullpathname%.*}
-#1647233438
-echo "${fullpathname%.*}"
-#1647233836
-bashman tests
-#1647234128
-./test1.sh
-#1647234135
-./test2.sh
-#1647234189
-toupper "test"
-#1647234292
-echo $fullpathname
-#1647234308
-toupper $fullpathname
-#1647235168
-./test1.sh
-#1647235172
-./test2.sh
-#1647235582
-echo `basename "${fullpathname%%.*}"`
-#1647235591
-echo $fullpathname
-#1647235631
-echo "`basename "${fullpathname%%.*}"`"
-#1647235666
-printf '%s ' "`basename "${fullpathname%%.*}"`"
-#1647235681
-printf '%s' "`basename "${fullpathname%%.*}"`"
-#1647235768
-./test1
-#1647235774
-./test1.sh
-#1647235779
-./test2.sh
-#1647235890
-printf '%s' "`basename "${fullpathname%%.*}"`"
-#1647235931
-dave=`printf '%s' "`basename "${fullpathname%%.*}"`"`
-#1647235968
-dave="printf '%s' "`basename "${fullpathname%%.*}"`""
-#1647235972
-echo $dave
-#1647236016
-printf '%s' "`basename "${fullpathname%%.*}"`"
-#1647236042
-echo "`basename "${fullpathname%%.*}"`"
-#1647236057
-dave="echo "`basename "${fullpathname%%.*}"`""
-#1647236063
-echo $dave
-#1647236076
-dave=`echo "`basename "${fullpathname%%.*}"`"`
-#1647236116
-dave=`echo `basename "${fullpathname%%.*}"``
-#1647236122
-echo $dave
-#1647236239
-./test1.sh
-#1647236251
-echo `basename "${fullpathname%%.*}"`
-#1647236263
-echo $dave
-#1647236287
-dave="echo `basename "${fullpathname%%.*}"`"
-#1647236292
-echo $dave
-#1647236304
-dave=`echo `basename "${fullpathname%%.*}"``
-#1647236309
-echo $dave
-#1647236393
-basename "${fullpathname}"
-#1647236418
-dave=`basename "${fullpathname}"`
-#1647236422
-echo $dave
-#1647236453
-echo ${dave%%.*}
-#1647236484
-dave=`echo ${dave%%.*}`
-#1647236488
-echo $dave
-#1647236523
-basename "${fullpathname}"
-#1647236539
-basename "${fullpathname%%.*}"
-#1647236605
-dave=`basename "${fullpathname%%.*}"`
-#1647236609
-echo $dave
-#1647236622
-echo $fullpathname
-#1647236688
-./test1
-#1647236692
-./test1.sh
-#1647236697
-./test2.sh
-#1647236817
-ls *.txt
-#1647236833
-./test1 >test1.txt
-#1647236859
-./test1.sh >test1.txt
-#1647236865
-ls *.txt
-#1647236936
-\ls *.txt
-#1647236946
-which ls
-#1647236949
-whereis ls
-#1647236955
-/bin/ls
-#1647236965
-/bin/ls *.txt
-#1647236986
-/usr/local/opt/coreutils/libexec/gnubin/ls
-#1647236995
-/usr/local/opt/coreutils/libexec/gnubin/ls *.txt
-#1647237019
-path
-#1647237035
-alias ls
-#1647237039
-listfunction ls
-#1647237059
-man ls
-#1647237160
-stat *.txt
-#1647237177
-listfunction ls
-#1647237264
-stat "*.txt" 2> /dev/null
-#1647237276
-stat "*.txt"
-#1647237297
-stat "${item}" 2> /dev/null | grep "\->" > /dev/null 2>&1 && file -b "${item}" | grep "directory" > /dev/null 2>&1
-#1647237351
-stat "test1.txt"
-#1647237435
-stat "${test.txt}" 2> /dev/null | grep "\->" > /dev/null 2>&1 && file -b "${test1.txt}" | grep "directory" > /dev/null 2>&1
-#1647237435
-stat "${test.txt}" 2> /dev/null | grep "\->" > /dev/null 2>&1 && file -b "${test1.txt}" | grep "directory" > /dev/null 2>&1
-#1647237448
-stat "${test1.txt}" 2> /dev/null | grep "\->" > /dev/null 2>&1 && file -b "${test1.txt}" | grep "directory" > /dev/null 2>&1
-#1647237448
-stat "${test1.txt}" 2> /dev/null | grep "\->" > /dev/null 2>&1 && file -b "${test1.txt}" | grep "directory" > /dev/null 2>&1
-#1647237468
-stat "${item}" 2> /dev/null | grep "\->" > /dev/null 2>&1 && file -b "${item}" | grep "directory" > /dev/null 2>&1
-#1647237496
-stat "test1.txt" 2> /dev/null | grep "\->" > /dev/null 2>&1 && file -b "test1.txt" | grep "directory" > /dev/null 2>&1
-#1647237523
-stat "test1.txt"
-#1647237531
-stat "test1.txt" 2> /dev/null
-#1647237550
-stat "test1.txt" 2> /dev/null | grep "\->"
-#1647237579
-stat "test1.txt" 2> /dev/null | grep "\->" > /dev/null 2>&1
-#1647237616
-stat "test1.txt" 2> /dev/null | grep "\->" > /dev/null 2>&1 && file -b "test1.txt" | grep "directory"
-#1647237714
-command ls -Fh --group-directories-first --color=auto "test1.txt"
-#1647237723
-command ls -Fh --group-directories-first --color=auto "*.txt"
-#1647237750
-ls test1.txt
-#1647237754
-ls *.txt
-#1647237817
-rm text1.txt
-#1647237830
-rm test1.txt
-#1647237853
-./test1.sh >test1.txt
-#1647237864
-./test2.sh >test2.txt
-#1647238837
-ls *.txt
-#1647238850
-\ls *.txt
-#1647238876
-"ls" *.txt
-#1647238886
-"ls *.txt"
-#1647238893
-"ls" *.txt
-#1647238903
-'ls' *.txt
-#1647238920
-whereis ls
-#1647238927
-/bin/ls *.txt
-#1647238936
-which ls
-#1647238956
-`whereis ls' *.txt
-#1647238968
-`whereis ls` *.txt
-#1647238982
-`which ls` *.txt
-#1647239034
-command ls *.txt
-#1647290701
-man hdid
-#1647290777
-man hdiutil
-#1647291047
-cd /Volumes/Temp/
-#1647291070
-ls /installers
-#1647291080
-ls installers
-#1647291517
-hdiutil mount -nobrowse -plist "./installers/Alfred*"
-#1647291556
 hdiutil mount -nobrowse -plist "./installers/Alfred_4.0.3_1092.dmg"
 #1647291641
 man fgrep
@@ -20167,3 +19835,37 @@ hoem
 home
 #1672721339
 pwd
+#1672787037
+neofetch
+#1672787062
+neofetch --version
+#1672787068
+whereis neofetch
+#1672787073
+which neofetch
+#1672787095
+ll /usr/local/bin/neofetch
+#1672787270
+aw --version
+#1672787282
+alias aw
+#1672787289
+ansiweather --version
+#1672787295
+ansiweather -v
+#1672787328
+ll bin/ansi*
+#1672787649
+dotfiles
+#1672787693
+alias dotfiles
+#1672788008
+df
+#1672788014
+type df
+#1672788023
+ttype df
+#1672788041
+cddf
+#1672788225
+up
