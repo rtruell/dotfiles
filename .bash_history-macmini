@@ -1,41 +1,3 @@
-rm -dfr "${extractdir}/${progname}"
-#1647130038
-echo $i
-#1647130051
-/bin/rm -d "${i}"
-#1647130212
-s ./test.sh
-#1647130422
-man installer
-#1647132250
-man hdid
-#1647132397
-echo FILENAME
-#1647132404
-echo $FILENAME
-#1647132418
-FILENAME="test.txt"
-#1647132423
-$FILENAME:e
-#1647132454
-EXT="$FILENAME:e"
-#1647132463
-echo $EXT
-#1647132499
-man hdid
-#1647132521
-man hdiutil
-#1647208456
-cd /Volumes/Temp/
-#1647208461
-ll
-#1647208470
-chmod 755 test1.sh
-#1647208471
-ll
-#1647208478
-./test1.sh
-#1647208486
 ./test1.sh dave rick
 #1647208509
 ./test1.sh
@@ -19873,3 +19835,335 @@ man find
 find /Volumes/data-1 -type d -iname currentyear 2>&-
 #1672639317
 find /Volumes/data-1 -type d -iname currentyear 2>&- | sort
+#1672697950
+/Volumes/data/Downloads/Mac/InUse/Installed/Manual/dmidecode --version
+#1672697962
+/Volumes/data/Downloads/Mac/InUse/Installed/Manual/progress --version
+#1672698294
+neofetch --version
+#1672698304
+which neofetch
+#1672698312
+whereis neofetch
+#1672700314
+dotfiles
+#1672700317
+up
+#1672700373
+git clone https://github.com/acidanthera/dmidecode.git
+#1672700562
+mkdir mine
+#1672700566
+mkdir others
+#1672701346
+ls ..
+#1672701357
+cd ../GitHub-others
+#1672701538
+git clone https://github.com/smxi/inxi.git
+#1672701665
+whereis neofetch
+#1672701670
+which neofetch
+#1672701677
+neofetch --version
+#1672701767
+git clone https://github.com/dylanaraps/neofetch.git
+#1672702912
+whereis inxi
+#1672702915
+which inxi
+#1672702927
+inxi --version
+#1672702973
+ls inxi
+#1672702994
+./inxi/inxi --version
+#1672703140
+ll ~/bin
+#1672703159
+bin/inxi --version
+#1672703170
+~/bin/inxi --version
+#1672703188
+whereis neofetch
+#1672703192
+which neofetch
+#1672703297
+whereis neofetch
+#1672703299
+which neofetch
+#1672703313
+neofetch --version
+#1672703318
+neofetch
+#1672703784
+home
+#1672716005
+whereis inxi newfetch
+#1672716020
+whereis inxi neofetch
+#1672716027
+whick inxi neofetch
+#1672716032
+which inxi neofetch
+#1672716043
+whereis inxi
+#1672716048
+whereis neofetch
+#1672716054
+which inxi
+#1672716060
+which neofetch
+#1672716070
+back
+#1672716122
+cd neofetch
+#1672716132
+less Makefile
+#1672716186
+cat Makefile
+#1672716201
+ls /usr/bin
+#1672716215
+cat Makefile
+#1672716277
+man neofetch
+#1672716289
+ls /bin/neo*
+#1672716309
+ls /usr/bin/neo*
+#1672716314
+ls /usr/bin/n*
+#1672716352
+man make
+#1672716544
+man touch
+#1672716604
+touch Makefile-new
+#1672716611
+ll
+#1672716626
+rm Makefile-new
+#1672716682
+cp -a Makefile Makefile-new
+#1672716790
+which neofetch
+#1672716795
+whereis neofetch
+#1672716809
+./neofetch
+#1672716838
+./neofetch-new
+#1672716854
+make install
+#1672716869
+ll /usr
+#1672717005
+touch install
+#1672717013
+chmod 755 install
+#1672717098
+ll /
+#1672717104
+ll /usr
+#1672717112
+ll /usr/local/
+#1672717435
+cat ./install
+#1672717481
+touch Use_install_not_make
+#1672717515
+neofetch
+#1672717524
+whereis neofetch
+#1672717528
+which neofetch
+#1672717538
+./install
+#1672717558
+whereis neofetch
+#1672717560
+which neofetch
+#1672717571
+neofetch
+#1672717604
+ls /usr/local
+#1672717608
+ls /usr/local/bin
+#1672717640
+cat install
+#1672717666
+mv install installneo
+#1672717671
+./installneo
+#1672717686
+cat Makefile-new
+#1672717693
+ls /usr/local
+#1672717696
+ls /usr/local/bin
+#1672717716
+ll /usr/local/bin/neo*
+#1672717751
+ll /usr/local/man/man1
+#1672717764
+cat Makefile-new
+#1672717820
+ll /usr/local/share/man/man1
+#1672717850
+man neofetch
+#1672717903
+neofetch
+#1672717926
+path
+#1672717949
+ls /usr/local/bin/neo*
+#1672718220
+ttype neofetch
+#1672718225
+type neofetch
+#1672718243
+hash -d neofetch
+#1672718255
+type neofetch
+#1672718265
+ttype neofetch
+#1672718271
+lf ttype
+#1672718281
+ttype ttype
+#1672718285
+alias ttype
+#1672718294
+neofetch
+#1672718309
+up
+#1672718316
+dmidecode --version
+#1672718339
+type dmidecode
+#1672718355
+cd dmidecode
+#1672718373
+make
+#1672718686
+subl /usr/include/stdio.h
+#1672718765
+subl /usr/sys
+#1672718778
+ls /usr/sys
+#1672718789
+ls /usr/include
+#1672718797
+ls /usr/include/sys
+#1672718806
+ls /usr/include/sys/cdefs.h
+#1672718810
+less /usr/include/sys/cdefs.h
+#1672718840
+subl /usr/include/sys/cdefs.h
+#1672719323
+git log
+#1672719389
+git tag
+#1672719422
+git cat-file tag 3.3c
+#1672719456
+git cat-file tag v3.3c
+#1672719525
+git checkout 64b180bb6507d3793fab3b48c3babe4904cf9817
+#1672719559
+ll
+#1672719605
+make
+#1672719619
+make install
+#1672719655
+mv README.md README
+#1672719656
+make install
+#1672719666
+which dmidecode
+#1672719673
+whereis dmidecode
+#1672719680
+dmidecode --version
+#1672719685
+dmidecode
+#1672719691
+up
+#1672719706
+whereis dmidecode
+#1672719710
+which demidecode
+#1672719744
+whereis dmidecode
+#1672719749
+which dmidecode
+#1672719762
+dmidecode --version
+#1672719772
+whereis inxi
+#1672719775
+which inxi
+#1672719783
+inxi --version
+#1672719791
+cd inxi
+#1672720110
+which inxi
+#1672720120
+./inxi --version
+#1672720129
+inxi --version
+#1672720145
+ll /usr/local/bin/inxi
+#1672720172
+rm /usr/local/bin/inxi
+#1672720186
+pwd
+#1672720238
+symlink_single_file $PWD/inxi /usr/local/bin
+#1672720251
+symlink_single_file $PWD/inxi /usr/local/bin/inxi
+#1672720257
+whereis inxi
+#1672720260
+which inxi
+#1672720263
+up
+#1672720269
+inxi --version
+#1672720296
+ls multi*
+#1672720306
+less multi*/Makefile
+#1672720369
+whereis mgitstatus
+#1672720388
+mgitstatus
+#1672720426
+ll dmidecode
+#1672720507
+git status ./dmidecode
+#1672720513
+cd dmidecode
+#1672720521
+git status
+#1672720540
+up
+#1672720545
+mgitstatus
+#1672720573
+cd neofetch;git status;up
+#1672720646
+up
+#1672720658
+mgitstatus
+#1672721334
+hoem
+#1672721336
+home
+#1672721339
+pwd
