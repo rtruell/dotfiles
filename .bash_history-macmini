@@ -1,37 +1,3 @@
-hdiutil mount -nobrowse -plist "./installers/Alfred_4.0.3_1092.dmg"
-#1647291641
-man fgrep
-#1647291777
-hdiutil detach /Volumes/Alfred
-#1647291791
-hdiutil mount -nobrowse -plist "./installers/Alfred_4.0.3_1092.dmg" | fgrep -A 1 '<key>mount-point</key>'
-#1647291812
-hdiutil detach /Volumes/Alfred
-#1647291843
-hdiutil mount -nobrowse -plist "./installers/Alfred_4.0.3_1092.dmg" | fgrep -A 1 '<key>mount-point</key>' | tail -1
-#1647291848
-hdiutil detach /Volumes/Alfred
-#1647291940
-hdiutil mount -nobrowse -plist "./installers/Alfred_4.0.3_1092.dmg" | fgrep -A 1 '<key>mount-point</key>' | tail -1 | sed 's#</string>.*##g ; s#.*<string>##g'
-#1647292111
-ls /Volumes/Alfred/
-#1647292134
-ls1 /Volumes/Alfred/
-#1647292145
-ls *.txt
-#1647292149
-ls1 *.txt
-#1647292226
-listfunction ls1
-#1647292337
-ls /etc
-#1647292403
-ls -Fh --group-directories-first --color=auto /etc
-#1647292428
-ls -h --group-directories-first --color=auto /etc
-#1647292456
-ls -Fh --group-directories-first --color=auto /etc
-#1647292482
 stat /etc
 #1647292558
 stat /etc | | grep "\->"
@@ -19869,3 +19835,426 @@ ttype df
 cddf
 #1672788225
 up
+#1672788258
+dotfiles
+#1672788265
+pwd
+#1672788272
+back
+#1672788275
+cddf
+#1672788286
+up
+#1672788291
+u
+#1672788293
+up
+#1672788299
+cd others
+#1672788335
+git clone https://github.com/fcambus/ansiweather.git
+#1672788349
+cd ansiweather/
+#1672788401
+diff bin/ansiweather ansiweather
+#1672788423
+./ansiweather -v
+#1672788434
+ansiweather -v
+#1672788442
+which ansiweather
+#1672788459
+diff $HOME/bin/ansiweather ansiweather
+#1672788479
+less ansiweather
+#1672788520
+man ansiweather
+#1672788557
+cp -a $HOME/bin/ansiweather ansiweather-new
+#1672789560
+((2+2))
+#1672789565
+echo ((2+2))
+#1672789570
+echo $((2+2))
+#1672789589
+echo $((2*3))
+#1672789595
+echo $((2*3.6))
+#1672789657
+./ansiweather
+#1672789663
+./ansiweather-new
+#1672789686
+alias aw
+#1672789715
+./ansiweather -f 0
+#1672789721
+./ansiweather-new -f 0
+#1672789815
+man ansiweather
+#1672789852
+ls ..
+#1672789876
+ls ../neofetch/
+#1672790163
+ls /usr/local
+#1672790179
+ls /usr
+#1672790183
+ls /usr/share
+#1672790187
+ls /usr/share/man
+#1672790207
+ls /usr/local
+#1672790216
+ls /usr/local/share
+#1672790233
+ls /usr/local/share/man
+#1672790352
+whereis inxi
+#1672790355
+which inxi
+#1672790364
+inxi
+#1672791038
+whereis ansiweather
+#1672791043
+which ansiweather
+#1672791121
+./installaw
+#1672791131
+whereis ansiweather
+#1672791135
+which ansiweather
+#1672791147
+alias aw
+#1672791150
+aw
+#1672791165
+hf hash
+#1672791175
+hash -d ansiweather
+#1672791179
+aw
+#1672791277
+ansiweather-old -f 0; ansiweather-old
+#1672791467
+whereis ansiweather
+#1672791476
+which ansiweather
+#1672791484
+man anisweather
+#1672791504
+path MANPATH
+#1672791518
+path -p MANPATH
+#1672791538
+ls /usr/local/share/man/man1
+#1672791568
+man neofetch
+#1672791573
+man progress
+#1672791582
+man ansiweather
+#1672791620
+man inxi
+#1672791670
+whereis dmidecode
+#1672791674
+which dmidecode
+#1672791680
+dmidecode --version
+#1672791690
+dmidecode
+#1672791704
+dmidecode -M
+#1672791710
+man dmidecode
+#1672791747
+dmidecode -h
+#1672791913
+cd ../inxi
+#1672791921
+whereis inxi
+#1672791923
+which inxi
+#1672791927
+inxi
+#1672791944
+./installinxi
+#1672791957
+ll /usr/local/bin/inxi
+#1672791986
+rm /usr/local/bin/inxi
+#1672791994
+./installinxi
+#1672792002
+whereis ansiweather
+#1672792005
+whereis inxi
+#1672792009
+which inxi
+#1672792012
+inxi
+#1672792020
+man inxi
+#1672792029
+inxi --version
+#1672792039
+inxi -M
+#1672792343
+man inxi
+#1672792347
+inxi
+#1672792353
+cd ..
+#1672792366
+cd ansiweather
+#1672792373
+cd ../dmidecode
+#1672792393
+cd ../inxi
+#1672792410
+hf git
+#1672792418
+git log
+#1672792560
+ls ..
+#1672792566
+cd ../multi-git-status/
+#1672792577
+whereis mgitstatus
+#1672792584
+which mgitstatus
+#1672792596
+ll /usr/local/bin/mgitstatus
+#1672792618
+less Makefile
+#1672792650
+man mgitstatus
+#1672792672
+less Makefile
+#1672792689
+ls /usr/local/man/mani/m*
+#1672792695
+ls /usr/local/man/man1/m*
+#1672792717
+man mgitstatus
+#1672792733
+make install
+#1672792762
+ll /usr/local/man/man1/m*
+#1672792775
+ll /usr/local/man/man1/
+#1672792794
+ll /usr/local/man
+#1672792803
+ll /usr/local
+#1672792962
+ll /usr/local/man
+#1672792969
+ll /usr/local/man/man1
+#1672792998
+sudo chown rtruell:admin /usr/local/man
+#1672793013
+ll /usr/local
+#1672793021
+ll /usr/local/man
+#1672793028
+man chown
+#1672793049
+sudo chown -R rtruell:admin /usr/local/man
+#1672793052
+ll /usr/local
+#1672793067
+ll /usr/local/man
+#1672793075
+ll /usr/local/man/man1
+#1672793117
+make install
+#1672793122
+man mgitstatus
+#1672793130
+mgitstatus -v
+#1672793135
+mgitstatus --version
+#1672793141
+ls ..
+#1672793149
+cd ../neofetch
+#1672793157
+whereis neofetch
+#1672793161
+which neofetch
+#1672793178
+neofetch --version
+#1672793182
+neofetch
+#1672793208
+cd ..
+#1672793220
+mgitstatus
+#1672793256
+mgitstatus -h
+#1672793269
+man git
+#1672793311
+man git-fetch
+#1672793341
+home
+#1672810648
+uname -m
+#1672810978
+man bash
+#1672811127
+ttype cd
+#1672811132
+ttype data
+#1672811137
+ttype date
+#1672811236
+cddf
+#1672811238
+up
+#1672811242
+back
+#1672811256
+git rev-parse
+#1672811272
+echo $?
+#1672811283
+home
+#1672811285
+git rev-parse
+#1672811314
+less bin/aliases
+#1672811338
+less ./bin/aliases
+#1672811348
+less dotfiles/aliases
+#1672811364
+less dotfiles/.aliases
+#1672811411
+gt
+#1672811417
+less dotfiles/.aliases
+#1672811482
+back
+#1672811490
+cddf
+#1672811510
+git rev-parse --show-toplevel
+#1672811538
+basename $(git rev-parse --show-toplevel)
+#1672811906
+home
+#1672814462
+type -p screenresolution
+#1672814518
+system_profiler SPDisplaysDataType
+#1672814635
+system_profiler SPDisplaysDataType | awk '/Resolution:/ {printf $2"x"$4" @ "$6"Hz, "}'
+#1672816726
+cddf
+#1672816747
+up2
+#1672816749
+up 2
+#1672816770
+cd ./others/neofetch/
+#1672816777
+ll
+#1672816809
+./neofetch
+#1672816824
+./neofetch-new
+#1672817128
+sysctl -n machdep.cpu.brand_string
+#1672817317
+./neofetch
+#1672817325
+./neofetch-new
+#1672817474
+./"neofetch-new copy"
+#1672817499
+./neofetch-new
+#1672818088
+sysctl -n hw.memsize
+#1672818095
+sysctl -n hw.pagesize
+#1672818335
+$(($(sysctl -n hw.memsize) / 1024 / 1024))
+#1672818349
+echo (($(sysctl -n hw.memsize) / 1024 / 1024))
+#1672818353
+echo $(($(sysctl -n hw.memsize) / 1024 / 1024))
+#1672818422
+sysctl -n hw.pagesize
+#1672818425
+echo $(($(sysctl -n hw.memsize) / 1024 / 1024))
+#1672818477
+sysctl -n vm.page_pageable_internal_count
+#1672818526
+sysctl -n vm.page_purgeable_count
+#1672818568
+vm_stat | awk '/ wired/ { print $4 }'
+#1672818619
+vm_stat | awk '/ occupied/ { printf $5 }'
+#1672818679
+pages_compressed="$(vm_stat | awk '/ occupied/ { printf $5 }')"
+#1672818709
+printf '%s\n' ">${pages_compressed}<"
+#1672818737
+pages_compressed="${pages_compressed:-0}"
+#1672818742
+printf '%s\n' ">${pages_compressed}<"
+#1672819151
+pages_app="$(($(sysctl -n vm.page_pageable_internal_count) - $(sysctl -n vm.page_purgeable_count)))"
+#1672819169
+printf '%s\n' ">${pages_app}<"
+#1672819452
+mem_used="$(((${pages_app} + 433892 + ${pages_compressed//.}) * 4096 / 1024 / 1024))"
+#1672819462
+printf '%s\n' ">${mem_used}<"
+#1672819498
+printf '%s\n' ">${pages_app}<"
+#1672819518
+printf '%s\n' ">${pages_compressed}<"
+#1672819523
+printf '%s\n' ">${pages_compressed//.}<"
+#1672819657
+echo $(((-53115 + 433892 + 0) * 4096 / 1024 / 1024))
+#1672819836
+./"neofetch-new copy"
+#1672819838
+./neofetch-new
+#1672820047
+type -p screenresolution
+#1672820078
+system_profiler SPDisplaysDataType
+#1672820094
+system_profiler SPDisplaysDataType |                              awk '/Resolution:/ {printf $2"x"$4" @ "$6", "}'
+#1672820139
+ls /Library/Preferences/com.apple.windowserver.plist
+#1672820172
+less /Library/Preferences/com.apple.windowserver.plist
+#1672820191
+PlistBuddy -c "Print DisplayAnyUserSets:0:0:Resolution"                                 /Library/Preferences/com.apple.windowserver.plist
+#1672820244
+if [[ -e "/Library/Preferences/com.apple.windowserver.plist" ]]; then echo exists; else echo not; fi
+#1672820310
+scale_factor="$(PlistBuddy -c "Print DisplayAnyUserSets:0:0:Resolution" \
+                                /Library/Preferences/com.apple.windowserver.plist)"
+#1672820334
+printf '%s\n' ">${scale_factor}<"
+#1672820502
+home
+#1672820793
+./neofetch-new
+#1672820802
+back
+#1672820805
+./neofetch-new
+#1672820874
+home
