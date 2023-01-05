@@ -1,427 +1,3 @@
-stat /etc
-#1647292558
-stat /etc | | grep "\->"
-#1647292570
-stat /etc | grep "\->"
-#1647292637
-stat /etc | grep "\->" && file -b /etc
-#1647292715
-stat . | grep "\->" && file -b .
-#1647292768
-stat *.txt | grep "\->" && file -b *.txt
-#1647292909
-file -b /etc
-#1647292919
-man file
-#1647292934
-file *.txt
-#1647292948
-file /etc
-#1647292958
-file -b /etc
-#1647292966
-file -b *.txt
-#1647292985
-ll
-#1647292993
-ll /
-#1647293015
-ls1 /etc
-#1647293036
-ls -F /etc
-#1647293048
-ls -F /dev
-#1647293070
-ls -F *.txt
-#1647293095
-listfunction ls1
-#1647293131
-ls -Fh --group-directories-first --color=auto *.txt
-#1647293182
-ls1 *.txt
-#1647293207
-command ls -Fh --group-directories-first --color=auto *.txt
-#1647293311
-command ls  -Fh --group-directories-first --color=auto *.txt
-#1647293400
-if [[ -d /etc ]] then echo directory
-#1647293404
-if [[ -d /etc ]]; then echo directory
-#1647293419
-if [[ -d /etc ]] then echo directory; fi
-#1647293426
-if [[ -d /etc ]]; then echo directory; fi
-#1647293452
-if [[ -d /dev ]]; then echo directory; fi
-#1647293472
-if [[ -d *.txt ]]; then echo directory; fi
-#1647293502
-if [[ -d problemapps.txt ]]; then echo directory; fi
-#1647293511
-if [[ -f problemapps.txt ]]; then echo directory; fi
-#1647293577
-mountinfo
-#1647293589
-hdiutil detach /Volumes/Alfred/
-#1647293637
-hdiutil mount -plist "./installers/Alfred_4.0.3_1092.dmg" | fgrep -A 1 '<key>mount-point</key>' | tail -1 | sed 's#</string>.*##g ; s#.*<string>##g'
-#1647293651
-hdiutil detach /Volumes/Alfred/
-#1647293708
-hdiutil mount -plist "./installers/avidemux_2.4.4_Gtk_Quartz_universal.dmg" | fgrep -A 1 '<key>mount-point</key>' | tail -1 | sed 's#</string>.*##g ; s#.*<string>##g'
-#1647293878
-hdiutil detach /Volumes/avidemux_2.4.4_Gtk_Quartz_universal
-#1647293910
-hdiutil mount -plist "./installers/Firefox 78.3.1esr.dmg" | fgrep -A 1 '<key>mount-point</key>' | tail -1 | sed 's#</string>.*##g ; s#.*<string>##g'
-#1647293937
-hdiutil detach /Volumes/Firefox/
-#1647293957
-diskutil list
-#1647293974
-mountinfo
-#1647293998
-hdiutil detach /dev/disk3s3
-#1647294067
-hf hazel
-#1647294101
-hf Hazel
-#1647294125
-hf -i hazel
-#1647294136
-listfunction hf
-#1647294173
-hf iMaz
-#1647294188
-hf Haz
-#1647294337
-mountinfo
-#1647294745
-./test1
-#1647294754
-./test1.sh
-#1647294758
-./test2.sh
-#1647294774
-./test1.sh >test1.txt
-#1647294786
-./test2.sh >test2.txt
-#1647295609
-./test1.sh
-#1647296785
-fullpathname="/Path/TO/Test.sh"
-#1647315503
-man umask
-#1647315509
-bashman umask
-#1647315574
-umask
-#1647315813
-echo $LOGNAME
-#1647315909
-SHORT=pkginstll
-#1647316075
-NAME=pkginstall
-#1647316081
-SHORT=pkginstall
-#1647316157
-LOG="/tmp/$LOGNAME.`printf '%s' "${name%.*}"`.$SHORT.log"
-#1647316186
-echo $LOG
-#1647316225
-LOG="/tmp/$LOGNAME.`printf '%s' "${NAME%.*}"`.$SHORT.log"
-#1647316227
-echo $LOG
-#1647316641
-zsh
-#1647320068
-test1.sh /Volumes/Temp/superduper.pkg
-#1647320327
-listfunction bashman
-#1647320339
-bashman special
-#1647320384
-bashman [[
-#1647321764
-test1.sh /Volumes/Temp/superduper.pkg
-#1647321833
-which zsh
-#1647321840
-whereis zsh
-#1647322293
-test1.sh /Volumes/Temp/superduper.pkg
-#1647322305
-CLS
-#1647322319
-test.sh /Volumes/Temp/superduper.pkg
-#1647322324
-test1.sh /Volumes/Temp/superduper.pkg
-#1647324665
-echo "${name}: Installing ${file}\n\tLogging to ${log}\n(Note: sudo may ask for your administrator password)"
-#1647324712
-printf "${name}: Installing ${file}\n\tLogging to ${log}\n(Note: sudo may ask for your administrator password)"
-#1647324824
-printf "test1.sh: Installing /Volumes/Temp/superduper.pkg\n\tLogging to /tmp/rtruell.test1.superduper.log\n(Note: sudo may ask for your administrator password)"
-#1647324904
-printf "test1.sh: Installing /Volumes/Temp/superduper.pkg\n\t\tLogging to /tmp/rtruell.test1.superduper.log\n\t\t(Note: sudo may ask for your administrator password)"
-#1647324968
-printf "test1.sh: Installing /Volumes/Temp/superduper.pkg\n\tLogging to /tmp/rtruell.test1.superduper.log\n\t(Note: sudo may ask for your administrator password)"
-#1647325018
-printf "test1.sh: Installing /Volumes/Temp/superduper.pkg\ntest1.sh: Logging to /tmp/rtruell.test1.superduper.log\ntest1.sh: (Note: sudo may ask for your administrator password)"
-#1647325087
-printf '%s\n "test1.sh: Installing /Volumes/Temp/superduper.pkg" "test1.sh: Logging to /tmp/rtruell.test1.superduper.log" "test1.sh: (Note: sudo may ask for your administrator password)"
-#1647325099
-printf '%s\n' "test1.sh: Installing /Volumes/Temp/superduper.pkg" "test1.sh: Logging to /tmp/rtruell.test1.superduper.log" "test1.sh: (Note: sudo may ask for your administrator password)"
-#1647372860
-findshow mayans
-#1647373126
-findshow 'young rock'
-#1647373152
-findshow 'mayor'
-#1647380479
-man umask
-#1647380493
-bashman umask
-#1647380873
-umask
-#1647380907
-umask -S
-#1647381205
-ls /etc
-#1647381862
-man installer
-#1647382173
-installer -dominfo -package /Volumes/data/Downloads/Mac/InUse/Installed/Automated/1Password-6.8.9.pkg
-#1647382198
-installer -volinfo -package /Volumes/data/Downloads/Mac/InUse/Installed/Automated/1Password-6.8.9.pkg
-#1647382207
-installer -pkginfo -package /Volumes/data/Downloads/Mac/InUse/Installed/Automated/1Password-6.8.9.pkg
-#1647382242
-/Volumes/data/Downloads/Mac/InUse/Installed/Automated/*.pkg
-#1647382263
-ls /Volumes/data/Downloads/Mac/InUse/Installed/Automated/*.pkg
-#1647382314
-installer -dominfo -package /Volumes/data/Downloads/Mac/InUse/Installed/Automated/FoxitReader.2.3.0.2197.enu.Setup.pkg
-#1647382359
-cd /Volumes/Temp/Installers/
-#1647382377
-cp -a /Volumes/data/Downloads/Mac/InUse/Installed/Automated/*.pkg .
-#1647382405
-installer -dominfo -package 1Password-6.8.9.pkg
-#1647382423
-installer -dominfo -package FoxitReader.2.3.0.2197.enu.Setup.pkg
-#1647382456
-installer -dominfo -package QLVideo_187.pkg
-#1647382485
-installer -dominfo -package ownCloud-2.2.4.3709.pkg
-#1647383101
-man installer
-#1647384658
-home
-#1647402245
-type ls
-#1647402252
-type ls1
-#1647402265
-type cp
-#1647402310
-zsh
-#1647402554
-man type
-#1647402559
-bashman type
-#1647402637
-type type
-#1647402670
-type -P ls
-#1647402677
-type -P ls1
-#1647402695
-type ls1
-#1647402701
-type -t ls1
-#1647402774
-type -P ls1
-#1647402778
-type -P ls
-#1647402925
-dotfiles
-#1647402936
-findtext -i exists
-#1647403071
-home
-#1647403118
-type -P ls1
-#1647403122
-type -P ls
-#1647403143
-type ls
-#1647403181
-if [[ type ls ]]; then echo found; else echo "not found"; fi
-#1647403196
-if [[ `type ls` ]]; then echo found; else echo "not found"; fi
-#1647403204
-if [[ `type ls1` ]]; then echo found; else echo "not found"; fi
-#1647403240
-if [[ `type dave` ]]; then echo found; else echo "not found"; fi
-#1647403258
-type ls1
-#1647403284
-if [[ `type -P ls` ]]; then echo found; else echo "not found"; fi
-#1647403289
-if [[ `type -P ls1` ]]; then echo found; else echo "not found"; fi
-#1647403296
-if [[ `type -P dave` ]]; then echo found; else echo "not found"; fi
-#1647403316
-echo $prog
-#1647403329
-echo $progname
-#1647403341
-progname="ls"
-#1647403371
-if [[ `type -P "${progname}"` ]]; then echo found; else echo "not found"; fi
-#1647403386
-progname="ls1"
-#1647403389
-if [[ `type -P "${progname}"` ]]; then echo found; else echo "not found"; fi
-#1647403398
-progname="dave"
-#1647403401
-if [[ `type -P "${progname}"` ]]; then echo found; else echo "not found"; fi
-#1647403906
-bash --v
-#1647403922
-bash --version
-#1647403893
-bash -v
-#1647489647
-b upd
-#1647547432
-b i quicken
-#1647547450
-b h quicken
-#1647547619
-listfunction b
-#1647547647
-b d
-#1647548146
-dmidecode
-#1647548179
-xini
-#1647548188
-whereis dmidecode
-#1647548192
-which dmidecode
-#1647548331
-b i aften
-#1647548371
-b i isl
-#1647548394
-b i mpfr
-#1647548458
-b i opencore-amr
-#1647548727
-b i soundflower
-#1647548746
-b i soundflowerbed
-#1647548783
-b h soundflower
-#1647549050
-b h soundflowerbed
-#1647549199
-soundflower
-#1647549212
-whereis soundflower
-#1647549218
-which soundflower
-#1647549224
-soundflowerbed
-#1647549614
-b h taskade
-#1647550496
-b s todoist
-#1647550525
-b i todoist
-#1647550547
-b i todo-txt
-#1647550653
-b h todo-txt
-#1647555131
-b i todo
-#1647555139
-b s todo
-#1647555151
-b i todoist
-#1647557154
-b i temurin11
-#1647557215
-b s zulu
-#1647557247
-b i zulu
-#1647558039
-java --version
-#1647558062
-whereis java
-#1647558066
-which java
-#1647558078
-ls /usr/bin/j*
-#1647558147
-b s java
-#1647558174
-b i java6
-#1647558670
-b i temurin11
-#1647558712
-b i suspicious-package
-#1647558833
-b h suspicious-package
-#1647574005
-echo JAVA_HOME
-#1647574013
-echo $JAVA_HOME
-#1647574074
-/usr/libexec/java_home -v
-#1647574095
-/usr/libexec/java_home -version
-#1647574104
-/usr/libexec/java_home -help
-#1647574188
-/usr/libexec/java_home -V
-#1647574241
-java -version
-#1647574257
-/usr/libexec/java_home -v 6
-#1647574590
-/usr/libexec/java_home -v 1.6
-#1647574599
-java -version
-#1647574645
-/usr/libexec/java_home -v 1.8
-#1647574652
-java -version
-#1647630298
-b upd
-#1647630336
-b i apt
-#1647630523
-b s alarm
-#1647633668
-b i alfred
-#1647633758
-b s alfred
-#1647633820
-b s audacity
-#1647633837
-b i audacity
-#1647633911
-b s avidemux
-#1647633988
-b s compare
-#1647634006
-b i beyond-compare
-#1647634112
-b s black
-#1647634138
 b i black-ink
 #1647634180
 b s calibre
@@ -20258,3 +19834,93 @@ back
 ./neofetch-new
 #1672820874
 home
+#1672873322
+neofetch
+#1672873365
+which neofetch
+#1672873374
+whereis neofetch
+#1672873429
+/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/others/neofetch/neofetch-new
+#1672874296
+osx_version=10.1
+#1672874318
+printf '%s\n' ">${osx_version}<"
+#1672874353
+case $osx_version in                 10.0.?*)  codename="Mac OS X Cheetah" ;;                 10.1.?*)  codename="Mac OS X Puma" ;;                 10.2.?*)  codename="Mac OS X Jaguar" ;;                 10.3.?*)  codename="Mac OS X Panther" ;;                 10.4.?*)  codename="Mac OS X Tiger" ;;                 10.5.?*)  codename="Mac OS X Leopard" ;;                 10.6.?*)  codename="Mac OS X Snow Leopard" ;;                 10.7.?*)  codename="Mac OS X Lion" ;;                 10.8.?*)  codename="OS X Mountain Lion" ;;                 10.9.?*)  codename="OS X Mavericks" ;;                 10.10.?*) codename="OS X Yosemite" ;;                 10.11.?*) codename="OS X El Capitan" ;;                 10.12.?*) codename="macOS Sierra" ;;                 10.13.?*) codename="macOS High Sierra" ;;                 10.14.?*) codename="macOS Mojave" ;;                 10.15.?*) codename="macOS Catalina" ;;                 11.?*)    codename="macOS Big Sur" ;;                 12.?*)    codename="macOS Monterey" ;;                 13.?*)    codename="macOS Ventura" ;;                 *)      codename=macOS ;;             esac
+#1672874386
+printf '%s\n' ">${codename}<"
+#1672874436
+osx_version=10.11
+#1672874443
+case $osx_version in                 10.0.?*)  codename="Mac OS X Cheetah" ;;                 10.1.?*)  codename="Mac OS X Puma" ;;                 10.2.?*)  codename="Mac OS X Jaguar" ;;                 10.3.?*)  codename="Mac OS X Panther" ;;                 10.4.?*)  codename="Mac OS X Tiger" ;;                 10.5.?*)  codename="Mac OS X Leopard" ;;                 10.6.?*)  codename="Mac OS X Snow Leopard" ;;                 10.7.?*)  codename="Mac OS X Lion" ;;                 10.8.?*)  codename="OS X Mountain Lion" ;;                 10.9.?*)  codename="OS X Mavericks" ;;                 10.10.?*) codename="OS X Yosemite" ;;                 10.11.?*) codename="OS X El Capitan" ;;                 10.12.?*) codename="macOS Sierra" ;;                 10.13.?*) codename="macOS High Sierra" ;;                 10.14.?*) codename="macOS Mojave" ;;                 10.15.?*) codename="macOS Catalina" ;;                 11.?*)    codename="macOS Big Sur" ;;                 12.?*)    codename="macOS Monterey" ;;                 13.?*)    codename="macOS Ventura" ;;                 *)      codename=macOS ;;             esac
+#1672874447
+printf '%s\n' ">${codename}<"
+#1672874510
+osx_version=10.0
+#1672874514
+case $osx_version in                 10.0.?*)  codename="Mac OS X Cheetah" ;;                 10.1.?*)  codename="Mac OS X Puma" ;;                 10.2.?*)  codename="Mac OS X Jaguar" ;;                 10.3.?*)  codename="Mac OS X Panther" ;;                 10.4.?*)  codename="Mac OS X Tiger" ;;                 10.5.?*)  codename="Mac OS X Leopard" ;;                 10.6.?*)  codename="Mac OS X Snow Leopard" ;;                 10.7.?*)  codename="Mac OS X Lion" ;;                 10.8.?*)  codename="OS X Mountain Lion" ;;                 10.9.?*)  codename="OS X Mavericks" ;;                 10.10.?*) codename="OS X Yosemite" ;;                 10.11.?*) codename="OS X El Capitan" ;;                 10.12.?*) codename="macOS Sierra" ;;                 10.13.?*) codename="macOS High Sierra" ;;                 10.14.?*) codename="macOS Mojave" ;;                 10.15.?*) codename="macOS Catalina" ;;                 11.?*)    codename="macOS Big Sur" ;;                 12.?*)    codename="macOS Monterey" ;;                 13.?*)    codename="macOS Ventura" ;;                 *)      codename=macOS ;;             esac
+#1672874518
+printf '%s\n' ">${codename}<"
+#1672874547
+-x
+#1672874557
+x
+#1672874584
+printf '%s\n' ">${codename}<"
+#1672874605
+set x
+#1672874617
+case $osx_version in                 10.0.?*)  codename="Mac OS X Cheetah" ;;                 10.1.?*)  codename="Mac OS X Puma" ;;                 10.2.?*)  codename="Mac OS X Jaguar" ;;                 10.3.?*)  codename="Mac OS X Panther" ;;                 10.4.?*)  codename="Mac OS X Tiger" ;;                 10.5.?*)  codename="Mac OS X Leopard" ;;                 10.6.?*)  codename="Mac OS X Snow Leopard" ;;                 10.7.?*)  codename="Mac OS X Lion" ;;                 10.8.?*)  codename="OS X Mountain Lion" ;;                 10.9.?*)  codename="OS X Mavericks" ;;                 10.10.?*) codename="OS X Yosemite" ;;                 10.11.?*) codename="OS X El Capitan" ;;                 10.12.?*) codename="macOS Sierra" ;;                 10.13.?*) codename="macOS High Sierra" ;;                 10.14.?*) codename="macOS Mojave" ;;                 10.15.?*) codename="macOS Catalina" ;;                 11.?*)    codename="macOS Big Sur" ;;                 12.?*)    codename="macOS Monterey" ;;                 13.?*)    codename="macOS Ventura" ;;                 *)      codename=macOS ;;             esac
+#1672874628
+printf '%s\n' ">${codename}<"
+#1672874785
+set -xv
+#1672874793
+case $osx_version in                 10.0.?*)  codename="Mac OS X Cheetah" ;;                 10.1.?*)  codename="Mac OS X Puma" ;;                 10.2.?*)  codename="Mac OS X Jaguar" ;;                 10.3.?*)  codename="Mac OS X Panther" ;;                 10.4.?*)  codename="Mac OS X Tiger" ;;                 10.5.?*)  codename="Mac OS X Leopard" ;;                 10.6.?*)  codename="Mac OS X Snow Leopard" ;;                 10.7.?*)  codename="Mac OS X Lion" ;;                 10.8.?*)  codename="OS X Mountain Lion" ;;                 10.9.?*)  codename="OS X Mavericks" ;;                 10.10.?*) codename="OS X Yosemite" ;;                 10.11.?*) codename="OS X El Capitan" ;;                 10.12.?*) codename="macOS Sierra" ;;                 10.13.?*) codename="macOS High Sierra" ;;                 10.14.?*) codename="macOS Mojave" ;;                 10.15.?*) codename="macOS Catalina" ;;                 11.?*)    codename="macOS Big Sur" ;;                 12.?*)    codename="macOS Monterey" ;;                 13.?*)    codename="macOS Ventura" ;;                 *)      codename=macOS ;;             esac
+#1672874889
+printf '%s\n' ">${osx_version}<"
+#1672875081
+set +xv
+#1672875109
+hf neofetch
+#1672875128
+/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/others/neofetch/neofetch-new
+#1672875476
+casetest
+#1672875499
+osx_version=10.0
+#1672875501
+casetest
+#1672875524
+s casetest
+#1672875544
+osx_version=10.0.
+#1672875547
+s casetest
+#1672875674
+osx_version=10.0
+#1672875687
+osx_version=10.0; s casetest
+#1672875697
+osx_version=10.1; s casetest
+#1672875701
+osx_version=10.10; s casetest
+#1672876011
+osx_version=10.1; s casetest
+#1672876023
+osx_version=10.11; s casetest
+#1672876136
+osx_version=10.0; s casetest
+#1672876150
+osx_version=10.1; s casetest
+#1672876168
+osx_version=10.10; s casetest
+#1672876177
+osx_version=10.12; s casetest
+#1672876187
+osx_version=12; s casetest
+#1672876452
+/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/others/neofetch/neofetch-new
+#1672898163
+pwd
