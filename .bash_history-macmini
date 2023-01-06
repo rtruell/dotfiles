@@ -1,93 +1,3 @@
-b i black-ink
-#1647634180
-b s calibre
-#1647634206
-b i calibre
-#1647634244
-b i calibre4
-#1647634263
-b h calibre
-#1647634396
-b h calibre4
-#1647635117
-b s cano
-#1647635260
-b i cano-eos-utility
-#1647635276
-b i canon-eos-utility
-#1647635306
-b i canon-captureontouch-utility
-#1647635358
-b s command
-#1647635381
-b i commandq
-#1647635395
-b h commandq
-#1647636811
-b s dash
-#1647636841
-b i dash
-#1647636862
-b h dash
-#1647637369
-b i homebrew/cask/dash
-#1647637405
-b i dash4
-#1647637435
-b i dash5
-#1647637538
-b s dropzone
-#1647637550
-b i dropzone
-#1647637563
-b h dropzone
-#1647638081
-b s epub
-#1647638105
-b i epubquicklook
-#1647638208
-b s event
-#1647638228
-b s reminder
-#1647638247
-b i remind
-#1647638273
-b i rem
-#1647638298
-b h remind
-#1647643628
-b h rem
-#1647643660
-b in remind
-#1647644414
-set | grep homebrew
-#1647644428
-set | grep -i homebrew
-#1647644466
-brew --cache
-#1647644485
-brew --repo
-#1647644500
-b s remind
-#1647644958
-ls /usr/local/Homebrew
-#1647644970
-ls1 /usr/local/Homebrew
-#1647644982
-ls1 /usr/local/Homebrew/Library
-#1647644988
-ls1 /usr/local/Homebrew/Library/Homebrew
-#1647645050
-ls1 /usr/local/Homebrew/Library/Taps
-#1647645069
-ls1 /usr/local/Homebrew/Library/Homebrew/cask
-#1647645091
-ls1 /usr/local/Homebrew/Library/Homebrew/utils
-#1647645955
-man brew
-#1647646567
-brew -b remind
-#1647646582
 brew install -b remind
 #1647646654
 brew --cache remind
@@ -19924,3 +19834,21 @@ osx_version=12; s casetest
 /Volumes/ExternalHome/rtruell/GitRepositories/GitHub/others/neofetch/neofetch-new
 #1672898163
 pwd
+#1673020663
+ft -i terradox PCMyMoney-JanUpdate.qif
+#1673020812
+ft -i disknee PCMyMoney-JanUpdate.qif
+#1673020824
+ft -i delta PCMyMoney-JanUpdate.qif
+#1673020870
+ft -i universe PCMyMoney-JanUpdate.qif
+#1673020897
+ft -i planet PCMyMoney-JanUpdate.qif
+#1673021075
+ft -i "star legend" PCMyMoney-JanUpdate.qif
+#1673021104
+ft -i "empress" PCMyMoney-JanUpdate.qif
+#1673021168
+ft -i "empire book" PCMyMoney-JanUpdate.qif
+#1673021209
+ft -i "krimson empire" PCMyMoney-JanUpdate.qif
