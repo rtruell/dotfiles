@@ -1,21 +1,3 @@
-brew install -b remind
-#1647646654
-brew --cache remind
-#1647646911
-b i remind
-#1647646922
-b in remind
-#1647647389
-la
-#1647647405
-touch .reminders
-#1647647439
-whereis remind
-#1647647442
-which remind
-#1647647473
-brew --prefix
-#1647647476
 ls /usr/local
 #1647647484
 ls /usr/local/Cellar
@@ -19852,3 +19834,125 @@ ft -i "empress" PCMyMoney-JanUpdate.qif
 ft -i "empire book" PCMyMoney-JanUpdate.qif
 #1673021209
 ft -i "krimson empire" PCMyMoney-JanUpdate.qif
+#1673160164
+neofetch
+#1673160178
+./ndofetch-new
+#1673160187
+./neofetch-new
+#1673160206
+neofetch
+#1673160210
+./neofetch-new
+#1673160377
+./installneo
+#1673160388
+less installneo
+#1673160403
+less Makefile-new
+#1673160421
+neofetch
+#1673160503
+ls ..
+#1673160520
+ls ../multi-git-status/
+#1673160538
+less ../multi-git-status/Makefile
+#1673160572
+ls ../inxi
+#1673160589
+ls ../inxi/installinxi
+#1673160594
+less ../inxi/installinxi
+#1673160620
+less ../inxi/Makefile-new
+#1673160657
+ls ../dmidecode
+#1673160726
+less ../dmidecode/Makefile 
+#1673160777
+ls ../ansiweather
+#1673160798
+less ../ansiweather/installaw 
+#1673160814
+less ../ansiweather/Makefile-new
+#1673160921
+up 2
+#1673160933
+ms
+#1673160944
+mgitstatus
+#1673161279
+echo $GIT_DIR
+#1673161311
+echo $core.excludesFile
+#1673161502
+echo $XDG_CONFIG_HOME
+#1673161626
+ls $HOME/.config/git
+#1673161648
+ll $HOME/.config/git
+#1673161682
+ls $HOME/.config/git
+#1673161738
+ls /Users/rtruell/dotfiles/.config/git
+#1673161743
+ls /Users/rtruell/dotfiles/.config
+#1673162144
+less ~/.gitignore
+#1673162379
+back
+#1673162382
+la
+#1673162385
+ls .git
+#1673162393
+ls .git/info
+#1673162401
+less .git/info/exclude 
+#1673162703
+mgitstatus
+#1673162712
+git status
+#1673162736
+la
+#1673162776
+subl .gitignore
+#1673162883
+git status
+#1673162935
+mgitstatus
+#1673162953
+git status
+#1673162957
+mgitstatus
+#1673163360
+up
+#1673163363
+mgitstatus
+#1673163401
+git status dmidecode
+#1673163408
+cd dmidecode
+#1673163412
+git status
+#1673163511
+la
+#1673163519
+less .gitignore
+#1673163577
+git status
+#1673163709
+git rm --cached .gitignore
+#1673163718
+git rm --cached README.md
+#1673163764
+git status
+#1673163774
+up
+#1673163777
+mgitstatus
+#1673163816
+up
+#1673163818
+mgitstatus
