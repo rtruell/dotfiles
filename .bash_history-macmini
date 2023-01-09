@@ -1,125 +1,3 @@
-ls /usr/local
-#1647647484
-ls /usr/local/Cellar
-#1647647491
-ls /usr/local/Cellar/remind
-#1647647504
-ls1 /usr/local/Cellar/remind
-#1647647509
-ls1 /usr/local/Cellar/remind/03.04.00/
-#1647647526
-less /usr/local/Cellar/remind/03.04.00/README
-#1647647547
-man remind
-#1647647802
-man tkremind
-#1647647815
-whereis tkremind
-#1647647819
-which tkremind
-#1647647825
-tkremind
-#1647648120
-remind
-#1647648136
-la
-#1647648152
-remind .reminders
-#1647648410
-b s wyrd
-#1647648535
-ls1 /usr/local/bin
-#1647648552
-ls1 /usr/local/bin/tkr*
-#1647648557
-ls1 -l /usr/local/bin/tkr*
-#1647648591
-ls1 /usr/local/Cellar/remind/
-#1647648598
-ls1 /usr/local/Cellar/remind/03.04.00/
-#1647648610
-ls1 /usr/local/Cellar/remind/03.04.00/bin
-#1647648625
-less /usr/local/Cellar/remind/03.04.00/bin/tkremind
-#1647648709
-tkremind
-#1647648772
-man sha256
-#1647648790
-man 1 sha256
-#1647648849
-man shasum
-#1647661603
-which remind
-#1647662945
-b i firefix-esr
-#1647662957
-b s firefox
-#1647662973
-b i firefox-esr
-#1647663187
-b s folx
-#1647663202
-b i folx
-#1647663860
-b s foxit
-#1647663881
-b h foxit-pdf-editor
-#1647663939
-b i foxitreader
-#1647663951
-b h foxitreader
-#1647664221
-b s go64
-#1647664230
-b i go64
-#1647664285
-b s earth
-#1647664317
-b s hazel
-#1647664325
-b i hazel
-#1647664945
-b i imazing
-#1647664972
-b s setapp
-#1647664981
-b i setapp
-#1647665026
-b s istat
-#1647665050
-b i istat-menus
-#1647665064
-b i istat-menus5
-#1647665396
-b s iterm
-#1647665434
-b i iterm2-legacy
-#1647665454
-b i iterm2
-#1647665501
-b s itune
-#1647666291
-b s java
-#1647666333
-b i java6
-#1647666391
-b s keyboard
-#1647666416
-b i keyboard-maestro
-#1647666489
-b i keyboard-maestro8
-#1647667941
-b s kindle
-#1647667968
-b i kindle-previewer
-#1647667989
-b h kindle-previewer
-#1647668062
-b i kindle
-#1647668107
-b s libre
-#1647668160
 b i libreoffice
 #1647668238
 b s linein
@@ -19956,3 +19834,19 @@ mgitstatus
 up
 #1673163818
 mgitstatus
+#1673243276
+v onorm
+#1673247027
+echo $MANDIR
+#1673247035
+echo $MANPATH
+#1673247049
+type path
+#1673247055
+path -?
+#1673247068
+path
+#1673247075
+path -p manpath
+#1673247083
+path -p MANPATH
