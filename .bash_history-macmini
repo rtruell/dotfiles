@@ -1,27 +1,3 @@
-b i black-ink
-#1647670174
-mas -?
-#1647670178
-mas -h
-#1647670182
-mas -v
-#1647670185
-mas
-#1647670197
-which mas
-#1647670200
-whereis mas
-#1647670233
-b s mas
-#1647670310
-b i mas
-#1647670336
-b i mas-cli/tap/mas
-#1647670364
-mas version
-#1647670384
-which dmidecode
-#1647670405
 /Users/rtruell/bin/mas version
 #1647670551
 mas version
@@ -19858,3 +19834,11 @@ home
 dotfiles
 #1673326556
 home
+#1673420533
+smbclient -L qnap2
+#1673420546
+smbutil -L qnap2
+#1673420575
+smbutil view qnap2
+#1673420580
+smbutil view //qnap2
