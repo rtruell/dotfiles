@@ -1,11 +1,3 @@
-/Users/rtruell/bin/mas version
-#1647670551
-mas version
-#1647670555
-mas1 version
-#1647670590
-mas version
-#1647670593
 mas1 version
 #1647670622
 b h mas
@@ -19842,3 +19834,41 @@ smbutil -L qnap2
 smbutil view qnap2
 #1673420580
 smbutil view //qnap2
+#1673613797
+whereis git
+#1673613800
+which git
+#1673613807
+git --version
+#1673613824
+/usr/bin/git --version
+#1673613842
+/usr/local/bin/git --version
+#1673613876
+cp -a /usr/local/bin/git .
+#1673613880
+ll
+#1673613917
+man ls
+#1673613975
+ls /usr/local/bin/git
+#1673613982
+ls -L /usr/local/bin/git
+#1673614018
+ll /usr/local/bin/git
+#1673614026
+ll -L /usr/local/bin/git
+#1673614040
+rm git
+#1673614049
+man cp
+#1673614093
+cp -aL /usr/local/bin/git .
+#1673614095
+ll
+#1673614131
+ll /usr/local/bin/git
+#1673614175
+ll /usr/local/Cellar/git/2.26.2_1/bin/
+#1673614216
+./git --version
