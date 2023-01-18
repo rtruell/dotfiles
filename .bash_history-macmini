@@ -1,21 +1,3 @@
-./configure
-#1647720224
-make
-#1647720271
-make test
-#1647720290
-sudo make install
-#1647720321
-which remind
-#1647720328
-remind -version
-#1647720359
-home
-#1647720399
-remind -v
-#1647720409
-la
-#1647720421
 ll
 #1647720426
 lal
@@ -19852,3 +19834,19 @@ ls /usr/local/bin
 ls /usr/local
 #1673761256
 ls /usr/local/etc
+#1674078699
+ll /Volumes/
+#1674078806
+groups
+#1674078839
+ll /Volumes/rEFInd/
+#1674078920
+sudo bcompare /Volumes/Temp /Volumes/rEFInd
+#1674080473
+ll /Volumes/rEFInd/
+#1674080478
+ll /Volumes/rEFInd/System/
+#1674080481
+ll /Volumes/rEFInd/System/Library/
+#1674080484
+ll /Volumes/rEFInd/System/Library/CoreServices/
