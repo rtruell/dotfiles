@@ -1,19 +1,3 @@
-ll
-#1647720426
-lal
-#1647720443
-cat .remind
-#1647720454
-cat .reminders
-#1647720499
-rm .reminders
-#1647720506
-mv .remind .reminders
-#1647720510
-remind
-#1647720516
-remind .reminders
-#1647720523
 tkremind
 #1647720833
 b s python
@@ -19850,3 +19834,7 @@ ll /Volumes/rEFInd/System/
 ll /Volumes/rEFInd/System/Library/
 #1674080484
 ll /Volumes/rEFInd/System/Library/CoreServices/
+#1674156930
+ioreg -l | grep -e Manufacturer -e 'Vendor Name'
+#1674157656
+if [[ $(ioreg -l | grep -e Manufacturer -e 'Vendor Name' | grep -i -e virtualbox -e oracle) ]]; then echo virtual; else echo physical; fi
