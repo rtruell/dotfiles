@@ -1,55 +1,3 @@
-tkremind
-#1647720833
-b s python
-#1647720884
-b s wxremind
-#1647720931
-python
-#1647720981
-which python
-#1647720992
-/usr/bin/python -v
-#1647721024
-/usr/bin/python help
-#1647721037
-/usr/bin/python
-#1647721078
-b i python@3.9
-#1647721128
-b i python@3.8
-#1647721153
-python3
-#1647721222
-/usr/local/bin/python3
-#1647721246
-ls1 /usr/local/bin
-#1647721433
-python
-#1647721449
-wxpython
-#1647721518
-b s etm
-#1647722475
-b upd
-#1647722561
-b s moneydance
-#1647722569
-b i moneydance
-#1647722592
-b h moneydance
-#1647722801
-b s owncloud
-#1647722813
-b i owncloud
-#1647722835
-b h owncloud
-#1647724546
-b s dmidecode
-#1647724559
-dmidecode -v
-#1647724565
-dmidecode -version
-#1647724571
 dmidecode --v
 #1647724581
 b i dmidecode
@@ -19838,3 +19786,147 @@ ll /Volumes/rEFInd/System/Library/CoreServices/
 ioreg -l | grep -e Manufacturer -e 'Vendor Name'
 #1674157656
 if [[ $(ioreg -l | grep -e Manufacturer -e 'Vendor Name' | grep -i -e virtualbox -e oracle) ]]; then echo virtual; else echo physical; fi
+#1674159314
+whereis dmidecode
+#1674159319
+which dmidecode
+#1674159333
+dmidecode --version
+#1674159351
+/usr/local/sbin/dmidecode --version
+#1674159478
+ll
+#1674159499
+dmidecode --version
+#1674159530
+./dmidecode --version
+#1674160357
+less dotfiles/.path
+#1674160443
+which dmidecode
+#1674160452
+ls /usr/local/sbin
+#1674160478
+dmidecode --version
+#1674160516
+ll /usr/local/sbin
+#1674160531
+ll /usr/local/
+#1674160564
+dmidecode --version
+#1674160572
+which dmidecode
+#1674160590
+cp -a ./dmidecode /usr/local/sbin/dmidecode
+#1674160601
+dmidecode --version
+#1674160610
+rm ./dmidecode
+#1674161253
+i="/tmp/Installers/dmidecode-mac-3.4a.zip"
+#1674161295
+"${HOME}"/bin/fp -e "${i}"
+#1674161320
+"${HOME}"/bin/fp -n "${i}"
+#1674161398
+i="/tmp/Installers/BCompareOSX-4.4.4.27058 (macOS 10.11+).zip"
+#1674161402
+"${HOME}"/bin/fp -e "${i}"
+#1674161407
+"${HOME}"/bin/fp -n "${i}"
+#1674163266
+cddf
+#1674163282
+ft -i inxi
+#1674163326
+ft -i mgitstatus
+#1674163339
+ft -i neofetch
+#1674163372
+ft -i ansiweather
+#1674163613
+up 2
+#1674163631
+cd others/inxi/
+#1674163642
+la
+#1674163666
+up 2
+#1674163669
+mgitstatus
+#1674163695
+man mgitstatus
+#1674163713
+ls others/multi-git-status/
+#1674163728
+less Makefile
+#1674163736
+ls others/multi-git-status/Makefile
+#1674163743
+less others/multi-git-status/Makefile
+#1674163766
+ls /usr/local/man
+#1674163769
+ls /usr/local/man/man1
+#1674163795
+man mgitstatus.1
+#1674163810
+path -p MANPATH
+#1674163832
+ls /usr/local/share/man
+#1674163841
+ls /usr/local/share/man/man1
+#1674163856
+man gcat
+#1674163887
+ls /usr/local/man/man1
+#1674163903
+less .path
+#1674163912
+home
+#1674163913
+less .path
+#1674163944
+addpath -?
+#1674163961
+addpath -h
+#1674164001
+addpath -p MANPATH /usr/local/man
+#1674164014
+path -p MANPATH
+#1674164023
+man mgitstatus
+#1674164040
+back
+#1674164042
+mgitstatus
+#1674164058
+man mgitstatus
+#1674164139
+man git-fetch
+#1674164819
+man mgitstatus
+#1674165077
+man git-fetch
+#1674165111
+man git
+#1674166415
+ls /usr/local/share/man
+#1674166419
+ls /usr/local/share/man/man1
+#1674168853
+home
+#1674171168
+/Volumes/Downloads/RecentDownloads/Mac/onefetch --version
+#1674171656
+/Volumes/Downloads/RecentDownloads/Mac/onefetch
+#1674171667
+cddf
+#1674171672
+/Volumes/Downloads/RecentDownloads/Mac/onefetch
+#1674171768
+/Volumes/Downloads/RecentDownloads/Mac/onefetch --version
+#1674171775
+/Volumes/Downloads/RecentDownloads/Mac/onefetch
+#1674171978
+home
