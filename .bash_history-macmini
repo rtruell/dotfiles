@@ -1,99 +1,3 @@
-dmidecode --v
-#1647724581
-b i dmidecode
-#1647726074
-b s paragon
-#1647726116
-b i paragon-extfs
-#1647726139
-b i paragon-ntfs
-#1647726167
-b i paragon-vmdk-mounter
-#1647726195
-b h paragon-vmdk-mounter
-#1647726491
-b s pathfinder
-#1647726504
-b i path-finder
-#1647726521
-b h path-finder
-#1647727295
-b s ql
-#1647727629
-b i ql-ansilove
-#1647727669
-b i qlab
-#1647727686
-b i qladdict
-#1647727698
-b h qladdict
-#1647727855
-b i qlc-plus
-#1647727889
-b i qlcommonmark
-#1647727898
-b h qlcommonmark
-#1647728089
-b h qldds
-#1647728106
-b i fits
-#1647728141
-b i gradle
-#1647728160
-b i imagesize
-#1647728194
-b i qlimagesize
-#1647728282
-b i qlmobi
-#1647728289
-b h qlmobi
-#1647728358
-b i qlnetcdf
-#1647728365
-b h qlnetcdf
-#1647728430
-b s ql
-#1647728467
-b i qlrest
-#1647728475
-b h qlrest
-#1647728579
-b s quick
-#1647728624
-b i gltfquicklook
-#1647728635
-b h gltfquicklook
-#1647728700
-b i ipynb-quicklook
-#1647728710
-b h ipynb-quicklook
-#1647728759
-b h osirix-quicklook
-#1647728856
-b h quickhue
-#1647728873
-b h quickjson
-#1647728999
-b h quickhash
-#1647729049
-b h quicklook-pat
-#1647729073
-b h quicklook-pfm
-#1647729125
-b h quicklookapk
-#1647729148
-b h quicklookase
-#1647729188
-b i quicksilver
-#1647729199
-b i quicksync
-#1647729401
-b i webpquicklook
-#1647729408
-b h webpquicklook
-#1647729483
-b s rain
-#1647729517
 b i raindropio
 #1647729526
 b h raindropio
@@ -19930,3 +19834,173 @@ cddf
 /Volumes/Downloads/RecentDownloads/Mac/onefetch
 #1674171978
 home
+#1674246962
+/Volumes/Downloads/RecentDownloads/Mac/onefetch --version
+#1674246972
+/Volumes/Downloads/RecentDownloads/Mac/onefetch
+#1674246982
+cddf
+#1674246986
+/Volumes/Downloads/RecentDownloads/Mac/onefetch
+#1674247033
+hoem
+#1674247035
+home
+#1674247057
+ls /Volumes/Downloads/RecentDownloads/Mac
+#1674247126
+i="/Volumes/Downloads/RecentDownloads/Mac/onefetch-mac-v2.15.1.tar.gz"
+#1674247154
+"${HOME}"/bin/fp -n "${i}"
+#1674247162
+"${HOME}"/bin/fp -e "${i}"
+#1674247188
+tar -h
+#1674247295
+tar -t /Volumes/Downloads/RecentDownloads/Mac/onefetch-mac-v2.15.1.tar.gz
+#1674247318
+tar -t -f /Volumes/Downloads/RecentDownloads/Mac/onefetch-mac-v2.15.1.tar.gz
+#1674247428
+tar -xp -f /Volumes/Downloads/RecentDownloads/Mac/onefetch-mac-v2.15.1.tar.gz
+#1674247448
+ll
+#1674247466
+./onefetch --version
+#1674247478
+onefetch --version
+#1674247500
+/Volumes/Downloads/RecentDownloads/Mac/onefetch --version
+#1674247507
+cddf
+#1674247516
+/Volumes/Downloads/RecentDownloads/Mac/onefetch
+#1674247537
+./onefetch
+#1674247548
+$HOME/onefetch
+#1674250645
+home
+#1674251031
+./onefetch --version
+#1674251047
+mv onefetch onefetch-15
+#1674251062
+/Volumes/Downloads/RecentDownloads/Mac/onefetch --version
+#1674251090
+cp -a /Volumes/Downloads/RecentDownloads/Mac/onefetch onefetch-14
+#1674251107
+./onefetch-14 --version
+#1674251112
+./onefetch-15 --version
+#1674252213
+echo $i
+#1674252247
+fp -n "${i}"
+#1674252265
+fp -e "${i}"
+#1674252576
+man tar
+#1674252993
+ls /tmp
+#1674253008
+ll /tmp
+#1674253020
+cat /tmp/proc_cpu_time.txt
+#1674253041
+mkdir /tmp/Installers
+#1674253088
+progname=$("${HOME}"/bin/fp -n "${i}")
+#1674253095
+echo $progname
+#1674253129
+extractdir="/tmp/Installers"
+#1674253132
+ls /tmp
+#1674253167
+echo $extractdir
+#1674253170
+echo $i
+#1674253310
+tar -xp -f "${i}" -C "${extractdir}/${progname}"
+#1674253356
+echo $i
+#1674253367
+i="/Volumes/data/Downloads/Mac/InUse/Installed/Automated/onefetch-mac-v2.15.1.tar.gz"
+#1674253372
+echo $i
+#1674253391
+progname=$("${HOME}"/bin/fp -n "${i}")
+#1674253398
+echo $progname
+#1674253427
+echo $extractdir
+#1674253455
+tar -xp -f "${i}" -C "${extractdir}/${progname}"
+#1674253494
+ls /tmp
+#1674253498
+ls /tmp/Installers/
+#1674253538
+mkdir "${extractdir}/${progname}"
+#1674253542
+ls /tmp/Installers/
+#1674253597
+tar -xp -f "${i}" -C "${extractdir}/${progname}"
+#1674253604
+ls /tmp/Installers/
+#1674253614
+ls /tmp/Installers/onefetch-mac-v2.15.1.tar/
+#1674253691
+ll /tmp/Installers/onefetch-mac-v2.15.1.tar/
+#1674253796
+ls /usr/local/sbin
+#1674253816
+ll /usr/local/sbin
+#1674254434
+echo $progname
+#1674254469
+echo "${extractdir}/${progname}"
+#1674254494
+ls "${extractdir}/${progname}"
+#1674254524
+man rm
+#1674254626
+/bin/rm -dfr "${extractdir}/${progname}"
+#1674254629
+ls /tmp
+#1674254634
+ls /tmp/Installers/
+#1674254733
+echo $extractdir
+#1674254741
+ls $extractdir
+#1674254753
+cddf
+#1674254765
+ft extractdir
+#1674255022
+home
+#1674255043
+ls $extractdir
+#1674255054
+echo $extractdir
+#1674255078
+ls /tmp/Installers/
+#1674255081
+ls /tmp/
+#1674255129
+rm -d $extractdir
+#1674256562
+xcode-select --print-path
+#1674257303
+trim
+#1674257315
+ttype trim
+#1674257323
+lf trim
+#1674257344
+ttype fp
+#1674257448
+curl -Ls brew.sh | grep -i "install.sh"
+#1674257487
+curl -Ls brew.sh | grep -i "install.sh" | sed 's|<[^>]*>||g'
