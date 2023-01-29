@@ -1,173 +1,3 @@
-b i raindropio
-#1647729526
-b h raindropio
-#1647730300
-b i quickhash
-#1647730535
-b s raspberry
-#1647730560
-b s remount
-#1647744129
-b s zoom
-#1647744154
-b i rightzoom
-#1647744167
-b h rightzoom
-#1647744402
-b s snagit
-#1647744415
-b i snagit
-#1647744428
-b i snagit4
-#1647747916
-b s super
-#1647747942
-b i superduper
-#1647747969
-b h superduper
-#1647748583
-b s better
-#1647748601
-b h betterzip
-#1647748644
-b i betterzip
-#1647749180
-b s archive
-#1647749202
-b i the-archive
-#1647749218
-b i the-archive-browser
-#1647749245
-b h the-archive-browser
-#1647749849
-b i archiver
-#1647749885
-b i homebrew/cask/archiver
-#1647749906
-b h homebrew/cask/archiver
-#1647750075
-b s tick
-#1647750094
-b i ticktick
-#1647750102
-b h ticktick
-#1647750154
-b s ttp
-#1647750223
-b s tech
-#1647750253
-b s tool
-#1647752845
-b s tunein
-#1647752855
-b i tunein
-#1647752891
-b s linein
-#1647752910
-b h tunein
-#1647753093
-b s virtualbox
-#1647753153
-b i virtualbox
-#1647753203
-b i virtualbox-extension-pack
-#1647753239
-b h virtualbox
-#1647753343
-b s vlc
-#1647753356
-b i vlc
-#1647753400
-b s whatroute
-#1647753435
-b s x-mirage
-#1647753445
-b i x-mirage
-#1647753451
-b h x-mirage
-#1647754150
-b s xquartz
-#1647754159
-b i xquartz
-#1647754188
-b s zoc
-#1647754207
-b i zoc
-#1647754962
-b s rainlendar
-#1647755258
-b s commandq
-#1647755267
-b i commandq
-#1647755463
-b s macgou
-#1647757459
-b s setapp
-#1647803453
-ls1
-#1647803460
-ls1 *.txt
-#1647803467
-ls *.txt
-#1647803471
-which ls
-#1647803478
-listfunction ls1
-#1647803530
-ls ${moreoptions} -Fh --group-directories-first --color=auto *.txt
-#1647803604
-ls ${moreoptions} -Fh --group-directories-first --color=auto /etc
-#1647803613
-ls ${moreoptions} -Fh --group-directories-first --color=auto /etc/
-#1647803681
-stat *.txt
-#1647803731
-stat *.txt 2> /dev/null | grep "\->" > /dev/null 2>&1
-#1647803846
-stat "${item}" 2> /dev/null | grep "\->" > /dev/null 2>&1 && file -b "${item}"
-#1647803874
-stat "${item}" 2> /dev/null | grep "\->" > /dev/null 2>&1 && file -b "${item}" ! grep "directory"
-#1647803900
-stat *.txt 2> /dev/null | grep "\->" > /dev/null 2>&1
-#1647803919
-stat "${item}" 2> /dev/null | grep "\->" > /dev/null 2>&1 && file -b *.txt
-#1647803948
-stat "${item}" 2> /dev/null | grep "\->" > /dev/null 2>&1 && file -b *.txt | grep "directory"
-#1647804003
-listfunction ls1
-#1647804012
-echo $item
-#1647804040
-ls1 *.txt
-#1647804143
-echo $dave
-#1647804169
-dave="*.txt:-."
-#1647804172
-echo $dave
-#1647804191
-ls1 *.txt
-#1647804291
-ls dotfiles/functions
-#1647804324
-ls1
-#1647804340
-ls dotfiles
-#1647804351
-la dotfiles
-#1647804361
-ls dotfiles/.functions
-#1647804377
-s dotfiles/.functions/ls1.function
-#1647804384
-ls1 *.txt
-#1647804395
-ls *.txt
-#1647804403
-ls1 *.txt
-#1647804497
-s dotfiles/.functions/ls1.function
-#1647804503
 ls1 *.txt
 #1647804549
 s dotfiles/.functions/ls1.function
@@ -20004,3 +19834,45 @@ ttype fp
 curl -Ls brew.sh | grep -i "install.sh"
 #1674257487
 curl -Ls brew.sh | grep -i "install.sh" | sed 's|<[^>]*>||g'
+#1675028697
+ls *1-29*
+#1675028713
+ls *01-29*
+#1675028743
+ls *01-29.*
+#1675028779
+mv "TVListings - 2023-01-29.png" "TVListings - 2023-01-29b.png"
+#1675028797
+less TVListings - 2023-01-29.png
+#1675028819
+less "TVListings - 2023-01-29.png"
+#1675028852
+less "TVListings - 2023-01-29b.png"
+#1675028893
+preview "TVListings - 2023-01-29b.png"
+#1675029000
+open "TVListings - 2023-01-29b.png"
+#1675029032
+open "TVListings - 2023-01-28b.png"
+#1675029075
+diff "TVListings - 2023-01-28b.png" "TVListings - 2023-01-29b.png"
+#1675029109
+ll
+#1675029161
+cp -a "TVListings - 2023-01-28b.png" "TVListings - 2023-01-28b1.png"
+#1675029164
+ll
+#1675029222
+open "TVListings - 2023-01-29b.png"
+#1675029237
+rm "TVListings - 2023-01-29b.png"
+#1675029247
+ll
+#1675029269
+mv "TVListings - 2023-01-29.png" "TVListings - 2023-01-29b.png"
+#1675029299
+mv "TVListings - 2023-01-28b1.png" "TVListings - 2023-01-28b.png"
+#1675029301
+ll
+#1675029312
+exit'
