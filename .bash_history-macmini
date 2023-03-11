@@ -1,46 +1,4 @@
 ls1 *.txt
-#1647804549
-s dotfiles/.functions/ls1.function
-#1647804551
-ls1 *.txt
-#1647804647
-s dotfiles/.functions/ls1.function
-#1647804649
-ls1 *.txt
-#1647804679
-ls1 -l *.txt
-#1647804712
-man ls
-#1647804751
-man bash
-#1647804913
-s dotfiles/.functions/ls1.function
-#1647804918
-ls1 *.txt
-#1647804932
-ls *.txt
-#1647804992
-s dotfiles/.functions/ls1.function
-#1647804995
-ls1 *.txt
-#1647805088
-ls1
-#1647805104
-ls1 /etc
-#1647805151
-s dotfiles/.functions/ls1.function
-#1647805154
-ls1 *.txt
-#1647805171
-ls1 /etc
-#1647805265
-ls1 -l *.txt
-#1647805290
-echo $item
-#1647805418
-s dotfiles/.functions/ls1.function
-#1647805423
-ls1 *.txt
 #1647805483
 man bash
 #1647805539
@@ -19876,3 +19834,7 @@ mv "TVListings - 2023-01-28b1.png" "TVListings - 2023-01-28b.png"
 ll
 #1675029312
 exit'
+#1678571140
+man date
+#1678571806
+date --date='2 days ago'
