@@ -19834,3 +19834,11 @@ date --date='2 days ago'
 cd "/Volumes/data"; clear
 #1679539925
 cd "/Volumes/data"; clear
+#1679952847
+sha256sum -c raspiOS-SHA256-checksums.txt
+#1679953002
+mv * /Volumes/data/Downloads/RaspberryPi
+#1679953475
+cd /Volumes/data/Downloads/RaspberryPi
+#1679953499
+sha256sum -c raspiOS-SHA256-checksums.txt
