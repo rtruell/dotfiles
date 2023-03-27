@@ -1,11 +1,3 @@
-ls1 *.txt
-#1647805483
-man bash
-#1647805539
-bashman set
-#1647805981
-ls set.txt/
-#1647806063
 s dotfiles/.functions/ls1.function
 #1647806070
 ls1 *.txt
@@ -19838,3 +19830,7 @@ exit'
 man date
 #1678571806
 date --date='2 days ago'
+#1679539925
+cd "/Volumes/data"; clear
+#1679539925
+cd "/Volumes/data"; clear
