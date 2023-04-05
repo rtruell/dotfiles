@@ -1,7 +1,3 @@
-ls1 *.txt
-#1647806230
-bashman tests
-#1647806728
 s dotfiles/.functions/ls1.function
 #1647806988
 ls1
