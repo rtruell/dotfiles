@@ -1,5 +1,3 @@
-ls1
-#1647807022
 ls1 /etc
 #1647807040
 ls1 *.txt
@@ -19836,3 +19834,7 @@ v onorm
 findshow "brave new world"
 #1686595877
 findshow "family law"
+#1686682438
+findshow "the wonde"
+#1686682446
+findshow "the wonder years"
