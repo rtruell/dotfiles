@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # install 'docker' on 'nas' or 'nasbackup'
-printf "\n\e[0;35m  Installing 'docker'.\e[0m\n\n"
+print_info "\nInstalling 'docker'\n\n"
 declare -a docker=(
   "docker-ce"
   "docker-ce-cli"

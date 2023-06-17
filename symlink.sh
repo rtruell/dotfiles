@@ -25,7 +25,7 @@ done < .dotfiles.ignore  # read from the file ".dotfiles.ignore"
 if [ -d "${HOME}/.config" ]; then  # check to see if the '.config' directory already exists in the HOME directory
   excludefiles+=(".config")  # if it does already exist, add it to the array of filenames/directories to be excluded from being linked
   dotconfig=1  # set a flag so we know we have to deal with linking the files/directories inside '.config' later
-  printf "\n\e[0;35m  '.config' already exists...will process separately later.\e[0m\n\n"
+  print_info "\n'.config' already exists...will process separately later\n\n"
 fi
 excludecount=${#excludefiles[@]}  # get the number of files/directories to be skipped
 
@@ -40,7 +40,7 @@ symlink_array_files "${PWD}" "${HOME}" <( (( ${#filenames[@]} )) && printf '%s\0
 # if '.config' does already exist, then we process the files/directories that
 # need to be linked into it separately
 if [[ "${dotconfig}" == 1 ]]; then
-  printf "\n\e[0;35m  Now processing '.config'.\e[0m\n\n"
+  print_info "\nNow processing '.config'\n\n"
   ((excludecount--))  # decrement the number of files/directories to be skipped by 1
   unset -v 'excludefiles[${excludecount}]'  # then use the new 'excludecount' as an index into 'excludefiles' to remove '.config' from the array of filenames to be excluded, just in case
   shopt -s dotglob  # enable filenames starting with a '.' to be included in pathname expansion
@@ -55,7 +55,7 @@ fi
 # included ".bash_history*" in the '.dotfiles.ignore' file so they wouldn't be
 # linked with the other dotfiles.  Now I have to figure out which computer I'm
 # installing on and link the appropriate '.bash_history-<hostname>' file
-printf "\n\e[0;35m  Now processing '.bash_history'.\e[0m\n\n"
+print_info "\nNow processing '.bash_history'\n\n"
 sourceFile="${PWD}/.bash_history-${computername}"  # prepend the PWD and "/.bash_history-" to the compname so that we have a full pathname to the ".bash_history" file for this computer
 targetFile="${HOME}/.bash_history"  # set the full pathname for the new link
 symlink_single_file "${sourceFile}" "${targetFile}"  # and call the function to symlink it
@@ -65,7 +65,7 @@ symlink_single_file "${sourceFile}" "${targetFile}"  # and call the function to 
 # file so they wouldn't be linked with the other dotfiles.  now we check to see
 # what machine is being installing to, and link the appropriate '.bash_logout'
 # file
-printf "\n\e[0;35m  Now processing '.bash_logout'.\e[0m\n\n"
+print_info "\nNow processing '.bash_logout'\n\n"
 if [[ "${computername}" == "macmini" ]]; then
   sourceFile="${PWD}/.bash_logout-${computername}"  # it's macmini, so we use the special '.bash_logout', prepending the PWD to get a full pathname
 else
@@ -74,7 +74,7 @@ fi
 targetFile="${HOME}/.bash_logout"  # set the full pathname for the new link
 symlink_single_file "${sourceFile}" "${targetFile}"  # and call the function to symlink it
 
-printf "\n\e[0;35m  Finished linking files and directories.\e[0m\n\n"
+print_info "\nFinished linking files and directories\n\n"
 
 # remove the variables and functions used from the environment so they're not
 # passed to subsequent commands
