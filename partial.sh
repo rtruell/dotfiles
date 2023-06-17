@@ -12,6 +12,7 @@ source ./.functions/apt_package_installer.function
 source ./.functions/execute_command.function
 source ./.functions/01#findcommand.function
 source ./.functions/print_error.function
+source ./.functions/print_info.function
 source ./.functions/print_result.function
 source ./.functions/print_success.function
 source ./.functions/print_warn.function
@@ -24,6 +25,7 @@ export -f answer_is_y
 export -f apt_package_installer
 export -f execute_command
 export -f print_error
+export -f print_info
 export -f print_result
 export -f print_success
 export -f print_warn
@@ -38,4 +40,4 @@ sudo timedatectl set-local-rtc 1
 print_result "${?}" "RTC set to local time"
 apt_package_installer "liquidprompt"
 
-printf '%s\n' "All done.  Now, exit the shell and then re-open it."
+print_info "All done.  Now, exit the shell and then re-open it.\n"
