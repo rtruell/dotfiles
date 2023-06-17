@@ -1,7 +1,3 @@
-ls1 /etc
-#1647807040
-ls1 *.txt
-#1647807054
 ls ${moreoptions} -Fh --group-directories-first --color=auto *.txt
 #1647807087
 ls1
