@@ -15,6 +15,7 @@ source ./.functions/answer_is_y.function
 source ./.functions/apt_package_installer.function
 source ./.functions/execute_command.function
 source ./.functions/print_error.function
+source ./.functions/print_info.function
 source ./.functions/print_result.function
 source ./.functions/print_success.function
 source ./.functions/print_warn.function
@@ -79,44 +80,47 @@ numberoferrors=0
 # get the users login name
 username=$(logname)
 
+# get info about the OS that was just installed
+source ./.systeminfo
+
 # get the computer's host name, stripping off the domain name if it's there
 computername=$(hostname -s)
 
-# get the os type
-if [[ -n ${OSTYPE} ]]; then
-  case "${OSTYPE}" in
-     darwin*) SYSTEM_TYPE="macOS" ;;
-    solaris*) SYSTEM_TYPE="Solaris" ;;
-      linux*) SYSTEM_TYPE="Linux" ;;
-        bsd*) SYSTEM_TYPE="BSD" ;;
-       msys*) SYSTEM_TYPE="MinGW" ;;
-     cygwin*) SYSTEM_TYPE="Cygwin" ;;
-           *) SYSTEM_TYPE="Unknown" ;;
-  esac
-else
-  PLATFORM=$(tr '[:upper:]' '[:lower:]' <<<$(uname))
-  case "${PLATFORM}" in
-     darwin*) SYSTEM_TYPE="macOS" ;;
-      sunos*) SYSTEM_TYPE="Solaris" ;;
-      linux*) SYSTEM_TYPE="Linux" ;;
-    freebsd*) SYSTEM_TYPE="FreeBSD" ;;
-     netbsd*) SYSTEM_TYPE="Net_BSD" ;;
-    openbsd*) SYSTEM_TYPE="Open_BSD" ;;
-       msys*) SYSTEM_TYPE="MinGW" ;;
-      mingw*) SYSTEM_TYPE="MinGW" ;;
-     cygwin*) SYSTEM_TYPE="Cygwin" ;;
-           *) SYSTEM_TYPE="Unknown" ;;
-  esac
-fi
-if [[ -s /proc/version ]]; then
-  if [[ -n "$(cat /proc/version | grep '(Microsoft@Microsoft.com)')" ]]; then SYSTEM_TYPE="Win10_Linux"; fi
+# determine if installing in a Virtual Machine (VM) and, if so, set the computer
+# name to indicate this.  the new computer name is based on the OS being
+# installed in (macOS, Debian, etc.) and the release name (Mojave, Bullseye,
+# etc.), plus a suffix of '-VM'
+installinvm=0
+case "${SYSTEM_TYPE}" in
+  macOS )
+    if [[ $(ioreg -l | grep -e Manufacturer -e 'Vendor Name' | grep -i -e virtualbox -e oracle) ]]; then  # check if in a VM
+      installinvm=1  # in a VM, so set the flag
+      computername="macOS"  # macOS doesn't have a "distro" name, so 'macOS' is used for the first part of the new 'computername'
+    fi
+    ;;
+  raspiOS )
+    # since all of my current machines are either i386 or x86_64 based, raspiOS
+    # can't be installed in a VM on them...so if that's what is being installed
+    # on, do nothing here
+    ;;
+  * )
+    if [[ $(grep -i -e virtualbox -e oracle /sys/devices/virtual/dmi/id/bios_version) ]]; then  # check if in a VM
+      installinvm=1  # in a VM, so set the flag
+      computername="${DISTRO_NAME}"  # set the first part of the new 'computername' to the disto being used
+    fi
+    ;;
+esac
+if [[ "${installinvm}" == 1 ]]; then  # if the VM flag has been set
+  computername="${computername}-${RELEASE_NAME}-VM"  # add the release name and '-VM' to the new 'computername'
+  computername="${computername// /}"  # remove any spaces in 'computername'
 fi
 
 printf '%s\n' "  The following information has been automatically detected.  If any of it is"
 printf '%s\n\n' "  wrong, or missing, reply 'n' to the prompt to exit the installation."
 printf '\t%s\n' "User: ${username}"
-printf '\t%s\n' "Computer: ${computername}"
 printf '\t%s\n' "OS: ${SYSTEM_TYPE}"
+printf '\t%s\n' "Computer: ${computername}"
+if [[ "${installinvm}" == 1 ]]; then printf '\t%s\n' "Installing in a VM"; fi
 printf "\n"
 print_warn "Is this correct? (y/n) "
 read -n 1
@@ -137,9 +141,23 @@ if [[ "${retcode}" == 0 ]]; then
   if [[ "${retcode}" == 0 ]]; then
     print_result "${retcode}" "Configured 'sudo'"
 
+    # now that the user can use 'sudo', check to see if the computer name was
+    # changed and if so, make the change permanent.
+    if [[ "${computername}" != "$(hostname -s)" ]]; then
+      sudo hostname "${computername}"
+      case "$SYSTEM_TYPE" in
+        macOS )
+          sudo scutil --set HostName "${computername}"
+          ;;
+        * )
+          hostname | sudo tee /ect/hostname >/dev/null
+          ;;
+      esac
+      print_result "${?}" "New hostname set"
+    fi
+
     # symlink the dotfiles into ${HOME}
     source ./symlink.sh
-    print_result "${?}" "Symlinked dotfiles"
 
     # mount the NAS' 'data' directory to access files and programs to be copied or
     # installed.  if installing on 'nas' or 'nasbackup', the files and programs
@@ -290,8 +308,7 @@ if [[ "${retcode}" == 0 ]]; then
       # configure the lock screen
       lock_screen_clock="/usr/share/plasma/look-and-feel/org.kde.breeze.desktop/contents/components/Clock.qml"
       if [[ -f "${lock_screen_clock}" ]]; then  # if the lock screen clock display exists (which it should)
-        print_warn "The lock screen clock display already exists"  # say so
-        printf "\n"
+        print_warn "The lock screen clock display already exists\n"  # say so
         sudo mv "${lock_screen_clock}" "${lock_screen_clock}".orig  # and back it up for later comparison
         print_result "${?}" "Backed it up for later comparison"
       fi
@@ -305,8 +322,7 @@ if [[ "${retcode}" == 0 ]]; then
       # configure the login screen
       login_screen_clock="/usr/lib/x86_64-linux-gnu/qt5/qml/SddmComponents/Clock.qml"
       if [[ -f "${login_screen_clock}" ]]; then  # if the login screen clock display exists (which it should)
-        print_warn "The login screen clock display already exists"  # say so
-        printf "\n"
+        print_warn "The login screen clock display already exists\n"  # say so
         sudo mv "${login_screen_clock}" "${login_screen_clock}".orig  # and back it up for later comparison
         print_result "${?}" "Backed it up for later comparison"
       fi
@@ -326,8 +342,7 @@ if [[ "${retcode}" == 0 ]]; then
       for i in ${configfiles[@]}; do  # loop through the array of files to be copied
         configfilename="${HOME}/.config/${i}"
         if [[ -f "${configfilename}" ]]; then  # if the file already exists
-          print_warn "${i} already exists"  # say so
-          printf "\n"
+          print_warn "${i} already exists\n"  # say so
           mv "${configfilename}" "${configfilename}".orig  # and back it up for later comparison
           print_result "${?}" "Backed it up for later comparison"
         fi
@@ -341,8 +356,7 @@ if [[ "${retcode}" == 0 ]]; then
       # configure the 'dolphin' view properties
       dolphin_view_prop_dir="${HOME}/.local/share/dolphin/view_properties/global"
       if [[ -f "${dolphin_view_prop_dir}/.directory" ]]; then  # if the file already exists
-        print_warn "'${dolphin_view_prop_dir}/.directory' already exists"  # say so
-        printf "\n"
+        print_warn "'${dolphin_view_prop_dir}/.directory' already exists\n"  # say so
         mv "${dolphin_view_prop_dir}/.directory" "${dolphin_view_prop_dir}/.directory.orig"  # and back it up for later comparison
         print_result "${?}" "Backed it up for later comparison"
       else
