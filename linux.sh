@@ -19,17 +19,14 @@ if [[ "${computername}" == "nas"* ]]; then
     print_result "${?}" "'${HOME}/.xmltv' created"
   fi
   if [[ "$(ls -A ${HOME}/.xmltv)" ]]; then  # check for files/directories in '"${HOME}"/.xmltv'
-    print_warn "'${HOME}/.xmltv' has files/directories in it"
-    printf "\n"
+    print_warn "'${HOME}/.xmltv' has files/directories in it\n"
     if [[ "$(ls -A /nas/xmltv)" ]]; then  # there were some, so check for files/directories in '/nas/xmltv'
-      print_warn "'/nas/xmltv' has files/directories in it"
-      printf "\n"
+      print_warn "'/nas/xmltv' has files/directories in it\n"
       diff -q "${HOME}"/.xmltv /nas/xmltv >/dev/null  # there were some, so compare the directories
       if [[ "${?}" == 0 ]]; then  # if the directories are identical
         print_result "${?}" "The directories are identical"  # say so
       else
-        print_warn "The directories are different"  # otherwise, warn that the directories are different
-        printf "\n"
+        print_warn "The directories are different\n"  # otherwise, warn that the directories are different
         sudo cp -a "${HOME}"/.xmltv "${HOME}"/.xmltv.orig  # and back up '"${HOME}"/.xmltv' for later comparison
         print_result "${?}" "Backed up '"${HOME}"/.xmltv' for later comparison"
       fi
@@ -62,17 +59,14 @@ if [[ "${computername}" == "nas"* ]]; then
     print_result "${?}" "'/nas/apt-cacher-ng/config' created"
   fi
   if [[ "$(ls -A /var/cache/apt-cacher-ng)" ]]; then  # check for files/directories in '/var/cache/apt-cacher-ng'
-    print_warn "'/var/cache/apt-cacher-ng' has files/directories in it"
-    printf "\n"
+    print_warn "'/var/cache/apt-cacher-ng' has files/directories in it\n"
     if [[ "$(ls -A /nas/apt-cacher-ng/data)" ]]; then  # there were some, so check for files/directories in '/nas/apt-cacher-ng/data'
-      print_warn "'/nas/apt-cacher-ng/data' has files/directories in it"
-      printf "\n"
+      print_warn "'/nas/apt-cacher-ng/data' has files/directories in it\n"
       diff -q /var/cache/apt-cacher-ng /nas/apt-cacher-ng/data >/dev/null  # there were some, so compare the directories
       if [[ "${?}" == 0 ]]; then  # if the directories are identical
         print_result "${?}" "The directories are identical"  # say so
       else
-        print_warn "The directories are different"  # otherwise, warn that the directories are different
-        printf "\n"
+        print_warn "The directories are different\n"  # otherwise, warn that the directories are different
         sudo cp -a /var/cache/apt-cacher-ng /var/cache/apt-cacher-ng.orig  # and back up '/var/cache/apt-cacher-ng' for later comparison
         print_result "${?}" "Backed up '/var/cache/apt-cacher-ng' for later comparison"
       fi
@@ -86,17 +80,14 @@ if [[ "${computername}" == "nas"* ]]; then
   sudo mount --bind /nas/apt-cacher-ng/data /var/cache/apt-cacher-ng  # mount the new 'apt-cacher-ng' data directory location to the old one
   print_result "${?}" "Mounted '/nas/apt-cacher-ng/data' -> '/var/cache/apt-cacher-ng'"
   if [[ "$(ls -A /etc/apt-cacher-ng)" ]]; then  # check for files/directories in '/etc/apt-cacher-ng'
-    print_warn "'/etc/apt-cacher-ng' has files/directories in it"
-    printf "\n"
+    print_warn "'/etc/apt-cacher-ng' has files/directories in it\n"
     if [[ "$(ls -A /nas/apt-cacher-ng/config)" ]]; then  # there were some, so check for files/directories in '/nas/apt-cacher-ng/config'
-      print_warn "'/nas/apt-cacher-ng/config' has files/directories in it"
-      printf "\n"
+      print_warn "'/nas/apt-cacher-ng/config' has files/directories in it\n"
       sudo diff -q /etc/apt-cacher-ng /nas/apt-cacher-ng/config >/dev/null  # there were some, so compare the directories
       if [[ "${?}" == 0 ]]; then  # if the directories are identical
         print_result "${?}" "The directories are identical"  # say so
       else
-        print_warn "The directories are different"  # otherwise, warn that the directories are different
-        printf "\n"
+        print_warn "The directories are different\n"  # otherwise, warn that the directories are different
         sudo cp -a /etc/apt-cacher-ng /etc/apt-cacher-ng.orig  # and back up '/etc/apt-cacher-ng' for later comparison
         print_result "${?}" "Backed up '/etc/apt-cacher-ng' for later comparison"
       fi
@@ -132,7 +123,6 @@ declare -a packages=(
   "dmidecode"
   "file"
   "gnupg"
-  "inxi"
   "linux-headers-amd64"
   "locate"
   "make"
@@ -467,8 +457,7 @@ if [[ "${computername}" == "nas"* ]]; then
   # install 'shaarli'
   shaarlidir="/nas/Shaarli"  # shaarli install directory
   if [[ -d "${shaarlidir}" ]]; then  # if the install directory already exists
-    print_warn "'${shaarlidir}' already exists"  # say so
-    printf "\n"
+    print_warn "'${shaarlidir}' already exists\n"  # say so
     mv "${shaarlidir}" "${shaarlidir}".orig  # and back it up for later comparison
     print_result "${?}" "backed up '${shaarlidir}' for later comparison"
   fi
@@ -481,8 +470,7 @@ if [[ "${computername}" == "nas"* ]]; then
   sudo chmod -R g+rwX "${shaarlidir}"/{cache/,data/,pagecache/,tmp/}  # add 'read', 'write' and 'execute' permissions for the group 'apache' runs under to the 'shaarli' cache, data and temp files and dirs
   print_result "${?}" "Changed permissions of the cache, data, pagecache and temp directories of 'shaarli'"
   if [[ -d /etc/apache2/sites-available/shaarli.conf ]]; then  # if the 'shaarli' web site configuration file for 'apache' exists
-    print_warn "'/etc/apache2/sites-available/shaarli.conf' already exists"  # say so
-    printf "\n"
+    print_warn "'/etc/apache2/sites-available/shaarli.conf' already exists\n"  # say so
     mv /etc/apache2/sites-available/shaarli.conf /etc/apache2/sites-available/shaarli.conf.orig  # and back it up for later comparison
     print_result "${?}" "backed up '/etc/apache2/sites-available/shaarli.conf' for later comparison"
   fi
@@ -507,8 +495,8 @@ fi
 # if not installing on nas, nasbackup or a Raspberry Pi
 if [[ "${computername}" != "nas"* && "${computername}" != "rpi"* ]]; then
   # install 'VirtualBox'
-  printf '\t%s\n' "Installing VirtualBox"
-  printf '\t%s\n' "Retrieving checksums and the latest version number"
+  print_info "\tInstalling VirtualBox\n"
+  print_info "\tRetrieving checksums and the latest version number\n"
   virboxversion="$(curl https://download.virtualbox.org/virtualbox/LATEST.TXT 2>/dev/null)"  # get the latest release version
   osreleasename="$(lsb_release -cs)"  # get the OS release name (buster, bullseye, etc)
   while read -r line; do  # read each line of the checksum file
@@ -525,13 +513,13 @@ if [[ "${computername}" != "nas"* && "${computername}" != "rpi"* ]]; then
         ;;
     esac
   done < <(curl https://download.virtualbox.org/virtualbox/"${virboxversion}"/SHA256SUMS 2>/dev/null)
-  printf '\t%s\n' "Downloading VirtualBox"
+  print_info "\tDownloading VirtualBox\n"
   curl https://download.virtualbox.org/virtualbox/"${virboxversion}"/"${virboxname}" -o "${virboxpath}" 2>/dev/null  # download VirtualBox
   if [[ "$(sha256sum "${virboxpath}" | cut -d' ' -f1)" != "${virboxcsum}" ]]; then  # check to see if the checksum of the downloaded file matches what it's supposed to
     print_result "${?}" "VirtualBox checksum doesn't match...VirtualBox and its Extension Pack must be downloaded and installed manually"
   else
     print_result "${?}" "Checksums match...successfully downloaded VirtualBox"
-    printf '\t%s\n' "Downloading the Extension Pack"
+    print_info "\tDownloading the Extension Pack\n"
     extpackok=0
     curl https://download.virtualbox.org/virtualbox/"${virboxversion}"/"${extpackname}" -o "${extpackpath}" 2>/dev/null  # download the Extension Pack
     if [[ "$(sha256sum "${extpackpath}" | cut -d' ' -f1)" != "${extpackcsum}" ]]; then  # check to see if the checksum of the downloaded file matches what it's supposed to
@@ -582,8 +570,7 @@ fi
 # the Sublime Text 'User' directory is being shared between machines for a
 # consistent usage environment, so symlink it
 if [[ -d "${HOME}/.config/sublime-text/Packages/User" ]]; then  # if the 'User' directory already exists
-  print_warn "The 'User' directory for 'sublime text' already exists"  # say so
-  printf "\n"
+  print_warn "The 'User' directory for 'sublime text' already exists\n"  # say so
   mv ${HOME}/.config/sublime-text/Packages/User ${HOME}/.config/sublime-text/Packages/User.old  # and back it up for later comparison
   print_result "${?}" "Backed it up for later comparison"
 fi
