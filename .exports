@@ -37,8 +37,8 @@ export PYTHONIOENCODING='UTF-8'  # make Python use UTF-8 encoding for output to 
 # 'DOTFILESSRCDIR' variables to the actual repository, rather than the symlink,
 # on 'macmini'
 if [[ $(hostname -s) == "macmini" ]]; then
-  export DOTFILES="/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/dotfiles"  # shortcut to where my dotfiles live, used by me as it's a lot easier to type than the next one
-  export DOTFILESSRCDIR="/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/dotfiles"  # shortcut to where my dotfiles live, used by the dotfiles themselves
+  export DOTFILES="/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/mine/dotfiles"  # shortcut to where my dotfiles live, used by me as it's a lot easier to type than the next one
+  export DOTFILESSRCDIR="/Volumes/ExternalHome/rtruell/GitRepositories/GitHub/mine/dotfiles"  # shortcut to where my dotfiles live, used by the dotfiles themselves
 else
   export DOTFILES="${HOME}/dotfiles"
   export DOTFILESSRCDIR="${HOME}/dotfiles"
