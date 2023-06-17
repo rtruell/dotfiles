@@ -38,17 +38,14 @@ else
   print_result "${?}" "Chanaged ownership of '/nas/mysql'"
 fi
 if [[ "$(ls -A /var/lib/mysql)" ]]; then  # check for files/directories in '/var/lib/mysql'
-  print_warn "'/var/lib/mysql' has files/directories in it"
-  printf "\n"
+  print_warn "'/var/lib/mysql' has files/directories in it\n"
   if [[ "$(ls -A /nas/mysql)" ]]; then  # there were some, so check for files/directories in '/nas/mysql'
-    print_warn "'/nas/mysql' has files/directories in it"
-    printf "\n"
+    print_warn "'/nas/mysql' has files/directories in it\n"
     sudo diff -q /var/lib/mysql /nas/mysql >/dev/null  # there were some, so compare the directories
     if [[ "${?}" == 0 ]]; then  # if the directories are identical
       print_result "${?}" "The directories are identical"  # say so
     else
-      print_warn "The directories are different"  # otherwise, warn that the directories are different
-      printf "\n"
+      print_warn "The directories are different\n"  # otherwise, warn that the directories are different
       sudo cp -a /var/lib/mysql /var/lib/mysql.orig  # and back up '/var/lib/mysql' for later comparison
       print_result "${?}" "Backed up '/var/lib/mysql for later comparison"
     fi
