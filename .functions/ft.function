@@ -1,0 +1,25 @@
+# find text in files
+function ft {
+  OPTIND=1
+  local case=""
+  local usage="ft: find text in files.
+  Usage: ft [-i] \"pattern\" [\"filename pattern\"] "
+
+  while getopts :it opt
+  do
+    case "${opt}" in
+      i) case="-i " ;;
+      *) echo "${usage}"; return;;
+    esac
+  done
+
+  shift $(( $OPTIND - 1 ))
+  if [ "$#" -lt 1 ]; then
+    echo "${usage}"
+    return 1
+  fi
+
+  find . -type f -name "${2:-*}" -print0 \
+    | xargs -0 egrep --exclude *bash_hist* --color=auto -Hsn ${case} "$1" 2>&- \
+    | less -FX
+}
