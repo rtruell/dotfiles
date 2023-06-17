@@ -14,11 +14,13 @@ filecopy=0
 backupcopy=0
 fileupdate=0
 backupupdate=0
+dbbackup=0
 xmltvdir="${HOME}/.xmltv"
 xmltvdatadir="${xmltvdir}/data"
 xmlfile="${xmltvdatadir}/${Today}-telus.xml"
 outputxmlfile="${xmltvdatadir}/${Today}-telus-fixed.xml"
 Yesterday=$(date --date=yesterday +"%Y-%m-%d")
+oldbackup=$(date --date='-1 fortnight' +"%Y-%m-%d")
 computername=$(hostname -s)  # get the computer's host name, stripping off the domain name if it's there
 
 # check to see if there's a connection to the Internet.  the number of times to
@@ -38,7 +40,6 @@ printf '\n%s\n\n' "Getting the TV listings."
 # Schedules Direct json commands
 returncode=1
 while [[ "${returncode}" != 0 ]]; do
-  printf '%s\n' "${indent}Running: 'tv_grab_zz_sdjson_sqlite --days 14 --output \"${xmlfile}\"'."
   downloadstart=$(elapsed)
   tv_grab_zz_sdjson_sqlite --days 14 --output "${xmlfile}"
   returncode="${?}"
@@ -50,25 +51,38 @@ while [[ "${returncode}" != 0 ]]; do
     sleep 1800
   fi
 done
-printf '%s\n' "${indent}Elapsed time to download listings and create xml file: $(elapsed ${downloadstart})."
+printf '%s\n\n' "${indent}Elapsed time to download listings and create XML file: $(elapsed ${downloadstart})."
 
-printf '\n%s\n\n' "Fixing the XML file."
-printf '%s\n' "${indent}Running: 'fixjsonxml \"${xmlfile}\" \"${outputxmlfile}\"'."
+printf '\n%s\n\n' "Processing the XML file."
 fixxmlstart=$(elapsed)
 fixjsonxml "${xmlfile}" "${outputxmlfile}"
 if [[ "${?}" == "0" ]]; then
-  printf '%s\n' "${indent}Elapsed time to fix the XML file: $(elapsed ${fixxmlstart})."
+  printf '%s\n' "${indent}XML file processed."
+  printf '%s\n' "${indent}Elapsed time: $(elapsed ${fixxmlstart})."
 else
-  printf '%s\n' "${indent}ERROR: unable to fix the XML file."
+  printf '%s\n' "${indent}ERROR: unable to process the XML file."
 fi
 
 printf '\n%s\n\n' "Backing up the database."
-printf '%s\n' "${indent}Running: 'cp -a \"${xmltvdir}\"/SchedulesDirect.DB \"${xmltvdir}\"/SchedulesDirect.DB.\"${Today}\"'."
 cp -a "${xmltvdir}"/SchedulesDirect.DB "${xmltvdir}"/SchedulesDirect.DB."${Today}"
 if [[ "${?}" == "0" ]]; then
+  dbbackup=1
   printf '%s\n' "${indent}database backed up."
 else
+  dbbackup=0
   printf '%s\n' "${indent}ERROR: unable to back up the database."
+fi
+
+if [[ "${dbbackup}" == "1" ]]; then
+  printf '\n%s\n\n' "Deleting the old database."
+  rm "${xmltvdir}"/SchedulesDirect.DB."${oldbackup}"
+  if [[ "${?}" == "0" ]]; then
+    printf '%s\n' "${indent}old database deleted."
+  else
+    printf '%s\n' "${indent}ERROR: unable to delete the old database."
+  fi
+else
+    printf '%s\n' "${indent}ERROR: database not backed up, so old database not deleted."
 fi
 
 printf '\n%s\n\n' "Displaying file sizes."
@@ -99,20 +113,26 @@ else
   printf '%s\n' "${indent}'nasbackup' mounted."
 fi
 
-printf '\n%s\n\n' "Copying the data files."
+printf '\n%s\n\n' "Copying the data and database files."
 copystart=$(elapsed)
 if [[ "${filemount}" == "1" ]]; then
-  sudo cp -a "${xmltvdatadir}"/* "${HOME}"/nas/XMLTV/data/CurrentYear
+  sudo cp -a "${xmltvdatadir}"/* "${HOME}"/nas/xmltv/data/CurrentYear
   if [[ "${?}" == "0" ]]; then
     filecopy=1
-    printf '%s\n' "${indent}files copied to 'nas'."
+    printf '%s\n' "${indent}data files copied to 'nas'."
   else
     filecopy=0
-    printf '%s\n' "${indent}ERROR: unable to copy files to 'nas'."
+    printf '%s\n' "${indent}ERROR: unable to copy data files to 'nas'."
+  fi
+  sudo cp -a "${xmltvdir}"/SchedulesDirect.DB."${Today}" "${HOME}"/nas/xmltv/databases/CurrentYear
+  if [[ "${?}" == "0" ]]; then
+    printf '%s\n' "${indent}database file copied to 'nas'."
+  else
+    printf '%s\n' "${indent}ERROR: unable to copy database file to 'nas'."
   fi
 fi
 if [[ "${backupmount}" == "1" ]]; then
-  sudo cp -a "${xmltvdatadir}"/* "${HOME}"/nasbackup/XMLTV/data/CurrentYear
+  sudo cp -a "${xmltvdatadir}"/* "${HOME}"/nasbackup/xmltv/data/CurrentYear
   if [[ "${?}" == "0" ]]; then
     backupcopy=1
     printf '%s\n' "${indent}files copied to 'nasbackup'."
@@ -120,35 +140,41 @@ if [[ "${backupmount}" == "1" ]]; then
     backupcopy=0
     printf '%s\n' "${indent}ERROR: unable to copy files to 'nasbackup'."
   fi
+  sudo cp -a "${xmltvdir}"/SchedulesDirect.DB."${Today}" "${HOME}"/nasbackup/xmltv/databases/CurrentYear
+  if [[ "${?}" == "0" ]]; then
+    printf '%s\n' "${indent}database file copied to 'nasbackup'."
+  else
+    printf '%s\n' "${indent}ERROR: unable to copy database file to 'nasbackup'."
+  fi
 fi
-printf '%s\n' "${indent}File copy elapsed time: $(elapsed ${copystart})."
+printf '%s\n\n' "${indent}Elapsed time: $(elapsed ${copystart})."
 
-printf '\n%s\n\n' "Updating time stamps"
+printf '\n%s\n\n' "Updating data file time stamps"
 touch "${xmltvdatadir}"/ref.txt >/dev/null 2>&1
 if [[ "${filecopy}" == "1" ]]; then
-  sudo touch -r "${xmltvdatadir}"/ref.txt "${HOME}"/nas/XMLTV/data/CurrentYear/"${Today}"-*
+  sudo touch -r "${xmltvdatadir}"/ref.txt "${HOME}"/nas/xmltv/data/CurrentYear/"${Today}"-*
   if [[ "${?}" == "0" ]]; then
     fileupdate=1
-    printf '%s\n' "${indent}time stamps updated on 'nas'."
+    printf '%s\n' "${indent}data file time stamps updated on 'nas'."
   else
     fileupdate=0
-    printf '%s\n' "${indent}ERROR: unable to update time stamps on 'nas'."
+    printf '%s\n' "${indent}ERROR: unable to update data file time stamps on 'nas'."
   fi
 fi
 if [[ "${backupcopy}" == "1" ]]; then
-  sudo touch -r "${xmltvdatadir}"/ref.txt "${HOME}"/nasbackup/XMLTV/data/CurrentYear/"${Today}"-*
+  sudo touch -r "${xmltvdatadir}"/ref.txt "${HOME}"/nasbackup/xmltv/data/CurrentYear/"${Today}"-*
   if [[ "${?}" == "0" ]]; then
     backupupdate=1
-    printf '%s\n' "${indent}time stamps updated on 'nasbackup'."
+    printf '%s\n' "${indent}data file time stamps updated on 'nasbackup'."
   else
     backupupdate=0
-    printf '%s\n' "${indent}ERROR: unable to update time stamps on 'nasbackup'."
+    printf '%s\n' "${indent}ERROR: unable to update data file time stamps on 'nasbackup'."
   fi
 fi
 
 printf '\n%s\n\n' "Unmounting network drives."
 if [[ "${filemount}" == "1" ]]; then
-  sudo "${HOME}"/bin/unmount "${HOME}"/nas
+  sudo "${HOME}"/bin/unmount "${HOME}"/nas >/dev/null
   if [[ "${?}" == "0" ]]; then
     printf '%s\n' "${indent}'nas' unmounted."
   else
@@ -156,7 +182,7 @@ if [[ "${filemount}" == "1" ]]; then
   fi
 fi
 if [[ "${backupmount}" == "1" ]]; then
-  sudo "${HOME}"/bin/unmount "${HOME}"/nasbackup
+  sudo "${HOME}"/bin/unmount "${HOME}"/nasbackup >/dev/null
   if [[ "${?}" == "0" ]]; then
     printf '%s\n' "${indent}'nasbackup' unmounted."
   else
