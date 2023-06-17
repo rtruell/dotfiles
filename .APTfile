@@ -1,6 +1,5 @@
 acpi  # displays information on ACPI devices
 amd64-microcode
-ansiweather
 apt-file
 audacity
 bash
@@ -42,6 +41,7 @@ p7zip-full
 p7zip-rar
 perl
 pigz
+progress
 python3
 python3-distro
 python3-netifaces
