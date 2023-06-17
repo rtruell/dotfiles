@@ -6,12 +6,12 @@ alias back="cd -"  # cd back to the previous directory
 alias badge="tput bel"  # ring the terminal bell (useful when executing time-consuming commands)
 alias bee="env -i TERM="${TERM}" HOME="${HOME}" bash --norc --noprofile"  # set up a (mostly) empty 'bash' environment for testing
 alias blog="cd /Volumes/ExternalHome/rtruell/hugo"  # quickly get to my blog directory
+alias cddf="cd ${DOTFILES}; ls"  # quickly get to, and list, the dotfiles directory
 alias cls="clear"  # MS-DOS clear screen command
 alias clc="fc -ln -1 | tr -d '\t' | sed 's/ //' | putclip"  # based on http://apple.stackexchange.com/questions/110343/copy-last-command-in-terminal
 alias cp="cp -i"  # copy in interactive mode, requiring confirmation for each file
 alias date="datef"
 alias df="df -h"  # display sizes in human-readable form (K, M, G)
-alias dotfiles="cd ${DOTFILES}; ls"  # quickly get to, and list, the dotfiles directory
 alias du="du -h"  # display sizes in human-readable form (K, M, G)
 alias edit="${EDITOR}"  # make editing files a little easier
 alias egrep="egrep --color=auto"  # highlight matches
