@@ -2,7 +2,7 @@
 
 DIR=$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )
 cd "${DIR}"
-#exit  # uncomment this so the chimes don't sound when doing things like streaming video's
+# exit  # uncomment this so the chimes don't sound when doing things like streaming video's
 
 # Start user-changeable variables
 
