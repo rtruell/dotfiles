@@ -1,0 +1,24 @@
+# find directories
+function fd {
+  OPTIND=1
+  local case="name"
+  local usage="fd: find directories.
+  Usage: fd [-i] \"pattern\" [\"startdir\"]
+
+  if not supplied, \"startdir\" defaults to the current directory"
+
+  while getopts :it opt; do
+    case "${opt}" in
+      i) case="iname" ;;
+      *) echo "${usage}"; return;;
+    esac
+  done
+
+  shift $(( $OPTIND - 1 ))
+  if [ "$#" -lt 1 ]; then
+    echo "${usage}"
+    return 1
+  fi
+
+  find "${2:-.}" -type d -"${case}" "${1}" 2>&- | sort | less -FX
+}

@@ -1,0 +1,2 @@
+# print a message, without colour or special attributes
+function print_normal { printf "\e[0m${1}"; }

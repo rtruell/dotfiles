@@ -1,0 +1,2 @@
+# print an info message, in dull purple
+function print_info { printf "\e[0;35m  ${1}\e[0m"; }
