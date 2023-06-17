@@ -2,6 +2,7 @@
 
 # some functions are needed, so load them
 source ./.functions/print_error.function
+source ./.functions/print_info.function
 source ./.functions/print_result.function
 source ./.functions/print_success.function
 source ./.functions/print_warn.function
