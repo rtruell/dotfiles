@@ -1,13 +1,3 @@
-ls ${moreoptions} -Fh --group-directories-first --color=auto *.txt
-#1647807087
-ls1
-#1647807111
-ls1 /etc
-#1647807136
-ls1
-#1647807144
-ls ${moreoptions} -Fh --group-directories-first --color=auto
-#1647807159
 ls1 /etc
 #1647807182
 ls ${moreoptions} -Fh --group-directories-first --color=auto /etc
@@ -19840,3 +19830,7 @@ ovol norm
 ls bin
 #1697394159
 v onorm
+#1697684482
+cd "/Volumes/ExternalHome"; clear
+#1697684482
+cd "/Volumes/ExternalHome"; clear
