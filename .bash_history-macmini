@@ -19834,3 +19834,17 @@ v onorm
 cd "/Volumes/ExternalHome"; clear
 #1697684482
 cd "/Volumes/ExternalHome"; clear
+#1701042775
+cd Applications
+#1701042860
+ls /1 >>/Volumes/ExternalHome/rtruell/MacPrograms.txt
+#1701042873
+ls -1
+#1701042883
+ls -1 >>/Volumes/ExternalHome/rtruell/MacPrograms.txt
+#1701042893
+cd /Applications/
+#1701042938
+echo >>/Volumes/ExternalHome/rtruell/MacPrograms.txt
+#1701042957
+ls -1 >>/Volumes/ExternalHome/rtruell/MacPrograms.txt
