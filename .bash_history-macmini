@@ -1,17 +1,3 @@
-ls1 /etc
-#1647807182
-ls ${moreoptions} -Fh --group-directories-first --color=auto /etc
-#1647807227
-ls1 *.txt
-#1647807235
-ls ${moreoptions} -Fh --group-directories-first --color=auto *.txt
-#1647807291
-ls1 *.jpg
-#1647807299
-ls ${moreoptions} -Fh --group-directories-first --color=auto *.jpg
-#1647807319
-ls1 bin
-#1647807327
 ls ${moreoptions} -Fh --group-directories-first --color=auto bin
 #1647807338
 ls1 dotfiles
@@ -19848,3 +19834,37 @@ cd /Applications/
 echo >>/Volumes/ExternalHome/rtruell/MacPrograms.txt
 #1701042957
 ls -1 >>/Volumes/ExternalHome/rtruell/MacPrograms.txt
+#1701451334
+cd /
+#1701451355
+cd /Volumes/ExternalHome/rtruell/
+#1701451395
+ft "morning daily stuff" journal.txt
+#1701451613
+lf ft
+#1701451687
+man xargs
+#1701451742
+man ls
+#1701451855
+find . -type f -name "journal.txt" -print0 | xargs -0 egrep --exclude *bash_hist* --color=always -Hsn -i "morning daily stuff" 2>&- | less -FX
+#1701451900
+find . -type f -name "journal.txt" -print0 | xargs -0 egrep --exclude *bash_hist* --color=always -Hsn -i "morning daily stuff" 2>&- | less -F
+#1701451911
+find . -type f -name "journal.txt" -print0 | xargs -0 egrep --exclude *bash_hist* --color=always -Hsn -i "morning daily stuff" 2>&- | less -X
+#1701451918
+find . -type f -name "journal.txt" -print0 | xargs -0 egrep --exclude *bash_hist* --color=always -Hsn -i "morning daily stuff" 2>&- | less -
+#1701451927
+find . -type f -name "journal.txt" -print0 | xargs -0 egrep --exclude *bash_hist* --color=always -Hsn -i "morning daily stuff" 2>&- | less
+#1701452277
+find . -type f -name "journal.txt" -print0 | xargs -0 egrep --exclude *bash_hist* --color=always -Hsn -i "defined morning daily stuff" 2>&- | less
+#1701452300
+find . -type f -name "journal.txt" -print0 | xargs -0 egrep --exclude *bash_hist* --color=always -Hsn -i 'defined "morning daily stuff"' 2>&- | less
+#1701452324
+find . -type f -name "journal.txt" -print0 | xargs -0 egrep --exclude *bash_hist* --color=always -Hsn -i "defined" 2>&- | less
+#1701452344
+find . -type f -name "journal.txt" -print0 | xargs -0 egrep --exclude *bash_hist* --color=always -Hsn -i "define" 2>&- | less
+#1701452459
+find . -type f -name "journal.txt" -print0 | xargs -0 egrep --exclude *bash_hist* --color=auto -Hsn -i "morning daily stuff" 2>&- | less
+#1701452502
+find . -type f -name "journal.txt" -print0 | xargs -0 egrep --exclude *bash_hist* --color=auto -Hsn -i "morning daily stuff" 2>&- >mds.txt
