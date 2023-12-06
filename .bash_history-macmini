@@ -1,37 +1,3 @@
-ls ${moreoptions} -Fh --group-directories-first --color=auto bin
-#1647807338
-ls1 dotfiles
-#1647807346
-ls ${moreoptions} -Fh --group-directories-first --color=auto dotfiles
-#1647807483
-ls1 /
-#1647807492
-ls1 /tmp
-#1647807508
-ls1 -l /
-#1647807523
-ls1 /var
-#1647807532
-ls ${moreoptions} -Fh --group-directories-first --color=auto /var
-#1647807590
-ls1
-#1647807597
-ls1 downloads
-#1647807753
-stat /etc
-#1647807791
-stat /etc | grep "\->"
-#1647807863
-stat /etc | grep "\->" | cut -d' ' -f5
-#1647807877
-stat /etc | grep "\->" | cut -d' ' -f4
-#1647807918
-stat /etc | grep "\->" | cut -d' ' -f6
-#1647807981
-stat bin | grep "\->" | cut -d' ' -f6
-#1647808214
-stat bin | grep "\->" | cut -d" " -f6
-#1647808295
 s dotfiles/.functions/ls1.function
 #1647808300
 ls1
@@ -19868,3 +19834,17 @@ find . -type f -name "journal.txt" -print0 | xargs -0 egrep --exclude *bash_hist
 find . -type f -name "journal.txt" -print0 | xargs -0 egrep --exclude *bash_hist* --color=auto -Hsn -i "morning daily stuff" 2>&- | less
 #1701452502
 find . -type f -name "journal.txt" -print0 | xargs -0 egrep --exclude *bash_hist* --color=auto -Hsn -i "morning daily stuff" 2>&- >mds.txt
+#1701834470
+sha256sum -c 2023-10-10-raspiOS-SHA256-checksums.txt
+#1701835063
+cd /Volumes/data/Downloads/RaspberryPi
+#1701835105
+sha256sum -c 2023-10-10-raspiOS-SHA256-checksums.txt
+#1701836297
+cd /Volumes/Downloads/RecentDownloads/Linux
+#1701836331
+sha256sum -c 20231109_raspi_4_bookworm.img.xz.sha256
+#1701836417
+back
+#1701836433
+sha256sum -c 20231109_raspi_4_bookworm.img.xz.sha256
