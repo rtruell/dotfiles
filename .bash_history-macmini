@@ -1,18 +1,4 @@
 s dotfiles/.functions/ls1.function
-#1647808300
-ls1
-#1647808308
-ls1 *.txt
-#1647808317
-ls1 bin
-#1647808370
-s dotfiles/.functions/ls1.function
-#1647808374
-ls1
-#1647808379
-ls1 bin
-#1647808508
-s dotfiles/.functions/ls1.function
 #1647808514
 ls1 bin
 #1647808528
@@ -19848,3 +19834,13 @@ sha256sum -c 20231109_raspi_4_bookworm.img.xz.sha256
 back
 #1701836433
 sha256sum -c 20231109_raspi_4_bookworm.img.xz.sha256
+#1702074813
+awk 'NR>=32 && NR<=35' /Users/rtruell/dotfiles/bin/iso2usb.pl
+#1702074827
+diskutil list
+#1702074856
+diskutil unmountDisk /dev/disk3
+#1702074934
+sudo dd if="/Volumes/data/Downloads/IPFire/ipfire-2.27-core181-x86_64.iso" of=/dev/rdisk3 bs=4M status=progress
+#1702075067
+diskutil eject /dev/disk3
