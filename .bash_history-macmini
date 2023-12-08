@@ -1,13 +1,3 @@
-s dotfiles/.functions/ls1.function
-#1647808514
-ls1 bin
-#1647808528
-ls1 movies
-#1647808549
-ls1 bin/
-#1647808640
-s dotfiles/.functions/ls1.function
-#1647808644
 ls1 bin/
 #1647808650
 ls1 bin
@@ -19844,3 +19834,5 @@ diskutil unmountDisk /dev/disk3
 sudo dd if="/Volumes/data/Downloads/IPFire/ipfire-2.27-core181-x86_64.iso" of=/dev/rdisk3 bs=4M status=progress
 #1702075067
 diskutil eject /dev/disk3
+#1702075794
+diskutil list
