@@ -43,6 +43,7 @@ export SYSTEM_VERSION
 # find os release name
 if [ "${SYSTEM_TYPE}" == "macOS" ]; then
   case "${SYSTEM_VERSION}" in
+       14*) RELEASE_NAME="Sonoma" ;;
        13*) RELEASE_NAME="Ventura" ;;
        12*) RELEASE_NAME="Monterey" ;;
        11*) RELEASE_NAME="Big Sur" ;;
