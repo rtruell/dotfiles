@@ -1,7 +1,3 @@
-ls1 bin
-#1647808699
-ls1 movies
-#1647808706
 ls1 downloads
 #1647808740
 s dotfiles/.functions/ls1.function
@@ -19838,3 +19834,11 @@ diskutil list
 ping 192.168.2.1
 #1702592411
 ping 192.168.2.2
+#1702678682
+sha256sum -c 2023-12-11-raspiOS-SHA256-checksums.txt
+#1702679266
+cd /Volumes/data/Downloads/RaspberryPi
+#1702679286
+ls *.txt
+#1702680919
+sha256sum -c 2023-12-11-raspiOS-SHA256-checksums.txt
