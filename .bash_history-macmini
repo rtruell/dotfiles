@@ -1,13 +1,3 @@
-ls1 downloads
-#1647808740
-s dotfiles/.functions/ls1.function
-#1647808746
-ls1 bin
-#1647808755
-ls1 downloads
-#1647808776
-ls1 *.txt
-#1647808779
 ls1
 #1647808792
 ls1 -l
@@ -19842,3 +19832,5 @@ cd /Volumes/data/Downloads/RaspberryPi
 ls *.txt
 #1702680919
 sha256sum -c 2023-12-11-raspiOS-SHA256-checksums.txt
+#1702852684
+demo
