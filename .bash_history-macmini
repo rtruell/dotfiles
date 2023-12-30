@@ -19834,3 +19834,9 @@ ls *.txt
 sha256sum -c 2023-12-11-raspiOS-SHA256-checksums.txt
 #1702852684
 demo
+#1703894958
+fs "final conflict"
+#1703894969
+findshow "final conflict"
+#1703894983
+findshow "conflict"
