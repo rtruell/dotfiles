@@ -1,9 +1,3 @@
-ls1
-#1647808792
-ls1 -l
-#1647809061
-h | less
-#1647809376
 stat "/etc"
 #1647809424
 stat "/etc" | grep "\->"
@@ -19840,3 +19834,35 @@ fs "final conflict"
 findshow "final conflict"
 #1703894983
 findshow "conflict"
+#1703947177
+java -v
+#1703947184
+java --v
+#1703947194
+lf switchjava
+#1703947201
+java -version
+#1703947301
+cat bin/switchjava
+#1703947384
+/usr/libexec/java_home -V 2>&1 | grep -v i386 | grep '"' | cut -d'"' -f2 | tr -d [:alpha:][:blank:]
+#1703947406
+/usr/libexec/java_home -V
+#1703947536
+java -version 2>&1 | grep version | cut -d'"' -f2)
+#1703947541
+java -version 2>&1 | grep version | cut -d'"' -f2
+#1703947581
+switchjava
+#1703947589
+switchjava 6
+#1703947631
+echo $JAVA_HOME
+#1703947670
+/usr/libexec/java_home -v 1.6
+#1703947740
+export JAVA_HOME=$(/usr/libexec/java_home -v 1.6)
+#1703947744
+echo $JAVA_HOME
+#1703947791
+java -version
