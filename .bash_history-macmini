@@ -19834,3 +19834,37 @@ v -:
 v omax
 #1705029602
 v onorm
+#1712025798
+export NSPR_LOG_MODULES=POP3:4
+#1712025869
+export NSPR_LOG_FILE=~/tbird-2024-04-01.log
+#1712025938
+/Users/rtruell/Applications/Thunderbird.app/Contents/MacOS/thunderbird-bin
+#1712026585
+ll
+#1712026614
+ft '0x11bc84000' *.moz_log
+#1712026738
+ft '0x11bc84e00' *.moz_log
+#1712026862
+ft '0x11bc84000' *.moz_log
+#1712026918
+ft '0x11bc84e00' *.moz_log
+#1712027847
+/Users/rtruell/Applications/Thunderbird.app/Contents/MacOS/thunderbird-bin
+#1712027921
+ft '0x12e21b600' *.moz_log
+#1712027996
+ft '0x12e21b600' tbird-2024-04-01.log.moz_log
+#1712028096
+ft '0x12e21b600' tbird-1sttry-2024-04-01.log.moz_log
+#1712028126
+ft '0x11bc84000' tbird-1sttry-2024-04-01.log.moz_log
+#1712028516
+ft '0x11bc84000' tbird-1sttry-2024-04-01.log.moz_log >zoho.log
+#1712028535
+less zoho.log
+#1712028683
+ft '0x11bc84e00' tbird-1sttry-2024-04-01.log.moz_log
+#1712028733
+less zoho.log
