@@ -1,37 +1,3 @@
-xip
-#1647815847
-man xip
-#1647815942
-xip -x
-#1647816126
-/usr/bin/xcodebuild -version
-#1647816453
-brew config
-#1647833602
-listdf
-#1647833625
-listdf -f
-#1647833741
-spaceused
-#1647833751
-mount
-#1647833791
-mountinfo
-#1647833919
-path
-#1647833929
-type path
-#1647834156
-whoowns set.txt
-#1647834170
-whoowns /etc
-#1647834809
-programdir="/Volumes/data/Downloads/Mac/InUse/Installed/Automated"
-#1647834847
-[[ ${programs[@]} ]] && printf '%s\n' "${programs[@]}"
-#1647834882
-shopt -s dotglob
-#1647834895
 shopt -s nullglob
 #1647834959
 programss=("${programdir}"/*)
@@ -19868,3 +19834,5 @@ less zoho.log
 ft '0x11bc84e00' tbird-1sttry-2024-04-01.log.moz_log
 #1712028733
 less zoho.log
+#1729544161
+ls /Volumes/
