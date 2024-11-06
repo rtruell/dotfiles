@@ -1,5 +1,3 @@
-shopt -s nullglob
-#1647834959
 programss=("${programdir}"/*)
 #1647834968
 shopt -u nullglob
@@ -19836,3 +19834,9 @@ ft '0x11bc84e00' tbird-1sttry-2024-04-01.log.moz_log
 less zoho.log
 #1729544161
 ls /Volumes/
+#1730928347
+v
+#1730928355
+v -?
+#1730928418
+v onorm
