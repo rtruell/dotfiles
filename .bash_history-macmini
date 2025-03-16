@@ -1,9 +1,3 @@
-programss=("${programdir}"/*)
-#1647834968
-shopt -u nullglob
-#1647834975
-[[ ${programs[@]} ]] && printf '%s\n' "${programs[@]}"
-#1647834994
 [[ ${programss[@]} ]] && printf '%s\n' "${programss[@]}"
 #1647836811
 if [[ `printf '%s' ${/Volumes/data/Downloads/Mac/InUse/Installed/Automated/zoc7266.dmg##*.}` == "app" ]]; then echo 'app'; fi
@@ -19839,4 +19833,12 @@ v
 #1730928355
 v -?
 #1730928418
+v onorm
+#1742100739
+vout norm
+#1742100767
+v out norm
+#1742100785
+v -?
+#1742100809
 v onorm
