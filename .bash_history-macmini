@@ -1,11 +1,3 @@
-[[ ${programss[@]} ]] && printf '%s\n' "${programss[@]}"
-#1647836811
-if [[ `printf '%s' ${/Volumes/data/Downloads/Mac/InUse/Installed/Automated/zoc7266.dmg##*.}` == "app" ]]; then echo 'app'; fi
-#1647837036
-i="/Volumes/data/Downloads/Mac/InUse/Installed/Automated/zoc7266.dmg"
-#1647837060
-ext=`printf '%s' ${i##*.}`
-#1647837126
 program=`basename "${i%%.*}"`
 #1647837131
 echo $ext
